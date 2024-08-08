@@ -1,0 +1,26 @@
+title: Paul Martin McNeill
+email: paulmcneill1989@hotmail.co.uk
+description: >-
+  Welcome to the portfolio of Paul McNeill, a passionate web developer and AI enthusiast. This site showcases a collection of my projects, skills, and professional experiences in web development, Python, and artificial intelligence. Explore my work, read my blog, and get in touch to learn more about how I can contribute to innovative projects and solutions.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: mcneillium
+github_username: mcneillium
+
+# Build settings
+# theme: agency-jekyll-theme # Commented out because the theme is manually installed
+plugins:
+  - jekyll-feed
+
+# Exclude from processing.
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
