@@ -1,3 +1,21 @@
 ---
 layout: style
 ---
+#ticket-machine-project {
+    background-image: url('/img/portfolio/ticketing-system-background.svg');
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+#ticket-machine-project .portfolio-caption {
+    text-align: center;
+    color: #fff; /* White text color for contrast */
+}
+
+#ticket-machine-project img {
+    border-radius: 10px; /* Make the image corners match the background */
+}
