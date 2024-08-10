@@ -1,30 +1,54 @@
-Agency Jekyll theme
-====================
 
-Agency theme based on [Agency bootstrap theme ](https://startbootstrap.com/template-overviews/agency/)
+# Paul Martin McNeill - Portfolio
 
-# How to use
+Welcome to my portfolio website, where I showcase my journey in AI, Software Engineering, and Data Science. This portfolio is designed to highlight my skills, projects, and experiences in these fields.
 
-###Portfolio 
+## Portfolio Overview
 
-Portfolio projects are in '/_posts'
+### Projects
 
-Images are in '/img/portfolio'
+Here are some of the key projects included in my portfolio:
 
-###About
+1. **Java-Based Ticket Machine System**
+   - **Description**: Developed using Java to demonstrate OOP principles such as inheritance, polymorphism, and encapsulation.
+   - **Image**: ![Ticket Machine](img/portfolio/ticket-machine-thumbnail.svg)
 
-Images are in '/img/about/'
+2. **Data Structures & Algorithms in Python**
+   - **Description**: Implemented various algorithms and data structures, including trees, graphs, and hash tables, to solve complex problems.
+   - **Image**: ![Data Structures](img/portfolio/data-structures-thumbnail.png)
 
-###Team
+3. **Cloud-Based Data Management System**
+   - **Description**: Designed and implemented a cloud-based database management system using SQL and NoSQL databases.
+   - **Image**: ![Cloud Management](img/portfolio/cloud-management-thumbnail.png)
 
-Team members and info are in '_config.yml'
+### About Me
 
-Images are in '/img/team/'
+I am an experienced Web Developer and AI Enthusiast with a strong background in web development. My expertise includes HTML, CSS, JavaScript, Python, and Java. I specialize in creating dynamic, responsive websites and applications, with a keen interest in artificial intelligence and machine learning. Currently, I am pursuing advanced studies in AI and aiming to complete an MSc in Artificial Intelligence at Queen's University Belfast in 2025.
 
+### Contact
 
-# Demo
+Feel free to reach out for collaborations or inquiries:
 
-View this jekyll theme in action [here](https://y7kim.github.io/agency-jekyll-theme)
+- **Name**: Paul Martin McNeill
+- **Email**: paulmcneill1989@hotmail.co.uk
+- **Phone**: 07907044628
 
-=========
-For more details, read [documentation](http://jekyllrb.com/)
+## Website Navigation
+
+- **Portfolio**: Browse through the different projects I have worked on.
+- **About**: Learn more about my background and experiences.
+- **Contact**: Get in touch with me for potential collaborations.
+
+## Credits
+
+- **Theme**: This portfolio is built using the [Agency Jekyll theme](https://y7kim.github.io/agency-jekyll-theme) and has been customized to reflect my work and personal branding.
+
+## License
+
+This portfolio is © Paul Martin McNeill 2024. All rights reserved.
+
+## Demo
+
+You can view this portfolio in action [here](https://your-portfolio-link.com).
+
+For more details on using and customizing this theme, please refer to the [Jekyll documentation](http://jekyllrb.com/).
