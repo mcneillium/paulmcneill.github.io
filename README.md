@@ -1,4 +1,3 @@
-
 # Paul Martin McNeill - Portfolio
 
 Welcome to my portfolio website, where I showcase my journey in AI, Software Engineering, and Data Science. This portfolio is designed to highlight my skills, projects, and experiences in these fields.
@@ -52,3 +51,12 @@ This portfolio is © Paul Martin McNeill 2024. All rights reserved.
 You can view this portfolio in action [here](https://your-portfolio-link.com).
 
 For more details on using and customizing this theme, please refer to the [Jekyll documentation](http://jekyllrb.com/).
+4. **Expense Tracker**
+   - **Description**: A comprehensive expense tracking system built using modern web technologies. It allows users to manage their finances effectively with features like budget tracking, spending categorization, and financial reporting.
+   - **Technologies Used**: [List Technologies]
+   - **Image**: ![Expense Tracker](img/portfolio/expense-tracker-thumbnail.jpg)
+
+5. **AI Assistant**
+   - **Description**: An AI-powered assistant designed to enhance productivity by automating tasks, providing intelligent recommendations, and interacting with users via natural language processing.
+   - **Technologies Used**: [List Technologies]
+   - **Image**: ![AI Assistant](img/portfolio/ai-assistant-thumbnail.png)

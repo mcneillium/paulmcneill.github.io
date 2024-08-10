@@ -6,16 +6,113 @@ layout: style
     background-size: cover;
     background-position: center;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+    
     margin-bottom: 30px;
 }
 
 #ticket-machine-project .portfolio-caption {
     text-align: center;
-    color: #fff; /* White text color for contrast */
+    color: #000; /* Black text color for contrast */
 }
 
 #ticket-machine-project img {
-    border-radius: 10px; /* Make the image corners match the background */
+     /* Make the image corners match the background */
+}
+
+/* Centering the portfolio items */
+.portfolio .portfolio-item {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.portfolio .row {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Ensure portfolio items are properly spaced and aligned */
+.portfolio .portfolio-item {
+    margin: 20px auto; /* Add margin to create space between items */
+    text-align: center;
+    max-width: 300px; /* Ensure items have a consistent width */
+    flex-grow: 1;
+}
+
+.portfolio .row {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Add gap between items */
+}
+
+/* Ensure the portfolio section itself is centered and uses full width */
+.portfolio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Additional adjustment to center items within the row */
+.portfolio .row {
+    width: 100%;
+    max-width: 1200px; /* Limit the width for better alignment */
+    margin: 0 auto;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Ensure portfolio items are evenly distributed and centered */
+.portfolio .portfolio-item {
+    margin: 20px;
+    flex-grow: 1;
+    max-width: calc(33% - 40px); /* Allow three items per row with space */
+    box-sizing: border-box;
+}
+
+/* Ensure top (header) and bottom (footer) sections are wide */
+header, footer, .wide-section {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0 20px;
+}
+
+/* Center the portfolio section */
+.portfolio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 50px 20px; /* Add some padding for spacing */
+}
+
+.portfolio .row {
+    width: 100%;
+    max-width: 1200px; /* Limit the width of the portfolio items */
+    margin: 0 auto;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Ensure portfolio items are evenly distributed and centered */
+.portfolio .portfolio-item {
+    margin: 20px;
+    flex-grow: 1;
+    max-width: calc(33% - 40px); /* Allow three items per row with space */
+    box-sizing: border-box;
+}
+
+/* Ensure the contact section is also wide */
+.contact {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 50px 20px; /* Add padding for spacing */
 }
