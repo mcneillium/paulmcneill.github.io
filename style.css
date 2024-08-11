@@ -228,6 +228,7 @@ header, footer, .wide-section {
         font-size: 14px; /* Smaller text for descriptions */
     }
 }
+<<<<<<< HEAD
 
 /* Force Projects to Stack Vertically on Mobile */
 @media only screen and (max-width: 600px) {
