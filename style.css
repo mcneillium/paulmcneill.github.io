@@ -1,10 +1,32 @@
----
+
+/* 
+  style.css
+
+  This file contains custom styles for specific sections of the portfolio.
+  The styles here are applied after the Bootstrap and agency.css files to override any defaults.
+  We ensure that the page remains responsive and visually appealing across different devices.
+*/
+
+/* Start of the custom styles */
+
 layout: style
----
+
+/* 
+  style.css
+
+  This file contains custom styles for specific sections of the portfolio.
+  The styles here are applied after the Bootstrap and agency.css files to override any defaults.
+  We ensure that the page remains responsive and visually appealing across different devices.
+*/
+
+/* Start of the custom styles */
+
 #ticket-machine-project {
     background-image: url('img/portfolio/ticketing-system-background.svg');
-    background-size: cover;
-    background-position: center;
+    /* Background settings for the ticket machine project */
+    background: url('img/portfolio/ticketing-system-background.svg') center/cover no-repeat;
+    /* Background settings for the ticket machine project */
+    background: url('img/portfolio/ticketing-system-background.svg') center/cover no-repeat;
     padding: 20px;
     
     
@@ -278,5 +300,22 @@ header, footer, .wide-section {
     .portfolio-item p {
         font-size: 14px !important; /* Smaller text for descriptions */
         text-align: justify !important;
+    }
+}
+/* Force Portfolio Section to a Single Column on Mobile */
+@media only screen and (max-width: 600px) {
+    .portfolio-item {
+        width: 100% !important; /* Full width on mobile */
+        display: block !important;
+        margin-bottom: 30px !important; /* Spacing between items */
+    }
+
+    .portfolio-item img {
+        width: 100% !important; /* Images take full width */
+        height: auto !important; /* Maintain aspect ratio */
+    }
+    
+    .portfolio-item h4, .portfolio-item p {
+        text-align: center !important; /* Center text */
     }
 }
