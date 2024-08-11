@@ -1,10 +1,32 @@
----
+
+/* 
+  style.css
+
+  This file contains custom styles for specific sections of the portfolio.
+  The styles here are applied after the Bootstrap and agency.css files to override any defaults.
+  We ensure that the page remains responsive and visually appealing across different devices.
+*/
+
+/* Start of the custom styles */
+
 layout: style
----
+
+/* 
+  style.css
+
+  This file contains custom styles for specific sections of the portfolio.
+  The styles here are applied after the Bootstrap and agency.css files to override any defaults.
+  We ensure that the page remains responsive and visually appealing across different devices.
+*/
+
+/* Start of the custom styles */
+
 #ticket-machine-project {
     background-image: url('img/portfolio/ticketing-system-background.svg');
-    background-size: cover;
-    background-position: center;
+    /* Background settings for the ticket machine project */
+    background: url('img/portfolio/ticketing-system-background.svg') center/cover no-repeat;
+    /* Background settings for the ticket machine project */
+    background: url('img/portfolio/ticketing-system-background.svg') center/cover no-repeat;
     padding: 20px;
     
     
