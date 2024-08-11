@@ -116,3 +116,115 @@ header, footer, .wide-section {
     margin: 0;
     padding: 50px 20px; /* Add padding for spacing */
 }
+
+/* Mobile Styles */
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    
+    .container {
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px;
+    }
+
+    .navbar .navbar-brand, .navbar .navbar-nav {
+        float: none;
+        text-align: center;
+    }
+
+    .portfolio-item {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    /* Adjusting image sizes */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* Tablet Styles */
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
+    .container {
+        width: 95%;
+    }
+    
+    .navbar {
+        padding: 20px;
+    }
+
+    .portfolio-item {
+        width: 48%;
+        margin-bottom: 30px;
+    }
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 768px) {
+    .container {
+        width: 75%;
+    }
+
+    .portfolio-item {
+        width: 30%;
+        margin-bottom: 40px;
+    }
+}
+
+/* Projects Section - Mobile */
+@media only screen and (max-width: 600px) {
+    .portfolio-item {
+        width: 100%; /* Make each project take up full width on mobile */
+        margin-bottom: 20px; /* Add margin to space out projects */
+    }
+
+    .portfolio-item img {
+        width: 100%; /* Ensure images do not overflow */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .portfolio-item h4 {
+        font-size: 18px; /* Adjust font size for better readability */
+        margin-bottom: 10px;
+    }
+
+    .portfolio-item p {
+        font-size: 14px; /* Smaller text for descriptions */
+    }
+}
+
+/* Stack Projects Vertically on Mobile */
+@media only screen and (max-width: 600px) {
+    .portfolio-item {
+        width: 100%; /* Make each project take up full width */
+        display: block;
+        margin-bottom: 30px; /* Add more margin for better separation */
+    }
+
+    .portfolio-item img {
+        width: 100%; /* Ensure images fit the container */
+        height: auto; /* Maintain aspect ratio */
+    }
+    
+    .portfolio-item h4 {
+        font-size: 18px; /* Adjust font size */
+        margin-bottom: 10px;
+    }
+
+    .portfolio-item p {
+        font-size: 14px; /* Smaller text for descriptions */
+    }
+}
