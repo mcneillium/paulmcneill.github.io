@@ -1,4 +1,14 @@
-/*!
+
+/* 
+  agency.css
+
+  This file contains the primary theme and style settings for the portfolio.
+  It includes body styles, text colors, and more, which are customized for this portfolio.
+  This file works in conjunction with Bootstrap to provide a cohesive look and feel.
+*/
+
+/* Start of the agency theme styles */
+
  * Start Bootstrap - Agency Bootstrap Theme (http://startbootstrap.com)
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
@@ -15,7 +25,7 @@ body {
 }
 
 .text-primary {
-    color: #{{ site.data.template.color.primary }};
+    color: #333; /* Default primary color */
 }
 
 p {
@@ -36,7 +46,7 @@ a.active {
 }
 
 a {
-    color: #{{ site.data.template.color.primary }};
+    color: #333; /* Default primary color */
 }
 
 a:hover,
@@ -70,12 +80,12 @@ h6 {
 }
 
 .btn-primary {
-    border-color: #{{ site.data.template.color.primary }};
+    color: #333; /* Default primary color */
     text-transform: uppercase;
     font-family: {{ site.data.template.font.primary }};
     font-weight: 700;
     color: #fff;
-    background-color: #{{ site.data.template.color.primary }};
+    color: #333; /* Default primary color */
 }
 
 .btn-primary:hover,
@@ -83,7 +93,7 @@ h6 {
 .btn-primary:active,
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
-    border-color: #{{ site.data.template.color.primary }};
+    color: #333; /* Default primary color */
     color: #fff;
     background-color: #{{ site.data.template.color.secondary }};
 }
@@ -109,25 +119,25 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-    border-color: #{{ site.data.template.color.primary }};
-    background-color: #{{ site.data.template.color.primary }};
+    color: #333; /* Default primary color */
+    color: #333; /* Default primary color */
 }
 
 .btn-primary .badge {
-    color: #{{ site.data.template.color.primary }};
+    color: #333; /* Default primary color */
     background-color: #fff;
 }
 
 .btn-xl {
     padding: 20px 40px;
-    border-color: #{{ site.data.template.color.primary }};
+    color: #333; /* Default primary color */
     border-radius: 3px;
     text-transform: uppercase;
     font-family: {{ site.data.template.font.primary }};
     font-size: 18px;
     font-weight: 700;
     color: #fff;
-    background-color: #{{ site.data.template.color.primary }};
+    color: #333; /* Default primary color */
 }
 
 .btn-xl:hover,
@@ -135,7 +145,7 @@ fieldset[disabled] .btn-primary.active {
 .btn-xl:active,
 .btn-xl.active,
 .open .dropdown-toggle.btn-xl {
-    border-color: #{{ site.data.template.color.primary }};
+    color: #333; /* Default primary color */
     color: #fff;
     background-color: #{{ site.data.template.color.secondary }};
 }
@@ -161,12 +171,12 @@ fieldset[disabled] .btn-xl:active,
 .btn-xl.disabled.active,
 .btn-xl[disabled].active,
 fieldset[disabled] .btn-xl.active {
-    border-color: #{{ site.data.template.color.primary }};
-    background-color: #{{ site.data.template.color.primary }};
+    color: #333; /* Default primary color */
+    color: #333; /* Default primary color */
 }
 
 .btn-xl .badge {
-    color: #{{ site.data.template.color.primary }};
+    color: #333; /* Default primary color */
     background-color: #fff;
 }
 
@@ -177,7 +187,7 @@ fieldset[disabled] .btn-xl.active {
 
 .navbar-default .navbar-brand {
     font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
-    color: #{{ site.data.template.color.primary }};
+    color: #333; /* Default primary color */
 }
 
 .navbar-default .navbar-brand:hover,
@@ -192,8 +202,8 @@ fieldset[disabled] .btn-xl.active {
 }
 
 .navbar-default .navbar-toggle {
-    border-color: #{{ site.data.template.color.primary }};
-    background-color: #{{ site.data.template.color.primary }};
+    color: #333; /* Default primary color */
+    color: #333; /* Default primary color */
 }
 
 .navbar-default .navbar-toggle .icon-bar {
@@ -202,7 +212,7 @@ fieldset[disabled] .btn-xl.active {
 
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-    background-color: #{{ site.data.template.color.primary }};
+    color: #333; /* Default primary color */
 }
 
 .navbar-default .nav li a {
@@ -219,13 +229,13 @@ fieldset[disabled] .btn-xl.active {
 .navbar-default .nav li a:hover,
 .navbar-default .nav li a:focus {
     outline: 0;
-    color: #{{ site.data.template.color.primary }};
+    color: #333; /* Default primary color */
 }
 
 .navbar-default .navbar-nav>.active>a {
     border-radius: 0;
     color: #fff;
-    background-color: #{{ site.data.template.color.primary }};
+    color: #333; /* Default primary color */
 }
 
 .navbar-default .navbar-nav>.active>a:hover,
@@ -498,7 +508,7 @@ section h3.section-subheading {
     border-radius: 100%;
     text-align: center;
     color: #fff;
-    background-color: #{{ site.data.template.color.primary }};
+    color: #333; /* Default primary color */
 }
 
 .timeline>li .timeline-image h4 {
@@ -685,7 +695,7 @@ section#contact .form-group textarea.form-control {
 }
 
 section#contact .form-control:focus {
-    border-color: #{{ site.data.template.color.primary }};
+    color: #333; /* Default primary color */
     box-shadow: none;
 }
 
@@ -763,7 +773,7 @@ ul.social-buttons li a {
 ul.social-buttons li a:hover,
 ul.social-buttons li a:focus,
 ul.social-buttons li a:active {
-    background-color: #{{ site.data.template.color.primary }};
+    color: #333; /* Default primary color */
 }
 
 .btn:focus,
@@ -846,12 +856,12 @@ ul.social-buttons li a:active {
 
 ::-moz-selection {
     text-shadow: none;
-    background: #{{ site.data.template.color.primary }};
+    color: #333; /* Default primary color */
 }
 
 ::selection {
     text-shadow: none;
-    background: #{{ site.data.template.color.primary }};
+    color: #333; /* Default primary color */
 }
 
 img::selection {
@@ -863,5 +873,5 @@ img::-moz-selection {
 }
 
 body {
-    webkit-tap-highlight-color: #{{ site.data.template.color.primary }};
+    color: #333; /* Default primary color */
 }
