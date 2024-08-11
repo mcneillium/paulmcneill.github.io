@@ -2,7 +2,7 @@
 layout: style
 ---
 #ticket-machine-project {
-    background-image: url('/img/portfolio/ticketing-system-background.svg');
+    background-image: url('img/portfolio/ticketing-system-background.svg');
     background-size: cover;
     background-position: center;
     padding: 20px;
