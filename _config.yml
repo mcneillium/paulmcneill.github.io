@@ -1,103 +1,32 @@
 # The full URL of your site
-url: https://y7kim.github.io
+url: "https://paulmartinmcneill.com"
 # The subpath of your site if it's hosted in a subdirectory
-baseurl: /agency-jekyll-theme/
+baseurl: ""
 
 # Site settings
 # The title of your site
-title: Awesome Title
-email: your-email@domain.com
+title: Paul Martin McNeill's Portfolio
+email: paulmcneill1989@hotmail.co.uk
 # A brief description of your site
-description: "Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description."
+description: "Welcome to my portfolio. Here you can find my latest projects and learn more about my expertise in web development, AI, and more."
 
-
-# Team names, titles and social links
-people:
-- name: Kay Garland
-  pic: 1
-  position: Lead Designer
-  social:
-# The title of your site
-    - title: twitter
-# The full URL of your site
-      url: #
-# The title of your site
-    - title: facebook
-# The full URL of your site
-      url: #
-# The title of your site
-    - title: stack-overflow
-# The full URL of your site
-      url: #
-
-- name: Larry Parker
-  pic: 2
-  position: Lead Marketer
-  social:
-# The title of your site
-    - title: twitter
-# The full URL of your site
-      url: #
-# The title of your site
-    - title: facebook
-# The full URL of your site
-      url: #
-# The title of your site
-    - title: linkedin
-# The full URL of your site
-      url: #
-
-- name: Diana Petersen
-  pic: 3
-  position: Lead Developer
-  social:
-# The title of your site
-    - title: twitter
-# The full URL of your site
-      url: #
-# The title of your site
-    - title: facebook
-# The full URL of your site
-      url: #
-# The title of your site
-    - title: google-plus
-# The full URL of your site
-      url: #
-
-# Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
+# Social networks
 social:
-# The title of your site
-  - title: twitter
-# The full URL of your site
-    url: http://twitter.com/jekyllrb
-# The title of your site
-  - title: facebook
-# The full URL of your site
-    url:
-# The title of your site
-  - title: stack-overflow
-# The full URL of your site
-    url: http://stackoverflow.com/questions/tagged/jekyll
-# The title of your site
-  - title: bitbucket 
-# The full URL of your site
-    url: http://bitbucket.org/jekyll
-# The title of your site
+  - title: X
+    url: https://x.com/McNeillium
+  - title: linkedin
+    url: https://www.linkedin.com/in/paul-martin-mcneill-pp
   - title: github
-# The full URL of your site
-    url: http://github.com/jekyll
+    url: https://github.com/mcneillium
+  - title: stack-overflow
+    url: https://stackoverflow.com/users/mcneillium
+  - title: facebook
+    url: https://www.facebook.com/McNeillium/
 
-# Postal address (add as many lines as necessary)
-address:
-  - line: 3481 Melrose Place
-  - line: Beverly Hills, CA 90210
 
 # Build settings
 markdown: kramdown
 permalink: pretty
-# Custom domain settings
-url: "https://paulmartinmcneill.com"
-baseurl: ""
 
 # Plugins
 plugins:
