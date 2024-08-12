@@ -408,6 +408,7 @@ section h3.section-subheading {
 
 /* ...other existing styles... */
 
+/* 
 #portfolio .portfolio-item {
     right: 0;
     margin: 0 0 15px;
@@ -428,9 +429,11 @@ section h3.section-subheading {
     -webkit-transition: all ease .5s;
     -moz-transition: all ease .5s;
     transition: all ease .5s;
-    background: rgba(254,209,54,.9); /* Fallback when no plugin support */
+    background: rgba(254,209,54,.9); /* Fallback when no plugin support /*
     background: rgba({{ site.data.template.color.primary | hex_to_rgb | join: ',' }}, .9);
 }
+*/
+
 
 #portfolio .portfolio-item .portfolio-link .portfolio-hover:hover {
     opacity: 1;
