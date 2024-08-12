@@ -4,8 +4,8 @@ subtitle: OOP Principles Demonstration
 layout: default
 modal-id: 1
 date: 2023-08-01
-img: ticket-machine-thumbnail.svg
-thumbnail: ticket-machine-thumbnail.svg
+img: ticket-machine-thumbnail.png
+thumbnail: ticket-machine-thumbnail.png
 alt: Java-Based Ticket Machine System
 project-date: August 2023
 client: Personal Project
