@@ -1,0 +1,14 @@
+---
+title: Project 6
+subtitle: In Development
+layout: default
+modal-id: 6
+date: 2024-08-12
+img: indevelopment.jpg
+thumbnail: indevelopment.jpg
+alt: Project 6 In Development
+project-date: In Development
+client: Personal Project
+category: Ongoing Project
+description: This project is currently in development and will showcase the latest advancements in my web development and AI capabilities. Stay tuned for updates!
+---
