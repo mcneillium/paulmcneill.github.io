@@ -354,6 +354,60 @@ section h3.section-subheading {
     text-transform: none;
 }
 
+/* Add the new portfolio styles here */
+#portfolio .portfolio-item {
+    width: 300px; /* Uniform width */
+    height: 400px; /* Uniform height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 15px; /* Spacing between items */
+}
+
+#portfolio .portfolio-item img {
+    max-width: 80%; /* Ensure the image fits within the card */
+    max-height: 200px; /* Control the height to prevent overflow */
+    margin-bottom: 20px; /* Space between the image and the text */
+}
+
+#portfolio .portfolio-caption {
+    text-align: center; /* Center-align text */
+}
+
+#portfolio {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the entire grid */
+}
+
+/* Existing styles for portfolio items */
+#portfolio .portfolio-item {
+    right: 0;
+    margin: 0 0 15px;
+}
+
+#portfolio .portfolio-item .portfolio-link {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    max-width: 400px;
+}
+
+#portfolio .portfolio-item .portfolio-link .portfolio-hover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    -webkit-transition: all ease .5s;
+    -moz-transition: all ease .5s;
+    transition: all ease .5s;
+    background: rgba(254,209,54,.9); /* Fallback when no plugin support */
+    background: rgba({{ site.data.template.color.primary | hex_to_rgb | join: ',' }}, .9);
+}
+
+/* ...other existing styles... */
+
 #portfolio .portfolio-item {
     right: 0;
     margin: 0 0 15px;
