@@ -1,27 +1,107 @@
+# The full URL of your site
+url: https://y7kim.github.io
+# The subpath of your site if it's hosted in a subdirectory
+baseurl: /agency-jekyll-theme/
 
-title: Paul Martin McNeill
-email: paulmcneill1989@hotmail.co.uk
-description: >-
-  Welcome to the portfolio of Paul McNeill, a passionate web developer and AI enthusiast. This site showcases a collection of my projects, skills, and professional experiences in web development, Python, and artificial intelligence. Explore my work, read my blog, and get in touch to learn more about how I can contribute to innovative projects and solutions.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: mcneillium
-github_username:  mcneillium
+# Site settings
+# The title of your site
+title: Awesome Title
+email: your-email@domain.com
+# A brief description of your site
+description: "Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description."
+
+
+# Team names, titles and social links
+people:
+- name: Kay Garland
+  pic: 1
+  position: Lead Designer
+  social:
+# The title of your site
+    - title: twitter
+# The full URL of your site
+      url: #
+# The title of your site
+    - title: facebook
+# The full URL of your site
+      url: #
+# The title of your site
+    - title: stack-overflow
+# The full URL of your site
+      url: #
+
+- name: Larry Parker
+  pic: 2
+  position: Lead Marketer
+  social:
+# The title of your site
+    - title: twitter
+# The full URL of your site
+      url: #
+# The title of your site
+    - title: facebook
+# The full URL of your site
+      url: #
+# The title of your site
+    - title: linkedin
+# The full URL of your site
+      url: #
+
+- name: Diana Petersen
+  pic: 3
+  position: Lead Developer
+  social:
+# The title of your site
+    - title: twitter
+# The full URL of your site
+      url: #
+# The title of your site
+    - title: facebook
+# The full URL of your site
+      url: #
+# The title of your site
+    - title: google-plus
+# The full URL of your site
+      url: #
+
+# Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
+social:
+# The title of your site
+  - title: twitter
+# The full URL of your site
+    url: http://twitter.com/jekyllrb
+# The title of your site
+  - title: facebook
+# The full URL of your site
+    url:
+# The title of your site
+  - title: stack-overflow
+# The full URL of your site
+    url: http://stackoverflow.com/questions/tagged/jekyll
+# The title of your site
+  - title: bitbucket 
+# The full URL of your site
+    url: http://bitbucket.org/jekyll
+# The title of your site
+  - title: github
+# The full URL of your site
+    url: http://github.com/jekyll
+
+# Postal address (add as many lines as necessary)
+address:
+  - line: 3481 Melrose Place
+  - line: Beverly Hills, CA 90210
 
 # Build settings
-# theme: agency-jekyll-theme # Commented out because the theme is manually installed
+markdown: kramdown
+permalink: pretty
+# Custom domain settings
+url: "https://paulmartinmcneill.com"
+baseurl: ""
+
+# Plugins
 plugins:
   - jekyll-feed
-
-# Exclude from processing
-exclude:
-  - .sass-cache/
-  - .jekyll-cache/
-  - gemfiles/
-  - Gemfile
-  - Gemfile.lock
-  - node_modules/
-  - vendor/bundle/
-  - vendor/cache/
-  - vendor/gems/
-  - vendor/ruby/
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-sitemap

@@ -1,52 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
   {% include head.html %}
 
-  <body id="page-top" class="portfolio">
 
-    <!-- Header -->
+    <body id="page-top" class="index">
+
     {% include header.html %}
-    
-    <!-- Introduction or Hero Section -->
-    <section id="intro" class="intro">
-      {% include intro.html %} <!-- I'll create an intro.html to introduce myself and highlight my key skills -->
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="skills">
-      {% include skills.html %} <!-- I'll rename services.html to skills.html, focusing on areas of expertise like web development, Python, and AI -->
-    </section>
-
-    <!-- Portfolio -->
-    <section id="portfolio" class="portfolio">
-      {% include portfolio_grid.html %} <!-- This section will showcase my projects and key work -->
-    </section>
-
-    <!-- About Me -->
-    <section id="about" class="about">
-      {% include about.html %} <!-- I'll include a section about my background, education, and experience -->
-    </section>
-
-    <!-- Testimonials (Optional) -->
-    <!-- If I have testimonials or quotes from clients, employers, or mentors, I'll include them here -->
-    <section id="testimonials" class="testimonials">
-      {% include testimonials.html %}
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="contact">
-      {% include contact.html %} <!-- I'll provide a way for visitors to contact me -->
-    </section>
-
-    <!-- Footer -->
+    {% include services.html %}
+    {% include portfolio_grid.html %}
+    {% include about.html %}
+    {% include team.html %}
+    {% include clients.html %}
+    {% include contact.html %}
     {% include footer.html %}
-
-    <!-- Modals -->
     {% include modals.html %}
-
-    <!-- JavaScript Files -->
     {% include js.html %}
 
-  </body>
+    </body>
 </html>
