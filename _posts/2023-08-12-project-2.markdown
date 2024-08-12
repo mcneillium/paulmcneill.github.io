@@ -1,0 +1,14 @@
+---
+title: Data Structures & Algorithms in Python
+subtitle: Algorithm Implementation
+layout: default
+modal-id: 2
+date: 2023-07-15
+img: data-structures-thumbnail.png
+thumbnail: data-structures-thumbnail.png
+alt: Data Structures & Algorithms in Python
+project-date: July 2023
+client: Personal Project
+category: Software Development
+description: Implemented various algorithms and data structures, including trees, graphs, and hash tables, to solve complex problems.
+---

@@ -1,0 +1,14 @@
+---
+title: Cloud-Based Data Management System
+subtitle: Cloud Computing Project
+layout: default
+modal-id: 3
+date: 2023-06-20
+img: cloud-management-thumbnail.png
+thumbnail: cloud-management-thumbnail.png
+alt: Cloud-Based Data Management System
+project-date: June 2023
+client: Personal Project
+category: Cloud Computing
+description: Designed and implemented a cloud-based database management system using SQL and NoSQL databases.
+---

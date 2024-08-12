@@ -1,0 +1,14 @@
+---
+title: Expense Tracker
+subtitle: Web Application
+layout: default
+modal-id: 4
+date: 2023-05-10
+img: expense-tracker-thumbnail.png
+thumbnail: expense-tracker-thumbnail.png
+alt: Expense Tracker
+project-date: May 2023
+client: Personal Project
+category: Web Development
+description: A comprehensive expense tracking system built using modern web technologies. It allows users to manage their finances effectively with features like budget tracking, spending categorization, and financial reporting.
+---

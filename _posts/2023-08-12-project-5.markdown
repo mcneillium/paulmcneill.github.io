@@ -1,0 +1,14 @@
+---
+title: AI Assistant
+subtitle: AI/ML Project
+layout: default
+modal-id: 5
+date: 2023-04-05
+img: ai-assistant-thumbnail.jpg
+thumbnail: ai-assistant-thumbnail.jpg
+alt: AI Assistant
+project-date: April 2023
+client: Personal Project
+category: AI/ML
+description: An AI-powered assistant designed to enhance productivity by automating tasks, providing intelligent recommendations, and interacting with users via natural language processing.
+---
