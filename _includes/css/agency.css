@@ -4,6 +4,7 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+/* Body styles, including font family, color, and background settings */
 body {
     overflow-x: hidden;
     font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -234,6 +235,7 @@ fieldset[disabled] .btn-xl.active {
     background-color: #{{ site.data.template.color.secondary }};
 }
 
+/* Media query for responsive design, targeting specific screen sizes */
 @media(min-width:768px) {
     .navbar-default {
         padding: 25px 0;
@@ -300,6 +302,7 @@ header .intro-text .intro-heading {
     line-height: 50px;
 }
 
+/* Media query for responsive design, targeting specific screen sizes */
 @media(min-width:768px) {
     header .intro-text {
         padding-top: 300px;
@@ -328,7 +331,8 @@ section {
     padding: 100px 0;
 }
 
-section h2.section-heading {
+section h2/* Styling for section headings, including font size and margin */
+.section-heading {
     margin-top: 0;
     margin-bottom: 15px;
     font-size: 40px;
@@ -343,6 +347,7 @@ section h3.section-subheading {
     font-weight: 400;
 }
 
+/* Media query for responsive design, targeting specific screen sizes */
 @media(min-width:768px) {
     section {
         padding: 150px 0;
@@ -355,7 +360,8 @@ section h3.section-subheading {
 }
 
 /* Add the new portfolio styles here */
-#portfolio .portfolio-item {
+#portfolio /* Styles specific to portfolio items in the grid */
+.portfolio-item {
     width: 300px; /* Uniform width */
     height: 400px; /* Uniform height */
     display: flex;
@@ -382,7 +388,8 @@ section h3.section-subheading {
 }
 
 /* New structure for portfolio items */
-#portfolio .portfolio-item {
+#portfolio /* Styles specific to portfolio items in the grid */
+.portfolio-item {
     right: 0;
     margin: 0 0 15px;
 }
@@ -409,7 +416,8 @@ section h3.section-subheading {
 /* ...original style below... */
 
 /* 
-#portfolio .portfolio-item {
+#portfolio /* Styles specific to portfolio items in the grid */
+.portfolio-item {
     right: 0;
     margin: 0 0 15px;
 }
@@ -483,8 +491,10 @@ section h3.section-subheading {
     z-index: 2;
 }
 
+/* Media query for responsive design, targeting specific screen sizes */
 @media(min-width:767px) {
-    #portfolio .portfolio-item {
+    #portfolio /* Styles specific to portfolio items in the grid */
+.portfolio-item {
         margin: 0 0 30px;
     }
 }
@@ -602,6 +612,7 @@ section h3.section-subheading {
     margin-bottom: 0;
 }
 
+/* Media query for responsive design, targeting specific screen sizes */
 @media(min-width:768px) {
     .timeline:before {
         left: 50%;
@@ -639,6 +650,7 @@ section h3.section-subheading {
     }
 }
 
+/* Media query for responsive design, targeting specific screen sizes */
 @media(min-width:992px) {
     .timeline>li {
         min-height: 150px;
@@ -665,6 +677,7 @@ section h3.section-subheading {
     }
 }
 
+/* Media query for responsive design, targeting specific screen sizes */
 @media(min-width:1200px) {
     .timeline>li {
         min-height: 170px;
@@ -689,6 +702,7 @@ section h3.section-subheading {
     }
 }
 
+/* Styles for the team member section */
 .team-member {
     margin-bottom: 50px;
     text-align: center;
@@ -720,7 +734,8 @@ section#contact {
     background-repeat: no-repeat;
 }
 
-section#contact .section-heading {
+section#contact /* Styling for section headings, including font size and margin */
+.section-heading {
     color: #fff;
 }
 
@@ -778,6 +793,7 @@ section#contact .text-danger {
     color: #e74c3c;
 }
 
+/* Footer styles, including background color and text alignment */
 footer {
     padding: 25px 0;
     text-align: center;
@@ -919,6 +935,7 @@ img::-moz-selection {
     background: 0 0;
 }
 
+/* Body styles, including font family, color, and background settings */
 body {
     webkit-tap-highlight-color: #{{ site.data.template.color.primary }};
 }
