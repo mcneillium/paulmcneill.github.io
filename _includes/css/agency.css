@@ -363,8 +363,8 @@ section h3.section-subheading {
 /* Add the new portfolio styles here */
 #portfolio /* Styles specific to portfolio items in the grid */
 .portfolio-item {
-    width: 300px; /* Uniform width */
-    height: 400px; /* Uniform height */
+    width: 400px; /* Uniform width */
+    height: 500px; /* Uniform height */
     display: flex;
     flex-direction: column;
     justify-content: center;
