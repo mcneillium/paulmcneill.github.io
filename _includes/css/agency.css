@@ -369,7 +369,7 @@ section h3.section-subheading {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 15px; /* Spacing between items */
+    margin: 20px; /* Spacing between items */
 }
 
 #portfolio .portfolio-item img {
