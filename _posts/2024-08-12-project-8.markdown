@@ -1,0 +1,14 @@
+---
+title: Project 8
+subtitle: In Development
+layout: default
+modal-id: 8
+date: 2024-08-13
+img: indevelopment.jpg
+thumbnail: indevelopment.jpg
+alt: Project 8 In Development
+project-date: In Development
+client: Personal Project
+category: Ongoing Project
+description: This project is currently in development and further details will follow. Stay tuned for updates!
+---
