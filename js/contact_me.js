@@ -1,3 +1,4 @@
+
 (function() {
     emailjs.init("XYhin_65Pmjh4JBLh"); // Replace with your Public Key
 })();
@@ -51,7 +52,7 @@ $(function() {
         },
     });
 
-    $("a[data-toggle=\"tab\"]").click(function(e) {
+    $("a[data-toggle="tab"]").click(function(e) {
         e.preventDefault();
         $(this).tab("show");
     });
