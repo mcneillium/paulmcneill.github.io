@@ -11,4 +11,5 @@ project-date: May 2023
 client: Personal Project
 category: Web Development
 description: A comprehensive expense tracking system built using modern web technologies. It allows users to manage their finances effectively with features like budget tracking, spending categorization, and financial reporting.
+github-url: https://github.com/mcneillium/expense-tracker
 ---

@@ -11,4 +11,5 @@ project-date: August 2023
 client: Personal Project
 category: Software Development
 description: Developed using Java to demonstrate OOP principles such as inheritance, polymorphism, and encapsulation.
+github-url: https://github.com/mcneillium/Ticket-Machine-System
 ---
