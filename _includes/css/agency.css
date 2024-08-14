@@ -391,7 +391,7 @@ section h3.section-subheading {
 /* New structure for portfolio items */
 #portfolio /* Styles specific to portfolio items in the grid */
 .portfolio-item {
-    right: 0;
+    left: 130px; /* keeps projects in center */
     margin: 0 0 15px;
 }
 
@@ -443,7 +443,7 @@ section h3.section-subheading {
     padding: 25px; /* Padding around the caption */
     max-width: 400px; /* Maximum width for the caption */
     text-align: center; /* Center-align text */
-    background-color: #fff; /* White background color */
+    background-color: transparent; /* No background color */
 }
 
 #portfolio .portfolio-item .portfolio-caption h4 {
