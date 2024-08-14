@@ -4,8 +4,8 @@ subtitle: AI/ML Project
 layout: default
 modal-id: 5
 date: 2023-04-05
-img: ai-assistant-thumbnail.jpg
-thumbnail: ai-assistant-thumbnail.jpg
+img: ai-assistant-thumbnail.png
+thumbnail: ai-assistant-thumbnail.png
 alt: AI Assistant
 project-date: April 2023
 client: Personal Project

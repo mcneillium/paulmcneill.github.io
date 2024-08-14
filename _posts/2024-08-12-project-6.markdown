@@ -4,8 +4,8 @@ subtitle: In Development
 layout: default
 modal-id: 6
 date: 2024-08-12
-img: indevelopment.jpg
-thumbnail: indevelopment.jpg
+img: indevelopment.png
+thumbnail: indevelopment.png
 alt: Project 6 In Development
 project-date: In Development
 client: Personal Project
