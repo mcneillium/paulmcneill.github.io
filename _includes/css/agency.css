@@ -391,7 +391,7 @@ section h3.section-subheading {
 /* New structure for portfolio items */
 #portfolio /* Styles specific to portfolio items in the grid */
 .portfolio-item {
-    right: -130px; /* keeps projects in center */
+    right: 0; /* keeps projects in center */
     margin: 0 0 15px;
 }
 
