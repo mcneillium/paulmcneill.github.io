@@ -1,15 +1,15 @@
 ---
-title: Project 6
-subtitle: In Development
+title: AI-Enhanced Social Healthcare Management System
+subtitle: Transforming Social Healthcare with AI
 layout: default
 modal-id: 6
-date: 2024-08-12
-img: indevelopment.png
-thumbnail: indevelopment.png
-alt: Project 6 In Development
-project-date: In Development
+date: 2024-08-16
+img: healthcare-system.png
+thumbnail: healthcare-system-thumbnail.png
+alt: AI-Enhanced Social Healthcare Management System
+project-date: August 2024
 client: Personal Project
-category: Ongoing Project
-description: This project is currently in development and will showcase the latest advancements in my web development and AI capabilities. Stay tuned for updates!
-github-url: https://github.com/mcneillium/
+category: AI & Web Development
+description: This project involves the development of an AI-driven platform designed to enhance the management and delivery of social healthcare services. Key features include automated client management, an NLP-based virtual assistant, predictive analytics, and real-time safety monitoring. This project showcases my expertise in web development, AI integration, and healthcare technology.
+github-url: https://github.com/mcneillium/AI-Enhanced-Social-Healthcare-Management-System
 ---
