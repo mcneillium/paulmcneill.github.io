@@ -10,6 +10,12 @@ if(empty($_POST['name']) ||
     return false;
 }
 
+// Prevent email header injection
+if (preg_match("/[\r\n]/", $_POST['name']) || preg_match("/[\r\n]/", $_POST['email'])) {
+    echo "Invalid input detected!";
+    return false;
+}
+
 // Sanitize input data to prevent XSS (Cross-Site Scripting)
 $name = strip_tags(htmlspecialchars($_POST['name']));
 $email_address = strip_tags(htmlspecialchars($_POST['email']));
@@ -27,8 +33,10 @@ $headers .= "Reply-To: $email_address";
 
 // Send the email
 if(mail($to, $email_subject, $email_body, $headers)) {
+    echo "Message sent successfully!";
     return true;
 } else {
+    echo "Message could not be sent.";
     return false;
 }
 ?>
