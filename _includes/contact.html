@@ -44,27 +44,27 @@
 </section>
 
 <!-- Include your scripts at the bottom before the closing body tag -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3.2.0/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script type="text/javascript">
     (function() {
-        emailjs.init("XYhin_65Pmjh4JBLh"); // Replace with your Public Key
+        emailjs.init("XYhin_65Pmjh4JBLh"); // Replace with your actual Public Key
     })();
 
     $(function() {
         $("input,textarea").jqBootstrapValidation({
             preventSubmit: true,
             submitError: function($form, event, errors) {
-                // additional error messages or events
+                // Additional error messages or events can be added here
             },
             submitSuccess: function($form, event) {
-                event.preventDefault(); // prevent default submit behaviour
+                event.preventDefault(); // Prevent default submit behaviour
                 
-                // get values from FORM
+                // Get values from the form
                 var name = $("input#name").val();
                 var email = $("input#email").val();
                 var phone = $("input#phone").val();
                 var message = $("textarea#message").val();
-                var firstName = name.split(' ')[0]; // Get the first name for the Success/Failure Message
+                var firstName = name.split(' ')[0]; // Get the first name for the success/failure message
 
                 // Send the form data using EmailJS
                 emailjs.sendForm('service_oji1zfq', 'template_nyq923q', '#contactForm')
