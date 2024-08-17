@@ -1,42 +1,65 @@
-<?php
-// Check for empty fields and validate email
-if(empty($_POST['name']) ||
-   empty($_POST['email']) ||
-   empty($_POST['phone']) ||
-   empty($_POST['message']) ||
-   !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) 
-{
-    echo "No arguments Provided!";
-    return false;
-}
+$(function() {
 
-// Prevent email header injection
-if (preg_match("/[\r\n]/", $_POST['name']) || preg_match("/[\r\n]/", $_POST['email'])) {
-    echo "Invalid input detected!";
-    return false;
-}
+    $("input,textarea").jqBootstrapValidation({
+        preventSubmit: true,
+        submitError: function($form, event, errors) {
+            // Additional error messages or events
+        },
+        submitSuccess: function($form, event) {
+            event.preventDefault(); // Prevent default submit behaviour
+            
+            // Get values from FORM
+            var name = $("input#name").val().trim();
+            var email = $("input#email").val().trim();
+            var phone = $("input#phone").val().trim();
+            var message = $("textarea#message").val().trim();
+            var firstName = name.split(' ')[0]; // For Success/Failure Message
+            
+            // Perform the AJAX request to send the form data
+            $.ajax({
+                url: "./mail/contact_me.php",
+                type: "POST",
+                data: {
+                    name: name,
+                    phone: phone,
+                    email: email,
+                    message: message
+                },
+                cache: false,
+                success: function() {
+                    // Success message
+                    $('#success').html("<div class='alert alert-success'>");
+                    $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>");
+                    $('#success > .alert-success').append("<strong>Your message has been sent. </strong>");
+                    $('#success > .alert-success').append('</div>');
 
-// Sanitize input data to prevent XSS (Cross-Site Scripting)
-$name = strip_tags(htmlspecialchars($_POST['name']));
-$email_address = strip_tags(htmlspecialchars($_POST['email']));
-$phone = strip_tags(htmlspecialchars($_POST['phone']));
-$message = strip_tags(htmlspecialchars($_POST['message']));
+                    // Clear all fields
+                    $('#contactForm').trigger("reset");
+                },
+                error: function() {
+                    // Fail message
+                    $('#success').html("<div class='alert alert-danger'>");
+                    $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>");
+                    $('#success > .alert-danger').append("<strong>Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!</strong>");
+                    $('#success > .alert-danger').append('</div>');
 
-// Create the email and send the message
-$to = 'paulmcneill1989@hotmail.co.uk'; // This is where the form will send a message to.
-$email_subject = "Website Contact Form: $name";
-$email_body = "You have received a new message from your website contact form.\n\n".
-              "Here are the details:\n\nName: $name\n\nEmail: $email_address\n\n".
-              "Phone: $phone\n\nMessage:\n$message";
-$headers = "From: noreply@paulmartinmcneill.com\n"; // This is the email address the generated message will be from.
-$headers .= "Reply-To: $email_address";   
+                    // Clear all fields
+                    $('#contactForm').trigger("reset");
+                },
+            });
+        },
+        filter: function() {
+            return $(this).is(":visible");
+        },
+    });
 
-// Send the email
-if(mail($to, $email_subject, $email_body, $headers)) {
-    echo "Message sent successfully!";
-    return true;
-} else {
-    echo "Message could not be sent.";
-    return false;
-}
-?>
+    $("a[data-toggle=\"tab\"]").click(function(e) {
+        e.preventDefault();
+        $(this).tab("show");
+    });
+});
+
+// When clicking on input field, hide the success/failure message
+$('#name').focus(function() {
+    $('#success').html('');
+});
