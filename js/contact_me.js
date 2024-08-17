@@ -1,9 +1,8 @@
-$(function() {
-
+$(document).ready(function() {
     $("input,textarea").jqBootstrapValidation({
         preventSubmit: true,
         submitError: function($form, event, errors) {
-            // Additional error messages or events
+            // Additional error messages or events can be added here
         },
         submitSuccess: function($form, event) {
             event.preventDefault(); // Prevent default submit behaviour
