@@ -12,4 +12,5 @@ client: Personal Project
 category: Software Development
 description: Implemented various algorithms and data structures, including trees, graphs, and hash tables, to solve complex problems.
 github-url: https://github.com/mcneillium/DataStructuresAlgorithms
+youtube-url: https://www.youtube.com/embed/Zv50csbx73Q
 ---
