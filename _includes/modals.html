@@ -4,50 +4,53 @@
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
                 <div class="lr">
-                    <div class="rl">
-                    </div>
+                    <div class="rl"></div>
                 </div>
             </div>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
+
+                            <!-- Title -->
                             <h2>{{ post.title }}</h2>
                             <hr class="star-primary">
-                            <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
+                            
+                            <!-- Image (smaller size and centered) -->
+                            <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}" style="max-width: 70%; margin-bottom: 20px;">
+                            
+                            <!-- Description -->
                             <p>{{ post.description }}</p>
-                            <ul class="list-inline item-details">
-                                <li>Client:
-                                    <strong><a href="#">{{ post.client }}</a>
-                                    </strong>
+
+                            <!-- Project Details -->
+                            <ul class="list-inline item-details" style="margin-top: 20px; margin-bottom: 30px;">
+                                <li>Launched:
+                                    <strong>{{ post.project-date }}</strong>
                                 </li>
-                                <li>Date:
-                                    <strong><a href="#">{{ post.project-date }}</a>
-                                    </strong>
-                                </li>
-                                <li>Service:
-                                    <strong><a href="#">{{ post.category }}</a>
-                                    </strong>
+                                <li>Category:
+                                    <strong>{{ post.category }}</strong>
                                 </li>
                             </ul>
 
-                            <!-- YouTube Video Embed -->
+                            <!-- YouTube Video Embed (spaced and centered) -->
                             {% if post.youtube-url %}
-                                <div class="embed-responsive embed-responsive-16by9">
+                                <div class="embed-responsive embed-responsive-16by9" style="margin-bottom: 30px;">
                                     <iframe width="560" height="315" src="{{ post.youtube-url }}" frameborder="0" allowfullscreen></iframe>
                                 </div>
                             {% endif %}
-                            
+
                             <!-- GitHub Link -->
                             {% if post.github-url %}
-                                <a href="{{ post.github-url }}" class="btn btn-primary" target="_blank">
+                                <a href="{{ post.github-url }}" class="btn btn-primary" target="_blank" style="margin-bottom: 20px;">
                                     <i class="fa fa-github"></i> View Code on GitHub
                                 </a>
                             {% endif %}
-                            
-                            <button type="button" class="btn btn-default" data-dismiss="modal">
+
+                            <!-- Close Button -->
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-top: 10px;">
                                 <i class="fa fa-times"></i> Close
                             </button>
+
                         </div>
                     </div>
                 </div>
