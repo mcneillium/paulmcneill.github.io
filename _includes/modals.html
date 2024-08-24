@@ -24,10 +24,10 @@
 
                             <!-- Project Details -->
                             <ul class="list-inline item-details" style="margin-top: 20px; margin-bottom: 30px;">
-                                <li>Launched:
+                                <li>Launched On:
                                     <strong>{{ post.project-date }}</strong>
                                 </li>
-                                <li>Category:
+                                <li>Skills Applied:
                                     <strong>{{ post.category }}</strong>
                                 </li>
                             </ul>
@@ -41,16 +41,16 @@
 
                             <!-- GitHub Link -->
                             {% if post.github-url %}
-                                <a href="{{ post.github-url }}" class="btn btn-primary" target="_blank" style="margin-bottom: 20px;">
+                                <a href="{{ post.github-url }}" class="btn btn-primary" target="_blank" style="margin-bottom: 10px;">
                                     <i class="fa fa-github"></i> View Code on GitHub
                                 </a>
                             {% endif %}
-
+                            <div>
                             <!-- Close Button -->
-                            <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-top: 10px;">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
                                 <i class="fa fa-times"></i> Close
                             </button>
-
+                            </div>
                         </div>
                     </div>
                 </div>
