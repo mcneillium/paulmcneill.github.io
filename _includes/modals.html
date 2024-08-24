@@ -30,12 +30,21 @@
                                     </strong>
                                 </li>
                             </ul>
+                            
+                            <!-- YouTube Video Embed -->
+                            {% if post.youtube-url %}
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ post.youtube-url | split: 'v=' | last }}" allowfullscreen></iframe>
+                                </div>
+                            {% endif %}
+                            
                             <!-- GitHub Link -->
                             {% if post.github-url %}
                                 <a href="{{ post.github-url }}" class="btn btn-primary" target="_blank">
                                     <i class="fa fa-github"></i> View Code on GitHub
                                 </a>
                             {% endif %}
+                            
                             <button type="button" class="btn btn-default" data-dismiss="modal">
                                 <i class="fa fa-times"></i> Close
                             </button>

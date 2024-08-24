@@ -12,4 +12,5 @@ client: Personal Project
 category: Software Development
 description: Developed using Java to demonstrate OOP principles such as inheritance, polymorphism, and encapsulation.
 github-url: https://github.com/mcneillium/Ticket-Machine-System
+youtube-url: https://youtu.be/APM7f09MWmM
 ---
