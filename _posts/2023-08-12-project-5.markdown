@@ -10,6 +10,8 @@ alt: AI Assistant
 project-date: April 2023
 client: Personal Project
 category: AI/ML
-description: An AI-powered assistant designed to enhance productivity by automating tasks, providing intelligent recommendations, and interacting with users via natural language processing.
-github-url: https://github.com/mcneillium/ai-personal-assistant
+description: This project showcases the development of an AI-powered assistant that enhances productivity by automating tasks, offering intelligent recommendations, and interacting with users through natural language processing. Explore the process of fine-tuning models, integrating AI into different interfaces, and creating functional, real-world applications.
+github-url: https://github.com/mcneillium/ai_assistant
+youtube-url: https://www.youtube.com/embed/_2doud4q8gI
+
 ---
