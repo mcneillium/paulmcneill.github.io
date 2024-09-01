@@ -363,7 +363,7 @@ section h3.section-subheading {
 /* Add the new portfolio styles here */
 #portfolio /* Styles specific to portfolio items in the grid */
 .portfolio-item {
-    width: 300px; /* Uniform width */
+    /*width: 300px; /* Uniform width */
     height: 400px; /* Uniform height */
     display: flex;
     flex-direction: column;
@@ -909,4 +909,12 @@ img::-moz-selection {
 /* Body styles, including font family, color, and background settings */
 body {
     webkit-tap-highlight-color: #{{ site.data.template.color.primary }}; /* Highlight color on tap for touch devices */
+}
+
+/* icon styling */
+.icon {
+    width: 48px;  /* Adjust the width if necessary */
+    height: auto;
+    margin: 0 8px;  /* Add space between icons */
+    vertical-align: middle;
 }
