@@ -38,6 +38,18 @@
                                     <iframe width="560" height="315" src="{{ post.youtube-url }}" frameborder="0" allowfullscreen></iframe>
                                 </div>
                             {% endif %}
+                            
+                            {% if post.youtube-url-2 %}
+                                <div class="embed-responsive embed-responsive-16by9" style="margin-bottom: 30px;">
+                                    <iframe width="560" height="315" src="{{ post.youtube-url-2 }}" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                            {% endif %}
+                            
+                            {% if post.youtube-url-3 %}
+                                <div class="embed-responsive embed-responsive-16by9" style="margin-bottom: 30px;">
+                                    <iframe width="560" height="315" src="{{ post.youtube-url-3 }}" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                            {% endif %}
 
                             <!-- GitHub Link -->
                             {% if post.github-url %}
