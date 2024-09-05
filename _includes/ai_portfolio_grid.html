@@ -1,0 +1,162 @@
+<!-- AI Development Section -->
+<section id="portfolio" class="bg-white">
+    <div class="container">
+        <!-- Heading Section -->
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Artificial Intelligence</h2>
+                <h3 class="section-subheading text-muted">Explore some of my Artificial Intelligence projects.</h3>
+            </div>
+        </div>
+        <br></br>
+        <!-- AI Services Section -->
+        <div class="row text-center mb-5">
+            <div class="col-md-4 mb-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fa fa-brain fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="service-heading mt-3">Machine Learning</h4>
+                <p class="text-muted">Developing machine learning models using Python, TensorFlow, and Scikit-learn to analyze data and make predictions.</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fa fa-robot fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="service-heading mt-3">Deep Learning</h4>
+                <p class="text-muted">Building deep neural networks for tasks like image recognition and natural language processing using PyTorch and Keras.</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fa fa-chart-line fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="service-heading mt-3">Data Analysis</h4>
+                <p class="text-muted">Processing and analyzing large datasets using tools like Pandas and NumPy to extract valuable insights.</p>
+            </div>
+        </div>
+        <br></br>
+        <!-- AI Portfolio Grid -->
+        <div class="row">
+            {% for post in site.posts %}
+                {% if post.category contains 'AI' %}
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="#portfolioModal{{ post.modal-id }}" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="/img/{{ post.thumbnail }}" class="img-responsive img-centered" alt="{{ post.alt }}">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>{{ post.title }}</h4>
+                        <p class="text-muted">{{ post.subtitle }}</p>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <br></br>
+        <!-- Tools & Technologies for AI Section -->
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-lg-12 text-center">
+                    <h4 class="section-heading">Technologies Used in AI</h4>
+                    <p class="text-muted">Key tools and technologies I use for Artificial Intelligence development.</p>
+                </div>
+    </div>
+    <br></br>
+    <div class="row text-center">
+        <ul class="list-inline">
+            <!-- TensorFlow -->
+            <li class="list-inline-item">
+                <a href="https://www.tensorflow.org/" target="_blank">
+                    <img src="img/ai_tech_svg/tensorflow.svg" alt="TensorFlow" class="icon mb-3">
+                </a>
+            </li>
+            <!-- PyTorch -->
+            <li class="list-inline-item">
+                <a href="https://pytorch.org/" target="_blank">
+                    <img src="img/ai_tech_svg/pytorch.svg" alt="PyTorch" class="icon mb-3">
+                </a>
+            </li>
+            <!-- Scikit-Learn -->
+            <li class="list-inline-item">
+                <a href="https://scikit-learn.org/" target="_blank">
+                    <img src="img/ai_tech_svg/scikit-learn.svg" alt="Scikit-Learn" class="icon mb-3">
+                </a>
+            </li>
+            <!-- Keras -->
+            <li class="list-inline-item">
+                <a href="https://keras.io/" target="_blank">
+                    <img src="img/ai_tech_svg/keras.svg" alt="Keras" class="icon mb-3">
+                </a>
+            </li>
+            <!-- OpenCV -->
+            <li class="list-inline-item">
+                <a href="https://opencv.org/" target="_blank">
+                    <img src="img/ai_tech_svg/opencv.svg" alt="OpenCV" class="icon mb-3">
+                </a>
+            </li>
+            <!-- NumPy -->
+            <li class="list-inline-item">
+                <a href="https://numpy.org/" target="_blank">
+                    <img src="img/ai_tech_svg/numpy.svg" alt="NumPy" class="icon mb-3">
+                </a>
+            </li>
+            <!-- Pandas -->
+            <li class="list-inline-item">
+                <a href="https://pandas.pydata.org/" target="_blank">
+                    <img src="img/ai_tech_svg/pandas.svg" alt="Pandas" class="icon mb-3">
+                </a>
+            </li>
+            <!-- Jupyter Notebook -->
+            <li class="list-inline-item">
+                <a href="https://jupyter.org/" target="_blank">
+                    <img src="img/ai_tech_svg/jupyter.svg" alt="Jupyter Notebook" class="icon mb-3">
+                </a>
+            </li>
+            <!-- Amazon SageMaker -->
+            <li class="list-inline-item">
+                <a href="https://aws.amazon.com/sagemaker/" target="_blank">
+                    <img src="img/ai_tech_svg/sagemaker.svg" alt="Amazon SageMaker" class="icon mb-3">
+                </a>
+            </li>
+            <!-- IBM Watson -->
+            <li class="list-inline-item">
+                <a href="https://www.ibm.com/watson" target="_blank">
+                    <img src="img/ai_tech_svg/watson.svg" alt="IBM Watson" class="icon mb-3">
+                </a>
+            </li>
+            <!-- Google Cloud AI -->
+            <li class="list-inline-item">
+                <a href="https://cloud.google.com/products/ai" target="_blank">
+                    <img src="img/ai_tech_svg/google_cloud_ai.svg" alt="Google Cloud AI" class="icon mb-3">
+                </a>
+            </li>
+            <!-- MATLAB -->
+            <li class="list-inline-item">
+                <a href="https://www.mathworks.com/products/matlab.html" target="_blank">
+                    <img src="img/ai_tech_svg/matlab.svg" alt="MATLAB" class="icon mb-3">
+                </a>
+            </li>
+            <!-- Docker for AI -->
+            <li class="list-inline-item">
+                <a href="https://www.docker.com/" target="_blank">
+                    <img src="img/web_dev_svg/Docker.svg" alt="Docker" class="icon mb-3">
+                </a>
+            </li>
+            <!-- Git for Version Control -->
+            <li class="list-inline-item">
+                <a href="https://git-scm.com/" target="_blank">
+                    <img src="img/web_dev_svg/Git.svg" alt="Git" class="icon mb-3">
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+    </div>
+</section>

@@ -1,89 +1,31 @@
-
-<!-- 
-Portfolio Grid Section:
-This section of the webpage is dedicated to showcasing a grid of portfolio items (projects). Each item is displayed as a clickable image that opens a detailed modal (popup) when clicked.
--->
 <section id="portfolio" class="bg-light-gray">
-    
-    <!-- 
-    Container:
-    A Bootstrap container that holds all the content within the portfolio section. The container centers and provides padding around the content.
-    -->
     <div class="container">
-        
-        <!-- 
-        Row:
-        This row contains the section heading and subheading, both of which are centered horizontally on the page.
-        -->
         <div class="row">
             <div class="col-lg-12 text-center">
-                <!-- 
-                Section Heading:
-                The main title of the portfolio section, which is typically styled to stand out. 
-                -->
-                <h2 class="section-heading">Portfolio</h2>
-                
-                <!-- 
-                Section Subheading:
-                A subtitle providing additional context or information about the portfolio section.
-                -->
+                <h2 class="section-heading">Latest Projects</h2>
                 <h3 class="section-subheading text-muted">Here are some of my latest projects.</h3>
             </div>
         </div>
-        
-        <!-- 
-        Row:
-        This row contains the portfolio items. Each item is represented by a column in the grid.
-        -->
+
         <div class="row">
-        
-        <!-- 
-        Dynamic Loop:
-        This loop iterates through all posts (projects) in the site.posts collection and generates a portfolio item for each one.
-        -->
-        {% for post in site.posts %}
-        
-            <!-- 
-            Portfolio Item:
-            Each portfolio item is a clickable block containing an image and a caption. The columns are responsive, adjusting their size based on screen width.
-            -->
-            <div class="col-md-4 col-sm-6 portfolio-item">
-                
-                <!-- 
-                Portfolio Link:
-                A link that triggers a modal popup. The href attribute dynamically references a modal by its ID, which corresponds to the specific post.
-                -->
-                <a href="#portfolioModal{{ post.modal-id }}" class="portfolio-link" data-toggle="modal">
-                    
-                    <!-- 
-                    Portfolio Hover:
-                    A hover effect that displays an overlay and an icon when the user hovers over the portfolio item.
-                    -->
-                    <div class="portfolio-hover">
-                        <div class="portfolio-hover-content">
-                            <i class="fa fa-plus fa-3x"></i> <!-- Plus icon indicating that the item is clickable -->
+            <!-- Dynamic Loop: Iterating through posts, excluding 'AI' category, and limiting to 3 most recent posts -->
+            {% assign recent_posts = site.posts | where_exp: "post", "post.category != 'AI'" | sort: 'date' | reverse | limit: 3 %}
+            {% for post in recent_posts %}
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="#portfolioModal{{ post.modal-id }}" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
                         </div>
+                        <img src="img/portfolio/{{ post.thumbnail }}" class="img-responsive img-centered" alt="{{ post.alt }}">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>{{ post.title }}</h4>
+                        <p class="text-muted">{{ post.subtitle }}</p>
                     </div>
-                    
-                    <!-- 
-                    Portfolio Image:
-                    The thumbnail image for the portfolio item, dynamically loaded from the post's data. The image is made responsive and centered.
-                    -->
-                    <img src="img/portfolio/{{ post.thumbnail }}" class="img-responsive img-centered" alt="">
-                </a>
-                
-                <!-- 
-                Portfolio Caption:
-                The text that appears below the portfolio image, typically including the title and a brief description of the project.
-                -->
-                <div class="portfolio-caption">
-                    <h4>{{ post.title }}</h4> <!-- The title of the project -->
-                    <p class="text-muted">{{ post.subtitle }}</p> <!-- A brief description or subtitle of the project -->
                 </div>
-            </div>
-        {% endfor %}
-        
+            {% endfor %}
         </div>
     </div>
 </section>
-

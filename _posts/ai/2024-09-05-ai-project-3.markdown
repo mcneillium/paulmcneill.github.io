@@ -1,0 +1,18 @@
+---
+title: Custom CRM Web Application
+subtitle: Streamlining Business Operations with a Custom CRM
+layout: default
+modal-id: 7
+date: 2024-09-10
+img: indevelopment.png
+thumbnail: portfolio/indevelopment.png
+alt: Custom CRM Web Application
+project-date: September 2024
+client: Corporate Client
+category: AI
+description: This project focuses on developing a custom Customer Relationship Management (CRM) system tailored to streamline business operations. The system integrates sales management, customer communication, and analytics into a user-friendly web application.
+github-url: https://github.com/mcneillium/Custom_CRM_Web_App
+youtube-url: https://www.youtube.com/embed/demoCRMVideo
+youtube-url-2:
+youtube-url-3:
+---
