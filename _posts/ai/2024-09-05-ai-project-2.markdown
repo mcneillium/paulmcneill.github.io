@@ -5,7 +5,7 @@ layout: default
 modal-id: 6
 date: 2024-09-01
 img: healthcare-system.png
-thumbnail: portfolio/healthcare-system-thumbnail.png
+thumbnail: healthcare-system-thumbnail.png
 alt: AI-Enhanced Social Healthcare Management System
 project-date: August 2024
 client: Personal Project
