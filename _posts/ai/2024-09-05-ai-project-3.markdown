@@ -3,7 +3,7 @@ title: Custom CRM Web Application
 subtitle: Streamlining Business Operations with a Custom CRM
 layout: default
 modal-id: 7
-date: 2024-09-10
+date: 2024-09-06
 img: indevelopment.png
 thumbnail: portfolio/indevelopment.png
 alt: Custom CRM Web Application
