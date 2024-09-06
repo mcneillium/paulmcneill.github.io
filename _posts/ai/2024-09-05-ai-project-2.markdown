@@ -9,7 +9,7 @@ thumbnail: healthcare-system-thumbnail.png
 alt: AI-Enhanced Social Healthcare Management System
 project-date: August 2024
 client: Personal Project
-category: AI & Web Development
+category: AI
 description: This project involves the development of an AI-driven platform designed to enhance the management and delivery of social healthcare services. Key features include automated client management, an NLP-based virtual assistant, predictive analytics, and real-time safety monitoring. This project showcases my expertise in web development, AI integration, and healthcare technology.
 github-url: https://github.com/mcneillium/AI_Enhanced_Social_HCMS
 youtube-url: https://www.youtube.com/embed/ydQGAiTrX8M
