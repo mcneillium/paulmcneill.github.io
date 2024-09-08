@@ -1012,3 +1012,32 @@ body {
     margin: 10px;
     flex: 1 1 300px; /* Adjust the size of the videos as needed */
 }
+
+.profile-photo {
+    position: relative;
+    display: inline-block;
+    width: 200px; /* Ensures both images have the same width */
+    height: 200px; /* Ensures both images have the same height */
+}
+
+.profile-photo img {
+    width: 100%; /* Make the image fill the parent container (profile-photo) */
+    height: 100%; /* Make the image fill the parent container (profile-photo) */
+    border-radius: 50%; /* Circular crop */
+    object-fit: cover; /* Ensures the image maintains aspect ratio without stretching */
+}
+
+.hover-photo {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.profile-photo:hover .default-photo {
+    display: none;
+}
+
+.profile-photo:hover .hover-photo {
+    display: inline-block;
+}
