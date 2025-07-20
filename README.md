@@ -1,30 +1,43 @@
-Agency Jekyll theme
-====================
+# Paul McNeill – Portfolio Website
 
-Agency theme based on [Agency bootstrap theme ](https://startbootstrap.com/template-overviews/agency/)
+This repository contains the source code for my personal portfolio website.
 
-# How to use
+🌐 **Live site:** [paulmartinmcneill.com](https://paulmartinmcneill.com/)
 
-###Portfolio 
+---
 
-Portfolio projects are in '/_posts'
+## About
 
-Images are in '/img/portfolio'
+Welcome! I’m **Paul McNeill** — an AI developer, web technologist, and creative director with a passion for building impactful digital experiences at the intersection of artificial intelligence and web technologies.
 
-###About
+This portfolio highlights my work in:
+- AI-powered web applications
+- Machine learning & creative technology projects
+- Accessible, user-focused web design
 
-Images are in '/img/about/'
+You’ll find detailed case studies, a list of selected projects, my professional background, and ways to get in touch.
 
-###Team
+---
 
-Team members and info are in '_config.yml'
+## Features
 
-Images are in '/img/team/'
+- **Showcase of featured projects** in AI, web development, and creative tech
+- **Responsive, accessible design** (mobile-first)
+- **Tech blog & writing samples**
+- **Contact & social links**
+- **Downloadable CV**
 
+---
 
-# Demo
+## Tech Stack
 
-View this jekyll theme in action [here](https://y7kim.github.io/agency-jekyll-theme)
+- HTML, CSS, JavaScript (Vanilla)
+- Open source assets/tools
+- Deployed via GitHub Pages
 
-=========
-For more details, read [documentation](http://jekyllrb.com/)
+---
+
+## Running Locally
+
+To view or test the site locally:
+1. Clone this repository:
