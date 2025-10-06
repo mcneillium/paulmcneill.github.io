@@ -1,5 +1,135 @@
-<!-- Skills Section -->
-<section id="skills">
+<!-- Skills Section (Interactive) -->
+<section id="skills" class="bg-light-gray">
+    <style>
+        /* ---------- Motion Preferences ---------- */
+        @media (prefers-reduced-motion: reduce) {
+            .skill-card,
+            .skill-card .fa-stack,
+            .skill-card .fa-stack i,
+            .reveal-on-scroll {
+                transition: none !important;
+                animation: none !important;
+                transform: none !important;
+            }
+        }
+
+        /* ---------- Layout & Cards ---------- */
+        #skills .skill-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px 18px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            transition: transform 280ms ease, box-shadow 280ms ease;
+            position: relative;
+            overflow: hidden;
+        }
+        #skills .skill-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+        }
+
+        /* Subtle gradient highlight on hover */
+        #skills .skill-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(1200px 180px at var(--mx,50%) 0%, rgba(0,123,255,0.08), transparent 60%);
+            opacity: 0;
+            transition: opacity 280ms ease;
+            pointer-events: none;
+        }
+        #skills .skill-card:hover::after { opacity: 1; }
+
+        /* ---------- Icon Stack Animations ---------- */
+        #skills .fa-stack {
+            transition: transform 300ms ease;
+            will-change: transform;
+        }
+        #skills .skill-card:hover .fa-stack {
+            transform: translateY(-4px) scale(1.03);
+        }
+
+        /* Icon wiggle/pulse */
+        #skills .skill-card:hover .fa-stack i.fa-stack-1x {
+            animation: iconPulse 900ms ease both;
+        }
+        @keyframes iconPulse {
+            0%   { transform: scale(1) rotate(0deg); }
+            35%  { transform: scale(1.08) rotate(-3deg); }
+            70%  { transform: scale(1.03) rotate(2deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        /* ---------- Headings / Text ---------- */
+        #skills .skill-heading {
+            margin-top: 18px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        #skills p.text-muted {
+            margin: 0 auto;
+            max-width: 360px;
+        }
+
+        /* ---------- Scroll Reveal (CSS-only) ---------- */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(18px);
+            animation: reveal 650ms ease forwards;
+        }
+        /* Staggered delays per column (Bootstrap order) */
+        .reveal-1 { animation-delay: 80ms; }
+        .reveal-2 { animation-delay: 160ms; }
+        .reveal-3 { animation-delay: 240ms; }
+        .reveal-4 { animation-delay: 80ms; }
+        .reveal-5 { animation-delay: 160ms; }
+        .reveal-6 { animation-delay: 240ms; }
+        .reveal-7 { animation-delay: 80ms; }
+        .reveal-8 { animation-delay: 160ms; }
+        .reveal-9 { animation-delay: 240ms; }
+
+        @keyframes reveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Optional: improve FA primary color */
+        .text-primary { color: #007bff; }
+    </style>
+
+    <script>
+        // Lightweight IntersectionObserver to trigger reveal when in view
+        (function () {
+            if (!('IntersectionObserver' in window)) return; // graceful fallback
+            const els = document.querySelectorAll('#skills .reveal-on-scroll');
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('in-view');
+                        // Kick off CSS animation by forcing reflow
+                        // (class already has animation; just ensure it starts)
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            els.forEach(el => io.observe(el));
+        })();
+
+        // Track mouse position for gradient highlight
+        (function () {
+            document.addEventListener('mousemove', (e) => {
+                document.querySelectorAll('#skills .skill-card').forEach(card => {
+                    const rect = card.getBoundingClientRect();
+                    const within = e.clientX > rect.left && e.clientX < rect.right && e.clientY > rect.top && e.clientY < rect.bottom;
+                    if (within) {
+                        const x = ((e.clientX - rect.left) / rect.width) * 100;
+                        card.style.setProperty('--mx', x + '%');
+                    }
+                });
+            }, { passive: true });
+        })();
+    </script>
+
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -7,56 +137,115 @@
                 <h3 class="section-subheading text-muted">A summary of my technical expertise and capabilities.</h3>
             </div>
         </div>
+
+        <!-- Row 1 -->
         <div class="row text-center">
-            <div class="col-md-4">
-                <span class="fa-stack fa-4x">
-                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                    <i class="fa fa-code fa-stack-1x fa-inverse"></i>
-                </span>
-                <h4 class="skill-heading">Programming Languages</h4>
-                <p class="text-muted">Python, JavaScript, Java, C++, SQL</p>
+            <div class="col-md-4 reveal-on-scroll reveal-1">
+                <div class="skill-card" aria-label="Programming Languages">
+                    <span class="fa-stack fa-4x" aria-hidden="true">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-code fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="skill-heading">Programming Languages</h4>
+                    <p class="text-muted">Python, JavaScript, Java, C++, SQL</p>
+                </div>
             </div>
-            <div class="col-md-4">
-                <span class="fa-stack fa-4x">
-                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                    <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
-                </span>
-                <h4 class="skill-heading">Web Development</h4>
-                <p class="text-muted">HTML, CSS, React, Node.js, Bootstrap</p>
+
+            <div class="col-md-4 reveal-on-scroll reveal-2">
+                <div class="skill-card" aria-label="Web Development">
+                    <span class="fa-stack fa-4x" aria-hidden="true">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <!-- Requires Font Awesome 5+: fa-laptop-code -->
+                        <i class="fa fa-laptop-code fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="skill-heading">Web Development</h4>
+                    <p class="text-muted">HTML, CSS, React, Svelte, Node.js, Bootstrap, REST APIs</p>
+                </div>
             </div>
-            <div class="col-md-4">
-                <span class="fa-stack fa-4x">
-                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                    <i class="fa fa-shield fa-stack-1x fa-inverse"></i>
-                </span>
-                <h4 class="skill-heading">Web Security</h4>
-                <p class="text-muted">Penetration Testing, Network Security, Encryption</p>
+
+            <div class="col-md-4 reveal-on-scroll reveal-3">
+                <div class="skill-card" aria-label="Artificial Intelligence">
+                    <span class="fa-stack fa-4x" aria-hidden="true">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <!-- Requires Font Awesome 5+/6: fa-brain -->
+                        <i class="fa fa-brain fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="skill-heading">Artificial Intelligence</h4>
+                    <p class="text-muted">TensorFlow, Keras, Scikit-learn, NLP, Predictive Modelling</p>
+                </div>
             </div>
         </div>
+
+        <!-- Row 2 -->
         <div class="row text-center">
-            <div class="col-md-4">
-                <span class="fa-stack fa-4x">
-                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                    <i class="fa fa-database fa-stack-1x fa-inverse"></i>
-                </span>
-                <h4 class="skill-heading">Database Management</h4>
-                <p class="text-muted">MySQL, MongoDB, PostgreSQL</p>
+            <div class="col-md-4 reveal-on-scroll reveal-4">
+                <div class="skill-card" aria-label="Data Analytics and Visualisation">
+                    <span class="fa-stack fa-4x" aria-hidden="true">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-chart-line fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="skill-heading">Data Analytics & Visualisation</h4>
+                    <p class="text-muted">Power BI, Excel, Pandas, NumPy, Matplotlib, Looker Studio</p>
+                </div>
             </div>
-            <div class="col-md-4">
-                <span class="fa-stack fa-4x">
-                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                    <i class="fa fa-cloud fa-stack-1x fa-inverse"></i>
-                </span>
-                <h4 class="skill-heading">Cloud Services</h4>
-                <p class="text-muted">AWS, Azure, Google Cloud</p>
+
+            <div class="col-md-4 reveal-on-scroll reveal-5">
+                <div class="skill-card" aria-label="Database Management">
+                    <span class="fa-stack fa-4x" aria-hidden="true">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-database fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="skill-heading">Database Management</h4>
+                    <p class="text-muted">MySQL, PostgreSQL, MongoDB, Firebase, Data Modelling</p>
+                </div>
             </div>
-            <div class="col-md-4">
-                <span class="fa-stack fa-4x">
-                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                    <i class="fa fa-cogs fa-stack-1x fa-inverse"></i>
-                </span>
-                <h4 class="skill-heading">DevOps</h4>
-                <p class="text-muted">Docker, Kubernetes, Jenkins, CI/CD</p>
+
+            <div class="col-md-4 reveal-on-scroll reveal-6">
+                <div class="skill-card" aria-label="CRM and Business Platforms">
+                    <span class="fa-stack fa-4x" aria-hidden="true">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <!-- Requires FA5+: fa-network-wired -->
+                        <i class="fa fa-network-wired fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="skill-heading">CRM & Business Platforms</h4>
+                    <p class="text-muted">Microsoft Dynamics 365, Power Apps, SharePoint, Power Automate</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="row text-center">
+            <div class="col-md-4 reveal-on-scroll reveal-7">
+                <div class="skill-card" aria-label="Cloud and Deployment">
+                    <span class="fa-stack fa-4x" aria-hidden="true">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-cloud fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="skill-heading">Cloud & Deployment</h4>
+                    <p class="text-muted">Google Cloud (Vertex AI), AWS, Azure, Firebase Hosting</p>
+                </div>
+            </div>
+
+            <div class="col-md-4 reveal-on-scroll reveal-8">
+                <div class="skill-card" aria-label="DevOps and Automation">
+                    <span class="fa-stack fa-4x" aria-hidden="true">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-cogs fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="skill-heading">DevOps & Automation</h4>
+                    <p class="text-muted">Docker, Kubernetes, Jenkins, GitHub Actions, CI/CD</p>
+                </div>
+            </div>
+
+            <div class="col-md-4 reveal-on-scroll reveal-9">
+                <div class="skill-card" aria-label="Cybersecurity and Network">
+                    <span class="fa-stack fa-4x" aria-hidden="true">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="skill-heading">Cybersecurity & Network</h4>
+                    <p class="text-muted">Network Security, Encryption, DPI Analysis, Ethical Hacking Basics</p>
+                </div>
             </div>
         </div>
     </div>
