@@ -1,43 +1,44 @@
 <!-- Data Analytics Section -->
-<section id="data-analytics" class="bg-white">
+<section id="data-analytics" class="bg-white" aria-labelledby="data-analytics-heading">
   <div class="container">
 
     <!-- Heading -->
     <div class="row mb-5">
       <div class="col-lg-12 text-center">
-        <h2 class="section-heading">Data Analytics</h2>
+        <h2 id="data-analytics-heading" class="section-heading">Data Analytics</h2>
         <h3 class="section-subheading text-muted">Turning raw data into clear insight and action.</h3>
       </div>
     </div>
-    <br></br>
+    <br>
+
     <!-- Pillars -->
-    <div class="row text-center mb-5">
-      <div class="col-md-3 mb-4">
-        <span class="fa-stack fa-4x">
+    <div class="row text-center mb-5" role="list">
+      <div class="col-md-3 mb-4" role="listitem">
+        <span class="fa-stack fa-4x" aria-hidden="true">
           <i class="fa fa-circle fa-stack-2x text-primary"></i>
           <i class="fa fa-bar-chart fa-stack-1x fa-inverse"></i>
         </span>
         <h4 class="service-heading">Business Intelligence</h4>
         <p class="text-muted">Power BI dashboards, DAX, drill-through reports, data storytelling, role-based views.</p>
       </div>
-      <div class="col-md-3 mb-4">
-        <span class="fa-stack fa-4x">
+      <div class="col-md-3 mb-4" role="listitem">
+        <span class="fa-stack fa-4x" aria-hidden="true">
           <i class="fa fa-circle fa-stack-2x text-primary"></i>
           <i class="fa fa-cubes fa-stack-1x fa-inverse"></i>
         </span>
         <h4 class="service-heading">CRM & Power Platform</h4>
         <p class="text-muted">Dynamics 365 (Dataverse), Power Apps, Power Automate, model-driven apps, flows, integrations.</p>
       </div>
-      <div class="col-md-3 mb-4">
-        <span class="fa-stack fa-4x">
+      <div class="col-md-3 mb-4" role="listitem">
+        <span class="fa-stack fa-4x" aria-hidden="true">
           <i class="fa fa-circle fa-stack-2x text-primary"></i>
           <i class="fa fa-database fa-stack-1x fa-inverse"></i>
         </span>
         <h4 class="service-heading">Data Engineering</h4>
         <p class="text-muted">SQL Server/MySQL, schema design, ETL/ELT, Power Query, scheduled refresh, data quality.</p>
       </div>
-      <div class="col-md-3 mb-4">
-        <span class="fa-stack fa-4x">
+      <div class="col-md-3 mb-4" role="listitem">
+        <span class="fa-stack fa-4x" aria-hidden="true">
           <i class="fa fa-circle fa-stack-2x text-primary"></i>
           <i class="fa fa-file-excel-o fa-stack-1x fa-inverse"></i>
         </span>
@@ -45,7 +46,8 @@
         <p class="text-muted">Excel (PivotTables, Power Pivot), SharePoint, Teams, automated distribution & governance.</p>
       </div>
     </div>
-    <br></br>
+    <br>
+
     <!-- Toolbelt -->
     <div class="row mb-5">
       <div class="col-lg-12 text-center">
@@ -53,7 +55,7 @@
         <p class="text-muted">The stack I use to deliver analytics at speed and scale.</p>
       </div>
       <div class="col-lg-12 text-center">
-        <ul class="list-inline">
+        <ul class="list-inline" aria-label="Analytics toolbelt">
           <!-- Use your existing .icon class; drop SVGs in img/data_analytics_svg/ -->
           <li class="list-inline-item">
             <img src="img/data_analytics_svg/powerbi.svg" alt="Power BI" class="icon mb-3">
@@ -77,10 +79,10 @@
             <img src="img/data_analytics_svg/azure.svg" alt="Microsoft Azure" class="icon mb-3">
           </li>
         </ul>
-        <p class="text-muted small">SVG placeholders are referenced here—add your own icons or reuse your existing web-dev SVG style.</p>
       </div>
     </div>
-    <br></br>
+    <br>
+
     <!-- Mini Showcase -->
     <div class="row">
       <div class="col-lg-12 text-center">
@@ -88,19 +90,45 @@
         <p class="text-muted">A sample of analytics work across reporting, CRM, and automation.</p>
       </div>
 
+      <!-- NEW: Platinum Support & Care Case Study -->
+      <div class="col-md-4 col-sm-6 portfolio-item">
+        <a href="/projects/platinum-digital-transformation.html" class="portfolio-link" title="Platinum Support & Care – Digital Transformation">
+          <img src="img/portfolio/platinum-powerbi-access.png" class="img-responsive mb-3" alt="Platinum Support & Care digital transformation: Access + Power BI dashboards">
+        </a>
+        <div class="portfolio-caption">
+          <h4>Digital Transformation – Platinum Support & Care</h4>
+          <p class="text-muted">Took the business from paper to digital. Built a central Access database, Power BI KPIs, and a mobile logging system for carers.</p>
+          <p class="small text-muted">Tools: Access • Power BI • Power Query • Excel • Mobile forms</p>
+        </div>
+      </div>
+
+      <!-- NEW: Industrial Temps Case Study -->
+      <div class="col-md-4 col-sm-6 portfolio-item">
+        <a href="/projects/industrial-temps-crm-reporting.html" class="portfolio-link" title="Industrial Temps – CRM Reporting & Analytics">
+          <img src="img/portfolio/industrial-temps-crm.png" class="img-responsive mb-3" alt="Industrial Temps CRM reporting visuals">
+        </a>
+        <div class="portfolio-caption">
+          <h4>CRM Reporting – Industrial Temps</h4>
+          <p class="text-muted">Optimised recruitment CRM data quality, Access/Excel queries, and monthly KPI dashboards for placement performance.</p>
+          <p class="small text-muted">Tools: CRM • Access • Excel • Power Pivot • Data audits</p>
+        </div>
+      </div>
+
+      <!-- Existing: Power BI KPI Dashboard -->
       <div class="col-md-4 col-sm-6 portfolio-item">
         <a href="#" class="portfolio-link" title="Power BI KPI Dashboard">
           <img src="img/portfolio/da-powerbi-kpis.png" class="img-responsive mb-3" alt="Power BI KPI Dashboard">
         </a>
         <div class="portfolio-caption">
           <h4>Operations KPI Dashboard (Power BI)</h4>
-          <p class="text-muted">DAX measures, role-level security, scheduled refresh from SQL & SharePoint.</p>
+          <p class="text-muted">DAX measures, role-level security, scheduled refresh from SQL &amp; SharePoint.</p>
         </div>
       </div>
 
+      <!-- Existing: Dynamics 365 + Power Apps -->
       <div class="col-md-4 col-sm-6 portfolio-item">
         <a href="#" class="portfolio-link" title="Dynamics 365 + Power Apps">
-          <img src="img/portfolio/da-dynamics-powerapps.png" class="img-responsive mb-3" alt="Dynamics 365 & Power Apps App">
+          <img src="img/portfolio/da-dynamics-powerapps.png" class="img-responsive mb-3" alt="Dynamics 365 &amp; Power Apps App">
         </a>
         <div class="portfolio-caption">
           <h4>Sales Insights (Dynamics 365 + Power Apps)</h4>
@@ -108,6 +136,7 @@
         </div>
       </div>
 
+      <!-- Existing: Excel Reporting Suite -->
       <div class="col-md-4 col-sm-6 portfolio-item">
         <a href="#" class="portfolio-link" title="Excel Reporting Suite">
           <img src="img/portfolio/da-excel-suite.png" class="img-responsive mb-3" alt="Excel Reporting Suite">
@@ -117,7 +146,17 @@
           <p class="text-muted">Power Query ETL, PivotTables, standardized templates for monthly reporting.</p>
         </div>
       </div>
-    </div>
 
+      <!-- Commented out: AI-Powered AAC App Case Study -->
+      <div class="col-md-4 col-sm-6 portfolio-item">
+        <a href="/projects/aac-ai-app.html" class="portfolio-link" title="AI-Powered AAC App">
+          <img src="img/portfolio/aac-ai-dashboard.png" class="img-responsive mb-3" alt="AI-powered AAC caregiver dashboard">
+        </a>
+        <div class="portfolio-caption">
+          <h4>AI-Powered AAC App</h4>
+          <p class="text-muted">Predictive AI (TensorFlow.js) + Firebase analytics dashboard. WCAG 2.1 AA & GDPR-first.</p>
+          <p class="small text-muted">Tools: TensorFlow.js • Firebase • React/React Native • WCAG</p>
+        </div>
+      </div>
   </div>
 </section>
