@@ -2,152 +2,170 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Digital Transformation – Platinum Support & Care | Paul McNeill</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="How I took a care provider from paper workflows to a digital data platform using Microsoft Access, Power BI, and mobile logging for carers.">
-  <link rel="stylesheet" href="/css/styles.css">
+  <title>Digital Transformation – Platinum Support & Care | Paul McNeill</title>
+  <meta name="description" content="From paper-based workflows to a digital platform using Microsoft Access, Power BI, and mobile logging for carers.">
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto+Slab:400,700" rel="stylesheet">
+  <link href="/css/styles.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
 </head>
 <body id="page-top">
 
-  <!-- Header / Hero -->
-  <header class="project-hero bg-light">
+  <!-- Nav -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light" id="mainNav">
     <div class="container">
-      <nav aria-label="breadcrumb" class="mb-3">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/">Home</a></li>
-          <li class="breadcrumb-item"><a href="/#data-analytics">Data Analytics</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Platinum Support &amp; Care</li>
-        </ol>
-      </nav>
-      <h1 class="display-5">Digital Transformation – Platinum Support &amp; Care</h1>
-      <p class="lead text-muted">From paper-based operations to a secure, data-driven platform with Access, Power BI, and mobile logging for carers.</p>
+      <a class="navbar-brand" href="/">Paul McNeill</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
+        Menu <i class="fas fa-bars ms-1"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav text-uppercase ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#data-analytics">Analytics</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="masthead bg-light" style="padding-top: 8rem; padding-bottom: 2rem;">
+    <div class="container text-center">
+      <h1 class="display-5 text-uppercase">Digital Transformation – Platinum Support &amp; Care</h1>
+      <p class="lead text-muted">Taking operations from paper to digital with Access, Power BI, and mobile logging for carers.</p>
       <ul class="list-inline small text-muted">
-        <li class="list-inline-item">Access</li>
-        <li class="list-inline-item">Power BI</li>
-        <li class="list-inline-item">Power Query</li>
-        <li class="list-inline-item">Excel</li>
-        <li class="list-inline-item">Mobile Forms</li>
-        <li class="list-inline-item">Governance</li>
+        <li class="list-inline-item"><i class="fas fa-database me-1 text-primary"></i>Access</li>
+        <li class="list-inline-item"><i class="fas fa-chart-bar me-1 text-primary"></i>Power BI</li>
+        <li class="list-inline-item"><i class="fas fa-project-diagram me-1 text-primary"></i>Power Query</li>
+        <li class="list-inline-item"><i class="fas fa-mobile-alt me-1 text-primary"></i>Mobile Forms</li>
+        <li class="list-inline-item"><i class="fas fa-user-shield me-1 text-primary"></i>Governance</li>
       </ul>
     </div>
   </header>
 
-  <!-- Overview -->
-  <section class="bg-white">
-    <div class="container">
-      <div class="row align-items-center g-4">
-        <div class="col-md-6">
-          <img src="/img/portfolio/platinum-powerbi-access.png"
-               class="img-responsive rounded shadow-sm"
-               alt="Screenshot: Power BI KPI dashboard connected to Access data (mock data)">
-        </div>
-        <div class="col-md-6">
-          <h2 class="h3">Project Overview</h2>
-          <p>
-            I led the end-to-end digitisation of a care provider’s information management.
-            The organisation relied entirely on paper for rotas, visit logs, and training records.
-            I designed a central Microsoft Access database, connected it to <strong>Power BI</strong> for interactive KPIs,
-            and introduced a secure <strong>mobile logging</strong> workflow so carers could record visits on the go.
-          </p>
-          <ul>
-            <li>Central data model in Access (clients, staff, visits, training)</li>
-            <li>Power Query ETL; scheduled refresh to Power BI reports</li>
-            <li>Role-based views for managers vs. carers</li>
-            <li>Training & adoption plan for non-technical users</li>
-          </ul>
-          <a href="/#data-analytics" class="btn btn-primary mt-2">← Back to Analytics</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Problem / Solution / Impact -->
-  <section class="bg-light">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-md-4">
-          <h3 class="h5">The Problem</h3>
-          <p class="mb-2">Paper workflows caused delays, errors, and limited visibility:</p>
-          <ul class="mb-0">
-            <li>Time-consuming manual reporting</li>
-            <li>Duplicate/fragmented records</li>
-            <li>No real-time view of visits or compliance</li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h3 class="h5">The Solution</h3>
-          <ul class="mb-0">
-            <li>Relational <strong>Access</strong> schema; forms & validation rules</li>
-            <li><strong>Power BI</strong> dashboards (RLS, DAX measures, drill-through)</li>
-            <li>Mobile forms for carers (secure auth, minimal taps)</li>
-            <li>Data governance & user training materials</li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h3 class="h5">The Impact</h3>
-          <ul class="mb-0">
-            <li>Reporting time reduced (weekly → minutes)</li>
-            <li>Higher data accuracy and auditability</li>
-            <li>Live KPI tracking (visits, response times, training)</li>
-            <li>Better resource planning and service quality</li>
-          </ul>
+  <main>
+    <!-- Overview -->
+    <section class="page-section bg-white">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-md-6">
+            <img src="/img/portfolio/platinum-powerbi-access.png" class="img-fluid rounded shadow-sm"
+                 alt="Power BI KPI dashboard connected to Access (mock data)">
+          </div>
+          <div class="col-md-6">
+            <h2 class="section-heading text-uppercase">Project Overview</h2>
+            <p>
+              The organisation relied entirely on paper for rotas, visit logs, and training. I designed a central
+              <strong>Microsoft Access</strong> database, connected it to <strong>Power BI</strong> for interactive KPIs, and introduced a secure
+              <strong>mobile logging</strong> workflow so carers could record visits on the go. I led training and adoption for non-technical staff.
+            </p>
+            <ul>
+              <li>Relational Access schema (Clients, Staff, Visits, Training)</li>
+              <li>Power Query ETL and scheduled refresh to Power BI</li>
+              <li>Role-based views and RLS for managers/carers</li>
+              <li>Staff onboarding materials and support clinics</li>
+            </ul>
+            <a href="/#data-analytics" class="btn btn-primary mt-2">← Back to Analytics</a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Gallery / Details -->
-  <section class="bg-white">
-    <div class="container">
-      <h3 class="h5 mb-3">Screens & Artifacts</h3>
-      <div class="row g-3">
-        <div class="col-md-4">
-          <img src="/img/portfolio/platinum-access-schema.png" class="img-responsive rounded"
-               alt="Diagram: Access database schema (entities and relationships)">
-          <p class="small text-muted mt-2">Access schema – core entities: Clients, Staff, Visits, Training.</p>
-        </div>
-        <div class="col-md-4">
-          <img src="/img/portfolio/platinum-mobile-form.png" class="img-responsive rounded"
-               alt="Mock: mobile visit logging form for carers">
-          <p class="small text-muted mt-2">Mobile visit logging – simple, secure, and offline-friendly.</p>
-        </div>
-        <div class="col-md-4">
-          <img src="/img/portfolio/platinum-powerbi-kpis.png" class="img-responsive rounded"
-               alt="Mock: Power BI KPI dashboard with RLS">
-          <p class="small text-muted mt-2">Power BI KPIs – RLS, drill-through to visit detail.</p>
-        </div>
-      </div>
-
-      <hr class="my-4">
-
-      <div class="row">
-        <div class="col-md-6">
-          <h4 class="h6">Tooling</h4>
-          <ul class="mb-3">
-            <li>Microsoft Access (forms, queries, relationships)</li>
-            <li>Power BI (DAX, RLS, scheduled refresh)</li>
-            <li>Power Query (ETL from CSV/SharePoint/Excel)</li>
-            <li>Excel templates for exception handling</li>
-            <li>Mobile forms (secure auth; minimal PII on device)</li>
-          </ul>
-        </div>
-        <div class="col-md-6">
-          <h4 class="h6">Privacy & Accessibility</h4>
-          <ul class="mb-3">
-            <li>Mock/demo data used in screenshots</li>
-            <li>Least-privilege access; no raw PII exposed</li>
-            <li>Clear input labels, large tap targets, high contrast</li>
-            <li>Process docs for staff onboarding & support</li>
-          </ul>
+    <!-- Problem / Solution / Impact -->
+    <section class="page-section bg-light">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <h4 class="h5 text-uppercase">Problem</h4>
+            <ul class="mb-0">
+              <li>Manual, paper-based reporting (slow and error-prone)</li>
+              <li>Fragmented records; no real-time visibility</li>
+              <li>Compliance tracking difficult and reactive</li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h4 class="h5 text-uppercase">Solution</h4>
+            <ul class="mb-0">
+              <li>Access data model, forms and validation rules</li>
+              <li>Power BI KPIs with DAX, RLS, and drill-through</li>
+              <li>Mobile forms for carers (secure auth; minimal taps)</li>
+              <li>Data governance and process documentation</li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h4 class="h5 text-uppercase">Impact</h4>
+            <ul class="mb-0">
+              <li>Weekly reports → generated in minutes</li>
+              <li>Better data accuracy and auditability</li>
+              <li>Live KPI tracking for visits &amp; training</li>
+              <li>Improved resource planning and service quality</li>
+            </ul>
+          </div>
         </div>
       </div>
+    </section>
 
-      <a href="mailto:paulmcneill1989@hotmail.co.uk" class="btn btn-outline-primary">Request a walkthrough</a>
-    </div>
-  </section>
+    <!-- Gallery -->
+    <section class="page-section bg-white">
+      <div class="container">
+        <h3 class="section-heading text-uppercase mb-4">Screens &amp; Artifacts</h3>
+        <div class="row g-4">
+          <div class="col-md-4 col-sm-6">
+            <img src="/img/portfolio/platinum-access-schema.png" class="img-fluid rounded shadow-sm"
+                 alt="Access database schema diagram (mock)">
+            <p class="small text-muted mt-2">Access schema — Clients, Staff, Visits, Training.</p>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <img src="/img/portfolio/platinum-mobile-form.png" class="img-fluid rounded shadow-sm"
+                 alt="Mobile visit logging form (mock)">
+            <p class="small text-muted mt-2">Mobile visit logging — simple, secure, offline-friendly.</p>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <img src="/img/portfolio/platinum-powerbi-kpis.png" class="img-fluid rounded shadow-sm"
+                 alt="Power BI KPI dashboard with drill-through (mock)">
+            <p class="small text-muted mt-2">Power BI KPIs — RLS, drill-through to visit detail.</p>
+          </div>
+        </div>
 
-  <footer class="footer py-4">
-    <div class="container small text-muted">© Paul McNeill</div>
+        <hr class="my-4">
+
+        <div class="row">
+          <div class="col-md-6">
+            <h4 class="h6 text-uppercase mb-2">Tooling</h4>
+            <ul class="mb-3">
+              <li>Microsoft Access (forms, queries, relationships)</li>
+              <li>Power BI (DAX, RLS, scheduled refresh)</li>
+              <li>Power Query (CSV/SharePoint/Excel ingestion)</li>
+              <li>Excel templates for exceptions &amp; QA</li>
+              <li>Mobile forms (least-privilege, minimal PII on device)</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h4 class="h6 text-uppercase mb-2">Privacy &amp; Accessibility</h4>
+            <ul class="mb-3">
+              <li>Mock/demo data in all screenshots</li>
+              <li>Least-privilege access; role-based views</li>
+              <li>Clear labels, high contrast, large tap targets</li>
+            </ul>
+          </div>
+        </div>
+
+        <a href="mailto:paulmcneill1989@hotmail.co.uk" class="btn btn-outline-primary">
+          <i class="fas fa-envelope me-2"></i>Request a walkthrough
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer py-4 bg-light">
+    <div class="container text-center small text-muted">© Paul McNeill — <a href="/">Back to Home</a></div>
   </footer>
+
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/scripts.js"></script>
 </body>
 </html>

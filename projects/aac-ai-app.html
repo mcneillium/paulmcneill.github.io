@@ -2,147 +2,170 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>AI-Powered AAC App | Paul McNeill</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Assistive communication app with on-device AI predictions and a real-time caregiver dashboard. Built with React/React Native, TensorFlow.js, and Firebase.">
-  <link rel="stylesheet" href="/css/styles.css">
+  <title>AI-Powered AAC App | Paul McNeill</title>
+  <meta name="description" content="Assistive communication app with on-device AI predictions and a real-time caregiver dashboard. Built with React, TensorFlow.js, and Firebase.">
+
+  <!-- Bootstrap Core CSS -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link href="/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+
+  <!-- Google Fonts (optional, match your index.html) -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto+Slab:400,700" rel="stylesheet">
+
+  <!-- Main Theme CSS -->
+  <link href="/css/styles.css" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/img/favicon.png">
 </head>
+
 <body id="page-top">
 
-  <!-- Header / Hero -->
-  <header class="project-hero bg-light">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light" id="mainNav">
     <div class="container">
-      <nav aria-label="breadcrumb" class="mb-3">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/">Home</a></li>
-          <li class="breadcrumb-item"><a href="/#data-analytics">Data Analytics</a></li>
-          <li class="breadcrumb-item active" aria-current="page">AI-Powered AAC App</li>
-        </ol>
-      </nav>
-      <h1 class="display-5">AI-Powered AAC App</h1>
-      <p class="lead text-muted">Assistive communication for non-verbal users with on-device AI prediction and a real-time caregiver dashboard.</p>
+      <a class="navbar-brand" href="/">Paul McNeill</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
+        Menu <i class="fas fa-bars ms-1"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav text-uppercase ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#data-analytics">Analytics</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header / Hero -->
+  <header class="masthead bg-light" style="padding-top: 8rem; padding-bottom: 2rem;">
+    <div class="container text-center">
+      <h1 class="display-5 text-uppercase">AI-Powered AAC App</h1>
+      <p class="lead text-muted">Assistive communication for non-verbal users with predictive AI and a real-time caregiver dashboard.</p>
       <ul class="list-inline small text-muted">
-        <li class="list-inline-item">React / React Native</li>
-        <li class="list-inline-item">TensorFlow.js</li>
-        <li class="list-inline-item">Firebase</li>
-        <li class="list-inline-item">WCAG 2.1 AA</li>
-        <li class="list-inline-item">GDPR-first</li>
+        <li class="list-inline-item"><i class="fas fa-brain me-1 text-primary"></i>TensorFlow.js</li>
+        <li class="list-inline-item"><i class="fas fa-database me-1 text-primary"></i>Firebase</li>
+        <li class="list-inline-item"><i class="fas fa-mobile-alt me-1 text-primary"></i>React / React Native</li>
+        <li class="list-inline-item"><i class="fas fa-universal-access me-1 text-primary"></i>WCAG 2.1 AA</li>
       </ul>
     </div>
   </header>
 
-  <!-- Overview -->
-  <section class="bg-white">
-    <div class="container">
-      <div class="row align-items-center g-4">
-        <div class="col-md-6">
-          <img src="/img/portfolio/aac-ai-dashboard.png"
-               class="img-responsive rounded shadow-sm"
-               alt="Screenshot: Caregiver dashboard with live AAC usage metrics (mock data)">
-        </div>
-        <div class="col-md-6">
-          <h2 class="h3">Project Overview</h2>
-          <p>
-            I designed and built an AI-enhanced Augmentative &amp; Alternative Communication (AAC) system:
-            a mobile app that suggests words and symbols using on-device <strong>TensorFlow.js</strong>, paired with
-            a <strong>Firebase</strong>-backed caregiver dashboard for real-time insights. The interface follows
-            <strong>WCAG 2.1 AA</strong> guidance and a <strong>GDPR-first</strong> data model with role-based access.
-          </p>
-          <ul>
-            <li>Predictive suggestions (sub-second) on device; works offline</li>
-            <li>Real-time logs and analytics for caregiver visibility</li>
-            <li>High-contrast UI, large touch targets, screen-reader support</li>
-            <li>Role-based permissions to preserve user autonomy</li>
-          </ul>
-          <a href="/#data-analytics" class="btn btn-primary mt-2">← Back to Analytics</a>
+  <!-- Main content -->
+  <main>
+    <!-- Overview -->
+    <section class="page-section bg-white">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-md-6">
+            <img src="/img/portfolio/aac-ai-dashboard.png" class="img-fluid rounded shadow-sm" alt="Screenshot: caregiver dashboard showing AAC usage analytics (mock data)">
+          </div>
+          <div class="col-md-6">
+            <h2 class="section-heading text-uppercase">Project Overview</h2>
+            <p>
+              This project originated from my Open University final year work, inspired by my brother who has autism.
+              It combines accessible design and AI to enhance communication for non-verbal individuals.
+              The app suggests words using on-device <strong>TensorFlow.js</strong> AI and synchronises usage data with a
+              <strong>Firebase</strong> caregiver dashboard for real-time monitoring.
+            </p>
+            <ul>
+              <li>Predictive next-word generation powered by TensorFlow.js</li>
+              <li>Offline-first design with local model inference</li>
+              <li>Real-time caregiver insights via Firebase analytics</li>
+              <li>GDPR-compliant and WCAG 2.1 AA accessible interface</li>
+            </ul>
+          </div>
         </div>
       </div>
+    </section>
+
+    <!-- Problem / Solution / Impact -->
+    <section class="page-section bg-light">
+      <div class="container">
+        <div class="row text-start g-4">
+          <div class="col-md-4">
+            <h4 class="h5 text-uppercase">Problem</h4>
+            <p>Conventional AAC tools are static, slow, and offer little feedback to caregivers. Many rely on cloud-based AI, creating privacy risks for vulnerable users.</p>
+          </div>
+          <div class="col-md-4">
+            <h4 class="h5 text-uppercase">Solution</h4>
+            <p>Created an <strong>offline-capable AI</strong> system using TensorFlow.js to generate next-word suggestions locally. Added a real-time dashboard for caregivers, with anonymised logs and predictive usage trends.</p>
+          </div>
+          <div class="col-md-4">
+            <h4 class="h5 text-uppercase">Impact</h4>
+            <p>Enabled faster communication for users, reduced caregiver workload, and protected sensitive data with ethical, privacy-by-design principles.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="page-section bg-white">
+      <div class="container">
+        <h3 class="section-heading text-uppercase mb-4">Screens & Features</h3>
+        <div class="row g-4">
+          <div class="col-md-4 col-sm-6">
+            <img src="/img/portfolio/aac-mobile-sentence.png" class="img-fluid rounded shadow-sm" alt="AAC app sentence builder view (mock)">
+            <p class="small text-muted mt-2">Sentence builder: predictive suggestions and text-to-speech playback.</p>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <img src="/img/portfolio/aac-accessibility.png" class="img-fluid rounded shadow-sm" alt="High-contrast accessibility mode view">
+            <p class="small text-muted mt-2">Accessibility: high contrast, adjustable grid size, screen reader support.</p>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <img src="/img/portfolio/aac-firebase-logs.png" class="img-fluid rounded shadow-sm" alt="Firebase caregiver analytics dashboard (mock)">
+            <p class="small text-muted mt-2">Caregiver dashboard: live analytics via Firebase, tracking engagement and trends.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tools & Ethics -->
+    <section class="page-section bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h4 class="h5 text-uppercase mb-3">Tech Stack</h4>
+            <ul class="list-unstyled">
+              <li><i class="fas fa-check text-primary me-2"></i>React / React Native</li>
+              <li><i class="fas fa-check text-primary me-2"></i>TensorFlow.js (custom word prediction model)</li>
+              <li><i class="fas fa-check text-primary me-2"></i>Firebase (Auth, Realtime Database, Hosting)</li>
+              <li><i class="fas fa-check text-primary me-2"></i>WCAG 2.1 AA accessibility standards</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h4 class="h5 text-uppercase mb-3">Ethics & Accessibility</h4>
+            <ul class="list-unstyled">
+              <li><i class="fas fa-shield-alt text-primary me-2"></i>GDPR-compliant and privacy-by-design</li>
+              <li><i class="fas fa-eye text-primary me-2"></i>Role-based access and data minimisation</li>
+              <li><i class="fas fa-universal-access text-primary me-2"></i>Inclusive UX with large touch zones</li>
+            </ul>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <a href="mailto:paulmcneill1989@hotmail.co.uk" class="btn btn-outline-primary btn-lg">
+            <i class="fas fa-envelope me-2"></i>Request a Live Walkthrough
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer py-4 bg-light">
+    <div class="container text-center small text-muted">
+      © Paul McNeill — <a href="/">Back to Home</a>
     </div>
-  </section>
-
-  <!-- Problem / Solution / Impact -->
-  <section class="bg-light">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-md-4">
-          <h3 class="h5">The Problem</h3>
-          <ul class="mb-0">
-            <li>Static AAC vocabularies slow message creation</li>
-            <li>Limited caregiver insight into usage and progress</li>
-            <li>Privacy concerns with cloud-only AI approaches</li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h3 class="h5">The Solution</h3>
-          <ul class="mb-0">
-            <li><strong>On-device AI</strong> (TensorFlow.js) for next-word predictions</li>
-            <li><strong>Firebase</strong> dashboards for live analytics &amp; exports</li>
-            <li>WCAG-compliant UI; large tap targets; contrast modes</li>
-            <li><strong>Role-based access</strong> (user, caregiver, admin); minimal data collection</li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h3 class="h5">The Impact</h3>
-          <ul class="mb-0">
-            <li>Faster message composition; reduced cognitive load</li>
-            <li>Caregivers spot trends and intervene proactively</li>
-            <li>Privacy preserved (offline-first, least-privilege rules)</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Gallery / Details -->
-  <section class="bg-white">
-    <div class="container">
-      <h3 class="h5 mb-3">Screens & Artifacts</h3>
-      <div class="row g-3">
-        <div class="col-md-4">
-          <img src="/projects/aac-ai-app/MobileApp/sentencebuilderscreen_mobile.png" class="img-responsive rounded"
-               alt="Mobile app: sentence builder with predictive suggestions (mock)">
-          <p class="small text-muted mt-2">Mobile sentence builder – predictive suggestions and TTS.</p>
-        </div>
-        <div class="col-md-4">
-          <img src="/projects/aac-ai-app/MobileApp/profilescreen.png" class="img-responsive rounded"
-               alt="Accessibility view: high contrast and large touch targets">
-          <p class="small text-muted mt-2">Accessibility – high contrast, large controls, screen reader cues.</p>
-        </div>
-        <div class="col-md-4">
-          <img src="/projects/aac-ai-app/WebApp/userlogs_firebase.png" class="img-responsive rounded"
-               alt="Firebase logs and dashboard metrics (mock)">
-          <p class="small text-muted mt-2">Real-time logs – dashboard charts &amp; CSV export.</p>
-        </div>
-      </div>
-
-      <hr class="my-4">
-
-      <div class="row">
-        <div class="col-md-6">
-          <h4 class="h6">Architecture & Tooling</h4>
-          <ul class="mb-3">
-            <li>React Native (app), React (dashboard)</li>
-            <li>TensorFlow.js (quantised model; worker-thread inference)</li>
-            <li>Firebase Auth &amp; Realtime DB (role-based rules)</li>
-            <li>Charting for usage insights; CSV exports</li>
-          </ul>
-        </div>
-        <div class="col-md-6">
-          <h4 class="h6">Ethics, Privacy & Accessibility</h4>
-          <ul class="mb-3">
-            <li>GDPR-aligned: data minimisation; explicit consent flows</li>
-            <li>Least-privilege RBAC; no sensitive screenshots</li>
-            <li>WCAG 2.1 AA: contrast, semantics, focus order, labels</li>
-          </ul>
-        </div>
-      </div>
-
-      <a href="mailto:paulmcneill1989@hotmail.co.uk" class="btn btn-outline-primary">Request a live walkthrough</a>
-    </div>
-  </section>
-
-  <footer class="footer py-4">
-    <div class="container small text-muted">© Paul McNeill</div>
   </footer>
+
+  <!-- Bootstrap core JS -->
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Core theme JS -->
+  <script src="/js/scripts.js"></script>
 </body>
 </html>
