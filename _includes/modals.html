@@ -1,72 +1,72 @@
 <!-- Portfolio Modals -->
 {% for post in site.posts %}
-    <div class="portfolio-modal modal fade" id="portfolioModal{{ post.modal-id }}" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl"></div>
+  <div class="portfolio-modal modal fade" id="portfolioModal{{ post.modal-id }}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+      <div class="close-modal" data-dismiss="modal">
+        <div class="lr"><div class="rl"></div></div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2">
+            <div class="modal-body">
+
+              <!-- Title -->
+              <h2>{{ post.title }}</h2>
+              <hr class="star-primary">
+
+              <!-- Image -->
+              <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}" style="max-width: 70%; margin-bottom: 20px;">
+
+              <!-- Description -->
+              <p>{{ post.description }}</p>
+
+              <!-- 🔽 Render the full post body (your Markdown/HTML content) -->
+              <div class="post-content">
+                {{ post.content }}
+              </div>
+
+              <!-- Project Details -->
+              <ul class="list-inline item-details" style="margin-top: 20px; margin-bottom: 30px;">
+                <li>Launched On: <strong>{{ post.project-date }}</strong></li>
+                <li>Skills Applied: <strong>{{ post.category }}</strong></li>
+              </ul>
+
+              <!-- YouTube embeds -->
+              {% if post.youtube-url %}
+                <div class="embed-responsive embed-responsive-16by9" style="margin-bottom: 30px;">
+                  <iframe width="560" height="315" src="{{ post.youtube-url }}" frameborder="0" allowfullscreen></iframe>
                 </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-
-                            <!-- Title -->
-                            <h2>{{ post.title }}</h2>
-                            <hr class="star-primary">
-                            
-                            <!-- Image (smaller size and centered) -->
-                            <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}" style="max-width: 70%; margin-bottom: 20px;">
-                            
-                            <!-- Description -->
-                            <p>{{ post.description }}</p>
-
-                            <!-- Project Details -->
-                            <ul class="list-inline item-details" style="margin-top: 20px; margin-bottom: 30px;">
-                                <li>Launched On:
-                                    <strong>{{ post.project-date }}</strong>
-                                </li>
-                                <li>Skills Applied:
-                                    <strong>{{ post.category }}</strong>
-                                </li>
-                            </ul>
-
-                            <!-- YouTube Video Embed (spaced and centered) -->
-                            {% if post.youtube-url %}
-                                <div class="embed-responsive embed-responsive-16by9" style="margin-bottom: 30px;">
-                                    <iframe width="560" height="315" src="{{ post.youtube-url }}" frameborder="0" allowfullscreen></iframe>
-                                </div>
-                            {% endif %}
-                            
-                            {% if post.youtube-url-2 %}
-                                <div class="embed-responsive embed-responsive-16by9" style="margin-bottom: 30px;">
-                                    <iframe width="560" height="315" src="{{ post.youtube-url-2 }}" frameborder="0" allowfullscreen></iframe>
-                                </div>
-                            {% endif %}
-                            
-                            {% if post.youtube-url-3 %}
-                                <div class="embed-responsive embed-responsive-16by9" style="margin-bottom: 30px;">
-                                    <iframe width="560" height="315" src="{{ post.youtube-url-3 }}" frameborder="0" allowfullscreen></iframe>
-                                </div>
-                            {% endif %}
-
-                            <!-- GitHub Link -->
-                            {% if post.github-url %}
-                                <a href="{{ post.github-url }}" class="btn btn-primary" target="_blank" style="margin-bottom: 10px;">
-                                    <i class="fa fa-github"></i> View Code on GitHub
-                                </a>
-                            {% endif %}
-                            <div>
-                            <!-- Close Button -->
-                            <button type="button" class="btn btn-default" data-dismiss="modal">
-                                <i class="fa fa-times"></i> Close
-                            </button>
-                            </div>
-                        </div>
-                    </div>
+              {% endif %}
+              {% if post.youtube-url-2 %}
+                <div class="embed-responsive embed-responsive-16by9" style="margin-bottom: 30px;">
+                  <iframe width="560" height="315" src="{{ post.youtube-url-2 }}" frameborder="0" allowfullscreen></iframe>
                 </div>
+              {% endif %}
+              {% if post.youtube-url-3 %}
+                <div class="embed-responsive embed-responsive-16by9" style="margin-bottom: 30px;">
+                  <iframe width="560" height="315" src="{{ post.youtube-url-3 }}" frameborder="0" allowfullscreen></iframe>
+                </div>
+              {% endif %}
+
+              <!-- GitHub Link -->
+              {% if post.github-url %}
+                <a href="{{ post.github-url }}" class="btn btn-primary" target="_blank" style="margin-bottom: 10px;">
+                  <i class="fa fa-github"></i> View Code on GitHub
+                </a>
+              {% endif %}
+
+              <!-- Close Button -->
+              <div>
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                  <i class="fa fa-times"></i> Close
+                </button>
+              </div>
+
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 {% endfor %}
+
