@@ -13,6 +13,8 @@ github-url:
 youtube-url:
 ---
 
+{% capture markdown %}
+
 ### Overview
 End-to-end **digitization of daily operations**: centralized data, mobile logging for carers, and KPIs that leadership actually use.
 
@@ -54,6 +56,8 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
 - Set up refresh monitoring and documentation for handover.
 
 ---
+{% endcapture %}
+{{ markdown | markdownify }}
 
 ### Screens / Media
 
