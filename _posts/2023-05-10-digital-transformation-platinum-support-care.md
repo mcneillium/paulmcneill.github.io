@@ -57,12 +57,60 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
 
 ### Screens / Media
 
-#### Microsoft Access (Data Layer)
-| Forms | Relationships | Table View | Validation Rule |
-|-------|---------------|-------------|----------------|
-| ![Access Form](img/portfolio/pscs/pscs_access_frm_1.png) | ![Relationships](img/portfolio/pscs/pscs_access_rel_1.png) | ![Table View](img/portfolio/pscs/pscs_access_tbl_1.png) | ![Validation](img/portfolio/pscs/pscs_access_val_1.png) |
+<!-- ACCESS (Data Layer) -->
+<h4 class="mt-4">Microsoft Access (Data Layer)</h4>
+<div class="row g-3">
+  <div class="col-12 col-sm-6 col-md-3">
+    <figure class="m-0">
+      <img src="img/portfolio/pscs/pscs_access_frm_1.png" alt="Access data-entry form for Visits" class="img-fluid rounded shadow-sm" loading="lazy">
+      <figcaption class="small text-muted mt-2">Form: Visit entry</figcaption>
+    </figure>
+  </div>
+  <div class="col-12 col-sm-6 col-md-3">
+    <figure class="m-0">
+      <img src="img/portfolio/pscs/pscs_access_rel_1.png" alt="Access relationships diagram linking Clients, Staff, Schedules and Visits" class="img-fluid rounded shadow-sm" loading="lazy">
+      <figcaption class="small text-muted mt-2">Relationships</figcaption>
+    </figure>
+  </div>
+  <div class="col-12 col-sm-6 col-md-3">
+    <figure class="m-0">
+      <img src="img/portfolio/pscs/pscs_access_tbl_1.png" alt="Access Visits table showing sample rows with durations and notes" class="img-fluid rounded shadow-sm" loading="lazy">
+      <figcaption class="small text-muted mt-2">Table view</figcaption>
+    </figure>
+  </div>
+  <div class="col-12 col-sm-6 col-md-3">
+    <figure class="m-0">
+      <img src="img/portfolio/pscs/pscs_access_val_1.png" alt="Access validation message enforcing minimum duration" class="img-fluid rounded shadow-sm" loading="lazy">
+      <figcaption class="small text-muted mt-2">Validation rule</figcaption>
+    </figure>
+  </div>
+</div>
 
-#### Power BI (Reporting Layer)
-| Import | Power Query | Data Model | KPI Dashboard |
-|--------|-------------|-------------|----------------|
-| ![Access Import](img/portfolio/pscs/pscs_powerbi_import_1.png) | ![Power Query](img/portfolio/pscs/pscs_powerbi_pq_1.png) | ![Relationships](img/portfolio/pscs/pscs_powerbi_rel_1.png) | ![KPI Visuals](img/portfolio/pscs/pscs_powerbi_vis_1.png) |
+<!-- POWER BI (Reporting Layer) -->
+<h4 class="mt-5">Power BI (Reporting Layer)</h4>
+<div class="row g-3">
+  <div class="col-12 col-sm-6 col-md-3">
+    <figure class="m-0">
+      <img src="img/portfolio/pscs/pscs_powerbi_import_1.png" alt="Power BI get data dialog with Access connector selected" class="img-fluid rounded shadow-sm" loading="lazy">
+      <figcaption class="small text-muted mt-2">Import (Access)</figcaption>
+    </figure>
+  </div>
+  <div class="col-12 col-sm-6 col-md-3">
+    <figure class="m-0">
+      <img src="img/portfolio/pscs/pscs_powerbi_pq_1.png" alt="Power Query editor preview of the Training table" class="img-fluid rounded shadow-sm" loading="lazy">
+      <figcaption class="small text-muted mt-2">Power Query</figcaption>
+    </figure>
+  </div>
+  <div class="col-12 col-sm-6 col-md-3">
+    <figure class="m-0">
+      <img src="img/portfolio/pscs/pscs_powerbi_rel_1.png" alt="Power BI data model showing relationships between fact and dimension tables" class="img-fluid rounded shadow-sm" loading="lazy">
+      <figcaption class="small text-muted mt-2">Data model</figcaption>
+    </figure>
+  </div>
+  <div class="col-12 col-sm-6 col-md-3">
+    <figure class="m-0">
+      <img src="img/portfolio/pscs/pscs_powerbi_vis_1.png" alt="Power BI KPI visuals showing visits, average duration and completions" class="img-fluid rounded shadow-sm" loading="lazy">
+      <figcaption class="small text-muted mt-2">KPI dashboard</figcaption>
+    </figure>
+  </div>
+</div>
