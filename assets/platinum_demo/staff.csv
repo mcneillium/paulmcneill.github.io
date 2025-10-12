@@ -1,0 +1,21 @@
+StaffID,FirstName,LastName,Role,MobileEnabled,HireDate,FullName
+S001,Alex,Lee,Carer,True,2023-01-15,Alex Lee
+S002,Sam,Martinez,Senior Carer,True,2023-01-30,Sam Martinez
+S003,Taylor,Thomas,Senior Carer,True,2023-02-14,Taylor Thomas
+S004,Jordan,Walker,Carer,True,2023-03-01,Jordan Walker
+S005,Casey,Jackson,Senior Carer,True,2023-03-16,Casey Jackson
+S006,Riley,Anderson,Senior Carer,True,2023-03-31,Riley Anderson
+S007,Morgan,Lee,Carer,True,2023-04-15,Morgan Lee
+S008,Jamie,Thomas,Carer,True,2023-04-30,Jamie Thomas
+S009,Robin,Johnson,Senior Carer,True,2023-05-15,Robin Johnson
+S010,Avery,White,Carer,True,2023-05-30,Avery White
+S011,Drew,Robinson,Carer,True,2023-06-14,Drew Robinson
+S012,Cameron,Wilson,Carer,True,2023-06-29,Cameron Wilson
+S013,Quinn,White,Senior Carer,False,2023-07-14,Quinn White
+S014,Hayden,Brown,Senior Carer,True,2023-07-29,Hayden Brown
+S015,Parker,Garcia,Senior Carer,True,2023-08-13,Parker Garcia
+S016,Reese,White,Senior Carer,True,2023-08-28,Reese White
+S017,Sage,Anderson,Carer,True,2023-09-12,Sage Anderson
+S018,Skyler,Davis,Carer,True,2023-09-27,Skyler Davis
+S019,Rowan,Martin,Carer,True,2023-10-12,Rowan Martin
+S020,Blake,Garcia,Carer,True,2023-10-27,Blake Garcia

@@ -1,0 +1,43 @@
+-- Calendar table (create in Power BI)
+Calendar = ADDCOLUMNS(
+  CALENDAR(MIN(Visits[VisitDate]), MAX(Visits[VisitDate])),
+  "Year", YEAR([Date]),
+  "Month", FORMAT([Date], "YYYY-MM")
+)
+
+-- Relationships (to set in model):
+-- Visits[ClientID] -> Clients[ClientID]
+-- Visits[StaffID]  -> Staff[StaffID]
+-- Visits[VisitDate] -> Calendar[Date]
+-- Schedules similarly to Calendar and dimensions
+
+Visits Completed =
+COUNTROWS(FILTER(Visits, Visits[Completed] = TRUE()))
+
+Average Visit Duration (mins) =
+AVERAGE(Visits[DurationMinutes])
+
+On-Time % =
+VAR OnTime = COUNTROWS(
+  FILTER(Visits, Visits[Completed] = TRUE() && Visits[DurationMinutes] >= 30)
+)
+VAR AllCompleted = [Visits Completed]
+RETURN DIVIDE(OnTime, AllCompleted)
+
+Satisfaction (Avg) =
+AVERAGEX(FILTER(Visits, NOT(ISBLANK(Visits[SatisfactionScore]))), Visits[SatisfactionScore])
+
+Client Visits (Last 30 Days) =
+VAR LastDay = MAX(Calendar[Date])
+VAR FirstDay = LastDay - 30
+RETURN CALCULATE([Visits Completed], Calendar[Date] > FirstDay && Calendar[Date] <= LastDay)
+
+Training Valid % =
+VAR Valid = COUNTROWS(FILTER(Training, Training[Status] = "Valid"))
+VAR All = COUNTROWS(Training)
+RETURN DIVIDE(Valid, All)
+
+-- RLS examples (define roles in Power BI):
+-- Carer role: [Email()] function maps to rls_user_map[UserEmail]
+-- Table filter: Staff[StaffID] = RELATED(rls_user_map[StaffID])
+-- or use LOOKUPVALUE to restrict Visits where Visits[StaffID] in allowed set.

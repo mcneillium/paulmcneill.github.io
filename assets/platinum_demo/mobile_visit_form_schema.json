@@ -1,0 +1,65 @@
+{
+  "form_name": "VisitLog_v1",
+  "version": "1.0",
+  "fields": [
+    {
+      "name": "StaffID",
+      "type": "text",
+      "required": true
+    },
+    {
+      "name": "ClientID",
+      "type": "text",
+      "required": true
+    },
+    {
+      "name": "VisitDate",
+      "type": "date",
+      "required": true
+    },
+    {
+      "name": "StartTime",
+      "type": "time",
+      "required": true
+    },
+    {
+      "name": "EndTime",
+      "type": "time",
+      "required": true
+    },
+    {
+      "name": "TasksPerformed",
+      "type": "multiselect",
+      "options": [
+        "Personal care",
+        "Meal prep",
+        "Medication",
+        "Community outing",
+        "Household tasks",
+        "Wellbeing check"
+      ]
+    },
+    {
+      "name": "Notes",
+      "type": "textarea",
+      "maxLength": 500
+    },
+    {
+      "name": "SatisfactionScore",
+      "type": "number",
+      "min": 1,
+      "max": 5
+    },
+    {
+      "name": "Signature",
+      "type": "signature",
+      "required": false
+    }
+  ],
+  "access_control": {
+    "auth": "email+password",
+    "store_on_device": "minimal",
+    "sync": "wifi_or_cellular",
+    "encryption": "at_rest_and_in_transit"
+  }
+}

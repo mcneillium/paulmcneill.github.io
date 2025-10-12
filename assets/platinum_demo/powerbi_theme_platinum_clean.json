@@ -1,0 +1,60 @@
+{
+  "name": "Platinum Care \u2013 Clean",
+  "textClasses": {
+    "title": {
+      "fontSize": 18,
+      "fontFace": "Segoe UI",
+      "fontWeight": "bold"
+    },
+    "header": {
+      "fontSize": 13,
+      "fontFace": "Segoe UI",
+      "fontWeight": "semi-bold"
+    },
+    "callout": {
+      "fontSize": 24,
+      "fontFace": "Segoe UI",
+      "fontWeight": "bold"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "show": true
+          }
+        ],
+        "labels": [
+          {
+            "show": true
+          }
+        ],
+        "legend": [
+          {
+            "show": true
+          }
+        ],
+        "background": [
+          {
+            "show": false
+          }
+        ]
+      }
+    }
+  },
+  "tableEx": {
+    "total": {
+      "show": true
+    }
+  },
+  "slicer": {
+    "general": {
+      "outlineColor": {
+        "solid": {
+          "color": "#cccccc"
+        }
+      }
+    }
+  }
+}
