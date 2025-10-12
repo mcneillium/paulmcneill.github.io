@@ -35,22 +35,34 @@ End-to-end **digitization of daily operations**: centralized data, mobile loggin
 - **Faster incident response** with structured, real-time logging.
 - **Better visibility** on service delivery and staff utilization.
 
+---
+
 ### Approach
-1. **Discovery**: map processes, paper forms, and reporting needs.
-2. **MVP**: Access tables + mobile forms; iterate weekly with field teams.
+1. **Discovery**: map processes, paper forms, and reporting needs.  
+2. **MVP**: Access tables + mobile forms; iterate weekly with field teams.  
 3. **Scale**: Power BI dashboards, training, governance, refresh schedules.
+
+---
 
 ### Stack
 Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
 
+---
+
 ### My Role
-- Solution design, data model, form design, BI KPIs, training & rollout.
+- Solution design, data model, form design, BI KPIs, training & rollout.  
 - Set up refresh monitoring and documentation for handover.
 
 ---
 
 ### Screens / Media
-- Access data entry + Power BI KPI overview.
-- (Optional additional images)  
-  `![KPI Overview](img/portfolio/platinum-powerbi-access.png)`
 
+#### Microsoft Access (Data Layer)
+| Forms | Relationships | Table View | Validation Rule |
+|-------|---------------|-------------|----------------|
+| ![Access Form](img/portfolio/pscs/pscs_access_frm_1.png) | ![Relationships](img/portfolio/pscs/pscs_access_rel_1.png) | ![Table View](img/portfolio/pscs/pscs_access_tbl_1.png) | ![Validation](img/portfolio/pscs/pscs_access_val_1.png) |
+
+#### Power BI (Reporting Layer)
+| Import | Power Query | Data Model | KPI Dashboard |
+|--------|-------------|-------------|----------------|
+| ![Access Import](img/portfolio/pscs/pscs_powerbi_import_1.png) | ![Power Query](img/portfolio/pscs/pscs_powerbi_pq_1.png) | ![Relationships](img/portfolio/pscs/pscs_powerbi_rel_1.png) | ![KPI Visuals](img/portfolio/pscs/pscs_powerbi_vis_1.png) |
