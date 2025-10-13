@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "Digital Transformation – Platinum Support & Care"
+title: "Digital Transformation – Domiciliary Care Company"
 subtitle: "Access apps, Power BI KPIs & mobile logging for carers"
 modal-id: project-platinum
 thumbnail: platinum-powerbi-access.png
 img: platinum-powerbi-access.png
-alt: "Platinum Support & Care Power BI + Access"
-project-date: 2023-05-10
+alt: "Domiciliary Care - Excel, Access & Power BI"
+project-date: 2019-11-15
 category: projects
-description: "Taking operations from paper to digital with Access, Power BI, and mobile logging for carers."
+description: "Taking operations from paper to digital with Excel, Access, Power BI, & mobile logging for carers."
 github-url:
 youtube-url:
 ---
