@@ -15,42 +15,73 @@ youtube-url:
 
 <!-- Scoped styles -->
 <style>
-/* Unified carousel appearance */
-.portfolio-carousel { position: relative; overflow: visible; padding-bottom: 28px; }
+/* Keep the entire modal usable on one screen */
+.modal .modal-body {
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+}
+
+/* Unified carousel viewport: fixed to the screen, not content */
+.portfolio-carousel {
+  position: relative;
+  height: 60vh;              /* one window */
+  max-height: 620px;         /* cap on large screens */
+  min-height: 360px;         /* floor on small screens */
+  overflow: hidden;          /* children can't increase height */
+  padding-bottom: 28px;      /* space for indicators */
+}
+
+/* Indicators stay inside */
 .portfolio-carousel .carousel-indicators { bottom: 6px; }
 
-/* Fixed viewport so slides don't jump */
-.portfolio-carousel .carousel-inner { height: 520px; overflow: visible; }
+/* Slides fill the viewport without changing it */
+.portfolio-carousel .carousel-inner,
+.portfolio-carousel .carousel-inner > .item { height: 100%; }
 .portfolio-carousel .carousel-inner > .item {
-  height: 100%;
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #fafafa;
 }
 
-/* Natural aspect (no crop/zoom by default) */
+/* Images are contained (no crop, no stretch) */
 .portfolio-carousel .carousel-inner > .item img {
-  max-height: 100%; width: auto; height: auto; object-fit: contain;
-  display: block; margin: 0 auto; border-radius: 6px;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0,0,0,.08);
   transition: transform .2s ease, box-shadow .2s ease;
   transform-origin: center center;
 }
 
-/* Zoom wrapper allows pop-out beyond the frame */
-.zoom-wrap { display: inline-block; position: relative; overflow: visible; }
-.zoom-wrap:hover img, .zoom-wrap:focus img {
-  transform: scale(1.6);
+/* Gentle zoom that does not overflow layout */
+.zoom-wrap {
+  display: inline-block;
+  position: relative;
+  overflow: hidden; /* prevent zoom from spilling and growing the page */
+}
+.zoom-wrap:hover img,
+.zoom-wrap:focus img {
+  transform: scale(1.15);
   box-shadow: 0 8px 24px rgba(0,0,0,.25);
-  z-index: 5;
+  z-index: 1;
 }
 
-/* Caption stays readable */
+/* Caption overlays; never pushes height */
 .portfolio-carousel .carousel-caption {
   background: rgba(0,0,0,0.45);
   border-radius: 6px;
   padding: 8px 12px;
   bottom: 16px;
-  z-index: 6;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  max-width: 85%;
+  z-index: 2;
 }
 
 /* Controls accessibility focus ring */
@@ -59,6 +90,14 @@ youtube-url:
 
 /* Tabs */
 .nav-tabs > li > a { padding: 10px 15px; }
+
+/* Small screens: slightly shorter viewport */
+@media (max-width: 767px) {
+  .portfolio-carousel {
+    height: 54vh;
+    min-height: 300px;
+  }
+}
 </style>
 
 {% capture markdown %}
@@ -112,27 +151,27 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
 <!-- Tabs -->
 <ul class="nav nav-tabs nav-justified" role="tablist" style="margin-top:10px;">
   <li role="presentation" class="active">
-    <a href="#platinum-access" aria-controls="platinum-access" role="tab" data-toggle="tab">Access (Data Layer)</a>
+    <a href="#{{ page.modal-id }}-access" aria-controls="{{ page.modal-id }}-access" role="tab" data-toggle="tab">Access (Data Layer)</a>
   </li>
   <li role="presentation">
-    <a href="#platinum-powerbi" aria-controls="platinum-powerbi" role="tab" data-toggle="tab">Power BI (Reporting Layer)</a>
+    <a href="#{{ page.modal-id }}-powerbi" aria-controls="{{ page.modal-id }}-powerbi" role="tab" data-toggle="tab">Power BI (Reporting Layer)</a>
   </li>
 </ul>
 
 <div class="tab-content" style="margin-top:15px;">
 
   <!-- ACCESS CAROUSEL -->
-  <div role="tabpanel" class="tab-pane fade in active" id="platinum-access">
+  <div role="tabpanel" class="tab-pane fade in active" id="{{ page.modal-id }}-access">
     <h4 class="text-center">Microsoft Access (Data Layer)</h4>
-    <div id="carousel-access" class="carousel slide portfolio-carousel" aria-label="Microsoft Access slides">
+    <div id="{{ page.modal-id }}-carousel-access" class="carousel slide portfolio-carousel" aria-label="Microsoft Access slides">
       <ol class="carousel-indicators">
-        <li data-target="#carousel-access" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-access" data-slide-to="1"></li>
-        <li data-target="#carousel-access" data-slide-to="2"></li>
-        <li data-target="#carousel-access" data-slide-to="3"></li>
+        <li data-target="#{{ page.modal-id }}-carousel-access" data-slide-to="0" class="active"></li>
+        <li data-target="#{{ page.modal-id }}-carousel-access" data-slide-to="1"></li>
+        <li data-target="#{{ page.modal-id }}-carousel-access" data-slide-to="2"></li>
+        <li data-target="#{{ page.modal-id }}-carousel-access" data-slide-to="3"></li>
       </ol>
 
-  <div class="carousel-inner" role="listbox">
+      <div class="carousel-inner" role="listbox">
         <div class="item active">
           <a class="zoom-wrap" href="img/portfolio/pscs/pscs_access_frm_1.png" target="_blank" rel="noopener">
             <img src="img/portfolio/pscs/pscs_access_frm_1.png" alt="Access data-entry form for Visits" class="img-responsive">
@@ -159,27 +198,27 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
         </div>
       </div>
 
-      <a class="left carousel-control" href="#carousel-access" role="button" data-slide="prev" aria-label="Previous slide">
+      <a class="left carousel-control" href="#{{ page.modal-id }}-carousel-access" role="button" data-slide="prev" aria-label="Previous slide">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
       </a>
-      <a class="right carousel-control" href="#carousel-access" role="button" data-slide="next" aria-label="Next slide">
+      <a class="right carousel-control" href="#{{ page.modal-id }}-carousel-access" role="button" data-slide="next" aria-label="Next slide">
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
       </a>
     </div>
   </div>
 
   <!-- POWER BI CAROUSEL -->
-  <div role="tabpanel" class="tab-pane fade" id="platinum-powerbi">
+  <div role="tabpanel" class="tab-pane fade" id="{{ page.modal-id }}-powerbi">
     <h4 class="text-center">Power BI (Reporting Layer)</h4>
-    <div id="carousel-powerbi" class="carousel slide portfolio-carousel" aria-label="Power BI slides">
+    <div id="{{ page.modal-id }}-carousel-powerbi" class="carousel slide portfolio-carousel" aria-label="Power BI slides">
       <ol class="carousel-indicators">
-        <li data-target="#carousel-powerbi" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-powerbi" data-slide-to="1"></li>
-        <li data-target="#carousel-powerbi" data-slide-to="2"></li>
-        <li data-target="#carousel-powerbi" data-slide-to="3"></li>
+        <li data-target="#{{ page.modal-id }}-carousel-powerbi" data-slide-to="0" class="active"></li>
+        <li data-target="#{{ page.modal-id }}-carousel-powerbi" data-slide-to="1"></li>
+        <li data-target="#{{ page.modal-id }}-carousel-powerbi" data-slide-to="2"></li>
+        <li data-target="#{{ page.modal-id }}-carousel-powerbi" data-slide-to="3"></li>
       </ol>
 
-  <div class="carousel-inner" role="listbox">
+      <div class="carousel-inner" role="listbox">
         <div class="item active">
           <a class="zoom-wrap" href="img/portfolio/pscs/pscs_powerbi_import_1.png" target="_blank" rel="noopener">
             <img src="img/portfolio/pscs/pscs_powerbi_import_1.png" alt="Power BI get data dialog with Access connector selected" class="img-responsive">
@@ -206,10 +245,10 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
         </div>
       </div>
 
-      <a class="left carousel-control" href="#carousel-powerbi" role="button" data-slide="prev" aria-label="Previous slide">
+      <a class="left carousel-control" href="#{{ page.modal-id }}-carousel-powerbi" role="button" data-slide="prev" aria-label="Previous slide">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
       </a>
-      <a class="right carousel-control" href="#carousel-powerbi" role="button" data-slide="next" aria-label="Next slide">
+      <a class="right carousel-control" href="#{{ page.modal-id }}-carousel-powerbi" role="button" data-slide="next" aria-label="Next slide">
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
       </a>
     </div>
@@ -220,7 +259,11 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
 <!-- JS helper to pause non-visible carousels and resume active -->
 <script>
   (function ($) {
-    var ids = ['#carousel-access', '#carousel-powerbi'];
+    // Carousels in this modal
+    var ids = [
+      '#{{ page.modal-id }}-carousel-access',
+      '#{{ page.modal-id }}-carousel-powerbi'
+    ];
     var $cars = $(ids.join(','));
 
     // Initialize once (no repeated ride triggers)
@@ -231,22 +274,40 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
       if ($el && $el.length) { $el.carousel('cycle'); }
     }
 
+    // Determine modal selector (common bootstrap portfolio templates use 'portfolioModal{{ id }}')
+    var modalSelPrimary = '#portfolioModal{{ page.modal-id | default: "project-platinum" }}';
+    var modalSelFallback = '#{{ page.modal-id | default: "project-platinum" }}';
+    var $modal = $(modalSelPrimary);
+    if (!$modal.length) { $modal = $(modalSelFallback); }
+
     // Start correct carousel when modal opens
-    $('#{{ page.modal-id | default: "project-platinum" }}').on('shown.bs.modal', function () {
-      var $active = $('.tab-pane.in.active').find('.carousel');
-      if (!$active.length) { $active = $('#platinum-access .carousel'); } // fallback
+    $modal.on('shown.bs.modal', function () {
+      var $active = $('.tab-pane.in.active', this).find('.carousel');
+      if (!$active.length) { $active = $('#{{ page.modal-id }}-access .carousel'); } // fallback
       cycleOnly($active);
+      // force a reflow so images recalc within the fixed viewport
+      $active.find('.item.active img').trigger('load');
     });
 
     // Pause all when modal closes
-    $('#{{ page.modal-id | default: "project-platinum" }}').on('hide.bs.modal', function () {
+    $modal.on('hide.bs.modal', function () {
       $cars.carousel('pause');
     });
 
     // Switch active carousel on tab change (no reset)
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    $('a[data-toggle="tab"][href^="#{{ page.modal-id }}-"]').on('shown.bs.tab', function (e) {
       var target = $(e.target).attr('href');
       cycleOnly($(target).find('.carousel'));
+    });
+
+    // Handle viewport changes (orientation / resize)
+    var resizeTimer;
+    $(window).on('resize', function(){
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function(){
+        // no-op: CSS handles height; this just nudges images to recalc
+        $('.portfolio-carousel .item.active img').each(function(){ this.style.transform = 'scale(1)'; });
+      }, 120);
     });
   })(jQuery);
 </script>
