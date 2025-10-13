@@ -13,47 +13,44 @@ github-url:
 youtube-url:
 ---
 
-<!-- Scoped styles for this post -->
+<!-- Scoped styles -->
 <style>
 /* Unified carousel appearance */
-.portfolio-carousel {
-  position: relative;
-  overflow: hidden;
-  padding-bottom: 28px; /* space for dots */
-}
+.portfolio-carousel { position: relative; overflow: visible; padding-bottom: 28px; }
+.portfolio-carousel .carousel-indicators { bottom: 6px; }
 
-/* Keep a fixed viewport for every slide (prevents jump) */
-.portfolio-carousel .carousel-inner { height: 520px; }
+/* Fixed viewport so slides don't jump */
+.portfolio-carousel .carousel-inner { height: 520px; overflow: visible; }
 .portfolio-carousel .carousel-inner > .item {
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   background: #fafafa;
 }
 
-/* Natural aspect (no crop/zoom) */
-.portfolio-carousel .carousel-inner > .item > img {
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-  border-radius: 6px;
+/* Natural aspect (no crop/zoom by default) */
+.portfolio-carousel .carousel-inner > .item img {
+  max-height: 100%; width: auto; height: auto; object-fit: contain;
+  display: block; margin: 0 auto; border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0,0,0,.08);
+  transition: transform .2s ease, box-shadow .2s ease;
+  transform-origin: center center;
 }
 
-/* Indicators stay inside the box */
-.portfolio-carousel .carousel-indicators { bottom: 6px; }
+/* Zoom wrapper allows pop-out beyond the frame */
+.zoom-wrap { display: inline-block; position: relative; overflow: visible; }
+.zoom-wrap:hover img, .zoom-wrap:focus img {
+  transform: scale(1.6);
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+  z-index: 5;
+}
 
-/* Ensure caption overlays correctly (not hidden by neighbors) */
+/* Caption stays readable */
 .portfolio-carousel .carousel-caption {
   background: rgba(0,0,0,0.45);
   border-radius: 6px;
   padding: 8px 12px;
   bottom: 16px;
-  z-index: 3;
+  z-index: 6;
 }
 
 /* Controls accessibility focus ring */
@@ -112,7 +109,7 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
 
 ### Screens / Media
 
-<!-- Tabs for Access and Power BI -->
+<!-- Tabs -->
 <ul class="nav nav-tabs nav-justified" role="tablist" style="margin-top:10px;">
   <li role="presentation" class="active">
     <a href="#platinum-access" aria-controls="platinum-access" role="tab" data-toggle="tab">Access (Data Layer)</a>
@@ -127,7 +124,7 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
   <!-- ACCESS CAROUSEL -->
   <div role="tabpanel" class="tab-pane fade in active" id="platinum-access">
     <h4 class="text-center">Microsoft Access (Data Layer)</h4>
-    <div id="carousel-access" class="carousel slide portfolio-carousel" data-ride="carousel" data-interval="6000" aria-label="Microsoft Access slides">
+    <div id="carousel-access" class="carousel slide portfolio-carousel" aria-label="Microsoft Access slides">
       <ol class="carousel-indicators">
         <li data-target="#carousel-access" data-slide-to="0" class="active"></li>
         <li data-target="#carousel-access" data-slide-to="1"></li>
@@ -135,21 +132,29 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
         <li data-target="#carousel-access" data-slide-to="3"></li>
       </ol>
 
-      <div class="carousel-inner" role="listbox">
+  <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img src="img/portfolio/pscs/pscs_access_frm_1.png" alt="Access data-entry form for Visits" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/pscs/pscs_access_frm_1.png" target="_blank" rel="noopener">
+            <img src="img/portfolio/pscs/pscs_access_frm_1.png" alt="Access data-entry form for Visits" class="img-responsive">
+          </a>
           <div class="carousel-caption">Form: Visit entry</div>
         </div>
         <div class="item">
-          <img src="img/portfolio/pscs/pscs_access_rel_1.png" alt="Access relationships diagram linking Clients, Staff, Schedules and Visits" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/pscs/pscs_access_rel_1.png" target="_blank" rel="noopener">
+            <img src="img/portfolio/pscs/pscs_access_rel_1.png" alt="Access relationships diagram linking Clients, Staff, Schedules and Visits" class="img-responsive">
+          </a>
           <div class="carousel-caption">Relationships</div>
         </div>
         <div class="item">
-          <img src="img/portfolio/pscs/pscs_access_tbl_1.png" alt="Access Visits table showing sample rows with durations and notes" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/pscs/pscs_access_tbl_1.png" target="_blank" rel="noopener">
+            <img src="img/portfolio/pscs/pscs_access_tbl_1.png" alt="Access Visits table showing sample rows with durations and notes" class="img-responsive">
+          </a>
           <div class="carousel-caption">Table view</div>
         </div>
         <div class="item">
-          <img src="img/portfolio/pscs/pscs_access_val_1.png" alt="Access validation message enforcing minimum duration" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/pscs/pscs_access_val_1.png" target="_blank" rel="noopener">
+            <img src="img/portfolio/pscs/pscs_access_val_1.png" alt="Access validation message enforcing minimum duration" class="img-responsive">
+          </a>
           <div class="carousel-caption">Validation rule</div>
         </div>
       </div>
@@ -166,7 +171,7 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
   <!-- POWER BI CAROUSEL -->
   <div role="tabpanel" class="tab-pane fade" id="platinum-powerbi">
     <h4 class="text-center">Power BI (Reporting Layer)</h4>
-    <div id="carousel-powerbi" class="carousel slide portfolio-carousel" data-ride="carousel" data-interval="6000" aria-label="Power BI slides">
+    <div id="carousel-powerbi" class="carousel slide portfolio-carousel" aria-label="Power BI slides">
       <ol class="carousel-indicators">
         <li data-target="#carousel-powerbi" data-slide-to="0" class="active"></li>
         <li data-target="#carousel-powerbi" data-slide-to="1"></li>
@@ -174,21 +179,29 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
         <li data-target="#carousel-powerbi" data-slide-to="3"></li>
       </ol>
 
-      <div class="carousel-inner" role="listbox">
+  <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img src="img/portfolio/pscs/pscs_powerbi_import_1.png" alt="Power BI get data dialog with Access connector selected" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/pscs/pscs_powerbi_import_1.png" target="_blank" rel="noopener">
+            <img src="img/portfolio/pscs/pscs_powerbi_import_1.png" alt="Power BI get data dialog with Access connector selected" class="img-responsive">
+          </a>
           <div class="carousel-caption">Import (Access)</div>
         </div>
         <div class="item">
-          <img src="img/portfolio/pscs/pscs_powerbi_pq_1.png" alt="Power Query editor preview of the Training table" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/pscs/pscs_powerbi_pq_1.png" target="_blank" rel="noopener">
+            <img src="img/portfolio/pscs/pscs_powerbi_pq_1.png" alt="Power Query editor preview of the Training table" class="img-responsive">
+          </a>
           <div class="carousel-caption">Power Query</div>
         </div>
         <div class="item">
-          <img src="img/portfolio/pscs/pscs_powerbi_rel_1.png" alt="Power BI data model showing relationships between fact and dimension tables" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/pscs/pscs_powerbi_rel_1.png" target="_blank" rel="noopener">
+            <img src="img/portfolio/pscs/pscs_powerbi_rel_1.png" alt="Power BI data model showing relationships between fact and dimension tables" class="img-responsive">
+          </a>
           <div class="carousel-caption">Data model</div>
         </div>
         <div class="item">
-          <img src="img/portfolio/pscs/pscs_powerbi_vis_1.png" alt="Power BI KPI visuals showing visits, average duration and completions" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/pscs/pscs_powerbi_vis_1.png" target="_blank" rel="noopener">
+            <img src="img/portfolio/pscs/pscs_powerbi_vis_1.png" alt="Power BI KPI visuals showing visits, average duration and completions" class="img-responsive">
+          </a>
           <div class="carousel-caption">KPI dashboard</div>
         </div>
       </div>
@@ -207,22 +220,33 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
 <!-- JS helper to pause non-visible carousels and resume active -->
 <script>
   (function ($) {
-    // Ensure jQuery + Bootstrap JS are loaded globally (in your layout).
-    // Start Access carousel when the modal opens
+    var ids = ['#carousel-access', '#carousel-powerbi'];
+    var $cars = $(ids.join(','));
+
+    // Initialize once (no repeated ride triggers)
+    $cars.carousel({ interval: 6000, pause: 'hover', wrap: true });
+
+    function cycleOnly($el) {
+      $cars.carousel('pause');
+      if ($el && $el.length) { $el.carousel('cycle'); }
+    }
+
+    // Start correct carousel when modal opens
     $('#{{ page.modal-id | default: "project-platinum" }}').on('shown.bs.modal', function () {
-      $('#carousel-access').carousel('cycle');
+      var $active = $('.tab-pane.in.active').find('.carousel');
+      if (!$active.length) { $active = $('#platinum-access .carousel'); } // fallback
+      cycleOnly($active);
     });
 
-    // Pause all on modal close
+    // Pause all when modal closes
     $('#{{ page.modal-id | default: "project-platinum" }}').on('hide.bs.modal', function () {
-      $('#carousel-access, #carousel-powerbi').carousel('pause');
+      $cars.carousel('pause');
     });
 
-    // On tab switch: pause both, then cycle the visible one
+    // Switch active carousel on tab change (no reset)
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-      $('#carousel-access, #carousel-powerbi').carousel('pause');
-      var target = $(e.target).attr('href'); // '#platinum-access' or '#platinum-powerbi'
-      $(target).find('.carousel').carousel('cycle');
+      var target = $(e.target).attr('href');
+      cycleOnly($(target).find('.carousel'));
     });
   })(jQuery);
 </script>

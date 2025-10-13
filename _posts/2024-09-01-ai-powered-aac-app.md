@@ -80,7 +80,7 @@ React, React Native, TensorFlow.js, Firebase (Auth/Firestore/Hosting), Tailwind,
   <!-- WEB APP -->
   <div role="tabpanel" class="tab-pane fade in active" id="aac-web">
     <h4 class="text-center">Web App Dashboard &amp; Admin</h4>
-    <div id="carousel-aac-web" class="carousel slide portfolio-carousel" data-ride="carousel" data-interval="6000" aria-label="Web App screenshots">
+    <div id="carousel-aac-web" class="carousel slide portfolio-carousel" aria-label="Web App screenshots">
       <ol class="carousel-indicators">
         <li data-target="#carousel-aac-web" data-slide-to="0" class="active"></li>
         <li data-target="#carousel-aac-web" data-slide-to="1"></li>
@@ -92,37 +92,53 @@ React, React Native, TensorFlow.js, Firebase (Auth/Firestore/Hosting), Tailwind,
         <li data-target="#carousel-aac-web" data-slide-to="7"></li>
       </ol>
 
-      <div class="carousel-inner" role="listbox">
+  <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img src="img/portfolio/aac-ai/admin_dashboard.png" alt="Admin Dashboard" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/aac-ai/admin_dashboard.png" target="_blank" rel="noopener">
+            <img src="img/portfolio/aac-ai/admin_dashboard.png" alt="Admin Dashboard" class="img-responsive">
+          </a>
           <div class="carousel-caption"><h4>Admin Dashboard</h4></div>
         </div>
         <div class="item">
-          <img src="img/portfolio/aac-ai/CaregiverDashboard.png" alt="Caregiver Dashboard" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/aac-ai/CaregiverDashboard.png" target="_blank" rel="noopener">
+            <img src="img/portfolio/aac-ai/CaregiverDashboard.png" alt="Caregiver Dashboard" class="img-responsive">
+          </a>
           <div class="carousel-caption"><h4>Caregiver Dashboard</h4></div>
         </div>
         <div class="item">
-          <img src="img/portfolio/aac-ai/manage_caregivers.png" alt="Manage Caregivers" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/aac-ai/manage_caregivers.png" target="_blank" rel="noopener">
+            <img src="img/portfolio/aac-ai/manage_caregivers.png" alt="Manage Caregivers" class="img-responsive">
+          </a>
           <div class="carousel-caption"><h4>Manage Caregivers</h4></div>
         </div>
         <div class="item">
-          <img src="img/portfolio/aac-ai/user_management.png" alt="User Management" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/aac-ai/user_management.png" target="_blank" rel="noopener">
+            <img src="img/portfolio/aac-ai/user_management.png" alt="User Management" class="img-responsive">
+          </a>
           <div class="carousel-caption"><h4>User Management</h4></div>
         </div>
         <div class="item">
-          <img src="img/portfolio/aac-ai/voice_dashboard_login.png" alt="Dashboard Login" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/aac-ai/voice_dashboard_login.png" target="_blank" rel="noopener">
+            <img src="img/portfolio/aac-ai/voice_dashboard_login.png" alt="Dashboard Login" class="img-responsive">
+          </a>
           <div class="carousel-caption"><h4>Dashboard Login</h4></div>
         </div>
         <div class="item">
-          <img src="img/portfolio/aac-ai/Webapp_Signup.png" alt="Web App Signup" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/aac-ai/Webapp_Signup.png" target="_blank" rel="noopener">
+            <img src="img/portfolio/aac-ai/Webapp_Signup.png" alt="Web App Signup" class="img-responsive">
+          </a>
           <div class="carousel-caption"><h4>Web App Signup</h4></div>
         </div>
         <div class="item">
-          <img src="img/portfolio/aac-ai/CLI_webapp.png" alt="CLI Build Output" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/aac-ai/CLI_webapp.png" target="_blank" rel="noopener">
+            <img src="img/portfolio/aac-ai/CLI_webapp.png" alt="CLI Build Output" class="img-responsive">
+          </a>
           <div class="carousel-caption"><h4>CLI Build Output</h4></div>
         </div>
         <div class="item">
-          <img src="img/portfolio/aac-ai/ExpoGo_CLI.png" alt="Expo CLI" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/aac-ai/ExpoGo_CLI.png" target="_blank" rel="noopener">
+            <img src="img/portfolio/aac-ai/ExpoGo_CLI.png" alt="Expo CLI" class="img-responsive">
+          </a>
           <div class="carousel-caption"><h4>Expo CLI</h4></div>
         </div>
       </div>
@@ -139,7 +155,7 @@ React, React Native, TensorFlow.js, Firebase (Auth/Firestore/Hosting), Tailwind,
   <!-- MOBILE APP -->
   <div role="tabpanel" class="tab-pane fade" id="aac-mobile">
     <h4 class="text-center">Mobile App Screens</h4>
-    <div id="carousel-aac-mobile" class="carousel slide portfolio-carousel" data-ride="carousel" data-interval="6000" aria-label="Mobile App screenshots">
+    <div id="carousel-aac-mobile" class="carousel slide portfolio-carousel" aria-label="Mobile App screenshots">
       <ol class="carousel-indicators">
         <li data-target="#carousel-aac-mobile" data-slide-to="0" class="active"></li>
         <li data-target="#carousel-aac-mobile" data-slide-to="1"></li>
@@ -152,41 +168,59 @@ React, React Native, TensorFlow.js, Firebase (Auth/Firestore/Hosting), Tailwind,
         <li data-target="#carousel-aac-mobile" data-slide-to="8"></li>
       </ol>
 
-      <div class="carousel-inner" role="listbox">
+  <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img src="img/portfolio/aac-ai/login_mobile.jpg" alt="Login (Mobile)" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/aac-ai/login_mobile.jpg" target="_blank" rel="noopener">
+            <img src="img/portfolio/aac-ai/login_mobile.jpg" alt="Login (Mobile)" class="img-responsive">
+          </a>
           <div class="carousel-caption"><h4>Login</h4></div>
         </div>
         <div class="item">
-          <img src="img/portfolio/aac-ai/signup_mobile.jpg" alt="Signup (Mobile)" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/aac-ai/signup_mobile.jpg" target="_blank" rel="noopener">
+            <img src="img/portfolio/aac-ai/signup_mobile.jpg" alt="Signup (Mobile)" class="img-responsive">
+          </a>
           <div class="carousel-caption"><h4>Signup</h4></div>
         </div>
         <div class="item">
-          <img src="img/portfolio/aac-ai/sentencebuilderscreen_mobile.jpg" alt="Sentence Builder (Mobile)" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/aac-ai/sentencebuilderscreen_mobile.jpg" target="_blank" rel="noopener">
+            <img src="img/portfolio/aac-ai/sentencebuilderscreen_mobile.jpg" alt="Sentence Builder (Mobile)" class="img-responsive">
+          </a>
           <div class="carousel-caption"><h4>Sentence Builder</h4></div>
         </div>
         <div class="item">
-          <img src="img/portfolio/aac-ai/EmotionScreen_mobile.jpg" alt="Emotion Screen" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/aac-ai/EmotionScreen_mobile.jpg" target="_blank" rel="noopener">
+            <img src="img/portfolio/aac-ai/EmotionScreen_mobile.jpg" alt="Emotion Screen" class="img-responsive">
+          </a>
           <div class="carousel-caption"><h4>Emotion Screen</h4></div>
         </div>
         <div class="item">
-          <img src="img/portfolio/aac-ai/pictograms_mobile.jpg" alt="Pictogram Grid" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/aac-ai/pictograms_mobile.jpg" target="_blank" rel="noopener">
+            <img src="img/portfolio/aac-ai/pictograms_mobile.jpg" alt="Pictogram Grid" class="img-responsive">
+          </a>
           <div class="carousel-caption"><h4>Pictogram Grid</h4></div>
         </div>
         <div class="item">
-          <img src="img/portfolio/aac-ai/CameraScreen_mobile.jpg" alt="Camera Captioning" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/aac-ai/CameraScreen_mobile.jpg" target="_blank" rel="noopener">
+            <img src="img/portfolio/aac-ai/CameraScreen_mobile.jpg" alt="Camera Captioning" class="img-responsive">
+          </a>
           <div class="carousel-caption"><h4>Camera Captioning</h4></div>
         </div>
         <div class="item">
-          <img src="img/portfolio/aac-ai/LiveSceneModeScreen_mobile.jpg" alt="Live Scene Mode" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/aac-ai/LiveSceneModeScreen_mobile.jpg" target="_blank" rel="noopener">
+            <img src="img/portfolio/aac-ai/LiveSceneModeScreen_mobile.jpg" alt="Live Scene Mode" class="img-responsive">
+          </a>
           <div class="carousel-caption"><h4>Live Scene Mode</h4></div>
         </div>
         <div class="item">
-          <img src="img/portfolio/aac-ai/profilescreen.jpg" alt="Profile &amp; Settings" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/aac-ai/profilescreen.jpg" target="_blank" rel="noopener">
+            <img src="img/portfolio/aac-ai/profilescreen.jpg" alt="Profile &amp; Settings" class="img-responsive">
+          </a>
           <div class="carousel-caption"><h4>Profile &amp; Settings</h4></div>
         </div>
         <div class="item">
-          <img src="img/portfolio/aac-ai/loading_screen_mobile.jpg" alt="Loading Screen" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/aac-ai/loading_screen_mobile.jpg" target="_blank" rel="noopener">
+            <img src="img/portfolio/aac-ai/loading_screen_mobile.jpg" alt="Loading Screen" class="img-responsive">
+          </a>
           <div class="carousel-caption"><h4>Loading Screen</h4></div>
         </div>
       </div>
@@ -203,7 +237,7 @@ React, React Native, TensorFlow.js, Firebase (Auth/Firestore/Hosting), Tailwind,
   <!-- FIREBASE -->
   <div role="tabpanel" class="tab-pane fade" id="aac-firebase">
     <h4 class="text-center">Firebase Backend &amp; Data</h4>
-    <div id="carousel-aac-firebase" class="carousel slide portfolio-carousel" data-ride="carousel" data-interval="6000" aria-label="Firebase screenshots">
+    <div id="carousel-aac-firebase" class="carousel slide portfolio-carousel" aria-label="Firebase screenshots">
       <ol class="carousel-indicators">
         <li data-target="#carousel-aac-firebase" data-slide-to="0" class="active"></li>
         <li data-target="#carousel-aac-firebase" data-slide-to="1"></li>
@@ -213,29 +247,41 @@ React, React Native, TensorFlow.js, Firebase (Auth/Firestore/Hosting), Tailwind,
         <li data-target="#carousel-aac-firebase" data-slide-to="5"></li>
       </ol>
 
-      <div class="carousel-inner" role="listbox">
+  <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img src="img/portfolio/aac-ai/firebase_auth.png" alt="Firebase Authentication" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/aac-ai/firebase_auth.png" target="_blank" rel="noopener">
+            <img src="img/portfolio/aac-ai/firebase_auth.png" alt="Firebase Authentication" class="img-responsive">
+          </a>
           <div class="carousel-caption"><h4>Firebase Authentication</h4></div>
         </div>
         <div class="item">
-          <img src="img/portfolio/aac-ai/firebase_database.png" alt="Firebase Realtime Database" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/aac-ai/firebase_database.png" target="_blank" rel="noopener">
+            <img src="img/portfolio/aac-ai/firebase_database.png" alt="Firebase Realtime Database" class="img-responsive">
+          </a>
           <div class="carousel-caption"><h4>Realtime Database</h4></div>
         </div>
         <div class="item">
-          <img src="img/portfolio/aac-ai/realtimedatabase_rules.png" alt="Realtime Database Rules" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/aac-ai/realtimedatabase_rules.png" target="_blank" rel="noopener">
+            <img src="img/portfolio/aac-ai/realtimedatabase_rules.png" alt="Realtime Database Rules" class="img-responsive">
+          </a>
           <div class="carousel-caption"><h4>Realtime DB Rules</h4></div>
         </div>
         <div class="item">
-          <img src="img/portfolio/aac-ai/userlogs_firebase.png" alt="User Logs Node" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/aac-ai/userlogs_firebase.png" target="_blank" rel="noopener">
+            <img src="img/portfolio/aac-ai/userlogs_firebase.png" alt="User Logs Node" class="img-responsive">
+          </a>
           <div class="carousel-caption"><h4>User Logs</h4></div>
         </div>
         <div class="item">
-          <img src="img/portfolio/aac-ai/users_firebase.png" alt="Users Node" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/aac-ai/users_firebase.png" target="_blank" rel="noopener">
+            <img src="img/portfolio/aac-ai/users_firebase.png" alt="Users Node" class="img-responsive">
+          </a>
           <div class="carousel-caption"><h4>Users</h4></div>
         </div>
         <div class="item">
-          <img src="img/portfolio/aac-ai/caregivers_firebase.png" alt="Caregivers Node" class="img-responsive">
+          <a class="zoom-wrap" href="img/portfolio/aac-ai/caregivers_firebase.png" target="_blank" rel="noopener">
+            <img src="img/portfolio/aac-ai/caregivers_firebase.png" alt="Caregivers Node" class="img-responsive">
+          </a>
           <div class="carousel-caption"><h4>Caregivers</h4></div>
         </div>
       </div>
@@ -251,25 +297,34 @@ React, React Native, TensorFlow.js, Firebase (Auth/Firestore/Hosting), Tailwind,
 
 </div>
 
-<!-- Uniform slide sizing + caption legibility -->
+<!-- Uniform slide sizing + readable zoom -->
 <style>
 /* Fixed viewport so slides don't jump */
-.portfolio-carousel { position: relative; padding-bottom: 28px; overflow: hidden; }
-.portfolio-carousel .carousel-inner { height: 520px; }
+.portfolio-carousel { position: relative; padding-bottom: 28px; overflow: visible; }
+.portfolio-carousel .carousel-inner { height: 520px; overflow: visible; }
 .portfolio-carousel .carousel-inner > .item {
   height: 100%;
   display: flex; align-items: center; justify-content: center;
   background: #fafafa;
 }
-/* No crop/zoom, keep aspect */
-.portfolio-carousel .carousel-inner > .item > img {
+/* No crop/zoom, keep aspect; enable smooth hover zoom via wrapper */
+.portfolio-carousel .carousel-inner > .item img {
   max-height: 100%; width: auto; height: auto; object-fit: contain;
   display: block; margin: 0 auto; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,.08);
+  transition: transform .2s ease, box-shadow .2s ease;
+  transform-origin: center center;
+}
+/* Zoom wrapper allows pop-out beyond the frame */
+.zoom-wrap { display: inline-block; position: relative; overflow: visible; }
+.zoom-wrap:hover img, .zoom-wrap:focus img {
+  transform: scale(1.6);
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+  z-index: 5;
 }
 /* Indicators & captions */
 .portfolio-carousel .carousel-indicators { bottom: 6px; }
 .portfolio-carousel .carousel-caption {
-  background: rgba(0,0,0,0.45); border-radius: 6px; padding: 8px 12px; bottom: 16px; z-index: 3;
+  background: rgba(0,0,0,0.45); border-radius: 6px; padding: 8px 12px; bottom: 16px; z-index: 6;
 }
 /* Controls focus ring */
 .portfolio-carousel .left.carousel-control:focus,
@@ -278,24 +333,36 @@ React, React Native, TensorFlow.js, Firebase (Auth/Firestore/Hosting), Tailwind,
 .nav-tabs > li > a { padding: 10px 15px; }
 </style>
 
-<!-- Pause hidden carousels; cycle the active one -->
+<!-- Init once; pause hidden; cycle active (prevents reset to slide 1) -->
 <script>
   (function ($) {
-    // Start Web carousel when the modal opens
+    var ids = ['#carousel-aac-web', '#carousel-aac-mobile', '#carousel-aac-firebase'];
+    var $cars = $(ids.join(','));
+
+    // Initialize once (no data-ride attribute to avoid re-triggers)
+    $cars.carousel({ interval: 6000, pause: 'hover', wrap: true });
+
+    function cycleOnly($el) {
+      $cars.carousel('pause');
+      if ($el && $el.length) { $el.carousel('cycle'); }
+    }
+
+    // When the modal opens, cycle whichever tab pane is visible
     $('#{{ page.modal-id | default: "project-aac-ai" }}').on('shown.bs.modal', function () {
-      $('#carousel-aac-web').carousel('cycle');
+      var $active = $('.tab-pane.in.active').find('.carousel');
+      if (!$active.length) { $active = $('#aac-web .carousel'); } // fallback
+      cycleOnly($active);
     });
 
     // Pause all when the modal closes
     $('#{{ page.modal-id | default: "project-aac-ai" }}').on('hide.bs.modal', function () {
-      $('#carousel-aac-web, #carousel-aac-mobile, #carousel-aac-firebase').carousel('pause');
+      $cars.carousel('pause');
     });
 
-    // On tab change: pause others, cycle current
+    // On tab change: don't re-init; just switch which one cycles
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-      $('#carousel-aac-web, #carousel-aac-mobile, #carousel-aac-firebase').carousel('pause');
       var target = $(e.target).attr('href'); // '#aac-web' | '#aac-mobile' | '#aac-firebase'
-      $(target).find('.carousel').carousel('cycle');
+      cycleOnly($(target).find('.carousel'));
     });
   })(jQuery);
 </script>
