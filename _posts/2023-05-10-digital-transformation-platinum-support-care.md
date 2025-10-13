@@ -18,52 +18,50 @@ youtube-url:
 /* Unified carousel appearance */
 .portfolio-carousel {
   position: relative;
-  padding-bottom: 28px;
-  overflow: visible;
+  overflow: hidden;
+  padding-bottom: 28px; /* space for dots */
 }
 
-.portfolio-carousel .carousel-indicators {
-  bottom: 6px;
-}
-
-/* Let each slide adapt to image height */
+/* Keep a fixed viewport for every slide (prevents jump) */
+.portfolio-carousel .carousel-inner { height: 520px; }
 .portfolio-carousel .carousel-inner > .item {
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fafafa; /* subtle neutral background */
-  min-height: 320px;   /* prevents jump on small images */
+  background: #fafafa;
 }
 
-/* Keep natural aspect ratio (no zooming or cropping) */
+/* Natural aspect (no crop/zoom) */
 .portfolio-carousel .carousel-inner > .item > img {
-  max-height: 520px;   /* limit max vertical size */
+  max-height: 100%;
   width: auto;
   height: auto;
-  object-fit: contain; /* ensures full image visible */
+  object-fit: contain;
   display: block;
   margin: 0 auto;
   border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0,0,0,.08);
 }
 
-.portfolio-carousel,
-.portfolio-carousel .carousel-inner,
-.portfolio-carousel .carousel-control,
-.portfolio-carousel .carousel-indicators {
-  z-index: 1;
+/* Indicators stay inside the box */
+.portfolio-carousel .carousel-indicators { bottom: 6px; }
+
+/* Ensure caption overlays correctly (not hidden by neighbors) */
+.portfolio-carousel .carousel-caption {
+  background: rgba(0,0,0,0.45);
+  border-radius: 6px;
+  padding: 8px 12px;
+  bottom: 16px;
+  z-index: 3;
 }
 
+/* Controls accessibility focus ring */
 .portfolio-carousel .left.carousel-control:focus,
 .portfolio-carousel .right.carousel-control:focus { outline: 2px solid #2c3e50; }
 
 /* Tabs */
 .nav-tabs > li > a { padding: 10px 15px; }
-.carousel-caption {
-  background: rgba(0,0,0,0.45);
-  border-radius: 6px;
-  padding: 8px 12px;
-}
 </style>
 
 {% capture markdown %}
@@ -129,7 +127,7 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
   <!-- ACCESS CAROUSEL -->
   <div role="tabpanel" class="tab-pane fade in active" id="platinum-access">
     <h4 class="text-center">Microsoft Access (Data Layer)</h4>
-    <div id="carousel-access" class="carousel slide portfolio-carousel" data-ride="carousel" aria-label="Microsoft Access slides">
+    <div id="carousel-access" class="carousel slide portfolio-carousel" data-ride="carousel" data-interval="6000" aria-label="Microsoft Access slides">
       <ol class="carousel-indicators">
         <li data-target="#carousel-access" data-slide-to="0" class="active"></li>
         <li data-target="#carousel-access" data-slide-to="1"></li>
@@ -137,7 +135,7 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
         <li data-target="#carousel-access" data-slide-to="3"></li>
       </ol>
 
-  <div class="carousel-inner" role="listbox">
+      <div class="carousel-inner" role="listbox">
         <div class="item active">
           <img src="img/portfolio/pscs/pscs_access_frm_1.png" alt="Access data-entry form for Visits" class="img-responsive">
           <div class="carousel-caption">Form: Visit entry</div>
@@ -156,7 +154,7 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
         </div>
       </div>
 
-  <a class="left carousel-control" href="#carousel-access" role="button" data-slide="prev" aria-label="Previous slide">
+      <a class="left carousel-control" href="#carousel-access" role="button" data-slide="prev" aria-label="Previous slide">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
       </a>
       <a class="right carousel-control" href="#carousel-access" role="button" data-slide="next" aria-label="Next slide">
@@ -168,7 +166,7 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
   <!-- POWER BI CAROUSEL -->
   <div role="tabpanel" class="tab-pane fade" id="platinum-powerbi">
     <h4 class="text-center">Power BI (Reporting Layer)</h4>
-    <div id="carousel-powerbi" class="carousel slide portfolio-carousel" data-ride="carousel" aria-label="Power BI slides">
+    <div id="carousel-powerbi" class="carousel slide portfolio-carousel" data-ride="carousel" data-interval="6000" aria-label="Power BI slides">
       <ol class="carousel-indicators">
         <li data-target="#carousel-powerbi" data-slide-to="0" class="active"></li>
         <li data-target="#carousel-powerbi" data-slide-to="1"></li>
@@ -176,7 +174,7 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
         <li data-target="#carousel-powerbi" data-slide-to="3"></li>
       </ol>
 
-  <div class="carousel-inner" role="listbox">
+      <div class="carousel-inner" role="listbox">
         <div class="item active">
           <img src="img/portfolio/pscs/pscs_powerbi_import_1.png" alt="Power BI get data dialog with Access connector selected" class="img-responsive">
           <div class="carousel-caption">Import (Access)</div>
@@ -195,7 +193,7 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
         </div>
       </div>
 
-  <a class="left carousel-control" href="#carousel-powerbi" role="button" data-slide="prev" aria-label="Previous slide">
+      <a class="left carousel-control" href="#carousel-powerbi" role="button" data-slide="prev" aria-label="Previous slide">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
       </a>
       <a class="right carousel-control" href="#carousel-powerbi" role="button" data-slide="next" aria-label="Next slide">
@@ -208,22 +206,23 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
 
 <!-- JS helper to pause non-visible carousels and resume active -->
 <script>
-  (function () {
-    // start Access carousel when modal opens
+  (function ($) {
+    // Ensure jQuery + Bootstrap JS are loaded globally (in your layout).
+    // Start Access carousel when the modal opens
     $('#{{ page.modal-id | default: "project-platinum" }}').on('shown.bs.modal', function () {
       $('#carousel-access').carousel('cycle');
     });
 
-    // pause all on modal close
+    // Pause all on modal close
     $('#{{ page.modal-id | default: "project-platinum" }}').on('hide.bs.modal', function () {
       $('#carousel-access, #carousel-powerbi').carousel('pause');
     });
 
-    // pause others on tab switch, cycle current one
+    // On tab switch: pause both, then cycle the visible one
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
       $('#carousel-access, #carousel-powerbi').carousel('pause');
-      var target = $(e.target).attr('href');
+      var target = $(e.target).attr('href'); // '#platinum-access' or '#platinum-powerbi'
       $(target).find('.carousel').carousel('cycle');
     });
-  })();
+  })(jQuery);
 </script>
