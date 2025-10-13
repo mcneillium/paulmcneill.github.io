@@ -26,23 +26,21 @@ youtube-url:
   bottom: 6px;
 }
 
+/* Let each slide adapt to image height */
 .portfolio-carousel .carousel-inner > .item {
-  height: 520px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa; /* subtle neutral background */
+  min-height: 320px;   /* prevents jump on small images */
 }
 
+/* Keep natural aspect ratio (no zooming or cropping) */
 .portfolio-carousel .carousel-inner > .item > img {
-  max-height: 100%;
+  max-height: 520px;   /* limit max vertical size */
   width: auto;
   height: auto;
+  object-fit: contain; /* ensures full image visible */
   display: block;
   margin: 0 auto;
   border-radius: 6px;
@@ -139,7 +137,7 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
         <li data-target="#carousel-access" data-slide-to="3"></li>
       </ol>
 
-      <div class="carousel-inner" role="listbox">
+  <div class="carousel-inner" role="listbox">
         <div class="item active">
           <img src="img/portfolio/pscs/pscs_access_frm_1.png" alt="Access data-entry form for Visits" class="img-responsive">
           <div class="carousel-caption">Form: Visit entry</div>
@@ -158,7 +156,7 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
         </div>
       </div>
 
-      <a class="left carousel-control" href="#carousel-access" role="button" data-slide="prev" aria-label="Previous slide">
+  <a class="left carousel-control" href="#carousel-access" role="button" data-slide="prev" aria-label="Previous slide">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
       </a>
       <a class="right carousel-control" href="#carousel-access" role="button" data-slide="next" aria-label="Next slide">
@@ -178,7 +176,7 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
         <li data-target="#carousel-powerbi" data-slide-to="3"></li>
       </ol>
 
-      <div class="carousel-inner" role="listbox">
+  <div class="carousel-inner" role="listbox">
         <div class="item active">
           <img src="img/portfolio/pscs/pscs_powerbi_import_1.png" alt="Power BI get data dialog with Access connector selected" class="img-responsive">
           <div class="carousel-caption">Import (Access)</div>
@@ -197,7 +195,7 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
         </div>
       </div>
 
-      <a class="left carousel-control" href="#carousel-powerbi" role="button" data-slide="prev" aria-label="Previous slide">
+  <a class="left carousel-control" href="#carousel-powerbi" role="button" data-slide="prev" aria-label="Previous slide">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
       </a>
       <a class="right carousel-control" href="#carousel-powerbi" role="button" data-slide="next" aria-label="Next slide">

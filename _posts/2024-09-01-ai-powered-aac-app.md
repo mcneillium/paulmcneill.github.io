@@ -92,7 +92,7 @@ React, React Native, TensorFlow.js, Firebase (Auth/Firestore/Hosting), Tailwind,
         <li data-target="#carousel-aac-web" data-slide-to="7"></li>
       </ol>
 
-      <div class="carousel-inner" role="listbox">
+  <div class="carousel-inner" role="listbox">
         <div class="item active">
           <img src="img/portfolio/aac-ai/admin_dashboard.png" alt="Admin Dashboard">
           <div class="carousel-caption"><h4>Admin Dashboard</h4></div>
@@ -152,7 +152,7 @@ React, React Native, TensorFlow.js, Firebase (Auth/Firestore/Hosting), Tailwind,
         <li data-target="#carousel-aac-mobile" data-slide-to="8"></li>
       </ol>
 
-      <div class="carousel-inner" role="listbox">
+  <div class="carousel-inner" role="listbox">
         <div class="item active">
           <img src="img/portfolio/aac-ai/login_mobile.jpg" alt="Login (Mobile)">
           <div class="carousel-caption"><h4>Login</h4></div>
@@ -191,7 +191,7 @@ React, React Native, TensorFlow.js, Firebase (Auth/Firestore/Hosting), Tailwind,
         </div>
       </div>
 
-      <a class="left carousel-control" href="#carousel-aac-mobile" role="button" data-slide="prev" aria-label="Previous slide">
+  <a class="left carousel-control" href="#carousel-aac-mobile" role="button" data-slide="prev" aria-label="Previous slide">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
       </a>
       <a class="right carousel-control" href="#carousel-aac-mobile" role="button" data-slide="next" aria-label="Next slide">
@@ -213,7 +213,7 @@ React, React Native, TensorFlow.js, Firebase (Auth/Firestore/Hosting), Tailwind,
         <li data-target="#carousel-aac-firebase" data-slide-to="5"></li>
       </ol>
 
-      <div class="carousel-inner" role="listbox">
+  <div class="carousel-inner" role="listbox">
         <div class="item active">
           <img src="img/portfolio/aac-ai/firebase_auth.png" alt="Firebase Authentication">
           <div class="carousel-caption"><h4>Firebase Authentication</h4></div>
@@ -240,7 +240,7 @@ React, React Native, TensorFlow.js, Firebase (Auth/Firestore/Hosting), Tailwind,
         </div>
       </div>
 
-      <a class="left carousel-control" href="#carousel-aac-firebase" role="button" data-slide="prev" aria-label="Previous slide">
+  <a class="left carousel-control" href="#carousel-aac-firebase" role="button" data-slide="prev" aria-label="Previous slide">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
       </a>
       <a class="right carousel-control" href="#carousel-aac-firebase" role="button" data-slide="next" aria-label="Next slide">
@@ -253,19 +253,55 @@ React, React Native, TensorFlow.js, Firebase (Auth/Firestore/Hosting), Tailwind,
 
 <!-- Uniform slide sizing + caption legibility -->
 <style>
-  #carousel-aac-web .item img,
-  #carousel-aac-mobile .item img,
-  #carousel-aac-firebase .item img {
-    width: 100%;
-    height: 480px;           /* adjust to your preference */
-    object-fit: cover;       /* consistent crop while preserving aspect */
-  }
-  .carousel-caption {
-    background: rgba(0,0,0,0.45);
-    border-radius: 6px;
-    padding: 10px 14px;
-  }
-  .nav-tabs > li > a { padding: 10px 15px; }
+/* Unified carousel appearance */
+.portfolio-carousel {
+  position: relative;
+  padding-bottom: 28px;
+  overflow: visible;
+}
+
+.portfolio-carousel .carousel-indicators {
+  bottom: 6px;
+}
+
+/* Let each slide adapt to image height */
+.portfolio-carousel .carousel-inner > .item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa; /* subtle neutral background */
+  min-height: 320px;   /* prevents jump on small images */
+}
+
+/* Keep natural aspect ratio (no zooming or cropping) */
+.portfolio-carousel .carousel-inner > .item > img {
+  max-height: 520px;   /* limit max vertical size */
+  width: auto;
+  height: auto;
+  object-fit: contain; /* ensures full image visible */
+  display: block;
+  margin: 0 auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+}
+
+.portfolio-carousel,
+.portfolio-carousel .carousel-inner,
+.portfolio-carousel .carousel-control,
+.portfolio-carousel .carousel-indicators {
+  z-index: 1;
+}
+
+.portfolio-carousel .left.carousel-control:focus,
+.portfolio-carousel .right.carousel-control:focus { outline: 2px solid #2c3e50; }
+
+/* Tabs */
+.nav-tabs > li > a { padding: 10px 15px; }
+.carousel-caption {
+  background: rgba(0,0,0,0.45);
+  border-radius: 6px;
+  padding: 8px 12px;
+}
 </style>
 
 <!-- Optional helper: pause hidden carousels; cycle active one -->
