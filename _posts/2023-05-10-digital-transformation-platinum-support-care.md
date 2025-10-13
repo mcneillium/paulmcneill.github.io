@@ -15,22 +15,20 @@ youtube-url:
 
 <!-- Scoped styles for this post -->
 <style>
-/* Reserve space for indicators and keep them inside */
+/* Unified carousel appearance */
 .portfolio-carousel {
   position: relative;
-  padding-bottom: 28px;    /* space for dots */
-  overflow: visible;       /* allow soft shadows to show */
+  padding-bottom: 28px;
+  overflow: visible;
 }
 
-/* Keep indicators inside the box (not negative) */
 .portfolio-carousel .carousel-indicators {
-  bottom: 6px;             /* was -10px */
+  bottom: 6px;
 }
 
-/* Maintain a fixed viewport for every slide */
 .portfolio-carousel .carousel-inner > .item {
-  height: 520px;           /* unified slide height */
-  display: -webkit-box;    /* Flex centering for Bootstrap 3 era */
+  height: 520px;
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
@@ -41,7 +39,6 @@ youtube-url:
           justify-content: center;
 }
 
-/* Center images without stretching */
 .portfolio-carousel .carousel-inner > .item > img {
   max-height: 100%;
   width: auto;
@@ -52,7 +49,6 @@ youtube-url:
   box-shadow: 0 2px 6px rgba(0,0,0,.08);
 }
 
-/* If any element overlaps above this carousel, make sure z-order is sane */
 .portfolio-carousel,
 .portfolio-carousel .carousel-inner,
 .portfolio-carousel .carousel-control,
@@ -60,10 +56,16 @@ youtube-url:
   z-index: 1;
 }
 
-
-/* Accessibility focus for controls */
 .portfolio-carousel .left.carousel-control:focus,
 .portfolio-carousel .right.carousel-control:focus { outline: 2px solid #2c3e50; }
+
+/* Tabs */
+.nav-tabs > li > a { padding: 10px 15px; }
+.carousel-caption {
+  background: rgba(0,0,0,0.45);
+  border-radius: 6px;
+  padding: 8px 12px;
+}
 </style>
 
 {% capture markdown %}
@@ -114,86 +116,116 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
 
 ### Screens / Media
 
-<div class="media-section">
-  <p class="section-intro">Swipe / click through the slides to preview the build from data layer to reporting.</p>
+<!-- Tabs for Access and Power BI -->
+<ul class="nav nav-tabs nav-justified" role="tablist" style="margin-top:10px;">
+  <li role="presentation" class="active">
+    <a href="#platinum-access" aria-controls="platinum-access" role="tab" data-toggle="tab">Access (Data Layer)</a>
+  </li>
+  <li role="presentation">
+    <a href="#platinum-powerbi" aria-controls="platinum-powerbi" role="tab" data-toggle="tab">Power BI (Reporting Layer)</a>
+  </li>
+</ul>
 
-  <!-- ACCESS (Data Layer) -->
-  <h4 class="mt-4">Microsoft Access (Data Layer)</h4>
-  <div id="carousel-access" class="carousel slide portfolio-carousel" data-ride="carousel" aria-label="Microsoft Access slides">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#carousel-access" data-slide-to="0" class="active"></li>
-      <li data-target="#carousel-access" data-slide-to="1"></li>
-      <li data-target="#carousel-access" data-slide-to="2"></li>
-      <li data-target="#carousel-access" data-slide-to="3"></li>
-    </ol>
+<div class="tab-content" style="margin-top:15px;">
 
-  <!-- Slides -->
-  <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <img src="img/portfolio/pscs/pscs_access_frm_1.png" alt="Access data-entry form for Visits" class="img-responsive">
-        <div class="carousel-caption">Form: Visit entry</div>
+  <!-- ACCESS CAROUSEL -->
+  <div role="tabpanel" class="tab-pane fade in active" id="platinum-access">
+    <h4 class="text-center">Microsoft Access (Data Layer)</h4>
+    <div id="carousel-access" class="carousel slide portfolio-carousel" data-ride="carousel" aria-label="Microsoft Access slides">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-access" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-access" data-slide-to="1"></li>
+        <li data-target="#carousel-access" data-slide-to="2"></li>
+        <li data-target="#carousel-access" data-slide-to="3"></li>
+      </ol>
+
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img src="img/portfolio/pscs/pscs_access_frm_1.png" alt="Access data-entry form for Visits" class="img-responsive">
+          <div class="carousel-caption">Form: Visit entry</div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/pscs/pscs_access_rel_1.png" alt="Access relationships diagram linking Clients, Staff, Schedules and Visits" class="img-responsive">
+          <div class="carousel-caption">Relationships</div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/pscs/pscs_access_tbl_1.png" alt="Access Visits table showing sample rows with durations and notes" class="img-responsive">
+          <div class="carousel-caption">Table view</div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/pscs/pscs_access_val_1.png" alt="Access validation message enforcing minimum duration" class="img-responsive">
+          <div class="carousel-caption">Validation rule</div>
+        </div>
       </div>
-      <div class="item">
-        <img src="img/portfolio/pscs/pscs_access_rel_1.png" alt="Access relationships diagram linking Clients, Staff, Schedules and Visits" class="img-responsive">
-        <div class="carousel-caption">Relationships</div>
-      </div>
-      <div class="item">
-        <img src="img/portfolio/pscs/pscs_access_tbl_1.png" alt="Access Visits table showing sample rows with durations and notes" class="img-responsive">
-        <div class="carousel-caption">Table view</div>
-      </div>
-      <div class="item">
-        <img src="img/portfolio/pscs/pscs_access_val_1.png" alt="Access validation message enforcing minimum duration" class="img-responsive">
-        <div class="carousel-caption">Validation rule</div>
-      </div>
+
+      <a class="left carousel-control" href="#carousel-access" role="button" data-slide="prev" aria-label="Previous slide">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel-access" role="button" data-slide="next" aria-label="Next slide">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      </a>
     </div>
-
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-access" role="button" data-slide="prev" aria-label="Previous slide">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    </a>
-    <a class="right carousel-control" href="#carousel-access" role="button" data-slide="next" aria-label="Next slide">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    </a>
   </div>
 
-  <!-- POWER BI (Reporting Layer) -->
-  <h4>Power BI (Reporting Layer)</h4>
-  <div id="carousel-powerbi" class="carousel slide portfolio-carousel" data-ride="carousel" aria-label="Power BI slides">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#carousel-powerbi" data-slide-to="0" class="active"></li>
-      <li data-target="#carousel-powerbi" data-slide-to="1"></li>
-      <li data-target="#carousel-powerbi" data-slide-to="2"></li>
-      <li data-target="#carousel-powerbi" data-slide-to="3"></li>
-    </ol>
+  <!-- POWER BI CAROUSEL -->
+  <div role="tabpanel" class="tab-pane fade" id="platinum-powerbi">
+    <h4 class="text-center">Power BI (Reporting Layer)</h4>
+    <div id="carousel-powerbi" class="carousel slide portfolio-carousel" data-ride="carousel" aria-label="Power BI slides">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-powerbi" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-powerbi" data-slide-to="1"></li>
+        <li data-target="#carousel-powerbi" data-slide-to="2"></li>
+        <li data-target="#carousel-powerbi" data-slide-to="3"></li>
+      </ol>
 
-  <!-- Slides -->
-  <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <img src="img/portfolio/pscs/pscs_powerbi_import_1.png" alt="Power BI get data dialog with Access connector selected" class="img-responsive">
-        <div class="carousel-caption">Import (Access)</div>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img src="img/portfolio/pscs/pscs_powerbi_import_1.png" alt="Power BI get data dialog with Access connector selected" class="img-responsive">
+          <div class="carousel-caption">Import (Access)</div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/pscs/pscs_powerbi_pq_1.png" alt="Power Query editor preview of the Training table" class="img-responsive">
+          <div class="carousel-caption">Power Query</div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/pscs/pscs_powerbi_rel_1.png" alt="Power BI data model showing relationships between fact and dimension tables" class="img-responsive">
+          <div class="carousel-caption">Data model</div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/pscs/pscs_powerbi_vis_1.png" alt="Power BI KPI visuals showing visits, average duration and completions" class="img-responsive">
+          <div class="carousel-caption">KPI dashboard</div>
+        </div>
       </div>
-      <div class="item">
-        <img src="img/portfolio/pscs/pscs_powerbi_pq_1.png" alt="Power Query editor preview of the Training table" class="img-responsive">
-        <div class="carousel-caption">Power Query</div>
-      </div>
-      <div class="item">
-        <img src="img/portfolio/pscs/pscs_powerbi_rel_1.png" alt="Power BI data model showing relationships between fact and dimension tables" class="img-responsive">
-        <div class="carousel-caption">Data model</div>
-      </div>
-      <div class="item">
-        <img src="img/portfolio/pscs/pscs_powerbi_vis_1.png" alt="Power BI KPI visuals showing visits, average duration and completions" class="img-responsive">
-        <div class="carousel-caption">KPI dashboard</div>
-      </div>
+
+      <a class="left carousel-control" href="#carousel-powerbi" role="button" data-slide="prev" aria-label="Previous slide">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel-powerbi" role="button" data-slide="next" aria-label="Next slide">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      </a>
     </div>
-
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-powerbi" role="button" data-slide="prev" aria-label="Previous slide">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    </a>
-    <a class="right carousel-control" href="#carousel-powerbi" role="button" data-slide="next" aria-label="Next slide">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    </a>
   </div>
+
 </div>
+
+<!-- JS helper to pause non-visible carousels and resume active -->
+<script>
+  (function () {
+    // start Access carousel when modal opens
+    $('#{{ page.modal-id | default: "project-platinum" }}').on('shown.bs.modal', function () {
+      $('#carousel-access').carousel('cycle');
+    });
+
+    // pause all on modal close
+    $('#{{ page.modal-id | default: "project-platinum" }}').on('hide.bs.modal', function () {
+      $('#carousel-access, #carousel-powerbi').carousel('pause');
+    });
+
+    // pause others on tab switch, cycle current one
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+      $('#carousel-access, #carousel-powerbi').carousel('pause');
+      var target = $(e.target).attr('href');
+      $(target).find('.carousel').carousel('cycle');
+    });
+  })();
+</script>
