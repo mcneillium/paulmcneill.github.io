@@ -15,24 +15,51 @@ youtube-url:
 
 <!-- Scoped styles for this post -->
 <style>
-/* Tidy, centered carousels */
-.portfolio-carousel { margin: 12px auto 28px; max-width: 1080px; }
-.portfolio-carousel .carousel-inner > .item > img {
-  display: block; margin: 0 auto; width: auto; max-height: 520px;
-  border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,.08);
+/* Reserve space for indicators and keep them inside */
+.portfolio-carousel {
+  position: relative;
+  padding-bottom: 28px;    /* space for dots */
+  overflow: visible;       /* allow soft shadows to show */
 }
-.portfolio-carousel .carousel-caption {
-  position: static; padding: 8px 0 0; font-size: 13px; color: #6c757d; text-shadow: none;
-}
-.portfolio-carousel .carousel-control { background: none; color: #2c3e50; width: 8%; }
-.portfolio-carousel .carousel-indicators { bottom: -10px; }
-.portfolio-carousel .carousel-indicators li { border-color: #2c3e50; }
-.portfolio-carousel .carousel-indicators .active { background-color: #2c3e50; }
 
-/* Headings + intro text */
-.media-section { text-align: center; }
-.media-section h4 { margin-top: 28px; margin-bottom: 12px; }
-.media-section .section-intro { max-width: 900px; margin: 0 auto 8px; color: #6c757d; }
+/* Keep indicators inside the box (not negative) */
+.portfolio-carousel .carousel-indicators {
+  bottom: 6px;             /* was -10px */
+}
+
+/* Maintain a fixed viewport for every slide */
+.portfolio-carousel .carousel-inner > .item {
+  height: 520px;           /* unified slide height */
+  display: -webkit-box;    /* Flex centering for Bootstrap 3 era */
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+/* Center images without stretching */
+.portfolio-carousel .carousel-inner > .item > img {
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+}
+
+/* If any element overlaps above this carousel, make sure z-order is sane */
+.portfolio-carousel,
+.portfolio-carousel .carousel-inner,
+.portfolio-carousel .carousel-control,
+.portfolio-carousel .carousel-indicators {
+  z-index: 1;
+}
+
 
 /* Accessibility focus for controls */
 .portfolio-carousel .left.carousel-control:focus,
