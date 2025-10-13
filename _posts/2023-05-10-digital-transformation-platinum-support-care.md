@@ -141,8 +141,8 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
       <li data-target="#carousel-powerbi" data-slide-to="3"></li>
     </ol>
 
-    <!-- Slides -->
-    <div class="carousel-inner" role="listbox">
+  <!-- Slides -->
+  <div class="carousel-inner" role="listbox">
       <div class="item active">
         <img src="img/portfolio/pscs/pscs_powerbi_import_1.png" alt="Power BI get data dialog with Access connector selected" class="img-responsive">
         <div class="carousel-caption">Import (Access)</div>
@@ -161,8 +161,8 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
       </div>
     </div>
 
-    <!-- Controls -->
-    <a class="left carousel-control" href="#carousel-powerbi" role="button" data-slide="prev" aria-label="Previous slide">
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-powerbi" role="button" data-slide="prev" aria-label="Previous slide">
       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     </a>
     <a class="right carousel-control" href="#carousel-powerbi" role="button" data-slide="next" aria-label="Next slide">
