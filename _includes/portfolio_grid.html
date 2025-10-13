@@ -8,9 +8,9 @@
         </div>
 
         <div class="row">
-            <!-- Dynamic Loop: Iterating through posts, excluding 'AI' category, and limiting to 3 most recent posts -->
-            {% assign recent_posts = site.posts | where_exp: "post", "post.category != 'AI'" | sort: 'date' | reverse | limit: 3 %}
-            {% for post in recent_posts %}
+            <!-- Show only posts with category 'projects', sorted by date (newest first) -->
+            {% assign project_posts = site.posts | where: "category", "projects" | sort: "date" | reverse %}
+            {% for post in project_posts %}
                 <div class="col-md-4 col-sm-6 portfolio-item">
                     <a href="#portfolioModal{{ post.modal-id }}" class="portfolio-link" data-toggle="modal">
                         <div class="portfolio-hover">
