@@ -61,11 +61,237 @@ React, React Native, TensorFlow.js, Firebase (Auth/Firestore/Hosting), Tailwind,
 ---
 
 ### Screens / Media
-- Dashboard, prediction ribbon, high-contrast mode.
-- (Optional) Add more images here using standard Markdown:
-  `![Prediction ribbon](img/portfolio/aac-ai-dashboard.png)`
+
+<!-- Tabs -->
+<ul class="nav nav-tabs nav-justified" role="tablist" style="margin-top:10px;">
+  <li role="presentation" class="active">
+    <a href="#aac-web" aria-controls="aac-web" role="tab" data-toggle="tab">Web App</a>
+  </li>
+  <li role="presentation">
+    <a href="#aac-mobile" aria-controls="aac-mobile" role="tab" data-toggle="tab">Mobile App</a>
+  </li>
+  <li role="presentation">
+    <a href="#aac-firebase" aria-controls="aac-firebase" role="tab" data-toggle="tab">Firebase</a>
+  </li>
+</ul>
+
+<div class="tab-content" style="margin-top:15px;">
+
+  <!-- WEB APP -->
+  <div role="tabpanel" class="tab-pane fade in active" id="aac-web">
+    <h4 class="text-center">Web App Dashboard &amp; Admin</h4>
+    <div id="carousel-aac-web" class="carousel slide" data-ride="carousel" aria-label="Web App screenshots">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-aac-web" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-aac-web" data-slide-to="1"></li>
+        <li data-target="#carousel-aac-web" data-slide-to="2"></li>
+        <li data-target="#carousel-aac-web" data-slide-to="3"></li>
+        <li data-target="#carousel-aac-web" data-slide-to="4"></li>
+        <li data-target="#carousel-aac-web" data-slide-to="5"></li>
+        <li data-target="#carousel-aac-web" data-slide-to="6"></li>
+        <li data-target="#carousel-aac-web" data-slide-to="7"></li>
+      </ol>
+
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img src="img/portfolio/aac-ai/admin_dashboard.png" alt="Admin Dashboard">
+          <div class="carousel-caption"><h4>Admin Dashboard</h4></div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/aac-ai/CaregiverDashboard.png" alt="Caregiver Dashboard">
+          <div class="carousel-caption"><h4>Caregiver Dashboard</h4></div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/aac-ai/manage_caregivers.png" alt="Manage Caregivers">
+          <div class="carousel-caption"><h4>Manage Caregivers</h4></div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/aac-ai/user_management.png" alt="User Management">
+          <div class="carousel-caption"><h4>User Management</h4></div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/aac-ai/voice_dashboard_login.png" alt="Dashboard Login">
+          <div class="carousel-caption"><h4>Dashboard Login</h4></div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/aac-ai/Webapp_Signup.png" alt="Web App Signup">
+          <div class="carousel-caption"><h4>Web App Signup</h4></div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/aac-ai/CLI_webapp.png" alt="CLI Build Output">
+          <div class="carousel-caption"><h4>CLI Build Output</h4></div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/aac-ai/ExpoGo_CLI.png" alt="Expo CLI">
+          <div class="carousel-caption"><h4>Expo CLI</h4></div>
+        </div>
+      </div>
+
+      <a class="left carousel-control" href="#carousel-aac-web" role="button" data-slide="prev" aria-label="Previous slide">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel-aac-web" role="button" data-slide="next" aria-label="Next slide">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      </a>
+    </div>
+  </div>
+
+  <!-- MOBILE APP -->
+  <div role="tabpanel" class="tab-pane fade" id="aac-mobile">
+    <h4 class="text-center">Mobile App Screens</h4>
+    <div id="carousel-aac-mobile" class="carousel slide" data-ride="carousel" aria-label="Mobile App screenshots">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-aac-mobile" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-aac-mobile" data-slide-to="1"></li>
+        <li data-target="#carousel-aac-mobile" data-slide-to="2"></li>
+        <li data-target="#carousel-aac-mobile" data-slide-to="3"></li>
+        <li data-target="#carousel-aac-mobile" data-slide-to="4"></li>
+        <li data-target="#carousel-aac-mobile" data-slide-to="5"></li>
+        <li data-target="#carousel-aac-mobile" data-slide-to="6"></li>
+        <li data-target="#carousel-aac-mobile" data-slide-to="7"></li>
+        <li data-target="#carousel-aac-mobile" data-slide-to="8"></li>
+      </ol>
+
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img src="img/portfolio/aac-ai/login_mobile.jpg" alt="Login (Mobile)">
+          <div class="carousel-caption"><h4>Login</h4></div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/aac-ai/signup_mobile.jpg" alt="Signup (Mobile)">
+          <div class="carousel-caption"><h4>Signup</h4></div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/aac-ai/sentencebuilderscreen_mobile.jpg" alt="Sentence Builder (Mobile)">
+          <div class="carousel-caption"><h4>Sentence Builder</h4></div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/aac-ai/EmotionScreen_mobile.jpg" alt="Emotion Screen">
+          <div class="carousel-caption"><h4>Emotion Screen</h4></div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/aac-ai/pictograms_moblie.jpg" alt="Pictogram Grid">
+          <div class="carousel-caption"><h4>Pictogram Grid</h4></div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/aac-ai/CameraScreen_mobile.jpg" alt="Camera Captioning">
+          <div class="carousel-caption"><h4>Camera Captioning</h4></div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/aac-ai/LiveSceneModeScreen_mobile.jpg" alt="Live Scene Mode">
+          <div class="carousel-caption"><h4>Live Scene Mode</h4></div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/aac-ai/profilescreen.jpg" alt="Profile & Settings">
+          <div class="carousel-caption"><h4>Profile &amp; Settings</h4></div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/aac-ai/loading_screen_mobile.jpg" alt="Loading Screen">
+          <div class="carousel-caption"><h4>Loading Screen</h4></div>
+        </div>
+      </div>
+
+      <a class="left carousel-control" href="#carousel-aac-mobile" role="button" data-slide="prev" aria-label="Previous slide">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel-aac-mobile" role="button" data-slide="next" aria-label="Next slide">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      </a>
+    </div>
+  </div>
+
+  <!-- FIREBASE -->
+  <div role="tabpanel" class="tab-pane fade" id="aac-firebase">
+    <h4 class="text-center">Firebase Backend &amp; Data</h4>
+    <div id="carousel-aac-firebase" class="carousel slide" data-ride="carousel" aria-label="Firebase screenshots">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-aac-firebase" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-aac-firebase" data-slide-to="1"></li>
+        <li data-target="#carousel-aac-firebase" data-slide-to="2"></li>
+        <li data-target="#carousel-aac-firebase" data-slide-to="3"></li>
+        <li data-target="#carousel-aac-firebase" data-slide-to="4"></li>
+        <li data-target="#carousel-aac-firebase" data-slide-to="5"></li>
+      </ol>
+
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img src="img/portfolio/aac-ai/firebase_auth.png" alt="Firebase Authentication">
+          <div class="carousel-caption"><h4>Firebase Authentication</h4></div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/aac-ai/firebase_database.png" alt="Firebase Realtime Database">
+          <div class="carousel-caption"><h4>Realtime Database</h4></div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/aac-ai/realtimedatabase_rules.png" alt="Realtime Database Rules">
+          <div class="carousel-caption"><h4>Realtime DB Rules</h4></div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/aac-ai/userlogs_firebase.png" alt="User Logs Node">
+          <div class="carousel-caption"><h4>User Logs</h4></div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/aac-ai/users_firebase.png" alt="Users Node">
+          <div class="carousel-caption"><h4>Users</h4></div>
+        </div>
+        <div class="item">
+          <img src="img/portfolio/aac-ai/caregivers_firebase.png" alt="Caregivers Node">
+          <div class="carousel-caption"><h4>Caregivers</h4></div>
+        </div>
+      </div>
+
+      <a class="left carousel-control" href="#carousel-aac-firebase" role="button" data-slide="prev" aria-label="Previous slide">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel-aac-firebase" role="button" data-slide="next" aria-label="Next slide">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- Uniform slide sizing + caption legibility -->
+<style>
+  #carousel-aac-web .item img,
+  #carousel-aac-mobile .item img,
+  #carousel-aac-firebase .item img {
+    width: 100%;
+    height: 480px;           /* adjust to your preference */
+    object-fit: cover;       /* consistent crop while preserving aspect */
+  }
+  .carousel-caption {
+    background: rgba(0,0,0,0.45);
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+  .nav-tabs > li > a { padding: 10px 15px; }
+</style>
+
+<!-- Optional helper: pause hidden carousels; cycle active one -->
+<script>
+  (function () {
+    // start Web carousel when the modal gets opened by the theme
+    $('#{{ page.modal-id | default: "project-aac-ai" }}').on('shown.bs.modal', function () {
+      $('#carousel-aac-web').carousel('cycle');
+    });
+
+    // stop all carousels when modal hides
+    $('#{{ page.modal-id | default: "project-aac-ai" }}').on('hide.bs.modal', function () {
+      $('#carousel-aac-web, #carousel-aac-mobile, #carousel-aac-firebase').carousel('pause');
+    });
+
+    // on tab change, pause others and cycle current tab's carousel
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+      $('#carousel-aac-web, #carousel-aac-mobile, #carousel-aac-firebase').carousel('pause');
+      var target = $(e.target).attr('href');
+      $(target).find('.carousel').carousel('cycle');
+    });
+  })();
+</script>
+
+---
 
 ### Notes on Privacy & Safety
 - Anonymization by default, per-user data export, short retention windows.
 - Clear consent and session visibility for caregivers and admins.
-
