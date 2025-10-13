@@ -58,11 +58,11 @@ youtube-url:
   transform-origin: center center;
 }
 
-/* Gentle zoom that does not overflow layout */
+/* Gentle hover zoom that stays inside the slide */
 .zoom-wrap {
   display: inline-block;
   position: relative;
-  overflow: hidden; /* prevent zoom from spilling and growing the page */
+  overflow: hidden;
 }
 .zoom-wrap:hover img,
 .zoom-wrap:focus img {
@@ -97,6 +97,17 @@ youtube-url:
     height: 54vh;
     min-height: 300px;
   }
+}
+
+/* --- POP-ON-SCROLL effect (applies once when slide comes into view) --- */
+.portfolio-carousel .carousel-inner > .item img.pop-on {}
+.portfolio-carousel .carousel-inner > .item img.pop-on.popped {
+  transform: scale(1.06);
+  box-shadow: 0 10px 28px rgba(0,0,0,.28);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+@media (min-width: 992px) {
+  .portfolio-carousel .carousel-inner > .item img.pop-on.popped { transform: scale(1.08); }
 }
 </style>
 
@@ -256,57 +267,97 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
 
 </div>
 
-<!-- JS helper to pause non-visible carousels and resume active -->
+<!-- JS: preserve current slide index + pop-on-scroll images -->
 <script>
   (function ($) {
     // Carousels in this modal
-    var ids = [
+    var carIds = [
       '#{{ page.modal-id }}-carousel-access',
       '#{{ page.modal-id }}-carousel-powerbi'
     ];
-    var $cars = $(ids.join(','));
+    // Remove any data-ride to prevent Bootstrap auto re-init
+    carIds.forEach(function(sel){ $(sel).removeAttr('data-ride'); });
 
-    // Initialize once (no repeated ride triggers)
+    var $cars = $(carIds.join(','));
     $cars.carousel({ interval: 6000, pause: 'hover', wrap: true });
 
-    function cycleOnly($el) {
-      $cars.carousel('pause');
-      if ($el && $el.length) { $el.carousel('cycle'); }
+    /* --- Keep current slide (no reset to first) --- */
+    var idxState = {}; // { 'carousel-id': currentIndex }
+
+    // Capture next index during slide
+    $cars.on('slide.bs.carousel', function (e) {
+      var id = this.id;
+      idxState[id] = $(e.relatedTarget).index();
+    });
+
+    function resume($car) {
+      if (!$car || !$car.length) return;
+      var id = $car.attr('id');
+      var toIdx = (typeof idxState[id] === 'number')
+        ? idxState[id]
+        : ($car.find('.item.active').index() || 0);
+      $cars.carousel('pause');     // pause all
+      $car.carousel(toIdx);        // go to saved index
+      $car.carousel('cycle');      // then cycle only this one
     }
 
-    // Determine modal selector (common bootstrap portfolio templates use 'portfolioModal{{ id }}')
+    // Detect modal element (common templates: #portfolioModal{{id}} or #{{id}})
     var modalSelPrimary = '#portfolioModal{{ page.modal-id | default: "project-platinum" }}';
     var modalSelFallback = '#{{ page.modal-id | default: "project-platinum" }}';
     var $modal = $(modalSelPrimary);
     if (!$modal.length) { $modal = $(modalSelFallback); }
 
-    // Start correct carousel when modal opens
+    // On modal open: resume visible tab's carousel
     $modal.on('shown.bs.modal', function () {
       var $active = $('.tab-pane.in.active', this).find('.carousel');
-      if (!$active.length) { $active = $('#{{ page.modal-id }}-access .carousel'); } // fallback
-      cycleOnly($active);
-      // force a reflow so images recalc within the fixed viewport
+      if (!$active.length) { $active = $(carIds[0]); }
+      resume($active);
+      // nudge active image to recalc within fixed viewport
       $active.find('.item.active img').trigger('load');
     });
 
-    // Pause all when modal closes
-    $modal.on('hide.bs.modal', function () {
-      $cars.carousel('pause');
-    });
+    // Pause all when closing
+    $modal.on('hide.bs.modal', function () { $cars.carousel('pause'); });
 
-    // Switch active carousel on tab change (no reset)
+    // On tab switch: resume the target tab's carousel
     $('a[data-toggle="tab"][href^="#{{ page.modal-id }}-"]').on('shown.bs.tab', function (e) {
       var target = $(e.target).attr('href');
-      cycleOnly($(target).find('.carousel'));
+      resume($(target).find('.carousel'));
     });
 
-    // Handle viewport changes (orientation / resize)
+    /* --- Pop-out image once when its slide enters view --- */
+    // Mark eligible images
+    $cars.find('.item img').addClass('pop-on');
+
+    // Use modal body as scroll root (falls back to viewport if not found)
+    var rootEl = $modal.find('.modal-body')[0] || null;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          var img = entry.target;
+          img.classList.add('popped');
+          setTimeout(function(){ img.classList.remove('popped'); }, 800);
+          io.unobserve(img); // fire once per image
+        }
+      });
+    }, { root: rootEl, threshold: 0.6 });
+
+    // Observe current active images immediately
+    $cars.each(function(){
+      $(this).find('.item.active img.pop-on').each(function(){ io.observe(this); });
+    });
+
+    // Observe new active image after each slide completes
+    $cars.on('slid.bs.carousel', function(){
+      $(this).find('.item.active img.pop-on').each(function(){ io.observe(this); });
+    });
+
+    // Defensive: on resize, reset transient transforms on active images
     var resizeTimer;
     $(window).on('resize', function(){
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(function(){
-        // no-op: CSS handles height; this just nudges images to recalc
-        $('.portfolio-carousel .item.active img').each(function(){ this.style.transform = 'scale(1)'; });
+        $('.portfolio-carousel .item.active img').each(function(){ this.style.transform = ''; });
       }, 120);
     });
   })(jQuery);

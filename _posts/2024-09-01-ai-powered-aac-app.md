@@ -58,12 +58,8 @@ youtube-url:
   transform-origin: center center;
 }
 
-/* Gentle zoom that does not overflow layout */
-.zoom-wrap {
-  display: inline-block;
-  position: relative;
-  overflow: hidden; /* prevent zoom from spilling and growing the page */
-}
+/* Gentle hover zoom that stays inside the slide */
+.zoom-wrap { display: inline-block; position: relative; overflow: hidden; }
 .zoom-wrap:hover img,
 .zoom-wrap:focus img {
   transform: scale(1.15);
@@ -93,10 +89,18 @@ youtube-url:
 
 /* Small screens: slightly shorter viewport */
 @media (max-width: 767px) {
-  .portfolio-carousel {
-    height: 54vh;
-    min-height: 300px;
-  }
+  .portfolio-carousel { height: 54vh; min-height: 300px; }
+}
+
+/* --- POP-ON-SCROLL effect (fires once per image) --- */
+.portfolio-carousel .carousel-inner > .item img.pop-on {}
+.portfolio-carousel .carousel-inner > .item img.pop-on.popped {
+  transform: scale(1.06);
+  box-shadow: 0 10px 28px rgba(0,0,0,.28);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+@media (min-width: 992px) {
+  .portfolio-carousel .carousel-inner > .item img.pop-on.popped { transform: scale(1.08); }
 }
 </style>
 
@@ -179,7 +183,7 @@ React, React Native, TensorFlow.js, Firebase (Auth/Firestore/Hosting), Tailwind,
         <li data-target="#{{ page.modal-id }}-carousel-aac-web" data-slide-to="7"></li>
       </ol>
 
-      <div class="carousel-inner" role="listbox">
+  <div class="carousel-inner" role="listbox">
         <div class="item active">
           <a class="zoom-wrap" href="img/portfolio/aac-ai/admin_dashboard.png" target="_blank" rel="noopener">
             <img src="img/portfolio/aac-ai/admin_dashboard.png" alt="Admin Dashboard" class="img-responsive">
@@ -255,7 +259,7 @@ React, React Native, TensorFlow.js, Firebase (Auth/Firestore/Hosting), Tailwind,
         <li data-target="#{{ page.modal-id }}-carousel-aac-mobile" data-slide-to="8"></li>
       </ol>
 
-      <div class="carousel-inner" role="listbox">
+  <div class="carousel-inner" role="listbox">
         <div class="item active">
           <a class="zoom-wrap" href="img/portfolio/aac-ai/login_mobile.jpg" target="_blank" rel="noopener">
             <img src="img/portfolio/aac-ai/login_mobile.jpg" alt="Login (Mobile)" class="img-responsive">
@@ -312,7 +316,7 @@ React, React Native, TensorFlow.js, Firebase (Auth/Firestore/Hosting), Tailwind,
         </div>
       </div>
 
-      <a class="left carousel-control" href="#{{ page.modal-id }}-carousel-aac-mobile" role="button" data-slide="prev" aria-label="Previous slide">
+  <a class="left carousel-control" href="#{{ page.modal-id }}-carousel-aac-mobile" role="button" data-slide="prev" aria-label="Previous slide">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
       </a>
       <a class="right carousel-control" href="#{{ page.modal-id }}-carousel-aac-mobile" role="button" data-slide="next" aria-label="Next slide">
@@ -334,7 +338,7 @@ React, React Native, TensorFlow.js, Firebase (Auth/Firestore/Hosting), Tailwind,
         <li data-target="#{{ page.modal-id }}-carousel-aac-firebase" data-slide-to="5"></li>
       </ol>
 
-      <div class="carousel-inner" role="listbox">
+  <div class="carousel-inner" role="listbox">
         <div class="item active">
           <a class="zoom-wrap" href="img/portfolio/aac-ai/firebase_auth.png" target="_blank" rel="noopener">
             <img src="img/portfolio/aac-ai/firebase_auth.png" alt="Firebase Authentication" class="img-responsive">
@@ -373,7 +377,7 @@ React, React Native, TensorFlow.js, Firebase (Auth/Firestore/Hosting), Tailwind,
         </div>
       </div>
 
-      <a class="left carousel-control" href="#{{ page.modal-id }}-carousel-aac-firebase" role="button" data-slide="prev" aria-label="Previous slide">
+  <a class="left carousel-control" href="#{{ page.modal-id }}-carousel-aac-firebase" role="button" data-slide="prev" aria-label="Previous slide">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
       </a>
       <a class="right carousel-control" href="#{{ page.modal-id }}-carousel-aac-firebase" role="button" data-slide="next" aria-label="Next slide">
@@ -384,58 +388,98 @@ React, React Native, TensorFlow.js, Firebase (Auth/Firestore/Hosting), Tailwind,
 
 </div>
 
-<!-- Init once; pause hidden; cycle active (prevents reset to slide 1) -->
+<!-- JS: keep current slide + pop-on-scroll images -->
 <script>
   (function ($) {
     // Carousels in this modal
-    var ids = [
+    var carIds = [
       '#{{ page.modal-id }}-carousel-aac-web',
       '#{{ page.modal-id }}-carousel-aac-mobile',
       '#{{ page.modal-id }}-carousel-aac-firebase'
     ];
-    var $cars = $(ids.join(','));
+    // Ensure Bootstrap doesn't auto re-init
+    carIds.forEach(function(sel){ $(sel).removeAttr('data-ride'); });
 
-    // Initialize once (no data-ride attribute to avoid re-triggers)
+    var $cars = $(carIds.join(','));
     $cars.carousel({ interval: 6000, pause: 'hover', wrap: true });
 
-    function cycleOnly($el) {
-      $cars.carousel('pause');
-      if ($el && $el.length) { $el.carousel('cycle'); }
+    /* --- Keep current slide (no reset to first) --- */
+    var idxState = {}; // { 'carousel-id': currentIndex }
+
+    // Capture next index during slide
+    $cars.on('slide.bs.carousel', function (e) {
+      var id = this.id;
+      idxState[id] = $(e.relatedTarget).index();
+    });
+
+    function resume($car) {
+      if (!$car || !$car.length) return;
+      var id = $car.attr('id');
+      var toIdx = (typeof idxState[id] === 'number')
+        ? idxState[id]
+        : ($car.find('.item.active').index() || 0);
+      $cars.carousel('pause');     // pause all
+      $car.carousel(toIdx);        // go to saved index
+      $car.carousel('cycle');      // then cycle only this one
     }
 
-    // Determine modal selector (common bootstrap portfolio templates use 'portfolioModal{{ id }}')
+  // Detect modal element (common templates: #portfolioModal{{id}} or #{{id}})
     var modalSelPrimary = '#portfolioModal{{ page.modal-id | default: "project-aac-ai" }}';
     var modalSelFallback = '#{{ page.modal-id | default: "project-aac-ai" }}';
     var $modal = $(modalSelPrimary);
     if (!$modal.length) { $modal = $(modalSelFallback); }
 
-    // When the modal opens, cycle whichever tab pane is visible
+    // On modal open: resume visible tab's carousel
     $modal.on('shown.bs.modal', function () {
       var $active = $('.tab-pane.in.active', this).find('.carousel');
-      if (!$active.length) { $active = $('#{{ page.modal-id }}-aac-web .carousel'); } // fallback
-      cycleOnly($active);
-      // nudge images to recalc within fixed viewport
+      if (!$active.length) { $active = $(carIds[0]); }
+      resume($active);
+      // nudge active image to recalc within fixed viewport
       $active.find('.item.active img').trigger('load');
     });
 
-    // Pause all when the modal closes
-    $modal.on('hide.bs.modal', function () {
-      $cars.carousel('pause');
-    });
+    // Pause all when closing
+    $modal.on('hide.bs.modal', function () { $cars.carousel('pause'); });
 
-    // On tab change: don't re-init; just switch which one cycles
+    // On tab switch: resume the target tab's carousel
     $('a[data-toggle="tab"][href^="#{{ page.modal-id }}-aac-"]').on('shown.bs.tab', function (e) {
       var target = $(e.target).attr('href');
-      cycleOnly($(target).find('.carousel'));
+      resume($(target).find('.carousel'));
     });
 
-    // Handle viewport changes (orientation / resize)
+    /* --- Pop-out image once when its slide enters view --- */
+    // Mark eligible images
+    $cars.find('.item img').addClass('pop-on');
+
+    // Use modal body as scroll root (falls back to viewport if not found)
+    var rootEl = $modal.find('.modal-body')[0] || null;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          var img = entry.target;
+          img.classList.add('popped');
+          setTimeout(function(){ img.classList.remove('popped'); }, 800);
+          io.unobserve(img); // fire once per image
+        }
+      });
+    }, { root: rootEl, threshold: 0.6 });
+
+    // Observe current active images immediately
+    $cars.each(function(){
+      $(this).find('.item.active img.pop-on').each(function(){ io.observe(this); });
+    });
+
+    // Observe new active image after each slide completes
+    $cars.on('slid.bs.carousel', function(){
+      $(this).find('.item.active img.pop-on').each(function(){ io.observe(this); });
+    });
+
+    // Defensive: on resize, reset transient transforms on active images
     var resizeTimer;
     $(window).on('resize', function(){
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(function(){
-        // CSS handles height; this just resets any transient zoom on active slide
-        $('.portfolio-carousel .item.active img').each(function(){ this.style.transform = 'scale(1)'; });
+        $('.portfolio-carousel .item.active img').each(function(){ this.style.transform = ''; });
       }, 120);
     });
   })(jQuery);
