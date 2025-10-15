@@ -13,70 +13,88 @@ github-url:
 youtube-url:
 ---
 
-<!-- Scoped styles: uniform viewport, non-cropping images, captions not blocked, indicators inside -->
+<!-- Styles: tile gallery + viewer -->
 <style>
 /* Keep the entire modal usable on one screen */
 .modal .modal-body { max-height: calc(100vh - 160px); overflow-y: auto; }
 
-/* Unified carousel viewport: fixed to the screen, not content */
-.portfolio-carousel {
-  position: relative; height: 60vh; max-height: 620px; min-height: 360px;
-  overflow: hidden; padding-bottom: 28px; /* room for indicators */
+/* TILES */
+.tile-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin-top: 8px;
+}
+.tile {
+  background:#fafafa; border-radius:10px; overflow:hidden; position:relative;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08); transition: transform .18s ease, box-shadow .18s ease;
+}
+.tile:focus-within, .tile:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.18); }
+.tile a { display:block; text-decoration:none; outline:0; }
+.tile img {
+  width:100%; height:180px; object-fit:cover; display:block;
+  transition: transform .18s ease;
+}
+.tile:hover img { transform: scale(1.04); }
+.tile .cap {
+  position:absolute; left:8px; bottom:8px; right:8px;
+  background: rgba(0,0,0,.55); color:#fff; font-size:13px; padding:6px 8px; border-radius:6px;
 }
 
-/* Ensure stacking order never blocks captions/indicators */
-.portfolio-carousel .carousel-inner { z-index: 1; }
-.portfolio-carousel .carousel-caption,
-.portfolio-carousel .carousel-indicators,
-.portfolio-carousel .left.carousel-control,
-.portfolio-carousel .right.carousel-control { z-index: 2; }
-
-/* Indicators stay inside */
-.portfolio-carousel .carousel-indicators { bottom: 6px; }
-
-/* Slides fill the viewport without changing it */
-.portfolio-carousel .carousel-inner,
-.portfolio-carousel .carousel-inner > .item { height: 100%; }
-.portfolio-carousel .carousel-inner > .item {
-  display: flex; align-items: center; justify-content: center; background: #fafafa;
+/* Viewer (single modal, custom controls) */
+.viewer-backdrop {
+  position: fixed; inset: 0; background: rgba(0,0,0,.8);
+  display: none; align-items: center; justify-content: center; z-index: 9999;
+}
+.viewer-backdrop.open { display: flex; }
+.viewer {
+  position: relative; max-width: min(92vw, 1200px); max-height: 86vh;
+  background: #111; border-radius: 10px; overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,.6);
+  display:flex; flex-direction:column;
+}
+.viewer-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 12px; color:#eee; font-size:14px; background:#1b1b1b;
+}
+.viewer-body { position:relative; flex:1; display:flex; align-items:center; justify-content:center; background:#0f0f0f; }
+.viewer-body img {
+  max-width: 100%; max-height: 100%; object-fit: contain; display:block;
+}
+.viewer-caption {
+  color:#eaeaea; background:#151515; font-size:14px; padding:10px 12px;
 }
 
-/* Images are contained (no crop, no stretch) */
-.portfolio-carousel .carousel-inner > .item img {
-  max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; margin: 0 auto;
-  border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,.08); transition: transform .2s ease, box-shadow .2s ease; transform-origin: center center;
+/* Controls */
+.viewer-btn {
+  position:absolute; top:50%; transform: translateY(-50%);
+  width:44px; height:44px; border:none; border-radius:50%;
+  background: rgba(255,255,255,.1); color:#fff; cursor:pointer;
+}
+.viewer-btn:hover { background: rgba(255,255,255,.2); }
+.viewer-prev { left:10px; }
+.viewer-next { right:10px; }
+.viewer-close {
+  background: transparent; border:none; color:#eee; font-size:20px; line-height:1;
+  cursor:pointer; padding:4px 8px;
 }
 
-/* Gentle hover zoom that stays inside the slide */
-.zoom-wrap { display: inline-flex; max-width: 100%; max-height: 100%; overflow: hidden; }
-.zoom-wrap:hover img, .zoom-wrap:focus img { transform: scale(1.08); box-shadow: 0 8px 24px rgba(0,0,0,.25); z-index: 1; }
+/* Keyboard focus */
+.viewer-btn:focus, .viewer-close:focus, .tile a:focus { outline: 2px solid #2c7be5; outline-offset:2px; }
 
-/* Caption overlays; never pushes height */
-.portfolio-carousel .carousel-caption {
-  background: rgba(0,0,0,0.45); border-radius: 6px; padding: 8px 12px; bottom: 16px; left: 50%; transform: translateX(-50%);
-  width: auto; max-width: 85%;
-}
-
-/* Controls accessibility focus ring */
-.portfolio-carousel .left.carousel-control:focus,
-.portfolio-carousel .right.carousel-control:focus { outline: 2px solid #2c3e50; }
-
-/* Tabs */
+/* Tabs spacing */
 .nav-tabs > li > a { padding: 10px 15px; }
 
-/* Small screens: slightly shorter viewport */
-@media (max-width: 767px) { .portfolio-carousel { height: 54vh; min-height: 300px; } }
-
-/* POP-ON-SCROLL effect (fires once per image) */
-.portfolio-carousel .carousel-inner > .item img.pop-on {}
-.portfolio-carousel .carousel-inner > .item img.pop-on.popped {
-  transform: scale(1.06); box-shadow: 0 10px 28px rgba(0,0,0,.28); transition: transform .25s ease, box-shadow .25s ease;
+/* Small screens: auto height tiles */
+@media (max-width: 767px) {
+  .tile img { height: 160px; }
 }
-@media (min-width: 992px) { .portfolio-carousel .carousel-inner > .item img.pop-on.popped { transform: scale(1.08); } }
+
+/* Hide old carousel-specific classes if still present */
+.portfolio-carousel { display:none !important; }
 </style>
 
 {% capture markdown %}
-
 ### Overview
 End-to-end **digitization of daily operations**: centralized data, mobile logging for carers, and KPIs that leadership actually use.
 
@@ -116,7 +134,6 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
 ### My Role
 - Solution design, data model, form design, BI KPIs, training & rollout.  
 - Set up refresh monitoring and documentation for handover.
-
 ---
 {% endcapture %}
 {{ markdown | markdownify }}
@@ -135,239 +152,203 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
 
 <div class="tab-content" style="margin-top:15px;">
 
-  <!-- ACCESS CAROUSEL -->
+  <!-- ACCESS GALLERY -->
   <div role="tabpanel" class="tab-pane fade in active" id="{{ page.modal-id }}-access">
     <h4 class="text-center">Microsoft Access (Data Layer)</h4>
-    <div id="{{ page.modal-id }}-carousel-access" class="carousel slide portfolio-carousel" aria-label="Microsoft Access slides">
-      <ol class="carousel-indicators">
-        <li data-target="#{{ page.modal-id }}-carousel-access" data-slide-to="0" class="active"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-access" data-slide-to="1"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-access" data-slide-to="2"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-access" data-slide-to="3"></li>
-      </ol>
-
-      <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <a class="zoom-wrap" href="img/portfolio/pscs/pscs_access_frm_1.png" target="_blank" rel="noopener">
-            <img src="img/portfolio/pscs/pscs_access_frm_1.png" alt="Access data-entry form for Visits" class="img-responsive">
-          </a>
-          <div class="carousel-caption">Form: Visit entry</div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/pscs/pscs_access_rel_1.png" target="_blank" rel="noopener">
-            <img src="img/portfolio/pscs/pscs_access_rel_1.png" alt="Access relationships diagram linking Clients, Staff, Schedules and Visits" class="img-responsive">
-          </a>
-          <div class="carousel-caption">Relationships</div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/pscs/pscs_access_tbl_1.png" target="_blank" rel="noopener">
-            <img src="img/portfolio/pscs/pscs_access_tbl_1.png" alt="Access Visits table showing sample rows with durations and notes" class="img-responsive">
-          </a>
-          <div class="carousel-caption">Table view</div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/pscs/pscs_access_val_1.png" target="_blank" rel="noopener">
-            <img src="img/portfolio/pscs/pscs_access_val_1.png" alt="Access validation message enforcing minimum duration" class="img-responsive">
-          </a>
-          <div class="carousel-caption">Validation rule</div>
-        </div>
+    <div class="tile-gallery" data-album="{{ page.modal-id }}-access">
+      <div class="tile">
+        <a href="img/portfolio/pscs/pscs_access_frm_1.png" data-caption="Form: Visit entry" data-index="0">
+          <img src="img/portfolio/pscs/pscs_access_frm_1.png" alt="Access data-entry form for Visits" loading="lazy">
+          <div class="cap">Form: Visit entry</div>
+        </a>
       </div>
-
-      <a class="left carousel-control" href="#{{ page.modal-id }}-carousel-access" role="button" data-slide="prev" aria-label="Previous slide">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      </a>
-      <a class="right carousel-control" href="#{{ page.modal-id }}-carousel-access" role="button" data-slide="next" aria-label="Next slide">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      </a>
+      <div class="tile">
+        <a href="img/portfolio/pscs/pscs_access_rel_1.png" data-caption="Relationships" data-index="1">
+          <img src="img/portfolio/pscs/pscs_access_rel_1.png" alt="Access relationships diagram linking Clients, Staff, Schedules and Visits" loading="lazy">
+          <div class="cap">Relationships</div>
+        </a>
+      </div>
+      <div class="tile">
+        <a href="img/portfolio/pscs/pscs_access_tbl_1.png" data-caption="Table view" data-index="2">
+          <img src="img/portfolio/pscs/pscs_access_tbl_1.png" alt="Access Visits table showing sample rows with durations and notes" loading="lazy">
+          <div class="cap">Table view</div>
+        </a>
+      </div>
+      <div class="tile">
+        <a href="img/portfolio/pscs/pscs_access_val_1.png" data-caption="Validation rule" data-index="3">
+          <img src="img/portfolio/pscs/pscs_access_val_1.png" alt="Access validation message enforcing minimum duration" loading="lazy">
+          <div class="cap">Validation rule</div>
+        </a>
+      </div>
     </div>
   </div>
 
-  <!-- POWER BI CAROUSEL -->
+  <!-- POWER BI GALLERY -->
   <div role="tabpanel" class="tab-pane fade" id="{{ page.modal-id }}-powerbi">
     <h4 class="text-center">Power BI (Reporting Layer)</h4>
-    <div id="{{ page.modal-id }}-carousel-powerbi" class="carousel slide portfolio-carousel" aria-label="Power BI slides">
-      <ol class="carousel-indicators">
-        <li data-target="#{{ page.modal-id }}-carousel-powerbi" data-slide-to="0" class="active"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-powerbi" data-slide-to="1"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-powerbi" data-slide-to="2"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-powerbi" data-slide-to="3"></li>
-      </ol>
-
-      <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <a class="zoom-wrap" href="img/portfolio/pscs/pscs_powerbi_import_1.png" target="_blank" rel="noopener">
-            <img src="img/portfolio/pscs/pscs_powerbi_import_1.png" alt="Power BI get data dialog with Access connector selected" class="img-responsive">
-          </a>
-          <div class="carousel-caption">Import (Access)</div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/pscs/pscs_powerbi_pq_1.png" target="_blank" rel="noopener">
-            <img src="img/portfolio/pscs/pscs_powerbi_pq_1.png" alt="Power Query editor preview of the Training table" class="img-responsive">
-          </a>
-          <div class="carousel-caption">Power Query</div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/pscs/pscs_powerbi_rel_1.png" target="_blank" rel="noopener">
-            <img src="img/portfolio/pscs/pscs_powerbi_rel_1.png" alt="Power BI data model showing relationships between fact and dimension tables" class="img-responsive">
-          </a>
-          <div class="carousel-caption">Data model</div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/pscs/pscs_powerbi_vis_1.png" target="_blank" rel="noopener">
-            <img src="img/portfolio/pscs/pscs_powerbi_vis_1.png" alt="Power BI KPI visuals showing visits, average duration and completions" class="img-responsive">
-          </a>
-          <div class="carousel-caption">KPI dashboard</div>
-        </div>
+    <div class="tile-gallery" data-album="{{ page.modal-id }}-powerbi">
+      <div class="tile">
+        <a href="img/portfolio/pscs/pscs_powerbi_import_1.png" data-caption="Import (Access)" data-index="0">
+          <img src="img/portfolio/pscs/pscs_powerbi_import_1.png" alt="Power BI get data dialog with Access connector selected" loading="lazy">
+          <div class="cap">Import (Access)</div>
+        </a>
       </div>
-
-      <a class="left carousel-control" href="#{{ page.modal-id }}-carousel-powerbi" role="button" data-slide="prev" aria-label="Previous slide">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      </a>
-      <a class="right carousel-control" href="#{{ page.modal-id }}-carousel-powerbi" role="button" data-slide="next" aria-label="Next slide">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      </a>
+      <div class="tile">
+        <a href="img/portfolio/pscs/pscs_powerbi_pq_1.png" data-caption="Power Query" data-index="1">
+          <img src="img/portfolio/pscs/pscs_powerbi_pq_1.png" alt="Power Query editor preview of the Training table" loading="lazy">
+          <div class="cap">Power Query</div>
+        </a>
+      </div>
+      <div class="tile">
+        <a href="img/portfolio/pscs/pscs_powerbi_rel_1.png" data-caption="Data model" data-index="2">
+          <img src="img/portfolio/pscs/pscs_powerbi_rel_1.png" alt="Power BI data model showing relationships between fact and dimension tables" loading="lazy">
+          <div class="cap">Data model</div>
+        </a>
+      </div>
+      <div class="tile">
+        <a href="img/portfolio/pscs/pscs_powerbi_vis_1.png" data-caption="KPI dashboard" data-index="3">
+          <img src="img/portfolio/pscs/pscs_powerbi_vis_1.png" alt="Power BI KPI visuals showing visits, average duration and completions" loading="lazy">
+          <div class="cap">KPI dashboard</div>
+        </a>
+      </div>
     </div>
   </div>
 
 </div>
 
-<!-- === Vendor scripts: keep exactly this order (remove if your theme already includes them) === -->
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- Single shared lightbox viewer (no Bootstrap carousel) -->
+<div class="viewer-backdrop" id="{{ page.modal-id }}-viewer" aria-hidden="true" role="dialog" aria-label="Image viewer">
+  <div class="viewer" role="document">
+    <div class="viewer-header">
+      <div><span id="{{ page.modal-id }}-viewer-pos">1/4</span></div>
+      <button class="viewer-close" type="button" aria-label="Close viewer" id="{{ page.modal-id }}-viewer-close">✕</button>
+    </div>
+    <div class="viewer-body" id="{{ page.modal-id }}-viewer-body">
+      <button class="viewer-btn viewer-prev" type="button" aria-label="Previous image" id="{{ page.modal-id }}-viewer-prev">‹</button>
+      <img id="{{ page.modal-id }}-viewer-img" alt="">
+      <button class="viewer-btn viewer-next" type="button" aria-label="Next image" id="{{ page.modal-id }}-viewer-next">›</button>
+    </div>
+    <div class="viewer-caption" id="{{ page.modal-id }}-viewer-cap">Caption</div>
+  </div>
+</div>
 
-<!-- === Carousel logic (Bootstrap 3) === -->
+<!-- Minimal JS: album-aware viewer with keyboard + touch -->
 <script>
 (function () {
-  // Guards: fail early with helpful messages if vendor scripts aren’t ready.
-  if (typeof jQuery === 'undefined') {
-    console.error('[carousel] jQuery not loaded before carousel script.');
-    return;
-  }
-  if (!jQuery.fn || typeof jQuery.fn.carousel !== 'function') {
-    if (window.bootstrap && window.bootstrap.Carousel) {
-      console.error('[carousel] Detected Bootstrap 5 (no jQuery plugin). This code targets Bootstrap 3. Use BS5 API instead or include Bootstrap 3 JS.');
-    } else {
-      console.error('[carousel] Bootstrap 3 carousel plugin not found on $.fn.carousel. Ensure Bootstrap 3 JS loads after jQuery.');
-    }
-    return;
-  }
+  var VIEWER_ID = "{{ page.modal-id }}-viewer";
+  var $backdrop = document.getElementById(VIEWER_ID);
+  var $img = document.getElementById("{{ page.modal-id }}-viewer-img");
+  var $cap = document.getElementById("{{ page.modal-id }}-viewer-cap");
+  var $pos = document.getElementById("{{ page.modal-id }}-viewer-pos");
+  var $prev = document.getElementById("{{ page.modal-id }}-viewer-prev");
+  var $next = document.getElementById("{{ page.modal-id }}-viewer-next");
+  var $close = document.getElementById("{{ page.modal-id }}-viewer-close");
 
-  // Run after full load to avoid race conditions with modal/tab markup in partials.
-  window.addEventListener('load', function () {
-    (function ($) {
-      var ids = ['#{{ page.modal-id }}-carousel-access', '#{{ page.modal-id }}-carousel-powerbi'];
-
-      // prevent auto-ride via attributes
-      ids.forEach(function (sel) { $(sel).removeAttr('data-ride'); });
-
-      var $cars = $(ids.join(','));
-
-      // guard: avoid double init if this script runs twice
-      $cars.each(function () {
-        var $c = $(this);
-        if ($c.data('pf-init')) return;
-        $c.data('pf-init', true).carousel({ interval: 6000, pause: 'hover', wrap: true }).carousel('pause');
+  // Build album maps from the DOM
+  var albums = {}; // albumId -> [{src, cap, thumbEl}, ...]
+  document.querySelectorAll('.tile-gallery').forEach(function(g) {
+    var id = g.getAttribute('data-album');
+    var items = [];
+    g.querySelectorAll('a[href][data-index]').forEach(function(a) {
+      items.push({
+        src: a.getAttribute('href'),
+        cap: a.getAttribute('data-caption') || a.querySelector('.cap')?.textContent || '',
+        thumbEl: a
       });
-
-      // Persist current slide per carousel (store AFTER it changes)
-      var idxState = {}; // { id: index }
-      $cars.on('slid.bs.carousel', function () {
-        idxState[this.id] = $(this).find('.item.active').index();
-      });
-
-      function resume($car) {
-        if (!$car || !$car.length) return;
-
-        // pause siblings only (don’t globally pause everything, which can reset state)
-        $cars.not($car).carousel('pause');
-
-        var id = $car.attr('id');
-        // prefer saved index, else current active
-        var to = (typeof idxState[id] === 'number') ? idxState[id] : $car.find('.item.active').index();
-
-        // If we have a valid target index, jump there first, then start cycling.
-        if (typeof to === 'number' && to >= 0) {
-          // Start cycling only after we've navigated to the desired slide.
-          $car.one('slid.bs.carousel.__resume', function () {
-            $car.carousel('cycle');
-          }).carousel(to);
-        } else {
-          $car.carousel('cycle');
-        }
-      }
-
-      // Detect modal element (common templates: #portfolioModal{{id}} or #{{id}})
-      var modalSelPrimary = '#portfolioModal{{ page.modal-id | default: "project-platinum" }}';
-      var modalSelFallback = '#{{ page.modal-id | default: "project-platinum" }}';
-      var $modal = $(modalSelPrimary);
-      if (!$modal.length) { $modal = $(modalSelFallback); }
-
-      // On modal open: start active tab's carousel (delay to let layout settle)
-      $modal.on('shown.bs.modal', function () {
-        var $activePane = $('.tab-pane.in.active', this);
-        var $activeCar = $activePane.find('.carousel');
-        if (!$activeCar.length) { $activeCar = $(ids[0]); }
-        setTimeout(function () {
-          resume($activeCar);
-          $activeCar.find('.item.active img').trigger('load');
-        }, 0);
-      });
-
-      // Pause all when closing
-      $modal.on('hide.bs.modal', function () { $cars.carousel('pause'); });
-
-      // On tab switch: resume just that tab's carousel
-      $('a[data-toggle="tab"][href^="#{{ page.modal-id }}-"]').on('shown.bs.tab', function (e) {
-        var target = $(e.target).attr('href');
-        resume($(target).find('.carousel'));
-      });
-
-      // One-time pop-on-scroll effect via IntersectionObserver
-      $cars.find('.item img').addClass('pop-on');
-      var rootEl = $modal.find('.modal-body')[0] || null;
-      var io = new (window.IntersectionObserver || function (cb) {
-        return { observe: function () { }, unobserve: function () { } };
-      })(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting || entry.intersectionRatio > 0) {
-            var img = entry.target; img.classList.add('popped');
-            setTimeout(function () { img.classList.remove('popped'); }, 800);
-            io.unobserve(img);
-          }
-        });
-      }, { root: rootEl, threshold: 0.6 });
-
-      $cars.each(function () {
-        $(this).find('.item.active img.pop-on').each(function () { io.observe(this); });
-      });
-      $cars.on('slid.bs.carousel', function () {
-        $(this).find('.item.active img.pop-on').each(function () { io.observe(this); });
-      });
-
-      // Touch swipe (Bootstrap 3 lacks this by default)
-      $cars.on('touchstart', function (e) {
-        var x0 = e.originalEvent.touches && e.originalEvent.touches[0].clientX;
-        $(this).data('x0', x0);
-      });
-      $cars.on('touchmove', function (e) {
-        var x0 = $(this).data('x0');
-        if (!x0) return;
-        var x = e.originalEvent.touches && e.originalEvent.touches[0].clientX;
-        var dx = x - x0;
-        if (Math.abs(dx) > 40) {
-          $(this).carousel(dx > 0 ? 'prev' : 'next');
-          $(this).data('x0', null);
-        }
-      });
-
-      // Defensive: on resize, reset transient transforms on active images
-      var t; $(window).on('resize', function () {
-        clearTimeout(t);
-        t = setTimeout(function () {
-          $('.portfolio-carousel .item.active img').each(function () { this.style.transform = ''; });
-        }, 120);
-      });
-    })(jQuery);
+    });
+    albums[id] = items;
   });
+
+  var state = { albumId: null, index: 0 };
+
+  function openViewer(albumId, index) {
+    var items = albums[albumId] || [];
+    if (!items.length) return;
+    state.albumId = albumId;
+    state.index = Math.max(0, Math.min(index, items.length - 1));
+    render();
+    $backdrop.classList.add('open');
+    $backdrop.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    // focus close for a11y
+    $close.focus();
+  }
+
+  function closeViewer() {
+    $backdrop.classList.remove('open');
+    $backdrop.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function render() {
+    var items = albums[state.albumId];
+    var it = items[state.index];
+    // Preload next/prev lightly
+    var preload = [state.index + 1, state.index - 1].filter(function(i){ return i>=0 && i<items.length; });
+    preload.forEach(function(i){ var p = new Image(); p.src = items[i].src; });
+
+    $img.src = it.src;
+    $img.alt = it.cap || "Image " + (state.index + 1);
+    $cap.textContent = it.cap || '';
+    $pos.textContent = (state.index + 1) + "/" + items.length;
+    // toggle buttons on edges
+    $prev.style.visibility = (state.index > 0) ? 'visible' : 'hidden';
+    $next.style.visibility = (state.index < items.length - 1) ? 'visible' : 'hidden';
+  }
+
+  function next() {
+    var items = albums[state.albumId];
+    if (state.index < items.length - 1) { state.index++; render(); }
+  }
+  function prev() {
+    if (state.index > 0) { state.index--; render(); }
+  }
+
+  // Click handlers on tiles
+  document.querySelectorAll('.tile-gallery a[data-index]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      var albumEl = a.closest('.tile-gallery');
+      var albumId = albumEl.getAttribute('data-album');
+      var idx = parseInt(a.getAttribute('data-index'), 10) || 0;
+      openViewer(albumId, idx);
+    });
+  });
+
+  // Viewer controls
+  $next.addEventListener('click', next);
+  $prev.addEventListener('click', prev);
+  $close.addEventListener('click', closeViewer);
+  $backdrop.addEventListener('click', function(e) {
+    // Close if clicking backdrop (not when clicking inside the viewer panel)
+    if (e.target === $backdrop) closeViewer();
+  });
+
+  // Keyboard support
+  document.addEventListener('keydown', function(e) {
+    if (!$backdrop.classList.contains('open')) return;
+    if (e.key === 'Escape') closeViewer();
+    if (e.key === 'ArrowRight') next();
+    if (e.key === 'ArrowLeft') prev();
+  });
+
+  // Touch swipe
+  (function addSwipe(el){
+    var x0=null,y0=null;
+    el.addEventListener('touchstart', function(e){
+      var t=e.touches[0]; x0=t.clientX; y0=t.clientY;
+    }, {passive:true});
+    el.addEventListener('touchmove', function(e){
+      if(x0===null) return;
+      var t=e.touches[0]; var dx=t.clientX-x0; var dy=t.clientY-y0;
+      if(Math.abs(dx)>40 && Math.abs(dx)>Math.abs(dy)){
+        if(dx<0) next(); else prev();
+        x0=null; y0=null;
+      }
+    }, {passive:true});
+    el.addEventListener('touchend', function(){ x0=null; y0=null; });
+  })($backdrop);
+
+  // Maintain tab-specific albums automatically (no extra JS needed).
 })();
 </script>
