@@ -13,23 +13,23 @@ github-url:
 youtube-url:
 ---
 
-<!-- Scoped styles -->
+<!-- Scoped styles: uniform viewport, non-cropping images, captions not blocked, indicators inside -->
 <style>
 /* Keep the entire modal usable on one screen */
-.modal .modal-body {
-  max-height: calc(100vh - 160px);
-  overflow-y: auto;
-}
+.modal .modal-body { max-height: calc(100vh - 160px); overflow-y: auto; }
 
 /* Unified carousel viewport: fixed to the screen, not content */
 .portfolio-carousel {
-  position: relative;
-  height: 60vh;              /* one window */
-  max-height: 620px;         /* cap on large screens */
-  min-height: 360px;         /* floor on small screens */
-  overflow: hidden;          /* children can't increase height */
-  padding-bottom: 28px;      /* space for indicators */
+  position: relative; height: 60vh; max-height: 620px; min-height: 360px;
+  overflow: hidden; padding-bottom: 28px; /* room for indicators */
 }
+
+/* Ensure stacking order never blocks captions/indicators */
+.portfolio-carousel .carousel-inner { z-index: 1; }
+.portfolio-carousel .carousel-caption,
+.portfolio-carousel .carousel-indicators,
+.portfolio-carousel .left.carousel-control,
+.portfolio-carousel .right.carousel-control { z-index: 2; }
 
 /* Indicators stay inside */
 .portfolio-carousel .carousel-indicators { bottom: 6px; }
@@ -38,50 +38,23 @@ youtube-url:
 .portfolio-carousel .carousel-inner,
 .portfolio-carousel .carousel-inner > .item { height: 100%; }
 .portfolio-carousel .carousel-inner > .item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fafafa;
+  display: flex; align-items: center; justify-content: center; background: #fafafa;
 }
 
 /* Images are contained (no crop, no stretch) */
 .portfolio-carousel .carousel-inner > .item img {
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,.08);
-  transition: transform .2s ease, box-shadow .2s ease;
-  transform-origin: center center;
+  max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; margin: 0 auto;
+  border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,.08); transition: transform .2s ease, box-shadow .2s ease; transform-origin: center center;
 }
 
 /* Gentle hover zoom that stays inside the slide */
-.zoom-wrap {
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-}
-.zoom-wrap:hover img,
-.zoom-wrap:focus img {
-  transform: scale(1.15);
-  box-shadow: 0 8px 24px rgba(0,0,0,.25);
-  z-index: 1;
-}
+.zoom-wrap { display: inline-flex; max-width: 100%; max-height: 100%; overflow: hidden; }
+.zoom-wrap:hover img, .zoom-wrap:focus img { transform: scale(1.08); box-shadow: 0 8px 24px rgba(0,0,0,.25); z-index: 1; }
 
 /* Caption overlays; never pushes height */
 .portfolio-carousel .carousel-caption {
-  background: rgba(0,0,0,0.45);
-  border-radius: 6px;
-  padding: 8px 12px;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: auto;
-  max-width: 85%;
-  z-index: 2;
+  background: rgba(0,0,0,0.45); border-radius: 6px; padding: 8px 12px; bottom: 16px; left: 50%; transform: translateX(-50%);
+  width: auto; max-width: 85%;
 }
 
 /* Controls accessibility focus ring */
@@ -92,23 +65,14 @@ youtube-url:
 .nav-tabs > li > a { padding: 10px 15px; }
 
 /* Small screens: slightly shorter viewport */
-@media (max-width: 767px) {
-  .portfolio-carousel {
-    height: 54vh;
-    min-height: 300px;
-  }
-}
+@media (max-width: 767px) { .portfolio-carousel { height: 54vh; min-height: 300px; } }
 
-/* --- POP-ON-SCROLL effect (applies once when slide comes into view) --- */
+/* POP-ON-SCROLL effect (fires once per image) */
 .portfolio-carousel .carousel-inner > .item img.pop-on {}
 .portfolio-carousel .carousel-inner > .item img.pop-on.popped {
-  transform: scale(1.06);
-  box-shadow: 0 10px 28px rgba(0,0,0,.28);
-  transition: transform .25s ease, box-shadow .25s ease;
+  transform: scale(1.06); box-shadow: 0 10px 28px rgba(0,0,0,.28); transition: transform .25s ease, box-shadow .25s ease;
 }
-@media (min-width: 992px) {
-  .portfolio-carousel .carousel-inner > .item img.pop-on.popped { transform: scale(1.08); }
-}
+@media (min-width: 992px) { .portfolio-carousel .carousel-inner > .item img.pop-on.popped { transform: scale(1.08); } }
 </style>
 
 {% capture markdown %}
@@ -267,98 +231,92 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
 
 </div>
 
-<!-- JS: preserve current slide index + pop-on-scroll images -->
+<!-- JS: stable indices, swipe support, one-time pop-on-scroll, robust modal targeting -->
 <script>
-  (function ($) {
-    // Carousels in this modal
-    var carIds = [
-      '#{{ page.modal-id }}-carousel-access',
-      '#{{ page.modal-id }}-carousel-powerbi'
-    ];
-    // Remove any data-ride to prevent Bootstrap auto re-init
-    carIds.forEach(function(sel){ $(sel).removeAttr('data-ride'); });
+(function ($) {
+  var ids = ['#{{ page.modal-id }}-carousel-access', '#{{ page.modal-id }}-carousel-powerbi'];
+  ids.forEach(function(sel){ $(sel).removeAttr('data-ride'); });
+  var $cars = $(ids.join(','));
 
-    var $cars = $(carIds.join(','));
-    $cars.carousel({ interval: 6000, pause: 'hover', wrap: true });
+  // Init carousels (no auto-start until modal opens)
+  $cars.carousel({ interval: 6000, pause: 'hover', wrap: true });
+  $cars.carousel('pause');
 
-    /* --- Keep current slide (no reset to first) --- */
-    var idxState = {}; // { 'carousel-id': currentIndex }
+  // Persist current slide per carousel
+  var idxState = {}; // { id: index }
+  $cars.on('slide.bs.carousel', function (e) { idxState[this.id] = $(e.relatedTarget).index(); });
 
-    // Capture next index during slide
-    $cars.on('slide.bs.carousel', function (e) {
-      var id = this.id;
-      idxState[id] = $(e.relatedTarget).index();
+  function resume($car) {
+    if (!$car || !$car.length) return;
+    var id = $car.attr('id');
+    var to = (typeof idxState[id] === 'number') ? idxState[id] : ($car.find('.item.active').index() || 0);
+    $cars.carousel('pause');
+    $car.carousel(to).carousel('cycle');
+  }
+
+  // Detect modal element (common templates: #portfolioModal{{id}} or #{{id}})
+  var modalSelPrimary = '#portfolioModal{{ page.modal-id | default: "project-platinum" }}';
+  var modalSelFallback = '#{{ page.modal-id | default: "project-platinum" }}';
+  var $modal = $(modalSelPrimary);
+  if (!$modal.length) { $modal = $(modalSelFallback); }
+
+  // On modal open: start active tab's carousel
+  $modal.on('shown.bs.modal', function () {
+    var $active = $('.tab-pane.in.active', this).find('.carousel');
+    if (!$active.length) { $active = $(ids[0]); }
+    resume($active);
+    $active.find('.item.active img').trigger('load');
+  });
+
+  // Pause all when closing
+  $modal.on('hide.bs.modal', function () { $cars.carousel('pause'); });
+
+  // On tab switch: resume just that tab's carousel
+  $('a[data-toggle="tab"][href^="#{{ page.modal-id }}-"]').on('shown.bs.tab', function (e) {
+    var target = $(e.target).attr('href');
+    resume($(target).find('.carousel'));
+  });
+
+  // One-time pop-on-scroll effect via IntersectionObserver
+  $cars.find('.item img').addClass('pop-on');
+  var rootEl = $modal.find('.modal-body')[0] || null;
+  var io = new (window.IntersectionObserver || function(cb){return { observe:function(){}, unobserve:function(){} };})(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting || entry.intersectionRatio > 0) {
+        var img = entry.target; img.classList.add('popped');
+        setTimeout(function(){ img.classList.remove('popped'); }, 800);
+        io.unobserve(img);
+      }
     });
+  }, { root: rootEl, threshold: 0.6 });
 
-    function resume($car) {
-      if (!$car || !$car.length) return;
-      var id = $car.attr('id');
-      var toIdx = (typeof idxState[id] === 'number')
-        ? idxState[id]
-        : ($car.find('.item.active').index() || 0);
-      $cars.carousel('pause');     // pause all
-      $car.carousel(toIdx);        // go to saved index
-      $car.carousel('cycle');      // then cycle only this one
+  $cars.each(function(){ $(this).find('.item.active img.pop-on').each(function(){ io.observe(this); }); });
+  $cars.on('slid.bs.carousel', function(){ $(this).find('.item.active img.pop-on').each(function(){ io.observe(this); }); });
+
+  // Touch swipe (Bootstrap 3 lacks this by default)
+  $cars.on('touchstart', function (e) {
+    var x0 = e.originalEvent.touches && e.originalEvent.touches[0].clientX;
+    var $this = $(this);
+    $this.data('x0', x0);
+  });
+  $cars.on('touchmove', function (e) {
+    var x0 = $(this).data('x0');
+    if (!x0) return;
+    var x = e.originalEvent.touches && e.originalEvent.touches[0].clientX;
+    var dx = x - x0;
+    if (Math.abs(dx) > 40) {
+      $(this).carousel(dx > 0 ? 'prev' : 'next');
+      $(this).data('x0', null);
     }
+  });
 
-    // Detect modal element (common templates: #portfolioModal{{id}} or #{{id}})
-    var modalSelPrimary = '#portfolioModal{{ page.modal-id | default: "project-platinum" }}';
-    var modalSelFallback = '#{{ page.modal-id | default: "project-platinum" }}';
-    var $modal = $(modalSelPrimary);
-    if (!$modal.length) { $modal = $(modalSelFallback); }
-
-    // On modal open: resume visible tab's carousel
-    $modal.on('shown.bs.modal', function () {
-      var $active = $('.tab-pane.in.active', this).find('.carousel');
-      if (!$active.length) { $active = $(carIds[0]); }
-      resume($active);
-      // nudge active image to recalc within fixed viewport
-      $active.find('.item.active img').trigger('load');
-    });
-
-    // Pause all when closing
-    $modal.on('hide.bs.modal', function () { $cars.carousel('pause'); });
-
-    // On tab switch: resume the target tab's carousel
-    $('a[data-toggle="tab"][href^="#{{ page.modal-id }}-"]').on('shown.bs.tab', function (e) {
-      var target = $(e.target).attr('href');
-      resume($(target).find('.carousel'));
-    });
-
-    /* --- Pop-out image once when its slide enters view --- */
-    // Mark eligible images
-    $cars.find('.item img').addClass('pop-on');
-
-    // Use modal body as scroll root (falls back to viewport if not found)
-    var rootEl = $modal.find('.modal-body')[0] || null;
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if (entry.isIntersecting) {
-          var img = entry.target;
-          img.classList.add('popped');
-          setTimeout(function(){ img.classList.remove('popped'); }, 800);
-          io.unobserve(img); // fire once per image
-        }
-      });
-    }, { root: rootEl, threshold: 0.6 });
-
-    // Observe current active images immediately
-    $cars.each(function(){
-      $(this).find('.item.active img.pop-on').each(function(){ io.observe(this); });
-    });
-
-    // Observe new active image after each slide completes
-    $cars.on('slid.bs.carousel', function(){
-      $(this).find('.item.active img.pop-on').each(function(){ io.observe(this); });
-    });
-
-    // Defensive: on resize, reset transient transforms on active images
-    var resizeTimer;
-    $(window).on('resize', function(){
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(function(){
-        $('.portfolio-carousel .item.active img').each(function(){ this.style.transform = ''; });
-      }, 120);
-    });
-  })(jQuery);
+  // Defensive: on resize, reset transient transforms on active images
+  var t; $(window).on('resize', function(){ clearTimeout(t); t = setTimeout(function(){ $('.portfolio-carousel .item.active img').each(function(){ this.style.transform = ''; }); }, 120); });
+})(jQuery);
 </script>
+
+<!-- Ensure scripts are included ONCE, ideally before closing </body> -->
+<!--
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+-->
