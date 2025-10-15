@@ -132,8 +132,8 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
 ---
 
 ### My Role
-- Solution design, data model, form design, BI KPIs, training & rollout.  
-- Set up refresh monitoring and documentation for handover.
+1. Solution design, data model, form design, BI KPIs, training & rollout.  
+2. Set up refresh monitoring and documentation for handover.
 
 ---
 {% endcapture %}
