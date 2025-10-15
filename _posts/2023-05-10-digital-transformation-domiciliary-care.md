@@ -231,27 +231,47 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
 
 </div>
 
-<!-- JS: stable indices, swipe support, one-time pop-on-scroll, robust modal targeting -->
 <script>
 (function ($) {
   var ids = ['#{{ page.modal-id }}-carousel-access', '#{{ page.modal-id }}-carousel-powerbi'];
-  ids.forEach(function(sel){ $(sel).removeAttr('data-ride'); });
+
+  // prevent auto-ride via attributes
+  ids.forEach(function (sel) { $(sel).removeAttr('data-ride'); });
+
   var $cars = $(ids.join(','));
 
-  // Init carousels (no auto-start until modal opens)
-  $cars.carousel({ interval: 6000, pause: 'hover', wrap: true });
-  $cars.carousel('pause');
+  // guard: avoid double init if this script runs twice
+  $cars.each(function () {
+    var $c = $(this);
+    if ($c.data('pf-init')) return;
+    $c.data('pf-init', true).carousel({ interval: 6000, pause: 'hover', wrap: true }).carousel('pause');
+  });
 
-  // Persist current slide per carousel
+  // Persist current slide per carousel (store AFTER it changes)
   var idxState = {}; // { id: index }
-  $cars.on('slide.bs.carousel', function (e) { idxState[this.id] = $(e.relatedTarget).index(); });
+  $cars.on('slid.bs.carousel', function () {
+    idxState[this.id] = $(this).find('.item.active').index();
+  });
 
   function resume($car) {
     if (!$car || !$car.length) return;
+
+    // pause siblings only (don’t globally pause everything, which can reset state)
+    $cars.not($car).carousel('pause');
+
     var id = $car.attr('id');
-    var to = (typeof idxState[id] === 'number') ? idxState[id] : ($car.find('.item.active').index() || 0);
-    $cars.carousel('pause');
-    $car.carousel(to).carousel('cycle');
+    // prefer saved index, else current active
+    var to = (typeof idxState[id] === 'number') ? idxState[id] : $car.find('.item.active').index();
+
+    // If we have a valid target index, jump there first, then start cycling.
+    if (typeof to === 'number' && to >= 0) {
+      // Start cycling only after we've navigated to the desired slide.
+      $car.one('slid.bs.carousel.__resume', function () {
+        $car.carousel('cycle');
+      }).carousel(to);
+    } else {
+      $car.carousel('cycle');
+    }
   }
 
   // Detect modal element (common templates: #portfolioModal{{id}} or #{{id}})
@@ -260,12 +280,15 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
   var $modal = $(modalSelPrimary);
   if (!$modal.length) { $modal = $(modalSelFallback); }
 
-  // On modal open: start active tab's carousel
+  // On modal open: start active tab's carousel (delay to let layout settle)
   $modal.on('shown.bs.modal', function () {
-    var $active = $('.tab-pane.in.active', this).find('.carousel');
-    if (!$active.length) { $active = $(ids[0]); }
-    resume($active);
-    $active.find('.item.active img').trigger('load');
+    var $activePane = $('.tab-pane.in.active', this);
+    var $activeCar = $activePane.find('.carousel');
+    if (!$activeCar.length) { $activeCar = $(ids[0]); }
+    setTimeout(function () {
+      resume($activeCar);
+      $activeCar.find('.item.active img').trigger('load');
+    }, 0);
   });
 
   // Pause all when closing
@@ -280,24 +303,29 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
   // One-time pop-on-scroll effect via IntersectionObserver
   $cars.find('.item img').addClass('pop-on');
   var rootEl = $modal.find('.modal-body')[0] || null;
-  var io = new (window.IntersectionObserver || function(cb){return { observe:function(){}, unobserve:function(){} };})(function(entries){
-    entries.forEach(function(entry){
+  var io = new (window.IntersectionObserver || function (cb) {
+    return { observe: function () { }, unobserve: function () { } };
+  })(function (entries) {
+    entries.forEach(function (entry) {
       if (entry.isIntersecting || entry.intersectionRatio > 0) {
         var img = entry.target; img.classList.add('popped');
-        setTimeout(function(){ img.classList.remove('popped'); }, 800);
+        setTimeout(function () { img.classList.remove('popped'); }, 800);
         io.unobserve(img);
       }
     });
   }, { root: rootEl, threshold: 0.6 });
 
-  $cars.each(function(){ $(this).find('.item.active img.pop-on').each(function(){ io.observe(this); }); });
-  $cars.on('slid.bs.carousel', function(){ $(this).find('.item.active img.pop-on').each(function(){ io.observe(this); }); });
+  $cars.each(function () {
+    $(this).find('.item.active img.pop-on').each(function () { io.observe(this); });
+  });
+  $cars.on('slid.bs.carousel', function () {
+    $(this).find('.item.active img.pop-on').each(function () { io.observe(this); });
+  });
 
   // Touch swipe (Bootstrap 3 lacks this by default)
   $cars.on('touchstart', function (e) {
     var x0 = e.originalEvent.touches && e.originalEvent.touches[0].clientX;
-    var $this = $(this);
-    $this.data('x0', x0);
+    $(this).data('x0', x0);
   });
   $cars.on('touchmove', function (e) {
     var x0 = $(this).data('x0');
@@ -311,9 +339,15 @@ Access, Power BI, Power Query, Excel, SharePoint/Teams, (optional) Power Apps
   });
 
   // Defensive: on resize, reset transient transforms on active images
-  var t; $(window).on('resize', function(){ clearTimeout(t); t = setTimeout(function(){ $('.portfolio-carousel .item.active img').each(function(){ this.style.transform = ''; }); }, 120); });
+  var t; $(window).on('resize', function () {
+    clearTimeout(t);
+    t = setTimeout(function () {
+      $('.portfolio-carousel .item.active img').each(function () { this.style.transform = ''; });
+    }, 120);
+  });
 })(jQuery);
 </script>
+
 
 <!-- Ensure scripts are included ONCE, ideally before closing </body> -->
 <!--
