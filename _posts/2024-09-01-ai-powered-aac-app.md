@@ -13,95 +13,79 @@ github-url:
 youtube-url:
 ---
 
-<!-- Scoped styles -->
+<!-- Styles: tile gallery + viewer -->
 <style>
 /* Keep the entire modal usable on one screen */
-.modal .modal-body {
-  max-height: calc(100vh - 160px);
-  overflow-y: auto;
+.modal .modal-body { max-height: calc(100vh - 160px); overflow-y: auto; }
+
+/* TILES */
+.tile-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin-top: 8px;
+}
+.tile {
+  background:#fafafa; border-radius:10px; overflow:hidden; position:relative;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08); transition: transform .18s ease, box-shadow .18s ease;
+}
+.tile:focus-within, .tile:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.18); }
+.tile a { display:block; text-decoration:none; outline:0; }
+.tile img {
+  width:100%; height:180px; object-fit:cover; display:block;
+  transition: transform .18s ease;
+}
+.tile:hover img { transform: scale(1.04); }
+.tile .cap {
+  position:absolute; left:8px; bottom:8px; right:8px;
+  background: rgba(0,0,0,.55); color:#fff; font-size:13px; padding:6px 8px; border-radius:6px;
 }
 
-/* Unified carousel viewport: fixed to the screen, not content */
-.portfolio-carousel {
-  position: relative;
-  height: 60vh;              /* one window */
-  max-height: 620px;         /* cap on large screens */
-  min-height: 360px;         /* floor on small screens */
-  overflow: hidden;          /* children can't increase height */
-  padding-bottom: 28px;      /* space for indicators */
+/* Viewer (single modal, custom controls) */
+.viewer-backdrop {
+  position: fixed; inset: 0; background: rgba(0,0,0,.8);
+  display: none; align-items: center; justify-content: center; z-index: 9999;
+}
+.viewer-backdrop.open { display: flex; }
+.viewer {
+  position: relative; max-width: min(92vw, 1200px); max-height: 86vh;
+  background: #111; border-radius: 10px; overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,.6);
+  display:flex; flex-direction:column;
+}
+.viewer-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 12px; color:#eee; font-size:14px; background:#1b1b1b;
+}
+.viewer-body { position:relative; flex:1; display:flex; align-items:center; justify-content:center; background:#0f0f0f; }
+.viewer-body img { max-width: 100%; max-height: 100%; object-fit: contain; display:block; }
+.viewer-caption { color:#eaeaea; background:#151515; font-size:14px; padding:10px 12px; }
+
+/* Controls */
+.viewer-btn {
+  position:absolute; top:50%; transform: translateY(-50%);
+  width:44px; height:44px; border:none; border-radius:50%;
+  background: rgba(255,255,255,.1); color:#fff; cursor:pointer;
+}
+.viewer-btn:hover { background: rgba(255,255,255,.2); }
+.viewer-prev { left:10px; }
+.viewer-next { right:10px; }
+.viewer-close {
+  background: transparent; border:none; color:#eee; font-size:20px; line-height:1;
+  cursor:pointer; padding:4px 8px;
 }
 
-/* Indicators stay inside */
-.portfolio-carousel .carousel-indicators { bottom: 6px; }
-
-/* Slides fill the viewport without changing it */
-.portfolio-carousel .carousel-inner,
-.portfolio-carousel .carousel-inner > .item { height: 100%; }
-.portfolio-carousel .carousel-inner > .item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fafafa;
-}
-
-/* Images are contained (no crop, no stretch) */
-.portfolio-carousel .carousel-inner > .item img {
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,.08);
-  transition: transform .2s ease, box-shadow .2s ease;
-  transform-origin: center center;
-}
-
-/* Gentle hover zoom that stays inside the slide */
-.zoom-wrap { display: inline-block; position: relative; overflow: hidden; }
-.zoom-wrap:hover img,
-.zoom-wrap:focus img {
-  transform: scale(1.15);
-  box-shadow: 0 8px 24px rgba(0,0,0,.25);
-  z-index: 1;
-}
-
-/* Caption overlays; never pushes height */
-.portfolio-carousel .carousel-caption {
-  background: rgba(0,0,0,0.45);
-  border-radius: 6px;
-  padding: 8px 12px;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: auto;
-  max-width: 85%;
-  z-index: 2;
-}
-
-/* Controls accessibility focus ring */
-.portfolio-carousel .left.carousel-control:focus,
-.portfolio-carousel .right.carousel-control:focus { outline: 2px solid #2c3e50; }
+/* Keyboard focus */
+.viewer-btn:focus, .viewer-close:focus, .tile a:focus { outline: 2px solid #2c7be5; outline-offset:2px; }
 
 /* Tabs */
 .nav-tabs > li > a { padding: 10px 15px; }
 
-/* Small screens: slightly shorter viewport */
-@media (max-width: 767px) {
-  .portfolio-carousel { height: 54vh; min-height: 300px; }
-}
+/* Small screens: auto height tiles */
+@media (max-width: 767px) { .tile img { height: 160px; } }
 
-/* --- POP-ON-SCROLL effect (fires once per image) --- */
-.portfolio-carousel .carousel-inner > .item img.pop-on {}
-.portfolio-carousel .carousel-inner > .item img.pop-on.popped {
-  transform: scale(1.06);
-  box-shadow: 0 10px 28px rgba(0,0,0,.28);
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-@media (min-width: 992px) {
-  .portfolio-carousel .carousel-inner > .item img.pop-on.popped { transform: scale(1.08); }
-}
+/* Hide any old carousel-specific blocks if still present */
+.portfolio-carousel { display:none !important; }
 </style>
 
 ### Overview
@@ -168,321 +152,244 @@ React, React Native, TensorFlow.js, Firebase (Auth/Firestore/Hosting), Tailwind,
 
 <div class="tab-content" style="margin-top:15px;">
 
-  <!-- WEB APP -->
+  <!-- WEB APP (Tile Gallery) -->
   <div role="tabpanel" class="tab-pane fade in active" id="{{ page.modal-id }}-aac-web">
     <h4 class="text-center">Web App Dashboard &amp; Admin</h4>
-    <div id="{{ page.modal-id }}-carousel-aac-web" class="carousel slide portfolio-carousel" aria-label="Web App screenshots">
-      <ol class="carousel-indicators">
-        <li data-target="#{{ page.modal-id }}-carousel-aac-web" data-slide-to="0" class="active"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-aac-web" data-slide-to="1"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-aac-web" data-slide-to="2"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-aac-web" data-slide-to="3"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-aac-web" data-slide-to="4"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-aac-web" data-slide-to="5"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-aac-web" data-slide-to="6"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-aac-web" data-slide-to="7"></li>
-      </ol>
-
-  <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <a class="zoom-wrap" href="img/portfolio/aac-ai/admin_dashboard.png" target="_blank" rel="noopener">
-            <img src="img/portfolio/aac-ai/admin_dashboard.png" alt="Admin Dashboard" class="img-responsive">
-          </a>
-          <div class="carousel-caption"><h4>Admin Dashboard</h4></div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/aac-ai/CaregiverDashboard.png" target="_blank" rel="noopener">
-            <img src="img/portfolio/aac-ai/CaregiverDashboard.png" alt="Caregiver Dashboard" class="img-responsive">
-          </a>
-          <div class="carousel-caption"><h4>Caregiver Dashboard</h4></div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/aac-ai/manage_caregivers.png" target="_blank" rel="noopener">
-            <img src="img/portfolio/aac-ai/manage_caregivers.png" alt="Manage Caregivers" class="img-responsive">
-          </a>
-          <div class="carousel-caption"><h4>Manage Caregivers</h4></div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/aac-ai/user_management.png" target="_blank" rel="noopener">
-            <img src="img/portfolio/aac-ai/user_management.png" alt="User Management" class="img-responsive">
-          </a>
-          <div class="carousel-caption"><h4>User Management</h4></div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/aac-ai/voice_dashboard_login.png" target="_blank" rel="noopener">
-            <img src="img/portfolio/aac-ai/voice_dashboard_login.png" alt="Dashboard Login" class="img-responsive">
-          </a>
-          <div class="carousel-caption"><h4>Dashboard Login</h4></div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/aac-ai/Webapp_Signup.png" target="_blank" rel="noopener">
-            <img src="img/portfolio/aac-ai/Webapp_Signup.png" alt="Web App Signup" class="img-responsive">
-          </a>
-          <div class="carousel-caption"><h4>Web App Signup</h4></div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/aac-ai/CLI_webapp.png" target="_blank" rel="noopener">
-            <img src="img/portfolio/aac-ai/CLI_webapp.png" alt="CLI Build Output" class="img-responsive">
-          </a>
-          <div class="carousel-caption"><h4>CLI Build Output</h4></div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/aac-ai/ExpoGo_CLI.png" target="_blank" rel="noopener">
-            <img src="img/portfolio/aac-ai/ExpoGo_CLI.png" alt="Expo CLI" class="img-responsive">
-          </a>
-          <div class="carousel-caption"><h4>Expo CLI</h4></div>
-        </div>
+    <div class="tile-gallery" data-album="{{ page.modal-id }}-aac-web">
+      <div class="tile">
+        <a href="img/portfolio/aac-ai/admin_dashboard.png" data-caption="Admin Dashboard" data-index="0">
+          <img src="img/portfolio/aac-ai/admin_dashboard.png" alt="Admin Dashboard" loading="lazy"><div class="cap">Admin Dashboard</div>
+        </a>
       </div>
-
-      <a class="left carousel-control" href="#{{ page.modal-id }}-carousel-aac-web" role="button" data-slide="prev" aria-label="Previous slide">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      </a>
-      <a class="right carousel-control" href="#{{ page.modal-id }}-carousel-aac-web" role="button" data-slide="next" aria-label="Next slide">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      </a>
+      <div class="tile">
+        <a href="img/portfolio/aac-ai/CaregiverDashboard.png" data-caption="Caregiver Dashboard" data-index="1">
+          <img src="img/portfolio/aac-ai/CaregiverDashboard.png" alt="Caregiver Dashboard" loading="lazy"><div class="cap">Caregiver Dashboard</div>
+        </a>
+      </div>
+      <div class="tile">
+        <a href="img/portfolio/aac-ai/manage_caregivers.png" data-caption="Manage Caregivers" data-index="2">
+          <img src="img/portfolio/aac-ai/manage_caregivers.png" alt="Manage Caregivers" loading="lazy"><div class="cap">Manage Caregivers</div>
+        </a>
+      </div>
+      <div class="tile">
+        <a href="img/portfolio/aac-ai/user_management.png" data-caption="User Management" data-index="3">
+          <img src="img/portfolio/aac-ai/user_management.png" alt="User Management" loading="lazy"><div class="cap">User Management</div>
+        </a>
+      </div>
+      <div class="tile">
+        <a href="img/portfolio/aac-ai/voice_dashboard_login.png" data-caption="Dashboard Login" data-index="4">
+          <img src="img/portfolio/aac-ai/voice_dashboard_login.png" alt="Dashboard Login" loading="lazy"><div class="cap">Dashboard Login</div>
+        </a>
+      </div>
+      <div class="tile">
+        <a href="img/portfolio/aac-ai/Webapp_Signup.png" data-caption="Web App Signup" data-index="5">
+          <img src="img/portfolio/aac-ai/Webapp_Signup.png" alt="Web App Signup" loading="lazy"><div class="cap">Web App Signup</div>
+        </a>
+      </div>
+      <div class="tile">
+        <a href="img/portfolio/aac-ai/CLI_webapp.png" data-caption="CLI Build Output" data-index="6">
+          <img src="img/portfolio/aac-ai/CLI_webapp.png" alt="CLI Build Output" loading="lazy"><div class="cap">CLI Build Output</div>
+        </a>
+      </div>
+      <div class="tile">
+        <a href="img/portfolio/aac-ai/ExpoGo_CLI.png" data-caption="Expo CLI" data-index="7">
+          <img src="img/portfolio/aac-ai/ExpoGo_CLI.png" alt="Expo CLI" loading="lazy"><div class="cap">Expo CLI</div>
+        </a>
+      </div>
     </div>
   </div>
 
-  <!-- MOBILE APP -->
+  <!-- MOBILE APP (Tile Gallery) -->
   <div role="tabpanel" class="tab-pane fade" id="{{ page.modal-id }}-aac-mobile">
     <h4 class="text-center">Mobile App Screens</h4>
-    <div id="{{ page.modal-id }}-carousel-aac-mobile" class="carousel slide portfolio-carousel" aria-label="Mobile App screenshots">
-      <ol class="carousel-indicators">
-        <li data-target="#{{ page.modal-id }}-carousel-aac-mobile" data-slide-to="0" class="active"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-aac-mobile" data-slide-to="1"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-aac-mobile" data-slide-to="2"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-aac-mobile" data-slide-to="3"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-aac-mobile" data-slide-to="4"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-aac-mobile" data-slide-to="5"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-aac-mobile" data-slide-to="6"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-aac-mobile" data-slide-to="7"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-aac-mobile" data-slide-to="8"></li>
-      </ol>
-
-  <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <a class="zoom-wrap" href="img/portfolio/aac-ai/login_mobile.jpg" target="_blank" rel="noopener">
-            <img src="img/portfolio/aac-ai/login_mobile.jpg" alt="Login (Mobile)" class="img-responsive">
-          </a>
-          <div class="carousel-caption"><h4>Login</h4></div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/aac-ai/signup_mobile.jpg" target="_blank" rel="noopener">
-            <img src="img/portfolio/aac-ai/signup_mobile.jpg" alt="Signup (Mobile)" class="img-responsive">
-          </a>
-          <div class="carousel-caption"><h4>Signup</h4></div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/aac-ai/sentencebuilderscreen_mobile.jpg" target="_blank" rel="noopener">
-            <img src="img/portfolio/aac-ai/sentencebuilderscreen_mobile.jpg" alt="Sentence Builder (Mobile)" class="img-responsive">
-          </a>
-          <div class="carousel-caption"><h4>Sentence Builder</h4></div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/aac-ai/EmotionScreen_mobile.jpg" target="_blank" rel="noopener">
-            <img src="img/portfolio/aac-ai/EmotionScreen_mobile.jpg" alt="Emotion Screen" class="img-responsive">
-          </a>
-          <div class="carousel-caption"><h4>Emotion Screen</h4></div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/aac-ai/pictograms_mobile.jpg" target="_blank" rel="noopener">
-            <img src="img/portfolio/aac-ai/pictograms_mobile.jpg" alt="Pictogram Grid" class="img-responsive">
-          </a>
-          <div class="carousel-caption"><h4>Pictogram Grid</h4></div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/aac-ai/CameraScreen_mobile.jpg" target="_blank" rel="noopener">
-            <img src="img/portfolio/aac-ai/CameraScreen_mobile.jpg" alt="Camera Captioning" class="img-responsive">
-          </a>
-          <div class="carousel-caption"><h4>Camera Captioning</h4></div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/aac-ai/LiveSceneModeScreen_mobile.jpg" target="_blank" rel="noopener">
-            <img src="img/portfolio/aac-ai/LiveSceneModeScreen_mobile.jpg" alt="Live Scene Mode" class="img-responsive">
-          </a>
-          <div class="carousel-caption"><h4>Live Scene Mode</h4></div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/aac-ai/profilescreen.jpg" target="_blank" rel="noopener">
-            <img src="img/portfolio/aac-ai/profilescreen.jpg" alt="Profile &amp; Settings" class="img-responsive">
-          </a>
-          <div class="carousel-caption"><h4>Profile &amp; Settings</h4></div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/aac-ai/loading_screen_mobile.jpg" target="_blank" rel="noopener">
-            <img src="img/portfolio/aac-ai/loading_screen_mobile.jpg" alt="Loading Screen" class="img-responsive">
-          </a>
-          <div class="carousel-caption"><h4>Loading Screen</h4></div>
-        </div>
-      </div>
-
-  <a class="left carousel-control" href="#{{ page.modal-id }}-carousel-aac-mobile" role="button" data-slide="prev" aria-label="Previous slide">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      </a>
-      <a class="right carousel-control" href="#{{ page.modal-id }}-carousel-aac-mobile" role="button" data-slide="next" aria-label="Next slide">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      </a>
+    <div class="tile-gallery" data-album="{{ page.modal-id }}-aac-mobile">
+      <div class="tile"><a href="img/portfolio/aac-ai/login_mobile.jpg" data-caption="Login" data-index="0">
+        <img src="img/portfolio/aac-ai/login_mobile.jpg" alt="Login (Mobile)" loading="lazy"><div class="cap">Login</div>
+      </a></div>
+      <div class="tile"><a href="img/portfolio/aac-ai/signup_mobile.jpg" data-caption="Signup" data-index="1">
+        <img src="img/portfolio/aac-ai/signup_mobile.jpg" alt="Signup (Mobile)" loading="lazy"><div class="cap">Signup</div>
+      </a></div>
+      <div class="tile"><a href="img/portfolio/aac-ai/sentencebuilderscreen_mobile.jpg" data-caption="Sentence Builder" data-index="2">
+        <img src="img/portfolio/aac-ai/sentencebuilderscreen_mobile.jpg" alt="Sentence Builder (Mobile)" loading="lazy"><div class="cap">Sentence Builder</div>
+      </a></div>
+      <div class="tile"><a href="img/portfolio/aac-ai/EmotionScreen_mobile.jpg" data-caption="Emotion Screen" data-index="3">
+        <img src="img/portfolio/aac-ai/EmotionScreen_mobile.jpg" alt="Emotion Screen" loading="lazy"><div class="cap">Emotion Screen</div>
+      </a></div>
+      <div class="tile"><a href="img/portfolio/aac-ai/pictograms_mobile.jpg" data-caption="Pictogram Grid" data-index="4">
+        <img src="img/portfolio/aac-ai/pictograms_mobile.jpg" alt="Pictogram Grid" loading="lazy"><div class="cap">Pictogram Grid</div>
+      </a></div>
+      <div class="tile"><a href="img/portfolio/aac-ai/CameraScreen_mobile.jpg" data-caption="Camera Captioning" data-index="5">
+        <img src="img/portfolio/aac-ai/CameraScreen_mobile.jpg" alt="Camera Captioning" loading="lazy"><div class="cap">Camera Captioning</div>
+      </a></div>
+      <div class="tile"><a href="img/portfolio/aac-ai/LiveSceneModeScreen_mobile.jpg" data-caption="Live Scene Mode" data-index="6">
+        <img src="img/portfolio/aac-ai/LiveSceneModeScreen_mobile.jpg" alt="Live Scene Mode" loading="lazy"><div class="cap">Live Scene Mode</div>
+      </a></div>
+      <div class="tile"><a href="img/portfolio/aac-ai/profilescreen.jpg" data-caption="Profile &amp; Settings" data-index="7">
+        <img src="img/portfolio/aac-ai/profilescreen.jpg" alt="Profile & Settings" loading="lazy"><div class="cap">Profile &amp; Settings</div>
+      </a></div>
+      <div class="tile"><a href="img/portfolio/aac-ai/loading_screen_mobile.jpg" data-caption="Loading Screen" data-index="8">
+        <img src="img/portfolio/aac-ai/loading_screen_mobile.jpg" alt="Loading Screen" loading="lazy"><div class="cap">Loading Screen</div>
+      </a></div>
     </div>
   </div>
 
-  <!-- FIREBASE -->
+  <!-- FIREBASE (Tile Gallery) -->
   <div role="tabpanel" class="tab-pane fade" id="{{ page.modal-id }}-aac-firebase">
     <h4 class="text-center">Firebase Backend &amp; Data</h4>
-    <div id="{{ page.modal-id }}-carousel-aac-firebase" class="carousel slide portfolio-carousel" aria-label="Firebase screenshots">
-      <ol class="carousel-indicators">
-        <li data-target="#{{ page.modal-id }}-carousel-aac-firebase" data-slide-to="0" class="active"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-aac-firebase" data-slide-to="1"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-aac-firebase" data-slide-to="2"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-aac-firebase" data-slide-to="3"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-aac-firebase" data-slide-to="4"></li>
-        <li data-target="#{{ page.modal-id }}-carousel-aac-firebase" data-slide-to="5"></li>
-      </ol>
-
-  <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <a class="zoom-wrap" href="img/portfolio/aac-ai/firebase_auth.png" target="_blank" rel="noopener">
-            <img src="img/portfolio/aac-ai/firebase_auth.png" alt="Firebase Authentication" class="img-responsive">
-          </a>
-          <div class="carousel-caption"><h4>Firebase Authentication</h4></div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/aac-ai/firebase_database.png" target="_blank" rel="noopener">
-            <img src="img/portfolio/aac-ai/firebase_database.png" alt="Firebase Realtime Database" class="img-responsive">
-          </a>
-          <div class="carousel-caption"><h4>Realtime Database</h4></div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/aac-ai/realtimedatabase_rules.png" target="_blank" rel="noopener">
-            <img src="img/portfolio/aac-ai/realtimedatabase_rules.png" alt="Realtime Database Rules" class="img-responsive">
-          </a>
-          <div class="carousel-caption"><h4>Realtime DB Rules</h4></div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/aac-ai/userlogs_firebase.png" target="_blank" rel="noopener">
-            <img src="img/portfolio/aac-ai/userlogs_firebase.png" alt="User Logs Node" class="img-responsive">
-          </a>
-          <div class="carousel-caption"><h4>User Logs</h4></div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/aac-ai/users_firebase.png" target="_blank" rel="noopener">
-            <img src="img/portfolio/aac-ai/users_firebase.png" alt="Users Node" class="img-responsive">
-          </a>
-          <div class="carousel-caption"><h4>Users</h4></div>
-        </div>
-        <div class="item">
-          <a class="zoom-wrap" href="img/portfolio/aac-ai/caregivers_firebase.png" target="_blank" rel="noopener">
-            <img src="img/portfolio/aac-ai/caregivers_firebase.png" alt="Caregivers Node" class="img-responsive">
-          </a>
-          <div class="carousel-caption"><h4>Caregivers</h4></div>
-        </div>
-      </div>
-
-  <a class="left carousel-control" href="#{{ page.modal-id }}-carousel-aac-firebase" role="button" data-slide="prev" aria-label="Previous slide">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      </a>
-      <a class="right carousel-control" href="#{{ page.modal-id }}-carousel-aac-firebase" role="button" data-slide="next" aria-label="Next slide">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      </a>
+    <div class="tile-gallery" data-album="{{ page.modal-id }}-aac-firebase">
+      <div class="tile"><a href="img/portfolio/aac-ai/firebase_auth.png" data-caption="Firebase Authentication" data-index="0">
+        <img src="img/portfolio/aac-ai/firebase_auth.png" alt="Firebase Authentication" loading="lazy"><div class="cap">Firebase Authentication</div>
+      </a></div>
+      <div class="tile"><a href="img/portfolio/aac-ai/firebase_database.png" data-caption="Realtime Database" data-index="1">
+        <img src="img/portfolio/aac-ai/firebase_database.png" alt="Firebase Realtime Database" loading="lazy"><div class="cap">Realtime Database</div>
+      </a></div>
+      <div class="tile"><a href="img/portfolio/aac-ai/realtimedatabase_rules.png" data-caption="Realtime DB Rules" data-index="2">
+        <img src="img/portfolio/aac-ai/realtimedatabase_rules.png" alt="Realtime Database Rules" loading="lazy"><div class="cap">Realtime DB Rules</div>
+      </a></div>
+      <div class="tile"><a href="img/portfolio/aac-ai/userlogs_firebase.png" data-caption="User Logs" data-index="3">
+        <img src="img/portfolio/aac-ai/userlogs_firebase.png" alt="User Logs Node" loading="lazy"><div class="cap">User Logs</div>
+      </a></div>
+      <div class="tile"><a href="img/portfolio/aac-ai/users_firebase.png" data-caption="Users" data-index="4">
+        <img src="img/portfolio/aac-ai/users_firebase.png" alt="Users Node" loading="lazy"><div class="cap">Users</div>
+      </a></div>
+      <div class="tile"><a href="img/portfolio/aac-ai/caregivers_firebase.png" data-caption="Caregivers" data-index="5">
+        <img src="img/portfolio/aac-ai/caregivers_firebase.png" alt="Caregivers Node" loading="lazy"><div class="cap">Caregivers</div>
+      </a></div>
     </div>
   </div>
 
 </div>
 
-<!-- JS: keep current slide + pop-on-scroll images -->
+<!-- Single shared lightbox viewer -->
+<div class="viewer-backdrop" id="{{ page.modal-id }}-viewer" aria-hidden="true" role="dialog" aria-label="Image viewer">
+  <div class="viewer" role="document">
+    <div class="viewer-header">
+      <div><span id="{{ page.modal-id }}-viewer-pos">1/1</span></div>
+      <button class="viewer-close" type="button" aria-label="Close viewer" id="{{ page.modal-id }}-viewer-close">✕</button>
+    </div>
+    <div class="viewer-body" id="{{ page.modal-id }}-viewer-body">
+      <button class="viewer-btn viewer-prev" type="button" aria-label="Previous image" id="{{ page.modal-id }}-viewer-prev">‹</button>
+      <img id="{{ page.modal-id }}-viewer-img" alt="">
+      <button class="viewer-btn viewer-next" type="button" aria-label="Next image" id="{{ page.modal-id }}-viewer-next">›</button>
+    </div>
+    <div class="viewer-caption" id="{{ page.modal-id }}-viewer-cap">Caption</div>
+  </div>
+</div>
+
+<!-- Minimal JS: album-aware viewer with keyboard + touch (no jQuery) -->
 <script>
-  (function ($) {
-    // Carousels in this modal
-    var carIds = [
-      '#{{ page.modal-id }}-carousel-aac-web',
-      '#{{ page.modal-id }}-carousel-aac-mobile',
-      '#{{ page.modal-id }}-carousel-aac-firebase'
-    ];
-    // Ensure Bootstrap doesn't auto re-init
-    carIds.forEach(function(sel){ $(sel).removeAttr('data-ride'); });
+(function () {
+  var VIEWER_ID = "{{ page.modal-id }}-viewer";
+  var $backdrop = document.getElementById(VIEWER_ID);
+  var $img = document.getElementById("{{ page.modal-id }}-viewer-img");
+  var $cap = document.getElementById("{{ page.modal-id }}-viewer-cap");
+  var $pos = document.getElementById("{{ page.modal-id }}-viewer-pos");
+  var $prev = document.getElementById("{{ page.modal-id }}-viewer-prev");
+  var $next = document.getElementById("{{ page.modal-id }}-viewer-next");
+  var $close = document.getElementById("{{ page.modal-id }}-viewer-close");
 
-    var $cars = $(carIds.join(','));
-    $cars.carousel({ interval: 6000, pause: 'hover', wrap: true });
-
-    /* --- Keep current slide (no reset to first) --- */
-    var idxState = {}; // { 'carousel-id': currentIndex }
-
-    // Capture next index during slide
-    $cars.on('slide.bs.carousel', function (e) {
-      var id = this.id;
-      idxState[id] = $(e.relatedTarget).index();
-    });
-
-    function resume($car) {
-      if (!$car || !$car.length) return;
-      var id = $car.attr('id');
-      var toIdx = (typeof idxState[id] === 'number')
-        ? idxState[id]
-        : ($car.find('.item.active').index() || 0);
-      $cars.carousel('pause');     // pause all
-      $car.carousel(toIdx);        // go to saved index
-      $car.carousel('cycle');      // then cycle only this one
-    }
-
-  // Detect modal element (common templates: #portfolioModal{{id}} or #{{id}})
-    var modalSelPrimary = '#portfolioModal{{ page.modal-id | default: "project-aac-ai" }}';
-    var modalSelFallback = '#{{ page.modal-id | default: "project-aac-ai" }}';
-    var $modal = $(modalSelPrimary);
-    if (!$modal.length) { $modal = $(modalSelFallback); }
-
-    // On modal open: resume visible tab's carousel
-    $modal.on('shown.bs.modal', function () {
-      var $active = $('.tab-pane.in.active', this).find('.carousel');
-      if (!$active.length) { $active = $(carIds[0]); }
-      resume($active);
-      // nudge active image to recalc within fixed viewport
-      $active.find('.item.active img').trigger('load');
-    });
-
-    // Pause all when closing
-    $modal.on('hide.bs.modal', function () { $cars.carousel('pause'); });
-
-    // On tab switch: resume the target tab's carousel
-    $('a[data-toggle="tab"][href^="#{{ page.modal-id }}-aac-"]').on('shown.bs.tab', function (e) {
-      var target = $(e.target).attr('href');
-      resume($(target).find('.carousel'));
-    });
-
-    /* --- Pop-out image once when its slide enters view --- */
-    // Mark eligible images
-    $cars.find('.item img').addClass('pop-on');
-
-    // Use modal body as scroll root (falls back to viewport if not found)
-    var rootEl = $modal.find('.modal-body')[0] || null;
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if (entry.isIntersecting) {
-          var img = entry.target;
-          img.classList.add('popped');
-          setTimeout(function(){ img.classList.remove('popped'); }, 800);
-          io.unobserve(img); // fire once per image
-        }
+  // Build album maps from DOM
+  var albums = {}; // albumId -> [{src, cap, thumbEl}, ...]
+  document.querySelectorAll('.tile-gallery').forEach(function(g) {
+    var id = g.getAttribute('data-album');
+    var items = [];
+    g.querySelectorAll('a[href][data-index]').forEach(function(a) {
+      items.push({
+        src: a.getAttribute('href'),
+        cap: a.getAttribute('data-caption') || (a.querySelector('.cap') ? a.querySelector('.cap').textContent : ''),
+        thumbEl: a
       });
-    }, { root: rootEl, threshold: 0.6 });
-
-    // Observe current active images immediately
-    $cars.each(function(){
-      $(this).find('.item.active img.pop-on').each(function(){ io.observe(this); });
     });
+    albums[id] = items;
+  });
 
-    // Observe new active image after each slide completes
-    $cars.on('slid.bs.carousel', function(){
-      $(this).find('.item.active img.pop-on').each(function(){ io.observe(this); });
-    });
+  var state = { albumId: null, index: 0 };
 
-    // Defensive: on resize, reset transient transforms on active images
-    var resizeTimer;
-    $(window).on('resize', function(){
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(function(){
-        $('.portfolio-carousel .item.active img').each(function(){ this.style.transform = ''; });
-      }, 120);
+  function openViewer(albumId, index) {
+    var items = albums[albumId] || [];
+    if (!items.length) return;
+    state.albumId = albumId;
+    state.index = Math.max(0, Math.min(index, items.length - 1));
+    render();
+    $backdrop.classList.add('open');
+    $backdrop.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    $close.focus();
+  }
+
+  function closeViewer() {
+    $backdrop.classList.remove('open');
+    $backdrop.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function render() {
+    var items = albums[state.albumId];
+    var it = items[state.index];
+    // simple preload of neighbors
+    [state.index + 1, state.index - 1].forEach(function(i){
+      if (i>=0 && i<items.length) { var p = new Image(); p.src = items[i].src; }
     });
-  })(jQuery);
+    $img.src = it.src;
+    $img.alt = it.cap || "Image " + (state.index + 1);
+    $cap.textContent = it.cap || '';
+    $pos.textContent = (state.index + 1) + "/" + items.length;
+    $prev.style.visibility = (state.index > 0) ? 'visible' : 'hidden';
+    $next.style.visibility = (state.index < items.length - 1) ? 'visible' : 'hidden';
+  }
+
+  function next() {
+    var items = albums[state.albumId];
+    if (state.index < items.length - 1) { state.index++; render(); }
+  }
+  function prev() {
+    if (state.index > 0) { state.index--; render(); }
+  }
+
+  // Tile clicks
+  document.querySelectorAll('.tile-gallery a[data-index]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      var albumEl = a.closest('.tile-gallery');
+      var albumId = albumEl.getAttribute('data-album');
+      var idx = parseInt(a.getAttribute('data-index'), 10) || 0;
+      openViewer(albumId, idx);
+    });
+  });
+
+  // Viewer controls
+  $next.addEventListener('click', next);
+  $prev.addEventListener('click', prev);
+  $close.addEventListener('click', closeViewer);
+  $backdrop.addEventListener('click', function(e) {
+    if (e.target === $backdrop) closeViewer();
+  });
+
+  // Keyboard
+  document.addEventListener('keydown', function(e) {
+    if (!$backdrop.classList.contains('open')) return;
+    if (e.key === 'Escape') closeViewer();
+    if (e.key === 'ArrowRight') next();
+    if (e.key === 'ArrowLeft') prev();
+  });
+
+  // Touch swipe
+  (function addSwipe(el){
+    var x0=null,y0=null;
+    el.addEventListener('touchstart', function(e){
+      var t=e.touches[0]; x0=t.clientX; y0=t.clientY;
+    }, {passive:true});
+    el.addEventListener('touchmove', function(e){
+      if(x0===null) return;
+      var t=e.touches[0]; var dx=t.clientX-x0; var dy=t.clientY-y0;
+      if(Math.abs(dx)>40 && Math.abs(dx)>Math.abs(dy)){
+        if(dx<0) next(); else prev();
+        x0=null; y0=null;
+      }
+    }, {passive:true});
+    el.addEventListener('touchend', function(){ x0=null; y0=null; });
+  })($backdrop);
+})();
 </script>
 
 ---
