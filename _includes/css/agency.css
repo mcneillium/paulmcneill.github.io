@@ -1154,3 +1154,15 @@ body {
   }
   .navbar-default .nav > li > a { color: #e5e7eb; }
 }
+
+/* Make nav solid at all times */
+.navbar-default {
+  background-color: #222;   /* or your brand color */
+  box-shadow: 0 3px 10px rgba(0,0,0,.12);
+}
+
+/* Keep shrink only for padding, not color */
+@media (min-width:768px){
+  .navbar-default { padding: 25px 0; }
+  .navbar-default.navbar-shrink { padding: 10px 0; }
+}
