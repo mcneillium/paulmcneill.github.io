@@ -1,5 +1,5 @@
 <!-- Navigation -->
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
 
     <!-- Brand and toggle for mobile -->
@@ -7,22 +7,30 @@
       <button
         type="button"
         class="navbar-toggle"
-        data-toggle="collapse"
-        data-target="#bs-example-navbar-collapse-1"
+        aria-label="Open menu"
         aria-expanded="false"
-        aria-controls="bs-example-navbar-collapse-1">
+        aria-controls="bs-example-navbar-collapse-1"
+        data-toggle="collapse"
+        data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="icon-bar" aria-hidden="true"></span>
+        <span class="icon-bar" aria-hidden="true"></span>
+        <span class="icon-bar" aria-hidden="true"></span>
       </button>
       <a class="navbar-brand page-scroll" href="#page-top">Paul Martin McNeill</a>
     </div>
 
     <!-- Nav links -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" aria-label="Primary">
+      <!-- Mobile-only utility row: Close button -->
+      <div class="mobile-nav-actions visible-xs">
+        <button type="button" class="btn btn-link mobile-close" aria-label="Close menu">
+          ✕ Close
+        </button>
+      </div>
+
       <ul class="nav navbar-nav navbar-right">
-        <li class="hidden"><a href="#page-top"></a></li>
+        <li class="hidden"><a href="#page-top" tabindex="-1"></a></li>
         <li><a class="page-scroll" href="#skills">Skills</a></li>
         <li><a class="page-scroll" href="#portfolio">Latest Projects</a></li>
         <li><a class="page-scroll" href="#ai_portfolio">AI</a></li>
@@ -41,6 +49,9 @@
   </div><!-- /.container -->
 </nav>
 
+<!-- Backdrop for tap-to-close (shown only when menu is open) -->
+<div class="nav-backdrop" aria-hidden="true"></div>
+
 <!-- ====== Navbar Styling Fixes ====== -->
 <style>
 /* Prevent brand text resizing on scroll */
@@ -50,35 +61,41 @@
   padding: 15px 15px;
   transition: none;
 }
-.navbar-default.navbar-shrink .navbar-brand {
-  font-size: 18px;
-}
+.navbar-default.navbar-shrink .navbar-brand { font-size: 18px; }
 
 /* Keep nav links compact when shrunk */
-.navbar-default.navbar-shrink .navbar-nav > li > a {
-  padding-top: 10px;
-  padding-bottom: 10px;
+.navbar-default.navbar-shrink .navbar-nav > li > a { padding-top: 10px; padding-bottom: 10px; }
+
+/* Backdrop (hidden by default) */
+.nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1029; /* below .navbar-collapse (1030) */
+  transition: opacity .2s ease;
+}
+.nav-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-/* Prevent full-screen overlay on mobile */
+/* Prevent full-screen overlay on mobile; style panel */
 @media (max-width: 767px) {
   .navbar-collapse {
     position: absolute;
     top: 100%;
-    left: 0;
-    right: 0;
+    left: 0; right: 0;
     max-height: 70vh;
     overflow-y: auto;
     background: #222;
     z-index: 1030;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    padding: 0 15px; /* add inner space */
+    box-shadow: 0 6px 12px rgba(0,0,0,.1);
+    padding: 0 15px;
   }
-
   /* Remove Bootstrap’s negative margins */
-  .navbar-collapse .navbar-nav {
-    margin: 7.5px 0 !important;
-  }
+  .navbar-collapse .navbar-nav { margin: 7.5px 0 !important; }
 
   /* Align mobile nav text nicely */
   .navbar-default .navbar-nav > li > a {
@@ -87,10 +104,26 @@
     text-align: left;
   }
 
-  /* Compact centered CV button (Option 1) */
-  .navbar-nav > li.cv-link {
-    text-align: center; /* center the list item */
+  /* Mobile-only top row with close button */
+  .mobile-nav-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px 0 4px;
   }
+  .mobile-nav-actions .mobile-close {
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .mobile-nav-actions .mobile-close:hover,
+  .mobile-nav-actions .mobile-close:focus {
+    text-decoration: none;
+    color: #fed136;
+    outline: none;
+  }
+
+  /* Compact centered CV button (Option 1) */
+  .navbar-nav > li.cv-link { text-align: center; }
   .navbar-nav > li.cv-link > a {
     display: inline-block;
     width: auto;
@@ -101,10 +134,8 @@
   }
 }
 
-/* Ensure visible open state */
-.navbar-collapse.collapse.in {
-  display: block !important;
-}
+/* Ensure visible open state (BS3) */
+.navbar-collapse.collapse.in { display: block !important; }
 
 /* Desktop CV button styling */
 .navbar-nav > li.cv-link > a {
@@ -114,7 +145,7 @@
   font-weight: 600;
   padding: 8px 18px;
   margin-left: 10px;
-  transition: all 0.3s ease-in-out;
+  transition: all .2s ease-in-out;
   border: 1px solid transparent;
 }
 .navbar-nav > li.cv-link > a:hover,
@@ -125,4 +156,76 @@
   border-color: #d1a500;
 }
 </style>
-<!-- ====== End Navbar Behavior Fixes ====== -->
+
+<!-- ====== Navbar Behavior (auto-close + ESC + backdrop + focus) ====== -->
+<script>
+(function () {
+  var nav = document.querySelector('.navbar-default');
+  var collapse = document.getElementById('bs-example-navbar-collapse-1');
+  var toggler = document.querySelector('.navbar-toggle');
+  var backdrop = document.querySelector('.nav-backdrop');
+
+  // Shrink navbar on scroll
+  if (nav) {
+    function onScroll() {
+      if (window.scrollY > 80) nav.classList.add('navbar-shrink');
+      else nav.classList.remove('navbar-shrink');
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  // Helpers (BS3 collapse)
+  function isOpen() { return typeof $ !== 'undefined' && $('.navbar-collapse').hasClass('in'); }
+  function hideMenu() { if (isOpen()) $('.navbar-collapse').collapse('hide'); }
+  function showBackdrop(active) {
+    if (!backdrop) return;
+    backdrop.classList.toggle('active', !!active);
+  }
+
+  // Focus management: focus first link when opened, restore to toggler when closed
+  function focusFirstLink() {
+    var firstLink = collapse && collapse.querySelector('a[href]:not([tabindex="-1"])');
+    if (firstLink) firstLink.focus();
+  }
+  function restoreFocus() { if (toggler) toggler.focus(); }
+
+  // Bind BS3 events if jQuery is present
+  if (typeof $ !== 'undefined' && collapse) {
+    $(collapse).on('shown.bs.collapse', function () {
+      if (toggler) toggler.setAttribute('aria-expanded', 'true');
+      showBackdrop(true);
+      focusFirstLink();
+    });
+    $(collapse).on('hidden.bs.collapse', function () {
+      if (toggler) toggler.setAttribute('aria-expanded', 'false');
+      showBackdrop(false);
+      restoreFocus();
+    });
+  }
+
+  // 1) Close on nav link click (except dropdown toggles)
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('.navbar-collapse a');
+    if (link && !link.classList.contains('dropdown-toggle')) hideMenu();
+  }, { passive: true });
+
+  // 2) Close on scroll
+  window.addEventListener('scroll', hideMenu, { passive: true });
+
+  // 3) Close when tapping outside via backdrop
+  if (backdrop) backdrop.addEventListener('click', hideMenu);
+
+  // 4) Close with Esc key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && isOpen()) {
+      e.preventDefault();
+      hideMenu();
+    }
+  });
+
+  // 5) Close via explicit "✕ Close" button
+  var closeBtn = document.querySelector('.mobile-close');
+  if (closeBtn) closeBtn.addEventListener('click', hideMenu);
+})();
+</script>
