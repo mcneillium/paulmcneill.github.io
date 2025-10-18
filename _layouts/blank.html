@@ -2,11 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ page.title }} – Paul Martin McNeill</title>
-  {{ content }}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {%- assign base = site.baseurl | default: "" -%}
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="{{ base }}/img/favicon.ico">
+
+  <!-- Core CSS: Bootstrap + your theme (adjust paths to match your repo) -->
+  <link rel="stylesheet" href="{{ base }}/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ base }}/css/agency.css">
+  <!-- Font Awesome (if used in your site) -->
+  <link rel="stylesheet" href="{{ base }}/font-awesome/css/font-awesome.min.css">
+
+  <!-- Google Fonts from the Agency theme (optional, remove if not used) -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet">
+
+  <!-- Allow page-specific <meta> and <style> blocks you placed in the CV file -->
+  {{ content | split:'</head>' | first }}
 </head>
-<body>
-  {{ content }}
+<body id="page-top" class="index">
+
+  <!-- Optional: keep your main navbar on the CV page
+       (uncomment if you want it visible on /cv/)
+  {% include nav.html %}
+  -->
+
+  <!-- CV content -->
+  <main role="main">
+    {{ content }}
+  </main>
+
+  <!-- Optional: site footer
+  {% include footer.html %}
+  -->
+
+  <!-- JS (put at end for performance) -->
+  <script src="{{ base }}/js/jquery.min.js"></script>
+  <script src="{{ base }}/js/bootstrap.min.js"></script>
+  <script src="{{ base }}/js/jqBootstrapValidation.js"></script>
+  <script src="{{ base }}/js/agency.js"></script>
 </body>
 </html>
