@@ -1042,3 +1042,115 @@ body {
     display: inline-block;
 }
 
+/* === NAV: refined look & feel (Bootstrap 3 / Agency) === */
+
+/* Base: transparent at top, smoother spacing */
+.navbar-default {
+  background: transparent;
+  box-shadow: none;
+  padding: 18px 0;
+  transition: background 220ms ease, box-shadow 220ms ease, padding 220ms ease;
+}
+
+/* Brand polish */
+.navbar-default .navbar-brand {
+  letter-spacing: .4px;
+  font-weight: 700;
+  color: #{{ site.data.template.color.primary }}; /* keep brand color */
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #{{ site.data.template.color.secondary }};
+  text-decoration: none;
+}
+
+/* Link spacing + modern hover */
+.navbar-default .nav > li > a {
+  position: relative;
+  padding: .9rem 1.1rem;
+  letter-spacing: .3px;
+  font-weight: 500;
+  color: #fff;
+  transition: color 180ms ease, background 180ms ease;
+  border-radius: 8px; /* soft pill */
+}
+
+/* Underline accent on hover/active */
+.navbar-default .nav > li > a::after {
+  content: "";
+  position: absolute;
+  left: 12px; right: 12px; bottom: 8px;
+  height: 2px;
+  background: #{{ site.data.template.color.primary }};
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 200ms ease;
+  border-radius: 1px;
+}
+.navbar-default .nav > li > a:hover::after,
+.navbar-default .navbar-nav > .active > a::after {
+  transform: scaleX(1);
+}
+
+/* Hover state: subtle tinted pill */
+.navbar-default .nav > li > a:hover,
+.navbar-default .nav > li > a:focus {
+  color: #{{ site.data.template.color.primary }};
+  background: rgba({{ site.data.template.color.primary | hex_to_rgb | join: ',' }}, .12);
+}
+
+/* Active state: keep Agency's color but add rounding */
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  border-radius: 8px;
+  background-color: #{{ site.data.template.color.primary }};
+  color: #fff;
+}
+
+/* Keyboard focus ring for accessibility */
+.navbar-default .nav > li > a:focus {
+  outline: 2px solid transparent;
+  box-shadow: 0 0 0 3px rgba({{ site.data.template.color.primary | hex_to_rgb | join: ',' }}, .35);
+}
+
+/* Mobile toggle: clearer hit area + color hint */
+.navbar-default .navbar-toggle {
+  border: 0;
+  padding: .6rem .7rem;
+  margin-top: 6px;
+  background-color: #{{ site.data.template.color.primary }};
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #{{ site.data.template.color.secondary }};
+}
+.navbar-default .navbar-toggle .icon-bar {
+  height: 3px; width: 22px; background: #fff;
+}
+
+/* Scrolled (uses Agency's .navbar-shrink class) */
+@media (min-width: 768px) {
+  .navbar-default.navbar-shrink {
+    padding: 10px 0; /* your existing rule */
+    background: rgba(34,34,34, .98); /* near #222 with a touch of translucency */
+    box-shadow: 0 6px 18px rgba(0,0,0,.12);
+  }
+  .navbar-default.navbar-shrink .nav > li > a {
+    color: #f3f4f6; /* lighter text when solid */
+  }
+  .navbar-default.navbar-shrink .nav > li > a:hover {
+    color: #{{ site.data.template.color.primary }};
+    background: rgba({{ site.data.template.color.primary | hex_to_rgb | join: ',' }}, .14);
+  }
+}
+
+/* Optional: auto dark-mode tune-up */
+@media (prefers-color-scheme: dark) {
+  .navbar-default { background: transparent; }
+  .navbar-default.navbar-shrink {
+    background: #0b0f14;
+    box-shadow: 0 10px 24px rgba(0,0,0,.45);
+  }
+  .navbar-default .nav > li > a { color: #e5e7eb; }
+}
