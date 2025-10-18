@@ -76,6 +76,22 @@
   .navbar-fixed-top .navbar-collapse {
     max-height: 70vh;
   }
+
+  /* Align mobile nav text nicely */
+  .navbar-nav > li > a {
+    padding-left: 20px;   /* move text away from edge */
+    padding-right: 20px;  /* balance both sides */
+    text-align: left;     /* keep alignment tidy */
+  }
+
+  /* Mobile-friendly CV button */
+  .navbar-nav > li.cv-link > a {
+    display: block;
+    width: calc(100% - 30px); /* leave some breathing space on sides */
+    margin: 10px 15px;
+    text-align: center;
+    border-radius: 6px;
+  }
 }
 
 /* Ensure visible open state */
@@ -83,7 +99,7 @@
   display: block !important;
 }
 
-/* Mobile-friendly CV button */
+/* Desktop CV button styling */
 .navbar-nav > li.cv-link > a {
   background-color: #fed136;
   color: #222 !important;
@@ -94,7 +110,6 @@
   transition: all 0.3s ease-in-out;
   border: 1px solid transparent;
 }
-
 .navbar-nav > li.cv-link > a:hover,
 .navbar-nav > li.cv-link > a:focus {
   background-color: #e6b301;
@@ -102,30 +117,6 @@
   text-decoration: none;
   border-color: #d1a500;
 }
-
-@media (max-width: 767px) {
-  .navbar-nav > li.cv-link > a {
-    display: block;
-    width: 100%;
-    text-align: center;
-    margin: 10px 0;
-    border-radius: 6px;
-  }
-
-  /* Align mobile nav text nicely */
-@media (max-width: 767px) {
-  .navbar-nav > li > a {
-    padding-left: 20px;   /* move text away from edge */
-    padding-right: 20px;  /* balance both sides */
-    text-align: left;     /* keep alignment tidy */
-  }
-  
-  /* Optional: make gold buttons span full width cleanly */
-  .navbar-nav > li.cv-link > a {
-    margin: 10px 15px;
-  }
-}
-
 </style>
 
 <!-- ====== Navbar Behavior Fixes ====== -->
