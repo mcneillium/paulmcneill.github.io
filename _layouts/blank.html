@@ -10,38 +10,32 @@
   <!-- Favicon (optional) -->
   <link rel="icon" href="{{ base }}/img/favicon.ico">
 
-  <!-- Core CSS: Bootstrap + your theme (adjust paths to match your repo) -->
-  <link rel="stylesheet" href="{{ base }}_includes/css/bootstrap.min.css">
-  <link rel="stylesheet" href="{{ base }}_includes/css/agency.css">
-  <!-- Font Awesome (if used in your site) -->
-  <link rel="stylesheet" href="{{ base }}/css/font-awesome.min.css">
+  <!-- Core CSS: Bootstrap + your theme (adjust paths if your repo differs) -->
+  <link rel="stylesheet" href="{{ base }}/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ base }}/css/agency.css">
+  <!-- Font Awesome (if used) -->
+  <link rel="stylesheet" href="{{ base }}/font-awesome/css/font-awesome.min.css">
 
-  <!-- Google Fonts from the Agency theme (optional, remove if not used) -->
+  <!-- Google Fonts (optional) -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet">
-
-  <!-- Allow page-specific <meta> and <style> blocks you placed in the CV file -->
-  {{ content | split:'</head>' | first }}
 </head>
 <body id="page-top" class="index">
 
-  <!-- Optional: keep your main navbar on the CV page
-       (uncomment if you want it visible on /cv/)
-  {% include nav.html %}
-  -->
+  {# Uncomment to show your global nav on the CV page #}
+  {%- comment -%}{% include nav.html %}{%- endcomment -%}
 
   <!-- CV content -->
   <main role="main">
     {{ content }}
   </main>
 
-  <!-- Optional: site footer
-  {% include footer.html %}
-  -->
+  {# Uncomment if you want the global footer #}
+  {%- comment -%}{% include footer.html %}{%- endcomment -%}
 
-  <!-- JS (put at end for performance) -->
+  <!-- JS (end of body) -->
   <script src="{{ base }}/js/jquery.min.js"></script>
   <script src="{{ base }}/js/bootstrap.min.js"></script>
   <script src="{{ base }}/js/jqBootstrapValidation.js"></script>
