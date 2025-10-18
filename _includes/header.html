@@ -25,8 +25,8 @@
         <li><a class="page-scroll" href="#contact">Contact</a></li>
 
         <!-- Highlighted CV button -->
-        <li>
-          <a href="/cv/index.html" target="_blank" rel="noopener" class="btn btn-primary navbar-btn cv-btn">📄 CV</a>
+        <li class="cv-link">
+          <a href="/cv/" target="_blank" rel="noopener">📄 CV</a>
         </li>
       </ul>
     </div>
@@ -35,32 +35,34 @@
   <!-- /.container -->
 </nav>
 
-<!-- Optional styling -->
+<!-- Navbar CV button styling -->
 <style>
-  .navbar .cv-btn {
-    margin-left: 10px;
-    background-color: #007bff; /* your primary brand blue */
-    border-color: #007bff;
-    font-weight: 600;
+  /* CV button link style */
+  .navbar-nav > li.cv-link > a {
+    background-color: #007bff;        /* main brand blue */
     color: #fff !important;
     border-radius: 25px;
+    font-weight: 600;
     padding: 8px 18px;
+    margin-left: 10px;
     transition: all 0.3s ease-in-out;
   }
 
-  .navbar .cv-btn:hover,
-  .navbar .cv-btn:focus {
+  .navbar-nav > li.cv-link > a:hover,
+  .navbar-nav > li.cv-link > a:focus {
     background-color: #0056b3;
-    border-color: #004a99;
     color: #fff !important;
     text-decoration: none;
   }
 
+  /* Mobile-friendly full-width layout */
   @media (max-width: 767px) {
-    .navbar .cv-btn {
+    .navbar-nav > li.cv-link > a {
+      display: block;
       width: 100%;
       text-align: center;
       margin: 10px 0;
+      border-radius: 6px;
     }
   }
 </style>
