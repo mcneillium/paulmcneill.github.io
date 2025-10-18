@@ -117,6 +117,36 @@
   text-decoration: none;
   border-color: #d1a500;
 }
+
+/* Fix mobile nav left-edge hug (BS3 collapsed menu) */
+@media (max-width: 767px) {
+  /* Put the UL back inside the container padding */
+  .navbar-collapse .navbar-nav {
+    margin: 7.5px 0 !important;      /* remove the -15px */
+  }
+
+  /* Add horizontal padding inside the collapse itself */
+  .navbar-collapse {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  /* Now tune the link padding */
+  .navbar-nav > li > a {
+    padding-left: 18px;               /* comfortable indent */
+    padding-right: 18px;
+    text-align: left;
+  }
+
+  /* Keep the CV pill nicely inset */
+  .navbar-nav > li.cv-link > a {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 6px;
+  }
+}
+
 </style>
 
 <!-- ====== Navbar Behavior Fixes ====== -->
