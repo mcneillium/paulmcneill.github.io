@@ -1,9 +1,16 @@
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
+
     <!-- Brand and toggle for mobile -->
     <div class="navbar-header page-scroll">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <button
+        type="button"
+        class="navbar-toggle"
+        data-toggle="collapse"
+        data-target="#bs-example-navbar-collapse-1"
+        aria-expanded="false"
+        aria-controls="bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -29,53 +36,122 @@
           <a href="/cv/" target="_blank" rel="noopener">📄 CV</a>
         </li>
       </ul>
-    </div>
-    <!-- /.navbar-collapse -->
-  </div>
-  <!-- /.container -->
+    </div><!-- /.navbar-collapse -->
+
+  </div><!-- /.container -->
 </nav>
 
-<!-- Navbar CV button styling -->
+<!-- ====== Navbar Styling Fixes ====== -->
 <style>
-  /* Match CV button to "View My Work" color palette */
+/* Prevent brand text resizing on scroll */
+.navbar-default .navbar-brand {
+  font-size: 18px;
+  line-height: 20px;
+  padding: 15px 15px;
+  transition: none;
+}
+.navbar-default.navbar-shrink .navbar-brand {
+  font-size: 18px;
+}
+
+/* Keep nav links compact when shrunk */
+.navbar-default.navbar-shrink .navbar-nav > li > a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* Prevent full-screen overlay on mobile */
+@media (max-width: 767px) {
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 70vh;
+    overflow-y: auto;
+    background: #fff;
+    z-index: 1030;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  }
+  .navbar-fixed-top .navbar-collapse {
+    max-height: 70vh;
+  }
+}
+
+/* Ensure visible open state */
+.navbar-collapse.collapse.in {
+  display: block !important;
+}
+
+/* Mobile-friendly CV button */
+.navbar-nav > li.cv-link > a {
+  background-color: #fed136;
+  color: #222 !important;
+  border-radius: 25px;
+  font-weight: 600;
+  padding: 8px 18px;
+  margin-left: 10px;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid transparent;
+}
+
+.navbar-nav > li.cv-link > a:hover,
+.navbar-nav > li.cv-link > a:focus {
+  background-color: #e6b301;
+  color: #222 !important;
+  text-decoration: none;
+  border-color: #d1a500;
+}
+
+@media (max-width: 767px) {
   .navbar-nav > li.cv-link > a {
-    background-color: #fed136;        /* gold theme color */
-    color: #222 !important;           /* dark text for contrast */
-    border-radius: 25px;
-    font-weight: 600;
-    padding: 8px 18px;
-    margin-left: 10px;
-    transition: all 0.3s ease-in-out;
-    border: 1px solid transparent;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+    border-radius: 6px;
   }
-
-  .navbar-nav > li.cv-link > a:hover,
-  .navbar-nav > li.cv-link > a:focus {
-    background-color: #e6b301;        /* darker hover */
-    color: #222 !important;
-    text-decoration: none;
-    border-color: #d1a500;
-  }
-
-  /* Mobile-friendly full-width layout */
-  @media (max-width: 767px) {
-    .navbar-nav > li.cv-link > a {
-      display: block;
-      width: 100%;
-      text-align: center;
-      margin: 10px 0;
-      border-radius: 6px;
-    }
-  }
+}
 </style>
 
-<!-- Header -->
-<header>
-  <div class="container">
-    <div class="intro-text">
-      <div class="intro-lead-in">Welcome to My Portfolio!</div>
-      <div class="intro-heading">Showcasing My Work and Skills</div>
-      <a href="#portfolio" class="page-scroll btn btn-xl">View My Work</a>
-    </div>
-  </div>
-</header>
+<!-- ====== Navbar Behavior Fixes ====== -->
+<script>
+(function () {
+  // Shrink navbar on scroll
+  var nav = document.querySelector('.navbar-default');
+  if (nav) {
+    function onScroll() {
+      if (window.scrollY > 80) nav.classList.add('navbar-shrink');
+      else nav.classList.remove('navbar-shrink');
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  // Auto-close mobile menu on click, scroll, or outside tap
+  var collapse = document.querySelector('.navbar-collapse');
+  function hideMenu() {
+    if (typeof $ !== 'undefined' && $('.navbar-collapse').hasClass('in')) {
+      $('.navbar-collapse').collapse('hide');
+    }
+  }
+
+  // 1. Close on nav link click
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('.navbar-collapse a');
+    if (link && !link.classList.contains('dropdown-toggle')) hideMenu();
+  }, { passive: true });
+
+  // 2. Close on scroll
+  window.addEventListener('scroll', hideMenu, { passive: true });
+
+  // 3. Close on tap outside
+  document.addEventListener('click', function (e) {
+    var nav = document.querySelector('.navbar');
+    if (!nav) return;
+    var clickedInside = nav.contains(e.target);
+    if (!clickedInside && $('.navbar-collapse').hasClass('in')) hideMenu();
+  }, { passive: true });
+})();
+</script>
+<!-- ====== End Navbar Behavior Fixes ====== -->
