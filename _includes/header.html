@@ -54,6 +54,9 @@
 
 <!-- ====== Navbar Styling Fixes ====== -->
 <style>
+/* Keep vertical scrollbar reserved: prevents layout/padding jump */
+html { overflow-y: scroll; }
+
 /* Prevent brand text resizing on scroll */
 .navbar-default .navbar-brand {
   font-size: 18px;
@@ -63,8 +66,22 @@
 }
 .navbar-default.navbar-shrink .navbar-brand { font-size: 18px; }
 
-/* Keep nav links compact when shrunk */
-.navbar-default.navbar-shrink .navbar-nav > li > a { padding-top: 10px; padding-bottom: 10px; }
+/* Lock consistent link height/padding across states to prevent jumps */
+.navbar-default .navbar-nav > li > a {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  transition: color .3s ease, background .3s ease;
+}
+.navbar-default.navbar-shrink .navbar-nav > li > a {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+/* If using scrollspy, keep active item from changing height */
+.navbar-nav > li.active > a {
+  font-weight: 600;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
 
 /* Backdrop (hidden by default) */
 .nav-backdrop {
@@ -81,7 +98,7 @@
   pointer-events: auto;
 }
 
-/* Prevent full-screen overlay on mobile; style panel */
+/* Mobile panel styling & spacing fixes */
 @media (max-width: 767px) {
   .navbar-collapse {
     position: absolute;
@@ -92,9 +109,10 @@
     background: #222;
     z-index: 1030;
     box-shadow: 0 6px 12px rgba(0,0,0,.1);
-    padding: 0 15px;
+    padding: 0 15px; /* inner space */
   }
-  /* Remove Bootstrap’s negative margins */
+
+  /* Remove Bootstrap’s negative margins on collapsed UL */
   .navbar-collapse .navbar-nav { margin: 7.5px 0 !important; }
 
   /* Align mobile nav text nicely */
@@ -155,38 +173,9 @@
   text-decoration: none;
   border-color: #d1a500;
 }
-
-/* --- Prevent nav item "jump" or padding shift --- */
-
-/* Lock consistent link height and padding across all states */
-.navbar-default .navbar-nav > li > a {
-  padding-top: 12px !important;
-  padding-bottom: 12px !important;
-  transition: color 0.3s ease, background 0.3s ease; /* smooth hover only */
-}
-
-/* Prevent shrink class from changing spacing */
-.navbar-default.navbar-shrink .navbar-nav > li > a {
-  padding-top: 12px !important;
-  padding-bottom: 12px !important;
-}
-
-/* Prevent layout shift when body scrollbar toggles */
-html {
-  overflow-y: scroll; /* always keep scrollbar space reserved */
-}
-
-/* On mobile, ensure items keep same vertical spacing when collapsed */
-@media (max-width: 767px) {
-  .navbar-default .navbar-nav > li > a {
-    padding-top: 12px !important;
-    padding-bottom: 12px !important;
-  }
-}
-
 </style>
 
-<!-- ====== Navbar Behavior (auto-close + ESC + backdrop + focus) ====== -->
+<!-- ====== Navbar Behavior (auto-close + ESC + backdrop + outside click + focus) ====== -->
 <script>
 (function () {
   var nav = document.querySelector('.navbar-default');
@@ -201,7 +190,10 @@ html {
       else nav.classList.remove('navbar-shrink');
     }
     onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('scroll', function () {
+      onScroll();
+      hideMenu(); // also close on scroll
+    }, { passive: true });
   }
 
   // Helpers (BS3 collapse)
@@ -239,13 +231,17 @@ html {
     if (link && !link.classList.contains('dropdown-toggle')) hideMenu();
   }, { passive: true });
 
-  // 2) Close on scroll
-  window.addEventListener('scroll', hideMenu, { passive: true });
+  // 2) Close when tapping outside (anywhere off the navbar/collapse)
+  document.addEventListener('click', function (e) {
+    if (!isOpen()) return;
+    var withinNav = e.target.closest('.navbar');
+    if (!withinNav) hideMenu();
+  }, { passive: true });
 
-  // 3) Close when tapping outside via backdrop
+  // 3) Backdrop click closes
   if (backdrop) backdrop.addEventListener('click', hideMenu);
 
-  // 4) Close with Esc key
+  // 4) Esc closes
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && isOpen()) {
       e.preventDefault();
@@ -253,8 +249,11 @@ html {
     }
   });
 
-  // 5) Close via explicit "✕ Close" button
+  // 5) Explicit "✕ Close" button
   var closeBtn = document.querySelector('.mobile-close');
   if (closeBtn) closeBtn.addEventListener('click', hideMenu);
+
+  // 6) Toggler: default BS3 toggles. If menu already open and user taps 3 lines again, it will close.
+  // (No extra code needed; data-toggle handles it.)
 })();
 </script>
