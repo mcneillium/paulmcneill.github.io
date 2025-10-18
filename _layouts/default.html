@@ -26,5 +26,18 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+<script>
+(function () {
+  var nav = document.querySelector('.navbar-default');
+  if (!nav) return;
+  function onScroll() {
+    if (window.scrollY > 80) nav.classList.add('navbar-shrink');
+    else nav.classList.remove('navbar-shrink');
+  }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+</script>
+
     </body>
 </html>
