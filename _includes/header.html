@@ -72,25 +72,32 @@
     background: #222;
     z-index: 1030;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 0 15px; /* add inner space */
   }
-  .navbar-fixed-top .navbar-collapse {
-    max-height: 70vh;
+
+  /* Remove Bootstrap’s negative margins */
+  .navbar-collapse .navbar-nav {
+    margin: 7.5px 0 !important;
   }
 
   /* Align mobile nav text nicely */
-  .navbar-nav > li > a {
-    padding-left: 30px;   /* move text away from edge */
-    padding-right: 20px;  /* balance both sides */
-    text-align: left;     /* keep alignment tidy */
+  .navbar-default .navbar-nav > li > a {
+    padding-left: 18px;
+    padding-right: 18px;
+    text-align: left;
   }
 
-  /* Mobile-friendly CV button */
+  /* Compact centered CV button (Option 1) */
+  .navbar-nav > li.cv-link {
+    text-align: center; /* center the list item */
+  }
   .navbar-nav > li.cv-link > a {
-    display: block;
-    width: calc(50% - 30px); /* leave some breathing space on sides */
-    margin: 10px 15px;
+    display: inline-block;
+    width: auto;
+    padding: 8px 20px;
+    margin: 10px auto;
+    border-radius: 25px;
     text-align: center;
-    border-radius: 6px;
   }
 }
 
@@ -117,81 +124,5 @@
   text-decoration: none;
   border-color: #d1a500;
 }
-
-/* Fix mobile nav left-edge hug (BS3 collapsed menu) */
-@media (max-width: 767px) {
-  /* Put the UL back inside the container padding */
-  .navbar-collapse .navbar-nav {
-    margin: 7.5px 0 !important;      /* remove the -15px */
-  }
-
-  /* Add horizontal padding inside the collapse itself */
-  .navbar-collapse {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
-  /* Now tune the link padding */
-  .navbar-nav > li > a {
-    padding-left: 18px;               /* comfortable indent */
-    padding-right: 18px;
-    text-align: left;
-  }
-
-  /* Keep the CV pill nicely inset */
-  .navbar-nav > li.cv-link > a {
-    display: block;
-    width: 100%;
-    margin: 10px 0;
-    border-radius: 6px;
-  }
-
-  @media (max-width: 767px) {
-  .navbar-default .navbar-nav > li > a { padding-left: 18px; padding-right: 18px; }
-}
-
-}
-
 </style>
-
-<!-- ====== Navbar Behavior Fixes ====== -->
-<script>
-(function () {
-  // Shrink navbar on scroll
-  var nav = document.querySelector('.navbar-default');
-  if (nav) {
-    function onScroll() {
-      if (window.scrollY > 80) nav.classList.add('navbar-shrink');
-      else nav.classList.remove('navbar-shrink');
-    }
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-  }
-
-  // Auto-close mobile menu on click, scroll, or outside tap
-  var collapse = document.querySelector('.navbar-collapse');
-  function hideMenu() {
-    if (typeof $ !== 'undefined' && $('.navbar-collapse').hasClass('in')) {
-      $('.navbar-collapse').collapse('hide');
-    }
-  }
-
-  // 1. Close on nav link click
-  document.addEventListener('click', function (e) {
-    var link = e.target.closest('.navbar-collapse a');
-    if (link && !link.classList.contains('dropdown-toggle')) hideMenu();
-  }, { passive: true });
-
-  // 2. Close on scroll
-  window.addEventListener('scroll', hideMenu, { passive: true });
-
-  // 3. Close on tap outside
-  document.addEventListener('click', function (e) {
-    var nav = document.querySelector('.navbar');
-    if (!nav) return;
-    var clickedInside = nav.contains(e.target);
-    if (!clickedInside && $('.navbar-collapse').hasClass('in')) hideMenu();
-  }, { passive: true });
-})();
-</script>
 <!-- ====== End Navbar Behavior Fixes ====== -->
