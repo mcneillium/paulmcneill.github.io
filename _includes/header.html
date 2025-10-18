@@ -1,69 +1,77 @@
 <!-- Navigation -->
-    <!-- Navigation bar at the top of the page -->
 <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Paul Martin McNeill</a>
-            </div>
+  <div class="container">
+    <!-- Brand and toggle for mobile -->
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand page-scroll" href="#page-top">Paul Martin McNeill</a>
+    </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#skills">Skills</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#portfolio">Lastest Projects</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#ai_portfolio">AI</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#web-development">Web Development</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#data-analytics">Data Analytics</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#about">About</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
-                
+    <!-- Nav links -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="hidden"><a href="#page-top"></a></li>
+        <li><a class="page-scroll" href="#skills">Skills</a></li>
+        <li><a class="page-scroll" href="#portfolio">Latest Projects</a></li>
+        <li><a class="page-scroll" href="#ai_portfolio">AI</a></li>
+        <li><a class="page-scroll" href="#web-development">Web Development</a></li>
+        <li><a class="page-scroll" href="#data-analytics">Data Analytics</a></li>
+        <li><a class="page-scroll" href="#about">About</a></li>
+        <li><a class="page-scroll" href="#contact">Contact</a></li>
 
+        <!-- Highlighted CV button -->
+        <li>
+          <a href="/cv/" target="_blank" rel="noopener" class="btn btn-primary navbar-btn cv-btn">📄 CV</a>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
 
-</ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
+<!-- Optional styling -->
+<style>
+  .navbar .cv-btn {
+    margin-left: 10px;
+    background-color: #007bff; /* your primary brand blue */
+    border-color: #007bff;
+    font-weight: 600;
+    color: #fff !important;
+    border-radius: 25px;
+    padding: 8px 18px;
+    transition: all 0.3s ease-in-out;
+  }
 
-    <!-- Header -->
-    <!-- Header section with introductory content -->
+  .navbar .cv-btn:hover,
+  .navbar .cv-btn:focus {
+    background-color: #0056b3;
+    border-color: #004a99;
+    color: #fff !important;
+    text-decoration: none;
+  }
+
+  @media (max-width: 767px) {
+    .navbar .cv-btn {
+      width: 100%;
+      text-align: center;
+      margin: 10px 0;
+    }
+  }
+</style>
+
+<!-- Header -->
 <header>
-        <div class="container">
-            <div class="intro-text">
-                <div class="intro-lead-in">Welcome to My Portfolio!</div>
-                <div class="intro-heading">Showcasing My Work and Skills</div>
-                <a href="#portfolio" class="page-scroll btn btn-xl">View My Work</a>
-            </div>
-        </div>
-    </header>
-<!--
-        {% for page in site.pages %}
-          {% if page.title %}<a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>{% endif %}
-        {% endfor %}
- -->
-
+  <div class="container">
+    <div class="intro-text">
+      <div class="intro-lead-in">Welcome to My Portfolio!</div>
+      <div class="intro-heading">Showcasing My Work and Skills</div>
+      <a href="#portfolio" class="page-scroll btn btn-xl">View My Work</a>
+    </div>
+  </div>
+</header>
