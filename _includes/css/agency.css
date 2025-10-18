@@ -1166,3 +1166,32 @@ body {
   .navbar-default { padding: 25px 0; }
   .navbar-default.navbar-shrink { padding: 10px 0; }
 }
+
+/* Keep "Paul Martin McNeill" the same size in all states */
+.navbar-default .navbar-brand,
+.navbar-default.navbar-shrink .navbar-brand {
+  font-size: 22px;          /* pick your exact size */
+  line-height: 1.2;         /* stable baseline */
+  white-space: nowrap;      /* prevent wrap */
+  transition: none !important;  /* stop size animation */
+}
+
+/* Keep vertical alignment consistent with menu items */
+.navbar-default .navbar-brand {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+/* Make sure link paddings match so brand & links line up */
+.navbar-default .navbar-nav > li > a {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+/* Optional: if your theme reduces navbar padding on shrink, keep brand steady */
+@media (min-width:768px){
+  .navbar-default.navbar-shrink .navbar-brand {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
