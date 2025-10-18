@@ -5,40 +5,35 @@
   <title>{{ page.title }} – Paul Martin McNeill</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  {%- assign base = site.baseurl | default: "" -%}
+  <!-- Bootstrap (CDN) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css">
 
-  <!-- Favicon (optional) -->
-  <link rel="icon" href="{{ base }}/img/favicon.ico">
+  <!-- Font Awesome (CDN) – remove if you don't use icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
-  <!-- Core CSS: Bootstrap + your theme (adjust paths if your repo differs) -->
-  <link rel="stylesheet" href="{{ base }}/css/bootstrap.min.css">
-  <link rel="stylesheet" href="{{ base }}/css/agency.css">
-  <!-- Font Awesome (if used) -->
-  <link rel="stylesheet" href="{{ base }}/font-awesome/css/font-awesome.min.css">
+  <!-- Your theme CSS (agency.css) – keep AFTER Bootstrap. Adjust the path if needed. -->
+  <link rel="stylesheet" href="/css/agency.css?v=1">
 
-  <!-- Google Fonts (optional) -->
+  <!-- Optional Google Fonts (match your main site) -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet">
 </head>
-<body id="page-top" class="index">
+<body>
 
-  {# Uncomment to show your global nav on the CV page #}
+  <!-- (Optional) Show your main navbar on the CV page -->
   {%- comment -%}{% include nav.html %}{%- endcomment -%}
 
-  <!-- CV content -->
   <main role="main">
     {{ content }}
   </main>
 
-  {# Uncomment if you want the global footer #}
-  {%- comment -%}{% include footer.html %}{%- endcomment -%}
+  <!-- JS (CDN first; switch to local later if you prefer) -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"></script>
 
-  <!-- JS (end of body) -->
-  <script src="{{ base }}/js/jquery.min.js"></script>
-  <script src="{{ base }}/js/bootstrap.min.js"></script>
-  <script src="{{ base }}/js/jqBootstrapValidation.js"></script>
-  <script src="{{ base }}/js/agency.js"></script>
+  <!-- Your site JS (adjust paths as needed) -->
+  <script src="/js/agency.js?v=1"></script>
 </body>
 </html>
