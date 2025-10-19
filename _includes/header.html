@@ -11,7 +11,8 @@
         aria-expanded="false"
         aria-controls="bs-example-navbar-collapse-1"
         data-toggle="collapse"
-        data-target="#bs-example-navbar-collapse-1">
+        data-target="#bs-example-navbar-collapse-1"
+        id="navToggleBtn">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar" aria-hidden="true"></span>
         <span class="icon-bar" aria-hidden="true"></span>
@@ -22,11 +23,8 @@
 
     <!-- Nav links -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" aria-label="Primary">
-      <!-- Mobile-only utility row: Close button -->
       <div class="mobile-nav-actions visible-xs">
-        <button type="button" class="btn btn-link mobile-close" aria-label="Close menu">
-          ✕ Close
-        </button>
+        <button type="button" class="btn btn-link mobile-close" aria-label="Close menu">✕ Close</button>
       </div>
 
       <ul class="nav navbar-nav navbar-right">
@@ -49,15 +47,11 @@
   </div><!-- /.container -->
 </nav>
 
-<!-- Backdrop for tap-to-close (shown only when menu is open) -->
 <div class="nav-backdrop" aria-hidden="true"></div>
 
-<!-- ====== Navbar Styling Fixes ====== -->
+<!-- ====== Navbar Styling ====== -->
 <style>
-/* Keep vertical scrollbar reserved: prevents layout/padding jump */
 html { overflow-y: scroll; }
-
-/* Prevent brand text resizing on scroll */
 .navbar-default .navbar-brand {
   font-size: 18px;
   line-height: 20px;
@@ -66,39 +60,32 @@ html { overflow-y: scroll; }
 }
 .navbar-default.navbar-shrink .navbar-brand { font-size: 18px; }
 
-/* Lock consistent link height/padding across states to prevent jumps */
-.navbar-default .navbar-nav > li > a {
+/* Lock consistent link height */
+.navbar-default .navbar-nav > li > a,
+.navbar-default.navbar-shrink .navbar-nav > li > a {
   padding-top: 12px !important;
   padding-bottom: 12px !important;
   transition: color .3s ease, background .3s ease;
 }
-.navbar-default.navbar-shrink .navbar-nav > li > a {
-  padding-top: 12px !important;
-  padding-bottom: 12px !important;
-}
-/* If using scrollspy, keep active item from changing height */
 .navbar-nav > li.active > a {
   font-weight: 600;
   padding-top: 12px !important;
   padding-bottom: 12px !important;
 }
 
-/* Backdrop (hidden by default) */
+/* Backdrop overlay */
 .nav-backdrop {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,.35);
   opacity: 0;
   pointer-events: none;
-  z-index: 1029; /* below .navbar-collapse (1030) */
+  z-index: 1029;
   transition: opacity .2s ease;
 }
-.nav-backdrop.active {
-  opacity: 1;
-  pointer-events: auto;
-}
+.nav-backdrop.active { opacity: 1; pointer-events: auto; }
 
-/* Mobile panel styling & spacing fixes */
+/* Mobile nav */
 @media (max-width: 767px) {
   .navbar-collapse {
     position: absolute;
@@ -109,38 +96,23 @@ html { overflow-y: scroll; }
     background: #222;
     z-index: 1030;
     box-shadow: 0 6px 12px rgba(0,0,0,.1);
-    padding: 0 15px; /* inner space */
+    padding: 0 15px;
   }
-
-  /* Remove Bootstrap’s negative margins on collapsed UL */
   .navbar-collapse .navbar-nav { margin: 7.5px 0 !important; }
-
-  /* Align mobile nav text nicely */
   .navbar-default .navbar-nav > li > a {
-    padding-left: 18px;
-    padding-right: 18px;
-    text-align: left;
+    padding-left: 18px; padding-right: 18px; text-align: left;
   }
 
-  /* Mobile-only top row with close button */
-  .mobile-nav-actions {
-    display: flex;
-    justify-content: flex-end;
-    padding: 8px 0 4px;
-  }
+  .mobile-nav-actions { display: flex; justify-content: flex-end; padding: 8px 0 4px; }
   .mobile-nav-actions .mobile-close {
-    color: #fff;
-    font-weight: 600;
-    font-size: 16px;
+    color: #fff; font-weight: 600; font-size: 16px;
   }
   .mobile-nav-actions .mobile-close:hover,
   .mobile-nav-actions .mobile-close:focus {
-    text-decoration: none;
-    color: #fed136;
-    outline: none;
+    color: #fed136; text-decoration: none; outline: none;
   }
 
-  /* Compact centered CV button (Option 1) */
+  /* CV Button */
   .navbar-nav > li.cv-link { text-align: center; }
   .navbar-nav > li.cv-link > a {
     display: inline-block;
@@ -152,10 +124,7 @@ html { overflow-y: scroll; }
   }
 }
 
-/* Ensure visible open state (BS3) */
-.navbar-collapse.collapse.in { display: block !important; }
-
-/* Desktop CV button styling */
+/* CV Button desktop */
 .navbar-nav > li.cv-link > a {
   background-color: #fed136;
   color: #222 !important;
@@ -173,75 +142,94 @@ html { overflow-y: scroll; }
   text-decoration: none;
   border-color: #d1a500;
 }
+
+/* Transform hamburger to X */
+.navbar-toggle .icon-bar {
+  transition: all 0.2s ease-in-out;
+}
+.navbar-toggle.toggled .icon-bar:nth-child(2) {
+  opacity: 0;
+}
+.navbar-toggle.toggled .icon-bar:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.navbar-toggle.toggled .icon-bar:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
 </style>
 
-<!-- ====== Navbar Behavior (auto-close + ESC + backdrop + outside click + focus) ====== -->
+<!-- ====== Navbar Behavior ====== -->
 <script>
 (function () {
   var nav = document.querySelector('.navbar-default');
   var collapse = document.getElementById('bs-example-navbar-collapse-1');
-  var toggler = document.querySelector('.navbar-toggle');
+  var toggler = document.getElementById('navToggleBtn');
   var backdrop = document.querySelector('.nav-backdrop');
 
-  // Shrink navbar on scroll
-  if (nav) {
-    function onScroll() {
-      if (window.scrollY > 80) nav.classList.add('navbar-shrink');
-      else nav.classList.remove('navbar-shrink');
-    }
-    onScroll();
-    window.addEventListener('scroll', function () {
-      onScroll();
-      hideMenu(); // also close on scroll
-    }, { passive: true });
+  // Scroll shrink
+  function onScroll() {
+    if (window.scrollY > 80) nav.classList.add('navbar-shrink');
+    else nav.classList.remove('navbar-shrink');
   }
+  onScroll();
+  window.addEventListener('scroll', function () {
+    onScroll();
+    hideMenu();
+  }, { passive: true });
 
-  // Helpers (BS3 collapse)
-  function isOpen() { return typeof $ !== 'undefined' && $('.navbar-collapse').hasClass('in'); }
-  function hideMenu() { if (isOpen()) $('.navbar-collapse').collapse('hide'); }
+  // Helpers
+  function isOpen() {
+    return typeof $ !== 'undefined' && $('.navbar-collapse').hasClass('in');
+  }
+  function hideMenu() {
+    if (isOpen()) $('.navbar-collapse').collapse('hide');
+  }
   function showBackdrop(active) {
-    if (!backdrop) return;
     backdrop.classList.toggle('active', !!active);
   }
 
-  // Focus management: focus first link when opened, restore to toggler when closed
+  // Focus management
   function focusFirstLink() {
     var firstLink = collapse && collapse.querySelector('a[href]:not([tabindex="-1"])');
     if (firstLink) firstLink.focus();
   }
   function restoreFocus() { if (toggler) toggler.focus(); }
 
-  // Bind BS3 events if jQuery is present
+  // Bind collapse show/hide events
   if (typeof $ !== 'undefined' && collapse) {
     $(collapse).on('shown.bs.collapse', function () {
-      if (toggler) toggler.setAttribute('aria-expanded', 'true');
+      toggler.classList.add('toggled');
+      toggler.setAttribute('aria-expanded', 'true');
+      toggler.setAttribute('aria-label', 'Close menu');
       showBackdrop(true);
       focusFirstLink();
     });
     $(collapse).on('hidden.bs.collapse', function () {
-      if (toggler) toggler.setAttribute('aria-expanded', 'false');
+      toggler.classList.remove('toggled');
+      toggler.setAttribute('aria-expanded', 'false');
+      toggler.setAttribute('aria-label', 'Open menu');
       showBackdrop(false);
       restoreFocus();
     });
   }
 
-  // 1) Close on nav link click (except dropdown toggles)
+  // Close menu when clicking nav links
   document.addEventListener('click', function (e) {
     var link = e.target.closest('.navbar-collapse a');
     if (link && !link.classList.contains('dropdown-toggle')) hideMenu();
   }, { passive: true });
 
-  // 2) Close when tapping outside (anywhere off the navbar/collapse)
+  // Tap outside closes menu
   document.addEventListener('click', function (e) {
     if (!isOpen()) return;
     var withinNav = e.target.closest('.navbar');
     if (!withinNav) hideMenu();
   }, { passive: true });
 
-  // 3) Backdrop click closes
+  // Backdrop click closes
   if (backdrop) backdrop.addEventListener('click', hideMenu);
 
-  // 4) Esc closes
+  // ESC key closes
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && isOpen()) {
       e.preventDefault();
@@ -249,11 +237,16 @@ html { overflow-y: scroll; }
     }
   });
 
-  // 5) Explicit "✕ Close" button
+  // ✕ Close button
   var closeBtn = document.querySelector('.mobile-close');
   if (closeBtn) closeBtn.addEventListener('click', hideMenu);
 
-  // 6) Toggler: default BS3 toggles. If menu already open and user taps 3 lines again, it will close.
-  // (No extra code needed; data-toggle handles it.)
+  // Hamburger toggler click: manually toggle for accessibility
+  if (toggler) {
+    toggler.addEventListener('click', function () {
+      if (isOpen()) hideMenu();
+      // Bootstrap handles open automatically via data-toggle
+    });
+  }
 })();
 </script>
