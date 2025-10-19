@@ -6,8 +6,8 @@
 " imagesizes="100vw">
 
 <!-- Header -->
-<header id="page-top" class="hero-header" style="position: relative; overflow: hidden; min-height: 70vh; color:#fff;">
-  <!-- Responsive background image: prevents lag & enables priority loading -->
+<header id="page-top" class="hero-header" style="position: relative; overflow: hidden; min-height: 45vh; color:#fff; display: flex; align-items: center; justify-content: center;">
+  <!-- Responsive background image -->
   <picture aria-hidden="true">
     <source srcset="img/header-bg-large.jpg 1920w, img/header-bg-medium.jpg 1280w, img/header-bg-small.jpg 768w" sizes="100vw">
     <img
@@ -17,72 +17,75 @@
       loading="eager"
       fetchpriority="high"
       decoding="sync"
-      style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2;"
+      style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 20%; z-index:-2;"
     >
   </picture>
 
-<!-- Overlay (no background URL here—pure gradient for readability) -->
-<div class="overlay" style="
-  position:absolute; inset:0; z-index:-1;
-  background: radial-gradient(ellipse at 30% 20%, rgba(0,0,0,.35), rgba(0,0,0,.65)),
-              linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.55));
-"></div>
+  <!-- Overlay -->
+  <div class="overlay" style="
+    position:absolute; inset:0; z-index:-1;
+    background: radial-gradient(ellipse at 30% 20%, rgba(0,0,0,.35), rgba(0,0,0,.65)),
+                linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.55));
+  "></div>
 
-<div class="container text-center text-white">
-  <div class="intro-text" style="padding: min(12vh, 120px) 0 min(10vh, 100px);">
+  <!-- Centered content -->
+  <div class="container text-center text-white">
+    <div class="intro-text" style="padding: 0 1rem;">
 
-    <h2 class="intro-lead-in" style="
-      font-weight:500; letter-spacing:.02em;
-      font-size: clamp(1.1rem, 2vw, 1.6rem);
-      margin: 0 0 .5rem;
-      transform: translateY(18px); opacity:0; animation:fadeInUp .7s forwards .15s;
-    ">
-      Welcome — I’m <strong>Paul Martin McNeill</strong>
-    </h2>
+      <h2 class="intro-lead-in" style="
+        font-weight:500; letter-spacing:.02em;
+        font-size: clamp(1.1rem, 2vw, 1.5rem);
+        margin: 0 0 .4rem;
+        transform: translateY(14px); opacity:0; animation:fadeInUp .7s forwards .15s;
+      ">
+        Welcome — I’m <strong>Paul Martin McNeill</strong>
+      </h2>
 
-    <h1 class="intro-heading" style="
-      font-weight:800; line-height:1.1; margin:.3rem auto .75rem; max-width: 30ch;
-      font-size: clamp(1.9rem, 5vw, 3rem);
-      transform: translateY(18px); opacity:0; animation:fadeInUp .8s forwards .35s;
-    ">
-      Exploring the intersections of AI, Web Engineering, and Data Analytics.
-    </h1>
+      <h1 class="intro-heading" style="
+        font-weight:800; line-height:1.1; margin:.25rem auto .6rem; max-width: 30ch;
+        font-size: clamp(1.8rem, 4.6vw, 2.8rem);
+        transform: translateY(14px); opacity:0; animation:fadeInUp .8s forwards .35s;
+      ">
+        Exploring the intersections of AI, Web Engineering, and Data Analytics.
+      </h1>
 
-    <p class="intro-sub" style="
-      max-width: 58ch; margin: 0 auto;
-      font-size: clamp(1rem, 1.8vw, 1.15rem);
-      line-height:1.6; opacity:.9;
-      transform: translateY(18px); opacity:0; animation:fadeInUp .8s forwards .55s;
-    ">
-      This portfolio showcases how I design and build intelligent digital systems — from data-driven dashboards and machine learning models 
-      to accessible, human-centred web applications.  
-      Each project reflects a focus on clarity, ethics, and innovation in technology.
-    </p>
+      <p class="intro-sub" style="
+        max-width: 56ch; margin: 0 auto;
+        font-size: clamp(.95rem, 1.8vw, 1.1rem);
+        line-height:1.55; opacity:.9;
+        transform: translateY(14px); opacity:0; animation:fadeInUp .8s forwards .55s;
+      ">
+        This portfolio showcases how I design and build intelligent digital systems — from data-driven dashboards and machine learning models 
+        to accessible, human-centred web applications. Each project reflects a focus on clarity, ethics, and innovation in technology.
+      </p>
 
-    <p style="
-      max-width: 56ch; margin: 1.2rem auto 0;
-      font-size: clamp(.95rem, 1.7vw, 1.1rem);
-      opacity:.8; font-style: italic;
-      transform: translateY(18px); opacity:0; animation:fadeInUp .8s forwards .7s;
-    ">
-      Scroll down to explore my latest work and the ideas that drive it.
-    </p>
+      <p style="
+        max-width: 54ch; margin: 1rem auto 0;
+        font-size: clamp(.9rem, 1.6vw, 1.05rem);
+        opacity:.8; font-style: italic;
+        transform: translateY(14px); opacity:0; animation:fadeInUp .8s forwards .7s;
+      ">
+        Scroll down to explore my latest work and the ideas that drive it.
+      </p>
+    </div>
   </div>
-</div>
-
-
 
   <style>
-    @keyframes fadeInUp { from { opacity:0; transform:translateY(18px);} to { opacity:1; transform:translateY(0);} }
+    @keyframes fadeInUp { from { opacity:0; transform:translateY(14px);} to { opacity:1; transform:translateY(0);} }
 
-    /* Motion safety */
     @media (prefers-reduced-motion: reduce) {
       .intro-text, .intro-lead-in, .intro-heading, .intro-sub { animation: none !important; transform:none !important; }
     }
 
-    /* Tweak spacing on small screens */
+    /* Responsive adjustments */
     @media (max-width: 768px) {
-      .hero-header .intro-text { padding: 120px 0 100px !important; }
+      .hero-header {
+        min-height: 50vh !important;
+        align-items: center;
+      }
+      .hero-header .intro-text {
+        padding: 0 1.5rem !important;
+      }
     }
   </style>
 </header>
