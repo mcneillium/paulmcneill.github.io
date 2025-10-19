@@ -95,6 +95,46 @@
 
         /* Optional: improve FA primary color */
         .text-primary { color: #fed136; }
+
+        /* ---------- Mobile Compression Tweaks ---------- */
+@media (max-width: 768px) {
+  #skills .skill-card {
+    padding: 14px 12px;           /* less internal padding */
+    margin-bottom: 16px;          /* tighter vertical spacing */
+    border-radius: 10px;
+  }
+
+  #skills .fa-stack {
+    font-size: 2.2em;             /* smaller icons */
+    margin-bottom: 6px;
+  }
+
+  #skills .skill-heading {
+    margin-top: 10px;
+    margin-bottom: 4px;
+    font-size: 1rem;              /* smaller titles */
+  }
+
+  #skills p.text-muted {
+    font-size: 0.88rem;
+    max-width: 90%;
+  }
+
+  /* Make it 2-column grid on mid-size phones/tablets */
+  #skills .row.text-center > [class*='col-'] {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  /* On very narrow phones, revert to single column */
+  @media (max-width: 480px) {
+    #skills .row.text-center > [class*='col-'] {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+}
+
     </style>
 
     <script>
