@@ -159,10 +159,52 @@ html { overflow-y: scroll; }
   padding-bottom: 12px !important;
   transition: color .3s ease, background .3s ease;
 }
-.navbar-nav > li.active > a {
+
+/* Base link color on dark navbar */
+.navbar-default .navbar-nav > li > a {
+  color: #fff;
+}
+
+/* Hover for inactive links */
+.navbar-default .navbar-nav > li:not(.active):not(.cv-link) > a:hover,
+.navbar-default .navbar-nav > li:not(.active):not(.cv-link) > a:focus {
+  color: #fed136;
+  background-color: transparent;
+}
+
+/* Active item styles */
+.navbar-default .navbar-nav > li.active > a,
+.navbar-default .navbar-nav > li.active > a:hover,
+.navbar-default .navbar-nav > li.active > a:focus {
+  background-color: #fed136 !important;
+  color: #222 !important;
   font-weight: 600;
-  padding-top: 12px !important;
-  padding-bottom: 12px !important;
+  text-shadow: none;
+}
+
+/* Keyboard focus ring */
+.navbar-default .navbar-nav > li > a:focus {
+  outline: 2px solid #fed136;
+  outline-offset: 2px;
+}
+
+/* CV Button desktop */
+.navbar-nav > li.cv-link > a {
+  background-color: #fed136;
+  color: #222 !important;
+  border-radius: 25px;
+  font-weight: 600;
+  padding: 8px 18px;
+  margin-left: 10px;
+  transition: all .2s ease-in-out;
+  border: 1px solid transparent;
+}
+.navbar-nav > li.cv-link > a:hover,
+.navbar-nav > li.cv-link > a:focus {
+  background-color: #e6b301;
+  color: #222 !important;
+  text-decoration: none;
+  border-color: #d1a500;
 }
 
 /* Backdrop overlay */
@@ -204,7 +246,7 @@ html { overflow-y: scroll; }
     color: #fed136; text-decoration: none; outline: none;
   }
 
-  /* CV Button */
+  /* CV Button mobile */
   .navbar-nav > li.cv-link { text-align: center; }
   .navbar-nav > li.cv-link > a {
     display: inline-block;
@@ -214,25 +256,6 @@ html { overflow-y: scroll; }
     border-radius: 25px;
     text-align: center;
   }
-}
-
-/* CV Button desktop */
-.navbar-nav > li.cv-link > a {
-  background-color: #fed136;
-  color: #222 !important;
-  border-radius: 25px;
-  font-weight: 600;
-  padding: 8px 18px;
-  margin-left: 10px;
-  transition: all .2s ease-in-out;
-  border: 1px solid transparent;
-}
-.navbar-nav > li.cv-link > a:hover,
-.navbar-nav > li.cv-link > a:focus {
-  background-color: #e6b301;
-  color: #222 !important;
-  text-decoration: none;
-  border-color: #d1a500;
 }
 
 /* Transform hamburger to X */
@@ -258,7 +281,6 @@ html { overflow-y: scroll; }
   var toggler = document.getElementById('navToggleBtn');
   var backdrop = document.querySelector('.nav-backdrop');
 
-  // Scroll shrink
   function onScroll() {
     if (window.scrollY > 80) nav.classList.add('navbar-shrink');
     else nav.classList.remove('navbar-shrink');
@@ -269,7 +291,6 @@ html { overflow-y: scroll; }
     hideMenu();
   }, { passive: true });
 
-  // Helpers
   function isOpen() {
     return typeof $ !== 'undefined' && $('.navbar-collapse').hasClass('in');
   }
@@ -280,14 +301,12 @@ html { overflow-y: scroll; }
     backdrop.classList.toggle('active', !!active);
   }
 
-  // Focus management
   function focusFirstLink() {
     var firstLink = collapse && collapse.querySelector('a[href]:not([tabindex="-1"])');
     if (firstLink) firstLink.focus();
   }
   function restoreFocus() { if (toggler) toggler.focus(); }
 
-  // Bind collapse show/hide events
   if (typeof $ !== 'undefined' && collapse) {
     $(collapse).on('shown.bs.collapse', function () {
       toggler.classList.add('toggled');
@@ -305,23 +324,18 @@ html { overflow-y: scroll; }
     });
   }
 
-  // Close menu when clicking nav links
   document.addEventListener('click', function (e) {
     var link = e.target.closest('.navbar-collapse a');
     if (link && !link.classList.contains('dropdown-toggle')) hideMenu();
   }, { passive: true });
 
-  // Tap outside closes menu
   document.addEventListener('click', function (e) {
     if (!isOpen()) return;
     var withinNav = e.target.closest('.navbar');
     if (!withinNav) hideMenu();
   }, { passive: true });
 
-  // Backdrop click closes
   if (backdrop) backdrop.addEventListener('click', hideMenu);
-
-  // ESC key closes
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && isOpen()) {
       e.preventDefault();
@@ -329,15 +343,12 @@ html { overflow-y: scroll; }
     }
   });
 
-  // ✕ Close button
   var closeBtn = document.querySelector('.mobile-close');
   if (closeBtn) closeBtn.addEventListener('click', hideMenu);
 
-  // Hamburger toggler click: manually toggle for accessibility
   if (toggler) {
     toggler.addEventListener('click', function () {
       if (isOpen()) hideMenu();
-      // Bootstrap handles open automatically via data-toggle
     });
   }
 })();
