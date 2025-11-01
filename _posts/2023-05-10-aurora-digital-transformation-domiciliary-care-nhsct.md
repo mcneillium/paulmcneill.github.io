@@ -3,8 +3,8 @@ layout: post
 title: "Aurora Domiciliary Care – NHSCT Analytics & Digital Transformation"
 subtitle: "Northern Ireland locality model | ECM realism | Power BI transformation suite"
 modal-id: project-aurora-nhsct
-thumbnail: /img/portfolio/aurora/aurora_dashboard_ops_pbi.png
-img: /img/portfolio/aurora/aurora_dashboard_ops_pbi.png
+thumbnail: aurora/aurora_dashboard_ops_pbi.png
+img: aurora/aurora_dashboard_ops_pbi.png
 alt: "NHSCT Power BI dashboards for Operations, Finance, Workforce & Compliance"
 project-date: 2025-10-31
 category: projects
