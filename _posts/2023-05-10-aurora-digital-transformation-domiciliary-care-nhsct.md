@@ -40,33 +40,91 @@ It features realistic **runs & rotas**, **ECM data** (GPS, travel, shift types),
 
 ---
 
-### <span id="dashboards">🖥️ Dashboards</span>
+## <span id="dashboards">🖥️ Dashboards (Tabbed)</span>
 
-**Executive KPI Dashboard**  
-![Aurora KPI Dashboard](/img/portfolio/aurora/aurora_dashboard_kpi_pbi.png "Executive KPI Dashboard")
+<!-- Dashboards Tabs -->
+<ul class="nav nav-pills aurora-tabs" role="tablist">
+  <li role="presentation" class="active">
+    <a href="#dash-powerbi" aria-controls="dash-powerbi" role="tab" data-toggle="tab">Power BI</a>
+  </li>
+  <li role="presentation">
+    <a href="#dash-excel" aria-controls="dash-excel" role="tab" data-toggle="tab">Excel</a>
+  </li>
+  <li role="presentation">
+    <a href="#dash-access" aria-controls="dash-access" role="tab" data-toggle="tab">Access (TBC)</a>
+  </li>
+</ul>
 
-**Operations View**  
-![Aurora Operations Dashboard](/img/portfolio/aurora/aurora_dashboard_ops_pbi.png "Operations Performance Overview")
+<div class="tab-content aurora-tabcontent" style="margin-top:1rem">
 
-**Finance Analytics**  
-![Aurora Finance Dashboard](/img/portfolio/aurora/aurora_dashboard_finance_pbi.png "Finance Claimed vs Paid Analysis")
+  <!-- Dashboards: POWER BI -->
+  <div role="tabpanel" class="tab-pane fade in active" id="dash-powerbi">
+    <div class="aurora-grid">
+      <figure class="aurora-item">
+        <img src="/img/portfolio/aurora/aurora_dashboard_kpi_pbi.png" alt="Executive KPI Dashboard" loading="lazy">
+        <figcaption>Executive KPI Dashboard</figcaption>
+      </figure>
+      <figure class="aurora-item">
+        <img src="/img/portfolio/aurora/aurora_dashboard_ops_pbi.png" alt="Operations Performance Overview" loading="lazy">
+        <figcaption>Operations Performance Overview</figcaption>
+      </figure>
+      <figure class="aurora-item">
+        <img src="/img/portfolio/aurora/aurora_dashboard_finance_pbi.png" alt="Finance Claimed vs Paid Analysis" loading="lazy">
+        <figcaption>Finance Claimed vs Paid</figcaption>
+      </figure>
+      <figure class="aurora-item">
+        <img src="/img/portfolio/aurora/aurora_dashboard_qa_pbi.png" alt="Compliance: RQIA, Incidents, Complaints" loading="lazy">
+        <figcaption>Compliance & Quality</figcaption>
+      </figure>
+      <figure class="aurora-item">
+        <img src="/img/portfolio/aurora/aurora_dashboard_rr_pbi.png" alt="Runs & Rotas Overview" loading="lazy">
+        <figcaption>Runs & Rotas (Overview)</figcaption>
+      </figure>
+      <figure class="aurora-item">
+        <img src="/img/portfolio/aurora/aurora_dashboard_wf_pbi.png" alt="Workforce KPIs" loading="lazy">
+        <figcaption>Workforce KPIs</figcaption>
+      </figure>
+    </div>
+  </div>
 
-**Compliance & Quality**  
-![Aurora Compliance Dashboard](/img/portfolio/aurora/aurora_dashboard_qa_pbi.png "RQIA, Incidents, and Complaints Overview")
+  <!-- Dashboards: EXCEL -->
+  <div role="tabpanel" class="tab-pane fade" id="dash-excel">
+    <div class="aurora-grid">
+      <figure class="aurora-item">
+        <img src="/img/portfolio/aurora/aurora_kpi_excel.png" alt="Excel KPI Overview" loading="lazy">
+        <figcaption>Excel – KPI Overview</figcaption>
+      </figure>
+      <figure class="aurora-item">
+        <img src="/img/portfolio/aurora/aurora_carepackages_excel.png" alt="Excel Care Packages View" loading="lazy">
+        <figcaption>Excel – Care Packages</figcaption>
+      </figure>
+      <figure class="aurora-item">
+        <img src="/img/portfolio/aurora/aurora_clients_excel.png" alt="Excel Clients Table" loading="lazy">
+        <figcaption>Excel – Clients</figcaption>
+      </figure>
+      <figure class="aurora-item">
+        <img src="/img/portfolio/aurora/aurora_rr_excel.png" alt="Excel Runs & Rotas" loading="lazy">
+        <figcaption>Excel – Runs & Rotas</figcaption>
+      </figure>
+      <figure class="aurora-item">
+        <img src="/img/portfolio/aurora/aurora_remittance_excel.png" alt="Excel Remittance Reconciliation" loading="lazy">
+        <figcaption>Excel – Remittance</figcaption>
+      </figure>
+      <figure class="aurora-item">
+        <img src="/img/portfolio/aurora/aurora_trustpayments_excel.png" alt="Excel Trust Payments" loading="lazy">
+        <figcaption>Excel – Trust Payments</figcaption>
+      </figure>
+    </div>
+  </div>
 
-**Workforce Snapshot (Mobile)**  
-![Aurora Workforce Mobile](/img/portfolio/aurora/aurora_dashboard_wf_mobile_pbi.png "Workforce KPIs – Mobile")
-
-**Runs & Rotas (Mobile)**  
-![Aurora R&R Mobile](/img/portfolio/aurora/aurora_dashboard_rr_mobile_pbi.png "Runs & Rotas – Mobile")
-
-**Power BI Measure Examples**  
-![Aurora Measure Example 1](/img/portfolio/aurora/aurora_measure_example_1.png "Power BI DAX Example 1")  
-![Aurora Measure Example 2](/img/portfolio/aurora/aurora_measure_example_2.png "Power BI DAX Example 2")  
-![Aurora Measure Example 3](/img/portfolio/aurora/aurora_measure_example_3.png "Power BI DAX Example 3")
-
-> All data is **synthetic**, **NHSCT-locality accurate**, and **Power BI ready**.  
-> 📦 Download: Dataset ZIP + Excel Analyst Toolkit linked on this page.
+  <!-- Dashboards: ACCESS -->
+  <div role="tabpanel" class="tab-pane fade" id="dash-access">
+    <div class="aurora-empty">
+      <p class="lead">Access Data Model (TBC)</p>
+      <p>Planned: schema diagram, table validation, audit trail examples.</p>
+    </div>
+  </div>
+</div>
 
 ---
 
@@ -106,7 +164,7 @@ It features realistic **runs & rotas**, **ECM data** (GPS, travel, shift types),
 
 ## <span id="gallery">🗂️ Gallery (Tabbed)</span>
 
-<!-- Tabs -->
+<!-- Gallery Tabs -->
 <ul class="nav nav-pills aurora-tabs" role="tablist">
   <li role="presentation" class="active">
     <a href="#tab-powerbi" aria-controls="tab-powerbi" role="tab" data-toggle="tab">Power BI</a>
@@ -121,74 +179,70 @@ It features realistic **runs & rotas**, **ECM data** (GPS, travel, shift types),
 
 <div class="tab-content aurora-tabcontent" style="margin-top:1rem">
 
-  <!-- POWER BI -->
+  <!-- GALLERY: POWER BI (full set including mobile + DAX + modeling) -->
   <div role="tabpanel" class="tab-pane fade in active" id="tab-powerbi">
     <div class="aurora-grid" role="list">
-      <figure class="aurora-item" role="listitem" data-index="0">
-        <img src="/img/portfolio/aurora/aurora_dashboard_kpi_pbi.png" alt="Executive KPI Dashboard" loading="lazy">
-        <figcaption>Executive KPI Dashboard</figcaption>
-      </figure>
-      <figure class="aurora-item" role="listitem" data-index="1">
-        <img src="/img/portfolio/aurora/aurora_dashboard_ops_pbi.png" alt="Operations Performance Overview" loading="lazy">
-        <figcaption>Operations Performance Overview</figcaption>
-      </figure>
-      <figure class="aurora-item" role="listitem" data-index="2">
-        <img src="/img/portfolio/aurora/aurora_dashboard_finance_pbi.png" alt="Finance Claimed vs Paid Analysis" loading="lazy">
-        <figcaption>Finance Claimed vs Paid</figcaption>
-      </figure>
-      <figure class="aurora-item" role="listitem" data-index="3">
-        <img src="/img/portfolio/aurora/aurora_dashboard_qa_pbi.png" alt="Compliance: RQIA, Incidents, Complaints" loading="lazy">
-        <figcaption>Compliance & Quality</figcaption>
-      </figure>
-      <figure class="aurora-item" role="listitem" data-index="4">
-        <img src="/img/portfolio/aurora/aurora_dashboard_wf_mobile_pbi.png" alt="Workforce KPIs (mobile)" loading="lazy">
-        <figcaption>Workforce (Mobile)</figcaption>
-      </figure>
-      <figure class="aurora-item" role="listitem" data-index="5">
-        <img src="/img/portfolio/aurora/aurora_dashboard_rr_mobile_pbi.png" alt="Runs & Rotas (mobile)" loading="lazy">
-        <figcaption>Runs & Rotas (Mobile)</figcaption>
-      </figure>
-      <figure class="aurora-item" role="listitem" data-index="6">
-        <img src="/img/portfolio/aurora/aurora_measure_example_1.png" alt="Power BI DAX Measure Example 1" loading="lazy">
-        <figcaption>DAX Measure – Example 1</figcaption>
-      </figure>
-      <figure class="aurora-item" role="listitem" data-index="7">
-        <img src="/img/portfolio/aurora/aurora_measure_example_2.png" alt="Power BI DAX Measure Example 2" loading="lazy">
-        <figcaption>DAX Measure – Example 2</figcaption>
-      </figure>
-      <figure class="aurora-item" role="listitem" data-index="8">
-        <img src="/img/portfolio/aurora/aurora_measure_example_3.png" alt="Power BI DAX Measure Example 3" loading="lazy">
-        <figcaption>DAX Measure – Example 3</figcaption>
-      </figure>
-      <figure class="aurora-item aurora-item--wide" role="listitem" data-index="9">
-        <img src="/img/portfolio/aurora/aurora_dashboard_ops_ws.png" alt="Wide overview of Operations dashboard" loading="lazy">
-        <figcaption>Operations Dashboard – Wide Overview</figcaption>
-      </figure>
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_dashboard_kpi_pbi.png" alt="Executive KPI Dashboard" loading="lazy"><figcaption>Executive KPI Dashboard</figcaption></figure>
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_dashboard_kpi__mobile_pbi.png" alt="Executive KPI (Mobile)" loading="lazy"><figcaption>KPI (Mobile)</figcaption></figure>
+
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_dashboard_ops_pbi.png" alt="Operations Performance Overview" loading="lazy"><figcaption>Operations Overview</figcaption></figure>
+      <figure class="aurora-item aurora-item--wide" role="listitem"><img src="/img/portfolio/aurora/aurora_dashboard_ops_ws.png" alt="Operations Dashboard Wide" loading="lazy"><figcaption>Operations (Wide)</figcaption></figure>
+
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_dashboard_finance_pbi.png" alt="Finance Claimed vs Paid" loading="lazy"><figcaption>Finance – Claimed vs Paid</figcaption></figure>
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_dashboard_finance_mobile_pbi.png" alt="Finance Mobile" loading="lazy"><figcaption>Finance (Mobile)</figcaption></figure>
+
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_dashboard_qa_pbi.png" alt="Quality & Compliance" loading="lazy"><figcaption>Quality & Compliance</figcaption></figure>
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_dashboard_qa_mobile_pbi.png" alt="Quality & Compliance (Mobile)" loading="lazy"><figcaption>Compliance (Mobile)</figcaption></figure>
+
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_dashboard_rr_pbi.png" alt="Runs & Rotas Overview" loading="lazy"><figcaption>Runs & Rotas</figcaption></figure>
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_dashboard_rr_mobile_pbi.png" alt="Runs & Rotas (Mobile)" loading="lazy"><figcaption>Runs & Rotas (Mobile)</figcaption></figure>
+
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_dashboard_wf_pbi.png" alt="Workforce KPIs" loading="lazy"><figcaption>Workforce KPIs</figcaption></figure>
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_dashboard_wf_mobile_pbi.png" alt="Workforce KPIs (Mobile)" loading="lazy"><figcaption>Workforce (Mobile)</figcaption></figure>
+
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_clients_pq_pbi.png" alt="Power Query Clients Transform" loading="lazy"><figcaption>Power Query – Clients</figcaption></figure>
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_training_records_pq_pbi.png" alt="Power Query Training Records" loading="lazy"><figcaption>Power Query – Training Records</figcaption></figure>
+
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_tables_pbi.png" alt="Power BI Tables View" loading="lazy"><figcaption>Tables View</figcaption></figure>
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_relationship_pbi.png" alt="Power BI Relationship Model" loading="lazy"><figcaption>Relationship Model</figcaption></figure>
+
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_measure_example_1.png" alt="DAX Measure Example 1" loading="lazy"><figcaption>DAX Measure – 1</figcaption></figure>
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_measure_example_2.png" alt="DAX Measure Example 2" loading="lazy"><figcaption>DAX Measure – 2</figcaption></figure>
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_measure_example_3.png" alt="DAX Measure Example 3" loading="lazy"><figcaption>DAX Measure – 3</figcaption></figure>
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_measure_example_4.png" alt="DAX Measure Example 4" loading="lazy"><figcaption>DAX Measure – 4</figcaption></figure>
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_measure_example_5.png" alt="DAX Measure Example 5" loading="lazy"><figcaption>DAX Measure – 5</figcaption></figure>
+
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_measures_dash.png" alt="Measures dashboard" loading="lazy"><figcaption>Measures Dashboard</figcaption></figure>
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_pq_editor.png" alt="Power Query Editor" loading="lazy"><figcaption>Power Query Editor</figcaption></figure>
     </div>
   </div>
 
-  <!-- EXCEL -->
+  <!-- GALLERY: EXCEL (all Excel assets) -->
   <div role="tabpanel" class="tab-pane fade" id="tab-excel">
-    <div class="aurora-empty">
-      <p class="lead">Excel Analyst Toolkit</p>
-      <p>Add screenshots here (e.g., pivots, slicers, validation charts). Place new images in <code>/img/portfolio/aurora/</code> and duplicate any <code>&lt;figure&gt;</code> from the Power BI tab with updated filenames.</p>
-      <ol class="mb-0">
-        <li>Suggested names: <code>aurora_excel_pivots.png</code>, <code>aurora_excel_slicers.png</code></li>
-        <li>Update <code>src</code>, <code>alt</code>, and caption text.</li>
-      </ol>
+    <div class="aurora-grid" role="list">
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_kpi_excel.png" alt="Excel KPI Overview" loading="lazy"><figcaption>Excel – KPI Overview</figcaption></figure>
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_carepackages_excel.png" alt="Excel Care Packages View" loading="lazy"><figcaption>Excel – Care Packages</figcaption></figure>
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_clients_excel.png" alt="Excel Clients Table" loading="lazy"><figcaption>Excel – Clients</figcaption></figure>
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_rr_excel.png" alt="Excel Runs & Rotas" loading="lazy"><figcaption>Excel – Runs & Rotas</figcaption></figure>
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_remittance_excel.png" alt="Excel Remittance Reconciliation" loading="lazy"><figcaption>Excel – Remittance</figcaption></figure>
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_trustpayments_excel.png" alt="Excel Trust Payments" loading="lazy"><figcaption>Excel – Trust Payments</figcaption></figure>
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_expenses_excel.png" alt="Excel Expenses" loading="lazy"><figcaption>Excel – Expenses</figcaption></figure>
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_mileage_excel.png" alt="Excel Mileage" loading="lazy"><figcaption>Excel – Mileage</figcaption></figure>
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_staff_excel.png" alt="Excel Staff" loading="lazy"><figcaption>Excel – Staff</figcaption></figure>
+      <figure class="aurora-item" role="listitem"><img src="/img/portfolio/aurora/aurora_complaints_excel.png" alt="Excel Complaints" loading="lazy"><figcaption>Excel – Complaints</figcaption></figure>
     </div>
   </div>
 
-  <!-- ACCESS (TBC) -->
+  <!-- GALLERY: ACCESS -->
   <div role="tabpanel" class="tab-pane fade" id="tab-access">
     <div class="aurora-empty">
       <p class="lead">Access Data Model (TBC)</p>
-      <p>Future images: schema diagram, table validation, audit trail examples. When ready, add files like <code>aurora_access_schema.png</code> and duplicate a figure block here.</p>
+      <p>Future: schema diagram, table validation, audit trail examples.</p>
     </div>
   </div>
 </div>
 
-<!-- Accessible Lightbox Modal (shared by all tabs) -->
+<!-- Accessible Lightbox Modal (shared by all tabs/sections) -->
 <div class="aurora-lightbox" id="auroraLightbox" aria-modal="true" role="dialog" aria-label="Image viewer" hidden>
   <button class="lb-close" type="button" aria-label="Close (Esc)">&times;</button>
   <button class="lb-prev" type="button" aria-label="Previous (←)">&lsaquo;</button>
@@ -260,23 +314,20 @@ It features realistic **runs & rotas**, **ECM data** (GPS, travel, shift types),
 <!-- SCRIPTS (requires jQuery + Bootstrap already on page) -->
 <script>
 (function(){
-  // Deep-link tabs via URL hash (#tab-powerbi, #tab-excel, #tab-access)
+  // Deep-link tabs via URL hash
   function activateHashTab() {
     var hash = window.location.hash;
-    if (hash && hash.indexOf('#tab-') === 0) {
-      var $tab = $('a[href="'+hash+'"]');
-      if ($tab.length) $tab.tab('show');
-    }
+    if (hash && hash.indexOf('#tab-') === 0) { var $tab = $('a[href="'+hash+'"]'); if ($tab.length) $tab.tab('show'); }
+    if (hash && hash.indexOf('#dash-') === 0) { var $tab2 = $('a[href="'+hash+'"]'); if ($tab2.length) $tab2.tab('show'); }
   }
   $(document).on('shown.bs.tab', 'a[data-toggle="tab"]', function (e) {
     var target = $(e.target).attr('href');
-    if (history.pushState) history.pushState(null, null, target);
-    else window.location.hash = target;
+    if (history.pushState) history.pushState(null, null, target); else window.location.hash = target;
   });
   activateHashTab();
   $(window).on('hashchange', activateHashTab);
 
-  // Accessible Lightbox, scoped to visible tab
+  // Lightbox scoped to the currently visible tab-content or dashboards section
   var lb = document.getElementById('auroraLightbox');
   if (!lb) return;
 
@@ -289,9 +340,15 @@ It features realistic **runs & rotas**, **ECM data** (GPS, travel, shift types),
   var sources = [];
   var index = 0;
 
-  function collectSources() {
+  function currentItems(){
+    // prefer active tab; fallback to any grid in view
     var activePane = document.querySelector('.tab-pane.active');
-    var items = activePane ? Array.prototype.slice.call(activePane.querySelectorAll('.aurora-item')) : [];
+    if (activePane) return Array.prototype.slice.call(activePane.querySelectorAll('.aurora-item'));
+    return Array.prototype.slice.call(document.querySelectorAll('.aurora-grid .aurora-item'));
+  }
+
+  function collectSources() {
+    var items = currentItems();
     sources = items.map(function(fig){
       var i = fig.querySelector('img');
       return {
