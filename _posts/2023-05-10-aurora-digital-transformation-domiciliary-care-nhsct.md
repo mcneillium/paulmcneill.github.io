@@ -199,12 +199,10 @@ It features realistic **runs & rotas**, **ECM data** (GPS, travel, shift types),
 
 <a class="aurora-backtop" href="#page-top" aria-label="Back to top">↑</a>
 
-<!-- STYLES (safe to include inline for this post) -->
+<!-- STYLES -->
 <style>
 /* Quick nav chips */
-.aurora-toc {
-  display:flex; flex-wrap:wrap; gap:.5rem; margin: 0 0 1rem 0;
-}
+.aurora-toc { display:flex; flex-wrap:wrap; gap:.5rem; margin: 0 0 1rem 0; }
 .aurora-toc a{
   display:inline-block; padding:.35rem .6rem; border:1px solid #e1e1e1; border-radius:999px;
   text-decoration:none; font-size:.9rem; color:#333; background:#fff;
@@ -222,10 +220,7 @@ It features realistic **runs & rotas**, **ECM data** (GPS, travel, shift types),
 .aurora-tabcontent { background:#fff; border:1px solid #eee; border-radius:12px; padding:1rem; }
 
 /* Grid 3/2/1 (no horizontal scroll) */
-.aurora-grid {
-  display:grid; gap:1rem; margin-top:.25rem;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
+.aurora-grid { display:grid; gap:1rem; margin-top:.25rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 @media (max-width: 991px){ .aurora-grid{ grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 575px){ .aurora-grid{ grid-template-columns: 1fr; } }
 
@@ -241,19 +236,9 @@ It features realistic **runs & rotas**, **ECM data** (GPS, travel, shift types),
 
 /* Lightbox */
 .aurora-lightbox[hidden]{ display:none !important; }
-.aurora-lightbox{
-  position:fixed; inset:0; background:rgba(0,0,0,.82);
-  display:flex; align-items:center; justify-content:center; z-index:1050;
-  padding:2rem;
-}
-.aurora-lightbox .lb-img{
-  max-width: min(92vw, 1400px);
-  max-height: 80vh;
-  border-radius:12px; box-shadow: 0 8px 24px rgba(0,0,0,.35);
-}
-.aurora-lightbox .lb-caption{
-  color:#f2f2f2; margin-top:.75rem; font-size:.95rem; text-align:center; max-width:85ch;
-}
+.aurora-lightbox{ position:fixed; inset:0; background:rgba(0,0,0,.82); display:flex; align-items:center; justify-content:center; z-index:1050; padding:2rem; }
+.aurora-lightbox .lb-img{ max-width: min(92vw, 1400px); max-height: 80vh; border-radius:12px; box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+.aurora-lightbox .lb-caption{ color:#f2f2f2; margin-top:.75rem; font-size:.95rem; text-align:center; max-width:85ch; }
 .lb-close, .lb-prev, .lb-next {
   position: absolute; top: 50%; transform: translateY(-50%);
   background: rgba(255,255,255,.1); color:#fff; border:0;
@@ -263,12 +248,11 @@ It features realistic **runs & rotas**, **ECM data** (GPS, travel, shift types),
 .lb-prev { left: 1rem; }
 .lb-next { right: 1rem; }
 
-/* Back to top button */
+/* Back to top */
 .aurora-backtop{
   position: fixed; right: 1rem; bottom: 1rem; text-decoration:none;
   background:#fff; border:1px solid #ddd; border-radius:999px; padding:.4rem .6rem;
-  box-shadow:0 4px 12px rgba(0,0,0,.12); color:#333; font-weight:600;
-  opacity:.9;
+  box-shadow:0 4px 12px rgba(0,0,0,.12); color:#333; font-weight:600; opacity:.9;
 }
 .aurora-backtop:hover{ opacity:1; }
 </style>
