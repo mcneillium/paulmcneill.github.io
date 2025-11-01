@@ -40,7 +40,7 @@ It features realistic **runs & rotas**, **ECM data** (GPS, travel, shift types),
 
 ---
 
-## <span id="dashboards">🖥️ Dashboards (Tabbed)</span>
+## <span id="dashboards">🖥️ Dashboards</span>
 
 <!-- Dashboards Tabs -->
 <ul class="nav nav-pills aurora-tabs" role="tablist">
@@ -162,7 +162,7 @@ It features realistic **runs & rotas**, **ECM data** (GPS, travel, shift types),
 
 ---
 
-## <span id="gallery">🗂️ Gallery (Tabbed)</span>
+## <span id="gallery">🗂️ Gallery</span>
 
 <!-- Gallery Tabs -->
 <ul class="nav nav-pills aurora-tabs" role="tablist">
