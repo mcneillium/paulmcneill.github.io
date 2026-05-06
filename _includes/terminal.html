@@ -1,0 +1,42 @@
+<div class="terminal" id="terminal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="terminal-title">
+  <div class="terminal__chrome">
+    <div class="terminal__dots" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="terminal__title" id="terminal-title">paul@portfolio:~</div>
+    <button type="button" class="terminal__close" aria-label="Close terminal" data-close="terminal">×</button>
+  </div>
+  <div class="terminal__body" id="terminalBody" tabindex="0">
+    <div class="terminal__output" id="terminalOutput" aria-live="polite"></div>
+    <div class="terminal__line">
+      <span class="terminal__prompt">paul@portfolio<span class="terminal__sep">:</span><span class="terminal__path">~</span><span class="terminal__sep">$</span></span>
+      <input
+        type="text"
+        class="terminal__input"
+        id="terminalInput"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        aria-label="Terminal input"
+      />
+    </div>
+  </div>
+</div>
+
+{%- comment -%}
+  Serialize the site data into a JSON blob the terminal JS can read.
+  Using `jsonify` to safely escape strings.
+{%- endcomment -%}
+<script type="application/json" id="terminal-data">
+{
+  "profile": {{ site.data.profile | jsonify }},
+  "experience": {{ site.data.experience | jsonify }},
+  "education": {{ site.data.education | jsonify }},
+  "credentials": {{ site.data.credentials | jsonify }},
+  "skills": {{ site.data.skills | jsonify }},
+  "principles": {{ site.data.principles | jsonify }},
+  "projects": {{ site.data.projects | jsonify }},
+  "available": {{ site.available | jsonify }},
+  "social": {{ site.social | jsonify }}
+}
+</script>

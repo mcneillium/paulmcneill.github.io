@@ -41,3 +41,7 @@ vendor/
 .jekyll-cache/
 node_modules/
 package-lock.json
+
+# Wrangler / Cloudflare Workers
+workers/**/.wrangler/
+workers/**/node_modules/

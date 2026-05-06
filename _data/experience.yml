@@ -1,0 +1,50 @@
+# Work history. Source of truth — feeds the chatbot, terminal, and any
+# future "experience" UI. Dates and titles still need a final
+# verification pass against LinkedIn.
+
+roles:
+  - role: "Creative Director / Technical Lead"
+    org: "Paramount Perceptions (Self-Employed)"
+    start: "2019"
+    end: "Present"
+    current: true
+    bullets:
+      - "Lead AI-assisted digital solutions and web applications across healthcare, education, and retail."
+      - "Develop data-driven strategies integrating ML insights, cloud services, and automation workflows."
+      - "Manage full project lifecycles, ensuring GDPR/ethical compliance, quality, and client satisfaction."
+
+  - role: "CRM Systems Coordinator"
+    org: "Industrial Temps"
+    location: "Belfast"
+    start: "2018"
+    end: "2019"
+    bullets:
+      - "Administered and optimised CRM systems and internal processes."
+      - "Trained staff and improved reporting accuracy by 25%+ through process automation."
+
+  - role: "IT & Database Systems Manager"
+    org: "Platinum Support & Care Services Ltd"
+    start: "2016"
+    end: "2018"
+    bullets:
+      - "Built a central Access database integrating staff, clients, and compliance data."
+      - "Implemented Power BI dashboards and streamlined data-driven reporting."
+      - "Oversaw recruitment, IT infrastructure, and brand modernisation initiatives."
+
+  - role: "Earlier roles"
+    org: "Various"
+    start: ""
+    end: "2016"
+    bullets:
+      - "IT support, web design, and e-commerce — providing a strong technical foundation for later leadership work."
+
+volunteering:
+  - role: "Digital Volunteer / Technology Advisor"
+    org: "RSPB Rathlin Island Project"
+    start: "2024"
+    end: "Present"
+    current: true
+    bullets:
+      - "Contribute to Rathlin360.com, showcasing biodiversity and community heritage."
+      - "Improve content accessibility, SEO, and mobile responsiveness to broaden reach."
+      - "Support conservation and education teams with digital strategy and analytics insights."

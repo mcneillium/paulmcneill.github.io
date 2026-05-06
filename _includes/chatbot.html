@@ -1,0 +1,43 @@
+<button type="button" class="chat-fab" id="chatFab" aria-haspopup="dialog" aria-controls="chatbot" data-open="chatbot">
+  <span class="chat-fab__pulse" aria-hidden="true"></span>
+  {% include icon.html name="sparkles" class="chat-fab__icon" %}
+  <span class="chat-fab__label">Talk to Paul</span>
+</button>
+
+<div class="chat" id="chatbot" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="chat-title">
+  <header class="chat__header">
+    <div class="chat__title-wrap">
+      {% include icon.html name="sparkles" class="icon" %}
+      <h2 id="chat-title" class="chat__title">Talk to Paul</h2>
+    </div>
+    <button type="button" class="chat__close" aria-label="Close" data-close="chatbot">×</button>
+  </header>
+
+  <div class="chat__body" id="chatBody" aria-live="polite"></div>
+
+  <div class="chat__suggestions" id="chatSuggestions" role="group" aria-label="Suggested questions">
+    <button type="button" class="chat__chip" data-q="What AI projects has Paul built?">What AI projects?</button>
+    <button type="button" class="chat__chip" data-q="What's Paul's tech stack?">Tech stack?</button>
+    <button type="button" class="chat__chip" data-q="Tell me about the NHS Aurora project.">NHS work?</button>
+    <button type="button" class="chat__chip" data-q="Is Paul available for hire?">Availability?</button>
+  </div>
+
+  <form class="chat__form" id="chatForm" autocomplete="off">
+    <input
+      type="text"
+      class="chat__input"
+      id="chatInput"
+      placeholder="Ask anything about Paul's work..."
+      aria-label="Your message"
+      maxlength="500"
+    />
+    <button type="submit" class="chat__send" aria-label="Send">
+      {% include icon.html name="arrow-up-right" class="icon" %}
+    </button>
+  </form>
+
+  <p class="chat__disclaimer">
+    AI-powered — answers based on Paul's portfolio content. Be polite to the bot;
+    Paul will see if it argues back.
+  </p>
+</div>

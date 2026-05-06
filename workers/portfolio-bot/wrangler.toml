@@ -1,0 +1,23 @@
+name = "portfolio-bot"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+# Workers AI binding (free tier — no API key required)
+[ai]
+binding = "AI"
+
+# Public env vars
+[vars]
+BACKEND = "workers-ai"  # or "anthropic"
+CONTEXT_URL = "https://paulmartinmcneill.com/assets/chatbot/context.txt"
+# ANTHROPIC_MODEL = "claude-haiku-4-5-20251001"  # only used if BACKEND=anthropic
+
+# Secrets are NOT set in this file. Run:
+#   wrangler secret put ANTHROPIC_API_KEY
+# (only needed if BACKEND=anthropic)
+
+# Optional: a custom domain. Uncomment after pointing api.paulmartinmcneill.com
+# at this worker via the Cloudflare dashboard.
+# [[routes]]
+# pattern = "api.paulmartinmcneill.com/chat"
+# custom_domain = true
