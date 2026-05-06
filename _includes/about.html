@@ -1,101 +1,32 @@
-<!-- About Me Section -->
-<section id="about" class="bg-light-gray">
-  <style>
-    .profile-photo {
-      position: relative;
-      display: inline-block;
-    }
-
-    .profile-photo img {
-      max-width: 200px;
-      border-radius: 50%;
-      margin-bottom: 20px;
-      transition: opacity 0.5s ease-in-out;
-    }
-
-    .profile-photo .hover-photo {
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0;
-    }
-
-    .profile-photo:hover .hover-photo {
-      opacity: 1;
-    }
-
-    .profile-photo:hover .default-photo {
-      opacity: 0;
-    }
-
-    /* CV Button Styling */
-    .cv-button {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 12px 28px;
-      font-size: 16px;
-      font-weight: 600;
-      border-radius: 50px;
-      transition: all 0.3s ease-in-out;
-      background-color: #007bff;
-      color: #fff;
-      text-decoration: none;
-    }
-
-    .cv-button:hover {
-      background-color: #0056b3;
-      text-decoration: none;
-    }
-
-    @media (max-width: 768px) {
-      .cv-button {
-        width: 100%;
-        text-align: center;
-      }
-    }
-  </style>
-
+<section class="section" id="about">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <div class="profile-photo">
-          <img src="img/about/PaulMartinMcNeill.jpg" alt="Paul Martin McNeill Profile Photo" class="default-photo">
-          <img src="img/about/PaulMartinMcNeillHover.jpg" alt="Paul Martin McNeill Hover Photo" class="hover-photo">
-        </div>
-        <h2 class="section-heading">About Me</h2>
-        <h3 class="section-subheading text-muted">AI Technologist • Data Analyst • Creative Director</h3>
+    <div class="about__grid">
+      <div class="about__photo reveal">
+        <img src="{{ '/img/about/PaulMartinMcNeill.jpg' | relative_url }}" alt="Paul Martin McNeill" loading="lazy">
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-lg-12">
-        <p class="text-muted">
-          I’m <strong>Paul Martin McNeill</strong> — a technologist passionate about applying <strong>artificial intelligence, data analytics, and software engineering</strong> to create inclusive and intelligent digital systems. My focus lies at the intersection of human-centred design and emerging technology, building tools that empower people and improve everyday life.
+      <div class="about__text reveal" style="--delay: 100ms">
+        <span class="eyebrow">About</span>
+        <h2 class="section-title" style="margin-top: 0.6rem;">Building from <em>Northern Ireland</em></h2>
+        <p>
+          I'm Paul — an AI engineer, web developer and data analyst based in Northern Ireland.
+          My work sits where engineering meets evidence: <strong>shipping LLM-powered tools,
+          modern web platforms, and analytics that hold up to scrutiny.</strong>
         </p>
-
-        <p class="text-muted">
-          My most recent work, the <strong>AAC App</strong>, represents a significant step in <strong>assistive communication technology (AAC)</strong>. This cross-platform application enables individuals with speech and language difficulties to communicate through pictogram-based interfaces enhanced by <strong>on-device AI predictions</strong>. Built with <strong>React Native, TensorFlow.js, and Firebase</strong>, the app provides real-time caregiver dashboards, offline support, and data-driven insights — demonstrating how ethical AI can enhance accessibility, autonomy, and care.
+        <p>
+          Recent work includes <strong>NHS digital transformation</strong> with the Northern
+          Health and Social Care Trust — Power BI suites for operations, finance, workforce
+          and compliance — and <strong>AI accessibility tools</strong> like a predictive AAC
+          app for non-verbal users with a real-time caregiver dashboard.
         </p>
-
-        <p class="text-muted">
-          The project integrates <strong>machine learning, cloud architecture, and accessibility engineering</strong> — showcasing skills in <strong>Python, JavaScript, TensorFlow, Power BI, and SQL</strong>. It also embodies my commitment to <strong>ethical computing</strong>: user data privacy (GDPR), WCAG 2.1 AA compliance, and transparent AI interaction were designed into every component. The system is being developed as an <strong>open-source framework</strong> to make assistive technology more affordable and inclusive.
+        <p>
+          On the analytics side, I've rebuilt CRM reporting pipelines, run data-quality
+          frameworks, and turned brittle exports into versioned datasets that survive
+          a Monday morning.
         </p>
-
-        <p class="text-muted">
-          I’ve delivered transformative <strong>data analytics solutions</strong> for organisations such as <strong>Platinum Support & Care Services</strong>, leading a digital transformation from paper-based reporting to real-time performance intelligence. Using <strong>Microsoft Access, Power BI, and the Power Platform</strong>, I centralised data flows, automated reporting, and built KPI dashboards that improved operational efficiency and strategic visibility.
-        </p>
-
-        <p class="text-muted">
-          As <strong>Creative Director at Paramount Perceptions</strong>, I combine technical precision with visual design, delivering web platforms that united brand identity with functionality. This role refines my ability to lead multi-disciplinary teams, manage client expectations, and deliver innovative solutions that balance form and function — skills that underpin my AI and data-driven development projects.
-        </p>
-
-        <p class="text-muted">
-          I hold multiple professional certifications, including <strong>Google Cloud Professional Machine Learning Engineer</strong> and <strong>DeepLearning.AI TensorFlow Developer</strong> credentials, supported by a <strong>First-Class BSc (Hons) in Computing and IT</strong> from the Open University. My training covers <strong>data engineering, cloud deployment, and full-stack AI integration</strong>, providing a solid foundation for advanced research and intelligent system design.
-        </p>
-
-        <p class="text-muted">
-          I actively collaborate with <strong>developers, healthcare professionals, and academics</strong> to advance technology that serves society — from predictive analytics to inclusive AI. My guiding philosophy is simple: <strong>technology should adapt to people, not the other way around</strong>. Whether through data-driven insight or AI-powered communication tools, my goal is to build systems that improve lives with empathy, intelligence, and precision.
-        </p>
+        <a href="#contact" class="btn btn-primary">Let's Talk
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+        </a>
       </div>
     </div>
   </div>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html %}
+<body id="page-top">
+  <div class="scroll-progress" aria-hidden="true"></div>
+  {% include nav.html %}
+
+  <main>
+    <article class="section" style="padding-top: 8rem;">
+      <div class="container" style="max-width: 880px;">
+        <span class="eyebrow">{{ page.category | default: "Project" }}</span>
+        <h1 class="section-title" style="margin: 0.6rem 0 1rem;">{{ page.title }}</h1>
+        {% if page.subtitle %}<p class="section-lead" style="margin-bottom: 2rem;">{{ page.subtitle }}</p>{% endif %}
+
+        {% if page.img %}
+        <div style="border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 2.5rem;">
+          <img src="{{ '/img/portfolio/' | append: page.img | relative_url }}" alt="{{ page.alt | default: page.title }}" style="width: 100%; height: auto; display: block;">
+        </div>
+        {% endif %}
+
+        <div class="post-content">
+          {{ content }}
+        </div>
+
+        <div style="margin-top: 3rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          {% if page.github-url %}<a class="btn btn-outline" href="{{ page.github-url }}" target="_blank" rel="noopener">View on GitHub</a>{% endif %}
+          <a class="btn btn-primary" href="{{ '/' | relative_url }}#projects">Back to projects</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  {% include footer.html %}
+  <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+
+  <style>
+    .post-content { color: var(--text-dim); font-size: 1.02rem; line-height: 1.75; }
+    .post-content h1, .post-content h2, .post-content h3, .post-content h4 {
+      font-family: var(--font-display); font-weight: 400; color: var(--text);
+      letter-spacing: -0.01em; margin-top: 2.4rem; margin-bottom: 0.8rem;
+    }
+    .post-content h2 { font-size: 1.9rem; }
+    .post-content h3 { font-size: 1.4rem; }
+    .post-content a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+    .post-content code {
+      font-family: var(--font-mono); font-size: 0.88em;
+      background: rgba(255,255,255,0.06); padding: 0.15em 0.4em; border-radius: 4px;
+    }
+    .post-content pre {
+      background: var(--bg-card); border: 1px solid var(--border);
+      padding: 1rem; border-radius: var(--radius); overflow-x: auto;
+    }
+    .post-content pre code { background: transparent; padding: 0; }
+    .post-content blockquote {
+      border-left: 2px solid var(--accent); padding-left: 1rem; margin-left: 0;
+      color: var(--text-dim); font-style: italic;
+    }
+    .post-content img { border-radius: var(--radius); border: 1px solid var(--border); margin: 1rem 0; }
+    .post-content ul, .post-content ol { padding-left: 1.4rem; }
+    .post-content hr { border: 0; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+  </style>
+</body>
+</html>

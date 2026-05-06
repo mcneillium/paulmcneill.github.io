@@ -1,0 +1,45 @@
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow">Selected Work</span>
+      <h2 class="section-title">Projects that <em>shipped</em></h2>
+      <p class="section-lead">
+        A mix of production systems, client work, and personal builds — each one a
+        decision about what to ship, what to cut, and what to measure.
+      </p>
+    </div>
+
+    {% assign featured = site.posts | where: "category", "projects" %}
+    {% assign others = site.posts | where_exp: "p", "p.category != 'projects'" %}
+    {% assign all_posts = featured | concat: others %}
+    <div class="projects__grid">
+      {% for post in all_posts limit: 8 %}
+        {% assign m = forloop.index0 | modulo: 4 %}
+        {% if m == 0 or m == 3 %}
+          {% assign size = "proj-card--lg" %}
+        {% else %}
+          {% assign size = "proj-card--md" %}
+        {% endif %}
+        <article class="proj-card {{ size }} reveal" style="--delay: {{ forloop.index0 | times: 80 }}ms">
+          {% if post.thumbnail %}
+            <div class="proj-card__media">
+              <img src="{{ '/img/portfolio/' | append: post.thumbnail | relative_url }}" alt="{{ post.alt | default: post.title }}" loading="lazy">
+            </div>
+          {% endif %}
+          <div class="proj-card__body">
+            <span class="proj-card__cat">{{ post.category | default: "Project" }}</span>
+            <h3 class="proj-card__title">{{ post.title }}</h3>
+            <p class="proj-card__desc">{{ post.description | default: post.subtitle | truncate: 180 }}</p>
+            <div class="proj-card__footer">
+              <ul class="tag-list">
+                {% if post.subtitle %}<li class="tag">{{ post.subtitle | truncate: 32 }}</li>{% endif %}
+                {% if post.client %}<li class="tag">{{ post.client }}</li>{% endif %}
+                {% if post.project-date %}<li class="tag">{{ post.project-date }}</li>{% endif %}
+              </ul>
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

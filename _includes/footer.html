@@ -1,68 +1,13 @@
-<!-- Modern Footer -->
-<footer class="footer-modern bg-dark text-white py-4">
-  <div class="container">
-    <div class="row align-items-center text-center text-md-left">
-      
-      <!-- Copyright -->
-      <div class="col-md-6 mb-3 mb-md-0">
-        <span class="copyright">&copy; 2025 Paul Martin McNeill — All Rights Reserved</span>
-      </div>
-
-      <!-- Social Links -->
-      <div class="col-md-6 text-md-right">
-        <ul class="list-inline social-buttons mb-0">
-          {% for network in site.social %}
-          <li class="list-inline-item mx-2">
-            <a href="{{ network.url }}" target="_blank" rel="noopener" aria-label="{{ network.title | capitalize }}">
-              {% if network.title == "linkedin" %}
-                <i class="fa-brands fa-linkedin fa-lg"></i>
-              {% elsif network.title == "github" %}
-                <i class="fa-brands fa-github fa-lg"></i>
-              {% elsif network.title == "twitter" or network.title == "x" %}
-                <i class="fa-brands fa-x-twitter fa-lg"></i>
-              {% elsif network.title == "facebook" %}
-                <i class="fa-brands fa-facebook fa-lg"></i>
-              {% elsif network.title == "instagram" %}
-                <i class="fa-brands fa-instagram fa-lg"></i>
-              {% elsif network.title == "youtube" %}
-                <i class="fa-brands fa-youtube fa-lg"></i>
-              {% else %}
-                <i class="fa-solid fa-link fa-lg"></i>
-              {% endif %}
-            </a>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-
-    </div>
+<footer class="footer">
+  <div class="container footer__inner">
+    <p style="margin: 0;">© {{ site.time | date: "%Y" }} Paul Martin McNeill. Built from scratch.</p>
+    <ul class="footer__links">
+      {% for s in site.social %}
+        {% if s.title == "github" or s.title == "linkedin" %}
+          <li><a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.title | capitalize }}</a></li>
+        {% endif %}
+      {% endfor %}
+      <li><a href="{{ '/cv/' | relative_url }}">CV</a></li>
+    </ul>
   </div>
-
-  <style>
-    .footer-modern {
-      background: #0d1117;
-      color: #d0d6dc;
-      font-size: 0.95rem;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-    .footer-modern .social-buttons a {
-      color: #d0d6dc;
-      transition: color .2s, transform .2s;
-    }
-    .footer-modern .social-buttons a:hover {
-      color: #00aced;
-      transform: translateY(-2px);
-    }
-    @media (max-width: 767px) {
-      .footer-modern {
-        text-align: center;
-      }
-      .footer-modern .social-buttons {
-        margin-top: 10px;
-      }
-    }
-  </style>
 </footer>
-
-<!-- Make sure Font Awesome 6 is loaded -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">

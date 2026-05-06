@@ -1,0 +1,10 @@
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    {% assign stack = "Python,TensorFlow,LangChain,OpenAI API,Claude API,React,Next.js,Node.js,TypeScript,PostgreSQL,Power BI,Azure,Docker,Git,Scikit-learn,Pandas,RAG Pipelines,MCP Servers" | split: "," %}
+    {% for i in (1..2) %}
+      {% for item in stack %}
+        <span class="marquee__item">{{ item }}</span>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</div>

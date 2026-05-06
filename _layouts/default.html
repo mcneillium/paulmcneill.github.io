@@ -1,43 +1,29 @@
-<!-- Document type declaration -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
+{% include head.html %}
+<body id="page-top">
+  <div class="scroll-progress" aria-hidden="true"></div>
 
-  {% include head.html %}
+  {% include nav.html %}
 
-
-    <!-- Body tag with an ID for styling and JavaScript targeting -->
-<body id="page-top" class="index">
-
-    {% include header.html %}
-    {% include skills.html %}
-    
-    {% include portfolio_grid.html %}
-    {% include ai_portfolio_grid.html %}
-    {% include data-analytics.html %}
-    {% include web-development.html %}
+  <main>
+    {% include hero.html %}
+    {% include marquee.html %}
+    {% include expertise.html %}
+    {% include projects.html %}
+    {% include ai-ml.html %}
     {% include about.html %}
-    {% include certifications.html %} 
     {% include contact.html %}
-    {% include footer.html %}
-    {% include modals.html %}
-    {% include js.html %}
+  </main>
 
-    <!-- jQuery + Bootstrap JS for carousels -->
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  {% include footer.html %}
 
-<script>
-(function () {
-  var nav = document.querySelector('.navbar-default');
-  if (!nav) return;
-  function onScroll() {
-    if (window.scrollY > 80) nav.classList.add('navbar-shrink');
-    else nav.classList.remove('navbar-shrink');
-  }
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
-})();
-</script>
+  <a href="#page-top" class="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </a>
 
-    </body>
+  <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+</body>
 </html>
