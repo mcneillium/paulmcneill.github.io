@@ -1,5 +1,15 @@
-{%- comment -%} Pull posts that have a youtube-url and surface them as a lite-embed strip. {%- endcomment -%}
-{%- assign vid_posts = site.posts | where_exp: "p", "p.youtube-url != nil and p.youtube-url != ''" -%}
+{%- comment -%}
+  Pull posts that have a youtube-url and surface them as a lite-embed strip.
+  Note: hyphenated keys can't be used in `where_exp` expressions — Liquid
+  parses `p.youtube-url` as `p.youtube` minus `url` — so iterate manually.
+{%- endcomment -%}
+{%- assign vid_posts = "" | split: "" -%}
+{%- for p in site.posts -%}
+  {%- assign yt = p.youtube-url -%}
+  {%- if yt and yt != "" -%}
+    {%- assign vid_posts = vid_posts | push: p -%}
+  {%- endif -%}
+{%- endfor -%}
 {%- if vid_posts.size > 0 -%}
 <section class="section videos" id="videos">
   <div class="container">
