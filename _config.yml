@@ -38,6 +38,19 @@ social:
 markdown: kramdown
 permalink: pretty
 
+# Don't publish project / dev docs
+exclude:
+  - CLAUDE.md
+  - README.md
+  - docs/
+  - scripts/
+  - node_modules/
+  - vendor/
+  - package.json
+  - package-lock.json
+  - Gemfile
+  - Gemfile.lock
+
 # Plugins
 plugins:
   - jekyll-feed
