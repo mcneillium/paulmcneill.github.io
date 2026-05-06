@@ -139,6 +139,17 @@ runs with UTF-8 by default — no env needed there.
   SVG into templates unless it has bespoke geometry (architecture diagrams).
 - **Never** introduce stock images of people, dashboards, or "AI". Use real
   screenshots of your work or styled placeholder gradients.
+- **Never** leave an `@`-prefixed token (e.g. `@license`, `@author`) in a
+  bundled SVG file. The `jekyll-mentions` plugin (auto-loaded by the
+  github-pages gem) treats `@token` as a username mention, parses the
+  rendered HTML to inject a link, and re-serialises through an HTML5
+  parser — which silently lowercases SVG attributes
+  (`viewBox` → `viewbox`, `linearGradient` → `lineargradient`,
+  `gradientTransform` → `gradienttransform`) and breaks every SVG icon
+  rendered as inline HTML. Lucide SVGs ship with a license comment
+  containing `@license`; strip it before adding new ones. There's a
+  one-liner near the top of `scripts/optimize-images.js` to do it
+  defensively if needed.
 
 ## SEO rules
 

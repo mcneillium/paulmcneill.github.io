@@ -12,7 +12,11 @@ group :jekyll_plugins do
   gem 'jekyll-paginate'
   gem 'jekyll-sitemap'
   gem 'jekyll-redirect-from'
-  gem 'jekyll-mentions'
+  # jekyll-mentions intentionally omitted — it parses content as HTML to
+  # rewrite @-mentions into links, which lowercases SVG attributes
+  # (viewBox -> viewbox, etc.) wherever an SVG include contains an
+  # @-prefixed token (e.g. Lucide's "@license" header). Re-enable only
+  # if @-mention rewriting is actually wanted.
   gem 'jekyll-relative-links'
 end
 

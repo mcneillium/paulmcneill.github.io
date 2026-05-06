@@ -309,7 +309,6 @@ PLATFORMS
 DEPENDENCIES
   github-pages (~> 232)
   jekyll-feed
-  jekyll-mentions
   jekyll-paginate
   jekyll-redirect-from
   jekyll-relative-links
