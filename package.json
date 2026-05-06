@@ -1,0 +1,11 @@
+{
+  "name": "paulmcneill-portfolio-tools",
+  "private": true,
+  "description": "Build-time tooling for the portfolio (image optimisation). Not published.",
+  "scripts": {
+    "optimize:images": "node scripts/optimize-images.js"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
+  }
+}

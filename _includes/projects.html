@@ -20,12 +20,17 @@
         {% else %}
           {% assign size = "proj-card--md" %}
         {% endif %}
-        <article class="proj-card {{ size }} reveal" style="--delay: {{ forloop.index0 | times: 80 }}ms">
-          {% if post.thumbnail %}
-            <div class="proj-card__media">
-              <img src="{{ '/img/portfolio/' | append: post.thumbnail | relative_url }}" alt="{{ post.alt | default: post.title }}" loading="lazy">
-            </div>
-          {% endif %}
+        {%- assign thumb_path = "/img/portfolio/" | append: post.thumbnail -%}
+        <a href="{{ post.url | relative_url }}" class="proj-card {{ size }} reveal" style="--delay: {{ forloop.index0 | times: 80 }}ms" aria-label="{{ post.title | escape }}">
+          <div class="proj-card__media">
+            {% if post.thumbnail %}
+              {% include picture.html src=thumb_path alt=post.alt loading="lazy" sizes="(max-width: 900px) 100vw, 50vw" %}
+            {% else %}
+              <div class="proj-card__placeholder" aria-hidden="true">
+                <span>{{ post.title | slice: 0, 1 }}</span>
+              </div>
+            {% endif %}
+          </div>
           <div class="proj-card__body">
             <span class="proj-card__cat">{{ post.category | default: "Project" }}</span>
             <h3 class="proj-card__title">{{ post.title }}</h3>
@@ -38,7 +43,7 @@
               </ul>
             </div>
           </div>
-        </article>
+        </a>
       {% endfor %}
     </div>
   </div>

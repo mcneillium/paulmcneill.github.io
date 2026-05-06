@@ -2,7 +2,10 @@
   <div class="container">
     <div class="about__grid">
       <div class="about__photo reveal">
-        <img src="{{ '/img/about/PaulMartinMcNeill.jpg' | relative_url }}" alt="Paul Martin McNeill" loading="lazy">
+        <div class="about__photo-stack">
+          {% include picture.html src="/img/about/PaulMartinMcNeill.jpg" alt="Paul Martin McNeill" class="about__photo-base" loading="lazy" %}
+          {% include picture.html src="/img/about/PaulMartinMcNeillHover.jpg" alt="" class="about__photo-hover" loading="lazy" %}
+        </div>
       </div>
 
       <div class="about__text reveal" style="--delay: 100ms">

@@ -1,0 +1,45 @@
+{%- comment -%}
+  Render <picture> with WebP source + original fallback.
+  Params:
+    src        — original path, e.g. "/img/portfolio/foo.png"
+    alt        — alt text (default "")
+    class      — img class
+    loading    — "lazy" | "eager" (default "lazy")
+    fetchpriority — "high" | "low" | "auto"
+    sizes      — sizes attr
+    thumb      — if truthy, use the -thumb.webp variant for the WebP source
+    width / height — optional intrinsic
+{%- endcomment -%}
+{%- assign _src = include.src -%}
+{%- assign _alt = include.alt | default: "" -%}
+{%- assign _class = include.class -%}
+{%- assign _loading = include.loading | default: "lazy" -%}
+{%- assign _fp = include.fetchpriority -%}
+{%- assign _sizes = include.sizes -%}
+{%- assign _w = include.width -%}
+{%- assign _h = include.height -%}
+
+{%- assign _dot = _src | split: "." -%}
+{%- assign _ext = _dot | last -%}
+{%- assign _ext_with_dot = "." | append: _ext -%}
+{%- assign _base = _src | replace: _ext_with_dot, "" -%}
+{%- if include.thumb -%}
+  {%- assign _webp = _base | append: "-thumb.webp" -%}
+{%- else -%}
+  {%- assign _webp = _base | append: ".webp" -%}
+{%- endif -%}
+
+<picture>
+  <source srcset="{{ _webp | relative_url }}" type="image/webp">
+  <img
+    src="{{ _src | relative_url }}"
+    alt="{{ _alt | escape }}"
+    {% if _class %}class="{{ _class }}"{% endif %}
+    loading="{{ _loading }}"
+    decoding="async"
+    {% if _fp %}fetchpriority="{{ _fp }}"{% endif %}
+    {% if _sizes %}sizes="{{ _sizes }}"{% endif %}
+    {% if _w %}width="{{ _w }}"{% endif %}
+    {% if _h %}height="{{ _h }}"{% endif %}
+  >
+</picture>

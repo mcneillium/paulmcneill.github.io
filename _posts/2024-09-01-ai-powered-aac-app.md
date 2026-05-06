@@ -5,6 +5,7 @@ subtitle: "Assistive communication with predictive AI & caregiver insights"
 modal-id: project-aac-ai
 thumbnail: aac-ai-dashboard.png
 img: aac-ai-dashboard.png
+gallery_dir: aac-ai
 alt: "AAC AI dashboard screenshot"
 project-date: 2024-09-01
 category: projects
