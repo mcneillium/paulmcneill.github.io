@@ -10,6 +10,15 @@ email: paulmcneill1989@hotmail.co.uk
 # A brief description of your site
 description: "Welcome to my portfolio. Here you can find my latest projects and learn more about my expertise in web development, AI, and more."
 
+# Profile / status
+profile:
+  name: "Paul Martin McNeill"
+  short_name: "Paul McNeill"
+  location: "Northern Ireland, UK"
+  github_user: "mcneillium"
+  twitter_handle: "McNeillium"
+available: true
+
 # Social networks
 social:
   - title: twitter

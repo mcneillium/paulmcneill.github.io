@@ -2,6 +2,13 @@
   <div class="container nav__inner">
     <a href="#page-top" class="brand" aria-label="Paul McNeill — home">paul<span class="dot">.</span></a>
 
+    {% if site.available %}
+      <span class="status-pill" title="Currently open to opportunities">
+        <span class="status-pill__dot" aria-hidden="true"></span>
+        <span class="status-pill__text">Available</span>
+      </span>
+    {% endif %}
+
     <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
       <span></span>
     </button>
@@ -10,6 +17,7 @@
       <li><a href="#expertise">Expertise</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#aiml">AI &amp; ML</a></li>
+      <li><a href="#skills">Skills</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#credentials">Credentials</a></li>
       <li><a href="#contact" class="cta">Get in touch</a></li>

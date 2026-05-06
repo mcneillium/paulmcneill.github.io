@@ -1,0 +1,23 @@
+<!-- TODO: REPLACE testimonials in _data/testimonials.yml with real, attributed quotes once collected. -->
+<section class="section testimonials" id="testimonials">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow">What People Say</span>
+      <h2 class="section-title">Words from <em>collaborators</em></h2>
+    </div>
+
+    <div class="testimonials__grid">
+      {% for t in site.data.testimonials %}
+        <figure class="testimonial reveal" style="--delay: {{ forloop.index0 | times: 100 }}ms">
+          {% include icon.html name="quote" class="testimonial__quote-mark" %}
+          <blockquote class="testimonial__quote">{{ t.quote }}</blockquote>
+          <figcaption class="testimonial__attr">
+            <strong>{{ t.name }}</strong>
+            <span>{{ t.role }}{% if t.org %} · {{ t.org }}{% endif %}</span>
+            {% unless t.verified %}<span class="testimonial__pending">Placeholder</span>{% endunless %}
+          </figcaption>
+        </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>

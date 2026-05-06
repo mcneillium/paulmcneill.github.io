@@ -1,0 +1,34 @@
+{%- assign blog_posts = site.posts | where: "type", "blog" -%}
+{%- if blog_posts.size > 0 -%}
+<section class="section writing" id="writing">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow">Writing</span>
+      <h2 class="section-title">Notes &amp; <em>essays</em></h2>
+      <p class="section-lead">
+        Working notes from real systems — what I learned, what I'd do differently,
+        and what's worth knowing if you're building the same thing.
+      </p>
+    </div>
+
+    <ul class="writing__list">
+      {% for post in blog_posts limit: 4 %}
+        {%- assign words = post.content | strip_html | number_of_words -%}
+        {%- assign mins = words | divided_by: 200 | plus: 1 -%}
+        <li class="writing__item reveal" style="--delay: {{ forloop.index0 | times: 80 }}ms">
+          <a href="{{ post.url | relative_url }}" class="writing__link">
+            <div class="writing__meta">
+              <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %Y" }}</time>
+              <span class="writing__sep">·</span>
+              <span class="writing__time">{% include icon.html name="clock" class="icon icon--xs" %} {{ mins }} min read</span>
+            </div>
+            <h3 class="writing__title">{{ post.title }}</h3>
+            {% if post.excerpt %}<p class="writing__excerpt">{{ post.excerpt | strip_html | truncate: 160 }}</p>{% endif %}
+            <span class="writing__more">Read {% include icon.html name="arrow-up-right" class="icon icon--xs" %}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{%- endif -%}

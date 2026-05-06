@@ -1,0 +1,32 @@
+{%- comment -%} Pull posts that have a youtube-url and surface them as a lite-embed strip. {%- endcomment -%}
+{%- assign vid_posts = site.posts | where_exp: "p", "p.youtube-url != nil and p.youtube-url != ''" -%}
+{%- if vid_posts.size > 0 -%}
+<section class="section videos" id="videos">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow">Walkthroughs</span>
+      <h2 class="section-title">See it <em>running</em></h2>
+      <p class="section-lead">
+        Project demo videos. Click to load — thumbnails first, iframes only on tap to keep things fast.
+      </p>
+    </div>
+
+    <div class="videos__grid">
+      {% for post in vid_posts limit: 3 %}
+        {%- assign yt = post.youtube-url -%}
+        {%- assign yt_parts = yt | split: "/" -%}
+        {%- assign yt_id = yt_parts | last -%}
+        <article class="lite-yt reveal" style="--delay: {{ forloop.index0 | times: 80 }}ms">
+          <button class="lite-yt__btn" data-yt="{{ yt_id }}" aria-label="Play: {{ post.title | escape }}">
+            <img src="https://i.ytimg.com/vi/{{ yt_id }}/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+            <span class="lite-yt__play" aria-hidden="true">
+              {% include icon.html name="play" class="icon" %}
+            </span>
+          </button>
+          <a class="lite-yt__title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{%- endif -%}

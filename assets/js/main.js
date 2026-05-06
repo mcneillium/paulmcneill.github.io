@@ -145,6 +145,37 @@
     stats.forEach(s => cu.observe(s));
   }
 
+  /* -------- Lazy-hydrate images with data-src ----------------------- */
+  const lazyImgs = document.querySelectorAll('[data-lazy-img] img[data-src]');
+  if (lazyImgs.length && 'IntersectionObserver' in window) {
+    const li = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const img = entry.target;
+        img.src = img.dataset.src;
+        img.addEventListener('load', () => img.classList.add('is-loaded'), { once: true });
+        li.unobserve(img);
+      });
+    }, { rootMargin: '200px 0px' });
+    lazyImgs.forEach(i => li.observe(i));
+  }
+
+  /* -------- YouTube lite embeds ------------------------------------- */
+  document.querySelectorAll('.lite-yt__btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.yt;
+      if (!id) return;
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+      iframe.title = btn.getAttribute('aria-label') || 'YouTube video';
+      iframe.loading = 'lazy';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;';
+      btn.replaceWith(iframe);
+    }, { once: true });
+  });
+
   /* -------- Lightbox for project galleries -------------------------- */
   const lightbox = document.getElementById('lightbox');
   const galleryItems = document.querySelectorAll('.gallery-item');

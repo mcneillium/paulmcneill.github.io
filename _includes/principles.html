@@ -1,0 +1,22 @@
+<section class="section principles" id="principles">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow">How I Work</span>
+      <h2 class="section-title">Principles, <em>not posters</em></h2>
+      <p class="section-lead">
+        How I actually approach work — not slogans on a wall. These are the things
+        I push back on when corners get cut.
+      </p>
+    </div>
+
+    <ol class="principles__list">
+      {% for p in site.data.principles %}
+        <li class="principle reveal" style="--delay: {{ forloop.index0 | times: 80 }}ms">
+          <span class="principle__num">{{ p.num }}</span>
+          <h3 class="principle__title">{{ p.title }}</h3>
+          <p class="principle__body">{{ p.body }}</p>
+        </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>

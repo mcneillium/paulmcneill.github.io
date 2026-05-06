@@ -1,0 +1,10 @@
+{%- comment -%}
+Inline an SVG icon. Pass `name` and optional `set` (ui|tech) and `class`.
+  {% include icon.html name="arrow-up-right" %}
+  {% include icon.html name="python" set="tech" class="tech-icon" %}
+{%- endcomment -%}
+{%- assign _set = include.set | default: "ui" -%}
+{%- assign _class = include.class | default: "icon" -%}
+{%- capture _raw -%}{% include icons/{{ _set }}/{{ include.name }}.svg %}{%- endcapture -%}
+{%- assign _stripped = _raw | replace: '<?xml version="1.0" encoding="UTF-8"?>', "" -%}
+{{ _stripped | replace_first: "<svg", '<svg aria-hidden="true" focusable="false" class="' | append: _class | append: '"' }}

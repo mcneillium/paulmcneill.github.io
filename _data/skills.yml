@@ -1,0 +1,42 @@
+# Tiered, not percentage-based. Each entry maps to a tech-icon slug
+# (see assets/icons/tech/) where one exists; otherwise renders text only.
+
+tiers:
+  - label: "Daily driver"
+    description: "Tools I reach for first."
+    items:
+      - { name: "Python",      icon: "python" }
+      - { name: "TypeScript",  icon: "typescript" }
+      - { name: "React",       icon: "react" }
+      - { name: "Node.js",     icon: "nodejs" }
+      - { name: "Power BI",    icon: "powerbi" }
+      - { name: "Pandas",      icon: "pandas" }
+      - { name: "Git",         icon: "git" }
+      - { name: "OpenAI API",  icon: "openai" }
+      - { name: "Claude API",  icon: "anthropic" }
+
+  - label: "Strong working knowledge"
+    description: "Comfortable shipping in production."
+    items:
+      - { name: "TensorFlow",   icon: "tensorflow" }
+      - { name: "Scikit-learn", icon: null }
+      - { name: "LangChain",    icon: null }
+      - { name: "Next.js",      icon: "nextjs" }
+      - { name: "PostgreSQL",   icon: "postgresql" }
+      - { name: "Firebase",     icon: "firebase" }
+      - { name: "Docker",       icon: "docker" }
+      - { name: "Azure",        icon: "azure" }
+      - { name: "AWS",          icon: null }
+      - { name: "DAX / Power Query", icon: null }
+
+  - label: "Familiar"
+    description: "Used in projects, not my first pick."
+    items:
+      - { name: "PyTorch",       icon: null }
+      - { name: "Hugging Face",  icon: null }
+      - { name: "MLflow",        icon: null }
+      - { name: "Kubernetes",    icon: "kubernetes" }
+      - { name: "GCP / Vertex AI", icon: "googlecloud" }
+      - { name: "Jupyter",       icon: "jupyter" }
+      - { name: "Java",          icon: null }
+      - { name: "C++",           icon: null }

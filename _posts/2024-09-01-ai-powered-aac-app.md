@@ -10,6 +10,7 @@ alt: "AAC AI dashboard screenshot"
 project-date: 2024-09-01
 category: projects
 description: "Assistive communication for non-verbal users with predictive AI and a real-time caregiver dashboard."
+impact: "Predictive assistive communication for non-verbal users" # TODO: REPLACE with verified metric
 github-url:
 youtube-url:
 ---

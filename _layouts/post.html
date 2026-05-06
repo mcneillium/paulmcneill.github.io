@@ -10,11 +10,20 @@
     <article class="post">
       <header class="post__hero">
         <div class="container">
-          <a href="{{ '/' | relative_url }}#projects" class="post__back" aria-label="Back to projects">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
-            Back to projects
+          {%- if page.type == "blog" -%}
+            {%- assign back_url = "/#writing" -%}
+            {%- assign back_label = "Back to writing" -%}
+            {%- assign eyebrow_label = "Writing" -%}
+          {%- else -%}
+            {%- assign back_url = "/#projects" -%}
+            {%- assign back_label = "Back to projects" -%}
+            {%- assign eyebrow_label = page.category | default: "Project" -%}
+          {%- endif -%}
+          <a href="{{ back_url | relative_url }}" class="post__back" aria-label="{{ back_label }}">
+            {% include icon.html name="arrow-left" class="icon icon--xs" %}
+            {{ back_label }}
           </a>
-          <span class="eyebrow">{{ page.category | default: "Project" }}</span>
+          <span class="eyebrow">{{ eyebrow_label }}</span>
           <h1 class="post__title">{{ page.title }}</h1>
           {% if page.subtitle %}<p class="post__subtitle">{{ page.subtitle }}</p>{% endif %}
 
@@ -24,16 +33,42 @@
             {% if page.category %}<li><span>Category</span><strong>{{ page.category }}</strong></li>{% endif %}
           </ul>
 
-          {% if page.github-url or page.youtube-url %}
+          {% if page.impact %}
+            <div class="post__impact" role="note">
+              {% include icon.html name="sparkles" class="icon icon--sm" %}
+              <span>{{ page.impact }}</span>
+            </div>
+          {% endif %}
+
+          {% if page.github-url or page.youtube-url or page.demo-url %}
             <div class="post__cta">
               {% if page.github-url %}
                 <a class="btn btn-primary" href="{{ page.github-url }}" target="_blank" rel="noopener">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.12-1.47-1.12-1.47-.91-.62.07-.61.07-.61 1.01.07 1.54 1.04 1.54 1.04.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0 1 12 6.84c.85 0 1.7.11 2.5.34 1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+                  {% include icon.html name="github" class="icon icon--sm" %}
                   View on GitHub
                 </a>
               {% endif %}
-              {% if page.youtube-url %}<a class="btn btn-outline" href="#video">Watch demo</a>{% endif %}
+              {% if page.demo-url %}
+                <a class="btn btn-outline" href="{{ page.demo-url }}" target="_blank" rel="noopener">
+                  {% include icon.html name="eye" class="icon icon--sm" %}
+                  Live demo
+                </a>
+              {% endif %}
+              {% if page.youtube-url %}<a class="btn btn-outline" href="#video">{% include icon.html name="play" class="icon icon--sm" %} Watch demo</a>{% endif %}
             </div>
+
+            {% if page.github-url contains "github.com/" %}
+              {%- assign gh_parts = page.github-url | split: "github.com/" | last | split: "/" -%}
+              {%- assign gh_user = gh_parts[0] -%}
+              {%- assign gh_repo = gh_parts[1] | split: "?" | first | split: "#" | first -%}
+              {% if gh_repo and gh_repo != "" %}
+              <div class="post__shields" aria-hidden="true">
+                <img src="https://img.shields.io/github/last-commit/{{ gh_user }}/{{ gh_repo }}?style=flat-square&color=c9f270&labelColor=131316" alt="Last commit">
+                <img src="https://img.shields.io/github/stars/{{ gh_user }}/{{ gh_repo }}?style=flat-square&color=c9f270&labelColor=131316" alt="Stars">
+                <img src="https://img.shields.io/github/languages/top/{{ gh_user }}/{{ gh_repo }}?style=flat-square&color=c9f270&labelColor=131316" alt="Top language">
+              </div>
+              {% endif %}
+            {% endif %}
           {% endif %}
         </div>
       </header>
@@ -43,6 +78,16 @@
         <div class="container">
           <div class="post__cover">
             {% include picture.html src=hero_path alt=page.alt loading="eager" fetchpriority="high" %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if page.architecture %}
+        <div class="container">
+          <div class="post__arch reveal">
+            <span class="eyebrow">Architecture</span>
+            <h2 class="section-title" style="font-size: clamp(1.6rem, 2.6vw, 2.2rem); margin-top: 0.5rem; margin-bottom: 1.5rem;">How it <em>fits together</em></h2>
+            {% include architecture/{{ page.architecture }}.html %}
           </div>
         </div>
       {% endif %}

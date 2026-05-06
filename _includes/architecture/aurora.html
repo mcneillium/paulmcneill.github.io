@@ -1,0 +1,75 @@
+<figure class="arch-diagram" role="img" aria-label="Aurora data architecture: Excel sources flow through Power Query ETL into a tabular data model, DAX measures, then Power BI dashboards on desktop and mobile.">
+  <svg viewBox="0 0 1080 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0 0 L10 5 L0 10 z" fill="#c9f270"/>
+      </marker>
+      <style>
+        .ab { fill: #131316; stroke: rgba(255,255,255,0.14); }
+        .at { font: 13px 'DM Sans', system-ui, sans-serif; fill: #ededee; }
+        .as { font: 11px 'JetBrains Mono', monospace; fill: #a8a8ad; letter-spacing: 0.04em; }
+        .ahl { font: 600 11px 'JetBrains Mono', monospace; fill: #c9f270; letter-spacing: 0.06em; text-transform: uppercase; }
+        .line { stroke: #c9f270; stroke-width: 1.4; fill: none; }
+      </style>
+    </defs>
+
+    <!-- 5 stages, evenly distributed -->
+    <g transform="translate(20,90)">
+      <rect class="ab" width="190" height="170" rx="14"/>
+      <text class="ahl" x="16" y="28">Sources</text>
+      <text class="at" x="16" y="58">Excel — Clients</text>
+      <text class="at" x="16" y="78">Excel — Runs &amp; Rotas</text>
+      <text class="at" x="16" y="98">Excel — Finance</text>
+      <text class="at" x="16" y="118">Excel — Compliance</text>
+      <text class="as" x="16" y="148">XLSX · CSV · SharePoint</text>
+    </g>
+
+    <g transform="translate(232,90)">
+      <rect class="ab" width="170" height="170" rx="14"/>
+      <text class="ahl" x="16" y="28">ETL</text>
+      <text class="at" x="16" y="58">Power Query</text>
+      <text class="at" x="16" y="78">Schema cleaning</text>
+      <text class="at" x="16" y="98">Validation rules</text>
+      <text class="as" x="16" y="138">Reproducible</text>
+      <text class="as" x="16" y="156">refresh pipeline</text>
+    </g>
+
+    <g transform="translate(424,90)">
+      <rect class="ab" width="180" height="170" rx="14"/>
+      <text class="ahl" x="16" y="28">Data Model</text>
+      <text class="at" x="16" y="58">Star schema</text>
+      <text class="at" x="16" y="78">Dim + Fact tables</text>
+      <text class="at" x="16" y="98">Relationships</text>
+      <text class="as" x="16" y="138">Tabular · Power BI</text>
+    </g>
+
+    <g transform="translate(626,90)">
+      <rect class="ab" width="180" height="170" rx="14"/>
+      <text class="ahl" x="16" y="28">DAX Measures</text>
+      <text class="at" x="16" y="58">KPI calc</text>
+      <text class="at" x="16" y="78">Time-intelligence</text>
+      <text class="at" x="16" y="98">RLS by locality</text>
+      <text class="as" x="16" y="138">Tested · versioned</text>
+    </g>
+
+    <g transform="translate(828,90)">
+      <rect class="ab" width="232" height="170" rx="14"/>
+      <text class="ahl" x="16" y="28">Dashboards</text>
+      <text class="at" x="16" y="58">Operations · Finance</text>
+      <text class="at" x="16" y="78">Workforce · Compliance</text>
+      <text class="at" x="16" y="98">RQIA oversight</text>
+      <text class="as" x="16" y="138">Power BI desktop +</text>
+      <text class="as" x="16" y="156">mobile reports</text>
+    </g>
+
+    <!-- Connectors -->
+    <line class="line" x1="210" y1="175" x2="232" y2="175" marker-end="url(#arr)"/>
+    <line class="line" x1="402" y1="175" x2="424" y2="175" marker-end="url(#arr)"/>
+    <line class="line" x1="604" y1="175" x2="626" y2="175" marker-end="url(#arr)"/>
+    <line class="line" x1="806" y1="175" x2="828" y2="175" marker-end="url(#arr)"/>
+
+    <!-- Title bar -->
+    <text class="ahl" x="20" y="40">Aurora — NHSCT data flow</text>
+    <line class="line" x1="20" y1="56" x2="100" y2="56"/>
+  </svg>
+</figure>

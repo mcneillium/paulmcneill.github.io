@@ -9,38 +9,47 @@
       </p>
     </div>
 
-    {% assign featured = site.posts | where: "category", "projects" %}
-    {% assign others = site.posts | where_exp: "p", "p.category != 'projects'" %}
-    {% assign all_posts = featured | concat: others %}
+    {%- assign projects = site.data.projects -%}
     <div class="projects__grid">
-      {% for post in all_posts limit: 8 %}
-        {% assign m = forloop.index0 | modulo: 4 %}
-        {% if m == 0 or m == 3 %}
-          {% assign size = "proj-card--lg" %}
-        {% else %}
-          {% assign size = "proj-card--md" %}
-        {% endif %}
-        {%- assign thumb_path = "/img/portfolio/" | append: post.thumbnail -%}
-        <a href="{{ post.url | relative_url }}" class="proj-card {{ size }} reveal" style="--delay: {{ forloop.index0 | times: 80 }}ms" aria-label="{{ post.title | escape }}">
+      {% for p in projects limit: 8 %}
+        {% if p.size == "lg" %}{% assign size_class = "proj-card--lg" %}
+        {% elsif p.size == "md" %}{% assign size_class = "proj-card--md" %}
+        {% else %}{% assign size_class = "" %}{% endif %}
+
+        <a href="{{ p.url | relative_url }}" class="proj-card {{ size_class }} reveal" style="--delay: {{ forloop.index0 | times: 80 }}ms" aria-label="{{ p.title | escape }}">
           <div class="proj-card__media">
-            {% if post.thumbnail %}
-              {% include picture.html src=thumb_path alt=post.alt loading="lazy" sizes="(max-width: 900px) 100vw, 50vw" %}
+            {% if p.image %}
+              {% include picture.html src=p.image alt=p.title loading="lazy" sizes="(max-width: 900px) 100vw, 50vw" %}
             {% else %}
-              <div class="proj-card__placeholder" aria-hidden="true">
-                <span>{{ post.title | slice: 0, 1 }}</span>
+              <div class="proj-card__placeholder" aria-hidden="true"><span>{{ p.title | slice: 0, 1 }}</span></div>
+            {% endif %}
+            {% if p.impact %}
+              <div class="proj-card__impact" aria-label="Impact">
+                {% include icon.html name="sparkles" class="icon icon--xs" %}
+                <span>{{ p.impact }}</span>
               </div>
             {% endif %}
           </div>
           <div class="proj-card__body">
-            <span class="proj-card__cat">{{ post.category | default: "Project" }}</span>
-            <h3 class="proj-card__title">{{ post.title }}</h3>
-            <p class="proj-card__desc">{{ post.description | default: post.subtitle | truncate: 180 }}</p>
+            <span class="proj-card__cat">{{ p.category | default: "Project" }}</span>
+            <h3 class="proj-card__title">{{ p.title }}</h3>
+            <p class="proj-card__desc">{{ p.description | truncate: 180 }}</p>
             <div class="proj-card__footer">
               <ul class="tag-list">
-                {% if post.subtitle %}<li class="tag">{{ post.subtitle | truncate: 32 }}</li>{% endif %}
-                {% if post.client %}<li class="tag">{{ post.client }}</li>{% endif %}
-                {% if post.project-date %}<li class="tag">{{ post.project-date }}</li>{% endif %}
+                {% for t in p.tags limit: 4 %}<li class="tag">{{ t }}</li>{% endfor %}
               </ul>
+              <div class="proj-card__cta-row">
+                {% if p.github %}
+                  <span class="proj-card__cta" title="View source">
+                    {% include icon.html name="github" class="icon icon--sm" %}
+                  </span>
+                {% endif %}
+                {% if p.demo %}
+                  <span class="proj-card__cta" title="Live demo">
+                    {% include icon.html name="eye" class="icon icon--sm" %}
+                  </span>
+                {% endif %}
+              </div>
             </div>
           </div>
         </a>

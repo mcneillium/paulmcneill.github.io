@@ -1,0 +1,24 @@
+{%- assign user = site.profile.github_user | default: "mcneillium" -%}
+<section class="section github" id="activity">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow">Building in Public</span>
+      <h2 class="section-title">Recent <em>activity</em></h2>
+      <p class="section-lead">
+        Live commit graph from <a href="https://github.com/{{ user }}" target="_blank" rel="noopener">github.com/{{ user }}</a>.
+        It updates daily — proof I'm still shipping, not just presenting.
+      </p>
+    </div>
+
+    <div class="github__chart reveal" data-lazy-img>
+      <noscript>
+        <img src="https://ghchart.rshah.org/c9f270/{{ user }}" alt="GitHub contribution chart for {{ user }}">
+      </noscript>
+      <img
+        data-src="https://ghchart.rshah.org/c9f270/{{ user }}"
+        alt="GitHub contribution chart for {{ user }}"
+        loading="lazy"
+      >
+    </div>
+  </div>
+</section>

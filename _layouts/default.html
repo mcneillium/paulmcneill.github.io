@@ -12,18 +12,22 @@
     {% include marquee.html %}
     {% include expertise.html %}
     {% include projects.html %}
+    {% include videos.html %}
     {% include ai-ml.html %}
+    {% include skills.html %}
+    {% include principles.html %}
     {% include about.html %}
+    {% include github-activity.html %}
     {% include credentials.html %}
+    {% include writing.html %}
+    {% include testimonials.html %}
     {% include contact.html %}
   </main>
 
   {% include footer.html %}
 
   <a href="#page-top" class="back-to-top" aria-label="Back to top">
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <polyline points="18 15 12 9 6 15"></polyline>
-    </svg>
+    {% include icon.html name="chevron-up" class="icon" %}
   </a>
 
   <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>

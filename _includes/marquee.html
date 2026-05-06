@@ -1,9 +1,13 @@
 <div class="marquee" aria-hidden="true">
   <div class="marquee__track">
-    {% assign stack = "Python,TensorFlow,LangChain,OpenAI API,Claude API,React,Next.js,Node.js,TypeScript,PostgreSQL,Power BI,Azure,Docker,Git,Scikit-learn,Pandas,RAG Pipelines,MCP Servers" | split: "," %}
-    {% for i in (1..2) %}
-      {% for item in stack %}
-        <span class="marquee__item">{{ item }}</span>
+    {%- assign stack = "python,typescript,react,nextjs,nodejs,postgresql,firebase,azure,docker,git,tensorflow,pandas,googlecloud,jupyter,openai,anthropic" | split: "," -%}
+    {%- assign labels = "Python,TypeScript,React,Next.js,Node.js,PostgreSQL,Firebase,Azure,Docker,Git,TensorFlow,Pandas,Google Cloud,Jupyter,OpenAI,Anthropic" | split: "," -%}
+    {% for n in (1..2) %}
+      {% for icon in stack %}
+        <span class="marquee__item">
+          {% include icon.html name=icon set="tech" class="marquee__icon" %}
+          <span>{{ labels[forloop.index0] }}</span>
+        </span>
       {% endfor %}
     {% endfor %}
   </div>

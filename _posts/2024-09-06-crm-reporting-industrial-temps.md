@@ -9,6 +9,7 @@ alt: "Industrial Temps CRM reporting dashboard"
 project-date: 2024-09-06
 category: projects
 description: "Access & Excel queries, data audits, and monthly KPI dashboards for recruitment performance."
+impact: "Consolidated 6+ disconnected sources into a single live dashboard" # TODO: REPLACE
 github-url:
 youtube-url:
 ---

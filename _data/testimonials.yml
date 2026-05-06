@@ -1,0 +1,23 @@
+# TODO: REPLACE all entries below with real quotes once collected.
+# Mark each as `verified: true` once you've confirmed permission to publish.
+
+- quote: "Paul translates complex data requirements into clear, actionable dashboards — and just as importantly, into change the team can adopt."
+  name: "Senior Stakeholder"
+  role: "NHS Trust"
+  org: "Northern Health & Social Care Trust"
+  avatar: null
+  verified: false
+
+- quote: "Technically deep, genuinely empathetic, and unusually comfortable across the full stack from data to delivery — exactly the kind of engineer healthcare and accessibility need."
+  name: "Project Collaborator"
+  role: "AI Research"
+  org: null
+  avatar: null
+  verified: false
+
+- quote: "Brings rigour to AI work that often lacks it — proper measurement, observability, and a sceptical eye on model outputs. Builds systems that hold up to scrutiny."
+  name: "Engineering Peer"
+  role: "ML Engineering"
+  org: null
+  avatar: null
+  verified: false

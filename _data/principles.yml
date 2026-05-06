@@ -1,0 +1,15 @@
+- num: "01"
+  title: "Ship, then iterate"
+  body: "Production-ready first, refine after. Notebooks are for experiments — they aren't a deliverable."
+
+- num: "02"
+  title: "Measure everything"
+  body: "Monitoring, logging, and drift detection are part of the build. If you can't measure it, you can't improve it."
+
+- num: "03"
+  title: "Ethics by default"
+  body: "Fairness checks, explainability, and responsible-AI practices are built in from day one — not bolted on under deadline."
+
+- num: "04"
+  title: "Human-centred"
+  body: "I test with real users, prioritise accessibility, and design for the person at the other end — not the algorithm."

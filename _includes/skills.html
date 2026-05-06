@@ -1,0 +1,32 @@
+<section class="section skills" id="skills">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow">Stack</span>
+      <h2 class="section-title">What I'm <em>fluent</em> in</h2>
+      <p class="section-lead">
+        Tiered honestly. No percentages — they don't mean much across different
+        tools and contexts. This is what I reach for, what I ship in, and what
+        I'm familiar with.
+      </p>
+    </div>
+
+    <div class="skills__tiers">
+      {% for tier in site.data.skills.tiers %}
+        <div class="skill-tier reveal" style="--delay: {{ forloop.index0 | times: 100 }}ms">
+          <div class="skill-tier__head">
+            <span class="skill-tier__label">{{ tier.label }}</span>
+            <p class="skill-tier__desc">{{ tier.description }}</p>
+          </div>
+          <ul class="skill-tier__list">
+            {% for it in tier.items %}
+              <li class="skill-chip">
+                {% if it.icon %}{% include icon.html name=it.icon set="tech" class="skill-chip__icon" %}{% endif %}
+                <span>{{ it.name }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

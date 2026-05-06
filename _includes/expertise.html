@@ -11,7 +11,9 @@
 
     <div class="expertise__grid">
       <article class="exp-card reveal" style="--delay: 0ms">
-        <div class="exp-card__icon" aria-hidden="true">◆</div>
+        <div class="exp-card__icon" aria-hidden="true">
+          {% include icon.html name="cpu" class="icon icon--lg" %}
+        </div>
         <h3 class="exp-card__title">AI &amp; Machine Learning</h3>
         <p class="exp-card__desc">
           Production LLM systems — autonomous agents, RAG pipelines, fine-tuned models,
@@ -28,7 +30,9 @@
       </article>
 
       <article class="exp-card reveal" style="--delay: 100ms">
-        <div class="exp-card__icon" aria-hidden="true">◇</div>
+        <div class="exp-card__icon" aria-hidden="true">
+          {% include icon.html name="code" class="icon icon--lg" %}
+        </div>
         <h3 class="exp-card__title">Web Engineering</h3>
         <p class="exp-card__desc">
           Modern web apps end-to-end — TypeScript front-ends, Node APIs, progressive
@@ -45,7 +49,9 @@
       </article>
 
       <article class="exp-card reveal" style="--delay: 200ms">
-        <div class="exp-card__icon" aria-hidden="true">▲</div>
+        <div class="exp-card__icon" aria-hidden="true">
+          {% include icon.html name="database" class="icon icon--lg" %}
+        </div>
         <h3 class="exp-card__title">Data Analytics</h3>
         <p class="exp-card__desc">
           From operational chaos to clean dashboards. ETL, modelling, and reporting
