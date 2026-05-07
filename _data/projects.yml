@@ -1,6 +1,6 @@
 - title: "Aurora — NHS Digital Transformation"
   category: "AI + Healthcare"
-  impact: "Reduced reporting cycle from 5 days to under 4 hours" # TODO: REPLACE with verified figure
+  impact: "Reduced reporting cycle from 5 days to under 4 hours" # VERIFY
   description: "Northern Ireland-specific, NHSCT-aligned analytics platform — operations, finance, workforce, compliance — built on Access/SQL data layers and Power BI."
   image: "/img/portfolio/aurora/aurora_dashboard_kpi_pbi.png"
   tags: ["NHSCT", "Power BI", "ETL", "DAX", "GDPR"]
@@ -12,7 +12,7 @@
 
 - title: "AI-Powered AAC App"
   category: "AI Accessibility"
-  impact: "Predictive AI assistive communication for non-verbal users" # TODO: REPLACE with verified metric
+  impact: "Predictive AI assistive communication for non-verbal users" # VERIFY
   description: "Mobile + caregiver dashboard that combines on-device prediction, scene understanding, and real-time monitoring for non-verbal users."
   image: "/img/portfolio/aac-ai-dashboard.png"
   tags: ["React Native", "Firebase", "LLMs", "AAC", "Healthcare"]
@@ -24,7 +24,7 @@
 
 - title: "CRM Reporting — Industrial Temps"
   category: "Data Analytics"
-  impact: "Consolidated 6+ disconnected sources into a single live dashboard" # TODO: REPLACE
+  impact: "Consolidated 6+ disconnected sources into a single live dashboard" # VERIFY
   description: "Data quality framework, ETL via Access + Power Query, and Power BI dashboards for placements, client performance, and consultant scorecards."
   image: "/img/portfolio/industrial-temps-crm.png"
   tags: ["Power BI", "Power Query", "ETL", "Recruitment"]
@@ -36,7 +36,7 @@
 
 - title: "AI-Enhanced Social Healthcare Management System"
   category: "AI + Healthcare"
-  impact: "Real-time safety monitoring with NLP-driven virtual assistant" # TODO: REPLACE
+  impact: "Real-time safety monitoring with NLP-driven virtual assistant" # VERIFY
   description: "AI-driven platform: client management, NLP virtual assistant, predictive analytics, and real-time safety monitoring for social healthcare delivery."
   image: "/img/portfolio/healthcare-system-thumbnail.png"
   tags: ["NLP", "Predictive Analytics", "Healthcare"]
@@ -48,7 +48,7 @@
 
 - title: "AI Assistant"
   category: "AI Engineering"
-  impact: "Natural-language task automation across daily workflows" # TODO: REPLACE
+  impact: "Natural-language task automation across daily workflows" # VERIFY
   description: "An LLM-powered productivity assistant — fine-tuned models, multiple interface integrations, and real-world automation."
   image: "/img/portfolio/ai-assistant-thumbnail.png"
   tags: ["LLMs", "Fine-tuning", "Automation"]

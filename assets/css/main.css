@@ -14,7 +14,7 @@
   --border-strong: rgba(255, 255, 255, 0.14);
   --text: #ededee;
   --text-dim: #a8a8ad;
-  --text-faint: #6b6b73;
+  --text-faint: #8a8a92;
   --accent: #c9f270;
   --accent-dim: rgba(201, 242, 112, 0.18);
   --accent-glow: rgba(201, 242, 112, 0.35);
@@ -1216,8 +1216,9 @@ body::after {
   display: flex; justify-content: space-between; align-items: flex-end;
   gap: 0.75rem; margin-top: 0.5rem;
 }
-.proj-card__cta-row { display: flex; gap: 0.5rem; opacity: 0.6; }
+.proj-card__cta-row { display: flex; align-items: center; gap: 0.5rem; opacity: 0.7; }
 .proj-card:hover .proj-card__cta-row { opacity: 1; }
+.proj-card__shield { height: 18px; border-radius: 4px; }
 .proj-card__cta {
   width: 30px; height: 30px;
   display: grid; place-items: center;

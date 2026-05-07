@@ -9,7 +9,7 @@ alt: "NHSCT Power BI dashboards for Operations, Finance, Workforce & Compliance"
 project-date: 2025-10-31
 category: projects
 description: "Comprehensive Northern Ireland domiciliary care analytics platform built for Aurora Domiciliary Care Ltd — combining Access/SQL data layers, Power BI dashboards, remittance automation, ECM realism, and RQIA compliance oversight."
-impact: "Reduced reporting cycle from 5 days to under 4 hours" # TODO: REPLACE with verified figure
+impact: "Reduced reporting cycle from 5 days to under 4 hours" # VERIFY
 architecture: aurora
 github-url: https://github.com/mcneillium/Aurora-Domiciliary-Care
 youtube-url:

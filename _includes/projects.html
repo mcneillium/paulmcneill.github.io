@@ -39,6 +39,17 @@
                 {% for t in p.tags limit: 4 %}<li class="tag">{{ t }}</li>{% endfor %}
               </ul>
               <div class="proj-card__cta-row">
+                {%- if p.github contains "github.com/" -%}
+                  {%- assign _ghp = p.github | split: "github.com/" | last | split: "/" -%}
+                  {%- assign _ghu = _ghp[0] -%}
+                  {%- assign _ghr = _ghp[1] | split: "?" | first | split: "#" | first -%}
+                  {% if _ghr and _ghr != "" %}
+                    <img class="proj-card__shield"
+                         src="https://img.shields.io/github/last-commit/{{ _ghu }}/{{ _ghr }}?style=flat-square&color=c9f270&labelColor=131316&label=last%20commit"
+                         alt="Last commit on {{ _ghu }}/{{ _ghr }}"
+                         loading="lazy">
+                  {% endif %}
+                {%- endif -%}
                 {% if p.github %}
                   <span class="proj-card__cta" title="View source">
                     {% include icon.html name="github" class="icon icon--sm" %}
