@@ -276,8 +276,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   background: transparent;
   color: var(--text-dim);
   cursor: pointer;
-  margin-left: auto;
-  margin-right: 0.4rem;
+  flex: 0 0 auto;
   transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 .theme-toggle:hover { color: var(--accent); border-color: var(--accent-dim); }
@@ -293,9 +292,6 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 .theme-toggle__icon--moon { opacity: 1; transform: rotate(0deg)   scale(1);   }
 [data-theme="light"] .theme-toggle__icon--sun  { opacity: 1; transform: rotate(0deg)  scale(1);   }
 [data-theme="light"] .theme-toggle__icon--moon { opacity: 0; transform: rotate(30deg) scale(0.8); }
-@media (max-width: 768px) {
-  .theme-toggle { margin-left: 0.4rem; margin-right: 0; }
-}
 
 .nav__toggle {
   display: none;
@@ -328,12 +324,17 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 .nav__toggle.open span::before { top: 0; transform: rotate(45deg); }
 .nav__toggle.open span::after { bottom: 0; transform: rotate(-45deg); }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .nav__toggle { display: inline-flex; }
   .nav__links {
+    /* Closed state — belt-and-braces: hidden via three orthogonal mechanisms
+       so a single CSS or transition failure can't leave the overlay visible. */
     position: fixed;
     inset: 0;
-    background: rgba(10, 10, 11, 0.96);
+    z-index: 95; /* under the nav header (z-100), above page content */
+    background: var(--bg);
+    /* Translucent variant for browsers that support backdrop-filter */
+    background-color: color-mix(in srgb, var(--bg) 92%, transparent);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     flex-direction: column;
@@ -341,11 +342,21 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
     align-items: center;
     gap: 2rem;
     transform: translateY(-100%);
-    transition: transform 0.5s var(--ease-out);
+    transition: transform 0.4s var(--ease-out), opacity 0.25s ease, visibility 0s linear 0.4s;
+    opacity: 0;
+    visibility: hidden;
     pointer-events: none;
   }
-  .nav__links.open { transform: translateY(0); pointer-events: auto; }
+  .nav__links.open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: transform 0.4s var(--ease-out), opacity 0.2s ease;
+  }
   .nav__links a { font-size: 1.5rem; font-family: var(--font-display); }
+  /* Hide the always-on inline status pill on overlay-mode widths */
+  .status-pill { display: none; }
 }
 
 /* ==========================================================================
@@ -1260,7 +1271,7 @@ body::after {
   100% { box-shadow: 0 0 0 0 rgba(46, 228, 122, 0); }
 }
 @media (prefers-reduced-motion: reduce) { .status-pill__dot { animation: none; } }
-@media (max-width: 768px) { .status-pill { display: none; } }
+/* status-pill hidden at <=900px via the overlay-mode breakpoint above */
 
 /* Project card extras: impact ribbon + CTA row */
 .proj-card__impact {
