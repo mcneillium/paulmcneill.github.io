@@ -193,15 +193,30 @@
   });
 
   /* ------------- lazy load on viewport ------------- */
+  function diagnoseLoadError(err) {
+    console.error('[ml-demo] load failed:', err);
+    const msg = String(err && err.message || err);
+    if (/network|fetch|cors|content security|csp|blocked|aborted/i.test(msg)) {
+      return "The sentiment model couldn't load — looks like your browser blocked the download. " +
+             "Common cause: an ad-blocker or strict privacy extension blocking storage.googleapis.com. " +
+             "Try refreshing with the blocker disabled for this site.";
+    }
+    if (/webgl|backend/i.test(msg)) {
+      return "TensorFlow.js couldn't initialise a backend — your browser may have WebGL disabled. " +
+             "Try a different browser or check that hardware acceleration is on.";
+    }
+    return "The sentiment model couldn't load. Refresh to try again — if it keeps failing, " +
+           "the model CDN (storage.googleapis.com) may be blocked at the network level.";
+  }
+
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           io.disconnect();
           loadEverything().catch((e) => {
-            console.error(e);
             setStatus('Model failed to load');
-            renderError('TensorFlow.js or the model failed to load. Refresh and try again.');
+            renderError(diagnoseLoadError(e));
           });
         }
       });
