@@ -4,13 +4,15 @@
 
 bio_short: >-
   AI engineer, web developer, and data analyst based in Northern
-  Ireland. Builds production AI systems for healthcare, accessibility,
-  and operational analytics — including NHS Northern Trust dashboards
+  Ireland with over 15 years across IT, data, and engineering roles.
+  Builds production AI systems for healthcare, accessibility, and
+  operational analytics — including NHS Northern Trust dashboards
   and assistive communication tools.
 
 bio_long: >-
   Initiative-taking and technically proficient Machine Learning Engineer
-  and Data Specialist with a strong academic and professional background
+  and Data Specialist with over 15 years in IT, database systems, and
+  applied data work, and a strong academic and professional background
   in computing, AI, and data analytics. First-Class BSc (Hons) in
   Computing from The Open University (2025). Brings expertise in Python,
   deep learning, and data engineering, alongside experience designing,
@@ -18,6 +20,10 @@ bio_long: >-
   scikit-learn, and shipping production systems on GCP (Vertex AI),
   AWS, and Azure. Motivated by intelligent systems that deliver
   real-world impact through ethical, data-driven design.
+
+# Number used by the hero count-up stat. Surfaced separately so it
+# stays the single source of truth.
+years_experience: 15
 
 current: >-
   Working on Aurora — a Northern Ireland NHSCT-aligned analytics

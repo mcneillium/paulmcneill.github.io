@@ -30,11 +30,6 @@
     setTimeout(() => root.classList.remove('theme-switching'), 320);
   });
 
-  // Track system preference if no explicit choice has been made
-  const mq = window.matchMedia('(prefers-color-scheme: light)');
-  mq.addEventListener('change', (e) => {
-    let saved;
-    try { saved = localStorage.getItem('theme'); } catch {}
-    if (!saved) apply(e.matches ? 'light' : 'dark', false);
-  });
+  // Note: we deliberately ignore `prefers-color-scheme` system changes.
+  // Dark is always the default; only an explicit click switches modes.
 })();

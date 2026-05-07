@@ -9,6 +9,20 @@
       </span>
     {% endif %}
 
+    <div class="accent-picker" id="accentPicker">
+      <button class="accent-picker__btn" id="accentToggle" type="button"
+              aria-haspopup="true" aria-expanded="false" aria-controls="accentPanel"
+              aria-label="Change accent colour">
+        {% include icon.html name="palette" class="icon" %}
+      </button>
+      <div class="accent-picker__panel" id="accentPanel" role="dialog" aria-label="Accent colour">
+        <span class="accent-picker__label">Accent</span>
+        <div class="accent-picker__swatches" role="radiogroup" aria-label="Accent colour">
+          <!-- Populated by accent.js — keeps the preset table in one place -->
+        </div>
+      </div>
+    </div>
+
     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light/dark theme">
       <span class="theme-toggle__icon theme-toggle__icon--sun">{% include icon.html name="sun" class="icon" %}</span>
       <span class="theme-toggle__icon theme-toggle__icon--moon">{% include icon.html name="moon" class="icon" %}</span>

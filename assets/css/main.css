@@ -266,6 +266,77 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   transform: translateY(-1px);
 }
 
+/* Accent picker */
+.accent-picker {
+  position: relative;
+  display: inline-flex;
+}
+.accent-picker__btn {
+  width: 36px; height: 36px;
+  display: inline-grid; place-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  flex: 0 0 auto;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.accent-picker__btn:hover { color: var(--accent); border-color: var(--accent-dim); }
+.accent-picker__btn .icon { width: 16px; height: 16px; }
+.accent-picker__panel {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.5);
+  padding: 0.85rem 1rem;
+  display: none;
+  min-width: 240px;
+  z-index: 110;
+}
+.accent-picker.is-open .accent-picker__panel { display: block; }
+.accent-picker__label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.5rem;
+}
+.accent-picker__swatches {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.4rem;
+}
+.accent-swatch {
+  width: 36px; height: 36px;
+  border: 0; padding: 0; background: transparent;
+  display: grid; place-items: center;
+  cursor: pointer;
+  border-radius: 50%;
+  position: relative;
+  transition: transform 0.2s var(--ease-out);
+}
+.accent-swatch:hover { transform: scale(1.1); }
+.accent-swatch__dot {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--swatch);
+  box-shadow: 0 0 0 1px var(--border);
+  transition: box-shadow 0.2s ease;
+}
+.accent-swatch.is-active .accent-swatch__dot {
+  box-shadow: 0 0 0 2px var(--swatch), 0 0 0 4px var(--bg-card), 0 0 0 5px var(--border-strong);
+}
+.accent-swatch:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 50%; }
+@media (max-width: 600px) {
+  .accent-picker__panel { right: -50px; }
+}
+
 /* Theme toggle */
 .theme-toggle {
   position: relative;
@@ -1316,15 +1387,16 @@ body::after {
   mix-blend-mode: var(--noise-blend, overlay);
 }
 
-/* Cursor spotlight — only when JS has hydrated the body class */
+/* Cursor spotlight — only when JS has hydrated the body class.
+   Uses color-mix so the chosen accent flows through automatically. */
 body.has-spotlight::before {
   content: "";
   position: fixed; inset: 0;
   pointer-events: none;
-  z-index: 1; /* above page bg, below content */
+  z-index: 1;
   background: radial-gradient(
     600px circle at var(--cursor-x, -9999px) var(--cursor-y, -9999px),
-    rgba(201, 242, 112, 0.06),
+    color-mix(in srgb, var(--accent) 8%, transparent),
     transparent 40%
   );
   transition: opacity 0.3s ease;
@@ -1332,7 +1404,7 @@ body.has-spotlight::before {
 [data-theme="light"] body.has-spotlight::before {
   background: radial-gradient(
     600px circle at var(--cursor-x, -9999px) var(--cursor-y, -9999px),
-    rgba(74, 124, 16, 0.08),
+    color-mix(in srgb, var(--accent) 12%, transparent),
     transparent 40%
   );
 }
@@ -1357,7 +1429,7 @@ body.has-spotlight::before {
   transition: opacity 0.4s ease;
   background: radial-gradient(
     400px circle at var(--card-x, 50%) var(--card-y, 50%),
-    rgba(201, 242, 112, 0.08),
+    color-mix(in srgb, var(--accent) 10%, transparent),
     transparent 45%
   );
   z-index: 0;
@@ -1371,7 +1443,7 @@ body.has-spotlight::before {
 [data-theme="light"] .testimonial::before {
   background: radial-gradient(
     400px circle at var(--card-x, 50%) var(--card-y, 50%),
-    rgba(74, 124, 16, 0.10),
+    color-mix(in srgb, var(--accent) 14%, transparent),
     transparent 45%
   );
 }
