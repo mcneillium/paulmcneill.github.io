@@ -2326,44 +2326,44 @@ body.has-spotlight::before {
 .learning__item--learning      .learning__status { color: #a78bfa; border-color: rgba(167,139,250,0.3); }
 
 /* ==========================================================================
-   Career timeline — era-grouped card grid
+   Career timeline — era-grouped card grid, compact density
    ========================================================================== */
 .timeline-section { background: var(--bg-raised); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 
-.tl-era { margin-bottom: 2.5rem; }
+.tl-era { margin-bottom: 1.5rem; }
 .tl-era:last-child { margin-bottom: 0; }
 .tl-era__label {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent);
-  margin: 0 0 1rem;
-  padding-bottom: 0.5rem;
+  margin: 0 0 0.5rem;
+  padding-bottom: 0.35rem;
   border-bottom: 1px solid var(--border);
 }
 .tl-era__cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 0.85rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.6rem;
 }
 
 .tl-card {
   display: flex;
-  gap: 0.9rem;
+  gap: 0.65rem;
   align-items: flex-start;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1rem 1.1rem;
+  border-radius: 10px;
+  padding: 0.75rem;
   transition: border-color 0.3s ease, transform 0.3s ease;
 }
-.tl-card:hover { border-color: var(--accent-dim); transform: translateY(-2px); }
+.tl-card:hover { border-color: var(--accent-dim); transform: translateY(-1px); }
 
 .tl-card__logo {
   flex: 0 0 auto;
-  width: 44px; height: 44px;
-  border-radius: 10px;
+  width: 32px; height: 32px;
+  border-radius: 7px;
   overflow: hidden;
   background: rgba(255,255,255,0.04);
   display: grid; place-items: center;
@@ -2373,10 +2373,10 @@ body.has-spotlight::before {
 .tl-card__logo img {
   width: 100%; height: 100%;
   object-fit: contain;
-  padding: 4px;
+  padding: 2px;
 }
 .tl-card__logo .tl-icon {
-  width: 22px; height: 22px;
+  width: 16px; height: 16px;
   stroke-width: 1.6;
 }
 .tl-card[data-type="work"]      .tl-card__logo { color: var(--accent); }
@@ -2387,10 +2387,11 @@ body.has-spotlight::before {
 .tl-card__body { min-width: 0; flex: 1; }
 .tl-card__type {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--text-faint);
+  line-height: 1;
 }
 .tl-card[data-type="work"]      .tl-card__type { color: var(--accent); }
 .tl-card[data-type="education"] .tl-card__type { color: #9ec9ff; }
@@ -2399,55 +2400,57 @@ body.has-spotlight::before {
 
 .tl-card__title {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 600;
   line-height: 1.3;
   color: var(--text);
-  margin: 0.2rem 0 0.15rem;
+  margin: 0.2rem 0 0.1rem;
 }
 .tl-card__org {
   margin: 0;
-  font-size: 0.82rem;
+  font-size: 0.75rem;
   color: var(--text-dim);
+  line-height: 1.35;
 }
 .tl-card__date {
   display: block;
-  margin-top: 0.4rem;
+  margin-top: 0.25rem;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   letter-spacing: 0.02em;
   color: var(--text-faint);
+  line-height: 1;
 }
 
-/* Memberships strip — compact horizontal badges, undated */
+/* Memberships strip — minimal inline pills, no border/bg */
 .tl-era--memberships .tl-badges {
   display: flex; flex-wrap: wrap;
-  gap: 0.65rem;
+  gap: 0.5rem 0.85rem;
 }
 .tl-badge {
-  display: inline-flex; align-items: center; gap: 0.65rem;
-  padding: 0.55rem 0.8rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  transition: border-color 0.3s ease, transform 0.3s ease;
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
   max-width: 100%;
+  transition: opacity 0.2s ease;
 }
-.tl-badge:hover { border-color: var(--accent-dim); transform: translateY(-1px); }
+.tl-badge:hover { opacity: 0.85; transform: none; }
 .tl-badge__logo {
   flex: 0 0 auto;
-  width: 28px; height: 28px;
-  border-radius: 6px;
+  width: 24px; height: 24px;
+  border-radius: 5px;
   overflow: hidden;
   background: rgba(255,255,255,0.04);
   display: grid; place-items: center;
 }
 [data-theme="light"] .tl-badge__logo { background: rgba(0,0,0,0.04); }
 .tl-badge__logo img { width: 100%; height: 100%; object-fit: contain; padding: 2px; }
-.tl-badge__logo .tl-icon { width: 14px; height: 14px; }
-.tl-badge__body { display: flex; flex-direction: column; min-width: 0; }
+.tl-badge__logo .tl-icon { width: 12px; height: 12px; }
+.tl-badge__body { display: flex; flex-direction: column; min-width: 0; line-height: 1.15; }
 .tl-badge__name {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 500;
   color: var(--text);
   white-space: nowrap;
@@ -2456,13 +2459,14 @@ body.has-spotlight::before {
 }
 .tl-badge__issuer {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   letter-spacing: 0.04em;
   color: var(--text-faint);
 }
 
 @media (max-width: 600px) {
   .tl-era__cards { grid-template-columns: 1fr; }
+  .tl-card { padding: 0.65rem 0.75rem; }
 }
 
 /* ==========================================================================
