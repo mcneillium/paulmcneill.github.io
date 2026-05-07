@@ -2278,6 +2278,148 @@ body.has-spotlight::before {
 }
 
 /* ==========================================================================
+   Learning block — slots into the about column
+   ========================================================================== */
+.learning {
+  margin: 1.75rem 0 1.25rem;
+  padding: 1rem 1.1rem;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--accent);
+  border-radius: 10px;
+}
+[data-theme="light"] .learning { background: rgba(0,0,0,0.02); }
+.learning__label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+.learning__list {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 0.45rem;
+}
+.learning__item {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem;
+  font-size: 0.92rem; line-height: 1.4;
+}
+.learning__title { color: var(--text); font-weight: 500; }
+.learning__provider { color: var(--text-dim); font-size: 0.85rem; }
+.learning__status {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.18rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  color: var(--text-faint);
+}
+.learning__item--in-progress  .learning__status { color: var(--accent);  border-color: var(--accent-dim); }
+.learning__item--experimenting .learning__status { color: #9ec9ff; border-color: rgba(108,180,255,0.3); }
+.learning__item--learning      .learning__status { color: #a78bfa; border-color: rgba(167,139,250,0.3); }
+
+/* ==========================================================================
+   Career timeline
+   ========================================================================== */
+.timeline { background: var(--bg-raised); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.timeline__track {
+  list-style: none; margin: 0; padding: 0;
+  position: relative;
+  padding-left: 1.75rem;
+}
+.timeline__track::before {
+  content: "";
+  position: absolute;
+  left: 0.55rem; top: 0; bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+.tl-item {
+  position: relative;
+  margin-bottom: 1rem;
+}
+.tl-item__node {
+  position: absolute;
+  left: -1.45rem;
+  top: 1.05rem;
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  background: var(--bg-raised);
+  border: 2px solid var(--border-strong);
+}
+.tl-item--work      .tl-item__node { border-color: var(--accent); }
+.tl-item--education .tl-item__node { border-color: #9ec9ff; }
+.tl-item--cert      .tl-item__node { border-color: #a78bfa; }
+
+.tl-item__details {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0;
+  transition: border-color 0.3s ease;
+}
+.tl-item__details[open],
+.tl-item__details:hover { border-color: var(--accent-dim); }
+
+.tl-item__summary {
+  display: flex; flex-wrap: wrap; align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.85rem 1.1rem;
+  cursor: pointer;
+  list-style: none;
+}
+.tl-item__summary::-webkit-details-marker { display: none; }
+.tl-item__summary::after {
+  content: "+";
+  margin-left: auto;
+  color: var(--text-faint);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.tl-item__details[open] .tl-item__summary::after { content: "−"; color: var(--accent); }
+
+.tl-item__date {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  flex: 0 0 auto;
+}
+.tl-item__type {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  padding: 0.15rem 0.45rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+.tl-item--work      .tl-item__type { color: var(--accent); border-color: var(--accent-dim); }
+.tl-item--education .tl-item__type { color: #9ec9ff; border-color: rgba(108,180,255,0.3); }
+.tl-item--cert      .tl-item__type { color: #a78bfa; border-color: rgba(167,139,250,0.3); }
+.tl-item__title {
+  color: var(--text);
+  font-weight: 500;
+  flex: 1 1 50%;
+}
+.tl-item__org { color: var(--text-dim); font-size: 0.9rem; }
+.tl-item__detail {
+  margin: 0;
+  padding: 0 1.1rem 1rem;
+  color: var(--text-dim);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+@media (max-width: 600px) {
+  .tl-item__title { flex-basis: 100%; }
+}
+
+/* ==========================================================================
    Live Lab — TF.js sentiment demo
    ========================================================================== */
 .ml-card {

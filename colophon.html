@@ -1,0 +1,203 @@
+---
+layout: blank
+title: "Colophon"
+permalink: /colophon/
+description: "How this portfolio is built — the stack, the design choices, the AI features that run inside it."
+---
+
+<style>
+  .colo {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: clamp(2.5rem, 6vw, 5rem) clamp(1.25rem, 4vw, 2.5rem) 5rem;
+  }
+  .colo__topbar {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 1rem; flex-wrap: wrap;
+    padding-bottom: 1.5rem; margin-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .colo__back {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-family: var(--font-mono); font-size: 0.78rem;
+    letter-spacing: 0.04em; color: var(--text-dim); text-transform: uppercase;
+  }
+  .colo__back:hover { color: var(--accent); }
+  .colo__lede {
+    font-family: var(--font-mono); font-size: 0.85rem;
+    color: var(--accent); letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .colo h1 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
+    letter-spacing: -0.02em; line-height: 1.05;
+    margin: 0.4rem 0 1rem;
+  }
+  .colo h1 em { font-style: italic; color: var(--accent); }
+  .colo h2 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+    letter-spacing: -0.01em;
+    margin: 3rem 0 1rem;
+    padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+  }
+  .colo h3 {
+    font-family: var(--font-body); font-weight: 600;
+    font-size: 1.05rem; margin: 1.5rem 0 0.4rem;
+  }
+  .colo p, .colo li { color: var(--text-dim); line-height: 1.7; }
+  .colo ul { padding-left: 1.2rem; margin: 0.5rem 0; }
+  .colo li { margin: 0.3rem 0; }
+  .colo strong { color: var(--text); }
+  .colo code {
+    font-family: var(--font-mono); font-size: 0.9em;
+    background: rgba(255,255,255,0.05); padding: 0.1em 0.4em; border-radius: 4px;
+  }
+  [data-theme="light"] .colo code { background: rgba(0,0,0,0.05); }
+  .colo a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .colo__stack {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin: 1rem 0;
+  }
+  @media (max-width: 600px) { .colo__stack { grid-template-columns: 1fr; } }
+  .colo__stack-item {
+    padding: 0.85rem 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .colo__stack-item strong { display: block; margin-bottom: 0.2rem; }
+  .colo__stack-item span { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-faint); }
+</style>
+
+<div class="colo">
+  <div class="colo__topbar">
+    <a class="colo__back" href="{{ '/' | relative_url }}">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+      Back to portfolio
+    </a>
+    <a class="colo__back" href="https://github.com/mcneillium/mcneillium.github.io" target="_blank" rel="noopener">
+      View source on GitHub
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+    </a>
+  </div>
+
+  <span class="colo__lede">Colophon</span>
+  <h1>How this <em>site</em> is built.</h1>
+
+  <p>
+    A short tour of the stack, the design decisions, and the AI bits
+    behind the scenes. The whole thing is open-source — fork, copy,
+    learn from it, ship your own.
+  </p>
+
+  <h2>The stack</h2>
+  <div class="colo__stack">
+    <div class="colo__stack-item"><strong>Jekyll 3.10</strong><span>Static site generator (pinned by github-pages gem)</span></div>
+    <div class="colo__stack-item"><strong>Pure CSS</strong><span>Custom properties, grid, clamp(). No Tailwind, no PostCSS.</span></div>
+    <div class="colo__stack-item"><strong>Vanilla JavaScript</strong><span>No framework, no bundler. ES2017+.</span></div>
+    <div class="colo__stack-item"><strong>GitHub Pages</strong><span>Hosting, free, builds on push.</span></div>
+    <div class="colo__stack-item"><strong>Cloudflare Workers</strong><span>Chatbot RAG backend at the edge.</span></div>
+    <div class="colo__stack-item"><strong>TensorFlow.js</strong><span>In-browser sentiment model in the Live Lab.</span></div>
+  </div>
+
+  <h2>Design decisions</h2>
+
+  <h3>Dark by default, no apologies</h3>
+  <p>
+    The site ships dark. The light theme exists for users who prefer it but
+    the design is built for the dark palette first. <code>prefers-color-scheme</code>
+    is intentionally ignored on first load — only an explicit click switches.
+  </p>
+
+  <h3>Tokens all the way down</h3>
+  <p>
+    Every colour, font, and easing curve is a CSS custom property in
+    <code>:root</code>. The accent picker swaps eight tokens; the font picker
+    swaps three. Light theme is a single <code>[data-theme="light"]</code>
+    override on the same tokens — no rule duplication.
+  </p>
+
+  <h3>One CSS file, one JS file</h3>
+  <p>
+    No bundler, no code-splitting. The CSS is hand-written and lives in
+    <code>assets/css/main.css</code>. The JS is split into a few focused
+    files (<code>main.js</code>, <code>theme.js</code>, <code>accent.js</code>,
+    <code>fonts.js</code>, <code>chatbot.js</code>, <code>terminal.js</code>,
+    <code>spotlight.js</code>, <code>card-tilt.js</code>,
+    <code>agent-visualiser.js</code>, <code>ml-demo.js</code>,
+    <code>project-filter.js</code>) — all loaded with <code>defer</code>,
+    none required for first paint.
+  </p>
+
+  <h3>No flash of anything</h3>
+  <p>
+    Critical CSS (tokens + nav + hero shell) is inlined in the head.
+    The full stylesheet loads non-blocking with <code>media="print"</code>
+    + <code>onload</code> swap. A small inline script reads the saved
+    theme, accent key, and font key from <code>localStorage</code> and
+    applies them <em>before</em> first paint, so you never see the
+    default-then-swap flash.
+  </p>
+
+  <h2>The AI features</h2>
+
+  <h3>Talk to Paul (chatbot)</h3>
+  <p>
+    A retrieval-augmented chatbot. The build script
+    (<code>scripts/build-knowledge-base.js</code>) chunks
+    <code>_data/*.yml</code> + blog posts into ~32 semantic chunks, each
+    optionally embedded with <code>@cf/baai/bge-base-en-v1.5</code>.
+    On every message: sanitise → rate-limit per IP → check for
+    prompt-injection patterns → classify intent → retrieve the top-5
+    relevant chunks (cosine similarity if embeddings are present, BM25-lite
+    keyword overlap otherwise) → build a focused prompt with only those
+    chunks → call the LLM (Llama 3.1 8B via Workers AI by default, or
+    Claude Haiku 4.5 if configured). The "How I found this answer" panel
+    under each reply exposes the retrieval — same pattern Perplexity uses.
+  </p>
+
+  <h3>Live Lab (TF.js sentiment)</h3>
+  <p>
+    A real CNN running in your browser. The <code>sentiment_cnn_v1</code>
+    model from the TensorFlow.js model zoo, lazy-loaded only when the
+    Live Lab section enters the viewport. Tokenises with the model's
+    metadata vocab, runs inference on WebGL, reports timing in milliseconds.
+    Total cold payload ~1.8 MB, cached after first visit. No data leaves
+    your device.
+  </p>
+
+  <h3>Agent visualiser</h3>
+  <p>
+    A hand-rolled SVG flow showing how a research agent decomposes a task
+    — Input → Planning → Tool Selection → Execution → Memory → Synthesis →
+    Output. Auto-plays on viewport entry, pauses when scrolled out, supports
+    play/pause/step/reset and 1×/2× speed.
+  </p>
+
+  <h3>Terminal</h3>
+  <p>
+    A CLI-style portfolio explorer. Type <code>paul --help</code> to start.
+    Pure frontend — all data comes from <code>_data/*.yml</code> serialised
+    into a JSON blob at build time. Up/Down history, Tab completion,
+    Ctrl-L to clear, and a <code>matrix</code> easter egg.
+  </p>
+
+  <h2>Performance & privacy</h2>
+  <ul>
+    <li>No tracking pixels. No Google Analytics. No advertising.</li>
+    <li>YouTube embeds use the lite-embed pattern — thumbnails first, iframe only on click.</li>
+    <li>Service worker caches static assets with versioned cache + network-first for HTML, so deploys never serve stale pages.</li>
+    <li>The chatbot doesn't log or retain messages.</li>
+    <li>See the <a href="{{ '/privacy/' | relative_url }}">privacy page</a> for the full picture.</li>
+  </ul>
+
+  <h2>Open source</h2>
+  <p>
+    Source: <a href="https://github.com/mcneillium/mcneillium.github.io" target="_blank" rel="noopener">github.com/mcneillium/mcneillium.github.io</a>.
+    The chatbot worker code is in <code>workers/portfolio-bot/</code>.
+    Deployment guide: <code>docs/chatbot-deployment.md</code>.
+  </p>
+</div>

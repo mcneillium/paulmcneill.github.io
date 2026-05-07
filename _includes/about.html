@@ -27,6 +27,21 @@
           frameworks, and turned brittle exports into versioned datasets that survive
           a Monday morning.
         </p>
+        {% if site.data.profile.learning %}
+        <div class="learning">
+          <span class="learning__label">Currently learning</span>
+          <ul class="learning__list">
+            {% for l in site.data.profile.learning %}
+              <li class="learning__item learning__item--{{ l.status | replace: ' ', '-' }}">
+                <span class="learning__title">{{ l.title }}</span>
+                {% if l.provider %}<span class="learning__provider">— {{ l.provider }}</span>{% endif %}
+                <span class="learning__status">{{ l.status }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
         <a href="#contact" class="btn btn-primary">Let's Talk
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
         </a>

@@ -42,6 +42,7 @@ contact:
   email: "paulmcneill1989@hotmail.co.uk"
   github: "https://github.com/mcneillium"
   linkedin: "https://www.linkedin.com/in/paul-martin-mcneill-pp"
+  huggingface: "https://huggingface.co/McNeillium"  # VERIFY handle
   twitter: "https://x.com/McNeillium"
   youtube: "https://www.youtube.com/@McNeillium_AI"
   stackoverflow: "https://stackoverflow.com/users/mcneillium"
@@ -49,3 +50,20 @@ contact:
 availability: >-
   Currently open to AI engineering, ML, and full-stack web
   opportunities — full-time, contract, or freelance.
+
+# What I'm learning right now. Surfaces in the About section.
+# `status` accepts: in progress, experimenting, learning, finished
+learning:
+  - title: "M816 Data Management"
+    type: "course"
+    provider: "Open University"
+    status: "in progress"
+  - title: "Multi-Agent Systems with CrewAI"
+    type: "exploration"
+    status: "experimenting"
+  - title: "Kubernetes for ML Workloads"
+    type: "skill"
+    status: "learning"
+  - title: "Vector databases & retrieval at scale"
+    type: "skill"
+    status: "learning"

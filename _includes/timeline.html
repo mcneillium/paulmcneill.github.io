@@ -1,0 +1,71 @@
+<section class="section timeline" id="timeline">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow">Trajectory</span>
+      <h2 class="section-title">A working <em>career</em></h2>
+      <p class="section-lead">
+        Roles, study, and the certs that mark the milestones. Click any
+        node to expand the detail.
+      </p>
+    </div>
+
+    {%- comment -%}
+      Build a unified, year-sorted list from three data files. Each entry
+      gets { year, type, title, org, detail }. Year is the START year for
+      roles + the year for certs and education completion.
+    {%- endcomment -%}
+    {%- assign items = "" | split: "" -%}
+
+    {%- for r in site.data.experience.roles -%}
+      {%- assign year = r.start | default: r.end | default: "—" -%}
+      {%- capture entry -%}{{ year }}|work|{{ r.start }}|{{ r.end }}|{{ r.role }}|{{ r.org }}|{{ r.bullets | join: " · " }}{%- endcapture -%}
+      {%- assign items = items | push: entry -%}
+    {%- endfor -%}
+
+    {%- for e in site.data.education -%}
+      {%- assign yr = e.year | default: "—" -%}
+      {%- capture entry -%}{{ yr }}|education|{{ yr }}||{{ e.qualification }}|{{ e.institution }}|{{ e.detail }}{%- endcapture -%}
+      {%- assign items = items | push: entry -%}
+    {%- endfor -%}
+
+    {%- for c in site.data.credentials -%}
+      {%- assign yr = c.year | default: "—" -%}
+      {%- capture entry -%}{{ yr }}|cert|{{ yr }}||{{ c.name }}|{{ c.issuer }}|{%- endcapture -%}
+      {%- assign items = items | push: entry -%}
+    {%- endfor -%}
+
+    {%- assign sorted = items | sort | reverse -%}
+
+    <ol class="timeline__track reveal">
+      {%- for raw in sorted -%}
+        {%- assign parts = raw | split: "|" -%}
+        {%- assign type = parts[1] -%}
+        {%- assign start = parts[2] -%}
+        {%- assign endd = parts[3] -%}
+        {%- assign title = parts[4] -%}
+        {%- assign org = parts[5] -%}
+        {%- assign detail = parts[6] -%}
+
+        {%- if start and start != "" -%}
+          {%- if endd and endd != "" -%}{%- assign date = start | append: " – " | append: endd -%}
+          {%- else -%}{%- assign date = start -%}{%- endif -%}
+        {%- else -%}{%- assign date = parts[0] -%}{%- endif -%}
+
+        <li class="tl-item tl-item--{{ type }}">
+          <span class="tl-item__node" aria-hidden="true"></span>
+          <details class="tl-item__details">
+            <summary class="tl-item__summary">
+              <span class="tl-item__date">{{ date }}</span>
+              <span class="tl-item__type">{{ type }}</span>
+              <span class="tl-item__title">{{ title }}</span>
+              {%- if org and org != "" -%}<span class="tl-item__org">{{ org }}</span>{%- endif -%}
+            </summary>
+            {%- if detail and detail != "" -%}
+              <p class="tl-item__detail">{{ detail }}</p>
+            {%- endif -%}
+          </details>
+        </li>
+      {%- endfor -%}
+    </ol>
+  </div>
+</section>

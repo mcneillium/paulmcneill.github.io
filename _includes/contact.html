@@ -35,6 +35,11 @@
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 7.1a3 3 0 0 0-2.1-2.1C19.6 4.5 12 4.5 12 4.5s-7.6 0-9.4.5A3 3 0 0 0 .5 7.1 31 31 0 0 0 0 12a31 31 0 0 0 .5 4.9 3 3 0 0 0 2.1 2.1c1.8.5 9.4.5 9.4.5s7.6 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.8.5-4.9.5-4.9s0-3.1-.5-4.9ZM9.6 15.4V8.6L15.8 12l-6.2 3.4Z"/></svg>
             YouTube
           </a></li>
+        {% elsif s.title == "huggingface" %}
+          <li><a class="contact__link" href="{{ s.url }}" target="_blank" rel="noopener" aria-label="Hugging Face">
+            {% include icon.html name="huggingface" class="icon" %}
+            Hugging Face
+          </a></li>
         {% endif %}
       {% endfor %}
     </ul>

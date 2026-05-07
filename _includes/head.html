@@ -47,8 +47,15 @@
   <meta property="og:description" content="{{ page.description | default: site.description }}">
   <meta property="og:url" content="{{ canonical }}">
   <meta property="og:locale" content="en_GB">
+  {%- comment -%}
+    Per-project OG image — projects use their hero screenshot when set,
+    other posts fall back to the project case-study generic, the home
+    page falls back to the portfolio default.
+  {%- endcomment -%}
   {%- if page.og_image -%}
     {%- assign og_img = page.og_image -%}
+  {%- elsif page.layout == "post" and page.img -%}
+    {%- assign og_img = page.img | prepend: "/img/portfolio/" -%}
   {%- elsif page.layout == "post" -%}
     {%- assign og_img = "/assets/img/og-image-project.png" -%}
   {%- else -%}
@@ -71,6 +78,11 @@
   <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/favicon/apple-touch-icon.png' | relative_url }}">
   <link rel="manifest" href="{{ '/assets/favicon/site.webmanifest' | relative_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+
+  {%- comment -%} Chatbot endpoint — set in _config.yml: chatbot.endpoint {%- endcomment -%}
+  {%- if site.chatbot.endpoint and site.chatbot.endpoint != "" -%}
+  <script>window.CHATBOT_ENDPOINT = "{{ site.chatbot.endpoint | xml_escape }}";</script>
+  {%- endif -%}
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
