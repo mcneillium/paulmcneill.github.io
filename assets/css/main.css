@@ -1235,6 +1235,78 @@ body::after {
   background: url("/assets/textures/noise.png") repeat;
   mix-blend-mode: var(--noise-blend, overlay);
 }
+
+/* Cursor spotlight — only when JS has hydrated the body class */
+body.has-spotlight::before {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 1; /* above page bg, below content */
+  background: radial-gradient(
+    600px circle at var(--cursor-x, -9999px) var(--cursor-y, -9999px),
+    rgba(201, 242, 112, 0.06),
+    transparent 40%
+  );
+  transition: opacity 0.3s ease;
+}
+[data-theme="light"] body.has-spotlight::before {
+  background: radial-gradient(
+    600px circle at var(--cursor-x, -9999px) var(--cursor-y, -9999px),
+    rgba(74, 124, 16, 0.08),
+    transparent 40%
+  );
+}
+
+/* Per-card spotlight */
+.proj-card, .exp-card, .ai-card, .principle, .ml-card, .skill-tier, .testimonial {
+  position: relative;
+}
+.proj-card::before,
+.exp-card::before,
+.ai-card::before,
+.principle::before,
+.ml-card::before,
+.skill-tier::before,
+.testimonial::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+    400px circle at var(--card-x, 50%) var(--card-y, 50%),
+    rgba(201, 242, 112, 0.08),
+    transparent 45%
+  );
+  z-index: 0;
+}
+[data-theme="light"] .proj-card::before,
+[data-theme="light"] .exp-card::before,
+[data-theme="light"] .ai-card::before,
+[data-theme="light"] .principle::before,
+[data-theme="light"] .ml-card::before,
+[data-theme="light"] .skill-tier::before,
+[data-theme="light"] .testimonial::before {
+  background: radial-gradient(
+    400px circle at var(--card-x, 50%) var(--card-y, 50%),
+    rgba(74, 124, 16, 0.10),
+    transparent 45%
+  );
+}
+.proj-card.has-card-glow::before,
+.exp-card.has-card-glow::before,
+.ai-card.has-card-glow::before,
+.principle.has-card-glow::before,
+.ml-card.has-card-glow::before,
+.skill-tier.has-card-glow::before,
+.testimonial.has-card-glow::before {
+  opacity: 1;
+}
+/* Make sure card content sits above the spotlight pseudo */
+.proj-card > *, .exp-card > *, .ai-card > *, .principle > *,
+.ml-card > *, .skill-tier > *, .testimonial > * { position: relative; z-index: 1; }
 @media (prefers-reduced-motion: reduce) { body::after { display: none; } }
 
 /* Dot-grid layer for hero — replaces simple line grid look */
