@@ -1764,13 +1764,15 @@ body.has-spotlight::before {
 .testimonial__attr {
   display: flex; flex-direction: column; gap: 0.15rem;
 }
-.testimonial__attr strong { color: var(--text); font-weight: 600; font-size: 0.95rem; }
+.testimonial__attr strong,
+.testimonial__name { color: var(--text); font-weight: 600; font-size: 0.95rem; }
 .testimonial__attr span {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   color: var(--text-faint);
   letter-spacing: 0.04em;
 }
+.testimonial__org { color: var(--text-dim); }
 .testimonial__pending {
   display: inline-block;
   margin-top: 0.5rem;

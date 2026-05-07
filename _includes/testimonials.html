@@ -1,4 +1,4 @@
-<!-- VERIFY: testimonials in _data/testimonials.yml are placeholders pending real quotes. -->
+<!-- VERIFY: testimonials in _data/testimonials.yml are placeholders pending real attributions. -->
 <section class="section testimonials" id="testimonials">
   <div class="container">
     <div class="section__head reveal">
@@ -12,9 +12,12 @@
           {% include icon.html name="quote" class="testimonial__quote-mark" %}
           <blockquote class="testimonial__quote">{{ t.quote }}</blockquote>
           <figcaption class="testimonial__attr">
-            <strong>{{ t.name }}</strong>
-            <span>{{ t.role }}{% if t.org %} · {{ t.org }}{% endif %}</span>
-            {% unless t.verified %}<span class="testimonial__pending">Placeholder</span>{% endunless %}
+            {%- if t.name -%}
+              <strong class="testimonial__name">{{ t.name }}</strong>
+            {%- endif -%}
+            <span class="testimonial__role">{{ t.role }}</span>
+            {% if t.org %}<span class="testimonial__org">{{ t.org }}</span>{% endif %}
+            {% unless t.verified %}<span class="testimonial__pending" title="Placeholder until written permission to attribute is on file">Placeholder</span>{% endunless %}
           </figcaption>
         </figure>
       {% endfor %}

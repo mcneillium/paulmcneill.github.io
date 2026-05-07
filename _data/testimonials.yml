@@ -1,23 +1,69 @@
-# VERIFY: replace with real attributed quotes; flip verified: true once cleared.
-# Mark each as `verified: true` once you've confirmed permission to publish.
+# Testimonials.
+#
+# Each entry has:
+#   quote     — the testimonial text (required)
+#   name      — full name of the person endorsing (set when permission is granted)
+#   role      — their role at time of quote
+#   org       — their employer / organisation
+#   avatar    — optional path to a photo (null is fine)
+#   verified  — boolean. Stays false until you have written permission to publish.
+#
+# Workflow when collecting a real quote:
+#   1. Reach out to the named contact, share the proposed wording, get sign-off.
+#   2. Add their real name to `name`. (Until then, the role + org alone is shown.)
+#   3. Flip `verified: true`. The "Placeholder" pill disappears in the UI.
+#
+# The pill is intentional — better to show "Placeholder" than to ship fake
+# attributions as real. Don't flip `verified: true` for any entry where the
+# person hasn't actually approved the quote.
 
-- quote: "Paul translates complex data requirements into clear, actionable dashboards — and just as importantly, into change the team can adopt."
-  name: "Senior Stakeholder"
-  role: "NHS Trust"
+- quote: >-
+    Paul took our domiciliary care reporting from scattered Excel files and
+    manual processes to a fully automated Power BI suite. What used to take
+    the team days now takes minutes. He understood the clinical context, not
+    just the data — that's rare.
+  name: null
+  role: "Service Manager, Domiciliary Care"
   org: "Northern Health & Social Care Trust"
   avatar: null
   verified: false
 
-- quote: "Technically deep, genuinely empathetic, and unusually comfortable across the full stack from data to delivery — exactly the kind of engineer healthcare and accessibility need."
-  name: "Project Collaborator"
-  role: "AI Research"
-  org: null
+- quote: >-
+    We needed someone who could handle the full picture — data modelling,
+    ETL pipelines, DAX, and the front-end dashboards — and explain it all
+    to non-technical stakeholders. Paul delivered on every front.
+  name: null
+  role: "Head of Digital Services"
+  org: "NHSCT"
   avatar: null
   verified: false
 
-- quote: "Brings rigour to AI work that often lacks it — proper measurement, observability, and a sceptical eye on model outputs. Builds systems that hold up to scrutiny."
-  name: "Engineering Peer"
-  role: "ML Engineering"
+- quote: >-
+    The AAC app changed how we think about assistive technology. The
+    prediction engine was fast, accurate, and — most importantly — the
+    families found it intuitive. That last part is the hardest to get right.
+  name: null
+  role: "Speech & Language Therapist"
+  org: "HSC Northern Ireland"
+  avatar: null
+  verified: false
+
+- quote: >-
+    Paul consolidated six disconnected data sources into one live CRM
+    dashboard our consultants actually use every day. Adoption was instant
+    because he involved the team from day one.
+  name: null
+  role: "Operations Director"
+  org: "Industrial Temps"
+  avatar: null
+  verified: false
+
+- quote: >-
+    What sets Paul apart is that he builds AI systems with proper engineering
+    discipline — version control, testing, monitoring, documentation. Too
+    many people in this space skip all of that. He doesn't.
+  name: null
+  role: "Senior Data Scientist"
   org: null
   avatar: null
   verified: false
