@@ -24,6 +24,12 @@ current: >-
   platform. Studying M816 Data Management at the Open University.
   Open to AI engineering and data roles.
 
+# Compact "currently" card for the hero — keep tight (under 60 chars on focus)
+current_focus:
+  focus: "Aurora — NHSCT analytics & ECM transformation"
+  detail: "Power BI suite + Access/SQL data layer · Northern Ireland"
+  updated: "May 2026"  # VERIFY: bump when work changes
+
 location: "Northern Ireland, UK"
 
 contact:

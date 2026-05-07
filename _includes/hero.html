@@ -14,6 +14,22 @@
       data into decisions that actually move the needle.
     </p>
 
+    {% if site.data.profile.current_focus %}
+    <div class="hero__current" aria-label="Currently">
+      <span class="hero__current-dot" aria-hidden="true"></span>
+      <span class="hero__current-label">Currently</span>
+      <span class="hero__current-text">
+        <strong>{{ site.data.profile.current_focus.focus }}</strong>
+        {% if site.data.profile.current_focus.detail %}
+          <span class="hero__current-detail"> · {{ site.data.profile.current_focus.detail }}</span>
+        {% endif %}
+      </span>
+      {% if site.data.profile.current_focus.updated %}
+        <time class="hero__current-date">{{ site.data.profile.current_focus.updated }}</time>
+      {% endif %}
+    </div>
+    {% endif %}
+
     <div class="hero__ctas">
       <a href="#projects" class="btn btn-primary">View Projects
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>

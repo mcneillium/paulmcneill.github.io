@@ -448,6 +448,56 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   margin-bottom: 4.5rem;
 }
 
+/* "Currently" card — compact dynamic-status surface above the CTAs */
+.hero__current {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 0.5rem 0.85rem;
+  margin: 0 0 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  letter-spacing: 0.01em;
+  max-width: 100%;
+}
+[data-theme="light"] .hero__current { background: rgba(0, 0, 0, 0.02); }
+.hero__current-dot {
+  width: 8px; height: 8px;
+  background: #2ee47a;
+  border-radius: 50%;
+  flex: 0 0 8px;
+  box-shadow: 0 0 0 0 rgba(46, 228, 122, 0.5);
+  animation: pulseDot 2s ease-out infinite;
+}
+@media (prefers-reduced-motion: reduce) { .hero__current-dot { animation: none; } }
+.hero__current-label {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  font-size: 0.7rem;
+}
+.hero__current-text { color: var(--text); font-family: var(--font-body); font-size: 0.85rem; line-height: 1.4; }
+.hero__current-text strong { font-weight: 500; color: var(--text); }
+.hero__current-detail { color: var(--text-dim); }
+.hero__current-date {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-left: auto;
+  padding-left: 0.5rem;
+  border-left: 1px solid var(--border);
+}
+@media (max-width: 600px) {
+  .hero__current-detail { display: none; }
+  .hero__current-date { display: none; }
+}
+
 .hero__stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
