@@ -22,22 +22,19 @@
 const fs = require('fs');
 const path = require('path');
 
+let yaml;
+try {
+  yaml = require('js-yaml');
+} catch (e) {
+  console.error('Missing dependency: js-yaml');
+  console.error('Run:  npm install js-yaml');
+  process.exit(1);
+}
+
 const ROOT = path.resolve(__dirname, '..');
-const yaml = (() => {
-  try { return require('js-yaml'); } catch {}
-  // Tiny YAML shim covering only the shapes we actually use in _data/.
-  // For real YAML, install js-yaml. We'll fall back to a child-process
-  // call to ruby's YAML loader if installed, otherwise error clearly.
-  return null;
-})();
 
 function loadYaml(p) {
-  const txt = fs.readFileSync(p, 'utf8');
-  if (yaml) return yaml.load(txt);
-  // Fallback: shell out to ruby (always available since this repo uses Jekyll)
-  const { execSync } = require('child_process');
-  const out = execSync(`ruby -ryaml -rjson -e 'puts YAML.safe_load(File.read(ARGV[0]), permitted_classes: [Date, Time]).to_json' "${p}"`);
-  return JSON.parse(out.toString());
+  return yaml.load(fs.readFileSync(p, 'utf8'));
 }
 
 function loadFrontMatterAndBody(file) {
@@ -46,12 +43,7 @@ function loadFrontMatterAndBody(file) {
   if (!m) return { fm: {}, body: raw };
   let fm = {};
   try {
-    if (yaml) fm = yaml.load(m[1]) || {};
-    else {
-      const { execSync } = require('child_process');
-      const out = execSync(`ruby -ryaml -rjson -e 'puts YAML.safe_load(STDIN.read, permitted_classes: [Date, Time]).to_json'`, { input: m[1] });
-      fm = JSON.parse(out.toString()) || {};
-    }
+    fm = yaml.load(m[1]) || {};
   } catch (e) {
     console.error(`front matter parse failed for ${file}: ${e.message}`);
   }
