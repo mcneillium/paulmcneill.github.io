@@ -4,96 +4,162 @@
       <span class="eyebrow">Trajectory</span>
       <h2 class="section-title">A working <em>career</em></h2>
       <p class="section-lead">
-        Roles, study, and certs in one chronological view. Click any
-        card to expand the detail.
+        Roles, study, and certifications grouped by era. Compact cards
+        rather than a long stretch.
       </p>
     </div>
 
     {%- comment -%}
-      Build a sort-key string of the form "YYYY|sortbias|index" so
-      newest-first sort is clean. We split the rendered list back out
-      by index after sorting, looking up the original record.
+      Build a flat list of entries, each with: bucket, type, title, org,
+      date, sortyear, logo, detail. Then bucket and sort.
     {%- endcomment -%}
 
-    {%- assign keys = "" | split: "" -%}
+    {%- assign rows = "" | split: "" -%}
 
     {%- for r in site.data.experience.roles -%}
-      {%- assign year = r.start | default: r.end | default: "0000" -%}
-      {%- if r.end == "Present" or r.end == "present" -%}{%- assign year = "9999" -%}{%- endif -%}
-      {%- capture k -%}{{ year }}|0|work|{{ forloop.index0 }}{%- endcapture -%}
-      {%- assign keys = keys | push: k -%}
+      {%- assign sy = r.start | default: "0" -%}
+      {%- if sy == "" or sy == nil -%}{%- assign sy = "0" -%}{%- endif -%}
+      {%- assign syn = sy | plus: 0 -%}
+      {%- if r.end == "Present" or r.end == "present" or r.current -%}
+        {%- assign date = r.start | append: " — Present" -%}
+        {%- assign syn = 9999 -%}
+      {%- elsif r.start and r.start != "" -%}
+        {%- assign date = r.start | append: " — " | append: r.end -%}
+      {%- else -%}
+        {%- assign date = "Up to " | append: r.end -%}
+      {%- endif -%}
+      {%- capture row -%}{{ syn }}|0|work|{{ r.role }}|{{ r.org }}|{{ date }}|{{ r.logo }}|{{ forloop.index0 }}{%- endcapture -%}
+      {%- assign rows = rows | push: row -%}
+    {%- endfor -%}
+
+    {%- for v in site.data.experience.volunteering -%}
+      {%- assign sy = v.start | default: "0" -%}
+      {%- assign syn = sy | plus: 0 -%}
+      {%- if v.end == "Present" or v.current -%}
+        {%- assign date = v.start | append: " — Present" -%}
+        {%- assign syn = 9999 -%}
+      {%- else -%}
+        {%- assign date = v.start | append: " — " | append: v.end -%}
+      {%- endif -%}
+      {%- capture row -%}{{ syn }}|1|volunteer|{{ v.role }}|{{ v.org }}|{{ date }}|{{ v.logo }}|{{ forloop.index0 }}{%- endcapture -%}
+      {%- assign rows = rows | push: row -%}
     {%- endfor -%}
 
     {%- for e in site.data.education -%}
-      {%- assign year = e.year | default: "0000" -%}
-      {%- if year contains "Expected" -%}{%- assign year = "9999" -%}{%- endif -%}
-      {%- capture k -%}{{ year }}|1|education|{{ forloop.index0 }}{%- endcapture -%}
-      {%- assign keys = keys | push: k -%}
+      {%- assign yr = e.year | default: "0" -%}
+      {%- assign yn = yr | replace: "Expected June ", "" | replace: "Expected ", "" | plus: 0 -%}
+      {%- if yr contains "Expected" -%}{%- assign yn = 9998 -%}{%- endif -%}
+      {%- capture row -%}{{ yn }}|2|education|{{ e.qualification }}|{{ e.institution }}|{{ e.year }}||{{ forloop.index0 }}{%- endcapture -%}
+      {%- assign rows = rows | push: row -%}
     {%- endfor -%}
 
+    {%- comment -%}
+      Certs: dated ones go in the era buckets, undated ones drop into the
+      memberships strip at the bottom.
+    {%- endcomment -%}
+    {%- assign cert_dated = "" | split: "" -%}
+    {%- assign cert_undated = "" | split: "" -%}
     {%- for c in site.data.credentials -%}
-      {%- assign year = c.year | default: "0000" -%}
-      {%- capture k -%}{{ year }}|2|cert|{{ forloop.index0 }}{%- endcapture -%}
-      {%- assign keys = keys | push: k -%}
+      {%- if c.year and c.year != "" -%}
+        {%- assign yn = c.year | plus: 0 -%}
+        {%- capture row -%}{{ yn }}|3|cert|{{ c.name }}|{{ c.issuer }}|{{ c.year }}|{{ c.img }}|{{ forloop.index0 }}{%- endcapture -%}
+        {%- assign rows = rows | push: row -%}
+      {%- else -%}
+        {%- assign cert_undated = cert_undated | push: c -%}
+      {%- endif -%}
     {%- endfor -%}
 
-    {%- assign sorted = keys | sort | reverse -%}
+    {%- assign sorted = rows | sort | reverse -%}
 
-    <ol class="timeline reveal" aria-label="Career timeline">
-      {%- for k in sorted -%}
-        {%- assign parts = k | split: "|" -%}
-        {%- assign type = parts[2] -%}
-        {%- assign idx = parts[3] | plus: 0 -%}
+    {%- comment -%}
+      Era buckets — adjust the cutoffs here if the timeline gets longer.
+    {%- endcomment -%}
+    {%- assign era_a = "" | split: "" -%}{%- comment -%} 2024 – Present {%- endcomment -%}
+    {%- assign era_b = "" | split: "" -%}{%- comment -%} 2019 – 2023    {%- endcomment -%}
+    {%- assign era_c = "" | split: "" -%}{%- comment -%} 2016 – 2018    {%- endcomment -%}
+    {%- assign era_d = "" | split: "" -%}{%- comment -%} Pre-2016       {%- endcomment -%}
 
-        {%- if type == "work" -%}
-          {%- assign r = site.data.experience.roles[idx] -%}
-          {%- assign date_label = r.start | append: " – " | append: r.end -%}
-          {%- assign type_label = "Role" -%}
-          {%- assign title = r.role -%}
-          {%- assign org = r.org -%}
-          {%- assign bullets = r.bullets -%}
-          {%- assign detail = nil -%}
-        {%- elsif type == "education" -%}
-          {%- assign e = site.data.education[idx] -%}
-          {%- assign date_label = e.year -%}
-          {%- assign type_label = "Education" -%}
-          {%- assign title = e.qualification -%}
-          {%- assign org = e.institution -%}
-          {%- assign bullets = nil -%}
-          {%- assign detail = e.detail -%}
-        {%- else -%}
-          {%- assign c = site.data.credentials[idx] -%}
-          {%- assign date_label = c.year | default: "—" -%}
-          {%- assign type_label = "Cert" -%}
-          {%- assign title = c.name -%}
-          {%- assign org = c.issuer -%}
-          {%- assign bullets = nil -%}
-          {%- assign detail = nil -%}
-        {%- endif -%}
+    {%- for r in sorted -%}
+      {%- assign p = r | split: "|" -%}
+      {%- assign yr = p[0] | plus: 0 -%}
+      {%- if yr >= 2024 -%}{%- assign era_a = era_a | push: r -%}
+      {%- elsif yr >= 2019 -%}{%- assign era_b = era_b | push: r -%}
+      {%- elsif yr >= 2016 -%}{%- assign era_c = era_c | push: r -%}
+      {%- else -%}{%- assign era_d = era_d | push: r -%}
+      {%- endif -%}
+    {%- endfor -%}
 
-        <li class="tl-item" data-type="{{ type }}">
-          <span class="tl-dot" aria-hidden="true"></span>
-          <div class="tl-card">
-            <div class="tl-card__head">
-              <span class="tl-date">{{ date_label }}</span>
-              <span class="tl-type">{{ type_label }}</span>
+    {%- assign era_keys = "a,b,c,d" | split: "," -%}
+    {%- for era in era_keys -%}
+      {%- if era == "a" -%}{%- assign rows_in = era_a -%}{%- assign label = "2024 — Present" -%}{%- endif -%}
+      {%- if era == "b" -%}{%- assign rows_in = era_b -%}{%- assign label = "2019 — 2023" -%}{%- endif -%}
+      {%- if era == "c" -%}{%- assign rows_in = era_c -%}{%- assign label = "2016 — 2018" -%}{%- endif -%}
+      {%- if era == "d" -%}{%- assign rows_in = era_d -%}{%- assign label = "Earlier" -%}{%- endif -%}
+
+      {%- if rows_in.size > 0 -%}
+      <div class="tl-era reveal">
+        <h3 class="tl-era__label">{{ label }}</h3>
+        <div class="tl-era__cards">
+          {%- for r in rows_in -%}
+            {%- assign p = r | split: "|" -%}
+            {%- assign type = p[2] -%}
+            {%- assign title = p[3] -%}
+            {%- assign org = p[4] -%}
+            {%- assign date = p[5] -%}
+            {%- assign logo = p[6] -%}
+            <div class="tl-card" data-type="{{ type }}">
+              <div class="tl-card__logo">
+                {%- if logo and logo != "" -%}
+                  <img src="{{ logo | relative_url }}" alt="{{ org | escape }}" loading="lazy">
+                {%- elsif type == "education" -%}
+                  {% include icon.html name="graduation-cap" class="tl-icon" %}
+                {%- elsif type == "cert" -%}
+                  {% include icon.html name="award" class="tl-icon" %}
+                {%- else -%}
+                  {% include icon.html name="briefcase" class="tl-icon" %}
+                {%- endif -%}
+              </div>
+              <div class="tl-card__body">
+                <span class="tl-card__type">
+                  {%- case type -%}
+                    {%- when "work" -%}Role
+                    {%- when "education" -%}Education
+                    {%- when "cert" -%}Certification
+                    {%- when "volunteer" -%}Volunteer
+                  {%- endcase -%}
+                </span>
+                <h4 class="tl-card__title">{{ title }}</h4>
+                {%- if org and org != "" -%}<p class="tl-card__org">{{ org }}</p>{%- endif -%}
+                <span class="tl-card__date">{{ date }}</span>
+              </div>
             </div>
-            <h4 class="tl-title">{{ title }}</h4>
-            {%- if org and org != "" -%}<p class="tl-org">{{ org }}</p>{%- endif -%}
-            {%- if bullets or detail -%}
-              <details class="tl-details">
-                <summary>View details</summary>
-                {%- if bullets -%}
-                  <ul>{%- for b in bullets -%}<li>{{ b }}</li>{%- endfor -%}</ul>
-                {%- endif -%}
-                {%- if detail and detail != "" -%}
-                  <p>{{ detail }}</p>
-                {%- endif -%}
-              </details>
-            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- if cert_undated.size > 0 -%}
+    <div class="tl-era tl-era--memberships reveal">
+      <h3 class="tl-era__label">Professional memberships &amp; certifications</h3>
+      <div class="tl-badges">
+        {%- for c in cert_undated -%}
+          <div class="tl-badge" title="{{ c.name | escape }} — {{ c.issuer | escape }}">
+            <div class="tl-badge__logo">
+              {%- if c.img -%}
+                <img src="{{ c.img | relative_url }}" alt="{{ c.issuer | escape }}" loading="lazy">
+              {%- else -%}
+                {% include icon.html name="award" class="tl-icon" %}
+              {%- endif -%}
+            </div>
+            <div class="tl-badge__body">
+              <span class="tl-badge__name">{{ c.name }}</span>
+              <span class="tl-badge__issuer">{{ c.issuer }}</span>
+            </div>
           </div>
-        </li>
-      {%- endfor -%}
-    </ol>
+        {%- endfor -%}
+      </div>
+    </div>
+    {%- endif -%}
   </div>
 </section>

@@ -1,14 +1,17 @@
 - qualification: "BSc (Hons) Computing — First-Class Honours"
   institution: "The Open University"
   year: "2025"
+  logo: null   # No public OU logo bundled — Lucide graduation-cap fallback
   detail: "Focus: Artificial Intelligence, Data Analytics, Cloud Computing, Software Engineering."
 
 - qualification: "M816 Data Management"
   institution: "The Open University"
   year: "Expected June 2026"
+  logo: null
   detail: "Postgraduate module covering data governance, modelling, and database optimisation."
 
 - qualification: "EDI Level 3 Diploma in Business & Administration"
   institution: ""
   year: "2014"
+  logo: null
   detail: ""

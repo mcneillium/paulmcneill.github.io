@@ -5,6 +5,7 @@
 roles:
   - role: "Creative Director / Technical Lead"
     org: "Paramount Perceptions (Self-Employed)"
+    logo: null
     start: "2019"
     end: "Present"
     current: true
@@ -15,6 +16,7 @@ roles:
 
   - role: "CRM Systems Coordinator"
     org: "Industrial Temps"
+    logo: null
     location: "Belfast"
     start: "2018"
     end: "2019"
@@ -24,6 +26,7 @@ roles:
 
   - role: "IT & Database Systems Manager"
     org: "Platinum Support & Care Services Ltd"
+    logo: null
     start: "2016"
     end: "2018"
     bullets:
@@ -33,6 +36,7 @@ roles:
 
   - role: "Earlier roles"
     org: "Various"
+    logo: null
     start: ""
     end: "2016"
     bullets:
@@ -41,6 +45,7 @@ roles:
 volunteering:
   - role: "Digital Volunteer / Technology Advisor"
     org: "RSPB Rathlin Island Project"
+    logo: null
     start: "2024"
     end: "Present"
     current: true
