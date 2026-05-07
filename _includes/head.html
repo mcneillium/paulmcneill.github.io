@@ -53,6 +53,18 @@
 
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 
+  {%- comment -%} No-FOUC theme bootstrap — must run before paint. {%- endcomment -%}
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        var theme = saved || (prefersLight ? 'light' : 'dark');
+        if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+      } catch (e) { /* noop */ }
+    })();
+  </script>
+
   {%- if page.layout == "post" -%}
   <script type="application/ld+json">
   {

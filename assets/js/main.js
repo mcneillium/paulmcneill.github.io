@@ -4,6 +4,13 @@
 (() => {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* -------- Service worker registration ----------------------------- */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').catch(() => { /* noop */ });
+    });
+  }
+
   const nav        = document.getElementById('nav');
   const navToggle  = document.getElementById('navToggle');
   const navLinks   = document.getElementById('navLinks');

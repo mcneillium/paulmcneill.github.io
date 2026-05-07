@@ -6,6 +6,7 @@
    ========================================================================== */
 
 :root {
+  /* Dark (default) */
   --bg: #0a0a0b;
   --bg-raised: #111113;
   --bg-card: #131316;
@@ -18,6 +19,8 @@
   --accent: #c9f270;
   --accent-dim: rgba(201, 242, 112, 0.18);
   --accent-glow: rgba(201, 242, 112, 0.35);
+  --noise-blend: overlay;
+  --noise-opacity: 0.035;
 
   --font-display: "Instrument Serif", "Times New Roman", serif;
   --font-body: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
@@ -33,6 +36,43 @@
   --radius: 16px;
   --radius-lg: 24px;
   --radius-pill: 999px;
+}
+
+/* Light theme overrides — tokens only, no rule duplication */
+[data-theme="light"] {
+  --bg: #f8f7f4;
+  --bg-raised: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f3f2ee;
+  --border: rgba(10, 10, 11, 0.10);
+  --border-strong: rgba(10, 10, 11, 0.18);
+  --text: #161617;
+  --text-dim: #4f4f56;
+  --text-faint: #6f6f78;
+  --accent: #4a7c10;
+  --accent-dim: rgba(74, 124, 16, 0.20);
+  --accent-glow: rgba(74, 124, 16, 0.20);
+  --noise-blend: multiply;
+  --noise-opacity: 0.05;
+}
+[data-theme="light"] body { color-scheme: light; }
+[data-theme="light"] .nav.scrolled { background: rgba(248, 247, 244, 0.78); }
+[data-theme="light"] ::selection { background: var(--accent); color: #fff; }
+
+/* Theme switch — short, eased cross-fade on the colour-bearing properties */
+html.theme-switching,
+html.theme-switching body,
+html.theme-switching .nav,
+html.theme-switching .proj-card,
+html.theme-switching .exp-card,
+html.theme-switching .ai-card,
+html.theme-switching .principle,
+html.theme-switching .skill-tier,
+html.theme-switching .testimonial,
+html.theme-switching .ml-card,
+html.theme-switching .agent-stage,
+html.theme-switching .cred-card {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Icons */
@@ -224,6 +264,37 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   background: var(--accent);
   color: #0a0a0b;
   transform: translateY(-1px);
+}
+
+/* Theme toggle */
+.theme-toggle {
+  position: relative;
+  width: 36px; height: 36px;
+  display: inline-grid; place-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: 0.4rem;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.theme-toggle:hover { color: var(--accent); border-color: var(--accent-dim); }
+.theme-toggle__icon {
+  position: absolute;
+  display: grid; place-items: center;
+  inset: 0;
+  transition: opacity 0.25s ease, transform 0.3s var(--ease-out);
+}
+.theme-toggle__icon .icon { width: 16px; height: 16px; }
+/* Dark default → show moon, hide sun */
+.theme-toggle__icon--sun  { opacity: 0; transform: rotate(-30deg) scale(0.8); }
+.theme-toggle__icon--moon { opacity: 1; transform: rotate(0deg)   scale(1);   }
+[data-theme="light"] .theme-toggle__icon--sun  { opacity: 1; transform: rotate(0deg)  scale(1);   }
+[data-theme="light"] .theme-toggle__icon--moon { opacity: 0; transform: rotate(30deg) scale(0.8); }
+@media (max-width: 768px) {
+  .theme-toggle { margin-left: 0.4rem; margin-right: 0; }
 }
 
 .nav__toggle {
@@ -1149,9 +1220,9 @@ body::after {
   position: fixed; inset: 0;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.035;
+  opacity: var(--noise-opacity, 0.035);
   background: url("/assets/textures/noise.png") repeat;
-  mix-blend-mode: overlay;
+  mix-blend-mode: var(--noise-blend, overlay);
 }
 @media (prefers-reduced-motion: reduce) { body::after { display: none; } }
 
