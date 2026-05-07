@@ -9,13 +9,15 @@
  *
  * Bump CACHE_VERSION when shipping a release that requires a flush.
  */
-const CACHE_VERSION = 'pmcneill-v3-20260507';
+const CACHE_VERSION = 'pmcneill-v4-20260508';
 
 const PRECACHE = [
   '/',
   '/assets/css/main.css',
   '/assets/js/main.js',
   '/assets/js/theme.js',
+  '/assets/js/accent.js',
+  '/assets/js/fonts.js',
   '/assets/js/card-tilt.js',
   '/assets/textures/noise.png',
   '/assets/textures/dot-grid.svg',

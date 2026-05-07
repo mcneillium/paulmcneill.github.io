@@ -54,8 +54,8 @@ const ensureDir = (p) => fs.mkdirSync(path.dirname(p), { recursive: true });
   const ogSvg = (label) => `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
     <radialGradient id="g1" cx="80%" cy="20%" r="60%">
-      <stop offset="0%" stop-color="#c9f270" stop-opacity="0.18"/>
-      <stop offset="100%" stop-color="#c9f270" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#f97316" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="g2" cx="10%" cy="90%" r="55%">
       <stop offset="0%" stop-color="#785aff" stop-opacity="0.16"/>
@@ -70,12 +70,12 @@ const ensureDir = (p) => fs.mkdirSync(path.dirname(p), { recursive: true });
   <rect width="1200" height="630" fill="url(#g1)"/>
   <rect width="1200" height="630" fill="url(#g2)"/>
   <g font-family="'Instrument Serif', 'Times New Roman', serif" fill="#ededee">
-    <text x="80" y="180" font-size="36" fill="#c9f270" font-family="'JetBrains Mono', monospace" letter-spacing="3">${label}</text>
+    <text x="80" y="180" font-size="36" fill="#f97316" font-family="'JetBrains Mono', monospace" letter-spacing="3">${label}</text>
     <text x="80" y="320" font-size="120" letter-spacing="-3">Paul Martin McNeill</text>
     <text x="80" y="400" font-size="48" fill="#a8a8ad">AI Engineer · Web Developer · Data Analyst</text>
   </g>
   <g transform="translate(80,500)">
-    <rect x="0" y="0" width="60" height="2" fill="#c9f270"/>
+    <rect x="0" y="0" width="60" height="2" fill="#f97316"/>
     <text x="80" y="6" font-family="'JetBrains Mono', monospace" font-size="20" fill="#a8a8ad" letter-spacing="2">paulmartinmcneill.com</text>
   </g>
 </svg>`;

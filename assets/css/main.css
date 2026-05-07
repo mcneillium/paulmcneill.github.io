@@ -16,9 +16,9 @@
   --text: #ededee;
   --text-dim: #a8a8ad;
   --text-faint: #8a8a92;
-  --accent: #c9f270;
-  --accent-dim: rgba(201, 242, 112, 0.18);
-  --accent-glow: rgba(201, 242, 112, 0.35);
+  --accent: #f97316;
+  --accent-dim: rgba(249, 115, 22, 0.28);
+  --accent-glow: rgba(249, 115, 22, 0.35);
   --noise-blend: overlay;
   --noise-opacity: 0.035;
 
@@ -335,6 +335,90 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 .accent-swatch:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 50%; }
 @media (max-width: 600px) {
   .accent-picker__panel { right: -50px; }
+}
+
+/* Font picker */
+.font-picker {
+  position: relative;
+  display: inline-flex;
+}
+.font-picker__btn {
+  width: 36px; height: 36px;
+  display: inline-grid; place-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  flex: 0 0 auto;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.font-picker__btn:hover { color: var(--accent); border-color: var(--accent-dim); }
+.font-picker__panel {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.5);
+  padding: 0.85rem 0.75rem;
+  display: none;
+  min-width: 240px;
+  z-index: 110;
+}
+.font-picker.is-open .font-picker__panel { display: block; }
+.font-picker__label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding: 0 0.25rem 0.5rem;
+}
+.font-picker__list {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 0.1rem;
+}
+.font-option {
+  display: flex; align-items: center; gap: 0.75rem;
+  width: 100%;
+  padding: 0.55rem 0.65rem;
+  border: 0;
+  background: transparent;
+  color: var(--text-dim);
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.font-option:hover { background: rgba(255,255,255,0.04); color: var(--text); }
+[data-theme="light"] .font-option:hover { background: rgba(0,0,0,0.04); }
+.font-option.is-active { color: var(--text); }
+.font-option__sample {
+  width: 28px; height: 28px;
+  display: grid; place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  flex: 0 0 28px;
+}
+.font-option__name { flex: 1; font-size: 0.92rem; }
+.font-option__check {
+  font-size: 0.7rem;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.font-option.is-active .font-option__check { opacity: 1; }
+.font-option:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+@media (max-width: 600px) {
+  .font-picker__panel { right: -90px; }
 }
 
 /* Theme toggle */

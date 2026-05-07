@@ -18,7 +18,7 @@
     blue:    { dark: '#60a5fa', light: '#2563eb', label: 'Blue'    },
     orange:  { dark: '#f97316', light: '#c2410c', label: 'Orange'  },
   };
-  const DEFAULT_KEY = 'lime';
+  const DEFAULT_KEY = 'orange';
 
   const wrap   = document.getElementById('accentPicker');
   const btn    = document.getElementById('accentToggle');
