@@ -1,69 +1,97 @@
-<section class="section timeline" id="timeline">
+<section class="section timeline-section" id="timeline">
   <div class="container">
     <div class="section__head reveal">
       <span class="eyebrow">Trajectory</span>
       <h2 class="section-title">A working <em>career</em></h2>
       <p class="section-lead">
-        Roles, study, and the certs that mark the milestones. Click any
-        node to expand the detail.
+        Roles, study, and certs in one chronological view. Click any
+        card to expand the detail.
       </p>
     </div>
 
     {%- comment -%}
-      Build a unified, year-sorted list from three data files. Each entry
-      gets { year, type, title, org, detail }. Year is the START year for
-      roles + the year for certs and education completion.
+      Build a sort-key string of the form "YYYY|sortbias|index" so
+      newest-first sort is clean. We split the rendered list back out
+      by index after sorting, looking up the original record.
     {%- endcomment -%}
-    {%- assign items = "" | split: "" -%}
+
+    {%- assign keys = "" | split: "" -%}
 
     {%- for r in site.data.experience.roles -%}
-      {%- assign year = r.start | default: r.end | default: "—" -%}
-      {%- capture entry -%}{{ year }}|work|{{ r.start }}|{{ r.end }}|{{ r.role }}|{{ r.org }}|{{ r.bullets | join: " · " }}{%- endcapture -%}
-      {%- assign items = items | push: entry -%}
+      {%- assign year = r.start | default: r.end | default: "0000" -%}
+      {%- if r.end == "Present" or r.end == "present" -%}{%- assign year = "9999" -%}{%- endif -%}
+      {%- capture k -%}{{ year }}|0|work|{{ forloop.index0 }}{%- endcapture -%}
+      {%- assign keys = keys | push: k -%}
     {%- endfor -%}
 
     {%- for e in site.data.education -%}
-      {%- assign yr = e.year | default: "—" -%}
-      {%- capture entry -%}{{ yr }}|education|{{ yr }}||{{ e.qualification }}|{{ e.institution }}|{{ e.detail }}{%- endcapture -%}
-      {%- assign items = items | push: entry -%}
+      {%- assign year = e.year | default: "0000" -%}
+      {%- if year contains "Expected" -%}{%- assign year = "9999" -%}{%- endif -%}
+      {%- capture k -%}{{ year }}|1|education|{{ forloop.index0 }}{%- endcapture -%}
+      {%- assign keys = keys | push: k -%}
     {%- endfor -%}
 
     {%- for c in site.data.credentials -%}
-      {%- assign yr = c.year | default: "—" -%}
-      {%- capture entry -%}{{ yr }}|cert|{{ yr }}||{{ c.name }}|{{ c.issuer }}|{%- endcapture -%}
-      {%- assign items = items | push: entry -%}
+      {%- assign year = c.year | default: "0000" -%}
+      {%- capture k -%}{{ year }}|2|cert|{{ forloop.index0 }}{%- endcapture -%}
+      {%- assign keys = keys | push: k -%}
     {%- endfor -%}
 
-    {%- assign sorted = items | sort | reverse -%}
+    {%- assign sorted = keys | sort | reverse -%}
 
-    <ol class="timeline__track reveal">
-      {%- for raw in sorted -%}
-        {%- assign parts = raw | split: "|" -%}
-        {%- assign type = parts[1] -%}
-        {%- assign start = parts[2] -%}
-        {%- assign endd = parts[3] -%}
-        {%- assign title = parts[4] -%}
-        {%- assign org = parts[5] -%}
-        {%- assign detail = parts[6] -%}
+    <ol class="timeline reveal" aria-label="Career timeline">
+      {%- for k in sorted -%}
+        {%- assign parts = k | split: "|" -%}
+        {%- assign type = parts[2] -%}
+        {%- assign idx = parts[3] | plus: 0 -%}
 
-        {%- if start and start != "" -%}
-          {%- if endd and endd != "" -%}{%- assign date = start | append: " – " | append: endd -%}
-          {%- else -%}{%- assign date = start -%}{%- endif -%}
-        {%- else -%}{%- assign date = parts[0] -%}{%- endif -%}
+        {%- if type == "work" -%}
+          {%- assign r = site.data.experience.roles[idx] -%}
+          {%- assign date_label = r.start | append: " – " | append: r.end -%}
+          {%- assign type_label = "Role" -%}
+          {%- assign title = r.role -%}
+          {%- assign org = r.org -%}
+          {%- assign bullets = r.bullets -%}
+          {%- assign detail = nil -%}
+        {%- elsif type == "education" -%}
+          {%- assign e = site.data.education[idx] -%}
+          {%- assign date_label = e.year -%}
+          {%- assign type_label = "Education" -%}
+          {%- assign title = e.qualification -%}
+          {%- assign org = e.institution -%}
+          {%- assign bullets = nil -%}
+          {%- assign detail = e.detail -%}
+        {%- else -%}
+          {%- assign c = site.data.credentials[idx] -%}
+          {%- assign date_label = c.year | default: "—" -%}
+          {%- assign type_label = "Cert" -%}
+          {%- assign title = c.name -%}
+          {%- assign org = c.issuer -%}
+          {%- assign bullets = nil -%}
+          {%- assign detail = nil -%}
+        {%- endif -%}
 
-        <li class="tl-item tl-item--{{ type }}">
-          <span class="tl-item__node" aria-hidden="true"></span>
-          <details class="tl-item__details">
-            <summary class="tl-item__summary">
-              <span class="tl-item__date">{{ date }}</span>
-              <span class="tl-item__type">{{ type }}</span>
-              <span class="tl-item__title">{{ title }}</span>
-              {%- if org and org != "" -%}<span class="tl-item__org">{{ org }}</span>{%- endif -%}
-            </summary>
-            {%- if detail and detail != "" -%}
-              <p class="tl-item__detail">{{ detail }}</p>
+        <li class="tl-item" data-type="{{ type }}">
+          <span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-card">
+            <div class="tl-card__head">
+              <span class="tl-date">{{ date_label }}</span>
+              <span class="tl-type">{{ type_label }}</span>
+            </div>
+            <h4 class="tl-title">{{ title }}</h4>
+            {%- if org and org != "" -%}<p class="tl-org">{{ org }}</p>{%- endif -%}
+            {%- if bullets or detail -%}
+              <details class="tl-details">
+                <summary>View details</summary>
+                {%- if bullets -%}
+                  <ul>{%- for b in bullets -%}<li>{{ b }}</li>{%- endfor -%}</ul>
+                {%- endif -%}
+                {%- if detail and detail != "" -%}
+                  <p>{{ detail }}</p>
+                {%- endif -%}
+              </details>
             {%- endif -%}
-          </details>
+          </div>
         </li>
       {%- endfor -%}
     </ol>
