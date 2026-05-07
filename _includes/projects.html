@@ -10,13 +10,29 @@
     </div>
 
     {%- assign projects = site.data.projects -%}
-    <div class="projects__grid">
+    {%- comment -%} Build the list of unique categories for filter chips. {%- endcomment -%}
+    {%- assign cats_seen = "" | split: "" -%}
+    {%- for p in projects limit: 8 -%}
+      {%- unless cats_seen contains p.category -%}
+        {%- assign cats_seen = cats_seen | push: p.category -%}
+      {%- endunless -%}
+    {%- endfor -%}
+
+    <div class="proj-filter reveal" role="tablist" aria-label="Filter projects by category">
+      <button type="button" class="proj-filter__btn is-active" role="tab" aria-selected="true" data-filter="all">All</button>
+      {% for c in cats_seen %}
+        <button type="button" class="proj-filter__btn" role="tab" aria-selected="false" data-filter="{{ c | downcase | replace: ' ', '-' | replace: '+', 'plus' }}">{{ c }}</button>
+      {% endfor %}
+    </div>
+
+    <div class="projects__grid" id="projectsGrid">
       {% for p in projects limit: 8 %}
         {% if p.size == "lg" %}{% assign size_class = "proj-card--lg" %}
         {% elsif p.size == "md" %}{% assign size_class = "proj-card--md" %}
         {% else %}{% assign size_class = "" %}{% endif %}
+        {%- assign cat_slug = p.category | downcase | replace: ' ', '-' | replace: '+', 'plus' -%}
 
-        <a href="{{ p.url | relative_url }}" class="proj-card {{ size_class }} reveal" style="--delay: {{ forloop.index0 | times: 80 }}ms" aria-label="{{ p.title | escape }}">
+        <a href="{{ p.url | relative_url }}" class="proj-card {{ size_class }} reveal" style="--delay: {{ forloop.index0 | times: 80 }}ms" aria-label="{{ p.title | escape }}" data-category="{{ cat_slug }}">
           <div class="proj-card__media">
             {% if p.image %}
               {% include picture.html src=p.image alt=p.title loading="lazy" sizes="(max-width: 900px) 100vw, 50vw" %}
