@@ -16,10 +16,11 @@
   <div class="chat__body" id="chatBody" aria-live="polite"></div>
 
   <div class="chat__suggestions" id="chatSuggestions" role="group" aria-label="Suggested questions">
-    <button type="button" class="chat__chip" data-q="What AI projects has Paul built?">What AI projects?</button>
-    <button type="button" class="chat__chip" data-q="What's Paul's tech stack?">Tech stack?</button>
-    <button type="button" class="chat__chip" data-q="Tell me about the NHS Aurora project.">NHS work?</button>
-    <button type="button" class="chat__chip" data-q="Is Paul available for hire?">Availability?</button>
+    <button type="button" class="chat__chip" data-q="What are you working on right now?">Currently working on?</button>
+    <button type="button" class="chat__chip" data-q="Tell me about your AI agent work.">AI agent work?</button>
+    <button type="button" class="chat__chip" data-q="What was the NHS project about?">NHS project?</button>
+    <button type="button" class="chat__chip" data-q="Are you available for hire?">Available for hire?</button>
+    <button type="button" class="chat__chip" data-q="What's your tech stack?">Your tech stack?</button>
   </div>
 
   <form class="chat__form" id="chatForm" autocomplete="off">
@@ -27,7 +28,7 @@
       type="text"
       class="chat__input"
       id="chatInput"
-      placeholder="Ask anything about Paul's work..."
+      placeholder="Ask me anything..."
       aria-label="Your message"
       maxlength="500"
     />
@@ -37,7 +38,6 @@
   </form>
 
   <p class="chat__disclaimer">
-    AI-powered — answers based on Paul's portfolio content. Be polite to the bot;
-    Paul will see if it argues back.
+    AI-powered — this is a digital version of me, trained on my portfolio.
   </p>
 </div>

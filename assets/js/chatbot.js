@@ -61,15 +61,18 @@
     if (body.dataset.booted) return;
     body.dataset.booted = '1';
     const greeting =
-      "Hi — I'm a small AI built into Paul's portfolio. " +
-      "Ask me about Paul's projects, tech stack, NHS work, or how to get in touch.";
+      "Hey — Paul here, sort of. Ask me about my projects, the NHS work, " +
+      "tech stack, or how to get in touch.";
     appendMsg(greeting, 'bot');
     showSuggestions(true);
   }
 
-  /* ------------- demo mode fallback ------------- */
-  // Used when no ENDPOINT is configured. Pulls answers from the terminal
-  // data blob (same data set that powers the terminal).
+  /* ------------- offline fallback -------------
+   * Used when no ENDPOINT is configured. Pulls answers from the same
+   * structured-data blob the terminal uses. Speaks in first person —
+   * the visitor doesn't need to know whether they're talking to the
+   * live model or the static fallback.
+   */
   function demoAnswer(question) {
     const q = question.toLowerCase();
     let data;
@@ -78,44 +81,57 @@
       if (node) data = JSON.parse(node.textContent);
     } catch {}
 
-    const intro = "(Demo mode — the live chatbot isn't deployed yet, so I'm answering from the structured data on the page. ";
-    const tail  = "Try the Terminal button for the full set of answers, or email Paul directly.)";
+    if (!data) {
+      return "Hmm — can't read the page data on this device. Best to email me directly: paulmcneill1989@hotmail.co.uk.";
+    }
 
-    if (!data) return intro + "I can't read the page data right now. " + tail;
-
-    if (/(stack|tech|skill)/.test(q)) {
+    if (/(stack|tech|skill|tools|languages)/.test(q)) {
       const tiers = (data.skills?.tiers || []).map(t =>
         `${t.label}: ${(t.items || []).map(i => i.name).join(', ')}`).join('\n\n');
-      return `Paul's stack, by tier:\n\n${tiers}`;
+      return `Here's my stack, grouped by how often I reach for it:\n\n${tiers}`;
     }
-    if (/(project|work|build|nhs|aurora|aac|crm)/.test(q)) {
+    if (/(nhs|aurora|aac|crm|healthcare|industrial|domiciliary)/.test(q)) {
       const list = (data.projects || []).slice(0, 5).map(p =>
         `• ${p.title} — ${p.impact || p.description}`).join('\n');
-      return `Recent projects:\n\n${list}\n\nFor any one of them, type 'paul --project <name>' in the terminal.`;
+      return `Recent stuff I've shipped:\n\n${list}\n\nWant the full write-up on any of them? Click through from the projects section, or open the terminal and try 'paul --project aurora'.`;
     }
-    if (/(hire|available|job|role|opportun)/.test(q)) {
-      return data.profile?.availability ||
-        "Paul is open to AI engineering and ML opportunities — drop a line at paulmcneill1989@hotmail.co.uk.";
+    if (/(project|work|build|portfolio)/.test(q)) {
+      const list = (data.projects || []).slice(0, 5).map(p =>
+        `• ${p.title} — ${p.impact || p.description}`).join('\n');
+      return `These are the ones I'd point a recruiter at first:\n\n${list}`;
     }
-    if (/(contact|email|reach|message)/.test(q)) {
-      return `Email: ${data.profile?.contact?.email}\nGitHub: ${data.profile?.contact?.github}\nLinkedIn: ${data.profile?.contact?.linkedin}`;
+    if (/(hire|available|job|role|opportun|freelance|contract)/.test(q)) {
+      return (data.profile?.availability ||
+        "Aye, I'm open to AI engineering, ML, and full-stack roles — full-time, contract, or freelance.") +
+        ` Best route is email: ${data.profile?.contact?.email || 'paulmcneill1989@hotmail.co.uk'}.`;
     }
-    if (/(experience|history|cv|resume|career)/.test(q)) {
+    if (/(contact|email|reach|message|connect)/.test(q)) {
+      return `Easiest is email: ${data.profile?.contact?.email}\nLinkedIn: ${data.profile?.contact?.linkedin}\nGitHub: ${data.profile?.contact?.github}`;
+    }
+    if (/(experience|history|cv|resume|career|years|background)/.test(q)) {
       const roles = (data.experience?.roles || []).map(r =>
-        `${r.role} @ ${r.org} (${r.start}–${r.end})`).join('\n');
-      return `Work history:\n\n${roles}`;
+        `• ${r.role} @ ${r.org} (${r.start}–${r.end})`).join('\n');
+      return `Over 15 years across IT, data, and engineering. Roles in order:\n\n${roles}`;
     }
-    if (/(education|study|degree|university|open)/.test(q)) {
+    if (/(education|study|degree|university|open|m816)/.test(q)) {
       const ed = (data.education || []).map(e =>
-        `${e.qualification} — ${e.institution} ${e.year ? '(' + e.year + ')' : ''}`).join('\n');
-      return `Education:\n\n${ed}`;
+        `• ${e.qualification} — ${e.institution} ${e.year ? '(' + e.year + ')' : ''}`).join('\n');
+      return `Education-wise:\n\n${ed}`;
     }
-    if (/(cert|membership|qualif)/.test(q)) {
+    if (/(cert|membership|qualif|gcp|aws|tensorflow)/.test(q)) {
       const certs = (data.credentials || []).map(c =>
         `• ${c.name} — ${c.issuer}${c.year ? ' (' + c.year + ')' : ''}`).join('\n');
-      return `Certifications & memberships:\n\n${certs}`;
+      return `Certs and memberships:\n\n${certs}`;
     }
-    return intro + "I'd answer that better with the live model. For now, try asking about Paul's projects, stack, experience, education, or availability. " + tail;
+    if (/(current|now|right now|this week|this month|today)/.test(q)) {
+      return data.profile?.current ||
+        "Working on Aurora — Northern Ireland NHSCT-aligned analytics — and the M816 Data Management module at the OU.";
+    }
+    if (/(about|who|what do you do|introduce)/.test(q)) {
+      return data.profile?.bio_short ||
+        "AI engineer, web developer, and data analyst from Northern Ireland with 15+ years across IT, data, and engineering.";
+    }
+    return "Honestly, not sure I've got that on the site. Best to email me directly: paulmcneill1989@hotmail.co.uk — happy to chat properly.";
   }
 
   /* ------------- live mode ------------- */
@@ -134,14 +150,14 @@
       throw new Error(`Server replied ${res.status}: ${txt || 'no body'}`);
     }
     const data = await res.json();
-    return data.reply || "(empty response)";
+    return data.reply || "Hmm, blank reply on my end — try again?";
   }
 
   /* ------------- send a message ------------- */
   async function ask(question) {
     if (!question || !question.trim()) return;
     if (userMsgCount >= MAX_USER_MSGS_PER_SESSION) {
-      appendMsg("That's enough for one session — drop Paul a real email instead.", 'bot');
+      appendMsg("Right, that's plenty for one sitting — if you've got more, fire me an email at paulmcneill1989@hotmail.co.uk and I'll reply properly.", 'bot');
       return;
     }
     showSuggestions(false);
@@ -162,7 +178,7 @@
     } catch (e) {
       typing.remove();
       appendMsg(
-        "Something went wrong reaching the assistant. Try again, or email Paul directly at paulmcneill1989@hotmail.co.uk.",
+        "Couldn't reach my brain just now — give it another go, or email me directly: paulmcneill1989@hotmail.co.uk.",
         'bot',
         { error: true }
       );
