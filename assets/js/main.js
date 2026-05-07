@@ -11,6 +11,13 @@
     });
   }
 
+  /* -------- Hide broken shields.io / ghchart badges ------------------
+     A 404 / rate-limit on the badge service shouldn't leave a busted
+     image icon in the bento. Listen once, hide on error. */
+  document.querySelectorAll('img[src*="shields.io"], img[src*="ghchart.rshah.org"]').forEach(img => {
+    img.addEventListener('error', () => { img.style.display = 'none'; }, { once: true });
+  });
+
   const nav        = document.getElementById('nav');
   const navToggle  = document.getElementById('navToggle');
   const navLinks   = document.getElementById('navLinks');
