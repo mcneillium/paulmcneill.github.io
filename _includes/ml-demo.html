@@ -1,0 +1,65 @@
+<section class="section ml-lab" id="lab">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow">Live Lab</span>
+      <h2 class="section-title">Try a model in your <em>browser</em></h2>
+      <p class="section-lead">
+        A small CNN trained on movie reviews, running entirely on your device —
+        no server, no upload. Type a sentence and the model classifies its
+        sentiment in milliseconds. Lazy-loads when this section enters view.
+      </p>
+    </div>
+
+    <div class="ml-card reveal">
+      <form class="ml-card__form" id="mlForm" autocomplete="off">
+        <label class="ml-card__label" for="mlInput">Type any sentence</label>
+        <div class="ml-card__row">
+          <input
+            type="text"
+            id="mlInput"
+            class="ml-card__input"
+            placeholder="e.g. This film was a quietly brilliant surprise."
+            maxlength="200"
+            autocomplete="off"
+          >
+          <button type="submit" class="btn btn-primary ml-card__btn" id="mlRun" disabled>
+            <span class="ml-card__btn-text">Loading model…</span>
+          </button>
+        </div>
+        <div class="ml-card__samples" aria-label="Try a sample">
+          <button type="button" class="ml-chip" data-sample="A taut, surprising thriller — easily the best thing I've seen this year.">Positive sample</button>
+          <button type="button" class="ml-chip" data-sample="Disappointing, predictable, and at least thirty minutes too long.">Negative sample</button>
+          <button type="button" class="ml-chip" data-sample="It was a film. Things happened. Then it ended.">Neutral sample</button>
+        </div>
+      </form>
+
+      <div class="ml-card__result" id="mlResult" aria-live="polite">
+        <div class="ml-card__placeholder">
+          Awaiting input — try a sample or type your own.
+        </div>
+      </div>
+
+      <dl class="ml-card__meta">
+        <div><dt>Model</dt><dd>sentiment-CNN v1</dd></div>
+        <div><dt>Size</dt><dd id="mlSize">—</dd></div>
+        <div><dt>Inference</dt><dd id="mlTime">—</dd></div>
+        <div><dt>Runtime</dt><dd>TensorFlow.js · WebGL</dd></div>
+      </dl>
+
+      <details class="ml-card__under-hood">
+        <summary>Under the hood</summary>
+        <ol>
+          <li><strong>Tokenise</strong> — split your sentence on whitespace and look up each word in a 20k-word vocabulary.</li>
+          <li><strong>Encode</strong> — map words to integer indices, pad or truncate to length 100.</li>
+          <li><strong>Inference</strong> — feed the sequence through a small CNN (embedding → conv → global max pool → dense).</li>
+          <li><strong>Decode</strong> — output is a single value 0–1 — closer to 1 is more positive.</li>
+        </ol>
+        <p>
+          Model and vocabulary are fetched from the public TensorFlow.js model
+          host on first use, then cached by your browser. No data leaves your
+          device. The whole forward pass runs on your GPU via WebGL.
+        </p>
+      </details>
+    </div>
+  </div>
+</section>

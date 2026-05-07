@@ -1,0 +1,107 @@
+<div class="agent-viz reveal" id="agentViz" aria-label="Animated visualisation of an AI agent reasoning through a task">
+  <div class="agent-viz__head">
+    <span class="eyebrow">In motion</span>
+    <h3 class="agent-viz__title">See how an agent <em>thinks</em></h3>
+    <p class="agent-viz__lead">
+      Hand-rolled animation of a research agent — input, planning, tool use,
+      memory, synthesis, output. Auto-plays once when it scrolls into view.
+    </p>
+  </div>
+
+  <ol class="agent-viz__stages">
+    <li class="agent-stage" data-step="0">
+      <div class="agent-stage__icon" aria-hidden="true">{% include icon.html name="quote" class="icon" %}</div>
+      <div class="agent-stage__body">
+        <span class="agent-stage__label">User input</span>
+        <p class="agent-stage__text">"Analyse this quarterly report and summarise the key findings."</p>
+      </div>
+    </li>
+
+    <li class="agent-stage" data-step="1">
+      <div class="agent-stage__icon" aria-hidden="true">{% include icon.html name="sparkles" class="icon" %}</div>
+      <div class="agent-stage__body">
+        <span class="agent-stage__label">Planning</span>
+        <p class="agent-stage__text">Decompose into sub-tasks:</p>
+        <ul class="agent-stage__list">
+          <li>Extract text</li>
+          <li>Identify sections</li>
+          <li>Analyse financials</li>
+          <li>Detect trends</li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="agent-stage" data-step="2">
+      <div class="agent-stage__icon" aria-hidden="true">{% include icon.html name="cpu" class="icon" %}</div>
+      <div class="agent-stage__body">
+        <span class="agent-stage__label">Tool selection</span>
+        <p class="agent-stage__text">Choose tools for each sub-task:</p>
+        <ul class="agent-stage__pills">
+          <li>document.parse</li>
+          <li>nlp.classify</li>
+          <li>chart.render</li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="agent-stage" data-step="3">
+      <div class="agent-stage__icon" aria-hidden="true">{% include icon.html name="terminal" class="icon" %}</div>
+      <div class="agent-stage__body">
+        <span class="agent-stage__label">Execution loop</span>
+        <p class="agent-stage__text">Call each tool, capture output:</p>
+        <ul class="agent-stage__log">
+          <li><code>document.parse(report.pdf)</code> → 28 pages, 14 tables</li>
+          <li><code>nlp.classify(sections)</code> → 4 categories</li>
+          <li><code>chart.render(trends)</code> → 3 charts</li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="agent-stage" data-step="4">
+      <div class="agent-stage__icon" aria-hidden="true">{% include icon.html name="database" class="icon" %}</div>
+      <div class="agent-stage__body">
+        <span class="agent-stage__label">Memory</span>
+        <p class="agent-stage__text">Findings stored in working memory:</p>
+        <div class="agent-stage__cards">
+          <span>Revenue +12% YoY</span>
+          <span>Cost ratio improved</span>
+          <span>EMEA outperformed</span>
+        </div>
+      </div>
+    </li>
+
+    <li class="agent-stage" data-step="5">
+      <div class="agent-stage__icon" aria-hidden="true">{% include icon.html name="sparkles" class="icon" %}</div>
+      <div class="agent-stage__body">
+        <span class="agent-stage__label">Synthesis</span>
+        <p class="agent-stage__text">Combine findings into a coherent narrative; check against the original prompt.</p>
+      </div>
+    </li>
+
+    <li class="agent-stage" data-step="6">
+      <div class="agent-stage__icon" aria-hidden="true">{% include icon.html name="arrow-up-right" class="icon" %}</div>
+      <div class="agent-stage__body">
+        <span class="agent-stage__label">Output</span>
+        <p class="agent-stage__text">"Q3 revenue grew 12% YoY driven by EMEA. Margin improved 180bps as cost ratios fell. Forecast a softer Q4 on currency drag."</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="agent-viz__controls" role="group" aria-label="Animation controls">
+    <button type="button" class="agent-viz__btn" id="agentPlayPause" aria-pressed="false" aria-label="Play">
+      {% include icon.html name="play" class="icon" %}
+      <span class="agent-viz__btn-text">Play</span>
+    </button>
+    <button type="button" class="agent-viz__btn" id="agentStep" aria-label="Step forward">
+      {% include icon.html name="arrow-right" class="icon" %}
+      <span class="agent-viz__btn-text">Step</span>
+    </button>
+    <button type="button" class="agent-viz__btn" id="agentReset" aria-label="Reset">
+      <span class="agent-viz__btn-text">Reset</span>
+    </button>
+    <div class="agent-viz__speed" role="radiogroup" aria-label="Playback speed">
+      <button type="button" class="agent-viz__speed-btn is-active" data-speed="1" role="radio" aria-checked="true">1×</button>
+      <button type="button" class="agent-viz__speed-btn" data-speed="2" role="radio" aria-checked="false">2×</button>
+    </div>
+  </div>
+</div>

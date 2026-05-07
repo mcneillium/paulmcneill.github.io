@@ -31,29 +31,34 @@
   onScroll();
 
   /* -------- Mobile menu --------------------------------------------- */
+  let menuOpenedByToggle = false; // distinguishes "close to restore focus" vs "close on link click"
+  let lastFocused = null;
+
+  const focusable = () => navLinks ? navLinks.querySelectorAll('a, button') : [];
+  function closeMenu({ restoreFocus = true } = {}) {
+    if (!navLinks || !navToggle) return;
+    navToggle.classList.remove('open');
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    if (restoreFocus && lastFocused) lastFocused.focus();
+    menuOpenedByToggle = false;
+  }
+  function openMenu() {
+    if (!navLinks || !navToggle) return;
+    lastFocused = document.activeElement;
+    menuOpenedByToggle = true;
+    navToggle.classList.add('open');
+    navLinks.classList.add('open');
+    navToggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    const first = focusable()[0];
+    if (first) first.focus();
+  }
   if (navToggle && navLinks) {
-    let lastFocused = null;
-    const focusable = () => navLinks.querySelectorAll('a, button');
-    const closeMenu = () => {
-      navToggle.classList.remove('open');
-      navLinks.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-      if (lastFocused) lastFocused.focus();
-    };
-    const openMenu = () => {
-      lastFocused = document.activeElement;
-      navToggle.classList.add('open');
-      navLinks.classList.add('open');
-      navToggle.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-      const first = focusable()[0];
-      if (first) first.focus();
-    };
     navToggle.addEventListener('click', () => {
       navLinks.classList.contains('open') ? closeMenu() : openMenu();
     });
-    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
     document.addEventListener('keydown', (e) => {
       if (!navLinks.classList.contains('open')) return;
       if (e.key === 'Escape') { closeMenu(); return; }
@@ -67,17 +72,27 @@
     });
   }
 
-  /* -------- Smooth anchor scroll ------------------------------------ */
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const id = link.getAttribute('href');
-      if (!id || id === '#') return;
-      const target = document.querySelector(id);
-      if (!target) return;
-      e.preventDefault();
-      const top = target.getBoundingClientRect().top + window.scrollY - 60;
-      window.scrollTo({ top, behavior: reduced ? 'auto' : 'smooth' });
-    });
+  /* -------- Smooth anchor scroll ------------------------------------
+   * Single delegated handler so we close the mobile menu before
+   * scrolling, and we don't restore focus to the hamburger (which
+   * would scroll the viewport back to the top mid-flight).
+   */
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href || href === '#') return;
+    const target = document.querySelector(href);
+    if (!target) return;
+    e.preventDefault();
+
+    // Close mobile menu without restoring focus — the user is navigating away
+    if (navLinks && navLinks.classList.contains('open')) {
+      closeMenu({ restoreFocus: false });
+    }
+
+    const top = target.getBoundingClientRect().top + window.scrollY - 60;
+    window.scrollTo({ top, behavior: reduced ? 'auto' : 'smooth' });
   });
 
   /* -------- Reveal on scroll ---------------------------------------- */

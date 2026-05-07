@@ -1,0 +1,15 @@
+{
+  "name": "portfolio-bot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cloudflare Worker backing the 'Talk to Paul' chatbot on paulmartinmcneill.com",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail",
+    "secret:anthropic": "wrangler secret put ANTHROPIC_API_KEY"
+  },
+  "devDependencies": {
+    "wrangler": "^3.78.0"
+  }
+}
