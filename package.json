@@ -5,12 +5,14 @@
   "scripts": {
     "optimize:images": "node scripts/optimize-images.js",
     "generate:assets": "node scripts/generate-assets.js",
+    "build:kb": "node scripts/build-knowledge-base.js",
     "link-check": "node scripts/link-check.js",
     "build": "LANG=C.utf8 bundle exec jekyll build",
     "serve": "LANG=C.utf8 bundle exec jekyll serve --livereload",
     "qa": "npm run build && npm run link-check"
   },
   "devDependencies": {
+    "js-yaml": "^4.1.1",
     "sharp": "^0.34.5"
   }
 }

@@ -36,10 +36,41 @@
   function appendMsg(text, who, opts = {}) {
     const div = document.createElement('div');
     div.className = `chat__msg chat__msg--${who}${opts.error ? ' chat__msg--err' : ''}`;
+    // textContent — never innerHTML — so any markup in the reply is safely escaped
     div.textContent = text;
     body.appendChild(div);
+    if (opts.sources && opts.sources.length) {
+      body.appendChild(renderSources(opts.sources));
+    }
     body.scrollTop = body.scrollHeight;
     return div;
+  }
+
+  function renderSources(sources) {
+    const det = document.createElement('details');
+    det.className = 'chat-sources';
+    const sum = document.createElement('summary');
+    sum.textContent = `How I found this answer (${sources.length} source${sources.length === 1 ? '' : 's'})`;
+    det.appendChild(sum);
+    const list = document.createElement('ul');
+    list.className = 'chat-sources__list';
+    sources.forEach(s => {
+      const li = document.createElement('li');
+      li.className = 'chat-source';
+      const cat = document.createElement('span');
+      cat.className = 'chat-source__cat';
+      cat.textContent = s.category || 'context';
+      const sc = document.createElement('span');
+      sc.className = 'chat-source__score';
+      sc.textContent = s.score != null ? s.score.toFixed(2) : '—';
+      const tx = document.createElement('span');
+      tx.className = 'chat-source__text';
+      tx.textContent = s.text || '';
+      li.appendChild(cat); li.appendChild(sc); li.appendChild(tx);
+      list.appendChild(li);
+    });
+    det.appendChild(list);
+    return det;
   }
 
   function appendTyping() {
@@ -147,10 +178,17 @@
     });
     if (!res.ok) {
       const txt = await res.text().catch(() => '');
+      // Forward 429 (rate-limited) message verbatim if the server provided one
+      if (res.status === 429) {
+        try { const j = JSON.parse(txt); if (j.reply) return { reply: j.reply, sources: [] }; } catch {}
+      }
       throw new Error(`Server replied ${res.status}: ${txt || 'no body'}`);
     }
     const data = await res.json();
-    return data.reply || "Hmm, blank reply on my end — try again?";
+    return {
+      reply: data.reply || "Hmm, blank reply on my end — try again?",
+      sources: Array.isArray(data.sources) ? data.sources : [],
+    };
   }
 
   /* ------------- send a message ------------- */
@@ -169,12 +207,12 @@
 
     const typing = appendTyping();
     try {
-      const reply = ENDPOINT
+      const result = ENDPOINT
         ? await liveAnswer(question)
-        : await new Promise(r => setTimeout(() => r(demoAnswer(question)), 350));
+        : await new Promise(r => setTimeout(() => r({ reply: demoAnswer(question), sources: [] }), 350));
       typing.remove();
-      appendMsg(reply, 'bot');
-      conversation.push({ role: 'assistant', content: reply });
+      appendMsg(result.reply, 'bot', { sources: result.sources });
+      conversation.push({ role: 'assistant', content: result.reply });
     } catch (e) {
       typing.remove();
       appendMsg(

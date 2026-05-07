@@ -1,0 +1,137 @@
+---
+layout: blank
+title: "Privacy"
+permalink: /privacy/
+description: "Privacy practices for paulmartinmcneill.com — what's collected, what isn't, and why."
+---
+
+<style>
+  .priv {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: clamp(2.5rem, 6vw, 5rem) clamp(1.25rem, 4vw, 2.5rem) 5rem;
+  }
+  .priv__topbar {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 1rem; flex-wrap: wrap;
+    padding-bottom: 1.5rem; margin-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .priv__back {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-family: var(--font-mono); font-size: 0.78rem;
+    letter-spacing: 0.04em; color: var(--text-dim); text-transform: uppercase;
+  }
+  .priv__back:hover { color: var(--accent); }
+  .priv h1 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em; line-height: 1.1;
+    margin: 0.4rem 0 0.4rem;
+  }
+  .priv .lede {
+    font-family: var(--font-mono); font-size: 0.85rem;
+    color: var(--accent); letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .priv h2 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+    margin: 2.5rem 0 0.85rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .priv p, .priv li { color: var(--text-dim); line-height: 1.7; }
+  .priv ul { padding-left: 1.2rem; margin: 0.5rem 0; }
+  .priv li { margin: 0.3rem 0; }
+  .priv strong { color: var(--text); font-weight: 600; }
+  .priv code { font-family: var(--font-mono); font-size: 0.92em; background: rgba(255,255,255,0.05); padding: 0.1em 0.35em; border-radius: 4px; }
+  [data-theme="light"] .priv code { background: rgba(0,0,0,0.05); }
+  .priv__updated { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-faint); letter-spacing: 0.04em; text-transform: uppercase; }
+</style>
+
+<div class="priv">
+  <div class="priv__topbar">
+    <a class="priv__back" href="{{ '/' | relative_url }}">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+      Back to portfolio
+    </a>
+    <span class="priv__updated">Last updated · May 2026</span>
+  </div>
+
+  <span class="lede">Privacy</span>
+  <h1>What this site does and doesn't do with your data.</h1>
+
+  <p>
+    Short version: I don't track you. There's no analytics tag, no advertising
+    pixel, and no sign-up. The only things stored on your device are your own
+    UI preferences. The chatbot processes your messages but doesn't keep them.
+  </p>
+
+  <h2>What I store on your device</h2>
+  <p>
+    The site uses <code>localStorage</code> to remember three preferences,
+    each tied to a fixed allow-list:
+  </p>
+  <ul>
+    <li><strong>Theme</strong> — <code>dark</code> or <code>light</code>.</li>
+    <li><strong>Accent colour</strong> — one of eight preset keys (e.g. <code>orange</code>, <code>cyan</code>).</li>
+    <li><strong>Font theme</strong> — one of six preset keys (e.g. <code>editorial</code>, <code>terminal</code>).</li>
+  </ul>
+  <p>
+    No cookies. No personal data. Clearing your browser storage resets the
+    site to defaults.
+  </p>
+
+  <h2>What the chatbot does with your messages</h2>
+  <p>
+    When you chat with me here, your message is sent to a Cloudflare Worker
+    that runs a small retrieval-augmented-generation pipeline over my
+    portfolio content. The Worker:
+  </p>
+  <ul>
+    <li><strong>Does not log</strong> your messages.</li>
+    <li><strong>Does not retain</strong> them after the response is generated.</li>
+    <li><strong>Does not pass them</strong> to any third-party analytics or training pipeline.</li>
+    <li>Routes them to either Cloudflare Workers AI (Llama 3.1) or the Anthropic API depending on configuration. Both providers have their own privacy policies — they may briefly log requests for abuse prevention, per their stated retention windows, but neither retains for training in the configured mode.</li>
+  </ul>
+  <p>
+    Conversation history is kept in your browser tab only, for the
+    current session. Refresh the page and it's gone.
+  </p>
+
+  <h2>Third parties the site requests from</h2>
+  <p>
+    The site loads a small number of public, cacheable assets from third-party
+    CDNs. None of these involve your personal data:
+  </p>
+  <ul>
+    <li><strong>Google Fonts</strong> — for typography. Logged by Google per their privacy policy.</li>
+    <li><strong>shields.io</strong> — for the GitHub last-commit / stars badges on project cards.</li>
+    <li><strong>ghchart.rshah.org</strong> — for the GitHub contribution graph (lazy-loaded only when you scroll to the section).</li>
+    <li><strong>i.ytimg.com / youtube-nocookie.com</strong> — for video thumbnails and embedded players, only after you click them. The lite-embed pattern means YouTube's tracking scripts don't load until you opt in.</li>
+    <li><strong>storage.googleapis.com</strong> — for the in-browser TensorFlow.js sentiment model, fetched only when the Live Lab section enters your viewport.</li>
+  </ul>
+
+  <h2>What's not on this site</h2>
+  <ul>
+    <li>No Google Analytics. No Facebook pixel. No tracking pixels of any kind.</li>
+    <li>No advertising.</li>
+    <li>No social-network embed scripts.</li>
+    <li>No sign-up form, account creation, or persistent identity.</li>
+  </ul>
+
+  <h2>Your rights</h2>
+  <p>
+    Under UK GDPR you have the right to access, rectification, and erasure
+    of any personal data I hold. I don't hold any. If you've sent me an
+    email at <code>paulmcneill1989@hotmail.co.uk</code>, that email is
+    retained in my mailbox until I prune it. Email me to request its
+    deletion.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Privacy questions: <a href="mailto:paulmcneill1989@hotmail.co.uk">paulmcneill1989@hotmail.co.uk</a>.
+  </p>
+</div>

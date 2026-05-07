@@ -1,0 +1,501 @@
+{
+  "built_at": "2026-05-07T17:57:29.751Z",
+  "embedding_model": null,
+  "chunks": [
+    {
+      "id": "profile.bio",
+      "category": "profile",
+      "text": "Paul Martin McNeill — AI engineer, web developer, and data analyst based in Northern Ireland with over 15 years across IT, data, and engineering roles. Builds production AI systems for healthcare, accessibility, and operational analytics — including NHS Northern Trust dashboards and assistive communication tools. Initiative-taking and technically proficient Machine Learning Engineer and Data Specialist with over 15 years in IT, database systems, and applied data work, and a strong academic and professional background in computing, AI, and data analytics. First-Class BSc (Hons) in Computing from The Open University (2025). Brings expertise in Python, deep learning, and data engineering, alongside experience designing, training, and deploying ML models with TensorFlow, PyTorch, and scikit-learn, and shipping production systems on GCP (Vertex AI), AWS, and Azure. Motivated by intelligent systems that deliver real-world impact through ethical, data-driven design.",
+      "keywords": [
+        "paul",
+        "about",
+        "bio",
+        "who",
+        "background",
+        "northern ireland"
+      ],
+      "tokens": 135
+    },
+    {
+      "id": "profile.current",
+      "category": "current",
+      "text": "What I'm currently working on: Working on Aurora — a Northern Ireland NHSCT-aligned analytics platform. Studying M816 Data Management at the Open University. Open to AI engineering and data roles.",
+      "keywords": [
+        "current",
+        "now",
+        "this week",
+        "this month",
+        "what are you doing"
+      ],
+      "tokens": 30
+    },
+    {
+      "id": "profile.availability",
+      "category": "hiring",
+      "text": "Availability: Currently open to AI engineering, ML, and full-stack web opportunities — full-time, contract, or freelance.",
+      "keywords": [
+        "hire",
+        "available",
+        "job",
+        "role",
+        "opportunity",
+        "freelance",
+        "contract",
+        "looking for work"
+      ],
+      "tokens": 16
+    },
+    {
+      "id": "profile.contact",
+      "category": "contact",
+      "text": "Contact details: Email: paulmcneill1989@hotmail.co.uk LinkedIn: https://www.linkedin.com/in/paul-martin-mcneill-pp GitHub: https://github.com/mcneillium X / Twitter: https://x.com/McNeillium YouTube: https://www.youtube.com/@McNeillium_AI",
+      "keywords": [
+        "contact",
+        "email",
+        "reach",
+        "message",
+        "connect",
+        "linkedin",
+        "github"
+      ],
+      "tokens": 14
+    },
+    {
+      "id": "exp.0",
+      "category": "experience",
+      "text": "Role: Creative Director / Technical Lead at Paramount Perceptions (Self-Employed) (2019–Present) - Lead AI-assisted digital solutions and web applications across healthcare, education, and retail. - Develop data-driven strategies integrating ML insights, cloud services, and automation workflows. - Manage full project lifecycles, ensuring GDPR/ethical compliance, quality, and client satisfaction.",
+      "keywords": [
+        "creative director / technical lead",
+        "paramount perceptions (self-employed)",
+        "experience",
+        "work",
+        "job",
+        "history",
+        "career"
+      ],
+      "tokens": 48
+    },
+    {
+      "id": "exp.1",
+      "category": "experience",
+      "text": "Role: CRM Systems Coordinator at Industrial Temps (2018–2019) - Administered and optimised CRM systems and internal processes. - Trained staff and improved reporting accuracy by 25%+ through process automation.",
+      "keywords": [
+        "crm systems coordinator",
+        "industrial temps",
+        "experience",
+        "work",
+        "job",
+        "history",
+        "career"
+      ],
+      "tokens": 29
+    },
+    {
+      "id": "exp.2",
+      "category": "experience",
+      "text": "Role: IT & Database Systems Manager at Platinum Support & Care Services Ltd (2016–2018) - Built a central Access database integrating staff, clients, and compliance data. - Implemented Power BI dashboards and streamlined data-driven reporting. - Oversaw recruitment, IT infrastructure, and brand modernisation initiatives.",
+      "keywords": [
+        "it & database systems manager",
+        "platinum support & care services ltd",
+        "experience",
+        "work",
+        "job",
+        "history",
+        "career"
+      ],
+      "tokens": 44
+    },
+    {
+      "id": "exp.3",
+      "category": "experience",
+      "text": "Role: Earlier roles at Various - IT support, web design, and e-commerce — providing a strong technical foundation for later leadership work.",
+      "keywords": [
+        "earlier roles",
+        "various",
+        "experience",
+        "work",
+        "job",
+        "history",
+        "career"
+      ],
+      "tokens": 22
+    },
+    {
+      "id": "vol.0",
+      "category": "volunteering",
+      "text": "Volunteering: Digital Volunteer / Technology Advisor at RSPB Rathlin Island Project (2024–Present) - Contribute to Rathlin360.com, showcasing biodiversity and community heritage. - Improve content accessibility, SEO, and mobile responsiveness to broaden reach. - Support conservation and education teams with digital strategy and analytics insights.",
+      "keywords": [
+        "digital volunteer / technology advisor",
+        "rspb rathlin island project",
+        "volunteer",
+        "rspb",
+        "rathlin"
+      ],
+      "tokens": 44
+    },
+    {
+      "id": "edu.0",
+      "category": "education",
+      "text": "BSc (Hons) Computing — First-Class Honours — The Open University (2025). Focus: Artificial Intelligence, Data Analytics, Cloud Computing, Software Engineering.",
+      "keywords": [
+        "education",
+        "study",
+        "degree",
+        "university",
+        "open",
+        "bsc",
+        "m816",
+        "bsc (hons) computing — first-class honours",
+        "the open university"
+      ],
+      "tokens": 20
+    },
+    {
+      "id": "edu.1",
+      "category": "education",
+      "text": "M816 Data Management — The Open University (Expected June 2026). Postgraduate module covering data governance, modelling, and database optimisation.",
+      "keywords": [
+        "education",
+        "study",
+        "degree",
+        "university",
+        "open",
+        "bsc",
+        "m816",
+        "m816 data management",
+        "the open university"
+      ],
+      "tokens": 19
+    },
+    {
+      "id": "edu.2",
+      "category": "education",
+      "text": "EDI Level 3 Diploma in Business & Administration — (2014).",
+      "keywords": [
+        "education",
+        "study",
+        "degree",
+        "university",
+        "open",
+        "bsc",
+        "m816",
+        "edi level 3 diploma in business & administration"
+      ],
+      "tokens": 10
+    },
+    {
+      "id": "proj.0",
+      "category": "project",
+      "text": "Project: Aurora — NHS Digital Transformation Category: AI + Healthcare Impact: Reduced reporting cycle from 5 days to under 4 hours Northern Ireland-specific, NHSCT-aligned analytics platform — operations, finance, workforce, compliance — built on Access/SQL data layers and Power BI. Tech: NHSCT, Power BI, ETL, DAX, GDPR GitHub: https://github.com/mcneillium/Aurora-Domiciliary-Care",
+      "keywords": [
+        "aurora — nhs digital transformation",
+        "ai + healthcare",
+        "nhsct",
+        "power bi",
+        "etl",
+        "dax",
+        "gdpr",
+        "project",
+        "work",
+        "built",
+        "shipped"
+      ],
+      "tokens": 49
+    },
+    {
+      "id": "proj.1",
+      "category": "project",
+      "text": "Project: AI-Powered AAC App Category: AI Accessibility Impact: Predictive AI assistive communication for non-verbal users Mobile + caregiver dashboard that combines on-device prediction, scene understanding, and real-time monitoring for non-verbal users. Tech: React Native, Firebase, LLMs, AAC, Healthcare",
+      "keywords": [
+        "ai-powered aac app",
+        "ai accessibility",
+        "react native",
+        "firebase",
+        "llms",
+        "aac",
+        "healthcare",
+        "project",
+        "work",
+        "built",
+        "shipped"
+      ],
+      "tokens": 38
+    },
+    {
+      "id": "proj.2",
+      "category": "project",
+      "text": "Project: CRM Reporting — Industrial Temps Category: Data Analytics Impact: Consolidated 6+ disconnected sources into a single live dashboard Data quality framework, ETL via Access + Power Query, and Power BI dashboards for placements, client performance, and consultant scorecards. Tech: Power BI, Power Query, ETL, Recruitment",
+      "keywords": [
+        "crm reporting — industrial temps",
+        "data analytics",
+        "power bi",
+        "power query",
+        "etl",
+        "recruitment",
+        "project",
+        "work",
+        "built",
+        "shipped"
+      ],
+      "tokens": 46
+    },
+    {
+      "id": "proj.3",
+      "category": "project",
+      "text": "Project: AI-Enhanced Social Healthcare Management System Category: AI + Healthcare Impact: Real-time safety monitoring with NLP-driven virtual assistant AI-driven platform: client management, NLP virtual assistant, predictive analytics, and real-time safety monitoring for social healthcare delivery. Tech: NLP, Predictive Analytics, Healthcare GitHub: https://github.com/mcneillium/AI_Enhanced_Social_HCMS",
+      "keywords": [
+        "ai-enhanced social healthcare management system",
+        "ai + healthcare",
+        "nlp",
+        "predictive analytics",
+        "healthcare",
+        "project",
+        "work",
+        "built",
+        "shipped"
+      ],
+      "tokens": 42
+    },
+    {
+      "id": "proj.4",
+      "category": "project",
+      "text": "Project: AI Assistant Category: AI Engineering Impact: Natural-language task automation across daily workflows An LLM-powered productivity assistant — fine-tuned models, multiple interface integrations, and real-world automation. Tech: LLMs, Fine-tuning, Automation GitHub: https://github.com/mcneillium/ai_assistant",
+      "keywords": [
+        "ai assistant",
+        "ai engineering",
+        "llms",
+        "fine-tuning",
+        "automation",
+        "project",
+        "work",
+        "built",
+        "shipped"
+      ],
+      "tokens": 32
+    },
+    {
+      "id": "proj.5",
+      "category": "project",
+      "text": "Project: Custom CRM Web Application Category: Web Engineering Impact: In-development CRM consolidating sales, comms, and analytics Custom CRM tailored to streamline business operations — sales management, customer communication, and analytics in a single PWA. Tech: TypeScript, Node.js, PostgreSQL GitHub: https://github.com/mcneillium/",
+      "keywords": [
+        "custom crm web application",
+        "web engineering",
+        "typescript",
+        "node.js",
+        "postgresql",
+        "project",
+        "work",
+        "built",
+        "shipped"
+      ],
+      "tokens": 40
+    },
+    {
+      "id": "proj.6",
+      "category": "project",
+      "text": "Project: Cloud-Based Data Management System Category: Cloud Computing Impact: Hybrid SQL/NoSQL design with cloud-native storage Cloud-native database management system using SQL + NoSQL, designed for resilience and elastic scale. Tech: SQL, NoSQL, Cloud GitHub: https://github.com/mcneillium/CloudBasedDataManagementSystem Demo: https://www.youtube.com/embed/bgKY8KhDIZE",
+      "keywords": [
+        "cloud-based data management system",
+        "cloud computing",
+        "sql",
+        "nosql",
+        "cloud",
+        "project",
+        "work",
+        "built",
+        "shipped"
+      ],
+      "tokens": 37
+    },
+    {
+      "id": "proj.7",
+      "category": "project",
+      "text": "Project: Java Ticket Machine Category: Software Engineering Impact: OOP demonstration with full UI, video walkthrough, and source Java OOP showcase — inheritance, polymorphism, encapsulation — with a responsive UI and embedded demo video. Tech: Java, OOP GitHub: https://github.com/mcneillium/Ticket-Machine-System Demo: https://www.youtube.com/embed/APM7f09MWmM",
+      "keywords": [
+        "java ticket machine",
+        "software engineering",
+        "java",
+        "oop",
+        "project",
+        "work",
+        "built",
+        "shipped"
+      ],
+      "tokens": 40
+    },
+    {
+      "id": "skill.0",
+      "category": "skills",
+      "text": "Skill tier — Daily driver (Tools I reach for first.): Python, TypeScript, React, Node.js, Power BI, Pandas, Git, OpenAI API, Claude API",
+      "keywords": [
+        "skill",
+        "stack",
+        "tech",
+        "tools",
+        "daily driver"
+      ],
+      "tokens": 22
+    },
+    {
+      "id": "skill.1",
+      "category": "skills",
+      "text": "Skill tier — Strong working knowledge (Comfortable shipping in production.): TensorFlow, Scikit-learn, LangChain, Next.js, PostgreSQL, Firebase, Docker, Azure, AWS, DAX / Power Query",
+      "keywords": [
+        "skill",
+        "stack",
+        "tech",
+        "tools",
+        "strong working knowledge"
+      ],
+      "tokens": 23
+    },
+    {
+      "id": "skill.2",
+      "category": "skills",
+      "text": "Skill tier — Familiar (Used in projects, not my first pick.): PyTorch, Hugging Face, MLflow, Kubernetes, GCP / Vertex AI, Jupyter, Java, C++",
+      "keywords": [
+        "skill",
+        "stack",
+        "tech",
+        "tools",
+        "familiar"
+      ],
+      "tokens": 23
+    },
+    {
+      "id": "certs",
+      "category": "credentials",
+      "text": "Certifications and memberships: - Google Cloud Professional ML Engineer (Google Cloud, 2025) - AWS Certified Machine Learning — Specialty (Amazon Web Services) - TensorFlow Developer (DeepLearning.AI / Coursera) - PCPP1 — Certified Professional in Python (Python Institute) - MBCS — Member of the BCS (British Computer Society) - IET Member (Institution of Engineering & Technology)",
+      "keywords": [
+        "cert",
+        "certification",
+        "qualif",
+        "membership",
+        "mbcs",
+        "iet",
+        "gcp",
+        "aws",
+        "tensorflow"
+      ],
+      "tokens": 55
+    },
+    {
+      "id": "principle.0",
+      "category": "principles",
+      "text": "Principle 01 — Ship, then iterate: Production-ready first, refine after. Notebooks are for experiments — they aren't a deliverable.",
+      "keywords": [
+        "principle",
+        "how i work",
+        "approach",
+        "methodology",
+        "ship, then iterate"
+      ],
+      "tokens": 19
+    },
+    {
+      "id": "principle.1",
+      "category": "principles",
+      "text": "Principle 02 — Measure everything: Monitoring, logging, and drift detection are part of the build. If you can't measure it, you can't improve it.",
+      "keywords": [
+        "principle",
+        "how i work",
+        "approach",
+        "methodology",
+        "measure everything"
+      ],
+      "tokens": 24
+    },
+    {
+      "id": "principle.2",
+      "category": "principles",
+      "text": "Principle 03 — Ethics by default: Fairness checks, explainability, and responsible-AI practices are built in from day one — not bolted on under deadline.",
+      "keywords": [
+        "principle",
+        "how i work",
+        "approach",
+        "methodology",
+        "ethics by default"
+      ],
+      "tokens": 24
+    },
+    {
+      "id": "principle.3",
+      "category": "principles",
+      "text": "Principle 04 — Human-centred: I test with real users, prioritise accessibility, and design for the person at the other end — not the algorithm.",
+      "keywords": [
+        "principle",
+        "how i work",
+        "approach",
+        "methodology",
+        "human-centred"
+      ],
+      "tokens": 24
+    },
+    {
+      "id": "blog.8.intro",
+      "category": "blog",
+      "text": "Blog post — From Notebooks to Pipelines: Why I Stopped Shipping Jupyter: A pragmatic argument for treating notebooks as the experiment, not the deliverable — and what to reach for instead. There's a moment in every ML project where someone says \"we'll just productionise the notebook.\" It's the same moment, every time, that the project quietly stops making progress. This post is about why notebooks fail in production, and what to reach for instead. I'm not against notebooks — I write them every day for exploration. The argument is narrower: **notebooks should not be the deliverable**.",
+      "keywords": [
+        "from notebooks to pipelines: why i stopped shipping jupyter",
+        "mlops",
+        "notebooks",
+        "ml pipelines",
+        "mlflow",
+        "python",
+        "blog",
+        "writing",
+        "post"
+      ],
+      "tokens": 96
+    },
+    {
+      "id": "blog.8.body",
+      "category": "blog",
+      "text": "From Notebooks to Pipelines: Why I Stopped Shipping Jupyter — continued: The strengths are real: - Inline plots, side-by-side with code, with the data from the last run still in scope. Iteration speed is genuinely high. - Markdown cells let you narrate as you build. Excellent for analysis reports. - The kernel-based execution model means you can poke at intermediate state without rerunning everything. For exploration, model debugging, one-off analyses, and teaching, this is the right tool. I'd lose nothing by saying so. The failures all come from the same root cause: **a notebook's runtime behaviour is decoupled from its source**. Cell execution order isn't tracked by the file. Out-of-band state lives in the kernel between runs. Hidden imports survive across cells. Variables get reused with new meanings halfway down. The file you commit isn't the program that ran. This makes them fragile in ways that don't matter for exploration but become intolerable for production: 1. **Reproducibility evaporates silently.** \"Re-run all cells\" produces a different result than the run you remember, and you can't always tell why. 2. **Diffs are useless.** A cell-output change rewrites half the JSON. Code review becomes pattern-matching against noise. 3. **Testing is awkward.** You can shoehorn `pytest` against notebook functions with `nbval` or extract them into modules and import — but at that point you've already started the migration. 4. **Dependencies are vague.** `pip install` lines in cells, often without versions. The notebook works on th",
+      "keywords": [
+        "from notebooks to pipelines: why i stopped shipping jupyter",
+        "mlops",
+        "notebooks",
+        "ml pipelines",
+        "mlflow",
+        "python",
+        "blog",
+        "writing"
+      ],
+      "tokens": 241
+    },
+    {
+      "id": "blog.9.intro",
+      "category": "blog",
+      "text": "Blog post — Building Production RAG Pipelines: Lessons from Real Deployments: Notes from shipping retrieval-augmented generation in production — chunking that doesn't shred meaning, retrieval that keeps citations, and evaluation harnesses that catch regressions before users do. A weekend RAG demo is one thing. A *production* RAG pipeline is a different animal entirely — and the cost is mostly in the parts you can't see in a notebook. This post collects the patterns I've found genuinely matter, in roughly the order they bite you. The default tutorial chunker — fixed-size sliding window with some overlap — gets you to a demo. It also routinely shreds meaning. Sentences get split mid-clause. Tables turn into nonsense. The bullet point that gives a paragraph its meaning lands in a different chunk to the paragraph itself.",
+      "keywords": [
+        "building production rag pipelines: lessons from real deployments",
+        "rag",
+        "llms",
+        "retrieval",
+        "evaluation",
+        "production ml",
+        "blog",
+        "writing",
+        "post"
+      ],
+      "tokens": 132
+    },
+    {
+      "id": "blog.9.body",
+      "category": "blog",
+      "text": "Building Production RAG Pipelines: Lessons from Real Deployments — continued: Three rules that survived contact with real corpora: 1. **Respect document structure.** Use the document's own boundaries — headings, list items, table rows — as candidate split points, not arbitrary character counts. For PDFs, this means a real layout-aware parser (`unstructured`, PyMuPDF with logical-block extraction, or AWS Textract for tables) rather than naive text dumps. 2. **Vary chunk size to fit the question.** Small chunks (~200 tokens) maximise retrieval precision but lose context. Large chunks (~1k tokens) preserve context but make embedding less discriminative. I've ended up with a two-stage retrieval pattern: small chunks for finding *where*, then expand to the parent section before passing to the model. 3. **Store the spelling, the slug, and the source.** Every chunk needs a stable identifier and a path back to the original document, with page or anchor offsets. Without this, you can't render citations and you can't debug a hallucination. \"It looks like the right chunks come back for these five test queries\" is not an evaluation. It's a vibe. The first time you change embedding models, prompt versions, or chunk strategy, you'll discover three things that silently regressed and one user already complained about. The cheapest reliable harness: - **A labelled query set.** 50–100 queries each tagged with the chunks (or source URLs) that should be retrieved. You build this by mining real user queries and annotating by hand. Yes,",
+      "keywords": [
+        "building production rag pipelines: lessons from real deployments",
+        "rag",
+        "llms",
+        "retrieval",
+        "evaluation",
+        "production ml",
+        "blog",
+        "writing"
+      ],
+      "tokens": 239
+    }
+  ]
+}

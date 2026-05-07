@@ -3,6 +3,31 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  {%- comment -%}
+    Security meta tags. Content-Security-Policy is the important one.
+    'unsafe-inline' for script + style is required because we ship
+    inline critical CSS and a no-FOUC theme/accent bootstrap. If we
+    move to nonce/hash-based CSP later, drop 'unsafe-inline'.
+    img-src includes the runtime third parties: shields.io (badges),
+    ghchart.rshah.org (contribution graph), img.youtube.com / i.ytimg.com
+    (lite YouTube thumbs). connect-src includes *.workers.dev for the
+    chatbot worker and storage.googleapis.com for the TF.js model.
+  {%- endcomment -%}
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    font-src 'self' https://fonts.gstatic.com data:;
+    img-src 'self' data: https://img.youtube.com https://i.ytimg.com https://img.shields.io https://ghchart.rshah.org https://github-readme-stats.vercel.app;
+    connect-src 'self' https://*.workers.dev https://storage.googleapis.com https://cdn.jsdelivr.net;
+    frame-src https://www.youtube.com https://www.youtube-nocookie.com;
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+  ">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
   {% assign page_title = page.title | default: site.title %}
   {% if page.title %}{% assign full_title = page.title | append: " — Paul McNeill" %}
   {% else %}{% assign full_title = "Paul McNeill — AI Engineer · Web Developer · Data Analyst" %}{% endif %}

@@ -9,7 +9,7 @@
  *
  * Bump CACHE_VERSION when shipping a release that requires a flush.
  */
-const CACHE_VERSION = 'pmcneill-v4-20260508';
+const CACHE_VERSION = 'pmcneill-v5-20260509';
 
 const PRECACHE = [
   '/',
