@@ -481,14 +481,14 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 
 @media (max-width: 900px) {
   .nav__toggle { display: inline-flex; }
+  .nav.menu-open {
+    bottom: 0;
+  }
   .nav__links {
-    /* Closed state — belt-and-braces: hidden via three orthogonal mechanisms
-       so a single CSS or transition failure can't leave the overlay visible. */
-    position: fixed;
+    position: absolute;
     inset: 0;
-    z-index: 95; /* under the nav header (z-100), above page content */
+    z-index: 95;
     background: var(--bg);
-    /* Translucent variant for browsers that support backdrop-filter */
     background-color: color-mix(in srgb, var(--bg) 92%, transparent);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -510,7 +510,6 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
     transition: transform 0.4s var(--ease-out), opacity 0.2s ease;
   }
   .nav__links a { font-size: 1.5rem; font-family: var(--font-display); }
-  /* Hide the always-on inline status pill on overlay-mode widths */
   .status-pill { display: none; }
 }
 
@@ -519,11 +518,11 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
    ========================================================================== */
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 85vh;
   display: flex;
   align-items: center;
   padding-top: 6rem;
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
   overflow: hidden;
 }
 .hero__bg {
@@ -584,7 +583,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   font-size: clamp(2.75rem, 7.5vw, 6rem);
   line-height: 1.02;
   letter-spacing: -0.025em;
-  margin: 1rem 0 1.5rem;
+  margin: 0.75rem 0 1rem;
   max-width: 14ch;
 }
 .hero__title em { font-style: italic; color: var(--accent); }
@@ -593,14 +592,14 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   color: var(--text-dim);
   font-size: clamp(1.05rem, 1.4vw, 1.25rem);
   max-width: 56ch;
-  margin: 0 0 2.25rem;
+  margin: 0 0 1.25rem;
 }
 
 .hero__ctas {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-bottom: 4.5rem;
+  margin-bottom: 2rem;
 }
 
 /* "Currently" card — compact dynamic-status surface above the CTAs */
@@ -656,25 +655,25 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 .hero__stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  padding-top: 2rem;
+  gap: 1rem;
+  padding-top: 1.25rem;
   border-top: 1px solid var(--border);
   max-width: 960px;
 }
 .hero__stat .num {
   font-family: var(--font-display);
-  font-size: clamp(1.4rem, 2vw, 1.85rem);
+  font-size: clamp(1.2rem, 1.6vw, 1.5rem);
   color: var(--text);
   display: block;
   letter-spacing: -0.01em;
 }
 .hero__stat .lbl {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   color: var(--text-faint);
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  margin-top: 0.35rem;
+  margin-top: 0.25rem;
   display: block;
 }
 
@@ -689,7 +688,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   overflow: hidden;
-  padding: 1.5rem 0;
+  padding: 0.75rem 0;
   background: rgba(255,255,255,0.012);
 }
 .marquee__track {
@@ -725,14 +724,14 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
    Section base
    ========================================================================== */
 .section {
-  padding: clamp(5rem, 10vw, 8rem) 0;
+  padding: clamp(2.5rem, 6vw, 5rem) 0;
   position: relative;
 }
 .section__head {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
-  margin-bottom: 3.5rem;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
   max-width: 920px;
 }
 .section__head .section-lead { margin: 0; }
@@ -773,7 +772,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 2rem;
+  padding: 1.5rem;
   position: relative;
   overflow: hidden;
   transition: transform 0.5s var(--ease-out), border-color 0.4s ease, background 0.4s ease;
@@ -803,7 +802,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   justify-content: center;
   border-radius: 12px;
   background: rgba(201, 242, 112, 0.08);
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.75rem;
 }
 .exp-card__title {
   font-family: var(--font-display);
@@ -815,7 +814,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 .exp-card__desc {
   color: var(--text-dim);
   font-size: 0.95rem;
-  margin: 0 0 1.5rem;
+  margin: 0 0 1rem;
 }
 
 .tag-list {
@@ -877,9 +876,25 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   gap: 1.25rem;
   align-items: stretch;
 }
-.proj-card.is-filtered-out {
+.proj-card.is-filtered-out,
+.proj-card.is-hidden {
   display: none !important;
 }
+.proj-show-more {
+  display: block;
+  margin: 1.5rem auto 0;
+  padding: 0.5rem 0;
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.proj-show-more:hover { opacity: 0.7; }
+.proj-show-more__count { color: var(--text-faint); }
 .proj-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -1009,8 +1024,8 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 .aiml__head {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  margin-bottom: 4rem;
+  gap: 2rem;
+  margin-bottom: 2rem;
   align-items: end;
   position: relative;
 }
@@ -1030,7 +1045,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 2.25rem;
+  padding: 1.75rem;
   position: relative;
   overflow: hidden;
   transition: transform 0.5s var(--ease-out), border-color 0.4s ease;
@@ -1060,7 +1075,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 .ai-card__desc {
   color: var(--text-dim);
   font-size: 0.95rem;
-  margin: 0 0 1.5rem;
+  margin: 0 0 1rem;
 }
 
 /* ==========================================================================
@@ -1102,29 +1117,27 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 .cred-grid {
   list-style: none;
   margin: 0; padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 @media (max-width: 900px) {
   .cred-grid {
-    grid-auto-flow: column;
-    grid-auto-columns: 78%;
-    grid-template-columns: none;
     overflow-x: auto;
+    flex-wrap: nowrap;
     scroll-snap-type: x mandatory;
-    padding-bottom: 1rem;
+    padding-bottom: 0.5rem;
     margin-inline: calc(var(--pad-x) * -1);
     padding-inline: var(--pad-x);
     scrollbar-width: thin;
   }
-  .cred-card { scroll-snap-align: start; }
+  .cred-card { scroll-snap-align: start; flex: 0 0 78%; }
 }
 .cred-card {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1.25rem;
+  gap: 0.75rem;
+  padding: 0.85rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -1136,8 +1149,8 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   background: var(--bg-card-hover);
 }
 .cred-card__badge {
-  flex: 0 0 56px;
-  width: 56px; height: 56px;
+  flex: 0 0 40px;
+  width: 40px; height: 40px;
   display: grid; place-items: center;
   background: rgba(255,255,255,0.04);
   border-radius: 12px;
@@ -1166,7 +1179,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 .contact { text-align: center; }
 .contact__inner { max-width: 720px; margin: 0 auto; }
 .contact__title { margin: 0.5rem 0 1rem; }
-.contact__lead { color: var(--text-dim); margin: 0 0 2.5rem; }
+.contact__lead { color: var(--text-dim); margin: 0 0 1.5rem; }
 
 .contact__links {
   display: flex;
@@ -1460,9 +1473,9 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 
 @media (max-width: 600px) {
   body { font-size: 15px; }
-  .section { padding: 4.5rem 0; }
-  .ai-card { padding: 1.75rem; }
-  .exp-card { padding: 1.75rem; }
+  .section { padding: 3rem 0; }
+  .ai-card { padding: 1.25rem; }
+  .exp-card { padding: 1.25rem; }
   .proj-card { min-height: 300px; }
 }
 
@@ -1754,7 +1767,7 @@ body.has-spotlight::before {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 2rem 1.75rem;
+  padding: 1.5rem 1.25rem;
   margin: 0;
   position: relative;
 }
@@ -1791,7 +1804,7 @@ body.has-spotlight::before {
 .writing__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
 .writing__link {
   display: block;
-  padding: 1.5rem 1.75rem;
+  padding: 1rem 1.25rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -1814,7 +1827,7 @@ body.has-spotlight::before {
 .writing__time { display: inline-flex; align-items: center; gap: 0.3rem; }
 .writing__title {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 400;
   letter-spacing: -0.01em;
   margin: 0 0 0.5rem;

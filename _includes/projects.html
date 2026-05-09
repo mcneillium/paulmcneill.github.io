@@ -3,10 +3,6 @@
     <div class="section__head reveal">
       <span class="eyebrow">Selected Work</span>
       <h2 class="section-title">Projects that <em>shipped</em></h2>
-      <p class="section-lead">
-        A mix of production systems, client work, and personal builds — each one a
-        decision about what to ship, what to cut, and what to measure.
-      </p>
     </div>
 
     {%- assign projects = site.data.projects -%}
@@ -32,7 +28,7 @@
         {% else %}{% assign size_class = "" %}{% endif %}
         {%- assign cat_slug = p.category | downcase | replace: ' ', '-' | replace: '+', 'plus' -%}
 
-        <a href="{{ p.url | relative_url }}" class="proj-card {{ size_class }} reveal" style="--delay: {{ forloop.index0 | times: 80 }}ms" aria-label="{{ p.title | escape }}" data-category="{{ cat_slug }}">
+        <a href="{{ p.url | relative_url }}" class="proj-card {{ size_class }}{% if forloop.index > 3 %} is-hidden{% endif %} reveal" style="--delay: {{ forloop.index0 | times: 80 }}ms" aria-label="{{ p.title | escape }}" data-category="{{ cat_slug }}">
           <div class="proj-card__media">
             {% if p.image %}
               {% include picture.html src=p.image alt=p.title loading="lazy" sizes="(max-width: 900px) 100vw, 50vw" %}
@@ -82,5 +78,14 @@
         </a>
       {% endfor %}
     </div>
+
+    {%- assign proj_total = 0 -%}
+    {%- for p in projects limit: 8 -%}{%- assign proj_total = proj_total | plus: 1 -%}{%- endfor -%}
+    {%- assign hidden_count = proj_total | minus: 3 -%}
+    {% if hidden_count > 0 %}
+    <button class="proj-show-more" id="projToggle" type="button">
+      View all projects <span class="proj-show-more__count">({{ hidden_count }} more)</span>
+    </button>
+    {% endif %}
   </div>
 </section>

@@ -4,16 +4,6 @@
 (() => {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* -------- Service worker registration ----------------------------- */
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js').catch(() => { /* noop */ });
-    });
-  }
-
-  /* -------- Hide broken shields.io / ghchart badges ------------------
-     A 404 / rate-limit on the badge service shouldn't leave a busted
-     image icon in the bento. Listen once, hide on error. */
   document.querySelectorAll('img[src*="shields.io"], img[src*="ghchart.rshah.org"]').forEach(img => {
     img.addEventListener('error', () => { img.style.display = 'none'; }, { once: true });
   });
@@ -53,6 +43,7 @@
     if (!navLinks || !navToggle) return;
     navToggle.classList.remove('open');
     navLinks.classList.remove('open');
+    if (nav) nav.classList.remove('menu-open');
     navToggle.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
     if (restoreFocus && lastFocused) lastFocused.focus();
@@ -64,6 +55,7 @@
     menuOpenedByToggle = true;
     navToggle.classList.add('open');
     navLinks.classList.add('open');
+    if (nav) nav.classList.add('menu-open');
     navToggle.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
     const first = focusable()[0];

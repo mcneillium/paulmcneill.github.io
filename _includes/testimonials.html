@@ -6,7 +6,7 @@
     </div>
 
     <div class="testimonials__grid">
-      {% for t in site.data.testimonials %}
+      {% for t in site.data.testimonials limit: 3 %}
         <figure class="testimonial reveal" style="--delay: {{ forloop.index0 | times: 100 }}ms">
           {% include icon.html name="quote" class="testimonial__quote-mark" %}
           <blockquote class="testimonial__quote">{{ t.quote }}</blockquote>
