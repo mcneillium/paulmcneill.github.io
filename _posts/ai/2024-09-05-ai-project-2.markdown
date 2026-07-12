@@ -14,7 +14,7 @@ permalink: /projects/ai-social-healthcare-platform/
 redirect_from:
   - /ai/2024/09/01/ai-project-2/
 description: This project involves the development of an AI-driven platform designed to enhance the management and delivery of social healthcare services. Key features include automated client management, an NLP-based virtual assistant, predictive analytics, and real-time safety monitoring. This project showcases my expertise in web development, AI integration, and healthcare technology.
-github-url: https://github.com/mcneillium/AI_Enhanced_Social_HCMS
+github-url:
 youtube-url: https://www.youtube.com/embed/ydQGAiTrX8M
 youtube-url-2: https://www.youtube.com/embed/N5WXjjNlFA8
 youtube-url-3: 
