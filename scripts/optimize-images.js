@@ -12,6 +12,41 @@ const ROOT = path.resolve(__dirname, '..', 'img');
 const SKIP_DIRS = new Set([]); // process all
 const SUPPORTED = new Set(['.png', '.jpg', '.jpeg']);
 
+// Bundled SVG icons must not contain <title> elements (they duplicate the
+// adjacent visible label as a tooltip / screen-reader name) or @-prefixed
+// tokens like @license (jekyll-mentions would mangle the rendered SVG).
+const SVG_DIRS = [
+  path.resolve(__dirname, '..', '_includes', 'icons'),
+  path.resolve(__dirname, '..', 'assets', 'icons'),
+];
+
+function sanitizeSvgs() {
+  let cleaned = 0;
+  for (const dir of SVG_DIRS) {
+    if (!fs.existsSync(dir)) continue;
+    const svgs = [];
+    (function walkSvg(d) {
+      for (const name of fs.readdirSync(d)) {
+        const p = path.join(d, name);
+        if (fs.statSync(p).isDirectory()) walkSvg(p);
+        else if (name.endsWith('.svg')) svgs.push(p);
+      }
+    })(dir);
+    for (const file of svgs) {
+      const src = fs.readFileSync(file, 'utf8');
+      const out = src
+        .replace(/<title>[^<]*<\/title>/g, '')
+        .replace(/<!--[^>]*@[\s\S]*?-->/g, '');
+      if (out !== src) {
+        fs.writeFileSync(file, out);
+        cleaned++;
+        console.log(`sanitized ${path.relative(path.resolve(__dirname, '..'), file)}`);
+      }
+    }
+  }
+  if (cleaned) console.log(`Sanitized ${cleaned} SVG icon(s)`);
+}
+
 function walk(dir, out = []) {
   for (const name of fs.readdirSync(dir)) {
     const p = path.join(dir, name);
@@ -27,6 +62,8 @@ function walk(dir, out = []) {
 }
 
 (async () => {
+  sanitizeSvgs();
+
   const files = walk(ROOT);
   console.log(`Found ${files.length} source images under img/`);
 

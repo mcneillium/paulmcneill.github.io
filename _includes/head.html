@@ -30,9 +30,14 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
-  {% assign page_title = page.title | default: site.title %}
-  {% if page.title %}{% assign full_title = page.title | append: " — Paul McNeill" %}
-  {% else %}{% assign full_title = "Paul McNeill — AI Engineer · Web Developer · Data Analyst" %}{% endif %}
+  {%- comment -%}
+    Title fallback treats a missing title and an empty/whitespace title
+    the same — an empty string is truthy in Liquid, so a bare
+    `page.title` check would render a dangling " — Paul McNeill".
+  {%- endcomment -%}
+  {% assign trimmed_title = page.title | default: "" | strip %}
+  {% if trimmed_title == "" %}{% assign full_title = "Paul Martin McNeill — AI Engineer, Web Developer & Data Analyst" %}
+  {% else %}{% assign full_title = trimmed_title | append: " — Paul McNeill" %}{% endif %}
 
   <title>{{ full_title }}</title>
   <meta name="description" content="{{ page.description | default: site.description }}">
