@@ -11,8 +11,15 @@
     img-src includes the runtime third parties: shields.io (badges),
     ghchart.rshah.org (contribution graph), img.youtube.com / i.ytimg.com
     (lite YouTube thumbs). connect-src includes *.workers.dev for the
-    chatbot worker and storage.googleapis.com for the TF.js model.
+    chatbot worker.
+
+    The TF.js allowances (cdn.jsdelivr.net script + fetch,
+    storage.googleapis.com model files, 'wasm-unsafe-eval', blob:
+    workers) are scoped to /lab/ — the only page that loads the demo —
+    so every other page carries the stricter base policy. Keep the two
+    branches and _headers in sync.
   {%- endcomment -%}
+  {%- if page.url == "/lab/" -%}
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
     script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' blob: https://cdn.jsdelivr.net;
@@ -27,6 +34,20 @@
     base-uri 'self';
     form-action 'self';
   ">
+  {%- else -%}
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline';
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    font-src 'self' https://fonts.gstatic.com data:;
+    img-src 'self' data: https://img.youtube.com https://i.ytimg.com https://img.shields.io https://ghchart.rshah.org https://github-readme-stats.vercel.app;
+    connect-src 'self' https://*.workers.dev;
+    frame-src https://www.youtube.com https://www.youtube-nocookie.com;
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+  ">
+  {%- endif -%}
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 

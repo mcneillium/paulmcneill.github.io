@@ -83,6 +83,7 @@ const ensureDir = (p) => fs.mkdirSync(path.dirname(p), { recursive: true });
   for (const [label, fname] of [
     ['PORTFOLIO',  'assets/img/og-image.png'],
     ['CASE STUDY', 'assets/img/og-image-project.png'],
+    ['THE LAB',    'assets/img/og-image-lab.png'],
   ]) {
     const file = out(fname);
     ensureDir(file);

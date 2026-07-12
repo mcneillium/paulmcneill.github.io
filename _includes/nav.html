@@ -1,6 +1,13 @@
+{%- comment -%}
+  Section links are in-page anchors on the homepage (bare #hash keeps
+  the scroll-spy in main.js working) and home-prefixed /#hash links on
+  standalone pages like /lab/ so they still lead somewhere.
+{%- endcomment -%}
+{%- assign navroot = "" -%}
+{%- unless page.url == "/" -%}{%- assign navroot = "/" -%}{%- endunless -%}
 <header class="nav" id="nav">
   <div class="container nav__inner">
-    <a href="#page-top" class="brand" aria-label="Paul McNeill — home">paul<span class="dot">.</span></a>
+    <a href="{{ navroot }}#page-top" class="brand" aria-label="Paul McNeill — home">paul<span class="dot">.</span></a>
 
     {% if site.available %}
       <span class="status-pill" title="Currently open to opportunities">
@@ -45,13 +52,14 @@
     </button>
 
     <ul class="nav__links" id="navLinks">
-      <li><a href="#expertise">Expertise</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#aiml">AI &amp; ML</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#credentials">Credentials</a></li>
-      <li><a href="#contact" class="cta">Get in touch</a></li>
+      <li><a href="{{ navroot }}#expertise">Expertise</a></li>
+      <li><a href="{{ navroot }}#projects">Projects</a></li>
+      <li><a href="{{ navroot }}#aiml">AI &amp; ML</a></li>
+      <li><a href="{{ navroot }}#skills">Skills</a></li>
+      <li><a href="{{ navroot }}#about">About</a></li>
+      <li><a href="{{ navroot }}#credentials">Credentials</a></li>
+      <li><a href="{{ '/lab/' | relative_url }}"{% if page.url == "/lab/" %} aria-current="page"{% endif %}>Lab</a></li>
+      <li><a href="{{ navroot }}#contact" class="cta">Get in touch</a></li>
     </ul>
   </div>
 </header>
