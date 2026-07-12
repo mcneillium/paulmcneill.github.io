@@ -1,7 +1,7 @@
 ---
 title: AI-Enhanced Social Healthcare Management System
 subtitle: Transforming Social Healthcare with AI
-layout: default
+layout: post
 modal-id: 6
 date: 2024-09-01
 img: healthcare-system.png

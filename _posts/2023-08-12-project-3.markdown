@@ -1,7 +1,7 @@
 ---
 title: Cloud-Based Data Management System
 subtitle: Cloud Computing Project
-layout: default
+layout: post
 modal-id: 3
 date: 2023-06-20
 img: cloud-management-thumbnail.png

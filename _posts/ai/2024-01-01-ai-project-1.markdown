@@ -1,7 +1,7 @@
 ---
 title: AI Assistant
 subtitle: AI/ML Project
-layout: default
+layout: post
 modal-id: 5
 date: 2023-04-05
 img: ai-assistant-thumbnail.png

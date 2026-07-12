@@ -16,10 +16,7 @@
     {% include icon.html name="chevron-up" class="icon" %}
   </a>
 
-  <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
-  <script src="{{ '/assets/js/theme.js' | relative_url }}" defer></script>
-  <script src="{{ '/assets/js/accent.js' | relative_url }}" defer></script>
-  <script src="{{ '/assets/js/fonts.js' | relative_url }}" defer></script>
+  {% include toolbar-scripts.html %}
   {%- if page.scripts -%}
     {%- for s in page.scripts %}
   <script src="{{ s | relative_url }}" defer></script>
