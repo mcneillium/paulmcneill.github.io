@@ -62,19 +62,24 @@ _includes/
   footer.html
   picture.html          <picture> partial (WebP source + fallback)
   icon.html             inline SVG with class injection
+  ml-demo.html          TF.js sentiment demo (rendered on /lab/)
+  agent-visualiser.html agent workflow animation (rendered on /lab/)
   architecture/         per-project SVG diagrams (currently aurora.html)
   icons/ui/             Lucide + brand SVGs
   icons/tech/           Devicon + Simple Icons
 _layouts/
   default.html          home
   post.html             rich case study (impact, shields, gallery, lightbox)
+  page.html             standalone page with nav + footer (used by /lab/)
   blank.html            CV + 404
+lab/index.html          /lab/ — live demos page (TF.js + agent visualiser)
 assets/
   css/main.css          single stylesheet
   js/main.js            single bundle
+  js/hero-3d.js         hand-rolled WebGL hero particle field (zero deps)
   icons/                duplicate of _includes/icons (for direct img refs)
   textures/             noise.png + dot-grid.svg
-  img/                  og-image.png, og-image-project.png
+  img/                  og-image.png, og-image-project.png, og-image-lab.png
   favicon/              favicon set + site.webmanifest
 img/
   about/                photos
@@ -231,9 +236,16 @@ See `docs/content-gaps.md` for content TODOs and
 
 Highlights:
 
-- **Pretty URLs include spaces** (`/cloud computing/...`,
-  `/software development/...`) because old post `category:` values
-  are multi-word title-case. Browser-tolerant but ugly. Roadmap item.
+- **Fixed July 2026: post URLs** — every post now has an explicit
+  `permalink:` (`/projects/:slug/` or `/writing/:slug/`) plus a
+  `redirect_from:` stub for its old dated/space-containing URL.
+  jekyll-redirect-from must stay listed in `_config.yml` `plugins:`
+  or the stubs silently vanish.
+- **Six legacy project posts use `layout: default`**, which has no
+  `{{ content }}` — their pages render as full homepage clones and the
+  post body is discarded (pre-existing; five are linked from the
+  homepage grid). Switch them to `layout: post` when their bodies are
+  fleshed out. Roadmap item.
 - **Three placeholder testimonials** are visible — flagged with the
   "Placeholder" pill until `verified: true`.
 - **Two placeholder blog posts** with `type: blog` and `TODO: REPLACE`
