@@ -14,15 +14,18 @@
     chatbot worker.
 
     The TF.js allowances (cdn.jsdelivr.net script + fetch,
-    storage.googleapis.com model files, 'wasm-unsafe-eval', blob:
-    workers) are scoped to /lab/ — the only page that loads the demo —
-    so every other page carries the stricter base policy. Keep the two
-    branches and _headers in sync.
+    storage.googleapis.com model files, 'unsafe-eval', blob: workers)
+    are scoped to /lab/ — the only page that loads the demo — so every
+    other page carries the stricter base policy. TF.js 4.20 evaluates
+    a string as JavaScript during initialisation, so it needs full
+    'unsafe-eval'; 'wasm-unsafe-eval' alone leaves window.tf an empty
+    shell and the model never loads. Keep the two branches and
+    _headers in sync.
   {%- endcomment -%}
   {%- if page.url == "/lab/" -%}
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' blob: https://cdn.jsdelivr.net;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://cdn.jsdelivr.net;
     worker-src 'self' blob:;
     child-src 'self' blob:;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;

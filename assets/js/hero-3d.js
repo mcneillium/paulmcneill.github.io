@@ -139,7 +139,7 @@
        }`
     );
 
-    if (!pointProgram || !lineProgram) return null;
+    if (!pointProgram || !lineProgram) { canvas.remove(); return null; }
 
     /* -- particles (positions seeded after the first resize below,
           once SPREAD matches the real frustum) -- */
