@@ -52,23 +52,28 @@ Prioritised, with concrete tasks rather than vague aspirations.
 
 ### Content
 
-- [ ] **Migrate post `category:` values to kebab-case** so URLs stop
-      having spaces (`/cloud computing/...` → `/cloud-computing/...`).
-      Add `jekyll-redirect-from` to preserve old URLs.
+- [x] **Clean post URLs** — done July 2026, further than planned:
+      every post now carries an explicit descriptive permalink
+      (`/projects/:slug/` or `/writing/:slug/`) instead of dated
+      category paths, with `redirect_from` stubs preserving all old
+      URLs (including the space-containing ones).
 - [ ] **A real blog/writing cadence**. Two stubs is fine to seed; one
       well-written post per quarter is the realistic target. Topics
       that match the rest of the portfolio: NHS data work, AAC
       accessibility, RAG in production, agent orchestration.
 - [ ] **Project case studies for older posts** (Java Ticket Machine,
-      Data Structures, Cloud-Based Data Mgmt, Expense Tracker) — they
-      currently render with the new `post.html` layout but have
-      thin bodies. Either flesh them out or move them off the
-      featured set in `_data/projects.yml`.
+      Data Structures, Cloud-Based Data Mgmt, Expense Tracker, Custom
+      CRM, AI Assistant, AI Social Healthcare) — these still use
+      `layout: default`, which has no `{{ content }}`, so their pages
+      render as full homepage clones and the post body is discarded.
+      Switch them to `layout: post` and flesh out the thin bodies, or
+      move them off the featured set in `_data/projects.yml`.
 
 ### Engineering
 
 - [ ] **Lighthouse CI** in PR workflow.
-- [ ] **`jekyll-redirect-from`** for any URL changes.
+- [x] **`jekyll-redirect-from`** — enabled in `_config.yml` plugins
+      (July 2026); it was in the Gemfile but inert without that entry.
 - [ ] **Privacy-respecting analytics** (Plausible / Simple Analytics).
 - [ ] **Self-host Google Fonts** if privacy matters more than the few
       bytes saved.

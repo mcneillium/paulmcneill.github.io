@@ -558,6 +558,25 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   position: relative;
   z-index: 1;
 }
+/* WebGL particle field — injected by hero-3d.js. Sits with the other
+   decorative layers (z-index 0) below .hero__inner; the static
+   .hero__bg grid remains underneath as the no-WebGL fallback. */
+.hero__canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s var(--ease-out);
+}
+.hero__canvas.is-live { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  /* hero-3d.js never initialises under reduced motion; this is the
+     belt-and-braces fallback should a canvas ever exist */
+  .hero__canvas { display: none; }
+}
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }

@@ -8,6 +8,9 @@ project-date: 2026-04-01
 description: "Notes from shipping retrieval-augmented generation in production — chunking that doesn't shred meaning, retrieval that keeps citations, and evaluation harnesses that catch regressions before users do."
 category: writing
 tags: [RAG, LLMs, Retrieval, Evaluation, Production ML]
+permalink: /writing/production-rag-pipelines/
+redirect_from:
+  - /writing/2026/04/01/production-rag-pipelines/
 ---
 
 A weekend RAG demo is one thing. A *production* RAG pipeline is a different

@@ -1,7 +1,7 @@
 ---
 title: Cloud-Based Data Management System
 subtitle: Cloud Computing Project
-layout: default
+layout: post
 modal-id: 3
 date: 2023-06-20
 img: cloud-management-thumbnail.png
@@ -10,6 +10,9 @@ alt: Cloud-Based Data Management System
 project-date: June 2023
 client: Personal Project
 category: Cloud Computing
+permalink: /projects/cloud-data-management/
+redirect_from:
+  - "/cloud computing/2023/06/20/project-3/"
 description: Designed and implemented a cloud-based database management system using SQL and NoSQL databases.
 github-url: https://github.com/mcneillium/CloudBasedDataManagementSystem
 youtube-url: https://www.youtube.com/embed/bgKY8KhDIZE

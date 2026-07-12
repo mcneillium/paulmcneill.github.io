@@ -8,6 +8,9 @@ img: industrial-temps-crm.png
 alt: "Industrial Temps CRM reporting dashboard"
 project-date: 2024-09-06
 category: projects
+permalink: /projects/crm-reporting-industrial-temps/
+redirect_from:
+  - /projects/2024/09/06/crm-reporting-industrial-temps/
 description: "Access & Excel queries, data audits, and monthly KPI dashboards for recruitment performance."
 impact: "Consolidated 6+ disconnected sources into a single live dashboard" # VERIFY
 github-url:

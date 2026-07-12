@@ -1,0 +1,34 @@
+---
+layout: page
+title: "Lab"
+permalink: /lab/
+description: "Interactive AI demos running in your browser — a TensorFlow.js sentiment model and an animated agent-workflow visualiser. No servers, no uploads."
+og_image: /assets/img/og-image-lab.png
+scripts:
+  - /assets/js/ml-demo.js
+  - /assets/js/agent-visualiser.js
+---
+
+<header class="post__hero">
+  <div class="container">
+    <a href="{{ '/#aiml' | relative_url }}" class="post__back" aria-label="Back to AI &amp; ML">
+      {% include icon.html name="arrow-left" class="icon icon--xs" %}
+      Back to AI &amp; ML
+    </a>
+    <span class="eyebrow">The Lab</span>
+    <h1 class="post__title">Models and agents, <em>live</em> in your browser</h1>
+    <p class="post__subtitle">
+      Working demos, not screenshots. Everything on this page runs on your
+      device — the sentiment model executes on your GPU via WebGL, and
+      nothing you type leaves the browser.
+    </p>
+  </div>
+</header>
+
+{% include ml-demo.html %}
+
+<section class="section" id="agent" aria-label="Agent workflow visualiser">
+  <div class="container">
+    {% include agent-visualiser.html %}
+  </div>
+</section>

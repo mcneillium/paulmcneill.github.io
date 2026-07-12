@@ -1,0 +1,12 @@
+{%- comment -%}
+  Core script bundle for any layout that renders the nav toolbar:
+  main.js (nav, menu, reveal, lightbox) plus the personalisation
+  scripts that make the accent / font / theme controls functional.
+  Used by page.html and post.html — post.html previously loaded only
+  main.js, which left the toolbar buttons visible but dead.
+  default.html (home) loads its own larger set and stays separate.
+{%- endcomment -%}
+<script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/theme.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/accent.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/fonts.js' | relative_url }}" defer></script>

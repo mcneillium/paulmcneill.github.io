@@ -1,7 +1,7 @@
 ---
 title: Java-Based Ticket Machine System
 subtitle: OOP Principles Demonstration
-layout: default
+layout: post
 modal-id: 1
 date: 2024-08-24
 img: ticket-machine-thumbnail.png
@@ -10,6 +10,9 @@ alt: Java-Based Ticket Machine System
 project-date: August 2023
 client: Personal Project
 category: Software Development
+permalink: /projects/java-ticket-machine/
+redirect_from:
+  - "/software development/2024/08/24/project-1/"
 description: Developed using Java to demonstrate OOP principles such as inheritance, polymorphism, and encapsulation. The project features a responsive user interface with a modal layout that includes an embedded YouTube video demonstrating the system in action, and a link to the source code on GitHub.
 github-url: https://github.com/mcneillium/Ticket-Machine-System
 youtube-url: https://www.youtube.com/embed/APM7f09MWmM

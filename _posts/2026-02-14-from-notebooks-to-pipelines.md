@@ -8,6 +8,9 @@ project-date: 2026-02-14
 description: "A pragmatic argument for treating notebooks as the experiment, not the deliverable — and what to reach for instead."
 category: writing
 tags: [MLOps, Notebooks, ML Pipelines, MLflow, Python]
+permalink: /writing/notebooks-to-pipelines/
+redirect_from:
+  - /writing/2026/02/14/from-notebooks-to-pipelines/
 ---
 
 There's a moment in every ML project where someone says "we'll just productionise

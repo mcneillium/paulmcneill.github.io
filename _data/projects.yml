@@ -4,7 +4,7 @@
   description: "Northern Ireland-specific, NHSCT-aligned analytics platform — operations, finance, workforce, compliance — built on Access/SQL data layers and Power BI."
   image: "/img/portfolio/aurora/aurora_dashboard_kpi_pbi.png"
   tags: ["NHSCT", "Power BI", "ETL", "DAX", "GDPR"]
-  url: "/projects/2023/05/10/aurora-digital-transformation-domiciliary-care-nhsct/"
+  url: "/projects/aurora-nhs-transformation/"
   github: "https://github.com/mcneillium/Aurora-Domiciliary-Care"
   demo: null
   featured: true
@@ -16,7 +16,7 @@
   description: "Mobile + caregiver dashboard that combines on-device prediction, scene understanding, and real-time monitoring for non-verbal users."
   image: "/img/portfolio/aac-ai-dashboard.png"
   tags: ["React Native", "Firebase", "LLMs", "AAC", "Healthcare"]
-  url: "/projects/2024/09/01/ai-powered-aac-app/"
+  url: "/projects/ai-aac-app/"
   github: null
   demo: null
   featured: true
@@ -28,7 +28,7 @@
   description: "Data quality framework, ETL via Access + Power Query, and Power BI dashboards for placements, client performance, and consultant scorecards."
   image: "/img/portfolio/industrial-temps-crm.png"
   tags: ["Power BI", "Power Query", "ETL", "Recruitment"]
-  url: "/projects/2024/09/06/crm-reporting-industrial-temps/"
+  url: "/projects/crm-reporting-industrial-temps/"
   github: null
   demo: null
   featured: true
@@ -40,8 +40,8 @@
   description: "AI-driven platform: client management, NLP virtual assistant, predictive analytics, and real-time safety monitoring for social healthcare delivery."
   image: "/img/portfolio/healthcare-system-thumbnail.png"
   tags: ["NLP", "Predictive Analytics", "Healthcare"]
-  url: "/ai/2024/09/01/ai-project-2/"
-  github: "https://github.com/mcneillium/AI_Enhanced_Social_HCMS"
+  url: "/projects/ai-social-healthcare-platform/"
+  github: null
   demo: null
   featured: false
   size: "lg"
@@ -52,8 +52,8 @@
   description: "An LLM-powered productivity assistant — fine-tuned models, multiple interface integrations, and real-world automation."
   image: "/img/portfolio/ai-assistant-thumbnail.png"
   tags: ["LLMs", "Fine-tuning", "Automation"]
-  url: "/ai/2023/04/05/ai-project-1/"
-  github: "https://github.com/mcneillium/ai_assistant"
+  url: "/projects/ai-assistant/"
+  github: null
   demo: null
   featured: false
   size: "md"
@@ -64,8 +64,8 @@
   description: "Custom CRM tailored to streamline business operations — sales management, customer communication, and analytics in a single PWA."
   image: "/img/portfolio/indevelopment.png"
   tags: ["TypeScript", "Node.js", "PostgreSQL"]
-  url: "/crm software development/2024/09/06/project-5/"
-  github: "https://github.com/mcneillium/"
+  url: "/projects/custom-crm/"
+  github: null
   demo: null
   featured: false
   size: "md"
@@ -76,7 +76,7 @@
   description: "Cloud-native database management system using SQL + NoSQL, designed for resilience and elastic scale."
   image: "/img/portfolio/cloud-management-thumbnail.png"
   tags: ["SQL", "NoSQL", "Cloud"]
-  url: "/cloud computing/2023/06/20/project-3/"
+  url: "/projects/cloud-data-management/"
   github: "https://github.com/mcneillium/CloudBasedDataManagementSystem"
   demo: "https://www.youtube.com/embed/bgKY8KhDIZE"
   featured: false
@@ -88,7 +88,7 @@
   description: "Java OOP showcase — inheritance, polymorphism, encapsulation — with a responsive UI and embedded demo video."
   image: "/img/portfolio/ticket-machine-thumbnail.png"
   tags: ["Java", "OOP"]
-  url: "/software development/2024/08/24/project-1/"
+  url: "/projects/java-ticket-machine/"
   github: "https://github.com/mcneillium/Ticket-Machine-System"
   demo: "https://www.youtube.com/embed/APM7f09MWmM"
   featured: false

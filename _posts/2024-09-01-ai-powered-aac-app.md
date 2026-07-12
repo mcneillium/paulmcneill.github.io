@@ -9,6 +9,9 @@ gallery_dir: aac-ai
 alt: "AAC AI dashboard screenshot"
 project-date: 2024-09-01
 category: projects
+permalink: /projects/ai-aac-app/
+redirect_from:
+  - /projects/2024/09/01/ai-powered-aac-app/
 description: "Assistive communication for non-verbal users with predictive AI and a real-time caregiver dashboard."
 impact: "Predictive assistive communication for non-verbal users" # VERIFY
 github-url:
