@@ -61,8 +61,12 @@ exclude:
   - Gemfile.lock
 
 # Plugins
+# jekyll-redirect-from is opt-in on GitHub Pages — it must be listed
+# here (not just in the Gemfile) or redirect_from frontmatter is
+# silently ignored.
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-paginate
   - jekyll-sitemap
+  - jekyll-redirect-from

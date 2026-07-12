@@ -8,6 +8,9 @@ img: aurora/aurora_dashboard_ops_pbi.png
 alt: "NHSCT Power BI dashboards for Operations, Finance, Workforce & Compliance"
 project-date: 2025-10-31
 category: projects
+permalink: /projects/aurora-nhs-transformation/
+redirect_from:
+  - /projects/2023/05/10/aurora-digital-transformation-domiciliary-care-nhsct/
 description: "Comprehensive Northern Ireland domiciliary care analytics platform built for Aurora Domiciliary Care Ltd — combining Access/SQL data layers, Power BI dashboards, remittance automation, ECM realism, and RQIA compliance oversight."
 impact: "Reduced reporting cycle from 5 days to under 4 hours" # VERIFY
 architecture: aurora

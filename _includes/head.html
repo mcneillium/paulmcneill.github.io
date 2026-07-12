@@ -231,7 +231,19 @@
   </script>
   {%- endif -%}
 
-  {%- if page.url == "/" -%}
+  {%- comment -%}
+    Person schema on every page. sameAs is limited to the profiles that
+    represent Paul professionally (GitHub, LinkedIn, X, Hugging Face,
+    YouTube); alumniOf traces to _data/education.yml and hasCredential
+    to _data/credentials.yml — keep them in step if those change.
+  {%- endcomment -%}
+  {%- assign sameas_titles = "github,linkedin,twitter,huggingface,youtube" | split: "," -%}
+  {%- assign sameas = "" | split: "," -%}
+  {%- for s in site.social -%}
+    {%- if sameas_titles contains s.title -%}
+      {%- assign sameas = sameas | push: s.url -%}
+    {%- endif -%}
+  {%- endfor -%}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -243,11 +255,20 @@
     "jobTitle": "AI Engineer · Web Developer · Data Analyst",
     "description": "{{ site.description }}",
     "email": "mailto:{{ site.email }}",
-    "sameAs": [
-      {%- for s in site.social -%}
-        "{{ s.url }}"{% unless forloop.last %},{% endunless %}
-      {%- endfor -%}
-    ],
+    "sameAs": {{ sameas | jsonify }},
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "The Open University"
+    },
+    "hasCredential": {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Google Cloud Professional ML Engineer",
+      "credentialCategory": "Professional Certification",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Google Cloud"
+      }
+    },
     "address": {
       "@type": "PostalAddress",
       "addressRegion": "Northern Ireland",
@@ -256,5 +277,4 @@
     "knowsAbout": ["Machine Learning", "Artificial Intelligence", "Web Development", "Data Analytics", "Power BI", "Python", "TypeScript", "React"]
   }
   </script>
-  {%- endif -%}
 </head>
