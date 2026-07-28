@@ -12,7 +12,7 @@
     "qa": "npm run build && npm run link-check"
   },
   "dependencies": {
-    "js-yaml": "^4.1.1"
+    "js-yaml": "^5.2.2"
   },
   "devDependencies": {
     "sharp": "^0.34.5"
