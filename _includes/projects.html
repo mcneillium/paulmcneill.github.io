@@ -30,8 +30,8 @@
         {% else %}{% assign size_class = "" %}{% endif %}
         {%- assign cat_slug = p.category | downcase | replace: ' ', '-' | replace: '+', 'plus' -%}
 
-        <a href="{{ p.url | relative_url }}" class="proj-card {{ size_class }} reveal" style="--delay: {{ forloop.index0 | times: 80 }}ms" aria-label="{{ p.title | escape }}" data-category="{{ cat_slug }}" data-search="{{ p.title | append: ' ' | append: p.description | escape }} {{ p.tags | join: ' ' | escape }}">
-          <div class="proj-card__media">
+        <article class="proj-card {{ size_class }} reveal" style="--delay: {{ forloop.index0 | times: 80 }}ms" aria-labelledby="project-title-{{ forloop.index }}" data-category="{{ cat_slug }}" data-search="{{ p.title | append: ' ' | append: p.description | escape }} {{ p.tags | join: ' ' | escape }}">
+          <a href="{{ p.url | relative_url }}" class="proj-card__media" tabindex="-1" aria-hidden="true">
             {% if p.image %}
               {% include picture.html src=p.image alt=p.title loading="lazy" sizes="(max-width: 900px) 100vw, 50vw" %}
             {% else %}
@@ -43,41 +43,34 @@
                 <span>{{ p.impact }}</span>
               </div>
             {% endif %}
-          </div>
+          </a>
           <div class="proj-card__body">
             <span class="proj-card__cat">{{ p.category | default: "Project" }}</span>
-            <h3 class="proj-card__title">{{ p.title }}</h3>
+            <h3 class="proj-card__title" id="project-title-{{ forloop.index }}"><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h3>
+            {% if p.problem and p.contribution %}
+            <dl class="project-summary">
+              <div><dt>The problem</dt><dd>{{ p.problem }}</dd></div>
+              <div><dt>My contribution</dt><dd>{{ p.contribution }}</dd></div>
+            </dl>
+            {% else %}
             <p class="proj-card__desc">{{ p.description | truncate: 180 }}</p>
+            {% endif %}
             <div class="proj-card__footer">
               <ul class="tag-list">
                 {% for t in p.tags limit: 4 %}<li class="tag">{{ t }}</li>{% endfor %}
               </ul>
               <div class="proj-card__cta-row">
-                {%- if p.github contains "github.com/" -%}
-                  {%- assign _ghp = p.github | split: "github.com/" | last | split: "/" -%}
-                  {%- assign _ghu = _ghp[0] -%}
-                  {%- assign _ghr = _ghp[1] | split: "?" | first | split: "#" | first -%}
-                  {% if _ghr and _ghr != "" %}
-                    <img class="proj-card__shield"
-                         src="https://img.shields.io/github/last-commit/{{ _ghu }}/{{ _ghr }}?style=flat-square&color=f97316&labelColor=131316&label=last%20commit"
-                         alt="Last commit on {{ _ghu }}/{{ _ghr }}"
-                         loading="lazy">
-                  {% endif %}
-                {%- endif -%}
+                <a href="{{ p.url | relative_url }}" class="project-action">Case study<span class="sr-only"> for {{ p.title }}</span> {% include icon.html name="arrow-up-right" class="icon icon--sm" %}</a>
                 {% if p.github %}
-                  <span class="proj-card__cta" title="View source">
-                    {% include icon.html name="github" class="icon icon--sm" %}
-                  </span>
+                <a href="{{ p.github }}" class="project-action" target="_blank" rel="noopener">Source<span class="sr-only"> for {{ p.title }}</span> {% include icon.html name="github" class="icon icon--sm" %}</a>
                 {% endif %}
                 {% if p.demo %}
-                  <span class="proj-card__cta" title="Live demo">
-                    {% include icon.html name="eye" class="icon icon--sm" %}
-                  </span>
+                <a href="{{ p.demo | replace: 'youtube.com/embed/', 'youtube.com/watch?v=' }}" class="project-action" target="_blank" rel="noopener">{% if p.demo contains "youtube" %}Watch demo{% else %}Live demo{% endif %}<span class="sr-only"> for {{ p.title }}</span> {% include icon.html name="play" class="icon icon--sm" %}</a>
                 {% endif %}
               </div>
             </div>
           </div>
-        </a>
+        </article>
       {% endfor %}
     </div>
 

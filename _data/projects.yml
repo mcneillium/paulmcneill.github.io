@@ -1,4 +1,7 @@
 - title: "Aurora — NHS Digital Transformation"
+  problem: "Care operations, workforce, finance and compliance need a connected view."
+  contribution: "Designed the Access/SQL data layer, Power Query transformations and Power BI reporting suite."
+  evidence: "Synthetic-data demonstration with dashboard screenshots, a data model and source repository."
   category: "AI + Healthcare"
   impact: "Models visits, workforce and finance using synthetic care data"
   description: "Northern Ireland-specific, NHSCT-aligned analytics platform — operations, finance, workforce, compliance — built on Access/SQL data layers and Power BI."
@@ -11,6 +14,9 @@
   size: "lg"
 
 - title: "AI-Powered AAC App"
+  problem: "Non-verbal users need accessible ways to communicate, with support for caregivers."
+  contribution: "Combined a mobile communication interface, predictive AI and a connected caregiver dashboard."
+  evidence: "Interface screenshots and implementation details in the case study."
   category: "AI Accessibility"
   impact: "Predictive AI assistive communication for non-verbal users" # VERIFY
   description: "Mobile + caregiver dashboard that combines on-device prediction, scene understanding, and real-time monitoring for non-verbal users."
@@ -23,6 +29,9 @@
   size: "md"
 
 - title: "CRM Reporting — Industrial Temps"
+  problem: "Inconsistent CRM data and manual exports make recruitment reporting harder."
+  contribution: "Built validation queries, reporting tables and Power BI dashboards for placements and consultant performance."
+  evidence: "Case study covering the reporting workflow, data quality checks and my role."
   category: "Data Analytics"
   impact: "Consolidated 6+ disconnected sources into a single live dashboard" # VERIFY
   description: "Data quality framework, ETL via Access + Power Query, and Power BI dashboards for placements, client performance, and consultant scorecards."

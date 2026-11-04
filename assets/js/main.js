@@ -34,6 +34,19 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  document.querySelectorAll('[data-copy-email]').forEach(button => {
+    button.hidden = false;
+    button.addEventListener('click', async () => {
+      const status = button.parentElement.querySelector('[role="status"]');
+      try {
+        await navigator.clipboard.writeText(button.dataset.copyEmail);
+        status.textContent = 'Email address copied.';
+      } catch {
+        status.textContent = 'Select the email address to copy it, or click it to open your email app.';
+      }
+    });
+  });
+
   /* -------- Mobile menu --------------------------------------------- */
   let menuOpenedByToggle = false; // distinguishes "close to restore focus" vs "close on link click"
   let lastFocused = null;

@@ -48,7 +48,7 @@
   if (toggle) toggle.addEventListener('click', () => {
     expanded = !expanded;
     render();
-    if (expanded) cards[visibleLimit].focus();
+    if (expanded) cards[visibleLimit].querySelector('.proj-card__title a').focus();
   });
 
   search.addEventListener('input', render);

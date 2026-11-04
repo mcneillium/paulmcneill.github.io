@@ -17,7 +17,7 @@
           {%- else -%}
             {%- assign back_url = "/#projects" -%}
             {%- assign back_label = "Back to projects" -%}
-            {%- assign eyebrow_label = page.category | default: "Project" -%}
+            {%- assign eyebrow_label = "Case study" -%}
           {%- endif -%}
           <a href="{{ back_url | relative_url }}" class="post__back" aria-label="{{ back_label }}">
             {% include icon.html name="arrow-left" class="icon icon--xs" %}
@@ -27,6 +27,14 @@
           <h1 class="post__title">{{ page.title }}</h1>
           {% if page.subtitle %}<p class="post__subtitle">{{ page.subtitle }}</p>{% endif %}
 
+          {%- assign project_summary = site.data.projects | where: "url", page.url | first -%}
+          {% if project_summary.problem %}
+          <dl class="case-brief">
+            <div><dt>The problem</dt><dd>{{ project_summary.problem }}</dd></div>
+            <div><dt>My contribution</dt><dd>{{ project_summary.contribution }}</dd></div>
+            <div><dt>What you can inspect</dt><dd>{{ project_summary.evidence }}</dd></div>
+          </dl>
+          {% endif %}
           <ul class="post__meta">
             {% if page.client %}<li><span>Client</span><strong>{{ page.client }}</strong></li>{% endif %}
             {% if page.project-date %}<li><span>Date</span><strong>{{ page.project-date }}</strong></li>{% endif %}
@@ -143,6 +151,13 @@
         {%- endif -%}
       {%- endif -%}
 
+      {% unless page.type == "blog" %}
+      <aside class="project-contact container">
+        <h2>Have a similar challenge?</h2>
+        <p>Tell me about your team, the problem and what a useful outcome would look like.</p>
+        <a class="btn btn-outline" href="mailto:{{ site.email }}?subject={{ page.title | prepend: 'Enquiry about ' | uri_escape }}">Discuss this project</a>
+      </aside>
+      {% endunless %}
       <nav class="post__nav container" aria-label="Project navigation">
         {% if page.previous %}
           <a class="post__nav-link" href="{{ page.previous.url | relative_url }}">

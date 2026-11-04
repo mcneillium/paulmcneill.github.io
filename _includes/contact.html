@@ -3,8 +3,14 @@
     <span class="eyebrow" style="justify-content: center;">Get in touch</span>
     <h2 class="section-title contact__title">Have something <em>worth building?</em></h2>
     <p class="contact__lead">
-      Open to AI engineering, web platforms, analytics, or the kind of project that doesn't fit one box.
+      {{ site.data.profile.availability }}
+      Tell me about the role or project, what you need built and your timeline.
     </p>
+    <div class="contact-email">
+      <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+      <button type="button" data-copy-email="{{ site.email }}" hidden>Copy email</button>
+      <span class="contact-email__status" role="status"></span>
+    </div>
 
     <ul class="contact__links">
       <li>
