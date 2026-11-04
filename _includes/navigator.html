@@ -1,0 +1,19 @@
+<dialog class="navigator" id="quickNavigator" aria-labelledby="navigatorTitle">
+  <div class="navigator__top"><h2 id="navigatorTitle">Where to?</h2><button type="button" data-close-navigator aria-label="Close quick navigator">Esc</button></div>
+  <label class="sr-only" for="navigatorSearch">Search projects and pages</label>
+  <input id="navigatorSearch" type="search" placeholder="Find a project, page or tool…" autocomplete="off">
+  <div class="navigator__results" id="navigatorResults">
+    {% for project in site.data.projects %}
+    <a href="{{ project.url | relative_url }}" data-nav-item data-search="{{ project.title | escape }} {{ project.category | escape }} {{ project.tags | join: ' ' | escape }}"><span>{{ project.title }}</span><small>{{ project.category }}</small></a>
+    {% endfor %}
+    <a href="{{ '/lab/' | relative_url }}" data-nav-item data-search="lab demos machine learning"><span>Interactive lab</span><small>Live demos</small></a>
+    <a href="/#about" data-nav-item data-search="about paul career"><span>About Paul</span><small>Background</small></a>
+    <a href="/#contact" data-nav-item data-search="contact email hire work"><span>Get in touch</span><small>Contact</small></a>
+    {% if page.url == "/" %}
+    <button type="button" data-nav-item data-search="terminal command code" data-navigator-action="terminal"><span>Open terminal</span><small>Explore with commands</small></button>
+    <button type="button" data-nav-item data-search="assistant chat ai question" data-navigator-action="chatbot"><span>Ask the portfolio assistant</span><small>Questions about my work</small></button>
+    {% endif %}
+  </div>
+  <p class="navigator__empty" hidden>No matches. Try “Power BI”, “AI” or “contact”.</p>
+  <p class="navigator__hint">↑ ↓ to move <span>Enter to open</span> <span>Ctrl / ⌘ K anywhere</span></p>
+</dialog>

@@ -1,24 +1,61 @@
 <section class="hero" id="top">
-  <div class="hero__bg" aria-hidden="true"></div>
-  <div class="container hero__inner">
-    <div>
-      <p class="hero__location">{% include icon.html name="map-pin" class="icon icon--sm" %} {{ site.data.profile.location }}</p>
-      <h1 class="hero__title">{{ site.profile.name }}</h1>
-      <p class="hero__role">AI engineer, web developer and data analyst.</p>
-      <p class="hero__desc">I build tools for people working in care, from dashboards that track missed visits to communication apps that help people express what they need.</p>
-      <div class="hero__ctas">
-        <a href="#projects" class="btn btn-primary">Explore my projects</a>
-        <a href="mailto:{{ site.data.profile.contact.email }}" class="btn btn-outline">Email me</a>
+  <div class="container">
+    <div class="hero__intro">
+      <div>
+        <p class="hero__signature">Paul Martin McNeill <span> / {{ site.data.profile.location }}</span></p>
+        <h1 class="hero__title">Human problems.<br>Engineered answers.</h1>
+      </div>
+      <div class="hero__aside">
+        <p class="hero__role">AI engineering, web development &amp; data analytics.</p>
+        <p class="hero__desc">I connect data, software and AI to build tools for care, communication and everyday work. Take a look inside.</p>
+        <div class="hero__ctas"><a href="#projects" class="btn btn-primary">Explore the work</a><a href="mailto:{{ site.data.profile.contact.email }}" class="hero__email">Get in touch {% include icon.html name="arrow-up-right" class="icon icon--sm" %}</a></div>
       </div>
     </div>
-    <a class="hero-feature" href="{{ '/projects/aurora-nhs-transformation/' | relative_url }}">
-      <div class="hero-feature__preview">
-        {% include picture.html src="/img/portfolio/aurora/aurora_dashboard_ops_pbi.png" alt="Aurora’s Power BI report showing weekly visits and a map of missed visits across Northern Ireland" loading="eager" fetchpriority="high" %}
+
+    <div class="workbench" id="workbench">
+      <div class="workbench__bar">
+        <p>{% include icon.html name="code" class="icon" %} Inside the system</p>
+        <div class="workbench__switch" hidden role="group" aria-label="Choose a system">
+          {% for system in site.data.workbench %}
+          <button type="button" data-system="{{ system.key }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">{{ system.label }}</button>
+          {% endfor %}
+        </div>
       </div>
-      <div class="hero-feature__caption">
-        <div><span>Case study / Healthcare analytics</span><strong>Aurora Domiciliary Care</strong></div>
-        {% include icon.html name="arrow-up-right" class="icon icon--lg" %}
+      {% for system in site.data.workbench %}
+      <div class="workbench__system" data-system-panel="{{ system.key }}"{% unless forloop.first %} hidden{% endunless %}>
+        <div class="workbench__heading">
+          <div><h2>{{ system.title }}</h2><p>{{ system.summary }}</p></div>
+          <button class="workbench__trace" type="button" hidden>{% include icon.html name="play" class="icon icon--sm" %} Trace the flow</button>
+        </div>
+        <div class="workbench__body">
+          <div class="workbench__diagram">
+            <div class="workbench__stages" role="group" aria-label="System stages">
+              {% for stage in system.stages %}
+              <button class="system-node{% if forloop.first %} is-selected{% endif %}" type="button" data-stage="{{ forloop.index0 }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">
+                <span class="system-node__icon">{% include icon.html name=stage.icon class="icon icon--lg" %}</span>
+                <strong>{{ stage.title }}</strong><span>{{ stage.subtitle }}</span>
+              </button>
+              {% endfor %}
+            </div>
+            <div class="workbench__detail" aria-live="polite" aria-atomic="true">
+              {% for stage in system.stages %}
+              <div data-stage-detail="{{ forloop.index0 }}"{% unless forloop.first %} hidden{% endunless %}>
+                <span class="workbench__step">Step {{ forloop.index }} of {{ system.stages.size }}</span>
+                <h3>{{ stage.title }}</h3><p>{{ stage.detail }}</p>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <a class="workbench__project" href="{{ system.url | relative_url }}">
+            <img src="{{ system.image | relative_url }}" alt="{{ system.alt }}" width="600" height="340" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}">
+            <span><span>{{ system.project }}</span>{% include icon.html name="arrow-up-right" class="icon" %}</span>
+            <small>Explore the case study</small>
+          </a>
+        </div>
       </div>
-    </a>
+      {% endfor %}
+      <div class="workbench__foot"><span>Interactive architecture walkthrough</span><span>Select a stage to inspect it</span></div>
+    </div>
+    <noscript><style>.workbench [data-stage-detail][hidden] { display: block !important; margin-top: 1rem; }</style><p>Explore more systems through the <a href="#projects">project case studies</a>.</p></noscript>
   </div>
 </section>

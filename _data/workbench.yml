@@ -1,0 +1,63 @@
+- key: care
+  label: Healthcare
+  title: Care data, connected.
+  project: Aurora Domiciliary Care
+  url: /projects/aurora-nhs-transformation/
+  image: /img/portfolio/aurora/aurora_dashboard_ops_pbi.webp
+  alt: Aurora Power BI operations dashboard
+  summary: Follow a care record from source tables to an operational dashboard.
+  stages:
+    - title: Source records
+      subtitle: Access / SQL / Excel
+      icon: database
+      detail: Client records, visits, runs and rotas, workforce and finance data form the source layer. Aurora uses a synthetic dataset to demonstrate a Northern Ireland care model.
+    - title: Transform & model
+      subtitle: Power Query / DAX
+      icon: code
+      detail: Power Query cleans and prepares the tables. The data model connects them, while DAX measures turn visit and finance records into reportable indicators.
+    - title: Operational insight
+      subtitle: Power BI
+      icon: eye
+      detail: Dashboards bring together missed visits, workforce, finance and compliance, with locality views and mobile layouts.
+- key: aac
+  label: Accessibility
+  title: A thought becomes a voice.
+  project: AI-Powered AAC App
+  url: /projects/ai-aac-app/
+  image: /img/portfolio/aac-ai-dashboard.webp
+  alt: AI-powered assistive communication dashboard
+  summary: Explore the path from communication input to a caregiver view.
+  stages:
+    - title: Communication input
+      subtitle: Mobile interface
+      icon: sparkles
+      detail: The mobile app gives non-verbal users a way to express their needs. The project explores scene understanding and context to support communication.
+    - title: Predictive assistance
+      subtitle: On-device prediction
+      icon: cpu
+      detail: Predictive AI suggests communication options. The system combines on-device prediction with an accessible mobile interface.
+    - title: Caregiver connection
+      subtitle: Firebase / Dashboard
+      icon: globe
+      detail: A connected caregiver dashboard provides a real-time view alongside the mobile experience. Read the case study for the interface and implementation.
+- key: assistant
+  label: AI workflows
+  title: From a request to an action.
+  project: AI Assistant
+  url: /projects/ai-assistant/
+  image: /img/portfolio/ai-assistant-thumbnail.webp
+  alt: AI Assistant project preview
+  summary: Explore the main parts of a natural-language productivity assistant.
+  stages:
+    - title: A natural request
+      subtitle: Conversational interface
+      icon: terminal
+      detail: A user describes a task in natural language. Different interfaces provide entry points into the productivity assistant.
+    - title: Model processing
+      subtitle: Language models
+      icon: cpu
+      detail: The project explores fine-tuning models to interpret requests and provide relevant responses and recommendations.
+    - title: Workflow integration
+      subtitle: Task automation
+      icon: code
+      detail: Interface integrations connect the assistant to everyday workflows. The case study covers the development and a video demonstration.

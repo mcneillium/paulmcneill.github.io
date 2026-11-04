@@ -8,17 +8,25 @@
   const buttons = filter.querySelectorAll('[data-filter]');
   const visibleLimit = 3;
   const collapsedLabel = toggle?.innerHTML;
+  const search = document.getElementById('projectSearch');
+  const empty = document.getElementById('projectEmpty');
+  const results = document.getElementById('projectResults');
   let category = 'all';
   let expanded = false;
 
   function render() {
-    const showAllCategories = category === 'all';
+    const query = search.value.trim().toLowerCase();
+    const showAllCategories = category === 'all' && !query;
+    let count = 0;
     cards.forEach((card, index) => {
       const visible = showAllCategories
         ? expanded || index < visibleLimit
-        : card.dataset.category === category;
+        : (category === 'all' || card.dataset.category === category) && card.dataset.search.toLowerCase().includes(query);
+      if (visible) count++;
       card.classList.toggle('is-hidden', !visible);
     });
+    empty.hidden = count > 0;
+    results.textContent = count + (count === 1 ? ' project shown' : ' projects shown');
     buttons.forEach(button => {
       const active = button.dataset.filter === category;
       button.classList.toggle('is-active', active);
@@ -43,6 +51,8 @@
     if (expanded) cards[visibleLimit].focus();
   });
 
+  search.addEventListener('input', render);
+  search.closest('label').hidden = false;
   render();
   filter.hidden = false;
 })();

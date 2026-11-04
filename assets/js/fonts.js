@@ -6,6 +6,10 @@
  */
 (() => {
   const FONTS = {
+    workbench: {
+      label: 'Workbench', sample: 'Aa', display: '"Space Grotesk", system-ui, sans-serif',
+      body: '"DM Sans", system-ui, sans-serif', mono: '"JetBrains Mono", ui-monospace, monospace', href: null,
+    },
     editorial: {
       label: 'Editorial',
       sample: 'Aa',
@@ -55,7 +59,7 @@
       href:    'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Nunito+Sans:wght@400;500;600&display=swap',
     },
   };
-  const DEFAULT_KEY = 'editorial';
+  const DEFAULT_KEY = 'workbench';
 
   const wrap  = document.getElementById('fontPicker');
   const btn   = document.getElementById('fontToggle');

@@ -1,7 +1,8 @@
 <section class="section" id="projects">
   <div class="container">
     <div class="section__head reveal">
-      <h2 class="section-title">Selected projects</h2>
+      <h2 class="section-title">A few things I’ve built.</h2>
+      <p class="section-lead">Care systems, communication tools and the data behind them.</p>
     </div>
 
     {%- assign projects = site.data.projects -%}
@@ -13,6 +14,8 @@
       {%- endunless -%}
     {%- endfor -%}
 
+    <label class="project-search" hidden>Find something specific<input id="projectSearch" type="search" placeholder="Try Python, healthcare or Power BI…" autocomplete="off"></label>
+    <p class="project-results sr-only" aria-live="polite" id="projectResults"></p>
     <div class="proj-filter reveal" hidden role="group" aria-label="Filter projects by category">
       <button type="button" class="proj-filter__btn is-active" aria-controls="projectsGrid" aria-pressed="true" data-filter="all">All</button>
       {% for c in cats_seen %}
@@ -27,7 +30,7 @@
         {% else %}{% assign size_class = "" %}{% endif %}
         {%- assign cat_slug = p.category | downcase | replace: ' ', '-' | replace: '+', 'plus' -%}
 
-        <a href="{{ p.url | relative_url }}" class="proj-card {{ size_class }} reveal" style="--delay: {{ forloop.index0 | times: 80 }}ms" aria-label="{{ p.title | escape }}" data-category="{{ cat_slug }}">
+        <a href="{{ p.url | relative_url }}" class="proj-card {{ size_class }} reveal" style="--delay: {{ forloop.index0 | times: 80 }}ms" aria-label="{{ p.title | escape }}" data-category="{{ cat_slug }}" data-search="{{ p.title | append: ' ' | append: p.description | escape }} {{ p.tags | join: ' ' | escape }}">
           <div class="proj-card__media">
             {% if p.image %}
               {% include picture.html src=p.image alt=p.title loading="lazy" sizes="(max-width: 900px) 100vw, 50vw" %}
@@ -78,6 +81,7 @@
       {% endfor %}
     </div>
 
+    <p id="projectEmpty" hidden>No matching projects. Try another search or choose All.</p>
     {%- assign hidden_count = projects.size | minus: 3 -%}
     {% if hidden_count > 0 %}
     <button class="proj-show-more" id="projToggle" hidden aria-controls="projectsGrid" aria-expanded="false" type="button">

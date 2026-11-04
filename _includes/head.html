@@ -117,7 +117,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 
@@ -142,8 +142,8 @@
           blue:    { dark:'#60a5fa', light:'#2563eb' },
           orange:  { dark:'#f97316', light:'#c2410c' }
         };
-        var key = localStorage.getItem('accent-key') || 'orange';
-        if (!ACCENTS[key]) key = 'orange';
+        var key = localStorage.getItem('accent-key') || 'purple';
+        if (!ACCENTS[key]) key = 'purple';
         var hex = ACCENTS[key][isLight ? 'light' : 'dark'];
 
         // Compute --accent-dim (rgba 28%) and --accent-glow (rgba 35%)
@@ -160,6 +160,7 @@
         // Google Fonts <link> synchronously when a non-default preset
         // is saved so the right family is requested before paint.
         var FONTS = {
+          workbench: { display: '"Space Grotesk", system-ui, sans-serif', body: '"DM Sans", system-ui, sans-serif', mono: '"JetBrains Mono", ui-monospace, monospace', href: null },
           editorial: { display: '"Instrument Serif", Georgia, serif',
                        body:    '"DM Sans", system-ui, sans-serif',
                        mono:    '"JetBrains Mono", ui-monospace, Menlo, monospace',
@@ -185,8 +186,8 @@
                        mono:    '"JetBrains Mono", ui-monospace, monospace',
                        href:    'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Nunito+Sans:wght@400;500;600&display=swap' }
         };
-        var fkey = localStorage.getItem('font-key') || 'editorial';
-        if (!FONTS[fkey]) fkey = 'editorial';
+        var fkey = localStorage.getItem('font-key') || 'workbench';
+        if (!FONTS[fkey]) fkey = 'workbench';
         var fp = FONTS[fkey];
         s.setProperty('--font-display', fp.display);
         s.setProperty('--font-body',    fp.body);
