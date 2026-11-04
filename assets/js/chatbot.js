@@ -157,7 +157,7 @@
     }
     if (/(current|now|right now|this week|this month|today)/.test(q)) {
       return data.profile?.current ||
-        "Working on Aurora — Northern Ireland NHSCT-aligned analytics — and the M816 Data Management module at the OU.";
+        "Working on Aurora’s NHSCT-aligned analytics and exploring multi-agent systems, Kubernetes for ML, and vector databases.";
     }
     if (/(about|who|what do you do|introduce)/.test(q)) {
       return data.profile?.bio_short ||
