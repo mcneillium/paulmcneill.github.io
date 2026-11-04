@@ -1,11 +1,10 @@
 source 'https://rubygems.org'
 
-# GitHub Pages pins Jekyll and the safelist of plugins.
-# https://pages.github.com/versions/
-gem 'github-pages', '~> 232', group: :jekyll_plugins
+# Match the hosted Pages renderer and install only plugins used by this site.
+gem 'jekyll', '~> 3.10.0'
+gem 'webrick'
+gem 'kramdown-parser-gfm'
 
-# Plugins below are included in the github-pages gem set, listed
-# explicitly so the build is deterministic locally as well.
 group :jekyll_plugins do
   gem 'jekyll-feed'
   gem 'jekyll-seo-tag'
@@ -25,3 +24,4 @@ platforms :mingw, :x64_mingw, :mswin, :jruby do
   gem 'tzinfo', '~> 1.2'
   gem 'tzinfo-data'
 end
+

@@ -22,7 +22,7 @@
   const samples  = root.querySelectorAll('.ml-chip');
   if (!form || !input || !button || !result) return;
 
-  const TFJS_URL  = 'https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js';
+  const TFJS_URL  = 'https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js';
   const MODEL_URL = 'https://storage.googleapis.com/tfjs-models/tfjs/sentiment_cnn_v1/model.json';
   const META_URL  = 'https://storage.googleapis.com/tfjs-models/tfjs/sentiment_cnn_v1/metadata.json';
 
@@ -40,6 +40,8 @@
   function loadScript(src) {
     return new Promise((resolve, reject) => {
       const s = document.createElement('script');
+      s.integrity = 'sha384-vE8hbVJ4lezako5rlvE7bY0BVzWlFhZncPlckrqNwcUQpVtgbENTgZ8TBbnPjZre';
+      s.crossOrigin = 'anonymous';
       s.src = src; s.async = true;
       s.onload = resolve;
       s.onerror = () => reject(new Error('failed to load ' + src));
@@ -155,14 +157,16 @@
           <span><strong>${pos}%</strong> positive</span>
           <span><strong>${neg}%</strong> negative</span>
         </div>
-        <p class="ml-result__quote">"${text}"</p>
+        <p class="ml-result__quote"></p>
       </div>
     `;
+    result.querySelector('.ml-result__quote').textContent = `"${text}"`;
     timeEl.textContent = ms.toFixed(1) + ' ms';
   }
 
   function renderError(msg) {
-    result.innerHTML = `<div class="ml-result is-negative"><div class="ml-result__head"><span class="ml-result__label">Error</span></div><p class="ml-result__quote">${msg}</p></div>`;
+    result.innerHTML = `<div class="ml-result is-negative"><div class="ml-result__head"><span class="ml-result__label">Error</span></div><p class="ml-result__quote"></p></div>`;
+    result.querySelector('.ml-result__quote').textContent = msg;
   }
 
   /* ------------- handlers ------------- */

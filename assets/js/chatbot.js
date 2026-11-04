@@ -22,7 +22,7 @@
    * Cloudflare Worker. Until then, the bot runs in "demo mode" with a
    * static fallback answer.
    */
-  const ENDPOINT = (typeof window !== 'undefined' && window.CHATBOT_ENDPOINT)
+  const ENDPOINT = document.querySelector('meta[name="chatbot-endpoint"]')?.content
     || ''; // e.g. 'https://paul-portfolio-bot.your-name.workers.dev/chat'
 
   const MAX_USER_MSGS_PER_SESSION = 25;
