@@ -18,7 +18,7 @@
   contribution: "Combined a mobile communication interface, predictive AI and a connected caregiver dashboard."
   evidence: "Interface screenshots and implementation details in the case study."
   category: "AI Accessibility"
-  impact: "Predictive AI assistive communication for non-verbal users" # VERIFY
+  impact: "Predictive AI assistive communication for non-verbal users" # Confirmed by Paul, 2026-11-04
   description: "Mobile + caregiver dashboard that combines on-device prediction, scene understanding, and real-time monitoring for non-verbal users."
   image: "/img/portfolio/aac-ai-dashboard.png"
   tags: ["React Native", "Firebase", "LLMs", "AAC", "Healthcare"]
@@ -33,7 +33,7 @@
   contribution: "Built validation queries, reporting tables and Power BI dashboards for placements and consultant performance."
   evidence: "Case study covering the reporting workflow, data quality checks and my role."
   category: "Data Analytics"
-  impact: "Consolidated 6+ disconnected sources into a single live dashboard" # VERIFY
+  impact: "Consolidated 6+ disconnected sources into a single live dashboard" # Confirmed by Paul, 2026-11-04
   description: "Data quality framework, ETL via Access + Power Query, and Power BI dashboards for placements, client performance, and consultant scorecards."
   image: "/img/portfolio/industrial-temps-crm.png"
   tags: ["Power BI", "Power Query", "ETL", "Recruitment"]
@@ -45,7 +45,7 @@
 
 - title: "AI-Enhanced Social Healthcare Management System"
   category: "AI + Healthcare"
-  impact: "Real-time safety monitoring with NLP-driven virtual assistant" # VERIFY
+  impact: "Real-time safety monitoring with NLP-driven virtual assistant" # Confirmed by Paul, 2026-11-04
   description: "AI-driven platform: client management, NLP virtual assistant, predictive analytics, and real-time safety monitoring for social healthcare delivery."
   image: "/img/portfolio/healthcare-system-thumbnail.png"
   tags: ["NLP", "Predictive Analytics", "Healthcare"]
@@ -57,7 +57,7 @@
 
 - title: "AI Assistant"
   category: "AI Engineering"
-  impact: "Natural-language task automation across daily workflows" # VERIFY
+  impact: "Natural-language task automation across daily workflows" # Confirmed by Paul, 2026-11-04
   description: "An LLM-powered productivity assistant — fine-tuned models, multiple interface integrations, and real-world automation."
   image: "/img/portfolio/ai-assistant-thumbnail.png"
   tags: ["LLMs", "Fine-tuning", "Automation"]

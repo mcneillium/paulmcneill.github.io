@@ -13,7 +13,7 @@ permalink: /projects/ai-aac-app/
 redirect_from:
   - /projects/2024/09/01/ai-powered-aac-app/
 description: "Assistive communication for non-verbal users with predictive AI and a real-time caregiver dashboard."
-impact: "Predictive assistive communication for non-verbal users" # VERIFY
+impact: "Predictive assistive communication for non-verbal users" # Confirmed by Paul, 2026-11-04
 github-url:
 youtube-url:
 ---

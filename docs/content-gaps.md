@@ -13,35 +13,12 @@ to find the in-source markers.
 
 ## High priority — visible to visitors
 
-### 1. Project impact metrics
+### Confirmed project results and testimonials
 
-Three placeholder metrics flagged with `# TODO: REPLACE` in the
-frontmatter of:
-
-- `_posts/2023-05-10-aurora-digital-transformation-domiciliary-care-nhsct.md`
-  — currently "Reduced reporting cycle from 5 days to under 4 hours".
-  Replace with a verified figure or remove.
-- `_posts/2024-09-01-ai-powered-aac-app.md`
-  — currently "Predictive assistive communication for non-verbal users".
-  Replace with measurable outcome (the post body mentions "35–50% faster
-  time-to-utter, +40% caregiver satisfaction" — those should surface as
-  the headline impact metric if verified).
-- `_posts/2024-09-06-crm-reporting-industrial-temps.md`
-  — currently "Consolidated 6+ disconnected sources into a single live
-  dashboard". Confirm the count.
-
-Same metrics also appear (mirrored) in `_data/projects.yml`.
-
-### 2. Testimonials
-
-Three placeholder testimonials in `_data/testimonials.yml`. Each is
-currently displayed with a "Placeholder" pill via the `verified: false`
-flag. Replace with attributed quotes (NHS supervisor, peer collaborator,
-client) and set `verified: true` to remove the pill.
-
-If real quotes won't be available soon, **delete** the testimonials
-section entirely (`_includes/testimonials.html`) — fake social proof
-is worse than no social proof.
+Paul confirmed the published testimonial quotes, attributed names and numerical
+project results on 4 November 2026. The testimonial data carries
+`verified: true`, and the previously flagged impact fields record that
+confirmation. Treat these as confirmed owner-supplied content in future reviews.
 
 ### 3. Blog posts
 

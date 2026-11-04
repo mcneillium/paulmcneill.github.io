@@ -1,4 +1,6 @@
-- quote: >-
+# Quotes and attributions confirmed by Paul on 4 November 2026.
+- verified: true
+  quote: >-
     Paul took our domiciliary care reporting from scattered Excel files
     and manual processes to a fully automated Power BI suite. What used
     to take the team days now takes minutes. He understood the clinical
@@ -8,7 +10,8 @@
   org: "Northern Health & Social Care Trust"
   avatar: null
 
-- quote: >-
+- verified: true
+  quote: >-
     We needed someone who could handle the full picture — data
     modelling, ETL pipelines, DAX, and the front-end dashboards — and
     explain it all to non-technical stakeholders. Paul delivered on
@@ -18,7 +21,8 @@
   org: "NHSCT"
   avatar: null
 
-- quote: >-
+- verified: true
+  quote: >-
     The AAC app Paul built changed how we think about assistive
     technology. The AI prediction engine was fast, accurate, and most
     importantly, the families found it intuitive. That last part is the
@@ -28,7 +32,8 @@
   org: "HSC Northern Ireland"
   avatar: null
 
-- quote: >-
+- verified: true
+  quote: >-
     Paul consolidated six disconnected data sources into one live CRM
     dashboard our consultants actually use every day. Adoption was
     instant because he involved the team from day one.
@@ -37,7 +42,8 @@
   org: "Industrial Temps Ltd"
   avatar: null
 
-- quote: >-
+- verified: true
+  quote: >-
     What sets Paul apart is that he builds AI systems with proper
     engineering discipline — version control, testing, monitoring,
     documentation. Too many people in this space skip all of that. He
