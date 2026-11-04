@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-05-07T18:28:54.580Z",
+  "built_at": "2026-11-04T01:33:56.794Z",
   "embedding_model": null,
   "chunks": [
     {
@@ -186,7 +186,7 @@
     {
       "id": "proj.0",
       "category": "project",
-      "text": "Project: Aurora — NHS Digital Transformation Category: AI + Healthcare Impact: Reduced reporting cycle from 5 days to under 4 hours Northern Ireland-specific, NHSCT-aligned analytics platform — operations, finance, workforce, compliance — built on Access/SQL data layers and Power BI. Tech: NHSCT, Power BI, ETL, DAX, GDPR GitHub: https://github.com/mcneillium/Aurora-Domiciliary-Care",
+      "text": "Project: Aurora — NHS Digital Transformation Category: AI + Healthcare Impact: Models visits, workforce and finance using synthetic care data Northern Ireland-specific, NHSCT-aligned analytics platform — operations, finance, workforce, compliance — built on Access/SQL data layers and Power BI. Tech: NHSCT, Power BI, ETL, DAX, GDPR GitHub: https://github.com/mcneillium/Aurora-Domiciliary-Care",
       "keywords": [
         "aurora — nhs digital transformation",
         "ai + healthcare",
@@ -200,7 +200,7 @@
         "built",
         "shipped"
       ],
-      "tokens": 49
+      "tokens": 48
     },
     {
       "id": "proj.1",
@@ -242,7 +242,7 @@
     {
       "id": "proj.3",
       "category": "project",
-      "text": "Project: AI-Enhanced Social Healthcare Management System Category: AI + Healthcare Impact: Real-time safety monitoring with NLP-driven virtual assistant AI-driven platform: client management, NLP virtual assistant, predictive analytics, and real-time safety monitoring for social healthcare delivery. Tech: NLP, Predictive Analytics, Healthcare GitHub: https://github.com/mcneillium/AI_Enhanced_Social_HCMS",
+      "text": "Project: AI-Enhanced Social Healthcare Management System Category: AI + Healthcare Impact: Real-time safety monitoring with NLP-driven virtual assistant AI-driven platform: client management, NLP virtual assistant, predictive analytics, and real-time safety monitoring for social healthcare delivery. Tech: NLP, Predictive Analytics, Healthcare",
       "keywords": [
         "ai-enhanced social healthcare management system",
         "ai + healthcare",
@@ -254,12 +254,12 @@
         "built",
         "shipped"
       ],
-      "tokens": 42
+      "tokens": 40
     },
     {
       "id": "proj.4",
       "category": "project",
-      "text": "Project: AI Assistant Category: AI Engineering Impact: Natural-language task automation across daily workflows An LLM-powered productivity assistant — fine-tuned models, multiple interface integrations, and real-world automation. Tech: LLMs, Fine-tuning, Automation GitHub: https://github.com/mcneillium/ai_assistant",
+      "text": "Project: AI Assistant Category: AI Engineering Impact: Natural-language task automation across daily workflows An LLM-powered productivity assistant — fine-tuned models, multiple interface integrations, and real-world automation. Tech: LLMs, Fine-tuning, Automation",
       "keywords": [
         "ai assistant",
         "ai engineering",
@@ -271,12 +271,12 @@
         "built",
         "shipped"
       ],
-      "tokens": 32
+      "tokens": 30
     },
     {
       "id": "proj.5",
       "category": "project",
-      "text": "Project: Custom CRM Web Application Category: Web Engineering Impact: In-development CRM consolidating sales, comms, and analytics Custom CRM tailored to streamline business operations — sales management, customer communication, and analytics in a single PWA. Tech: TypeScript, Node.js, PostgreSQL GitHub: https://github.com/mcneillium/",
+      "text": "Project: Custom CRM Web Application Category: Web Engineering Impact: In-development CRM consolidating sales, comms, and analytics Custom CRM tailored to streamline business operations — sales management, customer communication, and analytics in a single PWA. Tech: TypeScript, Node.js, PostgreSQL",
       "keywords": [
         "custom crm web application",
         "web engineering",
@@ -288,7 +288,7 @@
         "built",
         "shipped"
       ],
-      "tokens": 40
+      "tokens": 38
     },
     {
       "id": "proj.6",
@@ -430,72 +430,6 @@
         "human-centred"
       ],
       "tokens": 24
-    },
-    {
-      "id": "blog.8.intro",
-      "category": "blog",
-      "text": "Blog post — From Notebooks to Pipelines: Why I Stopped Shipping Jupyter: A pragmatic argument for treating notebooks as the experiment, not the deliverable — and what to reach for instead. There's a moment in every ML project where someone says \"we'll just productionise the notebook.\" It's the same moment, every time, that the project quietly stops making progress. This post is about why notebooks fail in production, and what to reach for instead. I'm not against notebooks — I write them every day for exploration. The argument is narrower: **notebooks should not be the deliverable**.",
-      "keywords": [
-        "from notebooks to pipelines: why i stopped shipping jupyter",
-        "mlops",
-        "notebooks",
-        "ml pipelines",
-        "mlflow",
-        "python",
-        "blog",
-        "writing",
-        "post"
-      ],
-      "tokens": 96
-    },
-    {
-      "id": "blog.8.body",
-      "category": "blog",
-      "text": "From Notebooks to Pipelines: Why I Stopped Shipping Jupyter — continued: The strengths are real: - Inline plots, side-by-side with code, with the data from the last run still in scope. Iteration speed is genuinely high. - Markdown cells let you narrate as you build. Excellent for analysis reports. - The kernel-based execution model means you can poke at intermediate state without rerunning everything. For exploration, model debugging, one-off analyses, and teaching, this is the right tool. I'd lose nothing by saying so. The failures all come from the same root cause: **a notebook's runtime behaviour is decoupled from its source**. Cell execution order isn't tracked by the file. Out-of-band state lives in the kernel between runs. Hidden imports survive across cells. Variables get reused with new meanings halfway down. The file you commit isn't the program that ran. This makes them fragile in ways that don't matter for exploration but become intolerable for production: 1. **Reproducibility evaporates silently.** \"Re-run all cells\" produces a different result than the run you remember, and you can't always tell why. 2. **Diffs are useless.** A cell-output change rewrites half the JSON. Code review becomes pattern-matching against noise. 3. **Testing is awkward.** You can shoehorn `pytest` against notebook functions with `nbval` or extract them into modules and import — but at that point you've already started the migration. 4. **Dependencies are vague.** `pip install` lines in cells, often without versions. The notebook works on th",
-      "keywords": [
-        "from notebooks to pipelines: why i stopped shipping jupyter",
-        "mlops",
-        "notebooks",
-        "ml pipelines",
-        "mlflow",
-        "python",
-        "blog",
-        "writing"
-      ],
-      "tokens": 241
-    },
-    {
-      "id": "blog.9.intro",
-      "category": "blog",
-      "text": "Blog post — Building Production RAG Pipelines: Lessons from Real Deployments: Notes from shipping retrieval-augmented generation in production — chunking that doesn't shred meaning, retrieval that keeps citations, and evaluation harnesses that catch regressions before users do. A weekend RAG demo is one thing. A *production* RAG pipeline is a different animal entirely — and the cost is mostly in the parts you can't see in a notebook. This post collects the patterns I've found genuinely matter, in roughly the order they bite you. The default tutorial chunker — fixed-size sliding window with some overlap — gets you to a demo. It also routinely shreds meaning. Sentences get split mid-clause. Tables turn into nonsense. The bullet point that gives a paragraph its meaning lands in a different chunk to the paragraph itself.",
-      "keywords": [
-        "building production rag pipelines: lessons from real deployments",
-        "rag",
-        "llms",
-        "retrieval",
-        "evaluation",
-        "production ml",
-        "blog",
-        "writing",
-        "post"
-      ],
-      "tokens": 132
-    },
-    {
-      "id": "blog.9.body",
-      "category": "blog",
-      "text": "Building Production RAG Pipelines: Lessons from Real Deployments — continued: Three rules that survived contact with real corpora: 1. **Respect document structure.** Use the document's own boundaries — headings, list items, table rows — as candidate split points, not arbitrary character counts. For PDFs, this means a real layout-aware parser (`unstructured`, PyMuPDF with logical-block extraction, or AWS Textract for tables) rather than naive text dumps. 2. **Vary chunk size to fit the question.** Small chunks (~200 tokens) maximise retrieval precision but lose context. Large chunks (~1k tokens) preserve context but make embedding less discriminative. I've ended up with a two-stage retrieval pattern: small chunks for finding *where*, then expand to the parent section before passing to the model. 3. **Store the spelling, the slug, and the source.** Every chunk needs a stable identifier and a path back to the original document, with page or anchor offsets. Without this, you can't render citations and you can't debug a hallucination. \"It looks like the right chunks come back for these five test queries\" is not an evaluation. It's a vibe. The first time you change embedding models, prompt versions, or chunk strategy, you'll discover three things that silently regressed and one user already complained about. The cheapest reliable harness: - **A labelled query set.** 50–100 queries each tagged with the chunks (or source URLs) that should be retrieved. You build this by mining real user queries and annotating by hand. Yes,",
-      "keywords": [
-        "building production rag pipelines: lessons from real deployments",
-        "rag",
-        "llms",
-        "retrieval",
-        "evaluation",
-        "production ml",
-        "blog",
-        "writing"
-      ],
-      "tokens": 239
     }
   ]
 }

@@ -1,144 +1,57 @@
-# Deploying the "Talk to Paul" chatbot
+# Portfolio assistant deployment
 
-The chatbot UI ships in the site. The backend is a separate Cloudflare
-Worker that proxies model calls. Until the Worker is deployed and the
-site knows its URL, the chatbot runs in **demo mode** — it answers from
-the page's structured data and tells the user it's not the live model.
+The frontend calls the Cloudflare Worker configured at
+`chatbot.endpoint` in `_config.yml`. The Worker retrieves portfolio
+passages from its bundled knowledge base and sends them to
+`@cf/meta/llama-3.1-8b-instruct-fp8-fast` using the Workers AI binding.
 
-## What you'll need
+## Enforced limits
 
-- A free **Cloudflare** account.
-- The `wrangler` CLI: `npm install -g wrangler` (one-off).
-- A few minutes.
+- 100 inference attempts per UTC day across the whole website.
+- 10 inference attempts per UTC hour and 20 per UTC day per IP address.
+- 256 generated tokens per reply.
+- 6,000 UTF-8 bytes of prompt content per inference, plus model chat formatting.
+- 500 characters per question, four history messages of 250 characters each.
+- 8,192 bytes per HTTP body, checked while reading the stream.
 
-## Quick path — Workers AI (free, no API key)
+A single SQLite Durable Object reserves each inference atomically before the
+model runs. Counters survive Worker restarts and concurrent requests. Failed
+inferences retain their reservation. If storage fails or the binding is
+missing, inference stops. There are no model retries, embedding calls or
+paid-provider fallbacks. The daily global cap also applies across changing IPs.
 
-This uses Cloudflare's hosted Llama 3.1 8B. Free tier is generous for a
-portfolio and there's no separate API key to manage.
+Only daily IP hashes and counters are stored. A midnight UTC alarm removes
+expired counters. Messages and raw IP addresses are not saved by this code.
+The hourly limit is a fixed UTC clock-hour window. People sharing an IP also
+share its allowance. Greetings and questions without matching portfolio
+context use local replies without model calls.
 
-```bash
+Cloudflare currently includes 10,000 Workers AI neurons per account per day.
+On Workers Free, operations stop at the allowance. Workers Paid bills usage
+above it. This model's published token rates and the application's limits
+keep this assistant's maximum daily inference usage below that allowance.
+Other Workers AI applications share the account allowance.
+See https://developers.cloudflare.com/workers-ai/platform/pricing/ and
+https://developers.cloudflare.com/durable-objects/platform/pricing/.
+Do not upgrade the account or change the model to bypass free-plan limits.
+
+## Deploy
+
+From the repository root, refresh the bundled content after portfolio edits.
+
+```powershell
+node scripts/build-knowledge-base.js
 cd workers/portfolio-bot
-wrangler login                    # one-off, opens a browser
-wrangler deploy                   # publishes the worker
+.\node_modules\.bin\wrangler.cmd login
+.\node_modules\.bin\wrangler.cmd deploy --dry-run --outdir .wrangler/dry-run
+node --test test/usage.test.mjs
+.\node_modules\.bin\wrangler.cmd deploy
 ```
 
-`wrangler deploy` will print a URL like:
+The Worker is deployed separately from GitHub Pages. Frontend or privacy
+copy changes also need the normal Jekyll build and GitHub Pages deployment.
 
-```
-https://portfolio-bot.<your-cloudflare-username>.workers.dev
-```
-
-That URL is the endpoint. Append `/chat` is **not** needed — the worker
-serves on `/`. POST `{ message, history }` to that URL.
-
-### Tell the site about the endpoint
-
-Edit `_includes/head.html` and add this **before** `assets/js/chatbot.js`
-loads (i.e. inside `<head>`):
-
-```html
-<script>
-  window.CHATBOT_ENDPOINT = "https://portfolio-bot.<your-cloudflare-username>.workers.dev";
-</script>
-```
-
-Or, cleaner, add the endpoint to `_config.yml`:
-
-```yaml
-chatbot:
-  endpoint: "https://portfolio-bot.<your-cloudflare-username>.workers.dev"
-```
-
-…and reference it from `head.html`:
-
-```liquid
-{% if site.chatbot.endpoint %}
-<script>window.CHATBOT_ENDPOINT = "{{ site.chatbot.endpoint }}";</script>
-{% endif %}
-```
-
-Push to `main` and the site is live.
-
-## Better quality — Anthropic API
-
-Costs per request but gives meaningfully better replies. Same worker,
-different env config.
-
-```bash
-cd workers/portfolio-bot
-wrangler secret put ANTHROPIC_API_KEY    # paste your sk-ant-... key
-```
-
-Edit `wrangler.toml`:
-
-```toml
-[vars]
-BACKEND = "anthropic"
-ANTHROPIC_MODEL = "claude-haiku-4-5-20251001"   # cheap, fast, fine for this
-CONTEXT_URL = "https://paulmartinmcneill.com/assets/chatbot/context.txt"
-```
-
-`wrangler deploy` again.
-
-## Knowledge base
-
-The Worker fetches `CONTEXT_URL` (defaults to
-`https://paulmartinmcneill.com/assets/chatbot/context.txt`) on cold start
-and caches it for 5 minutes. Updating site content → push → site rebuilds
-→ Worker picks it up within 5 minutes.
-
-The context file is generated by Jekyll from `_data/profile.yml`,
-`_data/experience.yml`, `_data/education.yml`, `_data/credentials.yml`,
-`_data/skills.yml`, `_data/principles.yml`, and `_data/projects.yml`.
-Edit those, not the rendered context.
-
-## Local development
-
-The chatbot UI works without a backend — it falls back to demo mode
-that answers from page data. To test the live worker locally:
-
-```bash
-cd workers/portfolio-bot
-wrangler dev                   # http://127.0.0.1:8787
-
-# Then in head.html (or via the inline script at the top of any page):
-# <script>window.CHATBOT_ENDPOINT = "http://127.0.0.1:8787";</script>
-```
-
-The Worker accepts `OPTIONS` preflight and `POST` only. Origin check
-allows `paulmartinmcneill.com`, `mcneillium.github.io`, and
-localhost — extend the `ALLOW_ORIGINS` array in `worker.js` if you need
-others.
-
-## Costs and limits
-
-- **Workers AI**: free tier covers up to 10,000 neuron-units / day.
-  Llama 3.1 8B uses ~50 neurons / request. So ~200 portfolio chats / day
-  free, then $0.011 per 1k neurons. For a portfolio site this is
-  effectively free.
-- **Anthropic API**: charged per token. Haiku 4.5 input ~$1 / MTok,
-  output ~$5 / MTok. A 350-token reply on a 5k-token context costs about
-  $0.005. ~200 chats / month = $1. Cheap.
-- **Worker invocations**: 100k requests / day free. Not a constraint.
-
-## Hardening if traffic gets weird
-
-- **Per-IP rate limiting**: add a Durable Object or KV-based bucket.
-  Not implemented — single portfolio site doesn't need it.
-- **Per-session client cap**: already in place — the JS limits the user
-  to 25 messages per page session. Reload to reset.
-- **Off-topic refusal**: the system prompt tells the model to refuse.
-  Open-source models leak through this more than Anthropic; if drift
-  becomes a problem, switch BACKEND to anthropic.
-
-## Removing it
-
-If you decide the chatbot isn't pulling its weight:
-
-```bash
-wrangler delete portfolio-bot
-```
-
-…then drop `_includes/chatbot.html` from `_layouts/default.html`,
-delete `assets/js/chatbot.js`, and the site is back to terminal-only.
-The terminal alone is a respectable interactive feature.
+The model and application limits are constants in `src/index.js` and
+`src/usage-budget.js`. The Durable Object namespace and migration live in
+`wrangler.toml`. Preserve the namespace and its singleton name when deploying
+so deployment does not reset an active day's budget.

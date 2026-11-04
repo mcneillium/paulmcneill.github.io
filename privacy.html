@@ -93,11 +93,10 @@ description: "Privacy practices for paulmartinmcneill.com — what's collected, 
     <li><strong>Does not log</strong> your messages.</li>
     <li><strong>Does not retain</strong> them after the response is generated.</li>
     <li><strong>Does not pass them</strong> to any third-party analytics or training pipeline.</li>
-    <li>Routes them to either Cloudflare Workers AI (Llama 3.1) or the Anthropic API depending on configuration. Both providers have their own privacy policies — they may briefly log requests for abuse prevention, per their stated retention windows, but neither retains for training in the configured mode.</li>
+    <li>Sends your question, a short conversation history and relevant portfolio passages to Cloudflare Workers AI to generate a reply.</li>
   </ul>
   <p>
-    Conversation history is kept in your browser tab only, for the
-    current session. Refresh the page and it's gone.
+    Conversation history is held in your browser tab and a short excerpt is sent with each question. Refreshing clears it. To enforce usage limits, the backend stores a daily hash of your IP address and request counts, which expire at midnight UTC. It does not store your messages or raw IP address in that counter.
   </p>
 
   <h2>Third parties the site requests from</h2>

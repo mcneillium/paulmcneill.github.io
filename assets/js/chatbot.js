@@ -26,11 +26,12 @@
     || ''; // e.g. 'https://paul-portfolio-bot.your-name.workers.dev/chat'
 
   const MAX_USER_MSGS_PER_SESSION = 25;
-  const HISTORY_LIMIT = 10; // messages of context sent to the model
+  const HISTORY_LIMIT = 2; // two turns, at most four history messages
 
   let conversation = []; // [{role:'user'|'assistant', content:'...'}]
   let userMsgCount = 0;
   let prevFocus = null;
+  let isSending = false;
 
   /* ------------- ui helpers ------------- */
   function appendMsg(text, who, opts = {}) {
@@ -92,7 +93,7 @@
     if (body.dataset.booted) return;
     body.dataset.booted = '1';
     const greeting =
-      "Hey — Paul here, sort of. Ask me about my projects, the NHS work, " +
+      "Hello — I’m Paul’s AI portfolio assistant. Ask about his projects, healthcare work, " +
       "tech stack, or how to get in touch.";
     appendMsg(greeting, 'bot');
     showSuggestions(true);
@@ -167,9 +168,11 @@
 
   /* ------------- live mode ------------- */
   async function liveAnswer(question) {
-    const recent = conversation.slice(-HISTORY_LIMIT * 2);
+    const recent = conversation.slice(0, -1).slice(-HISTORY_LIMIT * 2)
+      .map(turn => ({ role: turn.role, content: turn.content.slice(0, 250) }));
     const res = await fetch(ENDPOINT, {
       method: 'POST',
+      signal: AbortSignal.timeout(20000),
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         message: question,
@@ -178,8 +181,8 @@
     });
     if (!res.ok) {
       const txt = await res.text().catch(() => '');
-      // Forward 429 (rate-limited) message verbatim if the server provided one
-      if (res.status === 429) {
+      // Display the server’s quota or availability message.
+      if (res.status === 429 || res.status === 502 || res.status === 503) {
         try { const j = JSON.parse(txt); if (j.reply) return { reply: j.reply, sources: [] }; } catch {}
       }
       throw new Error(`Server replied ${res.status}: ${txt || 'no body'}`);
@@ -193,11 +196,12 @@
 
   /* ------------- send a message ------------- */
   async function ask(question) {
-    if (!question || !question.trim()) return;
+    if (isSending || !question || !question.trim()) return;
     if (userMsgCount >= MAX_USER_MSGS_PER_SESSION) {
       appendMsg("Right, that's plenty for one sitting — if you've got more, fire me an email at paulmcneill1989@hotmail.co.uk and I'll reply properly.", 'bot');
       return;
     }
+    isSending = true;
     showSuggestions(false);
     appendMsg(question, 'user');
     conversation.push({ role: 'user', content: question });
@@ -222,6 +226,7 @@
       );
       console.error('chatbot error', e);
     } finally {
+      isSending = false;
       if (send) send.disabled = false;
       input.focus();
     }
