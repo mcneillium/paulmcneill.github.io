@@ -1,53 +1,24 @@
 <section class="hero" id="top">
   <div class="hero__bg" aria-hidden="true"></div>
-  <div class="hero__glow-1" aria-hidden="true"></div>
-  <div class="hero__glow-2" aria-hidden="true"></div>
-
   <div class="container hero__inner">
-    <span class="eyebrow hero__eyebrow">AI Engineer · Web Developer · Data Analyst</span>
-
-    <h1 class="hero__title">Building <em>intelligent</em> digital systems</h1>
-
-    <p class="hero__desc">
-      LLM-powered agents, production web apps, and operational analytics that
-      actually move the needle.
-    </p>
-
-    {% if site.data.profile.current_focus %}
-    <div class="hero__current" aria-label="Currently">
-      <span class="hero__current-dot" aria-hidden="true"></span>
-      <span class="hero__current-label">Currently</span>
-      <span class="hero__current-text">
-        <strong>{{ site.data.profile.current_focus.focus }}</strong>
-        {% if site.data.profile.current_focus.detail %}
-          <span class="hero__current-detail"> · {{ site.data.profile.current_focus.detail }}</span>
-        {% endif %}
-      </span>
-      {% if site.data.profile.current_focus.updated %}
-        <time class="hero__current-date">{{ site.data.profile.current_focus.updated }}</time>
-      {% endif %}
+    <div>
+      <p class="hero__location">{% include icon.html name="map-pin" class="icon icon--sm" %} {{ site.data.profile.location }}</p>
+      <h1 class="hero__title">{{ site.profile.name }}</h1>
+      <p class="hero__role">AI engineer, web developer and data analyst.</p>
+      <p class="hero__desc">I build tools for people working in care, from dashboards that track missed visits to communication apps that help people express what they need.</p>
+      <div class="hero__ctas">
+        <a href="#projects" class="btn btn-primary">Explore my projects</a>
+        <a href="mailto:{{ site.data.profile.contact.email }}" class="btn btn-outline">Email me</a>
+      </div>
     </div>
-    {% endif %}
-
-    <div class="hero__ctas">
-      <a href="#projects" class="btn btn-primary">View Projects
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-      </a>
-      <button type="button" class="btn btn-outline" data-open="chatbot" aria-haspopup="dialog" aria-controls="chatbot">
-        Talk to Paul
-        {% include icon.html name="sparkles" class="icon icon--sm" %}
-      </button>
-      <button type="button" class="btn btn-outline" data-open="terminal" aria-haspopup="dialog" aria-controls="terminal">
-        Open terminal
-        {% include icon.html name="terminal" class="icon icon--sm" %}
-      </button>
-    </div>
-
-    <div class="hero__stats">
-      <div class="hero__stat"><span class="num">{{ site.data.profile.years_experience | default: 15 }}+</span><span class="lbl">Years Experience</span></div>
-      <div class="hero__stat"><span class="num">AI Agents</span><span class="lbl">&amp; ML Models</span></div>
-      <div class="hero__stat"><span class="num">NHS</span><span class="lbl">Digital Transformation</span></div>
-      <div class="hero__stat"><span class="num">Full Stack</span><span class="lbl">Web Engineering</span></div>
-    </div>
+    <a class="hero-feature" href="{{ '/projects/aurora-nhs-transformation/' | relative_url }}">
+      <div class="hero-feature__preview">
+        {% include picture.html src="/img/portfolio/aurora/aurora_dashboard_ops_pbi.png" alt="Aurora’s Power BI report showing weekly visits and a map of missed visits across Northern Ireland" loading="eager" fetchpriority="high" %}
+      </div>
+      <div class="hero-feature__caption">
+        <div><span>Case study / Healthcare analytics</span><strong>Aurora Domiciliary Care</strong></div>
+        {% include icon.html name="arrow-up-right" class="icon icon--lg" %}
+      </div>
+    </a>
   </div>
 </section>

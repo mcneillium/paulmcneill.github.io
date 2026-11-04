@@ -479,8 +479,9 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 .nav__toggle.open span::before { top: 0; transform: rotate(45deg); }
 .nav__toggle.open span::after { bottom: 0; transform: rotate(-45deg); }
 
-@media (max-width: 900px) {
-  .nav__toggle { display: inline-flex; }
+@media (max-width: 1150px) {
+  .nav__inner { gap: .5rem; }
+  .nav__toggle { display: inline-flex; position: relative; z-index: 96; flex: 0 0 40px; }
   .nav.menu-open {
     bottom: 0;
   }
@@ -495,7 +496,10 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: clamp(.5rem, 2vh, 1.5rem);
+    padding: 4.5rem 0 1.5rem;
+    overflow-y: auto;
+    justify-content: safe center;
     transform: translateY(-100%);
     transition: transform 0.4s var(--ease-out), opacity 0.25s ease, visibility 0s linear 0.4s;
     opacity: 0;
@@ -510,7 +514,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
     transition: transform 0.4s var(--ease-out), opacity 0.2s ease;
   }
   .nav__links a { font-size: 1.5rem; font-family: var(--font-display); }
-  .status-pill { display: none; }
+  .nav .status-pill { display: none; }
 }
 
 /* ==========================================================================
@@ -518,45 +522,18 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
    ========================================================================== */
 .hero {
   position: relative;
-  min-height: 85vh;
-  display: flex;
-  align-items: center;
-  padding-top: 6rem;
-  padding-bottom: 2rem;
+  padding: clamp(7rem, 13vw, 11rem) 0 clamp(3rem, 8vw, 7rem);
+  min-height: 0;
   overflow: hidden;
 }
-.hero__bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(ellipse at 50% 40%, #000 35%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000 35%, transparent 75%);
-}
-.hero__glow-1, .hero__glow-2 {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  pointer-events: none;
-  z-index: 0;
-}
-.hero__glow-1 {
-  width: 540px; height: 540px;
-  background: radial-gradient(circle, rgba(201,242,112,0.18), transparent 70%);
-  top: -120px; right: -100px;
-}
-.hero__glow-2 {
-  width: 420px; height: 420px;
-  background: radial-gradient(circle, rgba(120, 90, 255, 0.12), transparent 70%);
-  bottom: -120px; left: -80px;
-}
+.hero__bg { position: absolute; inset: 0; pointer-events: none; }
 .hero__inner {
   position: relative;
   z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(2rem, 6vw, 6rem);
 }
 /* WebGL particle field — injected by hero-3d.js. Sits with the other
    decorative layers (z-index 0) below .hero__inner; the static
@@ -578,126 +555,41 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   .hero__canvas { display: none; }
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.hero__eyebrow,
-.hero__title,
-.hero__desc,
-.hero__ctas,
-.hero__stats {
-  opacity: 0;
-  animation: fadeUp 0.9s var(--ease-out) forwards;
-}
-.hero__eyebrow { animation-delay: 0.1s; }
-.hero__title   { animation-delay: 0.25s; }
-.hero__desc    { animation-delay: 0.4s; }
-.hero__ctas    { animation-delay: 0.55s; }
-.hero__stats   { animation-delay: 0.7s; }
-
-.hero__title {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(2.75rem, 7.5vw, 6rem);
-  line-height: 1.02;
-  letter-spacing: -0.025em;
-  margin: 0.75rem 0 1rem;
-  max-width: 14ch;
-}
-.hero__title em { font-style: italic; color: var(--accent); }
-
-.hero__desc {
-  color: var(--text-dim);
-  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
-  max-width: 56ch;
-  margin: 0 0 1.25rem;
-}
-
-.hero__ctas {
+.hero__location, .hero__ctas, .hero-feature__caption {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-bottom: 2rem;
-}
-
-/* "Currently" card — compact dynamic-status surface above the CTAs */
-.hero__current {
-  display: inline-flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  padding: 0.5rem 0.85rem;
-  margin: 0 0 1.5rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-pill);
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--text-dim);
-  letter-spacing: 0.01em;
-  max-width: 100%;
+  gap: .65rem;
 }
-[data-theme="light"] .hero__current { background: rgba(0, 0, 0, 0.02); }
-.hero__current-dot {
-  width: 8px; height: 8px;
-  background: #2ee47a;
-  border-radius: 50%;
-  flex: 0 0 8px;
-  box-shadow: 0 0 0 0 rgba(46, 228, 122, 0.5);
-  animation: pulseDot 2s ease-out infinite;
+.hero__location { margin: 0; color: var(--text-dim); }
+.hero__location .icon { color: var(--accent); }
+.hero__title {
+  font: 400 clamp(3.75rem, 7.8vw, 7rem)/.96 var(--font-display);
+  letter-spacing: -.04em;
+  max-width: 10ch;
+  margin: 1.25rem 0;
 }
-@media (prefers-reduced-motion: reduce) { .hero__current-dot { animation: none; } }
-.hero__current-label {
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--accent);
-  font-size: 0.7rem;
-}
-.hero__current-text { color: var(--text); font-family: var(--font-body); font-size: 0.85rem; line-height: 1.4; }
-.hero__current-text strong { font-weight: 500; color: var(--text); }
-.hero__current-detail { color: var(--text-dim); }
-.hero__current-date {
-  font-size: 0.7rem;
-  color: var(--text-faint);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  margin-left: auto;
-  padding-left: 0.5rem;
-  border-left: 1px solid var(--border);
-}
-@media (max-width: 600px) {
-  .hero__current-detail { display: none; }
-  .hero__current-date { display: none; }
-}
-
-.hero__stats {
+.hero__role { font-size: clamp(1.1rem, 1.8vw, 1.5rem); line-height: 1.35; margin: 0 0 .6rem; }
+.hero__desc { font-size: 1.05rem; color: var(--text-dim); max-width: 48ch; margin: 0; }
+.hero__ctas { flex-wrap: wrap; margin-top: 1.6rem; }
+.hero-feature { display: block; min-width: 0; border: 1px solid var(--border-strong); border-radius: var(--radius); overflow: hidden; background: var(--bg-raised); }
+.hero-feature:hover { border-color: var(--accent); }
+.hero-feature__preview {
+  aspect-ratio: 1.7;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--border);
-  max-width: 960px;
+  align-items: center;
+  padding: 5%;
+  background: #27535a;
+  background-image: repeating-linear-gradient(135deg, transparent 0 14px, #ffffff0a 14px 15px);
 }
-.hero__stat .num {
-  font-family: var(--font-display);
-  font-size: clamp(1.2rem, 1.6vw, 1.5rem);
-  color: var(--text);
-  display: block;
-  letter-spacing: -0.01em;
-}
-.hero__stat .lbl {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--text-faint);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-top: 0.25rem;
-  display: block;
-}
-
+.hero-feature__preview picture { display: block; overflow: hidden; border-radius: 4px; box-shadow: 0 8px 24px #102d3690; }
+.hero-feature__preview img { width: 100%; }
+.hero-feature__caption { padding: 1.1rem 1.4rem; justify-content: space-between; }
+.hero-feature__caption span { color: var(--text-dim); font-size: .85rem; }
+.hero-feature__caption strong { display: block; font: 400 clamp(1.6rem, 3vw, 2.3rem)/1.25 var(--font-display); }
+.hero-feature__caption .icon { color: var(--accent); }
 @media (max-width: 768px) {
-  .hero__stats { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .hero__inner { grid-template-columns: minmax(0, 1fr); }
+  .hero__title { max-width: 12ch; }
 }
 
 /* ==========================================================================
@@ -756,7 +648,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 .section__head .section-lead { margin: 0; }
 
 /* Reveal animation */
-.reveal {
+.reveal-pending {
   opacity: 0;
   transform: translateY(32px);
   transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
@@ -863,11 +755,12 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
    Projects (bento)
    ========================================================================== */
 /* Project filter chips */
+.proj-filter[hidden], .proj-show-more[hidden] { display: none; }
 .proj-filter {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
-  margin: -1.5rem 0 1.5rem;
+  margin: 0 0 1.5rem;
 }
 .proj-filter__btn {
   padding: 0.4rem 0.85rem;
@@ -895,7 +788,6 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   gap: 1.25rem;
   align-items: stretch;
 }
-.proj-card.is-filtered-out,
 .proj-card.is-hidden {
   display: none !important;
 }

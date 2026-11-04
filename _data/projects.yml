@@ -1,6 +1,6 @@
 - title: "Aurora — NHS Digital Transformation"
   category: "AI + Healthcare"
-  impact: "Reduced reporting cycle from 5 days to under 4 hours" # VERIFY
+  impact: "Models visits, workforce and finance using synthetic care data"
   description: "Northern Ireland-specific, NHSCT-aligned analytics platform — operations, finance, workforce, compliance — built on Access/SQL data layers and Power BI."
   image: "/img/portfolio/aurora/aurora_dashboard_kpi_pbi.png"
   tags: ["NHSCT", "Power BI", "ETL", "DAX", "GDPR"]

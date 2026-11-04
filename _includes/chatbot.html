@@ -1,14 +1,14 @@
-<button type="button" class="chat-fab" id="chatFab" aria-haspopup="dialog" aria-controls="chatbot" data-open="chatbot">
+<button type="button" class="chat-fab" id="chatFab" aria-label="Open portfolio assistant" aria-haspopup="dialog" aria-controls="chatbot" data-open="chatbot">
   <span class="chat-fab__pulse" aria-hidden="true"></span>
   {% include icon.html name="sparkles" class="chat-fab__icon" %}
-  <span class="chat-fab__label">Talk to Paul</span>
+  <span class="chat-fab__label">Portfolio assistant</span>
 </button>
 
 <div class="chat" id="chatbot" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="chat-title">
   <header class="chat__header">
     <div class="chat__title-wrap">
       {% include icon.html name="sparkles" class="icon" %}
-      <h2 id="chat-title" class="chat__title">Talk to Paul</h2>
+      <h2 id="chat-title" class="chat__title">Portfolio assistant</h2>
     </div>
     <button type="button" class="chat__close" aria-label="Close" data-close="chatbot">×</button>
   </header>

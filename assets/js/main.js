@@ -62,6 +62,9 @@
     if (first) first.focus();
   }
   if (navToggle && navLinks) {
+    window.matchMedia('(max-width: 1150px)').addEventListener('change', event => {
+      if (!event.matches && navLinks.classList.contains('open')) closeMenu({ restoreFocus: false });
+    });
     navToggle.addEventListener('click', () => {
       navLinks.classList.contains('open') ? closeMenu() : openMenu();
     });
@@ -117,7 +120,10 @@
           }
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-      reveals.forEach(el => io.observe(el));
+      reveals.forEach(el => {
+        el.classList.add('reveal-pending');
+        io.observe(el);
+      });
     }
   }
 
@@ -139,31 +145,6 @@
       });
     }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
     sections.forEach(s => sectionObs.observe(s));
-  }
-
-  /* -------- Count-up for hero numeric stats ------------------------- */
-  const stats = document.querySelectorAll('.hero__stat .num');
-  if (stats.length && !reduced && 'IntersectionObserver' in window) {
-    const animate = (el) => {
-      const text = el.textContent.trim();
-      const m = text.match(/^(\d+)(\D*)$/);
-      if (!m) return;
-      const target = parseInt(m[1], 10);
-      const suffix = m[2] || '';
-      const start = performance.now();
-      const dur = 1200;
-      const tick = (now) => {
-        const t = Math.min(1, (now - start) / dur);
-        const eased = 1 - Math.pow(1 - t, 3);
-        el.textContent = Math.round(target * eased) + suffix;
-        if (t < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    };
-    const cu = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { animate(e.target); cu.unobserve(e.target); } });
-    }, { threshold: 0.6 });
-    stats.forEach(s => cu.observe(s));
   }
 
   /* -------- Lazy-hydrate images with data-src ----------------------- */
@@ -199,7 +180,7 @@
 
   /* -------- Lightbox for project galleries -------------------------- */
   const lightbox = document.getElementById('lightbox');
-  const galleryItems = document.querySelectorAll('.gallery-item');
+  const galleryItems = document.querySelectorAll('.gallery-item, .aurora-item a');
   if (lightbox && galleryItems.length) {
     const lbImg = lightbox.querySelector('.lightbox__img');
     const closeBtn = lightbox.querySelector('.lightbox__close');
@@ -223,8 +204,10 @@
     };
 
     galleryItems.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const src = btn.dataset.src;
+      btn.addEventListener('click', event => {
+        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        const src = btn.dataset.src || btn.href;
         const alt = btn.querySelector('img')?.alt;
         if (src) open(src, alt);
       });
