@@ -117,7 +117,7 @@ push('profile.contact', 'contact',
   push(`edu.${i}`, 'education',
     `${e.qualification} — ${e.institution || ''}${e.year ? ' (' + e.year + ')' : ''}.${e.detail ? ' ' + e.detail : ''}`,
     ['education', 'study', 'degree', 'university', 'open', 'bsc', 'm816',
-     e.qualification, e.institution]);
+     e.qualification, e.institution, ...(e.keywords || [])]);
 });
 
 /* ------- projects -------- */

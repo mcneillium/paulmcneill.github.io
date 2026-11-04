@@ -48,7 +48,7 @@
     {%- for e in site.data.education -%}
       {%- assign yr = e.year | default: "0" -%}
       {%- assign yn = yr | replace: "Expected June ", "" | replace: "Expected ", "" | plus: 0 -%}
-      {%- if yr contains "Expected" -%}{%- assign yn = 9998 -%}{%- endif -%}
+      {%- if yr contains "Expected" or yr == "Completed" -%}{%- assign yn = 9998 -%}{%- endif -%}
       {%- capture row -%}{{ yn }}|2|education|{{ e.qualification }}|{{ e.institution }}|{{ e.year }}||{{ forloop.index0 }}{%- endcapture -%}
       {%- assign rows = rows | push: row -%}
     {%- endfor -%}

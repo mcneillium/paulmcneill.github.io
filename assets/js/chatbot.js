@@ -145,7 +145,7 @@
         `• ${r.role} @ ${r.org} (${r.start}–${r.end})`).join('\n');
       return `Over 15 years across IT, data, and engineering. Roles in order:\n\n${roles}`;
     }
-    if (/(education|study|degree|university|open|m816)/.test(q)) {
+    if (/(education|study|degree|university|open|m816|masters?|queens?|qub)/.test(q)) {
       const ed = (data.education || []).map(e =>
         `• ${e.qualification} — ${e.institution} ${e.year ? '(' + e.year + ')' : ''}`).join('\n');
       return `Education-wise:\n\n${ed}`;

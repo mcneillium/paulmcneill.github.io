@@ -252,10 +252,10 @@
     "description": "{{ site.description }}",
     "email": "mailto:{{ site.email }}",
     "sameAs": {{ sameas | jsonify }},
-    "alumniOf": {
-      "@type": "CollegeOrUniversity",
-      "name": "The Open University"
-    },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Queen’s University Belfast" },
+      { "@type": "CollegeOrUniversity", "name": "The Open University" }
+    ],
     "hasCredential": {
       "@type": "EducationalOccupationalCredential",
       "name": "Google Cloud Professional ML Engineer",
