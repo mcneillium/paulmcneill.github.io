@@ -1,12 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
-    <g transform="matrix(1.20021,0,0,1.24437,-11.3644,-11.3641)">
-        <g transform="matrix(0.833185,-0,-0,0.803619,9.46867,9.13242)">
-            <use xlink:href="#_Image1" x="4.589" y="3.61" width="37px" height="38px"/>
-        </g>
-    </g>
-    <defs>
-        <image id="_Image1" width="37px" height="38px" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAmCAYAAABDClKtAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEEUlEQVRYhcXYa4gVZRzH8c8+2m1Xyy4aZNFWagbBmMmUVhQWgRVBkdIbCSrKzBeKor2IyF6FhRVBF5GijKCCCLtfpI2WLlNiJ0WyrEyRrXxRbqLb7jr2YmbpdHbm7FmXPf1gmMv/mWe+58f/+T9/ToujVFqJT8YVmILJGJcfbfm5Fd34NT+68vPnIUp215u7pUGANtyIGFNxDtrzDw9X3XgXL77/2f53592z40jDUGklvgQ3YBYuxsSjAKinFJ9t/eHguuiWbRtKoZ6+vz3cdcukhS0tbsVcHDvCD/fLnDmAQxiP0zGmakxf177eVZOv+eaxQVBP399+xt3zJ72PC0cIMqBPsQB/hCj5G9JKHGT5NwvX4yacgp4DBw8vPXH25mf/A9W/JR4bgu2ynBlKe3Cq+jn1bIiSRfUmSStxO9bjahz4cU/P/Kk3fPteGBgw9qKkHy/VmWNvHr8Ni3BCnbGdWFoPCEKU7MJCfINx5511/I0QasatkdlerS1YjGkhShaGKHkR85Qvkm6sClHSMxRUDtaFV/LbmYomTivx+TJHJmAdnghR0lsVH4utmF7yncdDlCxrBKhqzrnYhIOYNraAfEdaia/Jr/cXzDG/DtA2PDAcoFx/5+dWzB4EVQdmQDeVPD+CR0KU/HUUUHPycx+S2pyqq7QSz8B1JeF3sKEkVm/Oibgjv/0Ze4YFhXtle1utuvFgiJJBW8YQQGfiBZyfP9oYouRIw1BpJZ6Cm0vCG0KUfD1MoAXokK1kss16LRTmVImWyapvrX7BQ8OAacOjuN2/21gqy8euhqHyyrugJLwuRMnvQ7w/Abfi8vw4u2bIcyFK1g7cNOrUCpxW8Hyz7FdXAxyLSTgXs3OIOYpdhpexpPrBkP1U7tJXJVCd+E1WaAeOk3GS/3YCRTok20FW1y6QRpwqc4nMhaPRJ1gTouSdomBdp9JKfB6+lHUEI9VhmePPY32IkrRs4FBOLS8B6pAl6zlDvN+L7/Pxr6KzkVpWrx2egi8KoA7hKlldWYmzZIl9CH/JCuk+bMdHeXsyLNVzakUBELwZoiTJr5cUxEeswoqeVuKpsm6gVr14cjRAqlW2zaxQXFfeDlHSOYo8KIBKK/E0xS714anRBqLYqeWyAlirD0KUfDTKPKiBSivxdMV73GE80wwgBju1SrZV1GpTiJK3msCDKqi0EseKc4msEWuaqp1aqbir/AmvNQcnU4C0Es+T/atSpI4QJX3NQyL0b4kD7sMxJWM+bCIPCC9s3DcDl5bEd+H15uFkGrOx48+uK2eN398++bhrDV6Nb4QoaTpUgLl3fvfkzt09DxfENzWZB1Uta2//kY9nXtC6c3zbmFZZr7QXi1c/s7f//wAbpLQSX5ZW4lFpSxrRP/2gJH7NjllmAAAAAElFTkSuQmCC"/>
-    </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Paul McNeill</title>
+  <rect width="64" height="64" rx="14" fill="#101b2c"/>
+  <path d="M73 -200V494H186V429H203Q220 460 257.5 484.0Q295 508 365 508Q425 508 476.5 478.5Q528 449 559.0 392.0Q590 335 590 255V239Q590 159 559.0 102.0Q528 45 477.0 15.5Q426 -14 365 -14Q318 -14 286.5 -3.0Q255 8 235.5 26.0Q216 44 205 62H188V-200ZM331 86Q394 86 434.5 126.5Q475 167 475 242V252Q475 328 434.0 368.0Q393 408 331 408Q269 408 227.5 368.0Q186 328 186 252V242Q186 167 227.5 126.5Q269 86 331 86Z" transform="translate(11.39831 41.57062) scale(0.0621469 -0.0621469)" fill="#e6edf6"/>
 </svg>

@@ -113,13 +113,13 @@ const ensureDir = (p) => fs.mkdirSync(path.dirname(p), { recursive: true });
       }
       const manifest = {
         name: "Paul Martin McNeill",
-        short_name: "PMcNeill",
+        short_name: "paul.",
         icons: [
-          { src: "/assets/favicon/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
-          { src: "/assets/favicon/android-chrome-512x512.png", sizes: "512x512", type: "image/png" }
+          { src: "/assets/favicon/android-chrome-192x192.png?v=p1", sizes: "192x192", type: "image/png" },
+          { src: "/assets/favicon/android-chrome-512x512.png?v=p1", sizes: "512x512", type: "image/png" }
         ],
-        theme_color: "#0a0a0b",
-        background_color: "#0a0a0b",
+        theme_color: "#101b2c",
+        background_color: "#101b2c",
         display: "standalone"
       };
       const manifestFile = out('assets/favicon/site.webmanifest');
