@@ -5,7 +5,8 @@
     {% for n in (1..2) %}
       {% for icon in stack %}
         <span class="marquee__item">
-          {% include icon.html name=icon set="tech" class="marquee__icon" %}
+          {% capture icon_prefix %}marquee-{{ n }}-{{ forloop.index }}{% endcapture %}
+          {% include icon.html name=icon set="tech" class="marquee__icon" id_prefix=icon_prefix %}
           <span>{{ labels[forloop.index0] }}</span>
         </span>
       {% endfor %}

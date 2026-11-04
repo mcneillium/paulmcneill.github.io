@@ -224,10 +224,7 @@
   };
 
   commands['sudo-hire-paul'] = () => {
-    print('<span class="ok">[sudo] permission granted.</span>');
-    setTimeout(() => print('<span class="ok">drafting offer letter...</span>'), 400);
-    setTimeout(() => print('<span class="ok">sending email...</span>'), 900);
-    setTimeout(() => print(`<span class="ok">done. paul will be in touch — try <a href="mailto:${esc(data.profile.contact.email)}">${esc(data.profile.contact.email)}</a></span>`), 1400);
+    print(`<span class="ok">Ready to talk? Email <a href="mailto:${esc(data.profile.contact.email)}">${esc(data.profile.contact.email)}</a> with the role or project you have in mind.</span>`);
   };
 
   /* ---------- parser ---------- */

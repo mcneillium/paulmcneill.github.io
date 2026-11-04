@@ -30,7 +30,7 @@ youtube-url:
   <a href="#gallery">Gallery</a>
 </nav>
 
-### <span id="overview">Overview</span>
+<h3 id="overview">Overview</h3>
 A Northern Ireland–specific, NHSCT-aligned transformation project. I designed and built **Aurora Domiciliary Care**, a full analytics ecosystem showcasing best practice in **operations, workforce, finance, and compliance**.  
 It features realistic **runs & rotas**, **ECM data** (GPS, travel, shift types), **finance uplift rules**, and **NHSCT locality models**, all with **GDPR-by-design** principles and role-based security.
 

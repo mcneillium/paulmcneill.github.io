@@ -7,5 +7,15 @@ Inline an SVG icon. Pass `name`, optional `set` (ui|tech), optional `class`.
 {%- assign _class = include.class | default: "icon" -%}
 {%- capture _raw -%}{% include icons/{{ _set }}/{{ include.name }}.svg %}{%- endcapture -%}
 {%- assign _stripped = _raw | replace: '<?xml version="1.0" encoding="UTF-8"?>', "" -%}
+{%- assign _root = _stripped | split: ">" | first -%}
+{%- if _root contains 'class="' -%}
+  {%- assign _old_class = _root | split: 'class="' | last | split: '"' | first -%}
+  {%- capture _class_attr -%}class="{{ _old_class }}"{%- endcapture -%}
+  {%- assign _stripped = _stripped | replace_first: _class_attr, "" -%}
+{%- endif -%}
+{%- assign _prefix = include.id_prefix | default: _class | replace: " ", "-" | append: "-" | append: include.name | append: "-" -%}
+{%- capture _id_prefix -%}id="{{ _prefix }}{%- endcapture -%}
+{%- capture _url_prefix -%}url(#{{ _prefix }}{%- endcapture -%}
+{%- assign _stripped = _stripped | replace: 'id="', _id_prefix | replace: "url(#", _url_prefix -%}
 {%- capture _replacement -%}<svg aria-hidden="true" focusable="false" class="{{ _class }}"{%- endcapture -%}
 {{ _stripped | replace_first: "<svg", _replacement }}

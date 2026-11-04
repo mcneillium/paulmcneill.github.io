@@ -78,7 +78,7 @@ description: "How this portfolio is built — the stack, the design choices, the
       <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
       Back to portfolio
     </a>
-    <a class="colo__back" href="https://github.com/mcneillium/mcneillium.github.io" target="_blank" rel="noopener">
+    <a class="colo__back" href="https://github.com/mcneillium/paulmcneill.github.io" target="_blank" rel="noopener">
       View source on GitHub
       <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
     </a>
@@ -95,7 +95,7 @@ description: "How this portfolio is built — the stack, the design choices, the
 
   <h2>The stack</h2>
   <div class="colo__stack">
-    <div class="colo__stack-item"><strong>Jekyll 3.10</strong><span>Static site generator (pinned by github-pages gem)</span></div>
+    <div class="colo__stack-item"><strong>Jekyll 3.10</strong><span>Static site generator with explicitly selected plugins</span></div>
     <div class="colo__stack-item"><strong>Pure CSS</strong><span>Custom properties, grid, clamp(). No Tailwind, no PostCSS.</span></div>
     <div class="colo__stack-item"><strong>Vanilla JavaScript</strong><span>No framework, no bundler. ES2017+.</span></div>
     <div class="colo__stack-item"><strong>GitHub Pages</strong><span>Hosting, free, builds on push.</span></div>
@@ -120,7 +120,7 @@ description: "How this portfolio is built — the stack, the design choices, the
     override on the same tokens — no rule duplication.
   </p>
 
-  <h3>One CSS file, one JS file</h3>
+  <h3>One stylesheet and focused scripts</h3>
   <p>
     No bundler, no code-splitting. The CSS is hand-written and lives in
     <code>assets/css/main.css</code>. The JS is split into a few focused
@@ -134,29 +134,20 @@ description: "How this portfolio is built — the stack, the design choices, the
 
   <h3>No flash of anything</h3>
   <p>
-    Critical CSS (tokens + nav + hero shell) is inlined in the head.
-    The full stylesheet loads non-blocking with <code>media="print"</code>
-    + <code>onload</code> swap. A small inline script reads the saved
-    theme, accent key, and font key from <code>localStorage</code> and
-    applies them <em>before</em> first paint, so you never see the
-    default-then-swap flash.
+    The stylesheet loads before the page is painted. A small external
+    script reads the saved theme, accent and typography preferences before
+    the body renders. The default uses Space Grotesk and DM Sans.
   </p>
 
   <h2>The AI features</h2>
 
   <h3>Talk to Paul (chatbot)</h3>
   <p>
-    A retrieval-augmented chatbot. The build script
-    (<code>scripts/build-knowledge-base.js</code>) chunks
-    <code>_data/*.yml</code> + blog posts into ~32 semantic chunks, each
-    optionally embedded with <code>@cf/baai/bge-base-en-v1.5</code>.
-    On every message: sanitise → rate-limit per IP → check for
-    prompt-injection patterns → classify intent → retrieve the top-5
-    relevant chunks (cosine similarity if embeddings are present, BM25-lite
-    keyword overlap otherwise) → build a focused prompt with only those
-    chunks → call the LLM (Llama 3.1 8B via Workers AI by default, or
-    Claude Haiku 4.5 if configured). The "How I found this answer" panel
-    under each reply exposes the retrieval — same pattern Perplexity uses.
+    The portfolio assistant retrieves relevant passages from a bundled knowledge base
+    using keyword matching, then asks Cloudflare Workers AI’s Llama 3.1 8B model
+    for a short answer. A source panel shows the retrieved passages.
+    Persistent limits allow 100 inference attempts per UTC day across the site,
+    with 10 per hour and 20 per day per IP address. Replies are capped at 256 tokens.
   </p>
 
   <h3>Live Lab (TF.js sentiment)</h3>
@@ -188,15 +179,15 @@ description: "How this portfolio is built — the stack, the design choices, the
   <h2>Performance & privacy</h2>
   <ul>
     <li>No tracking pixels. No Google Analytics. No advertising.</li>
-    <li>YouTube embeds use the lite-embed pattern — thumbnails first, iframe only on click.</li>
-    <li>Service worker caches static assets with versioned cache + network-first for HTML, so deploys never serve stale pages.</li>
+    <li>Case-study videos use lazy-loaded YouTube embeds.</li>
+    <li>Static pages and assets are served through GitHub Pages and browser caching.</li>
     <li>The chatbot doesn't log or retain messages.</li>
     <li>See the <a href="{{ '/privacy/' | relative_url }}">privacy page</a> for the full picture.</li>
   </ul>
 
   <h2>Open source</h2>
   <p>
-    Source: <a href="https://github.com/mcneillium/mcneillium.github.io" target="_blank" rel="noopener">github.com/mcneillium/mcneillium.github.io</a>.
+    Source: <a href="https://github.com/mcneillium/paulmcneill.github.io" target="_blank" rel="noopener">github.com/mcneillium/paulmcneill.github.io</a>.
     The chatbot worker code is in <code>workers/portfolio-bot/</code>.
     Deployment guide: <code>docs/chatbot-deployment.md</code>.
   </p>
