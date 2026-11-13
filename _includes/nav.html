@@ -59,6 +59,7 @@
       <li><a href="{{ navroot }}#skills">Skills</a></li>
       <li><a href="{{ navroot }}#about">About</a></li>
       <li><a href="{{ navroot }}#credentials">Credentials</a></li>
+      <li><a href="{{ '/research/' | relative_url }}"{% if page.url == "/research/" %} aria-current="page"{% endif %}>Research</a></li>
       <li><a href="{{ '/lab/' | relative_url }}"{% if page.url == "/lab/" %} aria-current="page"{% endif %}>Lab</a></li>
       <li><a href="{{ navroot }}#contact" class="cta">Get in touch</a></li>
     </ul>

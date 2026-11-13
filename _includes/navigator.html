@@ -7,6 +7,7 @@
     <a href="{{ project.url | relative_url }}" data-nav-item data-search="{{ project.title | escape }} {{ project.category | escape }} {{ project.tags | join: ' ' | escape }}"><span>{{ project.title }}</span><small>{{ project.category }}</small></a>
     {% endfor %}
     <a href="{{ '/lab/' | relative_url }}" data-nav-item data-search="lab demos machine learning"><span>Interactive lab</span><small>Live demos</small></a>
+    <a href="{{ '/research/' | relative_url }}" data-nav-item data-search="research studies machine learning reproducible river flood drug response"><span>Research</span><small>Reproducible studies</small></a>
     <a href="/#about" data-nav-item data-search="about paul career"><span>About Paul</span><small>Background</small></a>
     <a href="/#contact" data-nav-item data-search="contact email hire work"><span>Get in touch</span><small>Contact</small></a>
     {% if page.url == "/" %}

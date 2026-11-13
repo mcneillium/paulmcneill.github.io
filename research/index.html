@@ -1,0 +1,225 @@
+---
+layout: page
+title: "Research"
+permalink: /research/
+description: "Two reproducible machine learning studies on public data: river early warning across 671 British catchments, and drug response beyond a single marker."
+---
+
+<header class="post__hero">
+  <div class="container">
+    <a href="{{ '/#aiml' | relative_url }}" class="post__back" aria-label="Back to AI &amp; ML">
+      {% include icon.html name="arrow-left" class="icon icon--xs" %}
+      Back to AI &amp; ML
+    </a>
+    <span class="eyebrow">Research</span>
+    <h1 class="post__title">Reproducible studies on <em>public data</em></h1>
+    <p class="post__subtitle">
+      Two studies. Each has a protocol fixed before any model was fitted,
+      baselines before anything complex, fixed and fingerprinted splits,
+      tests, and a log of every decision, including the ones that turned
+      out wrong.
+    </p>
+    {% comment %} TODO: REPLACE (Paul): add two or three sentences, in your own words,
+         on what you want to research and what connects the two studies.
+         Do not name supervisors, referees or application plans. {% endcomment %}
+    <p class="research__status">
+      <strong>Status, 13 November 2026.</strong> The results below come from
+      a single run in a cloud environment. A local re-run and the written
+      reports are in progress. See <a href="#ai-use">how AI tools were used</a>.
+      {% comment %} TODO: REPLACE (Paul): update this note once you have re-run both
+           studies locally and the repositories are public. {% endcomment %}
+    </p>
+  </div>
+</header>
+
+<section class="section research" aria-label="Research studies">
+  <div class="container post__body">
+    <div class="post-content research__content">
+
+      <article class="research__study" id="river-early-warning">
+        <h2>River early warning across 671 British catchments</h2>
+        <ul class="research__chips" aria-label="Topics">
+          <li>CAMELS-GB v2</li>
+          <li>Forecasting</li>
+          <li>Unseen regions</li>
+          <li>Uncertainty</li>
+          <li>In progress</li>
+        </ul>
+        {% comment %} TODO: REPLACE (Paul): the research question in one sentence, and
+             what you expected to find, dated. {% endcomment %}
+
+        <h3>Setup</h3>
+        <ul>
+          <li>Daily river flow and weather for 671 catchments, 1970 to 2022. 659 had enough data to use.</li>
+          <li>Task: on day t, forecast flow 1, 3 and 7 days ahead, using only what is known on day t. No future rainfall.</li>
+          <li>Train on 1970 to 2004, choose settings on 2004 to 2012, test on 2012 to 2022.</li>
+          <li>Warnings: flow above a catchment's 95th percentile (high) or below its 10th (low), with thresholds taken from the training years.</li>
+        </ul>
+
+        <h3>Results</h3>
+        <p>Test years, median across catchments. NSE is 1 for a perfect forecast and 0 for a forecast no better than the long-term average.</p>
+        <div class="research__table">
+          <table>
+            <thead>
+              <tr><th scope="col">Model</th><th scope="col" class="num">1 day</th><th scope="col" class="num">3 days</th><th scope="col" class="num">7 days</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">"Same as today" (persistence)</th><td class="num">0.509</td><td class="num">0.066</td><td class="num">-0.235</td></tr>
+              <tr><th scope="row">Gradient boosting, one model per catchment</th><td class="num">0.761</td><td class="num">0.380</td><td class="num">0.242</td></tr>
+              <tr><th scope="row">Upper bound: the same model given the weather that happened</th><td class="num">0.865</td><td class="num">0.809</td><td class="num">0.763</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul>
+          <li><strong>Most of the skill beyond a day depends on knowing the weather.</strong> At 7 days the model reaches 0.24 without future weather and 0.76 with it.</li>
+          <li><strong>A whole unseen region costs little.</strong> One regional model, tested on regions held out of training, loses a median of 0.019 NSE at 1 day.</li>
+          <li><strong>A different climate costs much more.</strong> Trained on wet catchments and tested on dry ones, NSE falls from 0.850 to 0.752. A random-half control loses about 0.03.</li>
+          <li><strong>A single-number forecast fails as a warning system at 7 days</strong> (high-flow critical success index 0.005). Warnings taken from forecast quantiles reach 0.175. A model-free band around today's flow reaches 0.155, so the model's edge is narrow.</li>
+          <li><strong>75 to 80% of multi-day high-flow warnings are false alarms</strong>, for every method tried.</li>
+          <li><strong>The model's 90% range is honest where it was trained</strong> (coverage 0.90 to 0.91 after conformal calibration) <strong>and less so elsewhere</strong>: on unseen regions about one catchment in six gets a range that covers under 80%.</li>
+        </ul>
+
+        <figure class="research__figure">
+          {% include picture.html src="/img/research/river-warnings.png" alt="Line chart of warning skill at 1, 3 and 7 days for four models, for high-flow and low-flow warnings. All fall with lead time; the single-number model falls furthest." width="1400" height="708" %}
+          <figcaption>Warning skill by lead time. The quantile model edges past the simple persistence band at 7 days.</figcaption>
+        </figure>
+        <figure class="research__figure">
+          {% include picture.html src="/img/research/river-coverage.png" alt="Chart of how often the 90 percent forecast range contains the observed flow, by catchment, for seen and unseen regions. Calibrated ranges on seen catchments sit at the 90 percent target; unseen regions spread much lower." width="1400" height="786" %}
+          <figcaption>How honest the 90% range is, on catchments the model saw in training and on regions it did not.</figcaption>
+        </figure>
+
+        <h3>What went wrong, and what changed</h3>
+        <ul>
+          <li>The first diagnosis of a weak baseline (early stopping) was wrong. A controlled comparison on validation years showed the target scale was the cause. The log records both.</li>
+          <li>Twelve of 51 quantile models hit the tree limit, so those are under-trained. Reported, not hidden.</li>
+        </ul>
+
+        <h3>Limits</h3>
+        <ul>
+          <li>"Unseen" is not "ungauged": recent flow at the catchment is still an input.</li>
+          <li>The uncertainty experiment used one random seed. Coverage during floods specifically has not been checked.</li>
+          <li>Still to do: a neural sequence model, gaps in the inputs, and explanations.</li>
+        </ul>
+        <p class="research__links">Code, protocols and decision log: repository to be published.</p>
+        {% comment %} TODO: REPLACE (Paul): link the public repository once it exists. {% endcomment %}
+      </article>
+
+      <article class="research__study" id="drug-response">
+        <h2>Drug response beyond a single marker</h2>
+        <ul class="research__chips" aria-label="Topics">
+          <li>GDSC and Cell Model Passports</li>
+          <li>Leakage</li>
+          <li>Missing data types</li>
+          <li>Cluster stability</li>
+          <li>Explanation stability</li>
+          <li>Label noise</li>
+        </ul>
+        {% comment %} TODO: REPLACE (Paul): the research question in one sentence. Then
+             what you would have predicted, saying plainly that the results
+             already existed when you wrote it. {% endcomment %}
+
+        <h3>Setup</h3>
+        <ul>
+          <li>924 cancer cell lines. One gene, PTEN, is a known but incomplete guide to how they respond to drugs that block the AKT protein.</li>
+          <li>The question behind the design: how much more of the response does wider molecular data explain, and can the patterns be trusted?</li>
+          <li>5-fold cross-validation repeated 5 times on saved folds. Every step that learns from data happens inside the training folds.</li>
+          <li>Cell lines are a stand-in. Nothing here is about patients or treatment.</li>
+        </ul>
+
+        <h3>Results</h3>
+        <p>All numbers are held-out. R² is the share of the variation in response that a model explains.</p>
+        <div class="research__table">
+          <table>
+            <thead>
+              <tr><th scope="col">Finding</th><th scope="col" class="num">Number</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">PTEN status alone (R²)</th><td class="num">0.05</td></tr>
+              <tr><th scope="row">PTEN + cancer type + sequencing centre (R²)</th><td class="num">0.11</td></tr>
+              <tr><th scope="row">Adding 2,000 genes: elastic net, then gradient boosting (R²)</th><td class="num">0.14, 0.19</td></tr>
+              <tr><th scope="row">Choosing genes before cross-validating, on shuffled data with nothing to find (R²)</th><td class="num">0.14, all false</td></tr>
+              <tr><th scope="row">Adding protein data on top of gene expression</th><td class="num">no gain</td></tr>
+              <tr><th scope="row">Overlap between the top-20 gene lists of refitted models</th><td class="num">0.20</td></tr>
+              <tr><th scope="row">Agreement between two measurements of a related drug</th><td class="num">0.81</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul>
+          <li><strong>Mostly a negative result.</strong> Wider data helps a little. More than four fifths of the response stays unexplained.</li>
+          <li><strong>That gap is not mainly measurement noise.</strong> Where a related drug was measured twice, about 80% of the variation repeats, and the best model explains 18%.</li>
+          <li><strong>A common mistake produces a believable result from noise.</strong> The false score is as large as the real one.</li>
+          <li><strong>The only stable subgroups are tissue of origin.</strong> Made-up data with no groups at all scores 0.80 to 0.87 on the usual stability measure when cut in two, so stability alone proves little.</li>
+          <li><strong>Explanations change when the model is refitted.</strong> Only the original marker and one gene are reliably in the top 20.</li>
+        </ul>
+
+        <figure class="research__figure">
+          {% include picture.html src="/img/research/drug-ladder.png" alt="Bar chart of the share of drug response explained as each kind of information is added: 0.05 for PTEN alone, rising to 0.19 with gene expression and gradient boosting." width="1400" height="839" %}
+          <figcaption>What each kind of information adds.</figcaption>
+        </figure>
+        <figure class="research__figure">
+          {% include picture.html src="/img/research/drug-leak.png" alt="Bar chart comparing feature selection done wrongly and correctly. On shuffled response the wrong method scores 0.14 and the right method scores below zero." width="1318" height="852" %}
+          <figcaption>The leak, measured. On shuffled data there is nothing to find, and the wrong method still scores 0.14.</figcaption>
+        </figure>
+        <figure class="research__figure">
+          {% include picture.html src="/img/research/drug-clusters.png" alt="Line charts of cluster stability against a no-groups reference. As published, three groups are far above the reference. After removing tissue and sequencing centre, no clustering is clearly above it." width="1400" height="689" %}
+          <figcaption>Cluster stability against a reference with no groups. Left: as published. Right: after removing tissue and sequencing centre.</figcaption>
+        </figure>
+
+        <h3>What went wrong, and what changed</h3>
+        <ul>
+          <li>Gains were first computed on predictions averaged over repeats, which flattered the less stable model (+0.094 became +0.076). Corrected, with a test.</li>
+          <li>A sanity check declared in advance turned out nearly empty: 10 of the 12 pathway genes it named had been filtered out before the models saw them.</li>
+          <li>The pre-set bar for "stable clusters" had no reference to compare with. A no-groups reference was added before the run.</li>
+          <li>Three analyses were added after seeing results. They are labelled exploratory in the protocol and wherever they are reported.</li>
+        </ul>
+
+        <h3>Limits</h3>
+        <ul>
+          <li>One drug screen from one laboratory. No independent dataset.</li>
+          <li>Missing protein data was simulated at random. Models were not tuned.</li>
+          <li>No biological interpretation has been checked by a biologist.</li>
+        </ul>
+        <p class="research__links">Code, protocol and decision log: repository to be published.</p>
+        {% comment %} TODO: REPLACE (Paul): link the public repository once it exists. {% endcomment %}
+      </article>
+
+      <section class="research__study" aria-labelledby="research-method">
+        <h2 id="research-method">How the studies are run</h2>
+        <ul class="research__grid">
+          <li><strong>Protocol first</strong><span>The design is written and dated before any model is fitted. Later changes are dated amendments.</span></li>
+          <li><strong>Baselines first</strong><span>Every model is compared with the simplest thing that could work, on exactly the same held-out data.</span></li>
+          <li><strong>Fixed splits</strong><span>Saved once with a fingerprint. The code refuses to overwrite them.</span></li>
+          <li><strong>Nothing learned from held-out data</strong><span>Feature choice, scaling, gap filling and tuning all happen inside the training data.</span></li>
+          <li><strong>Negative results reported</strong><span>Criteria for "this did not work" are set in advance and reported against.</span></li>
+          <li><strong>A log of every decision</strong><span>Including the mistakes, how they were found and what was changed.</span></li>
+        </ul>
+      </section>
+
+      <section class="research__study" id="ai-use" aria-labelledby="research-ai">
+        <h2 id="research-ai">How AI tools were used</h2>
+        <p>
+          The protocols, code, tests, runs and first-draft documentation for
+          both studies were produced with an AI assistant (Claude), working
+          under research rules recorded in each repository. Every choice it
+          made on my behalf is listed in that repository's LOG.md, for me to
+          confirm or change.
+        </p>
+        {% comment %} TODO: REPLACE (Paul): add, in your own words, what you have since
+             read, re-run, checked and changed, and what in the written
+             reports is yours alone. Keep it accurate. {% endcomment %}
+      </section>
+
+      <section class="research__study" aria-labelledby="research-next">
+        <h2 id="research-next">Next</h2>
+        <ul>
+          <li>A neural sequence model for the river study, and its behaviour with gaps in the inputs.</li>
+          <li>A third study on satellite flood mapping with imperfect labels.</li>
+        </ul>
+        {% comment %} TODO: REPLACE (Paul): reading notes. Three to five papers you have
+             read in full, with two lines each on what you took from them and
+             what you would question. {% endcomment %}
+      </section>
+
+    </div>
+  </div>
+</section>

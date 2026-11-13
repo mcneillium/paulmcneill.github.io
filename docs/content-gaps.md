@@ -103,3 +103,22 @@ These facts are present in the repo / config and don't need re-verification:
 - AI Healthcare HCMS repo
   (github.com/mcneillium/AI_Enhanced_Social_HCMS).
 - AI Assistant repo (github.com/mcneillium/ai_assistant).
+
+## Research page (`/research/`), added 13 November 2026
+
+`research/index.html` is complete enough to build, but these parts are still
+to be written by Paul. Each is marked `TODO: REPLACE (Paul)` inside a Liquid
+comment, so nothing unfinished appears in the published HTML.
+
+- Hero: two or three sentences on research interests and what connects the studies.
+- Status note: update once both studies have been re-run locally.
+- Each study: the research question and the expected answer, in Paul's words.
+- Each study: the repository link, once the repository is public.
+- "How AI tools were used": what has since been read, re-run, checked and changed.
+- "Next": reading notes on three to five papers read in full.
+
+Every number on the page comes from the studies' own result tables. If a study
+is re-run and a number changes, change it here too.
+
+Figures live in `img/research/` with `.webp` and `-thumb.webp` siblings made
+by hand to the same pattern as `npm run optimize:images`.

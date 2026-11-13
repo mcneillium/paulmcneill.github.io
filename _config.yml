@@ -48,6 +48,7 @@ permalink: pretty
 
 # Don't publish project / dev docs
 exclude:
+  - phd-portfolio-plan.md
   - CLAUDE.md
   - README.md
   - docs/
