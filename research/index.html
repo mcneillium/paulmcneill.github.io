@@ -75,16 +75,16 @@ description: "Two reproducible machine learning studies on public data: river ea
             <tbody>
               <tr><th scope="row">"Same as today" (persistence)</th><td class="num">0.509</td><td class="num">0.066</td><td class="num">-0.235</td></tr>
               <tr><th scope="row">Gradient boosting, one model per catchment</th><td class="num">0.761</td><td class="num">0.380</td><td class="num">0.242</td></tr>
-              <tr><th scope="row">Upper bound: the same model given the weather that happened</th><td class="num">0.865</td><td class="num">0.809</td><td class="num">0.763</td></tr>
+              <tr><th scope="row">Upper bound: the same model given the weather that happened</th><td class="num">0.865</td><td class="num">0.810</td><td class="num">0.722</td></tr>
             </tbody>
           </table>
         </div>
         <ul>
-          <li><strong>Most of the skill beyond a day depends on knowing the weather.</strong> At 7 days the model reaches 0.24 without future weather and 0.76 with it.</li>
+          <li><strong>Most of the skill beyond a day depends on knowing the weather.</strong> At 7 days the model reaches 0.24 without future weather and 0.72 with it.</li>
           <li><strong>A whole unseen region costs little.</strong> One regional model, tested on regions held out of training, loses a median of 0.019 NSE at 1 day.</li>
           <li><strong>A different climate costs much more.</strong> Trained on wet catchments and tested on dry ones, NSE falls from 0.850 to 0.752. A random-half control loses about 0.03.</li>
           <li><strong>A single-number forecast fails as a warning system at 7 days</strong> (high-flow critical success index 0.005). Warnings taken from forecast quantiles reach 0.175. A model-free band around today's flow reaches 0.155, so the model's edge is narrow.</li>
-          <li><strong>75 to 80% of multi-day high-flow warnings are false alarms</strong>, for every method tried.</li>
+          <li><strong>Most multi-day high-flow warnings are false alarms.</strong> For the quantile model 75 to 80% are wrong. For the two persistence baselines the share runs from 64% to 82%.</li>
           <li><strong>The model's 90% range is honest where it was trained</strong> (coverage 0.90 to 0.91 after conformal calibration) <strong>and less so elsewhere</strong>: on unseen regions about one catchment in six gets a range that covers under 80%.</li>
         </ul>
 
