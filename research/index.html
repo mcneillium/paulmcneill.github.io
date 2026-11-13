@@ -19,15 +19,23 @@ description: "Two reproducible machine learning studies on public data: river ea
       tests, and a log of every decision, including the ones that turned
       out wrong.
     </p>
-    {% comment %} TODO: REPLACE (Paul): add two or three sentences, in your own words,
-         on what you want to research and what connects the two studies.
-         Do not name supervisors, referees or application plans. {% endcomment %}
+    <p class="post__subtitle">
+      Both ask the same thing from different sides: what can a model be
+      trusted to say when its data is incomplete, its labels are noisy, or
+      the place it is used differs from the place it was trained?
+    </p>
+    {% comment %} TODO: REPLACE (Paul): rewrite the paragraph above in your own
+         words, as what you want to research and why. Do not name
+         supervisors, referees or application plans. {% endcomment %}
     <p class="research__status">
-      <strong>Status, 13 November 2026.</strong> The results below come from
-      a single run in a cloud environment. A local re-run and the written
-      reports are in progress. See <a href="#ai-use">how AI tools were used</a>.
-      {% comment %} TODO: REPLACE (Paul): update this note once you have re-run both
-           studies locally and the repositories are public. {% endcomment %}
+      <strong>Status, 13 November 2026.</strong> The drug response study
+      has been re-run from a clean copy and reproduced every result table
+      exactly. The river study's results come from a single run. Neither has
+      yet been re-run on a second machine, and my own review is still to
+      come, so treat the results as provisional.
+      See <a href="#ai-use">how AI tools were used</a>.
+      {% comment %} TODO: REPLACE (Paul): update this note as you re-run and
+           review each study. {% endcomment %}
     </p>
   </div>
 </header>
@@ -50,6 +58,7 @@ description: "Two reproducible machine learning studies on public data: river ea
 
         <h3>Setup</h3>
         <ul>
+          <li>The question behind the design: how far ahead can river flow and flood or low-flow warnings be forecast without knowing future weather, and does that skill carry over to places the model was not trained on?</li>
           <li>Daily river flow and weather for 671 catchments, 1970 to 2022. 659 had enough data to use.</li>
           <li>Task: on day t, forecast flow 1, 3 and 7 days ahead, using only what is known on day t. No future rainfall.</li>
           <li>Train on 1970 to 2004, choose settings on 2004 to 2012, test on 2012 to 2022.</li>
@@ -204,9 +213,14 @@ description: "Two reproducible machine learning studies on public data: river ea
           made on my behalf is listed in that repository's LOG.md, for me to
           confirm or change.
         </p>
-        {% comment %} TODO: REPLACE (Paul): add, in your own words, what you have since
-             read, re-run, checked and changed, and what in the written
-             reports is yours alone. Keep it accurate. {% endcomment %}
+        <p>
+          No prediction was written down before the results existed, so none
+          is claimed here. The questions, the summaries on this page and the
+          reports in each repository were also drafted by the assistant from
+          the logged results.
+        </p>
+        {% comment %} TODO: REPLACE (Paul): add, in your own words, what you have
+             since read, re-run, checked and changed. Keep it accurate. {% endcomment %}
       </section>
 
       <section class="research__study" aria-labelledby="research-next">
