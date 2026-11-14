@@ -130,8 +130,8 @@ It combines **on-device word prediction**, **accessible UI**, and a **caregiver 
 ---
 
 ### Outcomes
-{% comment %} TODO: REPLACE (Paul): the pilot figures below (n=7, 35 to 50% faster, +40% satisfaction)
-   have no source in the repositories. Confirm them with the pilot records or remove them. {% endcomment %}
+{% comment %} Pilot figures confirmed by Paul on 14 Nov 2026 (kept on his CV too);
+   the pilot records themselves are not in the repositories. {% endcomment %}
 - **35–50% faster** average time-to-utter for common phrases (pilot, n=7).
 - **+40% caregiver satisfaction** with session clarity (survey).
 - Reduced input errors with large targets & latency-friendly cache.

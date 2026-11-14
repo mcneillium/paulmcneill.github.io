@@ -1,19 +1,105 @@
 ---
-layout: null
+layout: page
+title: "CV"
 permalink: /cv/
-sitemap: false
+description: "CV of Paul Martin McNeill: AI engineer and data analyst in Northern Ireland. Machine learning for noisy real-world data, reproducible research and assistive technology."
+scripts:
+  - /assets/js/cv.js
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Paul McNeill — moved</title>
-  <meta name="robots" content="noindex">
-  <meta http-equiv="refresh" content="0;url=/">
-  <link rel="canonical" href="{{ site.url }}/">
-</head>
-<body>
-  <p>The CV page has moved. <a href="/">Back to the home page</a> — try the
-  Terminal button or "Talk to Paul" for the same content interactively.</p>
-</body>
-</html>
+{% assign cv = site.data.cv %}
+{% assign c = site.data.profile.contact %}
+<article class="cv container" aria-labelledby="cv-name">
+  <header class="cv__head">
+    <div>
+      <h1 id="cv-name" class="cv__name">Paul Martin McNeill</h1>
+      <p class="cv__headline">{{ cv.headline }}</p>
+      <ul class="cv__contact" aria-label="Contact">
+        <li>{{ cv.location }}</li>
+        <li><a href="mailto:{{ c.email }}">{{ c.email }}</a></li>
+        <li><a href="{{ site.url }}">paulmartinmcneill.com</a></li>
+        <li><a href="{{ c.github }}" rel="noopener">github.com/mcneillium</a></li>
+        <li><a href="{{ c.huggingface }}" rel="noopener">huggingface.co/McNeillium</a></li>
+        <li><a href="{{ c.linkedin }}" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+    <p class="cv__actions">
+      <button type="button" class="btn btn-primary" data-cv-print>Print or save as PDF</button>
+      <a class="btn btn-outline" href="mailto:{{ c.email }}?subject=CV%20request">Ask for the full CV</a>
+    </p>
+  </header>
+
+  <section class="cv__section" aria-labelledby="cv-profile">
+    <h2 id="cv-profile">Profile</h2>
+    <p>{{ cv.profile }}</p>
+  </section>
+
+  <section class="cv__section" aria-labelledby="cv-interests">
+    <h2 id="cv-interests">Research interests</h2>
+    <p>{{ cv.interests }}</p>
+  </section>
+
+  {% assign blocks = "education|Education,experience|Research and professional experience" | split: "," %}
+  {% for b in blocks %}
+    {% assign parts = b | split: "|" %}
+    {% assign key = parts[0] %}
+    {% assign entries = cv[key] %}
+    <section class="cv__section" aria-labelledby="cv-{{ parts[0] }}">
+      <h2 id="cv-{{ parts[0] }}">{{ parts[1] }}</h2>
+      {% for e in entries %}
+      <div class="cv__entry">
+        <p class="cv__entry-head"><strong>{{ e.title }}</strong> <span class="cv__org">{{ e.org }}</span> <span class="cv__when">{{ e.when }}</span></p>
+        <ul>{% for p in e.points %}<li>{{ p }}</li>{% endfor %}</ul>
+      </div>
+      {% endfor %}
+      {% if parts[0] == "experience" %}<p class="cv__muted">{{ cv.earlier }}</p>{% endif %}
+    </section>
+  {% endfor %}
+
+  <section class="cv__section" aria-labelledby="cv-research">
+    <h2 id="cv-research">Independent research</h2>
+    {% for r in cv.research %}
+    <div class="cv__entry">
+      <p class="cv__entry-head"><strong><a href="{{ r.url | relative_url }}">{{ r.title }}</a></strong> <span class="cv__when">{{ r.when }}</span></p>
+      <p>{{ r.text }} <a href="{{ r.code }}" rel="noopener">Code</a>.</p>
+    </div>
+    {% endfor %}
+    <p class="cv__muted">{{ cv.research_note }}</p>
+  </section>
+
+  <section class="cv__section" aria-labelledby="cv-reports">
+    <h2 id="cv-reports">Technical reports</h2>
+    <ul>{% for r in cv.reports %}<li><strong>{{ r.title }}.</strong> {{ r.text }}</li>{% endfor %}</ul>
+  </section>
+
+  <section class="cv__section" aria-labelledby="cv-projects">
+    <h2 id="cv-projects">Selected projects</h2>
+    {% for p in cv.projects %}
+    <div class="cv__entry">
+      <p class="cv__entry-head"><strong><a href="{{ p.url | relative_url }}">{{ p.title }}</a></strong>{% if p.sub %} <span class="cv__org">{{ p.sub }}</span>{% endif %}{% if p.when %} <span class="cv__when">{{ p.when }}</span>{% endif %}</p>
+      <ul>{% for x in p.points %}<li>{{ x }}</li>{% endfor %}</ul>
+    </div>
+    {% endfor %}
+  </section>
+
+  <section class="cv__section" aria-labelledby="cv-skills">
+    <h2 id="cv-skills">Technical skills</h2>
+    {% for s in cv.skills %}<p><strong>{{ s.label }}:</strong> {{ s.text }}</p>{% endfor %}
+  </section>
+
+  <section class="cv__section" aria-labelledby="cv-certs">
+    <h2 id="cv-certs">Certifications and memberships</h2>
+    <ul class="cv__inline">{% for x in cv.certifications %}<li>{{ x }}</li>{% endfor %}</ul>
+  </section>
+
+  <section class="cv__section" aria-labelledby="cv-volunteering">
+    <h2 id="cv-volunteering">Volunteering</h2>
+    {% for e in cv.volunteering %}
+    <div class="cv__entry">
+      <p class="cv__entry-head"><strong>{{ e.title }}</strong> <span class="cv__org">{{ e.org }}</span> <span class="cv__when">{{ e.when }}</span></p>
+      <ul>{% for p in e.points %}<li>{{ p }}</li>{% endfor %}</ul>
+    </div>
+    {% endfor %}
+  </section>
+
+  <p class="cv__muted">References available on request.</p>
+</article>

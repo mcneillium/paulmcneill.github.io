@@ -1,7 +1,7 @@
 # Paul Martin McNeill: facts for the portfolio voice assistant
 
 Source: paulmartinmcneill.com (profile, education, experience, projects,
-research and the Voice case study), 14 November 2026. Only what is here may
+research, CV and the Voice case study), 14 November 2026. Only what is here may
 be stated as fact.
 
 ## Who Paul is
@@ -10,7 +10,12 @@ be stated as fact.
 - He builds LLM-powered tools, web platforms and analytics for healthcare,
   accessibility and day-to-day operations.
 - He is open to AI engineering and data roles, and to freelance or short-term
-  consultancy.
+  consultancy, and is seeking a PhD in machine learning for imperfect,
+  multisource real-world data.
+- Current work: on a consultancy contract with a UK water utility, he builds
+  and maintains a weekly machine learning pipeline that forecasts leakage for
+  more than 1,250 district metered areas (R² 0.965, MAE 0.111 l/s on his CV).
+  The client is not named on the site.
 - Contact: the "Get in touch" button on the site (email), or LinkedIn and
   GitHub (github.com/mcneillium), linked from the site.
 
@@ -94,4 +99,4 @@ be stated as fact.
 - Projects and case studies: the homepage.
 - Research: paulmartinmcneill.com/research
 - Live demos: paulmartinmcneill.com/lab
-- There is no separate CV page; for a CV, contact Paul through "Get in touch".
+- CV: paulmartinmcneill.com/cv (public version; printable). For the full CV, contact Paul through "Get in touch".

@@ -99,7 +99,8 @@ img/
   about/                photos
   certs/                cert badges
   portfolio/            project hero + gallery folders (aurora/, aac-ai/, pscs/)
-cv.html                 redirects to / (no CV page at present)
+cv.html                 /cv/ public CV, data in _data/cv.yml (employer and
+                        client unnamed; email and links only; print to PDF)
 404.html
 scripts/
   optimize-images.js    generate .webp + thumb.webp siblings via sharp

@@ -1,0 +1,138 @@
+# Public CV (rendered by cv.html at /cv/). Source: Paul's Word CV,
+# PaulMcNeill_CV_2026.docx, updated 14 November 2026.
+# Public-page rules Paul set on 14 Nov 2026:
+#  - the current employer and client are not named (the Word CV names them);
+#  - contact is email and links only: no phone, no home town, no referees.
+# Keep facts in step with the Word CV and the rest of the site.
+
+headline: "Digital solutions developer and AI consultant · MSc Artificial Intelligence, Queen's University Belfast"
+location: "Northern Ireland"
+
+profile: >-
+  Developer, AI consultant and MSc Artificial Intelligence graduate applying
+  machine learning to real-world water infrastructure data. On a consultancy
+  contract with a UK water utility, I build and maintain models that forecast
+  leakage across more than 1,250 district metered areas, using flow, weather
+  and operational data that are noisy, irregular and incomplete, and producing
+  results that must be explainable to a regulator. I hold a First-Class BSc
+  (Hons) in Computing and am seeking a PhD in machine learning for imperfect,
+  multisource real-world data.
+
+interests: >-
+  Machine learning with incomplete, heterogeneous and multisource data;
+  environmental and infrastructure time series; forecasting under seasonal and
+  regional distribution shift; uncertainty estimation; explainable models that
+  support real decisions.
+
+education:
+  - title: "MSc Artificial Intelligence"
+    org: "Queen's University Belfast"
+    when: "Completed"
+    points:
+      - "Modules: Foundations of AI; Machine Learning; Knowledge Engineering; Computer Vision; Natural Language Processing; Artificial Intelligence for Health."
+      - "Themed Research Project."
+      - "Studied remotely alongside full-time employment."
+  - title: "BSc (Hons) Computing, First Class"
+    org: "The Open University"
+    when: "2025"
+    points:
+      - "Final-year project: an augmentative and alternative communication (AAC) application."
+      - "Focus on artificial intelligence, data analytics and software engineering."
+  - title: "M816 Data Management (postgraduate module)"
+    org: "The Open University"
+    when: "2026"
+    points:
+      - "Data governance, data modelling and database optimisation."
+  - title: "A Levels"
+    org: "St MacNissi's College, Garron Tower"
+    when: "2008"
+    points:
+      - "Applied ICT (A), Biology (B), Geography (B), Chemistry (C)."
+
+experience:
+  - title: "Digital Solutions Developer & AI Consultant"
+    org: "Consultancy contract with a UK water utility"
+    when: "Nov 2025 – Present"
+    points:
+      - "Built and maintain a weekly machine learning pipeline forecasting leakage for 1,253 district metered areas (DMAs), achieving R² = 0.965 and MAE = 0.111 l/s."
+      - "Monitor model reliability in operation: diagnosed feature drift, a systematic regional over-prediction bias and changes in the number of assessable DMAs, and added physical constraints to forecasts."
+      - "Built cleaning and harmonisation pipelines for large operational datasets recorded at different resolutions and in different units, and integrated Met Office and Open-Meteo weather data as model inputs."
+      - "Developed a DMA priority score analysis to target leak detection resources across the network."
+      - "Support regulatory reporting using water balance, minimum night flow (MNF) and IWA leakage methods."
+  - title: "Creative Director / Technical Lead"
+    org: "Paramount Perceptions (self-employed)"
+    when: "Mar 2019 – Present"
+    points:
+      - "Design and build AI-assisted web applications and analytics for clients in healthcare, education and retail, including LLM-based tools and predictive models."
+      - "Manage projects end to end, including GDPR-compliant data handling and communication with stakeholders."
+  - title: "CRM Systems Coordinator"
+    org: "Industrial Temps, Belfast"
+    when: "Nov 2018 – Mar 2019"
+    points:
+      - "Consolidated CRM data and reporting from multiple sources; trained staff, improving data accuracy by over 25%."
+  - title: "IT & Database Systems Manager"
+    org: "Platinum Support & Care Services, Ballycastle"
+    when: "May 2016 – Nov 2018"
+    points:
+      - "Designed a central database and Power BI KPI dashboards, reducing administrative workload by 40%."
+earlier: "Earlier roles (2013 – 2014): e-commerce, multimedia and IT design assistant positions."
+
+research:
+  - title: "River early warning across 671 British catchments"
+    when: "2026"
+    url: "/research/#river-early-warning"
+    code: "https://github.com/mcneillium/river-early-warning"
+    text: "Reproducible study on CAMELS-GB: forecasting river flow and flood and low-flow warnings 1 to 7 days ahead without future weather; transfer to unseen regions and a drier climate; a regional LSTM against gradient boosting; calibrated forecast ranges."
+  - title: "Drug response beyond a single marker"
+    when: "2026"
+    url: "/research/#drug-response"
+    code: "https://github.com/mcneillium/drug-response-beyond-marker"
+    text: "Reproducible study on GDSC (924 cancer cell lines): how much wider gene data adds to PTEN status, a measured feature-selection leak, and the stability of clusters and explanations."
+research_note: "Protocol fixed before any model was fitted, baselines first, fingerprinted splits, a public log of every decision and correction. Built making use of AI tools under research rules I set; re-run on my own hardware. Not yet peer reviewed."
+
+reports:
+  - title: "Interim freeze-thaw preparation report, winter 2026/27"
+    text: "Author. Technical report for a water utility."
+  - title: "Long-term leakage strategy to 2050"
+    text: "In preparation. Contributing author; produced figures through a reproducible document build pipeline."
+
+projects:
+  - title: "AI-Powered AAC App"
+    sub: "assistive communication for non-verbal users"
+    when: "2024"
+    url: "/projects/ai-aac-app/"
+    points:
+      - "Built end to end a mobile and web app for non-verbal users, with on-device next-word and phrase prediction (an offline n-gram model with an opt-in personal layer and a small reranker; each suggestion shows why it was offered) that personalises with use, pictogram vocabularies and camera-based scene captioning."
+      - "Evaluated through weekly pilots with users and caregivers: 35–50% faster time-to-utter for common phrases (pilot, n = 7) and +40% caregiver satisfaction with session clarity."
+      - "Designed for WCAG 2.1 AA accessibility and GDPR-first privacy (anonymised telemetry, consent flows, data export and deletion), with a caregiver analytics dashboard; React Native, React, Firebase."
+  - title: "Aurora, connected-care reporting"
+    url: "/projects/aurora-nhs-transformation/"
+    points:
+      - "End-to-end ETL and Power BI reporting on visits, workforce and finance, built on synthetic NHS data."
+  - title: "AI-enhanced social care management"
+    url: "/projects/ai-social-healthcare-platform/"
+    points:
+      - "Client management system with an NLP assistant, predictive analytics and safety monitoring."
+
+skills:
+  - label: "Machine learning"
+    text: "Supervised and unsupervised learning, time series forecasting, model evaluation and monitoring (drift, bias), interpretability; scikit-learn, TensorFlow, PyTorch, Hugging Face, MLflow."
+  - label: "Data"
+    text: "Python (pandas, NumPy, matplotlib, Jupyter), SQL (PostgreSQL, MySQL), MongoDB, ETL pipelines, Power BI, weather APIs."
+  - label: "Software and cloud"
+    text: "Git/GitHub, Docker, Kubernetes, FastAPI, Flask, TypeScript, React, Java; AWS, Azure, Google Cloud (Vertex AI); LLM APIs."
+
+certifications:
+  - "Google Cloud Professional Machine Learning Engineer (2024; recertifying December 2026)"
+  - "AWS Certified Machine Learning, Specialty (2025)"
+  - "DeepLearning.AI TensorFlow Developer (2024)"
+  - "PCPP1 and PCPP2 Certified Professional in Python Programming (2024)"
+  - "MBCS (British Computer Society)"
+  - "IET"
+
+volunteering:
+  - title: "Digital Volunteer"
+    org: "RSPB Northern Ireland, Rathlin Island Project"
+    when: "2024 – Present"
+    points:
+      - "Help develop Rathlin360.com, a digital platform on the island's biodiversity, conservation and heritage, working with conservation and education teams."
