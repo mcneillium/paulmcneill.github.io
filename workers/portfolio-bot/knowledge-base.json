@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-11-04T01:45:18.862Z",
+  "built_at": "2026-11-14T20:03:47.940Z",
   "embedding_model": null,
   "chunks": [
     {
@@ -227,7 +227,7 @@
     {
       "id": "proj.1",
       "category": "project",
-      "text": "Project: AI-Powered AAC App Category: AI Accessibility Impact: Predictive AI assistive communication for non-verbal users Mobile + caregiver dashboard that combines on-device prediction, scene understanding, and real-time monitoring for non-verbal users. Tech: React Native, Firebase, LLMs, AAC, Healthcare",
+      "text": "Project: AI-Powered AAC App Category: AI Accessibility Impact: Predictive AI assistive communication for non-verbal users Mobile + caregiver dashboard that combines on-device prediction, scene understanding, and real-time monitoring for non-verbal users. Tech: React Native, Firebase, LLMs, AAC, Healthcare GitHub: https://github.com/mcneillium/ai-powered-aac-app Demo: /demos/aac-app/",
       "keywords": [
         "ai-powered aac app",
         "ai accessibility",
@@ -241,7 +241,7 @@
         "built",
         "shipped"
       ],
-      "tokens": 38
+      "tokens": 42
     },
     {
       "id": "proj.2",
@@ -452,6 +452,149 @@
         "human-centred"
       ],
       "tokens": 24
+    },
+    {
+      "id": "research.river",
+      "category": "research",
+      "text": "Research study: River early warning across 671 British catchments. The question: how far ahead can river flow, and flood or low-flow warnings, be forecast without knowing future weather, and does that skill carry over to places the model was not trained on? The models learned from daily data starting in 1970 and were tested on 2012 to 2022. Four findings. Most of the skill beyond a day depends on knowing the weather: at seven days, a model without future weather scores 0.24 on the standard measure, against 0.72 with it. A whole unseen region costs little, but a different climate costs much more. A neural network did no better than gradient boosting. And at seven days, most high-flow warnings are false alarms. The study has not been peer reviewed, so treat these results as provisional. Full write-up: /research/#river-early-warning. Code: github.com/mcneillium/river-early-warning.",
+      "keywords": [
+        "research",
+        "study",
+        "river",
+        "flood",
+        "forecast",
+        "camels",
+        "hydrology",
+        "lstm",
+        "phd"
+      ],
+      "tokens": 140
+    },
+    {
+      "id": "research.drug",
+      "category": "research",
+      "text": "Research study: Drug response beyond a single marker. Nine hundred and twenty-four cancer cell lines, and one gene, PTEN, which is a known but incomplete guide to how they respond to drugs that block the AKT protein. The question: how much more of the response does wider molecular data explain, and can the patterns be trusted? Mostly, this is a negative result. Adding two thousand genes raises the share of the response explained from about eleven per cent to between fourteen and nineteen per cent, so more than four fifths stays unexplained. The study also measures a common mistake: choosing genes before cross-validating produces a believable score from pure noise. No stable subgroups beyond tissue of origin were found, and the genes a model relies on change when it is refitted. Cell lines are a stand-in. Nothing here is about patients or treatment. The study has not been peer reviewed, so treat these results as provisional. Full write-up: /research/#drug-response. Code: github.com/mcneillium/drug-response-beyond-marker.",
+      "keywords": [
+        "research",
+        "study",
+        "drug",
+        "cancer",
+        "pten",
+        "gdsc",
+        "cell line",
+        "genes",
+        "phd"
+      ],
+      "tokens": 161
+    },
+    {
+      "id": "research.method",
+      "category": "research",
+      "text": "How the research is done: a protocol is written and dated before any model is fitted; baselines come first; splits are fixed and fingerprinted; nothing is learned from held-out data; negative results are reported; every decision is logged, including mistakes. Both studies were built making use of AI tools, under research rules Paul set; each study's log records how. Paul re-ran both on his own hardware, reviewed every logged decision, and takes responsibility for the work and its conclusions. Neither study has been peer reviewed.",
+      "keywords": [
+        "research",
+        "method",
+        "reproducible",
+        "protocol",
+        "ai tools",
+        "how produced"
+      ],
+      "tokens": 85
+    },
+    {
+      "id": "demo.voice",
+      "category": "project",
+      "text": "Voice is an AAC app: a way to communicate for people who cannot rely on speech. The user taps words on a board of colour-coded tiles, and every word keeps the same place, so the board can be learned by position. As the message grows, Voice suggests the next word, and each suggestion says why it was offered. Prediction runs on the device, with no network calls. It can learn the user's own phrases, but only if they switch learning on, and only from messages they actually speak. Everything it learns can be seen and forgotten. A caregiver dashboard sits alongside the app. Below, you can try the board, the full app and the dashboard, all with made-up data. On the case study and the Lab page, visitors can try the app's own word-prediction engine and core board in the browser, with an optional recorded natural voice for common phrases.",
+      "keywords": [
+        "voice",
+        "aac",
+        "demo",
+        "prediction",
+        "try",
+        "board",
+        "communication"
+      ],
+      "tokens": 150
+    },
+    {
+      "id": "demo.lab",
+      "category": "demos",
+      "text": "Live demos on the Lab page (/lab/): a sentiment model that runs in the browser with TensorFlow.js, the Voice app's word-prediction board, a live AI voice assistant that answers questions about Paul's work (made with ElevenLabs, loaded only on request), and an agent-workflow visualiser.",
+      "keywords": [
+        "lab",
+        "demo",
+        "live",
+        "voice assistant",
+        "elevenlabs",
+        "try"
+      ],
+      "tokens": 44
+    },
+    {
+      "id": "blog.8.intro",
+      "category": "blog",
+      "text": "Blog post — From Notebooks to Pipelines: Why I Stopped Shipping Jupyter: A pragmatic argument for treating notebooks as the experiment, not the deliverable — and what to reach for instead. There's a moment in every ML project where someone says \"we'll just productionise the notebook.\" It's the same moment, every time, that the project quietly stops making progress. This post is about why notebooks fail in production, and what to reach for instead. I'm not against notebooks — I write them every day for exploration. The argument is narrower: **notebooks should not be the deliverable**.",
+      "keywords": [
+        "from notebooks to pipelines: why i stopped shipping jupyter",
+        "mlops",
+        "notebooks",
+        "ml pipelines",
+        "mlflow",
+        "python",
+        "blog",
+        "writing",
+        "post"
+      ],
+      "tokens": 96
+    },
+    {
+      "id": "blog.8.body",
+      "category": "blog",
+      "text": "From Notebooks to Pipelines: Why I Stopped Shipping Jupyter — continued: The strengths are real: - Inline plots, side-by-side with code, with the data from the last run still in scope. Iteration speed is genuinely high. - Markdown cells let you narrate as you build. Excellent for analysis reports. - The kernel-based execution model means you can poke at intermediate state without rerunning everything. For exploration, model debugging, one-off analyses, and teaching, this is the right tool. I'd lose nothing by saying so. The failures all come from the same root cause: **a notebook's runtime behaviour is decoupled from its source**. Cell execution order isn't tracked by the file. Out-of-band state lives in the kernel between runs. Hidden imports survive across cells. Variables get reused with new meanings halfway down. The file you commit isn't the program that ran. This makes them fragile in ways that don't matter for exploration but become intolerable for production: 1. **Reproducibility evaporates silently.** \"Re-run all cells\" produces a different result than the run you remember, and you can't always tell why. 2. **Diffs are useless.** A cell-output change rewrites half the JSON. Code review becomes pattern-matching against noise. 3. **Testing is awkward.** You can shoehorn `pytest` against notebook functions with `nbval` or extract them into modules and import — but at that point you've already started the migration. 4. **Dependencies are vague.** `pip install` lines in cells, often without versions. The notebook works on th",
+      "keywords": [
+        "from notebooks to pipelines: why i stopped shipping jupyter",
+        "mlops",
+        "notebooks",
+        "ml pipelines",
+        "mlflow",
+        "python",
+        "blog",
+        "writing"
+      ],
+      "tokens": 241
+    },
+    {
+      "id": "blog.9.intro",
+      "category": "blog",
+      "text": "Blog post — Building Production RAG Pipelines: Lessons from Real Deployments: Notes from shipping retrieval-augmented generation in production — chunking that doesn't shred meaning, retrieval that keeps citations, and evaluation harnesses that catch regressions before users do. A weekend RAG demo is one thing. A *production* RAG pipeline is a different animal entirely — and the cost is mostly in the parts you can't see in a notebook. This post collects the patterns I've found genuinely matter, in roughly the order they bite you. The default tutorial chunker — fixed-size sliding window with some overlap — gets you to a demo. It also routinely shreds meaning. Sentences get split mid-clause. Tables turn into nonsense. The bullet point that gives a paragraph its meaning lands in a different chunk to the paragraph itself.",
+      "keywords": [
+        "building production rag pipelines: lessons from real deployments",
+        "rag",
+        "llms",
+        "retrieval",
+        "evaluation",
+        "production ml",
+        "blog",
+        "writing",
+        "post"
+      ],
+      "tokens": 132
+    },
+    {
+      "id": "blog.9.body",
+      "category": "blog",
+      "text": "Building Production RAG Pipelines: Lessons from Real Deployments — continued: Three rules that survived contact with real corpora: 1. **Respect document structure.** Use the document's own boundaries — headings, list items, table rows — as candidate split points, not arbitrary character counts. For PDFs, this means a real layout-aware parser (`unstructured`, PyMuPDF with logical-block extraction, or AWS Textract for tables) rather than naive text dumps. 2. **Vary chunk size to fit the question.** Small chunks (~200 tokens) maximise retrieval precision but lose context. Large chunks (~1k tokens) preserve context but make embedding less discriminative. I've ended up with a two-stage retrieval pattern: small chunks for finding *where*, then expand to the parent section before passing to the model. 3. **Store the spelling, the slug, and the source.** Every chunk needs a stable identifier and a path back to the original document, with page or anchor offsets. Without this, you can't render citations and you can't debug a hallucination. \"It looks like the right chunks come back for these five test queries\" is not an evaluation. It's a vibe. The first time you change embedding models, prompt versions, or chunk strategy, you'll discover three things that silently regressed and one user already complained about. The cheapest reliable harness: - **A labelled query set.** 50–100 queries each tagged with the chunks (or source URLs) that should be retrieved. You build this by mining real user queries and annotating by hand. Yes,",
+      "keywords": [
+        "building production rag pipelines: lessons from real deployments",
+        "rag",
+        "llms",
+        "retrieval",
+        "evaluation",
+        "production ml",
+        "blog",
+        "writing"
+      ],
+      "tokens": 239
     }
   ]
 }

@@ -154,6 +154,40 @@ push('certs', 'credentials',
     ['principle', 'how i work', 'approach', 'methodology', p.title]);
 });
 
+/* ------- research and the Voice app (spoken summaries, checked) ------- */
+// _data/narration.yml holds the plain-English summaries that are narrated on
+// the site. Their figures were checked against the Research page, so they are
+// the safest short source for the assistant.
+const narration = loadYaml(path.join(ROOT, '_data/narration.yml')) || {};
+if (narration.river) push('research.river', 'research',
+  `Research study: ${narration.river.text} Full write-up: /research/#river-early-warning. ` +
+  'Code: github.com/mcneillium/river-early-warning.',
+  ['research', 'study', 'river', 'flood', 'forecast', 'camels', 'hydrology', 'lstm', 'phd']);
+if (narration.drug) push('research.drug', 'research',
+  `Research study: ${narration.drug.text} Full write-up: /research/#drug-response. ` +
+  'Code: github.com/mcneillium/drug-response-beyond-marker.',
+  ['research', 'study', 'drug', 'cancer', 'pten', 'gdsc', 'cell line', 'genes', 'phd']);
+push('research.method', 'research',
+  'How the research is done: a protocol is written and dated before any model is fitted; ' +
+  'baselines come first; splits are fixed and fingerprinted; nothing is learned from held-out ' +
+  'data; negative results are reported; every decision is logged, including mistakes. ' +
+  'Both studies were built making use of AI tools, under research rules Paul set; each ' +
+  "study's log records how. Paul re-ran both on his own hardware, reviewed every logged " +
+  'decision, and takes responsibility for the work and its conclusions. Neither study has been ' +
+  'peer reviewed.',
+  ['research', 'method', 'reproducible', 'protocol', 'ai tools', 'how produced']);
+if (narration.voice_app) push('demo.voice', 'project',
+  `${narration.voice_app.text} On the case study and the Lab page, visitors can try the ` +
+  "app's own word-prediction engine and core board in the browser, with an optional " +
+  'recorded natural voice for common phrases.',
+  ['voice', 'aac', 'demo', 'prediction', 'try', 'board', 'communication']);
+push('demo.lab', 'demos',
+  'Live demos on the Lab page (/lab/): a sentiment model that runs in the browser with ' +
+  "TensorFlow.js, the Voice app's word-prediction board, a live AI voice assistant that " +
+  'answers questions about Paul\'s work (made with ElevenLabs, loaded only on request), and ' +
+  'an agent-workflow visualiser.',
+  ['lab', 'demo', 'live', 'voice assistant', 'elevenlabs', 'try']);
+
 /* ------- blog posts ------ */
 const postsDir = path.join(ROOT, '_posts');
 fs.readdirSync(postsDir).filter(f => f.match(/\.(md|markdown)$/)).forEach((f, i) => {

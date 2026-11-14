@@ -89,4 +89,4 @@ be stated as fact.
 - Projects and case studies: the homepage.
 - Research: paulmartinmcneill.com/research
 - Live demos: paulmartinmcneill.com/lab
-- CV: paulmartinmcneill.com/cv
+- There is no separate CV page; for a CV, contact Paul through "Get in touch".

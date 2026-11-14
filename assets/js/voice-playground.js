@@ -169,8 +169,9 @@
     suggestions().forEach(function (s) {
       var li = el('li', 'vp-sug' + (s.personal || s.phrase ? ' vp-sug--personal' : ''));
       var take = button('vp-sug__take');
-      take.append(el('span', 'vp-sug__word', s.word), el('span', 'vp-sug__why', s.reason));
-      take.setAttribute('aria-label', s.word + '. ' + s.reason);
+      // Visible text is the accessible name; the hidden comma makes it read as
+      // "I, Common next word" rather than running the two together.
+      take.append(el('span', 'vp-sug__word', s.word), el('span', 'sr-only', ', '), el('span', 'vp-sug__why', s.reason));
       take.addEventListener('click', function () {
         var before = state.words.slice();
         if (!s.phrase) predictor.recordSuggestionAccepted(s.word, before);
