@@ -17,6 +17,13 @@
   var predictor = E.create({ learningEnabled: false });
   var K = 6;
   var state = { words: [], page: 'home', learning: false };
+  var phraseAudio = {};
+  try { phraseAudio = JSON.parse(root.getAttribute('data-phrase-audio') || '{}') || {}; } catch (e) { phraseAudio = {}; }
+  var hasRecordings = Object.keys(phraseAudio).length > 0;
+  function normalise(text) {
+    return String(text).toLowerCase().replace(/[^a-z0-9' ]/g, '').replace(/\s+/g, ' ').trim();
+  }
+  var player = null;
 
   function el(tag, cls, text) {
     var n = document.createElement(tag);
@@ -59,6 +66,17 @@
   bar.append(msg, barBtns);
   var spoken = el('p', 'vp-spoken');
   spoken.setAttribute('aria-live', 'polite');
+  var natural = el('div', 'vp-natural');
+  var naturalBox = el('input');
+  naturalBox.type = 'checkbox';
+  naturalBox.id = 'vp-natural-toggle';
+  var naturalLabel = el('label', '', 'Natural voice for common phrases');
+  naturalLabel.setAttribute('for', 'vp-natural-toggle');
+  var naturalList = el('details', 'vp-natural__list');
+  naturalList.append(el('summary', '', 'Which phrases'));
+  naturalList.append(el('p', '', Object.keys(phraseAudio).join(' \u00b7 ')));
+  natural.append(naturalBox, naturalLabel, naturalList);
+  natural.hidden = !hasRecordings;
 
   var sugWrap = el('div', 'vp-sugs');
   var sugLabel = el('p', 'vp-label', 'Suggested next');
@@ -109,7 +127,7 @@
 
   var main = el('div', 'vp-main');
   var side = el('div', 'vp-side');
-  main.append(bar, spoken, sugWrap, boardHead, grid);
+  main.append(bar, natural, spoken, sugWrap, boardHead, grid);
   side.append(learn, typeForm);
   app.append(main, side);
 
@@ -230,6 +248,17 @@
   speakBtn.addEventListener('click', function () {
     if (!state.words.length) return;
     var text = state.words.join(' ');
+    var recording = naturalBox.checked ? phraseAudio[normalise(text)] : null;
+    if (player) { player.pause(); player = null; }
+    if (synth) synth.cancel();
+    if (recording) {
+      player = new Audio(recording);
+      player.play().catch(function () {});
+      if (state.learning) predictor.learnFromSpokenSentence(state.words.slice());
+      spoken.textContent = 'Spoken in the recorded natural voice: \u201c' + text + '\u201d';
+      update();
+      return;
+    }
     if (synth && typeof SpeechSynthesisUtterance !== 'undefined') {
       synth.cancel();
       var u = new SpeechSynthesisUtterance(text);
@@ -239,7 +268,8 @@
     }
     // As in the app, the message stays after Speak; only spoken messages train.
     if (state.learning) predictor.learnFromSpokenSentence(state.words.slice());
-    spoken.textContent = synth ? 'Spoken: “' + text + '”' : 'Your browser has no speech voices, so the message is shown instead: “' + text + '”';
+    var note = naturalBox.checked ? ' (no recording for this message, so your browser\u2019s voice was used)' : '';
+    spoken.textContent = synth ? 'Spoken: \u201c' + text + '\u201d' + note : 'Your browser has no speech voices, so the message is shown instead: \u201c' + text + '\u201d';
     update();
   });
   backBtn.addEventListener('click', function () { state.words = state.words.slice(0, -1); update(); });

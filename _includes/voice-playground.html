@@ -6,7 +6,8 @@
   Optional: heading="h2" (default h4, for use inside a case study).
 {% endcomment %}
 {% assign vp_h = include.heading | default: "h4" %}
-<section class="voice-play" aria-labelledby="voice-play-title" data-voice-play>
+<section class="voice-play" aria-labelledby="voice-play-title" data-voice-play
+  data-phrase-audio="{{ site.data.voice_phrase_audio | jsonify | escape }}">
   <{{ vp_h }} id="voice-play-title">Try the word prediction</{{ vp_h }}>
   <p>This is Voice's core board and its word-prediction engine: the same code
   the app ships, running in this page with no server and no AI service. Tap
@@ -17,6 +18,9 @@
   words now appear among the suggestions, with a coloured border. Use <strong>×</strong> to stop a suggestion
   appearing after a word, and <strong>Forget</strong> to remove what it
   learned. Everything stays in this tab and is gone when you reload.</p>
+  <p>Switch on <strong>Natural voice</strong> to hear common phrases, such as
+  <em>I want to go home</em>, in a recorded voice made with ElevenLabs. Other
+  messages use your browser&rsquo;s own voice.</p>
   <div class="voice-play__app" data-voice-app>
     <p class="voice-play__fallback">The interactive board needs JavaScript.
     The full app demo below shows the same board.</p>

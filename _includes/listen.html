@@ -1,0 +1,22 @@
+{% comment %}
+  Recorded narration with a transcript. Usage: {% include listen.html key="intro" %}
+  Data: _data/narration.yml. Native <audio> controls: keyboard and screen-reader
+  accessible with no script. preload="none" so nothing downloads until played.
+{% endcomment %}
+{% assign n = site.data.narration[include.key] %}
+{% if n %}
+<figure class="listen{% if include.class %} {{ include.class }}{% endif %}">
+  <figcaption class="listen__label">
+    {% include icon.html name="volume-2" class="icon icon--sm" %}
+    {{ n.label }} <span class="listen__dur">({{ n.duration }})</span>
+  </figcaption>
+  <audio class="listen__audio" controls preload="none" src="{{ n.file | relative_url }}">
+    <a href="{{ n.file | relative_url }}">Download the audio</a>
+  </audio>
+  <details class="listen__transcript">
+    <summary>Transcript</summary>
+    <p>{{ n.text }}</p>
+  </details>
+  <p class="listen__note">Narrated with an AI voice made with ElevenLabs. It is not Paul&rsquo;s voice.</p>
+</figure>
+{% endif %}

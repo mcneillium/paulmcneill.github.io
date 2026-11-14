@@ -96,7 +96,9 @@ youtube-url:
 
 ### Overview
 A modern AAC (Augmentative & Alternative Communication) app that helps non-verbal users express themselves faster.  
-It combines **predictive text (TensorFlow.js)**, **accessible UI**, and a **caregiver analytics dashboard** for insight-led support.
+It combines **on-device word prediction**, **accessible UI**, and a **caregiver analytics dashboard** for insight-led support.
+
+{% include listen.html key="voice_app" %}
 
 ---
 

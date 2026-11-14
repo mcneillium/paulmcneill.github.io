@@ -3161,6 +3161,11 @@ input::placeholder { color: var(--text-faint); opacity: 1; }
 [data-theme="light"] .vp-msg { box-shadow: inset 0 0 0 1px var(--border-strong); }
 .vp-msg__empty { color: #555; font-weight: 400; font-size: 0.95rem; }
 .vp-bar__btns { display: flex; gap: 0.4rem; }
+.vp-natural { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; font-size: 0.9rem; font-weight: 600; }
+.vp-natural input { width: 20px; height: 20px; accent-color: var(--accent); }
+.vp-natural__list { flex-basis: 100%; font-weight: 400; font-size: 0.8rem; color: var(--text-dim); }
+.vp-natural__list summary { cursor: pointer; }
+.vp-natural__list p { margin: 0.3rem 0 0; }
 .vp-spoken { margin: 0; min-height: 1.2em; font-size: 0.85rem; color: var(--text-dim); }
 
 .vp-sugs__list { list-style: none; margin: 0.35rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
@@ -3213,3 +3218,19 @@ input::placeholder { color: var(--text-faint); opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) { .vp-tile { transition: none; } .vp-tile:active { transform: none; } }
 @media print { .voice-play__app { display: none; } }
+
+/* ── Recorded narration (ElevenLabs) ── */
+.listen {
+  margin: 1rem 0 1.5rem; padding: 0.75rem 1rem; max-width: 560px;
+  border: 1px solid var(--border-strong); border-radius: var(--radius-sm); background: var(--bg-card);
+}
+.listen__label { display: flex; align-items: center; gap: 0.4rem; margin: 0 0 0.5rem; font-weight: 600; font-size: 0.95rem; color: var(--text); }
+.listen__label .icon { color: var(--accent); flex: none; }
+.listen__dur { font-weight: 400; color: var(--text-dim); }
+.listen__audio { display: block; width: 100%; height: 40px; }
+.listen__transcript { margin-top: 0.5rem; font-size: 0.9rem; }
+.listen__transcript summary { cursor: pointer; color: var(--text-dim); min-height: 24px; }
+.listen__transcript p { margin: 0.5rem 0 0; color: var(--text); line-height: 1.55; }
+.listen__note { margin: 0.4rem 0 0; font-size: 0.78rem; color: var(--text-dim); }
+.listen--hero { margin-top: 1.25rem; background: transparent; }
+@media print { .listen { display: none; } }

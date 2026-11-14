@@ -93,3 +93,20 @@ the app's own core board and prediction engine in the page. Two files:
 Built on 14 November 2026 from `claude/voice-team-run`, last prediction or
 vocabulary change `cdf9cd9`. Nothing is stored or sent; speech prefers a
 voice installed on the visitor's device.
+
+## Recorded narration (ElevenLabs)
+
+Made on 14 November 2026 in ElevenLabs (flow `4LicdJZBohuPOOMuO1Xi`),
+library voice "Chris - Warm and Calm" (`op1SmctrthoXFtxUlVpA`), model
+`eleven_v4` for the narrations and `eleven_multilingual_v2` for the board
+phrases (four phrases re-made singly with `eleven_v4`). About 3,600 credits.
+
+- Scripts and transcripts: `_data/narration.yml`, shown under each player by
+  `_includes/listen.html`. Narration is in the third person because the voice
+  is not Paul's, and each player says so.
+- Files: `assets/audio/*.mp3` (mono, 64 kbps) and `assets/audio/phrases/`.
+  `_data/voice_phrase_audio.json` maps each phrase (lower case, no
+  punctuation) to its file for the Voice board's "Natural voice" option.
+- Every clip was transcribed locally (faster-whisper `small.en`) and checked
+  against its script before publishing. Re-check after any re-recording.
+- No API key is on the site. Credits are spent only when a clip is made.

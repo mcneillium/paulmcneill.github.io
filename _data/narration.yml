@@ -1,0 +1,75 @@
+# Recorded narration, made with ElevenLabs (voice "Chris - Warm and Calm",
+# a library voice, not Paul's). Each entry's text is the exact transcript
+# shown under its player. Third person on purpose: the voice is not Paul's.
+# Facts trace to _data/profile.yml, research/index.html and the Voice case
+# study. Audio files live in assets/audio/.
+
+voice: "Chris (ElevenLabs library voice)"
+
+intro:
+  file: /assets/audio/intro.mp3
+  duration: "0:44"
+  label: "Listen to a short introduction"
+  text: >-
+    Welcome to Paul Martin McNeill's portfolio. Paul is an AI engineer, web
+    developer and data analyst on the island of Ireland, with over fifteen
+    years across IT, data and engineering. He builds tools for care,
+    communication and everyday work: Voice, a predictive communication app
+    for people who cannot rely on speech; analytics for health and social
+    care; and reproducible machine learning research on public data. He holds
+    a master's in Artificial Intelligence from Queen's University Belfast, and
+    a First-Class degree in Computing from The Open University. Every project
+    here has a case study, and several run live in your browser. To talk about
+    a role or a project, use Get in touch.
+
+voice_app:
+  file: /assets/audio/voice-app.mp3
+  duration: "0:43"
+  label: "Listen to a short walkthrough"
+  text: >-
+    Voice is an AAC app: a way to communicate for people who cannot rely on
+    speech. The user taps words on a board of colour-coded tiles, and every
+    word keeps the same place, so the board can be learned by position. As
+    the message grows, Voice suggests the next word, and each suggestion says
+    why it was offered. Prediction runs on the device, with no network calls.
+    It can learn the user's own phrases, but only if they switch learning on,
+    and only from messages they actually speak. Everything it learns can be
+    seen and forgotten. A caregiver dashboard sits alongside the app. Below,
+    you can try the board, the full app and the dashboard, all with made-up
+    data.
+
+river:
+  file: /assets/audio/research-river.mp3
+  duration: "0:55"
+  label: "Listen to a plain-English summary"
+  text: >-
+    River early warning across 671 British catchments. The question: how far
+    ahead can river flow, and flood or low-flow warnings, be forecast without
+    knowing future weather, and does that skill carry over to places the
+    model was not trained on? The models learned from daily data starting in
+    1970 and were tested on 2012 to 2022. Four findings. Most of the skill
+    beyond a day depends on knowing the weather: at seven days, a model
+    without future weather scores 0.24 on the standard measure, against 0.72
+    with it. A whole unseen region costs little, but a different climate
+    costs much more. A neural network did no better than gradient boosting.
+    And at seven days, most high-flow warnings are false alarms. The study
+    has not been peer reviewed, so treat these results as provisional.
+
+drug:
+  file: /assets/audio/research-drug.mp3
+  duration: "0:59"
+  label: "Listen to a plain-English summary"
+  text: >-
+    Drug response beyond a single marker. Nine hundred and twenty-four cancer
+    cell lines, and one gene, PTEN, which is a known but incomplete guide to
+    how they respond to drugs that block the AKT protein. The question: how
+    much more of the response does wider molecular data explain, and can the
+    patterns be trusted? Mostly, this is a negative result. Adding two
+    thousand genes raises the share of the response explained from about
+    eleven per cent to between fourteen and nineteen per cent, so more than
+    four fifths stays unexplained. The study also measures a common mistake:
+    choosing genes before cross-validating produces a believable score from
+    pure noise. No stable subgroups beyond tissue of origin were found, and
+    the genes a model relies on change when it is refitted. Cell lines are a
+    stand-in. Nothing here is about patients or treatment. The study has not
+    been peer reviewed, so treat these results as provisional.
