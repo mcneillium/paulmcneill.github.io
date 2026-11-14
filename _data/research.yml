@@ -1,0 +1,23 @@
+# Hand-written copy for /research/. The numbers behind the spread chart are
+# generated: see _data/research_skill.json and scripts/research-numbers.js.
+
+models:
+  persistence: '"Same as today" (persistence)'
+  gbm: "Gradient boosting, one model per catchment"
+  gbm_perfect_forecast: "Upper bound: the same model given the weather that happened"
+
+# Left and right ends of the spread chart's NSE axis.
+axis:
+  min: -0.6
+  max: 1.0
+
+# Every change to a published number or claim, newest first.
+corrections:
+  - date: 2026-11-13
+    study: River early warning
+    was: "The upper bound was shown as 0.809 at 3 days and 0.763 at 7 days."
+    now: "The results table gives 0.810 and 0.722. The text that quoted 0.76 now says 0.72."
+  - date: 2026-11-13
+    study: River early warning
+    was: "The page said 75 to 80% of multi-day high-flow warnings were false alarms for every method."
+    now: "That range holds for the quantile model. For the two persistence baselines it runs from 64% to 82%."

@@ -2,11 +2,14 @@
 layout: page
 title: "Research"
 permalink: /research/
+scripts:
+  - /assets/js/research.js
 description: "Two reproducible machine learning studies on public data: river early warning across 671 British catchments, and drug response beyond a single marker."
 ---
 
 <header class="post__hero">
   <div class="container">
+    <p class="research__print-head">Paul McNeill · {{ site.url }}{{ page.url }}</p>
     <a href="{{ '/#aiml' | relative_url }}" class="post__back" aria-label="Back to AI &amp; ML">
       {% include icon.html name="arrow-left" class="icon icon--xs" %}
       Back to AI &amp; ML
@@ -39,8 +42,15 @@ description: "Two reproducible machine learning studies on public data: river ea
   </div>
 </header>
 
-<section class="section research" aria-label="Research studies">
+<section class="section research" aria-label="Research studies" data-research>
   <div class="container post__body">
+    <div class="research__controls" data-research-controls hidden>
+      <div class="research__seg" role="group" aria-label="Wording of the findings">
+        <button type="button" data-view="plain" aria-pressed="true">Plain</button>
+        <button type="button" data-view="technical" aria-pressed="false">Technical</button>
+      </div>
+      <button type="button" class="research__print" data-print>Print or save as PDF</button>
+    </div>
     <div class="post-content research__content">
 
       <article class="research__study" id="river-early-warning">
@@ -72,19 +82,83 @@ description: "Two reproducible machine learning studies on public data: river ea
               <tr><th scope="col">Model</th><th scope="col" class="num">1 day</th><th scope="col" class="num">3 days</th><th scope="col" class="num">7 days</th></tr>
             </thead>
             <tbody>
-              <tr><th scope="row">"Same as today" (persistence)</th><td class="num">0.509</td><td class="num">0.066</td><td class="num">-0.235</td></tr>
-              <tr><th scope="row">Gradient boosting, one model per catchment</th><td class="num">0.761</td><td class="num">0.380</td><td class="num">0.242</td></tr>
-              <tr><th scope="row">Upper bound: the same model given the weather that happened</th><td class="num">0.865</td><td class="num">0.810</td><td class="num">0.722</td></tr>
+              {%- assign skill = site.data.research_skill.skill -%}
+              {%- for m in skill[0].models %}
+              <tr><th scope="row">{{ site.data.research.models[m.id] }}</th>
+                {%- for s in skill -%}
+                  {%- assign cell = s.models | where: "id", m.id | first -%}
+                  <td class="num">{{ cell.text.p50 }}</td>
+                {%- endfor -%}
+              </tr>
+              {%- endfor %}
             </tbody>
           </table>
         </div>
+        {%- assign ax = site.data.research.axis -%}
+        {%- assign span = ax.max | minus: ax.min -%}
+        {%- assign zero = 0 | minus: ax.min | divided_by: span | times: 100 | round: 2 -%}
+        <div class="spread" data-spread style="--zero: {{ zero }}%">
+          <h4 class="spread__title">The median hides most of the catchments</h4>
+          <p class="spread__lede">Each bar covers the middle 80% of the 659 catchments. The thicker part is the middle half and the line is the median.</p>
+          <div class="research__seg spread__tabs" role="group" aria-label="Lead time" data-spread-tabs hidden>
+            {%- for s in skill %}
+            <button type="button" data-lead="{{ s.lead_days }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">{{ s.lead_days }} day{% if s.lead_days > 1 %}s{% endif %}</button>
+            {%- endfor %}
+          </div>
+          {%- for s in skill %}
+          <div class="spread__panel" data-lead="{{ s.lead_days }}">
+            <h5 class="spread__lead">{{ s.lead_days }} day{% if s.lead_days > 1 %}s{% endif %} ahead</h5>
+            <ul class="spread__rows">
+              {%- for m in s.models -%}
+                {%- assign lo = m.p10 | at_least: ax.min | minus: ax.min | divided_by: span | times: 100 -%}
+                {%- assign hi = m.p90 | at_most: ax.max | minus: ax.min | divided_by: span | times: 100 -%}
+                {%- assign q1 = m.p25 | at_least: ax.min | minus: ax.min | divided_by: span | times: 100 -%}
+                {%- assign q3 = m.p75 | at_most: ax.max | minus: ax.min | divided_by: span | times: 100 -%}
+                {%- assign md = m.p50 | minus: ax.min | divided_by: span | times: 100 %}
+              <li class="spread__row">
+                <span class="spread__label">{{ site.data.research.models[m.id] }}</span>
+                <span class="spread__track" aria-hidden="true">
+                  <span class="spread__whisker" style="left: {{ lo | round: 2 }}%; width: {{ hi | minus: lo | round: 2 }}%"></span>
+                  <span class="spread__box" style="left: {{ q1 | round: 2 }}%; width: {{ q3 | minus: q1 | round: 2 }}%"></span>
+                  <span class="spread__median" style="left: {{ md | round: 2 }}%"></span>
+                </span>
+                <span class="spread__value">median {{ m.text.p50 }}, middle half {{ m.text.p25 }} to {{ m.text.p75 }}</span>
+              </li>
+              {%- endfor %}
+            </ul>
+            {%- assign base = s.models | where: "id", "persistence" | first -%}
+            {%- assign model = s.models | where: "id", "gbm" | first %}
+            <p class="spread__note">Below zero (worse than always forecasting the long-term average): {{ base.below_zero_pct }}% of catchments for "same as today", {{ model.below_zero_pct }}% for the model.</p>
+          </div>
+          {%- endfor %}
+          <div class="spread__axis" aria-hidden="true"><span>{{ ax.min }}</span><span class="spread__axis-zero">0</span><span>{{ ax.max | round }} = perfect</span></div>
+        </div>
+
         <ul>
-          <li><strong>Most of the skill beyond a day depends on knowing the weather.</strong> At 7 days the model reaches 0.24 without future weather and 0.72 with it.</li>
-          <li><strong>A whole unseen region costs little.</strong> One regional model, tested on regions held out of training, loses a median of 0.019 NSE at 1 day.</li>
-          <li><strong>A different climate costs much more.</strong> Trained on wet catchments and tested on dry ones, NSE falls from 0.850 to 0.752. A random-half control loses about 0.03.</li>
-          <li><strong>A single-number forecast fails as a warning system at 7 days</strong> (high-flow critical success index 0.005). Warnings taken from forecast quantiles reach 0.175. A model-free band around today's flow reaches 0.155, so the model's edge is narrow.</li>
-          <li><strong>Most multi-day high-flow warnings are false alarms.</strong> For the quantile model 75 to 80% are wrong. For the two persistence baselines the share runs from 64% to 82%.</li>
-          <li><strong>The model's 90% range is honest where it was trained</strong> (coverage 0.90 to 0.91 after conformal calibration) <strong>and less so elsewhere</strong>: on unseen regions about one catchment in six gets a range that covers under 80%.</li>
+          <li>
+            <span data-plain><strong>Most of the skill beyond a day depends on knowing the weather.</strong> At 7 days the model reaches 0.24 without future weather and 0.72 with it.</span>
+            <span data-technical>Median NSE at 7 days is 0.242 for per-catchment gradient boosting with no weather after the day the forecast is made, and 0.722 for the same model given the observed weather over the forecast window. The second figure is an upper bound, not a forecast.</span>
+          </li>
+          <li>
+            <span data-plain><strong>A whole unseen region costs little.</strong> One regional model, tested on regions held out of training, loses a median of 0.019 NSE at 1 day.</span>
+            <span data-technical>Five geographic folds, each region forecast by a regional model trained on the other four. Median NSE at 1 day falls from 0.762 to 0.723. The median loss per catchment is 0.019.</span>
+          </li>
+          <li>
+            <span data-plain><strong>A different climate costs much more.</strong> Trained on wet catchments and tested on dry ones, NSE falls from 0.850 to 0.752. A random-half control loses about 0.03.</span>
+            <span data-technical>A regional model trained on the wetter half of the catchments and tested on the drier half scores NSE 0.752, against 0.850 for the model trained on all of them. A random-half control loses about 0.03. Low-flow CSI falls from 0.659 to 0.414.</span>
+          </li>
+          <li>
+            <span data-plain><strong>A single-number forecast fails as a warning system at 7 days</strong> (high-flow critical success index 0.005). Warnings taken from forecast quantiles reach 0.175. A model-free band around today's flow reaches 0.155, so the model's edge is narrow.</span>
+            <span data-technical>At 7 days the single-number regional model has a high-flow CSI of 0.005, against 0.138 for persistence. Warning when a forecast quantile crosses the threshold gives 0.175, and a persistence band gives 0.155. The quantile was chosen on 2009 to 2012 only.</span>
+          </li>
+          <li>
+            <span data-plain><strong>Most multi-day high-flow warnings are false alarms.</strong> For the quantile model 75 to 80% are wrong. For the two persistence baselines the share runs from 64% to 82%.</span>
+            <span data-technical>High-flow false alarm ratio at 3 and 7 days: 0.753 and 0.802 for the quantile model, and between 0.635 and 0.816 for persistence and the persistence band.</span>
+          </li>
+          <li>
+            <span data-plain><strong>The model's 90% range is honest where it was trained</strong> (coverage 0.90 to 0.91 after conformal calibration) <strong>and less so elsewhere</strong>: on unseen regions about one catchment in six gets a range that covers under 80%.</span>
+            <span data-technical>After conformalized quantile regression on 2009 to 2012, the 90% interval covers 0.90 to 0.91 of days on seen catchments at every lead. On held-out regions the median catchment is at 0.89 to 0.90, but 14 to 18% of catchments fall under 0.80.</span>
+          </li>
         </ul>
 
         <figure class="research__figure">
@@ -153,11 +227,26 @@ description: "Two reproducible machine learning studies on public data: river ea
           </table>
         </div>
         <ul>
-          <li><strong>Mostly a negative result.</strong> Wider data helps a little. More than four fifths of the response stays unexplained.</li>
-          <li><strong>That gap is not mainly measurement noise.</strong> Where a related drug was measured twice, about 80% of the variation repeats, and the best model explains 18%.</li>
-          <li><strong>A common mistake produces a believable result from noise.</strong> The false score is as large as the real one.</li>
-          <li><strong>The only stable subgroups are tissue of origin.</strong> Made-up data with no groups at all scores 0.80 to 0.87 on the usual stability measure when cut in two, so stability alone proves little.</li>
-          <li><strong>Explanations change when the model is refitted.</strong> Only the original marker and one gene are reliably in the top 20.</li>
+          <li>
+            <span data-plain><strong>Mostly a negative result.</strong> Wider data helps a little. More than four fifths of the response stays unexplained.</span>
+            <span data-technical>Held-out R² rises from 0.112 (PTEN, cancer type and sequencing centre) to 0.144 with an elastic net on 2,000 genes and 0.187 with gradient boosting. The gains are +0.033 (95% interval +0.005 to +0.060) and +0.076 (+0.014 to +0.130).</span>
+          </li>
+          <li>
+            <span data-plain><strong>That gap is not mainly measurement noise.</strong> Where a related drug was measured twice, about 80% of the variation repeats, and the best model explains 18%.</span>
+            <span data-technical>Exploratory. A related drug, Uprosertib, was measured twice at the same doses and the two measurements agree at 0.81 (0.76 to 0.85). The best model for that drug reaches R² 0.18. The ceiling is from the related drug, not from Ipatasertib.</span>
+          </li>
+          <li>
+            <span data-plain><strong>A common mistake produces a believable result from noise.</strong> The false score is as large as the real one.</span>
+            <span data-technical>Choosing genes by correlation with response on all cell lines, then cross-validating, gives R² 0.210 on the real response and 0.137 on a shuffled one. Choosing inside each fold gives -0.005 and -0.173.</span>
+          </li>
+          <li>
+            <span data-plain><strong>The only stable subgroups are tissue of origin.</strong> Made-up data with no groups at all scores 0.80 to 0.87 on the usual stability measure when cut in two, so stability alone proves little.</span>
+            <span data-technical>Among the 128 PTEN-altered cell lines, three clusters score stability 1.00 against 0.68 for reference data with no groups, and 94% of cell lines sit in the commonest cluster of their own tissue. After removing tissue and sequencing centre, no clustering is both stable and clearly above the reference.</span>
+          </li>
+          <li>
+            <span data-plain><strong>Explanations change when the model is refitted.</strong> Only the original marker and one gene are reliably in the top 20.</span>
+            <span data-technical>Top-20 feature lists from 25 refits (5 folds, 5 repeats) overlap by 0.20 on average (Jaccard index). Only PTEN status and one gene are in the top 20 at least 80% of the time.</span>
+          </li>
         </ul>
 
         <figure class="research__figure">
@@ -205,6 +294,19 @@ description: "Two reproducible machine learning studies on public data: river ea
 
       {% comment %} TODO: REPLACE (Paul): restore a "How AI tools were used" section
            here, in your own words and accurate, before sending this page to anyone. {% endcomment %}
+
+      <section class="research__study" id="corrections" aria-labelledby="research-corrections">
+        <h2 id="research-corrections">Corrections</h2>
+        <p>Every change to a number or claim on this page after it was first published.</p>
+        <ul class="research__corrections">
+          {%- for c in site.data.research.corrections %}
+          <li>
+            <time datetime="{{ c.date | date: '%Y-%m-%d' }}">{{ c.date | date: "%-d %B %Y" }}</time>
+            <span><strong>{{ c.study }}.</strong> {{ c.was }} {{ c.now }}</span>
+          </li>
+          {%- endfor %}
+        </ul>
+      </section>
 
       <section class="research__study" aria-labelledby="research-next">
         <h2 id="research-next">Next</h2>

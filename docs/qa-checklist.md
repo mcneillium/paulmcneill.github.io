@@ -20,6 +20,23 @@ grep -c "your-new-class" _site/index.html
 The build should complete with no Liquid exceptions. The link check
 must report `✓ link-check clean`. Both are required.
 
+### Research page numbers
+
+The river table and the spread chart on `/research/` read
+`_data/research_skill.json`, which is generated from the study's own
+per-catchment results. After any change to the study, with its repository
+checked out beside this one:
+
+```bash
+node scripts/research-numbers.js ../river-early-warning           # check
+node scripts/research-numbers.js ../river-early-warning --write   # regenerate
+```
+
+The check exits non-zero if the page and the results disagree. The other
+numbers on the page are typed by hand, so compare them with the result
+tables whenever they change, and add an entry to `corrections:` in
+`_data/research.yml` for any published figure that is altered.
+
 ## Manual smoke test (5 minutes)
 
 Open the live site (or `_site/index.html` via a local server) and
