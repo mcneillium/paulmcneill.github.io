@@ -262,9 +262,12 @@
     }
     if (synth && typeof SpeechSynthesisUtterance !== 'undefined') {
       synth.cancel();
-      var u = new SpeechSynthesisUtterance(text);
-      var v = pickVoice();
-      if (v) { u.voice = v; u.lang = v.lang; }
+      // The visitor's chosen voice and speed from the site's voice picker.
+      var u = window.siteVoice && window.siteVoice.available ? window.siteVoice.utterance(text) : new SpeechSynthesisUtterance(text);
+      if (!(window.siteVoice && window.siteVoice.available)) {
+        var v = pickVoice();
+        if (v) { u.voice = v; u.lang = v.lang; }
+      }
       synth.speak(u);
     }
     // As in the app, the message stays after Speak; only spoken messages train.

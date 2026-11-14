@@ -421,6 +421,30 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   .font-picker__panel { right: -90px; }
 }
 
+/* Voice picker (shares the font picker's button and panel styles) */
+.voice-picker[hidden] { display: none; }
+.voice-picker__btn .icon, .voice-picker .font-picker__btn .icon { width: 18px; height: 18px; }
+.voice-picker__panel { min-width: 280px; max-width: min(340px, calc(100vw - 2rem)); }
+.voice-picker__select {
+  width: 100%; min-height: 40px; padding: 0 0.5rem; margin-bottom: 0.75rem;
+  border: 1px solid var(--border-strong); border-radius: 8px;
+  background: var(--bg); color: var(--text); font: 0.88rem var(--font-body);
+}
+.voice-picker__speed-label { display: flex; justify-content: space-between; }
+.voice-picker__speed-label output { color: var(--text); text-transform: none; }
+.voice-picker__speed { width: 100%; accent-color: var(--accent); margin: 0 0 0.75rem; }
+.voice-picker__preview {
+  min-height: 36px; padding: 0 0.9rem; border-radius: 8px; cursor: pointer;
+  border: 1px solid var(--border-strong); background: transparent; color: var(--text);
+  font: 600 0.85rem var(--font-body);
+}
+.voice-picker__preview:hover { color: var(--accent); border-color: var(--accent-dim); }
+.voice-picker__select:focus-visible, .voice-picker__speed:focus-visible, .voice-picker__preview:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+.voice-picker__note { margin: 0.6rem 0 0; font-size: 0.75rem; line-height: 1.4; color: var(--text-dim); }
+@media (max-width: 600px) { .voice-picker__panel { position: fixed; top: 64px; left: 1rem; right: 1rem; max-width: none; } }
+
 /* Theme toggle */
 .theme-toggle {
   position: relative;

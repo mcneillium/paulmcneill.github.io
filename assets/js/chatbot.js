@@ -231,6 +231,8 @@
   function say(text) {
     if (!speakReplies || !synth || typeof SpeechSynthesisUtterance === 'undefined') return;
     synth.cancel();
+    // The visitor's chosen voice and speed (voice.js), if the picker loaded.
+    if (window.siteVoice && window.siteVoice.available) { synth.speak(window.siteVoice.utterance(text)); return; }
     const u = new SpeechSynthesisUtterance(text);
     const v = pickVoice();
     if (v) { u.voice = v; u.lang = v.lang; } else { u.lang = 'en-GB'; }

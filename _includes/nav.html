@@ -43,6 +43,26 @@
       </div>
     </div>
 
+    <div class="font-picker voice-picker" id="voicePicker" hidden>
+      <button class="font-picker__btn" id="voiceToggle" type="button"
+              aria-haspopup="true" aria-expanded="false" aria-controls="voicePanel"
+              aria-label="Change speaking voice">
+        {% include icon.html name="volume-2" class="icon" %}
+      </button>
+      <div class="font-picker__panel voice-picker__panel" id="voicePanel" role="dialog" aria-label="Speaking voice">
+        <label class="font-picker__label" for="voiceSelect">Voice</label>
+        <select class="voice-picker__select" id="voiceSelect"></select>
+        <label class="font-picker__label voice-picker__speed-label" for="voiceRate">
+          Speed <output id="voiceRateOut" for="voiceRate">1.0&times;</output>
+        </label>
+        <input class="voice-picker__speed" id="voiceRate" type="range" min="0.6" max="1.6" step="0.1" value="1">
+        <button type="button" class="voice-picker__preview" id="voicePreview">Hear it</button>
+        <p class="voice-picker__note">Used for spoken replies from the assistant and on
+        the Voice board. Voices come from your browser, so the list depends on your
+        device. Recorded clips keep their own voice.</p>
+      </div>
+    </div>
+
     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light/dark theme">
       <span class="theme-toggle__icon theme-toggle__icon--sun">{% include icon.html name="sun" class="icon" %}</span>
       <span class="theme-toggle__icon theme-toggle__icon--moon">{% include icon.html name="moon" class="icon" %}</span>
