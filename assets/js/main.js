@@ -231,4 +231,20 @@
       if (e.key === 'Escape' && lightbox.classList.contains('is-open')) close();
     });
   }
+
+  /* -------- Live demo in a phone frame: load only when asked --------- */
+  document.querySelectorAll('[data-demo-frame]').forEach((frame) => {
+    const button = frame.querySelector('[data-demo-load]');
+    const screen = frame.querySelector('[data-demo-screen]');
+    if (!button || !screen) return;
+    button.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = frame.dataset.src;
+      iframe.title = 'Voice AAC app, live demo';
+      iframe.setAttribute('allow', 'autoplay');
+      screen.replaceChildren(iframe);
+      frame.dataset.loaded = '';
+      iframe.focus();
+    });
+  });
 })();

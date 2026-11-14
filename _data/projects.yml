@@ -16,15 +16,15 @@
 - title: "AI-Powered AAC App"
   problem: "Non-verbal users need accessible ways to communicate, with support for caregivers."
   contribution: "Combined a mobile communication interface, predictive AI and a connected caregiver dashboard."
-  evidence: "Interface screenshots and implementation details in the case study."
+  evidence: "A live web demo of the current app, screenshots and implementation details in the case study."
   category: "AI Accessibility"
   impact: "Predictive AI assistive communication for non-verbal users" # Confirmed by Paul, 2026-11-04
   description: "Mobile + caregiver dashboard that combines on-device prediction, scene understanding, and real-time monitoring for non-verbal users."
   image: "/img/portfolio/aac-ai-dashboard.png"
   tags: ["React Native", "Firebase", "LLMs", "AAC", "Healthcare"]
   url: "/projects/ai-aac-app/"
-  github: null
-  demo: null
+  github: "https://github.com/mcneillium/ai-powered-aac-app"
+  demo: "/demos/aac-app/"
   featured: true
   size: "md"
 
