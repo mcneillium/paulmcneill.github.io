@@ -13,6 +13,10 @@ axis:
 
 # Every change to a published number or claim, newest first.
 corrections:
+  - date: 2026-11-14
+    study: Drug response
+    was: "The page said the only stable subgroups were tissue of origin."
+    now: "One clustering method cannot show that, so it now says no stable subgroups beyond tissue were found."
   - date: 2026-11-13
     study: River early warning
     was: "The upper bound was shown as 0.809 at 3 days and 0.763 at 7 days."
