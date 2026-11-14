@@ -3022,3 +3022,43 @@ input::placeholder { color: var(--text-faint); opacity: 1; }
   .research__table table { min-width: 0; }
   .research__table th, .research__table td { padding-left: 0.4rem; padding-right: 0.4rem; }
 }
+
+/* ==========================================================================
+   Evidence (home): measured results that link to /research/
+   ========================================================================== */
+.evidence__grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem;
+}
+@media (max-width: 768px) { .evidence__grid { grid-template-columns: 1fr; } }
+.evidence-card {
+  display: flex; flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+}
+.evidence-card__question {
+  font-family: var(--font-mono); font-size: 0.8rem; font-weight: 500;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--text-dim); margin: 0 0 0.9rem;
+}
+.evidence-card__figure {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.05;
+  letter-spacing: -0.02em; color: var(--text);
+  margin: 0 0 0.9rem; font-variant-numeric: tabular-nums;
+}
+.evidence-card__figure span {
+  display: block; margin-top: 0.35rem;
+  font-family: var(--font-body); font-size: 0.9rem; letter-spacing: 0;
+  color: var(--accent);
+}
+.evidence-card__finding { color: var(--text-dim); font-size: 0.95rem; margin: 0 0 1.1rem; }
+.evidence-card__link {
+  margin-top: auto; align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font-size: 0.9rem; color: var(--text);
+  text-decoration: underline; text-decoration-color: var(--accent-dim); text-underline-offset: 4px;
+}
+.evidence-card__link:hover { text-decoration-color: var(--accent); }

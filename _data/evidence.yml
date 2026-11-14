@@ -1,0 +1,38 @@
+# Homepage "Evidence" cards. Every figure is taken from /research/ and must
+# match it. If a figure changes there, change it here in the same commit.
+
+- question: "Is the result real?"
+  figure: "0.14"
+  unit: "R² from noise"
+  finding: >-
+    Choosing a model's inputs before testing it scored 0.14 on shuffled data
+    with nothing to find. That is as high as the real result. Done in the
+    right order, the same recipe scored below zero.
+  anchor: "drug-response"
+
+- question: "Can anyone act on it?"
+  figure: "75 to 80%"
+  unit: "false alarms"
+  finding: >-
+    Three and seven days ahead, 75 to 80% of the model's high-river warnings
+    were wrong. A band drawn around today's flow, with no model at all, came
+    close: 0.155 against 0.175 on the same score at seven days.
+  anchor: "river-early-warning"
+
+- question: "Will it work somewhere new?"
+  figure: "0.850 to 0.752"
+  unit: "skill, wet to dry"
+  finding: >-
+    A forecasting model trained on wet catchments and tested on dry ones lost
+    about 0.10 of its skill, against 0.03 for a control trained on a random
+    half. A whole region held out of training cost 0.019.
+  anchor: "river-early-warning"
+
+- question: "Does the explanation hold?"
+  figure: "0.20"
+  unit: "overlap between refits"
+  finding: >-
+    Refit the same model on a slightly different sample and its list of the
+    20 most important inputs changes. On average two refits share about a third of their lists (an
+    overlap score of 0.20). Only two inputs stayed near the top.
+  anchor: "drug-response"
