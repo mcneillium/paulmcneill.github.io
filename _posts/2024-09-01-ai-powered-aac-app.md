@@ -113,7 +113,7 @@ It combines **predictive text (TensorFlow.js)**, **accessible UI**, and a **care
 ---
 
 ### Key Features
-- **Next-word prediction** via TF.js + custom tokenizer.
+- **Next-word prediction** on the device: an n-gram model plus an opt-in personal layer, with a reason shown for every suggestion.
 - **Personal vocab folders** with pictograms; grid size & theme preferences.
 - **Caregiver dashboard** (Firebase + charts): top phrases, session durations.
 - **WCAG 2.1 AA**: keyboard/switch navigation, ARIA roles, focus states.
@@ -121,7 +121,7 @@ It combines **predictive text (TensorFlow.js)**, **accessible UI**, and a **care
 
 ### Architecture
 - **Client**: React / React Native (Kiosk mode on tablets)
-- **Model**: TensorFlow.js in-browser; optional server-assisted re-ranking
+- **Prediction**: pure JavaScript on the device (trigram model, personal counts, linear reranker); no network calls
 - **Storage**: Firebase (Auth, Realtime Database, Cloud Functions)
 - **Telemetry**: Minimal, aggregated events; per-user opt-in
 
@@ -142,6 +142,8 @@ It combines **predictive text (TensorFlow.js)**, **accessible UI**, and a **care
 React Native (Expo), React, Material UI, Chart.js, Firebase (Auth, Realtime Database, Cloud Functions, Hosting)
 
 ---
+
+{% include voice-playground.html %}
 
 ### Try the app
 

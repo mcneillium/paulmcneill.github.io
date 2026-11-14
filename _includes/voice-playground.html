@@ -1,0 +1,32 @@
+{% comment %}
+  Voice playground: the app's core board and its real word-prediction engine,
+  running in the page. Engine bundle: assets/js/voice-engine.js, built by
+  scripts/build-voice-engine.mjs from the app repository. UI:
+  assets/js/voice-playground.js. Nothing is stored or sent.
+  Optional: heading="h2" (default h4, for use inside a case study).
+{% endcomment %}
+{% assign vp_h = include.heading | default: "h4" %}
+<section class="voice-play" aria-labelledby="voice-play-title" data-voice-play>
+  <{{ vp_h }} id="voice-play-title">Try the word prediction</{{ vp_h }}>
+  <p>This is Voice's core board and its word-prediction engine: the same code
+  the app ships, running in this page with no server and no AI service. Tap
+  words and watch the suggestions change. Each one says why it was offered.</p>
+  <p>To see it learn, switch on <strong>Learn from my messages</strong>, build
+  a message such as <em>I want</em> + <em>Grandma</em> (type the name), press
+  <strong>Speak</strong> two or three times, then clear and start again. Your
+  words now appear among the suggestions, with a coloured border. Use <strong>×</strong> to stop a suggestion
+  appearing after a word, and <strong>Forget</strong> to remove what it
+  learned. Everything stays in this tab and is gone when you reload.</p>
+  <div class="voice-play__app" data-voice-app>
+    <p class="voice-play__fallback">The interactive board needs JavaScript.
+    The full app demo below shows the same board.</p>
+  </div>
+  <p class="voice-play__source">How it works: a trigram model with absolute
+  discounting, built from 666 sentences written for Voice (about 34&nbsp;KB),
+  merged with an optional personal layer whose counts halve every 45 days, then
+  reordered by a small seven-feature ranker. Each set of suggestions takes
+  well under a millisecond on a desktop computer.
+  <a href="https://github.com/mcneillium/ai-powered-aac-app/tree/claude/voice-team-run/src/services/prediction" target="_blank" rel="noopener">Read the prediction code</a>.</p>
+</section>
+<script src="{{ '/assets/js/voice-engine.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/voice-playground.js' | relative_url }}" defer></script>

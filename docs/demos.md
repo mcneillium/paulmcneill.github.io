@@ -69,3 +69,27 @@ are seeded, because no model training writes them.
 
 A copy of the demo-mock folder and the build changes is kept with Paul's
 research archive (`Documents\research\archive\aac-dashboard-demo-mock.tar.gz`).
+
+## Voice word-prediction playground
+
+`_includes/voice-playground.html` (on the AAC case study and `/lab/`) runs
+the app's own core board and prediction engine in the page. Two files:
+
+- `assets/js/voice-engine.js` is generated. Rebuild it after the app's
+  prediction code or vocabulary changes, with the app checked out beside
+  this repository on the branch to show:
+
+  ```sh
+  npm install
+  node scripts/build-voice-engine.mjs ../ai-powered-aac-app
+  ```
+
+  It bundles `src/services/prediction/` (predictor, base model, reranker
+  weights) and the board pages and pictures from `src/data/`. The header
+  comment records the source branch and commit.
+- `assets/js/voice-playground.js` is the hand-written page UI. Its suggestion
+  order mirrors the app's `src/services/suggestionEngine.js`.
+
+Built on 14 November 2026 from `claude/voice-team-run`, last prediction or
+vocabulary change `cdf9cd9`. Nothing is stored or sent; speech prefers a
+voice installed on the visitor's device.
