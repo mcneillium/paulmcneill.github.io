@@ -3321,3 +3321,8 @@ input::placeholder { color: var(--text-faint); opacity: 1; }
   .cv__contact a[href^="http"]::after { content: none; }
   .cv a { color: #111; text-decoration: none; }
 }
+
+/* Buttons inside case-study prose: the prose link colour (accent) was
+   overriding .btn-primary, making "Request a trial" accent-on-accent. */
+.post-content a.btn.btn-primary, .post-content a.btn.btn-primary:hover { color: #101b2c; text-decoration: none; }
+[data-theme="light"] .post-content a.btn.btn-primary, [data-theme="light"] .post-content a.btn.btn-primary:hover { color: #fff; }
