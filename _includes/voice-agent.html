@@ -1,11 +1,11 @@
 {% comment %}
   Live voice assistant (ElevenLabs agent). Nothing from ElevenLabs loads until
   the visitor presses the button. Widget script is self-hosted and pinned:
-  assets/vendor/elevenlabs/ (MIT). Agent settings: docs/demos.md.
+  assets/third-party/elevenlabs/ (MIT). Agent settings: docs/demos.md.
 {% endcomment %}
 <section class="voice-agent" aria-labelledby="voice-agent-title" data-voice-agent
   data-agent-id="{{ site.elevenlabs.agent_id }}"
-  data-widget-src="{{ '/assets/vendor/elevenlabs/convai-widget-embed-0.26.0.js' | relative_url }}">
+  data-widget-src="{{ '/assets/third-party/elevenlabs/convai-widget-embed-0.26.0.js' | relative_url }}">
   <h2 id="voice-agent-title">Ask about Paul&rsquo;s work, by voice</h2>
   <p>A live AI voice assistant that answers questions about Paul&rsquo;s
   projects, research and the Voice app, from a fact sheet taken from this

@@ -127,7 +127,7 @@ assistant"), set up on 14 November 2026, voice "Chris - Warm and Calm".
   on the site") passed on 14 November 2026.
 - Loading: nothing from ElevenLabs loads until the visitor presses "Load the
   voice assistant" (`assets/js/voice-agent.js`). The widget script is
-  self-hosted and pinned (`assets/vendor/elevenlabs/`, MIT, v0.26.0). The Lab
+  self-hosted and pinned (`assets/third-party/elevenlabs/`, MIT, v0.26.0). The Lab
   page's CSP allows `*.elevenlabs.io`; no other page does.
 - Every conversation spends ElevenLabs credits. Check usage in the ElevenLabs
   dashboard; lower the daily limit there if needed.

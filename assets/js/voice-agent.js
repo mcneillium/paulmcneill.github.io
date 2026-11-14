@@ -1,5 +1,5 @@
 /* Loads the ElevenLabs voice assistant only when the visitor asks for it.
-   The widget script is self-hosted (assets/vendor/elevenlabs, MIT) and the
+   The widget script is self-hosted (assets/third-party/elevenlabs, MIT) and the
    agent only accepts conversations from paulmartinmcneill.com. */
 (function () {
   'use strict';
