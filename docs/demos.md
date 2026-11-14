@@ -40,9 +40,9 @@ A static build of the caregiver dashboard running on made-up data, shown in
 a browser frame on `/projects/ai-aac-app/`, loaded on request, opening on
 `#/admin`.
 
-Built on 14 November 2026 from Paul's local branch
-`overnight/2026-08-08/improvements`, commit `84239ef` (v0.2.0), which is not
-on GitHub. Taken with `git archive HEAD`, so the working-tree changes on his
+Built on 14 November 2026 from branch `overnight/2026-08-08/improvements`,
+commit `84239ef` (v0.2.0 plus the overnight review), pushed to GitHub the
+same day. Taken with `git archive HEAD`, so the working-tree changes on his
 PC (line endings only) are not included.
 
 How it was built, in a copy outside the repository (nothing was committed to
