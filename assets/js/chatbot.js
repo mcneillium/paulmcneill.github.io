@@ -194,6 +194,110 @@
     };
   }
 
+  /* ------------- voice: microphone input and spoken replies -------------
+   * Browser speech APIs only, so there is no key and no cost. Speech
+   * recognition exists in Chrome, Edge and Safari; elsewhere the mic stays
+   * hidden and the chat works exactly as before. Using the mic switches on
+   * spoken replies; the speaker button turns them on or off at any time.
+   */
+  const micBtn    = document.getElementById('chatMic');
+  const speakBtn  = document.getElementById('chatSpeak');
+  const voiceNote = document.getElementById('chatVoiceNote');
+  const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const synth = window.speechSynthesis || null;
+  let speakReplies = false;
+  let recog = null;
+  let listening = false;
+  const placeholder = input.placeholder;
+
+  function pickVoice() {
+    if (!synth) return null;
+    const voices = synth.getVoices() || [];
+    const local = voices.filter(v => v.localService);
+    const pool = local.length ? local : voices;
+    const byLang = re => pool.find(v => re.test(v.lang));
+    return byLang(/^en-GB/i) || byLang(/^en/i) || null;
+  }
+
+  function setSpeak(on) {
+    speakReplies = !!on;
+    if (speakBtn) {
+      speakBtn.setAttribute('aria-pressed', String(speakReplies));
+      speakBtn.title = speakReplies ? 'Stop reading replies aloud' : 'Read replies aloud';
+    }
+    if (!speakReplies && synth) synth.cancel();
+  }
+
+  function say(text) {
+    if (!speakReplies || !synth || typeof SpeechSynthesisUtterance === 'undefined') return;
+    synth.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    const v = pickVoice();
+    if (v) { u.voice = v; u.lang = v.lang; } else { u.lang = 'en-GB'; }
+    synth.speak(u);
+  }
+
+  function setListening(on) {
+    listening = on;
+    if (!micBtn) return;
+    micBtn.classList.toggle('is-listening', on);
+    micBtn.setAttribute('aria-pressed', String(on));
+    micBtn.setAttribute('aria-label', on ? 'Stop listening' : 'Ask by voice');
+    micBtn.title = on ? 'Stop listening' : 'Ask by voice';
+    input.placeholder = on ? 'Listening…' : placeholder;
+  }
+
+  function stopListening() {
+    if (recog) { try { recog.stop(); } catch {} }
+  }
+
+  function startListening() {
+    if (isSending || listening) return;
+    if (synth) synth.cancel();
+    recog = new Recognition();
+    recog.lang = 'en-GB';
+    recog.interimResults = true;
+    recog.continuous = false;
+    recog.maxAlternatives = 1;
+    let finalText = '';
+    recog.onresult = (e) => {
+      let interim = '';
+      for (let i = e.resultIndex; i < e.results.length; i++) {
+        const r = e.results[i];
+        if (r.isFinal) finalText += r[0].transcript; else interim += r[0].transcript;
+      }
+      input.value = (finalText + interim).trim();
+    };
+    recog.onerror = (e) => {
+      if (e.error === 'not-allowed' || e.error === 'service-not-allowed') {
+        appendMsg('The microphone is blocked for this site. Allow it in your browser settings, or type your question.', 'bot', { error: true });
+      } else if (e.error === 'no-speech') {
+        appendMsg("I didn't catch anything. Press the microphone and try again, or type your question.", 'bot', { error: true });
+      } else if (e.error !== 'aborted') {
+        appendMsg('Voice input stopped working. Please type your question instead.', 'bot', { error: true });
+      }
+    };
+    recog.onend = () => {
+      setListening(false);
+      recog = null;
+      const q = finalText.trim();
+      if (q) { setSpeak(true); ask(q); }
+    };
+    setListening(true);
+    try { recog.start(); } catch { setListening(false); recog = null; }
+  }
+
+  if (synth && speakBtn) {
+    speakBtn.hidden = false;
+    speakBtn.addEventListener('click', () => setSpeak(!speakReplies));
+    if (synth.onvoiceschanged === null) synth.onvoiceschanged = () => {};
+  }
+  if (Recognition && micBtn) {
+    micBtn.hidden = false;
+    if (voiceNote) voiceNote.hidden = false;
+    micBtn.addEventListener('click', () => (listening ? stopListening() : startListening()));
+  }
+
   /* ------------- send a message ------------- */
   async function ask(question) {
     if (isSending || !question || !question.trim()) return;
@@ -217,6 +321,7 @@
       typing.remove();
       appendMsg(result.reply, 'bot', { sources: result.sources });
       conversation.push({ role: 'assistant', content: result.reply });
+      say(result.reply);
     } catch (e) {
       typing.remove();
       appendMsg(
@@ -228,7 +333,7 @@
     } finally {
       isSending = false;
       if (send) send.disabled = false;
-      input.focus();
+      if (!listening) input.focus();
     }
   }
 
@@ -252,6 +357,8 @@
     setTimeout(() => input.focus(), 50);
   }
   function close() {
+    stopListening();
+    if (synth) synth.cancel();
     root.classList.remove('is-open');
     root.setAttribute('aria-hidden', 'true');
     if (prevFocus) prevFocus.focus();

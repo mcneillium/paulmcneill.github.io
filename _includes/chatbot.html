@@ -10,7 +10,14 @@
       {% include icon.html name="sparkles" class="icon" %}
       <h2 id="chat-title" class="chat__title">Portfolio assistant</h2>
     </div>
-    <button type="button" class="chat__close" aria-label="Close" data-close="chatbot">×</button>
+    <div class="chat__header-actions">
+      <button type="button" class="chat__speak" id="chatSpeak" aria-pressed="false" hidden
+        title="Read replies aloud">
+        {% include icon.html name="volume-2" class="icon" %}
+        <span class="sr-only">Read replies aloud</span>
+      </button>
+      <button type="button" class="chat__close" aria-label="Close" data-close="chatbot">×</button>
+    </div>
   </header>
 
   <div class="chat__body" id="chatBody" aria-live="polite"></div>
@@ -32,6 +39,10 @@
       aria-label="Your message"
       maxlength="500"
     />
+    <button type="button" class="chat__mic" id="chatMic" aria-pressed="false" hidden
+      aria-label="Ask by voice" title="Ask by voice">
+      {% include icon.html name="mic" class="icon" %}
+    </button>
     <button type="submit" class="chat__send" aria-label="Send">
       {% include icon.html name="arrow-up-right" class="icon" %}
     </button>
@@ -40,5 +51,11 @@
   <p class="chat__disclaimer">
     Answers from my portfolio using Cloudflare AI. Usage limits apply.
     Messages aren’t saved by this site. <a href="{{ '/privacy/' | relative_url }}">Privacy</a>.
+  </p>
+  <p class="chat__disclaimer chat__disclaimer--voice" id="chatVoiceNote" hidden>
+    The microphone uses your browser’s own speech recognition, which may send
+    audio to the browser’s maker (Google in Chrome, Microsoft in Edge, Apple
+    in Safari). For a spoken conversation, try the
+    <a href="{{ '/lab/#voice-agent' | relative_url }}">voice assistant</a>.
   </p>
 </div>

@@ -2060,6 +2060,23 @@ body.has-spotlight::before {
 }
 .chat__send:hover { transform: scale(1.06); }
 .chat__send:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.chat__speak[hidden], .chat__mic[hidden] { display: none; }
+.chat__header-actions { display: inline-flex; align-items: center; gap: 0.25rem; }
+.chat__speak, .chat__mic {
+  width: 40px; height: 40px; flex: none;
+  display: grid; place-items: center;
+  border-radius: 50%; border: 1px solid var(--border);
+  background: transparent; color: var(--text-dim); cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.chat__speak { width: 32px; height: 32px; border-color: transparent; }
+.chat__speak .icon, .chat__mic .icon { width: 18px; height: 18px; }
+.chat__speak:hover, .chat__mic:hover { color: var(--accent); border-color: var(--accent-dim); }
+.chat__speak[aria-pressed="true"] { color: var(--accent); background: var(--accent-dim); }
+.chat__mic.is-listening { color: #fff; background: #c62828; border-color: #c62828; animation: chat-mic-pulse 1.2s ease-in-out infinite; }
+@keyframes chat-mic-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(198, 40, 40, 0.5); } 50% { box-shadow: 0 0 0 6px rgba(198, 40, 40, 0); } }
+@media (prefers-reduced-motion: reduce) { .chat__mic.is-listening { animation: none; } }
+.chat__disclaimer.chat__disclaimer--voice { font-family: var(--font-body); font-size: 0.72rem; text-align: left; }
 
 .chat__disclaimer {
   margin: 0;

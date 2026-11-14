@@ -99,6 +99,25 @@ description: "Privacy practices for paulmartinmcneill.com — what's collected, 
     Conversation history is held in your browser tab and a short excerpt is sent with each question. Refreshing clears it. To enforce usage limits, the backend stores a daily hash of your IP address and request counts, which expire at midnight UTC. It does not store your messages or raw IP address in that counter.
   </p>
 
+  <h2>Voice features</h2>
+  <ul>
+    <li><strong>Microphone in the chatbot.</strong> Only when you press the
+    microphone button, your browser's own speech recognition turns what you
+    say into text, which is then sent like a typed question. Your browser may
+    send the audio to its maker to do this (Google in Chrome, Microsoft in
+    Edge, Apple in Safari). This site never receives or stores the audio.
+    Spoken replies use voices built into your browser.</li>
+    <li><strong>Recorded narration and the Voice board's natural voice.</strong>
+    These are audio files served from this site. Nothing you do is sent
+    anywhere when you play them.</li>
+    <li><strong>Live voice assistant on the Lab page.</strong> Nothing from
+    ElevenLabs loads until you press "Load the voice assistant" and accept
+    its notice. After that, what you say or type is sent to ElevenLabs to be
+    transcribed and answered, under ElevenLabs' own privacy policy. Audio is
+    not kept; the text transcript is kept for 30 days so I can check the
+    assistant's answers, then deleted.</li>
+  </ul>
+
   <h2>Third parties the site requests from</h2>
   <p>
     The site loads a small number of public, cacheable assets from third-party
@@ -110,6 +129,7 @@ description: "Privacy practices for paulmartinmcneill.com — what's collected, 
     <li><strong>ghchart.rshah.org</strong> — for the GitHub contribution graph (lazy-loaded only when you scroll to the section).</li>
     <li><strong>i.ytimg.com / youtube-nocookie.com</strong> — for video thumbnails and embedded players. Case-study video players are lazy-loaded as you browse the page.</li>
     <li><strong>storage.googleapis.com</strong> — for the in-browser TensorFlow.js sentiment model, fetched only when the Live Lab section enters your viewport.</li>
+    <li><strong>ElevenLabs (elevenlabs.io)</strong> — only on the Lab page, and only after you choose to load the voice assistant. See Voice features above.</li>
   </ul>
 
   <h2>What's not on this site</h2>
