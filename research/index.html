@@ -147,8 +147,8 @@ description: "Two reproducible machine learning studies on public data: river ea
             <span data-technical>Five geographic folds, each region forecast by a regional model trained on the other four. Median NSE at 1 day falls from 0.762 to 0.723. The median loss per catchment is 0.019.</span>
           </li>
           <li>
-            <span data-plain><strong>A neural network did no better.</strong> An LSTM reading the last 365 days of raw data scored 0.73, 0.38 and 0.24 at 1, 3 and 7 days, against 0.76, 0.38 and 0.24 for boosting. That points to the missing weather forecast as the limit, not the choice of model.</span>
-            <span data-technical>A regional LSTM (hidden size 256, 365-day window, three seeds, one fixed configuration set before the run) has median NSE 0.734, 0.377 and 0.239 against 0.764, 0.375 and 0.235 for regional boosting on identical days. The median difference per catchment is -0.019, +0.002 and +0.002. Under the rule fixed in the protocol (within 0.01 counts as no better) it is a null result at every lead.</span>
+            <span data-plain><strong>A neural network did no better.</strong> An LSTM reading the last 365 days of raw data scored 0.73, 0.38 and 0.24 at 1, 3 and 7 days, against 0.76, 0.38 and 0.24 for boosting, and no better on regions it had never seen. That points to the missing weather forecast as the limit, not the choice of model.</span>
+            <span data-technical>A regional LSTM (hidden size 256, 365-day window, three seeds, one fixed configuration set before the run) has median NSE 0.734, 0.377 and 0.239 against 0.764, 0.375 and 0.235 for regional boosting on identical days. The median difference per catchment is -0.019, +0.002 and +0.002. Under the rule fixed in the protocol (within 0.01 counts as no better) it is a null result at every lead. On regions held out of training it scores 0.708, 0.367 and 0.225 against 0.723, 0.367 and 0.224, so the null result holds there too.</span>
           </li>
           <li>
             <span data-plain><strong>A different climate costs much more.</strong> Trained on wet catchments and tested on dry ones, NSE falls from 0.850 to 0.752. A random-half control loses about 0.03.</span>
@@ -317,7 +317,7 @@ description: "Two reproducible machine learning studies on public data: river ea
       <section class="research__study" aria-labelledby="research-next">
         <h2 id="research-next">Next</h2>
         <ul>
-          <li>The river study's behaviour with gaps in the inputs, and the neural model on unseen regions.</li>
+          <li>The river study's behaviour with gaps in the inputs, and a fairer, tuned version of the neural model.</li>
           <li>A third study on satellite flood mapping with imperfect labels.</li>
         </ul>
         {% comment %} TODO: REPLACE (Paul): reading notes. Three to five papers you have
