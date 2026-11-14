@@ -3234,3 +3234,11 @@ input::placeholder { color: var(--text-faint); opacity: 1; }
 .listen__note { margin: 0.4rem 0 0; font-size: 0.78rem; color: var(--text-dim); }
 .listen--hero { margin-top: 1.25rem; background: transparent; }
 @media print { .listen { display: none; } }
+
+/* ── Live voice assistant (Lab) ── */
+.voice-agent { max-width: 760px; padding: 1.5rem; border: 1px solid var(--border-strong); border-radius: var(--radius); background: var(--bg-raised); }
+.voice-agent h2 { margin-top: 0; }
+.voice-agent__facts { margin: 0.75rem 0 1rem; padding-left: 1.2rem; color: var(--text-dim); font-size: 0.92rem; }
+.voice-agent__facts li { margin: 0.3rem 0; }
+.voice-agent__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin: 0; }
+.voice-agent__status { font-size: 0.9rem; color: var(--text-dim); }

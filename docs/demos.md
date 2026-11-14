@@ -110,3 +110,24 @@ phrases (four phrases re-made singly with `eleven_v4`). About 3,600 credits.
 - Every clip was transcribed locally (faster-whisper `small.en`) and checked
   against its script before publishing. Re-check after any re-recording.
 - No API key is on the site. Credits are spent only when a clip is made.
+
+## Live voice assistant (ElevenLabs agent, Lab page)
+
+Agent `agent_1301m7drw7yfeacsx6dbchsr2wt0` ("Paul McNeill portfolio voice
+assistant"), set up on 14 November 2026, voice "Chris - Warm and Calm".
+
+- Answers only from the knowledge-base document "Paul McNeill portfolio
+  facts", whose source is `workers/voice-agent/knowledge.md`. Edit that file
+  and re-upload it in ElevenLabs when the site changes. It deliberately leaves
+  out current client work, credentials and unverified metrics.
+- Limits: conversations from paulmartinmcneill.com only (origin allowlist),
+  2 at once, 25 a day, 4 minutes each, ends after 30 seconds of silence.
+  Audio is not stored; transcripts are kept 30 days. Prompt-injection and
+  focus guardrails are on. A simulation test ("Recruiter probes for facts not
+  on the site") passed on 14 November 2026.
+- Loading: nothing from ElevenLabs loads until the visitor presses "Load the
+  voice assistant" (`assets/js/voice-agent.js`). The widget script is
+  self-hosted and pinned (`assets/vendor/elevenlabs/`, MIT, v0.26.0). The Lab
+  page's CSP allows `*.elevenlabs.io`; no other page does.
+- Every conversation spends ElevenLabs credits. Check usage in the ElevenLabs
+  dashboard; lower the daily limit there if needed.

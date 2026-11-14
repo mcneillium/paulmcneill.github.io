@@ -2,11 +2,12 @@
 layout: page
 title: "Lab"
 permalink: /lab/
-description: "Interactive AI demos running in your browser — a TensorFlow.js sentiment model, an AAC word predictor and an animated agent-workflow visualiser. No servers, no uploads."
+description: "Interactive AI demos running in your browser — a TensorFlow.js sentiment model, an AAC word predictor, a live voice assistant and an animated agent-workflow visualiser. No servers, no uploads."
 og_image: /assets/img/og-image-lab.png
 scripts:
   - /assets/js/ml-demo.js
   - /assets/js/agent-visualiser.js
+  - /assets/js/voice-agent.js
 ---
 
 <header class="post__hero">
@@ -26,6 +27,12 @@ scripts:
 </header>
 
 {% include ml-demo.html %}
+
+<section class="section" id="voice-agent" aria-label="Voice assistant">
+  <div class="container">
+    {% include voice-agent.html %}
+  </div>
+</section>
 
 <section class="section" id="voice" aria-label="AAC word prediction">
   <div class="container">

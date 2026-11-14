@@ -22,6 +22,9 @@ available: true
 # Chatbot — set the deployed Cloudflare Worker URL here. Empty string
 # falls back to the offline keyword-only mode that uses the structured
 # data already on the page.
+elevenlabs:
+  agent_id: "agent_1301m7drw7yfeacsx6dbchsr2wt0"
+
 chatbot:
   endpoint: "https://portfolio-bot.paulmartinmcneill.workers.dev"
 

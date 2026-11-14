@@ -5,7 +5,8 @@
 
   {%- comment -%}
     Executable scripts are external. Only the Lab permits dynamic evaluation
-    for TensorFlow.js. Keep this policy and _headers in sync.
+    for TensorFlow.js, and connections to ElevenLabs for the voice assistant
+    (loaded only after the visitor asks for it). Keep this policy and _headers in sync.
   {%- endcomment -%}
   {%- if page.url == "/lab/" -%}
   <meta http-equiv="Content-Security-Policy" content="
@@ -15,8 +16,9 @@
     child-src 'self' blob:;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     font-src 'self' https://fonts.gstatic.com data:;
-    img-src 'self' data: https://img.youtube.com https://i.ytimg.com https://img.shields.io https://ghchart.rshah.org https://github-readme-stats.vercel.app;
-    connect-src 'self' {{ site.chatbot.endpoint }} https://storage.googleapis.com https://cdn.jsdelivr.net;
+    img-src 'self' data: https://img.youtube.com https://i.ytimg.com https://img.shields.io https://ghchart.rshah.org https://github-readme-stats.vercel.app https://storage.googleapis.com;
+    connect-src 'self' {{ site.chatbot.endpoint }} https://storage.googleapis.com https://cdn.jsdelivr.net https://*.elevenlabs.io wss://*.elevenlabs.io;
+    media-src 'self' blob:;
     frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com;
     object-src 'none';
     base-uri 'self';
