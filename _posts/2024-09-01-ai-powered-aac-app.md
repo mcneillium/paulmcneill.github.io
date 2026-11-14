@@ -155,7 +155,10 @@ React Native (Expo), React, Material UI, Chart.js, Firebase (Auth, Realtime Data
     <strong>Speak</strong>; speech uses your browser's own voices.</p>
     <p>Try the <strong>Child</strong> and <strong>Adult</strong> modes from the
     menu at the top of the board: every word stays in the same place in both.</p>
-    <p><a href="{{ '/demos/aac-app/' | relative_url }}" target="_blank" rel="noopener">Open the demo in a new tab</a></p>
+    <p class="demo-phone__actions">
+      <a class="btn btn-primary" href="mailto:{{ site.email }}?subject=Voice%20AAC%20app%3A%20trial%20request&body=Hello%20Paul%2C%0A%0AI%27d%20like%20to%20request%20a%20trial%20of%20Voice.%0A%0AWho%20it%27s%20for%20(you%2C%20a%20family%20member%2C%20a%20school%20or%20a%20service)%3A%0ANumber%20of%20users%3A%0ADevices%20(Android%2C%20tablet%20or%20browser)%3A%0A">Request a trial</a>
+      <a href="{{ '/demos/aac-app/' | relative_url }}" target="_blank" rel="noopener">Open the demo in a new tab</a>
+    </p>
   </div>
   <div class="demo-phone__frame" data-demo-frame data-src="{{ '/demos/aac-app/' | relative_url }}">
     <div class="demo-phone__screen" data-demo-screen>
@@ -172,6 +175,33 @@ React Native (Expo), React, Material UI, Chart.js, Firebase (Auth, Realtime Data
   {% include picture.html src="/img/portfolio/aac-ai/voice-phrases.png" alt="Phrases grouped by place, such as Home, Meals and Clinic" %}
   {% include picture.html src="/img/portfolio/aac-ai/voice-personalise.png" alt="Personalise: picture size, colours, speech and suggestions" %}
 </div>
+
+### Try the caregiver dashboard
+
+<section class="demo-browser" aria-labelledby="try-dashboard">
+  <p id="try-dashboard">The dashboard lets carers and therapists see how each
+  person is communicating: activity today, the words and phrases they use most,
+  alerts, custom boards and a full activity log. This copy runs on
+  <strong>made-up people and data</strong> held in the page, signed in as an
+  administrator. You can click through every screen and make changes; nothing
+  is saved or sent anywhere, and a reload resets it.</p>
+  <div class="demo-browser__frame" data-demo-frame data-title="Caregiver dashboard, live demo with made-up data" data-src="{{ '/demos/aac-dashboard/#/admin' | relative_url }}">
+    <div class="demo-browser__bar" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="demo-browser__screen" data-demo-screen>
+      {% include picture.html src="/img/portfolio/aac-ai/dashboard-admin-demo.png" alt="The admin dashboard with made-up users, activity and alerts" class="demo-browser__poster" %}
+    </div>
+    <button type="button" class="btn btn-primary demo-phone__load" data-demo-load>
+      Start the dashboard demo
+    </button>
+  </div>
+  <p class="demo-browser__note"><a href="{{ '/demos/aac-dashboard/#/admin' | relative_url }}" target="_blank" rel="noopener">Open the dashboard in a new tab</a> (best on a laptop or desktop).</p>
+  <p class="demo-browser__note">Two things are still open between the app and the
+  dashboard. The dashboard reads activity logs in an older layout than the app
+  now writes, and alerts and favourites are dashboard features the app does not
+  yet send data to. The demo shows the dashboard as designed; aligning the two
+  is the next piece of work.</p>
+  <p><a class="btn btn-outline" href="mailto:{{ site.email }}?subject=Voice%20AAC%20app%3A%20trial%20request&body=Hello%20Paul%2C%0A%0AI%27d%20like%20to%20request%20a%20trial%20of%20Voice.%0A%0AWho%20it%27s%20for%20(you%2C%20a%20family%20member%2C%20a%20school%20or%20a%20service)%3A%0ANumber%20of%20users%3A%0ADevices%20(Android%2C%20tablet%20or%20browser)%3A%0A">Request a trial</a></p>
+</section>
 
 ### Screens / Media
 

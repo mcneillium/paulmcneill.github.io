@@ -33,3 +33,39 @@ symbols from ARASAAC are only fetched if a user chooses to download them.
 the demo.
 
 To rebuild after the app changes, repeat the steps and replace the folder.
+
+## /demos/aac-dashboard/ (caregiver dashboard)
+
+A static build of the caregiver dashboard running on made-up data, shown in
+a browser frame on `/projects/ai-aac-app/`, loaded on request, opening on
+`#/admin`.
+
+Built on 14 November 2026 from Paul's local branch
+`overnight/2026-08-08/improvements`, commit `84239ef` (v0.2.0), which is not
+on GitHub. Taken with `git archive HEAD`, so the working-tree changes on his
+PC (line endings only) are not included.
+
+How it was built, in a copy outside the repository (nothing was committed to
+the dashboard repository):
+
+1. `src/demo-mock/` holds stand-ins for `firebase/app`, `firebase/auth`,
+   `firebase/database` and `firebase/functions`, swapped in by webpack
+   aliases in `craco.config.js`. The database is an in-memory tree seeded by
+   `seed.js` with invented people (example.org addresses), activity, alerts,
+   favourites, custom boards and feedback, timed relative to page load. A
+   demo admin is always signed in. Writes change the tree until reload.
+2. `BrowserRouter` swapped for `HashRouter` in `App.js`, so every page works
+   from a static folder.
+3. A fixed note added to `public/index.html`: "Demo: made-up people and
+   data. Nothing you do here is saved or sent anywhere." Also `noindex`.
+4. `PUBLIC_URL=/demos/aac-dashboard npx craco build`, no `.env`.
+
+Checked: all 19 routes render with no errors; the build contains no Firebase
+address and makes no outside requests. The seed supplies logs in the flat
+`userLogs/{pushId}` layout the dashboard reads; the app writes
+`userLogs/{uid}/{pushId}` (contract break CB-1 in the dashboard's
+`docs/DATA-CONTRACT.md`), and the case study says so. No fine-tune metrics
+are seeded, because no model training writes them.
+
+A copy of the demo-mock folder and the build changes is kept with Paul's
+research archive (`Documents\research\archive\aac-dashboard-demo-mock.tar.gz`).

@@ -240,7 +240,7 @@
     button.addEventListener('click', () => {
       const iframe = document.createElement('iframe');
       iframe.src = frame.dataset.src;
-      iframe.title = 'Voice AAC app, live demo';
+      iframe.title = frame.dataset.title || 'Voice AAC app, live demo';
       iframe.setAttribute('allow', 'autoplay');
       screen.replaceChildren(iframe);
       frame.dataset.loaded = '';
