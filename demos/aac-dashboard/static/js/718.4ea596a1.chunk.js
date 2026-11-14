@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkai_powered_aac_dashboard=self.webpackChunkai_powered_aac_dashboard||[]).push([[718],{2718:(a,e,r)=>{r.r(e),r.d(e,{default:()=>u});r(9255);var s=r(2349),d=r(5983);function u(){return(0,d.jsx)(s.C5,{to:"/user-management",replace:!0})}}}]);

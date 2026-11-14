@@ -40,9 +40,9 @@ A static build of the caregiver dashboard running on made-up data, shown in
 a browser frame on `/projects/ai-aac-app/`, loaded on request, opening on
 `#/admin`.
 
-Built on 14 November 2026 from branch `overnight/2026-08-08/improvements`,
-commit `84239ef` (v0.2.0 plus the overnight review), pushed to GitHub the
-same day. Taken with `git archive HEAD`, so the working-tree changes on his
+Rebuilt on 14 November 2026 from branch `fix/b2-userlogs-per-user`, commit
+`5c8dc22`: v0.2.0 plus the overnight review, plus the fix that reads logs per
+person (backlog item B-2). That branch is pushed but not yet merged. Taken with `git archive HEAD`, so the working-tree changes on his
 PC (line endings only) are not included.
 
 How it was built, in a copy outside the repository (nothing was committed to
@@ -61,10 +61,11 @@ the dashboard repository):
 4. `PUBLIC_URL=/demos/aac-dashboard npx craco build`, no `.env`.
 
 Checked: all 19 routes render with no errors; the build contains no Firebase
-address and makes no outside requests. The seed supplies logs in the flat
-`userLogs/{pushId}` layout the dashboard reads; the app writes
-`userLogs/{uid}/{pushId}` (contract break CB-1 in the dashboard's
-`docs/DATA-CONTRACT.md`), and the case study says so. No fine-tune metrics
+address and makes no outside requests. The seed writes logs as
+`userLogs/{uid}/{pushId}`, the layout the app uses. Built from the code
+before B-2, the same data shows 0 activities and 0 active users, which is
+the production fault (contract break CB-1 in the dashboard's
+`docs/DATA-CONTRACT.md`). No fine-tune metrics
 are seeded, because no model training writes them.
 
 A copy of the demo-mock folder and the build changes is kept with Paul's

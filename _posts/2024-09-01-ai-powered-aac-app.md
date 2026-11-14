@@ -195,11 +195,11 @@ React Native (Expo), React, Material UI, Chart.js, Firebase (Auth, Realtime Data
     </button>
   </div>
   <p class="demo-browser__note"><a href="{{ '/demos/aac-dashboard/#/admin' | relative_url }}" target="_blank" rel="noopener">Open the dashboard in a new tab</a> (best on a laptop or desktop).</p>
-  <p class="demo-browser__note">Two things are still open between the app and the
-  dashboard. The dashboard reads activity logs in an older layout than the app
-  now writes, and alerts and favourites are dashboard features the app does not
-  yet send data to. The demo shows the dashboard as designed; aligning the two
-  is the next piece of work.</p>
+  <p class="demo-browser__note">This demo runs a fix that is waiting for review:
+  the released dashboard reads activity logs in an older layout than the app now
+  writes, so it showed no activity at all. The demo's made-up data uses the
+  app's real layout. Alerts and favourites are dashboard features the app does
+  not yet send data to.</p>
   <p><a class="btn btn-outline" href="mailto:{{ site.email }}?subject=Voice%20AAC%20app%3A%20trial%20request&body=Hello%20Paul%2C%0A%0AI%27d%20like%20to%20request%20a%20trial%20of%20Voice.%0A%0AWho%20it%27s%20for%20(you%2C%20a%20family%20member%2C%20a%20school%20or%20a%20service)%3A%0ANumber%20of%20users%3A%0ADevices%20(Android%2C%20tablet%20or%20browser)%3A%0A">Request a trial</a></p>
 </section>
 
