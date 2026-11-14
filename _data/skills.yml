@@ -28,10 +28,7 @@ tiers:
       - { name: "Azure",        icon: "azure" }
       - { name: "AWS",          icon: null }
       - { name: "DAX / Power Query", icon: null }
-
-  - label: "Familiar"
-    description: "Used in projects, not my first pick."
-    items:
+      # Moved up from "Familiar" on 14 Nov 2026: Paul confirmed fluency.
       - { name: "PyTorch",       icon: null }
       - { name: "Hugging Face",  icon: null }
       - { name: "MLflow",        icon: null }
@@ -39,4 +36,8 @@ tiers:
       - { name: "GCP / Vertex AI", icon: "googlecloud" }
       - { name: "Jupyter",       icon: "jupyter" }
       - { name: "Java",          icon: null }
+
+  - label: "Familiar"
+    description: "Used in projects, not my first pick."
+    items:
       - { name: "C++",           icon: null }

@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-11-14T20:03:47.940Z",
+  "built_at": "2026-11-14T20:21:25.100Z",
   "embedding_model": null,
   "chunks": [
     {
@@ -361,7 +361,7 @@
     {
       "id": "skill.1",
       "category": "skills",
-      "text": "Skill tier — Strong working knowledge (Comfortable shipping in production.): TensorFlow, Scikit-learn, LangChain, Next.js, PostgreSQL, Firebase, Docker, Azure, AWS, DAX / Power Query",
+      "text": "Skill tier — Strong working knowledge (Comfortable shipping in production.): TensorFlow, Scikit-learn, LangChain, Next.js, PostgreSQL, Firebase, Docker, Azure, AWS, DAX / Power Query, PyTorch, Hugging Face, MLflow, Kubernetes, GCP / Vertex AI, Jupyter, Java",
       "keywords": [
         "skill",
         "stack",
@@ -369,12 +369,12 @@
         "tools",
         "strong working knowledge"
       ],
-      "tokens": 23
+      "tokens": 34
     },
     {
       "id": "skill.2",
       "category": "skills",
-      "text": "Skill tier — Familiar (Used in projects, not my first pick.): PyTorch, Hugging Face, MLflow, Kubernetes, GCP / Vertex AI, Jupyter, Java, C++",
+      "text": "Skill tier — Familiar (Used in projects, not my first pick.): C++",
       "keywords": [
         "skill",
         "stack",
@@ -382,7 +382,7 @@
         "tools",
         "familiar"
       ],
-      "tokens": 23
+      "tokens": 12
     },
     {
       "id": "certs",

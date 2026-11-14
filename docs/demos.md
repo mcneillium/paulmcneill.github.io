@@ -118,7 +118,9 @@ assistant"), set up on 14 November 2026, voice "Chris - Warm and Calm".
 
 - Answers only from the knowledge-base document "Paul McNeill portfolio
   facts", whose source is `workers/voice-agent/knowledge.md`. Edit that file
-  and re-upload it in ElevenLabs when the site changes. It deliberately leaves
+  and re-upload it in ElevenLabs when the site changes. Skills are a second,
+  separate document ("Paul McNeill skills"); update it when `_data/skills.yml`
+  changes. It deliberately leaves
   out current client work, credentials and unverified metrics.
 - Limits: conversations from paulmartinmcneill.com only (origin allowlist),
   2 at once, 25 a day, 4 minutes each, ends after 30 seconds of silence.

@@ -36,6 +36,11 @@ be stated as fact.
 - Volunteer: digital volunteer and technology adviser for the RSPB Rathlin
   Island project (Rathlin360.com) since 2024.
 
+## Skills
+- Daily: Python, TypeScript, React, Node.js, Power BI, Pandas, Git, the OpenAI and Claude APIs.
+- Strong working knowledge (comfortable shipping in production): PyTorch, TensorFlow, scikit-learn, Hugging Face, MLflow, Kubernetes, GCP and Vertex AI, Jupyter, Java, LangChain, Next.js, PostgreSQL, Firebase, Docker, Azure, AWS, DAX and Power Query.
+- The projects on the site show where each was used.
+
 ## Voice (AI-powered AAC app)
 - Voice is an AAC app: a way to communicate for people who cannot rely on
   speech, with a caregiver dashboard alongside it. Built with React Native
