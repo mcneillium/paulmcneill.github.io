@@ -13,21 +13,6 @@
   featured: true
   size: "lg"
 
-- title: "Aurora Domiciliary Care: Power BI Analytics"
-  problem: "Care operations, workforce, finance and compliance need a connected view."
-  contribution: "Designed a 16-table synthetic dataset, Power Query transformations, DAX measures and six Power BI pages with row-level security."
-  evidence: "Synthetic-data demonstration with dashboard screenshots, a data model and source repository."
-  category: "Data Analytics"
-  impact: "Models visits, workforce and finance using synthetic care data"
-  description: "Power BI analytics for a fictional Northern Ireland home-care provider: operations, finance, workforce and compliance on a synthetic 16-table dataset."
-  image: "/img/portfolio/aurora/aurora_dashboard_kpi_pbi.png"
-  tags: ["Power BI", "DAX", "Power Query", "Synthetic data"]
-  url: "/projects/aurora-nhs-transformation/"
-  github: "https://github.com/mcneillium/Aurora-Domiciliary-Care"
-  demo: null
-  featured: true
-  size: "lg"
-
 - title: "AI-Powered AAC App"
   problem: "Non-verbal users need accessible ways to communicate, with support for caregivers."
   contribution: "Combined a mobile communication interface, predictive AI and a connected caregiver dashboard."
@@ -35,26 +20,11 @@
   category: "AI Accessibility"
   impact: "Predictive AI assistive communication for non-verbal users" # Confirmed by Paul, 2026-11-04
   description: "Mobile + caregiver dashboard that combines on-device prediction, scene understanding, and real-time monitoring for non-verbal users."
-  image: "/img/portfolio/aac-ai-dashboard.png"
+  image: "/img/portfolio/aac-voice-card.png"
   tags: ["React Native", "Firebase", "LLMs", "AAC", "Healthcare"]
   url: "/projects/ai-aac-app/"
   github: "https://github.com/mcneillium/ai-powered-aac-app"
   demo: "/demos/aac-app/"
-  featured: true
-  size: "md"
-
-- title: "CRM Reporting — Industrial Temps"
-  problem: "Inconsistent CRM data and manual exports make recruitment reporting harder."
-  contribution: "Built validation queries, reporting tables and Power BI dashboards for placements and consultant performance."
-  evidence: "Case study covering the reporting workflow, data quality checks and my role."
-  category: "Data Analytics"
-  impact: "Consolidated 6+ disconnected sources into a single live dashboard" # Confirmed by Paul, 2026-11-04
-  description: "Data quality framework, ETL via Access + Power Query, and Power BI dashboards for placements, client performance, and consultant scorecards."
-  image: "/img/portfolio/industrial-temps-crm.png"
-  tags: ["Power BI", "Power Query", "ETL", "Recruitment"]
-  url: "/projects/crm-reporting-industrial-temps/"
-  github: null
-  demo: null
   featured: true
   size: "md"
 
@@ -73,18 +43,6 @@
   featured: true
   size: "lg"
 
-- title: "AI Assistant (fine-tuned GPT-2)"
-  category: "AI Engineering"
-  impact: "GPT-2 fine-tuned on conversational data, served three ways"
-  description: "GPT-2 fine-tuned with Hugging Face Transformers on public and custom dialogue, served through a Flask API with web, desktop and Streamlit interfaces."
-  image: "/img/portfolio/ai-assistant/training-run.png"
-  tags: ["Transformers", "Fine-tuning", "PyTorch", "Flask"]
-  url: "/projects/ai-assistant/"
-  github: null
-  demo: null
-  featured: false
-  size: "md"
-
 - title: "McNeillium_AI: A Checked Video Pipeline"
   problem: "Automated video makes it easy to publish claims nobody has checked."
   contribution: "Built a Python pipeline from script to captioned video, with speech-to-text and source checks before anything ships."
@@ -100,6 +58,48 @@
   featured: false
   size: "md"
 
+- title: "Aurora Domiciliary Care: Power BI Analytics"
+  problem: "Care operations, workforce, finance and compliance need a connected view."
+  contribution: "Designed a 16-table synthetic dataset, Power Query transformations, DAX measures and six Power BI pages with row-level security."
+  evidence: "Synthetic-data demonstration with dashboard screenshots, a data model and source repository."
+  category: "Data Analytics"
+  impact: "Models visits, workforce and finance using synthetic care data"
+  description: "Power BI analytics for a fictional Northern Ireland home-care provider: operations, finance, workforce and compliance on a synthetic 16-table dataset."
+  image: "/img/portfolio/aurora/aurora_dashboard_kpi_pbi.png"
+  tags: ["Power BI", "DAX", "Power Query", "Synthetic data"]
+  url: "/projects/aurora-nhs-transformation/"
+  github: "https://github.com/mcneillium/Aurora-Domiciliary-Care"
+  demo: null
+  featured: true
+  size: "lg"
+
+- title: "CRM Reporting — Industrial Temps"
+  problem: "Inconsistent CRM data and manual exports make recruitment reporting harder."
+  contribution: "Built validation queries, reporting tables and Power BI dashboards for placements and consultant performance."
+  evidence: "Case study covering the reporting workflow, data quality checks and my role."
+  category: "Data Analytics"
+  impact: "Consolidated 6+ disconnected sources into a single live dashboard" # Confirmed by Paul, 2026-11-04
+  description: "Data quality framework, ETL via Access + Power Query, and Power BI dashboards for placements, client performance, and consultant scorecards."
+  image: "/img/portfolio/industrial-temps-crm.png"
+  tags: ["Power BI", "Power Query", "ETL", "Recruitment"]
+  url: "/projects/crm-reporting-industrial-temps/"
+  github: null
+  demo: null
+  featured: true
+  size: "md"
+
+- title: "AI Assistant (fine-tuned GPT-2)"
+  category: "AI Engineering"
+  impact: "GPT-2 fine-tuned on conversational data, served three ways"
+  description: "GPT-2 fine-tuned with Hugging Face Transformers on public and custom dialogue, served through a Flask API with web, desktop and Streamlit interfaces."
+  image: "/img/portfolio/ai-assistant/training-run.png"
+  tags: ["Transformers", "Fine-tuning", "PyTorch", "Flask"]
+  url: "/projects/ai-assistant/"
+  github: null
+  demo: null
+  featured: false
+  size: "md"
+
 - title: "Custom CRM Web Application"
   category: "Web Engineering"
   impact: "Custom CRM consolidating sales, comms, and analytics"
@@ -109,29 +109,5 @@
   url: "/projects/custom-crm/"
   github: null
   demo: null
-  featured: false
-  size: "md"
-
-- title: "Cloud-Based Data Management System"
-  category: "Cloud Computing"
-  impact: "Hybrid SQL/NoSQL design with cloud-native storage"
-  description: "Cloud-native database management system using SQL + NoSQL, designed for resilience and elastic scale."
-  image: "/img/portfolio/cloud-management-thumbnail.png"
-  tags: ["SQL", "NoSQL", "Cloud"]
-  url: "/projects/cloud-data-management/"
-  github: "https://github.com/mcneillium/CloudBasedDataManagementSystem"
-  demo: "https://www.youtube.com/embed/bgKY8KhDIZE"
-  featured: false
-  size: "md"
-
-- title: "Java Ticket Machine"
-  category: "Software Engineering"
-  impact: "OOP demonstration with full UI, video walkthrough, and source"
-  description: "Java OOP showcase — inheritance, polymorphism, encapsulation — with a responsive UI and embedded demo video."
-  image: "/img/portfolio/ticket-machine-thumbnail.png"
-  tags: ["Java", "OOP"]
-  url: "/projects/java-ticket-machine/"
-  github: "https://github.com/mcneillium/Ticket-Machine-System"
-  demo: "https://www.youtube.com/embed/APM7f09MWmM"
   featured: false
   size: "md"

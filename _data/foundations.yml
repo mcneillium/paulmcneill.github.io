@@ -1,0 +1,37 @@
+# Early projects (2023), revisited November 2026. Rendered by _includes/foundations.html
+# under the main project grid. Every figure here matches the case study and the repo.
+- title: "Java Ticket Machine"
+  url: "/projects/java-ticket-machine/"
+  github: "https://github.com/mcneillium/Ticket-Machine-System"
+  image: "/img/portfolio/ticket-machine/01-purchase.png"
+  shows: "Inheritance, polymorphism and encapsulation in Java and JavaFX."
+  found: "Charged £10 for three tickets, and crashed on an empty quantity."
+  tests: "11 JUnit tests"
+  tech: ["Java", "JavaFX", "JUnit"]
+
+- title: "Data Structures in Python"
+  url: "/projects/data-structures-python/"
+  github: "https://github.com/mcneillium/DataStructuresAlgorithms"
+  image: "/img/portfolio/data-structures/01-tree.png"
+  shows: "A binary search tree, a graph with breadth-first search and a hash table, from scratch."
+  found: "BFS crashed, colliding keys were lost, and the tree was never drawn."
+  tests: "9 pytest tests"
+  tech: ["Python", "Tkinter", "pytest"]
+
+- title: "SQL and NoSQL, Side by Side"
+  url: "/projects/cloud-data-management/"
+  github: "https://github.com/mcneillium/CloudBasedDataManagementSystem"
+  image: "/img/portfolio/cloud-data/01-sql.png"
+  shows: "The same users in SQLite and MongoDB, and where each enforces its rules."
+  found: "Reported refused records as saved; MongoDB accepted duplicate emails."
+  tests: "4 tests, no server needed"
+  tech: ["Python", "SQLite", "MongoDB"]
+
+- title: "Expense Tracker"
+  url: "/projects/expense-tracker/"
+  github: "https://github.com/mcneillium/expense-tracker"
+  image: "/img/portfolio/expense-tracker/01-expenses.png"
+  shows: "Spending in four currencies, stored in CSV and charted in pounds."
+  found: "The chart added dollars to pounds, and Delete All deleted nothing."
+  tests: "6 pytest tests"
+  tech: ["Python", "pandas", "Matplotlib"]

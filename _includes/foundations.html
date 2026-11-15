@@ -1,0 +1,30 @@
+{%- comment -%}
+  Early projects, revisited. Data: _data/foundations.yml. Sits under the main
+  project grid: small 2023 projects, each re-read in 2026 with tests, with what
+  was found and fixed. Real screenshots only.
+{%- endcomment -%}
+<section class="section foundations" id="foundations" aria-labelledby="foundations-title">
+  <div class="container">
+    <div class="section__head reveal">
+      <h2 class="section-title" id="foundations-title">Early projects, revisited.</h2>
+      <p class="section-lead">Four small apps from 2023. In 2026 I went back, wrote tests, and found bugs in every one. Each case study says what was wrong and how it was fixed.</p>
+    </div>
+    <ul class="foundations__grid">
+      {%- for f in site.data.foundations %}
+      <li class="found-card reveal" style="--delay: {{ forloop.index0 | times: 70 }}ms">
+        <a class="found-card__media" href="{{ f.url | relative_url }}" tabindex="-1" aria-hidden="true">
+          {% include picture.html src=f.image alt="" loading="lazy" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 25vw" %}
+        </a>
+        <h3 class="found-card__title"><a href="{{ f.url | relative_url }}">{{ f.title }}</a></h3>
+        <p class="found-card__shows">{{ f.shows }}</p>
+        <p class="found-card__found"><span>Found in 2026</span> {{ f.found }}</p>
+        <p class="found-card__meta">{{ f.tests }} · {{ f.tech | join: " · " }}</p>
+        <p class="found-card__links">
+          <a href="{{ f.url | relative_url }}">Case study<span class="sr-only"> for {{ f.title }}</span></a>
+          <a href="{{ f.github }}" rel="noopener" target="_blank">Source<span class="sr-only"> for {{ f.title }}</span></a>
+        </p>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>

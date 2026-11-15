@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-11-15T21:53:30.710Z",
+  "built_at": "2026-11-15T22:59:23.806Z",
   "embedding_model": null,
   "chunks": [
     {
@@ -242,24 +242,6 @@
     {
       "id": "proj.1",
       "category": "project",
-      "text": "Project: Aurora Domiciliary Care: Power BI Analytics Category: Data Analytics Impact: Models visits, workforce and finance using synthetic care data Power BI analytics for a fictional Northern Ireland home-care provider: operations, finance, workforce and compliance on a synthetic 16-table dataset. Tech: Power BI, DAX, Power Query, Synthetic data GitHub: https://github.com/mcneillium/Aurora-Domiciliary-Care",
-      "keywords": [
-        "aurora domiciliary care: power bi analytics",
-        "data analytics",
-        "power bi",
-        "dax",
-        "power query",
-        "synthetic data",
-        "project",
-        "work",
-        "built",
-        "shipped"
-      ],
-      "tokens": 50
-    },
-    {
-      "id": "proj.2",
-      "category": "project",
       "text": "Project: AI-Powered AAC App Category: AI Accessibility Impact: Predictive AI assistive communication for non-verbal users Mobile + caregiver dashboard that combines on-device prediction, scene understanding, and real-time monitoring for non-verbal users. Tech: React Native, Firebase, LLMs, AAC, Healthcare GitHub: https://github.com/mcneillium/ai-powered-aac-app Demo: /demos/aac-app/",
       "keywords": [
         "ai-powered aac app",
@@ -277,25 +259,7 @@
       "tokens": 42
     },
     {
-      "id": "proj.3",
-      "category": "project",
-      "text": "Project: CRM Reporting — Industrial Temps Category: Data Analytics Impact: Consolidated 6+ disconnected sources into a single live dashboard Data quality framework, ETL via Access + Power Query, and Power BI dashboards for placements, client performance, and consultant scorecards. Tech: Power BI, Power Query, ETL, Recruitment",
-      "keywords": [
-        "crm reporting — industrial temps",
-        "data analytics",
-        "power bi",
-        "power query",
-        "etl",
-        "recruitment",
-        "project",
-        "work",
-        "built",
-        "shipped"
-      ],
-      "tokens": 46
-    },
-    {
-      "id": "proj.4",
+      "id": "proj.2",
       "category": "project",
       "text": "Project: Aurora Care Management: AI-Enhanced Category: AI + Healthcare Impact: NEWS2 alerts, explainable risk and a plain-English assistant, with 93 tests Django care-management app with live NEWS2 vitals monitoring, an explainable admission-risk model, a question-answering assistant, care-team messaging and analytics. All data synthetic. Tech: Django, scikit-learn, Explainable AI, Healthcare",
       "keywords": [
@@ -313,25 +277,7 @@
       "tokens": 49
     },
     {
-      "id": "proj.5",
-      "category": "project",
-      "text": "Project: AI Assistant (fine-tuned GPT-2) Category: AI Engineering Impact: GPT-2 fine-tuned on conversational data, served three ways GPT-2 fine-tuned with Hugging Face Transformers on public and custom dialogue, served through a Flask API with web, desktop and Streamlit interfaces. Tech: Transformers, Fine-tuning, PyTorch, Flask",
-      "keywords": [
-        "ai assistant (fine-tuned gpt-2)",
-        "ai engineering",
-        "transformers",
-        "fine-tuning",
-        "pytorch",
-        "flask",
-        "project",
-        "work",
-        "built",
-        "shipped"
-      ],
-      "tokens": 44
-    },
-    {
-      "id": "proj.6",
+      "id": "proj.3",
       "category": "project",
       "text": "Project: McNeillium_AI: A Checked Video Pipeline Category: AI Engineering Impact: Six fact-checked explainers of my own work, built end to end Claude-scripted, ElevenLabs-narrated explainer videos assembled with Playwright and FFmpeg, with automated audio, transcript and fact checks. Tech: Python, Claude API, ElevenLabs, FFmpeg GitHub: https://github.com/mcneillium/McNeillium_AI",
       "keywords": [
@@ -347,6 +293,60 @@
         "shipped"
       ],
       "tokens": 45
+    },
+    {
+      "id": "proj.4",
+      "category": "project",
+      "text": "Project: Aurora Domiciliary Care: Power BI Analytics Category: Data Analytics Impact: Models visits, workforce and finance using synthetic care data Power BI analytics for a fictional Northern Ireland home-care provider: operations, finance, workforce and compliance on a synthetic 16-table dataset. Tech: Power BI, DAX, Power Query, Synthetic data GitHub: https://github.com/mcneillium/Aurora-Domiciliary-Care",
+      "keywords": [
+        "aurora domiciliary care: power bi analytics",
+        "data analytics",
+        "power bi",
+        "dax",
+        "power query",
+        "synthetic data",
+        "project",
+        "work",
+        "built",
+        "shipped"
+      ],
+      "tokens": 50
+    },
+    {
+      "id": "proj.5",
+      "category": "project",
+      "text": "Project: CRM Reporting — Industrial Temps Category: Data Analytics Impact: Consolidated 6+ disconnected sources into a single live dashboard Data quality framework, ETL via Access + Power Query, and Power BI dashboards for placements, client performance, and consultant scorecards. Tech: Power BI, Power Query, ETL, Recruitment",
+      "keywords": [
+        "crm reporting — industrial temps",
+        "data analytics",
+        "power bi",
+        "power query",
+        "etl",
+        "recruitment",
+        "project",
+        "work",
+        "built",
+        "shipped"
+      ],
+      "tokens": 46
+    },
+    {
+      "id": "proj.6",
+      "category": "project",
+      "text": "Project: AI Assistant (fine-tuned GPT-2) Category: AI Engineering Impact: GPT-2 fine-tuned on conversational data, served three ways GPT-2 fine-tuned with Hugging Face Transformers on public and custom dialogue, served through a Flask API with web, desktop and Streamlit interfaces. Tech: Transformers, Fine-tuning, PyTorch, Flask",
+      "keywords": [
+        "ai assistant (fine-tuned gpt-2)",
+        "ai engineering",
+        "transformers",
+        "fine-tuning",
+        "pytorch",
+        "flask",
+        "project",
+        "work",
+        "built",
+        "shipped"
+      ],
+      "tokens": 44
     },
     {
       "id": "proj.7",
@@ -366,37 +366,72 @@
       "tokens": 38
     },
     {
-      "id": "proj.8",
+      "id": "found.0",
       "category": "project",
-      "text": "Project: Cloud-Based Data Management System Category: Cloud Computing Impact: Hybrid SQL/NoSQL design with cloud-native storage Cloud-native database management system using SQL + NoSQL, designed for resilience and elastic scale. Tech: SQL, NoSQL, Cloud GitHub: https://github.com/mcneillium/CloudBasedDataManagementSystem Demo: https://www.youtube.com/embed/bgKY8KhDIZE",
-      "keywords": [
-        "cloud-based data management system",
-        "cloud computing",
-        "sql",
-        "nosql",
-        "cloud",
-        "project",
-        "work",
-        "built",
-        "shipped"
-      ],
-      "tokens": 37
-    },
-    {
-      "id": "proj.9",
-      "category": "project",
-      "text": "Project: Java Ticket Machine Category: Software Engineering Impact: OOP demonstration with full UI, video walkthrough, and source Java OOP showcase — inheritance, polymorphism, encapsulation — with a responsive UI and embedded demo video. Tech: Java, OOP GitHub: https://github.com/mcneillium/Ticket-Machine-System Demo: https://www.youtube.com/embed/APM7f09MWmM",
+      "text": "Early project (2023, revisited and fixed in November 2026): Java Ticket Machine What it shows: Inheritance, polymorphism and encapsulation in Java and JavaFX. Found and fixed in 2026: Charged £10 for three tickets, and crashed on an empty quantity. Tests: 11 JUnit tests Tech: Java, JavaFX, JUnit Case study: https://paulmartinmcneill.com/projects/java-ticket-machine/ GitHub: https://github.com/mcneillium/Ticket-Machine-System",
       "keywords": [
         "java ticket machine",
-        "software engineering",
         "java",
-        "oop",
+        "javafx",
+        "junit",
         "project",
-        "work",
-        "built",
-        "shipped"
+        "early",
+        "revisited",
+        "tests",
+        "bugs"
       ],
-      "tokens": 40
+      "tokens": 52
+    },
+    {
+      "id": "found.1",
+      "category": "project",
+      "text": "Early project (2023, revisited and fixed in November 2026): Data Structures in Python What it shows: A binary search tree, a graph with breadth-first search and a hash table, from scratch. Found and fixed in 2026: BFS crashed, colliding keys were lost, and the tree was never drawn. Tests: 9 pytest tests Tech: Python, Tkinter, pytest Case study: https://paulmartinmcneill.com/projects/data-structures-python/ GitHub: https://github.com/mcneillium/DataStructuresAlgorithms",
+      "keywords": [
+        "data structures in python",
+        "python",
+        "tkinter",
+        "pytest",
+        "project",
+        "early",
+        "revisited",
+        "tests",
+        "bugs"
+      ],
+      "tokens": 61
+    },
+    {
+      "id": "found.2",
+      "category": "project",
+      "text": "Early project (2023, revisited and fixed in November 2026): SQL and NoSQL, Side by Side What it shows: The same users in SQLite and MongoDB, and where each enforces its rules. Found and fixed in 2026: Reported refused records as saved; MongoDB accepted duplicate emails. Tests: 4 tests, no server needed Tech: Python, SQLite, MongoDB Case study: https://paulmartinmcneill.com/projects/cloud-data-management/ GitHub: https://github.com/mcneillium/CloudBasedDataManagementSystem",
+      "keywords": [
+        "sql and nosql, side by side",
+        "python",
+        "sqlite",
+        "mongodb",
+        "project",
+        "early",
+        "revisited",
+        "tests",
+        "bugs"
+      ],
+      "tokens": 60
+    },
+    {
+      "id": "found.3",
+      "category": "project",
+      "text": "Early project (2023, revisited and fixed in November 2026): Expense Tracker What it shows: Spending in four currencies, stored in CSV and charted in pounds. Found and fixed in 2026: The chart added dollars to pounds, and Delete All deleted nothing. Tests: 6 pytest tests Tech: Python, pandas, Matplotlib Case study: https://paulmartinmcneill.com/projects/expense-tracker/ GitHub: https://github.com/mcneillium/expense-tracker",
+      "keywords": [
+        "expense tracker",
+        "python",
+        "pandas",
+        "matplotlib",
+        "project",
+        "early",
+        "revisited",
+        "tests",
+        "bugs"
+      ],
+      "tokens": 54
     },
     {
       "id": "skill.0",

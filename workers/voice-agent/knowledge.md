@@ -89,9 +89,13 @@ be stated as fact.
   videos (Claude scripts, ElevenLabs narration, FFmpeg assembly) with
   speech-to-text and source checks; six explainers of Paul's work are built but
   not yet published.
-- A custom CRM web application, a cloud-based data management system (SQL and
-  MongoDB), data structures in Python, an expense tracker, and a Java ticket
-  machine (object-oriented programming showcase).
+- A custom CRM web application.
+- Four small 2023 apps, revisited in November 2026 with tests (found and fixed
+  bugs in every one, working with Claude as a pair programmer): a Java ticket
+  machine (it charged for one ticket whatever the quantity), data structures in
+  Python (a search crash and lost hash entries; the tree is now drawn), SQL and
+  MongoDB side by side (both now refuse duplicate emails), and an expense
+  tracker (its chart added dollars to pounds; Delete All deleted nothing).
 
 ## Research (two reproducible studies on public data; neither peer reviewed)
 - River early warning across 671 British catchments (CAMELS-GB): how far ahead

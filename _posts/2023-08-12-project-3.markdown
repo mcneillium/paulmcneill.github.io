@@ -1,19 +1,66 @@
 ---
-title: Cloud-Based Data Management System
-subtitle: Cloud Computing Project
+title: SQL and NoSQL, Side by Side
+subtitle: "The same users kept in SQLite and in MongoDB, to show where each database enforces its rules"
 layout: post
 modal-id: 3
 date: 2023-06-20
-img: cloud-management-thumbnail.png
-thumbnail: cloud-management-thumbnail.png
-alt: Cloud-Based Data Management System
+img: cloud-data/01-sql.png
+alt: The SQL panel listing three users added through the app
 project-date: June 2023
-client: Personal Project
-category: Cloud Computing
+client: Personal project
+category: Databases
 permalink: /projects/cloud-data-management/
 redirect_from:
   - "/cloud computing/2023/06/20/project-3/"
-description: Designed and implemented a cloud-based database management system using SQL and NoSQL databases.
+description: "A Python desktop app that manages the same users in SQLite and in MongoDB (local or Atlas). Revisited in 2026: it reported refused records as saved, and MongoDB accepted duplicates. Both stores now enforce one account per email, with tests that need no database server."
+impact: "Both databases now enforce the same rule; tests run without a server"
 github-url: https://github.com/mcneillium/CloudBasedDataManagementSystem
 youtube-url: https://www.youtube.com/embed/bgKY8KhDIZE
 ---
+
+### Overview
+One small dataset, a list of users with names and emails, managed two ways from one Tkinter app: in a relational database (SQLite) and in a document database (MongoDB, which can run locally or on MongoDB Atlas in the cloud).
+
+The interesting part is not the app. It is the question it lets you ask: where does each kind of database put its rules?
+
+---
+
+### What it shows
+- **SQL puts rules in the schema.** The `users` table declares `email TEXT UNIQUE NOT NULL`, so SQLite itself refuses a second account with the same email.
+- **MongoDB has no schema, so rules go in indexes.** A collection accepts any document. The same one-account-per-email rule needs a unique index on `email`.
+- **Configuration stays out of the code.** The MongoDB connection string is read from an environment variable or a local `.env` file.
+- **Tests without a server.** The SQL code is tested against an in-memory SQLite database and the MongoDB code against `mongomock`, so the tests run anywhere, including on every push.
+
+---
+
+### What I found when I came back to it
+- **The app said "added successfully" when it hadn't.** SQLite correctly refused a duplicate email, but the app ignored the result and showed a success message anyway.
+- **MongoDB accepted duplicates.** The two "identical" stores followed different rules without saying so.
+- **Adding a user failed** if you hadn't clicked "Create Table" first.
+
+---
+
+### What changed
+- MongoDB gets a unique index on `email`, so both stores refuse the same duplicates, and the app tells you when a record is refused.
+- The table is created automatically when needed.
+- 4 tests, including one that checks MongoDB refuses a duplicate the way SQLite does.
+
+I made the 2026 review and fixes with Claude, an AI assistant, as a pair programmer. Each logic fix comes with a test.
+
+The demo video on this page shows the 2023 version, before these fixes.
+
+---
+
+### Run it
+```bash
+git clone https://github.com/mcneillium/CloudBasedDataManagementSystem.git
+cd CloudBasedDataManagementSystem
+pip install -r requirements.txt
+cp .env.example .env    # add your own MongoDB connection string
+python main_gui.py
+```
+
+---
+
+### Tech stack
+Python, SQLite, MongoDB (PyMongo), Tkinter, pytest, mongomock, GitHub Actions.

@@ -1,19 +1,68 @@
 ---
-title: Data Structures & Algorithms in Python
-subtitle: Algorithm Implementation
+title: Data Structures in Python
+subtitle: "A binary search tree, a graph with breadth-first search and a hash table, written from scratch and drawn so you can see them work"
 layout: post
 modal-id: 2
 date: 2023-07-15
-img: data-structures-thumbnail.png
-thumbnail: data-structures-thumbnail.png
-alt: Data Structures & Algorithms in Python
+img: data-structures/01-tree.png
+alt: The binary tree tab drawing a tree of seven values, with its in-order traversal underneath
 project-date: July 2023
-client: Personal Project
+client: Personal project
 category: Software Development
 permalink: /projects/data-structures-python/
 redirect_from:
   - "/software development/2023/07/15/project-2/"
-description: Implemented various algorithms and data structures, including trees, graphs, and hash tables, to solve complex problems.
+description: "Three core data structures written in plain Python, with a Tkinter app for trying them out. Revisited in 2026: fixed a breadth-first search crash and silent hash collisions, made the app draw the tree, and added 9 tests that run on every push."
+impact: "BFS crash and lost hash entries fixed; the tree is now drawn, not just listed"
 github-url: https://github.com/mcneillium/DataStructuresAlgorithms
 youtube-url: https://www.youtube.com/embed/Zv50csbx73Q
 ---
+
+### Overview
+Three data structures written from scratch in standard-library Python, each with a tab in a small desktop app that explains what it is doing as you use it.
+
+| Structure | What you can do |
+| --- | --- |
+| Binary search tree | Insert whole numbers; see the tree drawn and its in-order traversal |
+| Hash table with separate chaining | Insert keys and values; see which slot each lands in, and when two keys share one |
+| Directed graph | Add edges; see the adjacency list and the order a breadth-first search visits nodes |
+
+---
+
+### What I found when I came back to it
+Reading the code again in November 2026, with tests this time, turned up five problems:
+- **Breadth-first search crashed** when an edge pointed to a higher-numbered node than any starting node. It kept visited nodes in a list sized by the largest *source*.
+- **The hash table lost data.** Keys whose hashes collide, such as "ab" and "ba", overwrote each other silently.
+- **The graph tab overwrote its own adjacency list** with the search result, in a box still labelled "Adjacency List".
+- **Its search controls were cut off** at the edge of the window, and it refused to search from a node that only appears as an edge's target.
+- **The tree tab only printed a sorted list.** That hides the one thing a tree is for: its shape.
+
+---
+
+### What changed
+- Breadth-first search uses a set and a deque, so it works for any node type in O(V + E).
+- Each hash slot holds a list of pairs, so colliding keys are both kept. The app now groups keys by slot, so a collision is visible.
+- The tree is drawn on a canvas, each node at its in-order position and depth, so you can watch where a new value lands. The layout is a pure function with its own test.
+- The graph tab shows the adjacency list and the search order separately, with the search controls on their own row.
+- 9 pytest tests, run on GitHub Actions on every push.
+
+I made the 2026 review and fixes with Claude, an AI assistant, as a pair programmer. Each logic fix comes with a test.
+
+The demo video on this page shows the 2023 version, before these fixes.
+
+---
+
+### Run it
+Python 3.10 or later, standard library only (Tkinter ships with most installs).
+
+```bash
+git clone https://github.com/mcneillium/DataStructuresAlgorithms.git
+cd DataStructuresAlgorithms
+python main_gui.py
+pip install pytest && python -m pytest -q
+```
+
+---
+
+### Tech stack
+Python, Tkinter, pytest, GitHub Actions.

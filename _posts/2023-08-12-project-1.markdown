@@ -1,19 +1,69 @@
 ---
-title: Java-Based Ticket Machine System
-subtitle: OOP Principles Demonstration
+title: Java Ticket Machine
+subtitle: "Object-oriented Java and JavaFX, revisited in 2026: the machine now charges for the quantity bought"
 layout: post
 modal-id: 1
 date: 2024-08-24
-img: ticket-machine-thumbnail.png
-thumbnail: ticket-machine-thumbnail.png
-alt: Java-Based Ticket Machine System
+img: ticket-machine/01-purchase.png
+alt: The ticket machine window after buying three standard tickets, with the purchase confirmation
 project-date: August 2023
-client: Personal Project
+client: Personal project
 category: Software Development
 permalink: /projects/java-ticket-machine/
 redirect_from:
   - "/software development/2024/08/24/project-1/"
-description: Developed using Java to demonstrate OOP principles such as inheritance, polymorphism, and encapsulation. The project features a responsive user interface with a modal layout that includes an embedded YouTube video demonstrating the system in action, and a link to the source code on GitHub.
+description: "A small Java and JavaFX ticket machine written to show inheritance, polymorphism and encapsulation. Revisited in November 2026: it charged £10 for three tickets and crashed on an empty quantity. Both are fixed, with 11 JUnit tests running on every push."
+impact: "Two pricing and input bugs found and fixed; tests up from 0 to 11"
 github-url: https://github.com/mcneillium/Ticket-Machine-System
 youtube-url: https://www.youtube.com/embed/APM7f09MWmM
 ---
+
+### Overview
+A ticket machine with two ticket types, built in 2023 to practise the three ideas at the centre of object-oriented programming. You pick Standard (£10) or Student (£5), enter how many, and buy.
+
+It is a small program. It is on this site because of what happened when I came back to it in 2026 and treated it like code someone else had handed me.
+
+---
+
+### What it shows
+- **Encapsulation.** `Ticket` keeps its type, price and quantity private. Its setter refuses a quantity below one, so an invalid ticket can't exist.
+- **Inheritance.** `StandardTicket` and `StudentTicket` extend `Ticket` and set only their own type and price. Quantity, total price and the text description come from the base class.
+- **Polymorphism.** The window, the printer and the machine all work with a plain `Ticket`. Adding a new ticket type needs one new class and no changes anywhere else.
+
+---
+
+### What I found when I came back to it
+- **The quantity was ignored.** Buying three standard tickets showed "Price: £10.0". Each subclass stored the quantity, but nothing ever used it.
+- **Bad input crashed the button.** An empty box or a word like "two" threw a `NumberFormatException` inside the click handler, and nothing appeared to happen.
+- **The jar didn't open the app.** Its entry point printed "Ticket Machine System is running." and exited.
+- There were no tests.
+
+---
+
+### What changed
+- Quantity moved into `Ticket`, along with a `getTotalPrice()` method. That removed the copy in each subclass.
+- `TicketMachine.parseQuantity` turns what was typed into a number from 1 to 20 or a plain message ("Enter the quantity as a whole number, for example 2."). An empty box means one ticket, matching its hint.
+- The machine keeps a running total of takings, shown under the button.
+- The jar's entry point now opens the window.
+- 11 JUnit 5 tests cover the prices, totals, input checks and takings, and run on GitHub Actions on every push.
+
+I made the 2026 review and fixes with Claude, an AI assistant, as a pair programmer. Each logic fix comes with a test.
+
+The demo video on this page shows the 2023 version, before these fixes.
+
+---
+
+### Run it
+Needs JDK 21 and Maven; Maven downloads JavaFX.
+
+```bash
+git clone https://github.com/mcneillium/Ticket-Machine-System.git
+cd Ticket-Machine-System
+mvn javafx:run   # opens the window
+mvn test         # runs the tests
+```
+
+---
+
+### Tech stack
+Java 21, JavaFX 21, Maven, JUnit 5, GitHub Actions.

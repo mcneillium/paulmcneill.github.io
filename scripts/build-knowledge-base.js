@@ -2,7 +2,7 @@
 /**
  * Build the chatbot knowledge base.
  *
- * Reads:  _data/{profile,experience,education,projects,skills,credentials,principles}.yml
+ * Reads:  _data/{profile,experience,education,projects,foundations,skills,credentials,principles}.yml
  *         _posts/*.md (front matter + body)
  * Writes: workers/portfolio-bot/knowledge-base.json
  *
@@ -55,6 +55,7 @@ const data = {
   experience:  loadYaml(path.join(ROOT, '_data/experience.yml')),
   education:   loadYaml(path.join(ROOT, '_data/education.yml')),
   projects:    loadYaml(path.join(ROOT, '_data/projects.yml')),
+  foundations: loadYaml(path.join(ROOT, '_data/foundations.yml')),
   skills:      loadYaml(path.join(ROOT, '_data/skills.yml')),
   credentials: loadYaml(path.join(ROOT, '_data/credentials.yml')),
   principles:  loadYaml(path.join(ROOT, '_data/principles.yml')),
@@ -130,6 +131,16 @@ push('profile.contact', 'contact',
     (p.demo   ? `Demo: ${p.demo}\n`   : '');
   push(`proj.${i}`, 'project', text,
     [p.title, p.category, ...(p.tags || []), 'project', 'work', 'built', 'shipped']);
+});
+
+/* ------- early projects, revisited (_data/foundations.yml) ------- */
+(data.foundations || []).forEach((f, i) => {
+  push(`found.${i}`, 'project',
+    `Early project (2023, revisited and fixed in November 2026): ${f.title}\n` +
+    `What it shows: ${f.shows}\nFound and fixed in 2026: ${f.found}\n` +
+    `Tests: ${f.tests}\nTech: ${(f.tech || []).join(', ')}\n` +
+    `Case study: https://paulmartinmcneill.com${f.url}\nGitHub: ${f.github}`,
+    [f.title, ...(f.tech || []), 'project', 'early', 'revisited', 'tests', 'bugs']);
 });
 
 /* ------- skills tiers ------- */
