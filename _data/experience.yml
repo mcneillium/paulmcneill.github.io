@@ -3,6 +3,18 @@
 # verification pass against LinkedIn.
 
 roles:
+  - role: "Digital Solutions Developer & AI Consultant"
+    org: "Consultancy contract with a UK water utility"
+    logo: null
+    start: "2025"
+    end: "Present"
+    current: true
+    bullets:
+      - "Built the leakage intelligence platform used to plan leakage work across more than 1,250 district metered areas: a weekly 15-stage data and modelling pipeline and a 25-page web application."
+      - "Developed weekly forecasting and risk models (gradient boosting, LSTM, quantile and survival models) for horizons of 4 to 52 weeks."
+      - "Audited the platform's own models, found validation flaws that made results look better than they were, and rebuilt the evaluation as a rolling-origin benchmark against simple baselines."
+      - "Wrote analytical sections of a long-term leakage strategy and a winter freeze-thaw preparation report."
+
   - role: "Creative Director / Technical Lead"
     org: "Paramount Perceptions (Self-Employed)"
     logo: null

@@ -6,21 +6,25 @@
 
 voice: "Chris (ElevenLabs library voice)"
 
-intro:
+# The recorded intro.mp3 said Paul "holds a master's", which is wrong (the MSc
+# is in progress). It is switched off by renaming the key below; the homepage
+# shows no player until the audio is re-recorded from this corrected script
+# and the key is renamed back to "intro".
+intro_rerecord:
   file: /assets/audio/intro.mp3
   duration: "0:44"
   label: "Listen to a short introduction"
   text: >-
     Welcome to Paul Martin McNeill's portfolio. Paul is an AI engineer, web
     developer and data analyst on the island of Ireland, with over fifteen
-    years across IT, data and engineering. He builds tools for care,
-    communication and everyday work: Voice, a predictive communication app
-    for people who cannot rely on speech; analytics for health and social
-    care; and reproducible machine learning research on public data. He holds
-    a master's in Artificial Intelligence from Queen's University Belfast, and
-    a First-Class degree in Computing from The Open University. Every project
-    here has a case study, and several run live in your browser. To talk about
-    a role or a project, use Get in touch.
+    years across IT, data and engineering. He builds forecasting tools for a
+    water utility's leakage team; Voice, a predictive communication app for
+    people who cannot rely on speech; analytics for health and social care;
+    and reproducible machine learning research on public data. He is studying
+    for a master's in Artificial Intelligence at Queen's University Belfast,
+    and holds a First-Class degree in Computing from The Open University.
+    Every project here has a case study, and several run live in your
+    browser. To talk about a role or a project, use Get in touch.
 
 voice_app:
   file: /assets/audio/voice-app.mp3

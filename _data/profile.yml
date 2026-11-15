@@ -4,22 +4,25 @@
 
 bio_short: >-
   AI engineer, web developer and data analyst based on the island of Ireland,
-  with over 15 years across IT, data and engineering. Builds LLM-powered
-  tools, web platforms and analytics for healthcare, accessibility and
-  day-to-day operations. Holds a master’s in Artificial Intelligence from
-  Queen’s University Belfast and a First-Class BSc (Hons) in Computing
-  from The Open University. Has also completed M816 Data Management,
-  a postgraduate Open University module.
+  with over 15 years across IT, data and engineering. Builds machine learning
+  forecasting tools, web platforms and analytics for water infrastructure,
+  healthcare, accessibility and day-to-day operations. Studying for an MSc in
+  Artificial Intelligence at Queen’s University Belfast (due 2027); holds a
+  First-Class BSc (Hons) in Computing from The Open University and has
+  completed M816 Data Management, a postgraduate Open University module.
 
 bio_long: >-
   AI engineer, web developer and data analyst with over 15 years across
-  IT, database systems and applied data work. Recent projects include
-  NHSCT-aligned care analytics with Power BI reporting for operations
-  and compliance, and AI accessibility tools such as a predictive AAC
-  app for non-verbal users. Holds a master’s in Artificial Intelligence
-  from Queen’s University Belfast and a First-Class BSc (Hons) in
-  Computing from The Open University (2025). Has completed the Open
-  University’s postgraduate M816 Data Management module. Works with
+  IT, database systems and applied data work. On a consultancy contract
+  with a UK water utility, builds the platform and machine learning models
+  used to forecast leakage across more than 1,250 district metered areas.
+  Other work includes NHSCT-aligned care analytics with Power BI, AI
+  accessibility tools such as a predictive AAC app for non-verbal users,
+  and two reproducible research studies on public data. Studying for an MSc
+  in Artificial Intelligence at Queen’s University Belfast (due 2027); holds
+  a First-Class BSc (Hons) in Computing from The Open University (2025) and
+  has completed the Open University’s postgraduate M816 Data Management
+  module. Works with
   Python, deep learning and data engineering, including TensorFlow,
   PyTorch and scikit-learn, and cloud platforms including GCP, AWS
   and Azure.
@@ -29,16 +32,17 @@ bio_long: >-
 years_experience: 15
 
 current: >-
-  Working on Aurora — a Northern Ireland NHSCT-aligned analytics
-  platform. Exploring multi-agent systems with CrewAI, Kubernetes
-  for ML workloads, and vector databases and retrieval at scale.
-  Open to AI engineering and data roles.
+  Building leakage forecasting and planning tools for a UK water utility,
+  studying for an MSc in Artificial Intelligence at Queen’s, and running
+  reproducible research on forecasting under changed conditions (river
+  early warning across 671 British catchments). Applying for PhD study
+  in machine learning for imperfect, real-world data.
 
 # Compact "currently" card for the hero — keep tight (under 60 chars on focus)
 current_focus:
-  focus: "Aurora — NHSCT analytics & ECM transformation"
-  detail: "Power BI suite + Access/SQL data layer · Northern Ireland"
-  updated: "May 2026"  # VERIFY: bump when work changes
+  focus: "Leakage forecasting for a UK water utility"
+  detail: "Weekly ML pipeline and planning hub · MSc AI at Queen’s"
+  updated: "November 2026"
 
 location: "Island of Ireland"
 

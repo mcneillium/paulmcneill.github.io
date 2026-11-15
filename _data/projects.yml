@@ -1,3 +1,18 @@
+- title: "Leakage Intelligence Platform"
+  problem: "A water utility needs to know each week where leakage is rising and where detection crews will do most good."
+  contribution: "Built the weekly pipeline, forecasting and risk models and web application, then audited the models' validation and rebuilt it against simple baselines."
+  evidence: "Case study describing the system, the audit and my role. The utility's data and results are not published."
+  category: "AI + Infrastructure"
+  impact: "Weekly forecasting and planning across 1,250+ metered areas"
+  description: "Weekly leakage forecasting, risk scoring and planning platform for a UK water utility: a 15-stage pipeline, LightGBM, LSTM and survival models, and a 25-page web application."
+  image: "/img/portfolio/leakage-platform.png"
+  tags: ["Python", "LightGBM", "PyTorch", "Forecasting", "Flask"]
+  url: "/projects/leakage-intelligence-platform/"
+  github: null
+  demo: null
+  featured: true
+  size: "lg"
+
 - title: "Aurora — NHS Digital Transformation"
   problem: "Care operations, workforce, finance and compliance need a connected view."
   contribution: "Designed the Access/SQL data layer, Power Query transformations and Power BI reporting suite."

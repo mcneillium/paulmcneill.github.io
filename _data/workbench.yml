@@ -1,3 +1,24 @@
+- key: water
+  label: Water networks
+  title: From night flows to a weekly plan.
+  project: Leakage Intelligence Platform
+  url: /projects/leakage-intelligence-platform/
+  image: /img/portfolio/leakage-platform.webp
+  alt: Diagram of the leakage intelligence platform's weekly flow
+  summary: Follow a week of network data from raw flows to where detection crews go next.
+  stages:
+    - title: Weekly inputs
+      subtitle: Flow / repairs / weather
+      icon: database
+      detail: Night-time flows for more than 1,250 metered areas arrive each week with repair, asset and weather data. The data is noisy, irregular and incomplete, so it is cleaned and checked for anomalies before anything is modelled.
+    - title: Forecast & score
+      subtitle: LightGBM / LSTM / survival
+      icon: cpu
+      detail: Models forecast leakage 4 to 52 weeks ahead, estimate burst risk and score every area's health. Each model is tested at rolling forecast origins against simple baselines before it is trusted.
+    - title: Weekly plan
+      subtitle: Web app / reports
+      icon: eye
+      detail: A 25-page web application turns the results into maps, priorities and a schedule for detection teams. The utility's data is not published; the case study describes the system and my role.
 - key: care
   label: Healthcare
   title: Care data, connected.

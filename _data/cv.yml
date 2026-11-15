@@ -5,18 +5,18 @@
 #  - contact is email and links only: no phone, no home town, no referees.
 # Keep facts in step with the Word CV and the rest of the site.
 
-headline: "Digital solutions developer and AI consultant · MSc Artificial Intelligence, Queen's University Belfast"
+headline: "Digital solutions developer and AI consultant · MSc Artificial Intelligence student, Queen's University Belfast"
 location: "Northern Ireland"
 
 profile: >-
-  Developer, AI consultant and MSc Artificial Intelligence graduate applying
+  Developer, AI consultant and MSc Artificial Intelligence student applying
   machine learning to real-world water infrastructure data. On a consultancy
-  contract with a UK water utility, I build and maintain models that forecast
-  leakage across more than 1,250 district metered areas, using flow, weather
-  and operational data that are noisy, irregular and incomplete, and producing
-  results that must be explainable to a regulator. I hold a First-Class BSc
-  (Hons) in Computing and am seeking a PhD in machine learning for imperfect,
-  multisource real-world data.
+  contract with a UK water utility, I build and maintain the platform and
+  models that forecast leakage across more than 1,250 district metered areas,
+  using flow, weather and operational data that are noisy, irregular and
+  incomplete, and producing results that must be explainable to a regulator.
+  I hold a First-Class BSc (Hons) in Computing and am seeking a PhD in machine
+  learning for imperfect, multisource real-world data.
 
 interests: >-
   Machine learning with incomplete, heterogeneous and multisource data;
@@ -27,11 +27,10 @@ interests: >-
 education:
   - title: "MSc Artificial Intelligence"
     org: "Queen's University Belfast"
-    when: "Completed"
+    when: "In progress, due September 2027"
     points:
       - "Modules: Foundations of AI; Machine Learning; Knowledge Engineering; Computer Vision; Natural Language Processing; Artificial Intelligence for Health."
       - "Themed Research Project."
-      - "Studied remotely alongside full-time employment."
   - title: "BSc (Hons) Computing, First Class"
     org: "The Open University"
     when: "2025"
@@ -54,7 +53,9 @@ experience:
     org: "Consultancy contract with a UK water utility"
     when: "Nov 2025 – Present"
     points:
-      - "Built and maintain a weekly machine learning pipeline forecasting leakage for 1,253 district metered areas (DMAs), achieving R² = 0.965 and MAE = 0.111 l/s."
+      - "Built and maintain the utility's leakage intelligence platform: a weekly 15-stage pipeline (ingestion, anomaly detection, forecasting, health scoring) and a 25-page web application covering more than 1,250 district metered areas (DMAs)."
+      - "Developed weekly forecasting and risk models (gradient boosting, LSTM, quantile and survival models) for horizons of 4 to 52 weeks."
+      - "Audited the platform's 50 model components: found a misaligned forecast target, information leaking across validation folds and test data reused for model selection; rebuilt the evaluation as a rolling-origin benchmark against persistence and seasonal baselines."
       - "Monitor model reliability in operation: diagnosed feature drift, a systematic regional over-prediction bias and changes in the number of assessable DMAs, and added physical constraints to forecasts."
       - "Built cleaning and harmonisation pipelines for large operational datasets recorded at different resolutions and in different units, and integrated Met Office and Open-Meteo weather data as model inputs."
       - "Developed a DMA priority score analysis to target leak detection resources across the network."
@@ -82,7 +83,7 @@ research:
     when: "2026"
     url: "/research/#river-early-warning"
     code: "https://github.com/mcneillium/river-early-warning"
-    text: "Reproducible study on CAMELS-GB: forecasting river flow and flood and low-flow warnings 1 to 7 days ahead without future weather; transfer to unseen regions and a drier climate; a regional LSTM against gradient boosting; calibrated forecast ranges."
+    text: "Reproducible study on CAMELS-GB: forecasting river flow and flood and low-flow warnings 1 to 7 days ahead without future weather. An LSTM trained on wetter catchments transferred to drier ones much worse than gradient boosting; calibrated forecast ranges under-covered in winter; a general time-series foundation model (Chronos-2) used without training stayed well below trained models."
   - title: "Drug response beyond a single marker"
     when: "2026"
     url: "/research/#drug-response"

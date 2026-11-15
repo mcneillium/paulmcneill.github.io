@@ -1,11 +1,11 @@
 {
-  "built_at": "2026-11-14T20:21:25.100Z",
+  "built_at": "2026-11-15T20:11:19.303Z",
   "embedding_model": null,
   "chunks": [
     {
       "id": "profile.bio",
       "category": "profile",
-      "text": "Paul Martin McNeill — AI engineer, web developer and data analyst based on the island of Ireland, with over 15 years across IT, data and engineering. Builds LLM-powered tools, web platforms and analytics for healthcare, accessibility and day-to-day operations. Holds a master’s in Artificial Intelligence from Queen’s University Belfast and a First-Class BSc (Hons) in Computing from The Open University. Has also completed M816 Data Management, a postgraduate Open University module. AI engineer, web developer and data analyst with over 15 years across IT, database systems and applied data work. Recent projects include NHSCT-aligned care analytics with Power BI reporting for operations and compliance, and AI accessibility tools such as a predictive AAC app for non-verbal users. Holds a master’s in Artificial Intelligence from Queen’s University Belfast and a First-Class BSc (Hons) in Computing from The Open University (2025). Has completed the Open University’s postgraduate M816 Data Management module. Works with Python, deep learning and data engineering, including TensorFlow, PyTorch and scikit-learn, and cloud platforms including GCP, AWS and Azure.",
+      "text": "Paul Martin McNeill — AI engineer, web developer and data analyst based on the island of Ireland, with over 15 years across IT, data and engineering. Builds machine learning forecasting tools, web platforms and analytics for water infrastructure, healthcare, accessibility and day-to-day operations. Studying for an MSc in Artificial Intelligence at Queen’s University Belfast (due 2027); holds a First-Class BSc (Hons) in Computing from The Open University and has completed M816 Data Management, a postgraduate Open University module. AI engineer, web developer and data analyst with over 15 years across IT, database systems and applied data work. On a consultancy contract with a UK water utility, builds the platform and machine learning models used to forecast leakage across more than 1,250 district metered areas. Other work includes NHSCT-aligned care analytics with Power BI, AI accessibility tools such as a predictive AAC app for non-verbal users, and two reproducible research studies on public data. Studying for an MSc in Artificial Intelligence at Queen’s University Belfast (due 2027); holds a First-Class BSc (Hons) in Computing from The Open University (2025) and has completed the Open University’s postgraduate M816 Data Management module. Works with Python, deep learning and data engineering, including TensorFlow, PyTorch and scikit-learn, and cloud platforms including GCP, AWS and Azure.",
       "keywords": [
         "paul",
         "about",
@@ -14,12 +14,12 @@
         "background",
         "northern ireland"
       ],
-      "tokens": 170
+      "tokens": 210
     },
     {
       "id": "profile.current",
       "category": "current",
-      "text": "What I'm currently working on: Working on Aurora — a Northern Ireland NHSCT-aligned analytics platform. Exploring multi-agent systems with CrewAI, Kubernetes for ML workloads, and vector databases and retrieval at scale. Open to AI engineering and data roles.",
+      "text": "What I'm currently working on: Building leakage forecasting and planning tools for a UK water utility, studying for an MSc in Artificial Intelligence at Queen’s, and running reproducible research on forecasting under changed conditions (river early warning across 671 British catchments). Applying for PhD study in machine learning for imperfect, real-world data.",
       "keywords": [
         "current",
         "now",
@@ -27,7 +27,7 @@
         "this month",
         "what are you doing"
       ],
-      "tokens": 38
+      "tokens": 52
     },
     {
       "id": "profile.availability",
@@ -63,6 +63,21 @@
     {
       "id": "exp.0",
       "category": "experience",
+      "text": "Role: Digital Solutions Developer & AI Consultant at Consultancy contract with a UK water utility (2025–Present) - Built the leakage intelligence platform used to plan leakage work across more than 1,250 district metered areas: a weekly 15-stage data and modelling pipeline and a 25-page web application. - Developed weekly forecasting and risk models (gradient boosting, LSTM, quantile and survival models) for horizons of 4 to 52 weeks. - Audited the platform's own models, found validation flaws that made results look better than they were, and rebuilt the evaluation as a rolling-origin benchmark against simple baselines. - Wrote analytical sections of a long-term leakage strategy and a winter freeze-thaw preparation report.",
+      "keywords": [
+        "digital solutions developer & ai consultant",
+        "consultancy contract with a uk water utility",
+        "experience",
+        "work",
+        "job",
+        "history",
+        "career"
+      ],
+      "tokens": 110
+    },
+    {
+      "id": "exp.1",
+      "category": "experience",
       "text": "Role: Creative Director / Technical Lead at Paramount Perceptions (Self-Employed) (2019–Present) - Lead AI-assisted digital solutions and web applications across healthcare, education, and retail. - Develop data-driven strategies integrating ML insights, cloud services, and automation workflows. - Manage full project lifecycles, ensuring GDPR/ethical compliance, quality, and client satisfaction.",
       "keywords": [
         "creative director / technical lead",
@@ -76,7 +91,7 @@
       "tokens": 48
     },
     {
-      "id": "exp.1",
+      "id": "exp.2",
       "category": "experience",
       "text": "Role: CRM Systems Coordinator at Industrial Temps (2018–2019) - Administered and optimised CRM systems and internal processes. - Trained staff and improved reporting accuracy by 25%+ through process automation.",
       "keywords": [
@@ -91,7 +106,7 @@
       "tokens": 29
     },
     {
-      "id": "exp.2",
+      "id": "exp.3",
       "category": "experience",
       "text": "Role: IT & Database Systems Manager at Platinum Support & Care Services Ltd (2016–2018) - Built a central Access database integrating staff, clients, and compliance data. - Implemented Power BI dashboards and streamlined data-driven reporting. - Oversaw recruitment, IT infrastructure, and brand modernisation initiatives.",
       "keywords": [
@@ -106,7 +121,7 @@
       "tokens": 44
     },
     {
-      "id": "exp.3",
+      "id": "exp.4",
       "category": "experience",
       "text": "Role: Earlier roles at Various - IT support, web design, and e-commerce — providing a strong technical foundation for later leadership work.",
       "keywords": [
@@ -136,7 +151,7 @@
     {
       "id": "edu.0",
       "category": "education",
-      "text": "Master’s in Artificial Intelligence — Queen’s University Belfast (Completed).",
+      "text": "MSc Artificial Intelligence — Queen’s University Belfast (Expected 2027). In progress, due to finish September 2027.",
       "keywords": [
         "education",
         "study",
@@ -145,7 +160,7 @@
         "open",
         "bsc",
         "m816",
-        "master’s in artificial intelligence",
+        "msc artificial intelligence",
         "queen’s university belfast",
         "master",
         "masters",
@@ -153,7 +168,7 @@
         "queens",
         "qub"
       ],
-      "tokens": 9
+      "tokens": 16
     },
     {
       "id": "edu.1",
@@ -175,7 +190,7 @@
     {
       "id": "edu.2",
       "category": "education",
-      "text": "M816 Data Management — The Open University (Completed). Postgraduate module covering data governance, modelling, and database optimisation.",
+      "text": "M816 Data Management — The Open University (2026). Postgraduate module covering data governance, modelling, and database optimisation.",
       "keywords": [
         "education",
         "study",
@@ -208,6 +223,25 @@
     {
       "id": "proj.0",
       "category": "project",
+      "text": "Project: Leakage Intelligence Platform Category: AI + Infrastructure Impact: Weekly forecasting and planning across 1,250+ metered areas Weekly leakage forecasting, risk scoring and planning platform for a UK water utility: a 15-stage pipeline, LightGBM, LSTM and survival models, and a 25-page web application. Tech: Python, LightGBM, PyTorch, Forecasting, Flask",
+      "keywords": [
+        "leakage intelligence platform",
+        "ai + infrastructure",
+        "python",
+        "lightgbm",
+        "pytorch",
+        "forecasting",
+        "flask",
+        "project",
+        "work",
+        "built",
+        "shipped"
+      ],
+      "tokens": 49
+    },
+    {
+      "id": "proj.1",
+      "category": "project",
       "text": "Project: Aurora — NHS Digital Transformation Category: AI + Healthcare Impact: Models visits, workforce and finance using synthetic care data Northern Ireland-specific, NHSCT-aligned analytics platform — operations, finance, workforce, compliance — built on Access/SQL data layers and Power BI. Tech: NHSCT, Power BI, ETL, DAX, GDPR GitHub: https://github.com/mcneillium/Aurora-Domiciliary-Care",
       "keywords": [
         "aurora — nhs digital transformation",
@@ -225,7 +259,7 @@
       "tokens": 48
     },
     {
-      "id": "proj.1",
+      "id": "proj.2",
       "category": "project",
       "text": "Project: AI-Powered AAC App Category: AI Accessibility Impact: Predictive AI assistive communication for non-verbal users Mobile + caregiver dashboard that combines on-device prediction, scene understanding, and real-time monitoring for non-verbal users. Tech: React Native, Firebase, LLMs, AAC, Healthcare GitHub: https://github.com/mcneillium/ai-powered-aac-app Demo: /demos/aac-app/",
       "keywords": [
@@ -244,7 +278,7 @@
       "tokens": 42
     },
     {
-      "id": "proj.2",
+      "id": "proj.3",
       "category": "project",
       "text": "Project: CRM Reporting — Industrial Temps Category: Data Analytics Impact: Consolidated 6+ disconnected sources into a single live dashboard Data quality framework, ETL via Access + Power Query, and Power BI dashboards for placements, client performance, and consultant scorecards. Tech: Power BI, Power Query, ETL, Recruitment",
       "keywords": [
@@ -262,7 +296,7 @@
       "tokens": 46
     },
     {
-      "id": "proj.3",
+      "id": "proj.4",
       "category": "project",
       "text": "Project: AI-Enhanced Social Healthcare Management System Category: AI + Healthcare Impact: Real-time safety monitoring with NLP-driven virtual assistant AI-driven platform: client management, NLP virtual assistant, predictive analytics, and real-time safety monitoring for social healthcare delivery. Tech: NLP, Predictive Analytics, Healthcare",
       "keywords": [
@@ -279,7 +313,7 @@
       "tokens": 40
     },
     {
-      "id": "proj.4",
+      "id": "proj.5",
       "category": "project",
       "text": "Project: AI Assistant Category: AI Engineering Impact: Natural-language task automation across daily workflows An LLM-powered productivity assistant — fine-tuned models, multiple interface integrations, and real-world automation. Tech: LLMs, Fine-tuning, Automation",
       "keywords": [
@@ -296,7 +330,7 @@
       "tokens": 30
     },
     {
-      "id": "proj.5",
+      "id": "proj.6",
       "category": "project",
       "text": "Project: Custom CRM Web Application Category: Web Engineering Impact: In-development CRM consolidating sales, comms, and analytics Custom CRM tailored to streamline business operations — sales management, customer communication, and analytics in a single PWA. Tech: TypeScript, Node.js, PostgreSQL",
       "keywords": [
@@ -313,7 +347,7 @@
       "tokens": 38
     },
     {
-      "id": "proj.6",
+      "id": "proj.7",
       "category": "project",
       "text": "Project: Cloud-Based Data Management System Category: Cloud Computing Impact: Hybrid SQL/NoSQL design with cloud-native storage Cloud-native database management system using SQL + NoSQL, designed for resilience and elastic scale. Tech: SQL, NoSQL, Cloud GitHub: https://github.com/mcneillium/CloudBasedDataManagementSystem Demo: https://www.youtube.com/embed/bgKY8KhDIZE",
       "keywords": [
@@ -330,7 +364,7 @@
       "tokens": 37
     },
     {
-      "id": "proj.7",
+      "id": "proj.8",
       "category": "project",
       "text": "Project: Java Ticket Machine Category: Software Engineering Impact: OOP demonstration with full UI, video walkthrough, and source Java OOP showcase — inheritance, polymorphism, encapsulation — with a responsive UI and embedded demo video. Tech: Java, OOP GitHub: https://github.com/mcneillium/Ticket-Machine-System Demo: https://www.youtube.com/embed/APM7f09MWmM",
       "keywords": [
@@ -387,7 +421,7 @@
     {
       "id": "certs",
       "category": "credentials",
-      "text": "Certifications and memberships: - Google Cloud Professional ML Engineer (Google Cloud, 2025) - AWS Certified Machine Learning — Specialty (Amazon Web Services) - TensorFlow Developer (DeepLearning.AI / Coursera) - PCPP1 — Certified Professional in Python (Python Institute) - MBCS — Member of the BCS (British Computer Society) - IET Member (Institution of Engineering & Technology)",
+      "text": "Certifications and memberships: - Google Cloud Professional ML Engineer (Google Cloud, 2024; recertifying Dec 2026) - AWS Certified Machine Learning — Specialty (Amazon Web Services, 2025) - TensorFlow Developer (DeepLearning.AI / Coursera, 2024) - PCPP1 and PCPP2 — Certified Professional in Python (Python Institute, 2024) - MBCS — Member of the BCS (British Computer Society) - IET Member (Institution of Engineering & Technology)",
       "keywords": [
         "cert",
         "certification",
@@ -399,7 +433,7 @@
         "aws",
         "tensorflow"
       ],
-      "tokens": 55
+      "tokens": 63
     },
     {
       "id": "principle.0",
@@ -531,7 +565,7 @@
       "tokens": 44
     },
     {
-      "id": "blog.8.intro",
+      "id": "blog.9.intro",
       "category": "blog",
       "text": "Blog post — From Notebooks to Pipelines: Why I Stopped Shipping Jupyter: A pragmatic argument for treating notebooks as the experiment, not the deliverable — and what to reach for instead. There's a moment in every ML project where someone says \"we'll just productionise the notebook.\" It's the same moment, every time, that the project quietly stops making progress. This post is about why notebooks fail in production, and what to reach for instead. I'm not against notebooks — I write them every day for exploration. The argument is narrower: **notebooks should not be the deliverable**.",
       "keywords": [
@@ -548,7 +582,7 @@
       "tokens": 96
     },
     {
-      "id": "blog.8.body",
+      "id": "blog.9.body",
       "category": "blog",
       "text": "From Notebooks to Pipelines: Why I Stopped Shipping Jupyter — continued: The strengths are real: - Inline plots, side-by-side with code, with the data from the last run still in scope. Iteration speed is genuinely high. - Markdown cells let you narrate as you build. Excellent for analysis reports. - The kernel-based execution model means you can poke at intermediate state without rerunning everything. For exploration, model debugging, one-off analyses, and teaching, this is the right tool. I'd lose nothing by saying so. The failures all come from the same root cause: **a notebook's runtime behaviour is decoupled from its source**. Cell execution order isn't tracked by the file. Out-of-band state lives in the kernel between runs. Hidden imports survive across cells. Variables get reused with new meanings halfway down. The file you commit isn't the program that ran. This makes them fragile in ways that don't matter for exploration but become intolerable for production: 1. **Reproducibility evaporates silently.** \"Re-run all cells\" produces a different result than the run you remember, and you can't always tell why. 2. **Diffs are useless.** A cell-output change rewrites half the JSON. Code review becomes pattern-matching against noise. 3. **Testing is awkward.** You can shoehorn `pytest` against notebook functions with `nbval` or extract them into modules and import — but at that point you've already started the migration. 4. **Dependencies are vague.** `pip install` lines in cells, often without versions. The notebook works on th",
       "keywords": [
@@ -564,7 +598,7 @@
       "tokens": 241
     },
     {
-      "id": "blog.9.intro",
+      "id": "blog.10.intro",
       "category": "blog",
       "text": "Blog post — Building Production RAG Pipelines: Lessons from Real Deployments: Notes from shipping retrieval-augmented generation in production — chunking that doesn't shred meaning, retrieval that keeps citations, and evaluation harnesses that catch regressions before users do. A weekend RAG demo is one thing. A *production* RAG pipeline is a different animal entirely — and the cost is mostly in the parts you can't see in a notebook. This post collects the patterns I've found genuinely matter, in roughly the order they bite you. The default tutorial chunker — fixed-size sliding window with some overlap — gets you to a demo. It also routinely shreds meaning. Sentences get split mid-clause. Tables turn into nonsense. The bullet point that gives a paragraph its meaning lands in a different chunk to the paragraph itself.",
       "keywords": [
@@ -581,7 +615,7 @@
       "tokens": 132
     },
     {
-      "id": "blog.9.body",
+      "id": "blog.10.body",
       "category": "blog",
       "text": "Building Production RAG Pipelines: Lessons from Real Deployments — continued: Three rules that survived contact with real corpora: 1. **Respect document structure.** Use the document's own boundaries — headings, list items, table rows — as candidate split points, not arbitrary character counts. For PDFs, this means a real layout-aware parser (`unstructured`, PyMuPDF with logical-block extraction, or AWS Textract for tables) rather than naive text dumps. 2. **Vary chunk size to fit the question.** Small chunks (~200 tokens) maximise retrieval precision but lose context. Large chunks (~1k tokens) preserve context but make embedding less discriminative. I've ended up with a two-stage retrieval pattern: small chunks for finding *where*, then expand to the parent section before passing to the model. 3. **Store the spelling, the slug, and the source.** Every chunk needs a stable identifier and a path back to the original document, with page or anchor offsets. Without this, you can't render citations and you can't debug a hallucination. \"It looks like the right chunks come back for these five test queries\" is not an evaluation. It's a vibe. The first time you change embedding models, prompt versions, or chunk strategy, you'll discover three things that silently regressed and one user already complained about. The cheapest reliable harness: - **A labelled query set.** 50–100 queries each tagged with the chunks (or source URLs) that should be retrieved. You build this by mining real user queries and annotating by hand. Yes,",
       "keywords": [

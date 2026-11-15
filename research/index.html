@@ -31,12 +31,15 @@ description: "Two reproducible machine learning studies on public data: river ea
          words, as what you want to research and why. Do not name
          supervisors, referees or application plans. {% endcomment %}
     <p class="research__status">
-      <strong>Status, 14 November 2026.</strong> On 14 November 2026 I re-ran
+      <strong>Status, 15 November 2026.</strong> On 14 November 2026 I re-ran
       both studies on a second machine. Every drug response table matched to
       within 0.000002. For the river study the per-catchment results matched
-      exactly and the regional medians to within 0.006; its uncertainty
-      experiment has not been re-run yet. I have reviewed every logged decision.
-      Neither study has been peer reviewed, so treat the results as provisional.
+      exactly and the regional medians to within 0.006. On 15 November the
+      river study's uncertainty experiment was repeated with three seeds, and
+      two follow-ups were added: the neural model in the drier-climate test, and
+      a forecasting model used without any training. Every decision is logged,
+      and those still awaiting my review are marked. Neither study has been peer
+      reviewed, so treat the results as provisional.
     </p>
   </div>
 </header>
@@ -144,12 +147,16 @@ description: "Two reproducible machine learning studies on public data: river ea
             <span data-technical>Five geographic folds, each region forecast by a regional model trained on the other four. Median NSE at 1 day falls from 0.762 to 0.723. The median loss per catchment is 0.019.</span>
           </li>
           <li>
-            <span data-plain><strong>A neural network did no better.</strong> An LSTM reading the last 365 days of raw data scored 0.73, 0.38 and 0.24 at 1, 3 and 7 days, against 0.76, 0.38 and 0.24 for boosting, and no better on regions it had never seen. That points to the missing weather forecast as the limit, not the choice of model.</span>
-            <span data-technical>A regional LSTM (hidden size 256, 365-day window, three seeds, one fixed configuration set before the run) has median NSE 0.734, 0.377 and 0.239 against 0.764, 0.375 and 0.235 for regional boosting on identical days. The median difference per catchment is -0.019, +0.002 and +0.002. Under the rule fixed in the protocol (within 0.01 counts as no better) it is a null result at every lead. On regions held out of training it scores 0.708, 0.367 and 0.225 against 0.723, 0.367 and 0.224, so the null result holds there too.</span>
+            <span data-plain><strong>A neural network did no better.</strong> An LSTM reading the last 365 days of raw data scored 0.73, 0.38 and 0.24 at 1, 3 and 7 days, against 0.76, 0.38 and 0.24 for boosting, and no better on regions it had never seen. That points to the missing weather forecast as the limit, not the choice of model. Seven alternative settings, chosen on the validation years only, did no better.</span>
+            <span data-technical>A regional LSTM (hidden size 256, 365-day window, three seeds, one fixed configuration set before the run) has median NSE 0.734, 0.377 and 0.239 against 0.764, 0.375 and 0.235 for regional boosting on identical days. The median difference per catchment is -0.019, +0.002 and +0.002. Under the rule fixed in the protocol (within 0.01 counts as no better) it is a null result at every lead. On regions held out of training it scores 0.708, 0.367 and 0.225 against 0.723, 0.367 and 0.224, so the null result holds there too. A follow-up tried seven alternative settings (learning rate, size, weight decay, finer early stopping and a 90-day window), each chosen on the 2005 to 2012 validation years only: none beat the original, and the 90-day window cost about 0.02 NSE at 1 day and nothing at 3 or 7 days.</span>
           </li>
           <li>
             <span data-plain><strong>A different climate costs much more.</strong> Trained on wet catchments and tested on dry ones, NSE falls from 0.850 to 0.752. A random-half control loses about 0.03.</span>
             <span data-technical>A regional model trained on the wetter half of the catchments and tested on the drier half scores NSE 0.752, against 0.850 for the model trained on all of them. A random-half control loses about 0.03. Low-flow CSI falls from 0.659 to 0.414. Each figure is the mean of three seeds.</span>
+          </li>
+          <li>
+            <span data-plain><strong>The neural network suffers more from a different climate.</strong> Trained only on the wetter catchments, the LSTM lost about twice as much skill on the drier ones as boosting at 1 day, and many times more at 3 and 7 days. In most of the dry catchments its low-flow warnings never scored a hit. Trained on a random half instead, it transferred well, so the climate is the problem, not the smaller training set.</span>
+            <span data-technical>Cost of transfer per catchment: NSE of the model trained on fewer catchments minus the model of the same family trained on all of them, median over the 167 dry catchments outside the control half and three seeds. Wet-trained: LSTM -0.106, -0.076 and -0.062 at 1, 3 and 7 days, against -0.050, -0.007 and -0.014 for boosting; the per-seed ranges do not overlap. Random half: LSTM -0.004, +0.001 and 0.000, against -0.015, -0.002 and -0.002. The wet-trained LSTM's low-flow CSI is zero in 75 to 88% of catchment-seed pairs, against 24 to 57% for wet-trained boosting. The measure and its 0.01 margin were fixed before the run; the follow-up itself was planned after the first neural-model results.</span>
           </li>
           <li>
             <span data-plain><strong>A single-number forecast fails as a warning system at 7 days</strong> (high-flow critical success index 0.005). Warnings taken from forecast quantiles reach 0.175. A model-free band around today's flow reaches 0.155, so the model's edge is narrow.</span>
@@ -160,8 +167,12 @@ description: "Two reproducible machine learning studies on public data: river ea
             <span data-technical>High-flow false alarm ratio at 3 and 7 days: 0.753 and 0.802 for the quantile model, and between 0.635 and 0.816 for persistence and the persistence band.</span>
           </li>
           <li>
-            <span data-plain><strong>The model's 90% range is honest where it was trained</strong> (coverage 0.90 to 0.91 after conformal calibration) <strong>and less so elsewhere</strong>: on unseen regions about one catchment in six gets a range that covers under 80%.</span>
-            <span data-technical>After conformalized quantile regression on 2009 to 2012, the 90% interval covers 0.90 to 0.91 of days on seen catchments at every lead. On held-out regions the median catchment is at 0.89 to 0.90, but 14 to 18% of catchments fall under 0.80.</span>
+            <span data-plain><strong>The model's 90% range is honest where it was trained</strong> (coverage 0.90 to 0.91 after conformal calibration) <strong>and less so elsewhere</strong>: on unseen regions about one catchment in six gets a range that covers under 80%. <strong>Winter is the weak season</strong>: coverage dips below target on seen catchments, and on unseen regions about one catchment in four falls under 80%.</span>
+            <span data-technical>After conformalized quantile regression on 2009 to 2012, the 90% interval covers 0.90 to 0.91 of days on seen catchments at every lead. On held-out regions the median catchment is at 0.89 to 0.90, but 14 to 18% of catchments fall under 0.80. Repeated with three model seeds, every one of these findings held. By season of the target date, conformal coverage on seen catchments is 0.884 to 0.892 in December to February, against 0.905 to 0.917 in the other seasons; on unseen regions 22 to 26% of catchments fall under 0.80 in winter, against 9 to 22% otherwise. The calibration was not changed; this is a breakdown of the same ranges.</span>
+          </li>
+          <li>
+            <span data-plain><strong>A general-purpose forecasting model, used without training, is a strong baseline but no substitute.</strong> Chronos-2 beat "same as today" at every lead but stayed well below the trained models, and giving it past weather made no difference. In two catchments checked, the river and the LSTM rose after the wettest days while Chronos-2 forecast a fall.</span>
+            <span data-technical>Chronos-2 (amazon/chronos-2), 365 days of history, no training or tuning on these rivers. Median paired NSE difference against the seen LSTM, per catchment on identical days and averaged over the LSTM's three seeds: -0.129, -0.073 and -0.083 at 1, 3 and 7 days (Chronos-2 better in 15%, 7% and 5% of catchments); against persistence +0.062, +0.234 and +0.374. With past rain, temperature and evaporation as inputs: -0.0004, -0.00003 and -0.0008 against flow only. Four of seven predictions recorded before the run were met; the 1-day gap was much larger than predicted. The rain-response check covers two catchments, so it is an illustration, not a finding.</span>
           </li>
         </ul>
 
@@ -177,14 +188,17 @@ description: "Two reproducible machine learning studies on public data: river ea
         <h3>What went wrong, and what changed</h3>
         <ul>
           <li>The first diagnosis of a weak baseline (early stopping) was wrong. A controlled comparison on validation years showed the target scale was the cause. The log records both.</li>
-          <li>Twelve of 51 quantile models hit the tree limit, so those are under-trained. Reported, not hidden.</li>
+          <li>Twelve of 51 quantile models hit the tree limit in the first run (9, 7 and 6 in the three-seed repeat), so those are under-trained. Reported, not hidden.</li>
+          <li>A follow-up run overwrote the main neural-model tables with a shorter version. They were restored from the record and the script was fixed so it cannot happen again.</li>
+          <li>Repeating the uncertainty experiment on a second operating system exposed a rounding tie in the persistence-band baseline: flows recorded exactly at the low-flow threshold can switch between warning and no warning. The published band results are unchanged and the effect is logged.</li>
         </ul>
 
         <h3>Limits</h3>
         <ul>
           <li>"Unseen" is not "ungauged": recent flow at the catchment is still an input.</li>
-          <li>The uncertainty experiment used one random seed. Coverage during floods specifically has not been checked.</li>
-          <li>The neural model was run in one fixed, untuned configuration that overfitted within two short epochs. A tuned one could do better.</li>
+          <li>Coverage during floods specifically has not been checked.</li>
+          <li>The neural model's settings were checked against seven alternatives on validation years only; the search was small, and a broader one could do better.</li>
+          <li>One foundation model was tested, given raw flow and a 365-day history.</li>
           <li>Still to do: gaps in the inputs, and explanations.</li>
         </ul>
         <p class="research__links">Code, protocols and decision log: <a href="https://github.com/mcneillium/river-early-warning" rel="noopener">github.com/mcneillium/river-early-warning</a></p>
@@ -317,8 +331,8 @@ description: "Two reproducible machine learning studies on public data: river ea
       <section class="research__study" aria-labelledby="research-next">
         <h2 id="research-next">Next</h2>
         <ul>
-          <li>The river study's behaviour with gaps in the inputs, and a fairer, tuned version of the neural model.</li>
-          <li>A third study on satellite flood mapping with imperfect labels.</li>
+          <li>The river study's behaviour with gaps in the inputs.</li>
+          <li>A third study, planned for December 2026 to January 2027: satellite flood mapping (Sen1Floods11), asking whether pretrained models repeat the errors of automatic threshold labels less than a model trained from scratch.</li>
         </ul>
         {% comment %} TODO: REPLACE (Paul): reading notes. Three to five papers you have
              read in full, with two lines each on what you took from them and

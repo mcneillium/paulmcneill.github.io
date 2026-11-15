@@ -1,8 +1,8 @@
-- qualification: "Master’s in Artificial Intelligence"
+- qualification: "MSc Artificial Intelligence"
   institution: "Queen’s University Belfast"
-  year: "Completed"
+  year: "Expected 2027"
   logo: null
-  detail: ""
+  detail: "In progress, due to finish September 2027."
   keywords: ["master", "masters", "queen", "queens", "qub"]
 
 - qualification: "BSc (Hons) Computing — First-Class Honours"
@@ -13,7 +13,7 @@
 
 - qualification: "M816 Data Management"
   institution: "The Open University"
-  year: "Completed"
+  year: "2026"
   logo: null
   detail: "Postgraduate module covering data governance, modelling, and database optimisation."
 
