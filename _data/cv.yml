@@ -106,14 +106,14 @@ projects:
       - "Built end to end a mobile and web app for non-verbal users, with on-device next-word and phrase prediction (an offline n-gram model with an opt-in personal layer and a small reranker; each suggestion shows why it was offered) that personalises with use, pictogram vocabularies and camera-based scene captioning."
       - "Evaluated through weekly pilots with users and caregivers: 35–50% faster time-to-utter for common phrases (pilot, n = 7) and +40% caregiver satisfaction with session clarity."
       - "Designed for WCAG 2.1 AA accessibility and GDPR-first privacy (anonymised telemetry, consent flows, data export and deletion), with a caregiver analytics dashboard; React Native, React, Firebase."
-  - title: "Aurora, connected-care reporting"
+  - title: "Aurora Domiciliary Care, Power BI analytics"
     url: "/projects/aurora-nhs-transformation/"
     points:
-      - "End-to-end ETL and Power BI reporting on visits, workforce and finance, built on synthetic NHS data."
-  - title: "AI-enhanced social care management"
+      - "Power BI reporting on visits, workforce, finance and compliance for a fictional home-care provider, on a synthetic 16-table dataset."
+  - title: "Aurora care management, AI-enhanced"
     url: "/projects/ai-social-healthcare-platform/"
     points:
-      - "Client management system with an NLP assistant, predictive analytics and safety monitoring."
+      - "Django care-management app on synthetic data: live NEWS2 vitals monitoring with alerts, an explainable 30-day admission-risk model with a model card and a training-versus-caseload shift check, and a plain-English assistant that answers from the records; 93 tests."
 
 skills:
   - label: "Machine learning"

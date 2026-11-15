@@ -1,21 +1,74 @@
 ---
-title: AI-Enhanced Social Healthcare Management System
-subtitle: Transforming Social Healthcare with AI
+title: "Aurora Care Management: AI-Enhanced"
+subtitle: "Live vital-signs monitoring, an explainable admission-risk model and a plain-English assistant for a home-care team"
 layout: post
 modal-id: 6
 date: 2024-09-01
-img: healthcare-system.png
-thumbnail: healthcare-system-thumbnail.png
-alt: AI-Enhanced Social Healthcare Management System
-project-date: August 2024
-client: Personal Project
+img: aurora-care-app/01-patient.png
+thumbnail: aurora-care-app/01-patient.png
+gallery_dir: aurora-care-app
+alt: "Patient page: details, a 7-day vitals chart, a risk score broken into its drivers, alerts, visits and the care-team thread"
+project-date: "2024 to November 2026"
+client: Personal project (synthetic data)
 category: AI
 permalink: /projects/ai-social-healthcare-platform/
 redirect_from:
   - /ai/2024/09/01/ai-project-2/
-description: This project involves the development of an AI-driven platform designed to enhance the management and delivery of social healthcare services. Key features include automated client management, an NLP-based virtual assistant, predictive analytics, and real-time safety monitoring. This project showcases my expertise in web development, AI integration, and healthcare technology.
+description: "A Django care-management application for a home-care provider, with live NEWS2 monitoring, an explainable 30-day admission-risk model, a question-answering assistant, care-team messaging and analytics. All data synthetic."
+impact: "NEWS2 alerts, explainable risk and a plain-English assistant, with 93 tests"
 github-url:
-youtube-url: https://www.youtube.com/embed/ydQGAiTrX8M
-youtube-url-2: https://www.youtube.com/embed/N5WXjjNlFA8
-youtube-url-3: 
+youtube-url:
 ---
+
+### Overview
+A care-management application for a home-care provider: the people being cared for, the caregivers, and the visits between them, with the tools a coordinator needs to notice when someone is getting worse. It began in 2024 as a records system. In November 2026 I built the AI features it had always been named for.
+
+**Everything runs on synthetic data.** No real person, record or reading is used. The monitoring follows published NEWS2 thresholds, but this is a demonstration, not a medical device.
+
+---
+
+### What it does
+- **Live vitals.** Simulated home devices send readings every few seconds. Each is scored with NEWS2 (Royal College of Physicians, 2017). A score that needs a response raises an alert with the matching action, from "repeat observations within the hour" to "call 999". Repeat alerts are suppressed while one at the same or a higher level is open, so the team is not flooded. Alerts are acknowledged with a name and a time.
+- **An explainable risk score.** A logistic regression estimates each person's chance of an unplanned hospital admission in the next 30 days from ten inputs: age, frailty, long-term conditions, mobility, living alone, missed visits, NEWS2 average and peak, and recent alerts. Every score splits exactly into one contribution per input, so the patient page shows why someone is high risk, not just that they are.
+- **A model card that tells the truth.** Held-out AUC, Brier score and calibration against two simple baselines, the full process that generated the synthetic training data, and a live check of whether today's caseload resembles the data the model learned from.
+- **A plain-English assistant.** "Who is at highest risk?", "open alerts", "visits tomorrow", "missed visits last 7 days", "tell me about Julian Evans". Local rules work out the question (intent, dates, names, with tolerance for typos) and the answer comes straight from the records, so every row can be checked. If an API key is set, Claude helps with questions the rules miss, but only the question text is sent; records never leave the application.
+- **Care-team messaging** with a thread per person for notes, handovers and concerns, and unread counts.
+- **Analytics** on visits, missed visits, alerts, risk and caregiver workload.
+
+---
+
+### Results on synthetic data
+
+| Method | AUC (held out) | Brier score |
+|:--|:--|:--|
+| Logistic regression, ten inputs | 0.811 | 0.068 |
+| Age alone | 0.698 | 0.077 |
+| Frailty score 6 or more | 0.635 | |
+
+The training cohort of 20,000 is drawn from a stated process that includes an interaction the model is not told about and a factor it never sees. So these figures show that the pipeline recovers a known signal; they say nothing about predicting real admissions.
+
+---
+
+### What went wrong, and what changed
+The first demo caseload did not look like the training data. It had four times the missed visits and nine times the alerts, so the model rated a third of the caseload high risk. That is the same problem my [research](/research/) studies: a model meeting data unlike what it learned from. I aligned the two, added a test that fails if any input drifts more than a quarter of a standard deviation, and put the same check on the model card.
+
+---
+
+### How it is built and checked
+- Django 5.2 with Bootstrap and Chart.js; scikit-learn for the model.
+- Every page needs a signed-in user; deletes and acknowledgements need a POST; settings come from the environment.
+- 93 automated tests: every NEWS2 band boundary, alert suppression, the simulator, the model against its baselines and its calibration, that each explanation adds up exactly to its score, the assistant's dates, names and intents, access control and messaging. They run on every push.
+- One command builds a working demo: 48 people, 14 caregivers, about 5,500 visits, a week of vitals, a trained model and scores.
+- Built with AI coding tools working under my direction; I set the requirements, the checks and the honesty rules above.
+
+The code is in a private repository for now. Ask through "Get in touch" for access.
+
+---
+
+### Earlier version
+The 2024 version held patient, caregiver and schedule records with CSV import and export, before the features above were built. Two short videos show it: [part one](https://www.youtube.com/watch?v=ydQGAiTrX8M) and [part two](https://www.youtube.com/watch?v=N5WXjjNlFA8).
+
+---
+
+### Tech stack
+Python, Django, scikit-learn, NumPy, Chart.js, Bootstrap, pytest, GitHub Actions; optional Anthropic API.

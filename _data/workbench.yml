@@ -63,22 +63,22 @@
       detail: A connected caregiver dashboard provides a real-time view alongside the mobile experience. Read the case study for the interface and implementation.
 - key: assistant
   label: AI workflows
-  title: From a request to an action.
-  project: AI Assistant
+  title: From a dataset to a reply.
+  project: AI Assistant (fine-tuned GPT-2)
   url: /projects/ai-assistant/
-  image: /img/portfolio/ai-assistant-thumbnail.webp
-  alt: AI Assistant project preview
-  summary: Explore the main parts of a natural-language productivity assistant.
+  image: /img/portfolio/ai-assistant/training-run.webp
+  alt: Terminal during the GPT-2 fine-tuning run
+  summary: Follow a fine-tuned language model from training data to an answer on screen.
   stages:
-    - title: A natural request
-      subtitle: Conversational interface
-      icon: terminal
-      detail: A user describes a task in natural language. Different interfaces provide entry points into the productivity assistant.
-    - title: Model processing
-      subtitle: Language models
+    - title: Training data
+      subtitle: ConvAI2 + custom dialogues
+      icon: database
+      detail: Public dialogue data from Hugging Face is combined with custom support-style conversations and tokenised for GPT-2.
+    - title: Fine-tuning
+      subtitle: Transformers / PyTorch
       icon: cpu
-      detail: The project explores fine-tuning models to interpret requests and provide relevant responses and recommendations.
-    - title: Workflow integration
-      subtitle: Task automation
+      detail: GPT-2 is fine-tuned as a causal language model with the Hugging Face Trainer on a local GPU.
+    - title: Serving
+      subtitle: Flask / Tkinter / Streamlit
       icon: code
-      detail: Interface integrations connect the assistant to everyday workflows. The case study covers the development and a video demonstration.
+      detail: A Flask API generates replies with nucleus sampling, and web, desktop and Streamlit interfaces all use the same model.

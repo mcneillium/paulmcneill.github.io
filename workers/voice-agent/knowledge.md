@@ -68,16 +68,30 @@ be stated as fact.
   requested through the "Request a trial" link there.
 
 ## Other projects on the site
-- Aurora: a Northern Ireland, NHSCT-aligned analytics platform covering
-  operations, finance, workforce and compliance, built on Access and SQL data
-  layers with Power BI.
+- Leakage Intelligence Platform: Paul's current work for a UK water utility (see
+  Current work above). The page describes the system and his role; it
+  publishes no utility data or accuracy figures.
+- Aurora Care Management, AI-enhanced: a Django care-management app for a
+  fictional home-care provider, on synthetic data only. Live vital-signs
+  monitoring scored with NEWS2, a 30-day admission-risk model whose every score
+  is broken down by input, a model card with baselines and a check that the
+  caseload resembles the training data, a plain-English assistant that answers
+  from the records, care-team messaging and analytics; 93 tests. Not a medical
+  device. The code is private; access on request.
+- Aurora Domiciliary Care: Power BI analytics for the same fictional provider,
+  on a synthetic 16-table dataset. Not commissioned by the NHS or any provider.
 - CRM reporting for Industrial Temps: a data quality framework, ETL with Access
   and Power Query, and Power BI dashboards.
-- AI-enhanced social healthcare management system: client management, an NLP
-  assistant, predictive analytics and safety monitoring.
-- An LLM-powered productivity assistant, a custom CRM web application, a
-  cloud-based data management system, and a Java ticket machine (object-oriented
-  programming showcase).
+- AI Assistant: GPT-2 fine-tuned on dialogue data with Hugging Face
+  Transformers, served through a Flask API with web, desktop and Streamlit
+  interfaces.
+- McNeillium_AI: a Python pipeline that makes narrated, captioned explainer
+  videos (Claude scripts, ElevenLabs narration, FFmpeg assembly) with
+  speech-to-text and source checks; six explainers of Paul's work are built but
+  not yet published.
+- A custom CRM web application, a cloud-based data management system (SQL and
+  MongoDB), data structures in Python, an expense tracker, and a Java ticket
+  machine (object-oriented programming showcase).
 
 ## Research (two reproducible studies on public data; neither peer reviewed)
 - River early warning across 671 British catchments (CAMELS-GB): how far ahead

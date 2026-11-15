@@ -1,20 +1,47 @@
 ---
-title: AI Assistant
-subtitle: AI/ML Project
+title: "AI Assistant: Fine-Tuned GPT-2"
+subtitle: "Fine-tuning a small language model on dialogue, then serving it through three interfaces"
 layout: post
 modal-id: 5
 date: 2023-04-05
-img: ai-assistant-thumbnail.png
-thumbnail: ai-assistant-thumbnail.png
-alt: AI Assistant
+img: ai-assistant/training-run.png
+thumbnail: ai-assistant/training-run.png
+alt: "Terminal during the GPT-2 fine-tuning run, August 2024: training loss falling from 2.96 to 2.42"
 project-date: April 2023
 client: Personal Project
 category: AI
 permalink: /projects/ai-assistant/
 redirect_from:
   - /ai/2023/04/05/ai-project-1/
-description: This project showcases the development of an AI-powered assistant that enhances productivity by automating tasks, offering intelligent recommendations, and interacting with users through natural language processing. Explore the process of fine-tuning models, integrating AI into different interfaces, and creating functional, real-world applications.
+description: "GPT-2 fine-tuned with Hugging Face Transformers on the ConvAI2 dialogue dataset plus custom domain dialogues, served through a Flask API with web, desktop (Tkinter) and Streamlit front ends."
 github-url:
 youtube-url: https://www.youtube.com/embed/_2doud4q8gI
 
 ---
+
+### Overview
+My first hands-on language-model project, from 2023 to 2024: take GPT-2, fine-tune it on conversation data so it answers in a dialogue style, and put it behind interfaces people can actually use.
+
+---
+
+### What I built
+- **Fine-tuning:** GPT-2 (124M parameters) trained with Hugging Face Transformers and the `Trainer` API on the public ConvAI2 dialogue dataset combined with custom domain dialogues (support-style questions and answers). Causal language modelling, sequences of 128 tokens, 3 epochs, batch size 4, on a local NVIDIA GPU. The run (above, August 2024) took 2,622 steps; training loss fell from 2.96 to 2.42 over the first 1.7 epochs.
+- **Serving:** a Flask API (`/api/generate`) that loads the fine-tuned model and generates replies with nucleus sampling (top-p 0.9, top-k 50, temperature 0.7) and a block on repeated phrases.
+- **Three interfaces on the same model:** a web page, a Tkinter desktop app and a Streamlit app, plus an early React front end.
+- **Optional storage** of the model in AWS S3.
+
+---
+
+### What went wrong, and what changed
+- The ConvAI2 and custom data had different structures; merging them took a preprocessing step for each.
+- Early runs overfitted, which I corrected by adjusting the learning rate and the number of epochs.
+
+---
+
+### What I would do differently now
+I judged the replies by reading them. Today I would hold out a set of dialogues and report perplexity on it, compare against the untuned GPT-2, and keep the training data with the code so the run can be repeated. Those habits are what my later work is built on: see the [research studies](/research/), which fix the protocol before any model is fitted.
+
+---
+
+### Tech stack
+Python, PyTorch, Hugging Face Transformers and Datasets, Flask, Tkinter, Streamlit, React, AWS S3 (optional).

@@ -13,15 +13,15 @@
   featured: true
   size: "lg"
 
-- title: "Aurora — NHS Digital Transformation"
+- title: "Aurora Domiciliary Care: Power BI Analytics"
   problem: "Care operations, workforce, finance and compliance need a connected view."
-  contribution: "Designed the Access/SQL data layer, Power Query transformations and Power BI reporting suite."
+  contribution: "Designed a 16-table synthetic dataset, Power Query transformations, DAX measures and six Power BI pages with row-level security."
   evidence: "Synthetic-data demonstration with dashboard screenshots, a data model and source repository."
-  category: "AI + Healthcare"
+  category: "Data Analytics"
   impact: "Models visits, workforce and finance using synthetic care data"
-  description: "Northern Ireland-specific, NHSCT-aligned analytics platform — operations, finance, workforce, compliance — built on Access/SQL data layers and Power BI."
+  description: "Power BI analytics for a fictional Northern Ireland home-care provider: operations, finance, workforce and compliance on a synthetic 16-table dataset."
   image: "/img/portfolio/aurora/aurora_dashboard_kpi_pbi.png"
-  tags: ["NHSCT", "Power BI", "ETL", "DAX", "GDPR"]
+  tags: ["Power BI", "DAX", "Power Query", "Synthetic data"]
   url: "/projects/aurora-nhs-transformation/"
   github: "https://github.com/mcneillium/Aurora-Domiciliary-Care"
   demo: null
@@ -58,26 +58,44 @@
   featured: true
   size: "md"
 
-- title: "AI-Enhanced Social Healthcare Management System"
+- title: "Aurora Care Management: AI-Enhanced"
+  problem: "A home-care coordinator needs to notice who is getting worse before it becomes an emergency."
+  contribution: "Built live NEWS2 monitoring, an explainable 30-day admission-risk model with a model card, and a plain-English assistant that answers from the records."
+  evidence: "Case study with screenshots and held-out model results. Code private for now; access on request."
   category: "AI + Healthcare"
-  impact: "Real-time safety monitoring with NLP-driven virtual assistant" # Confirmed by Paul, 2026-11-04
-  description: "AI-driven platform: client management, NLP virtual assistant, predictive analytics, and real-time safety monitoring for social healthcare delivery."
-  image: "/img/portfolio/healthcare-system-thumbnail.png"
-  tags: ["NLP", "Predictive Analytics", "Healthcare"]
+  impact: "NEWS2 alerts, explainable risk and a plain-English assistant, with 93 tests"
+  description: "Django care-management app with live NEWS2 vitals monitoring, an explainable admission-risk model, a question-answering assistant, care-team messaging and analytics. All data synthetic."
+  image: "/img/portfolio/aurora-care-app/01-patient.png"
+  tags: ["Django", "scikit-learn", "Explainable AI", "Healthcare"]
   url: "/projects/ai-social-healthcare-platform/"
   github: null
   demo: null
-  featured: false
+  featured: true
   size: "lg"
 
-- title: "AI Assistant"
+- title: "AI Assistant (fine-tuned GPT-2)"
   category: "AI Engineering"
-  impact: "Natural-language task automation across daily workflows" # Confirmed by Paul, 2026-11-04
-  description: "An LLM-powered productivity assistant — fine-tuned models, multiple interface integrations, and real-world automation."
-  image: "/img/portfolio/ai-assistant-thumbnail.png"
-  tags: ["LLMs", "Fine-tuning", "Automation"]
+  impact: "GPT-2 fine-tuned on conversational data, served three ways"
+  description: "GPT-2 fine-tuned with Hugging Face Transformers on public and custom dialogue, served through a Flask API with web, desktop and Streamlit interfaces."
+  image: "/img/portfolio/ai-assistant/training-run.png"
+  tags: ["Transformers", "Fine-tuning", "PyTorch", "Flask"]
   url: "/projects/ai-assistant/"
   github: null
+  demo: null
+  featured: false
+  size: "md"
+
+- title: "McNeillium_AI: A Checked Video Pipeline"
+  problem: "Automated video makes it easy to publish claims nobody has checked."
+  contribution: "Built a Python pipeline from script to captioned video, with speech-to-text and source checks before anything ships."
+  evidence: "Public repository and case study. The six explainers are built but not yet published."
+  category: "AI Engineering"
+  impact: "Six fact-checked explainers of my own work, built end to end"
+  description: "Claude-scripted, ElevenLabs-narrated explainer videos assembled with Playwright and FFmpeg, with automated audio, transcript and fact checks."
+  image: "/img/portfolio/video-pipeline.png"
+  tags: ["Python", "Claude API", "ElevenLabs", "FFmpeg"]
+  url: "/projects/mcneillium-ai-video-pipeline/"
+  github: "https://github.com/mcneillium/McNeillium_AI"
   demo: null
   featured: false
   size: "md"

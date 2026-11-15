@@ -1,11 +1,11 @@
 {
-  "built_at": "2026-11-15T20:41:51.100Z",
+  "built_at": "2026-11-15T21:14:15.923Z",
   "embedding_model": null,
   "chunks": [
     {
       "id": "profile.bio",
       "category": "profile",
-      "text": "Paul Martin McNeill — AI engineer, web developer and data analyst based on the island of Ireland, with over 15 years across IT, data and engineering. Builds machine learning forecasting tools, web platforms and analytics for water infrastructure, healthcare, accessibility and day-to-day operations. Studying for an MSc in Artificial Intelligence at Queen’s University Belfast (due 2027); holds a First-Class BSc (Hons) in Computing from The Open University and has completed M816 Data Management, a postgraduate Open University module. AI engineer, web developer and data analyst with over 15 years across IT, database systems and applied data work. On a consultancy contract with a UK water utility, builds the platform and machine learning models used to forecast leakage across more than 1,250 district metered areas. Other work includes NHSCT-aligned care analytics with Power BI, AI accessibility tools such as a predictive AAC app for non-verbal users, and two reproducible research studies on public data. Studying for an MSc in Artificial Intelligence at Queen’s University Belfast (due 2027); holds a First-Class BSc (Hons) in Computing from The Open University (2025) and has completed the Open University’s postgraduate M816 Data Management module. Works with Python, deep learning and data engineering, including TensorFlow, PyTorch and scikit-learn, and cloud platforms including GCP, AWS and Azure.",
+      "text": "Paul Martin McNeill — AI engineer, web developer and data analyst based on the island of Ireland, with over 15 years across IT, data and engineering. Builds machine learning forecasting tools, web platforms and analytics for water infrastructure, healthcare, accessibility and day-to-day operations. Studying for an MSc in Artificial Intelligence at Queen’s University Belfast (due 2027); holds a First-Class BSc (Hons) in Computing from The Open University and has completed M816 Data Management, a postgraduate Open University module. AI engineer, web developer and data analyst with over 15 years across IT, database systems and applied data work. On a consultancy contract with a UK water utility, builds the platform and machine learning models used to forecast leakage across more than 1,250 district metered areas. Other work includes care analytics and an AI-enhanced care app on synthetic data, AI accessibility tools such as a predictive AAC app for non-verbal users, and two reproducible research studies on public data. Studying for an MSc in Artificial Intelligence at Queen’s University Belfast (due 2027); holds a First-Class BSc (Hons) in Computing from The Open University (2025) and has completed the Open University’s postgraduate M816 Data Management module. Works with Python, deep learning and data engineering, including TensorFlow, PyTorch and scikit-learn, and cloud platforms including GCP, AWS and Azure.",
       "keywords": [
         "paul",
         "about",
@@ -14,7 +14,7 @@
         "background",
         "northern ireland"
       ],
-      "tokens": 210
+      "tokens": 214
     },
     {
       "id": "profile.current",
@@ -242,21 +242,20 @@
     {
       "id": "proj.1",
       "category": "project",
-      "text": "Project: Aurora — NHS Digital Transformation Category: AI + Healthcare Impact: Models visits, workforce and finance using synthetic care data Northern Ireland-specific, NHSCT-aligned analytics platform — operations, finance, workforce, compliance — built on Access/SQL data layers and Power BI. Tech: NHSCT, Power BI, ETL, DAX, GDPR GitHub: https://github.com/mcneillium/Aurora-Domiciliary-Care",
+      "text": "Project: Aurora Domiciliary Care: Power BI Analytics Category: Data Analytics Impact: Models visits, workforce and finance using synthetic care data Power BI analytics for a fictional Northern Ireland home-care provider: operations, finance, workforce and compliance on a synthetic 16-table dataset. Tech: Power BI, DAX, Power Query, Synthetic data GitHub: https://github.com/mcneillium/Aurora-Domiciliary-Care",
       "keywords": [
-        "aurora — nhs digital transformation",
-        "ai + healthcare",
-        "nhsct",
+        "aurora domiciliary care: power bi analytics",
+        "data analytics",
         "power bi",
-        "etl",
         "dax",
-        "gdpr",
+        "power query",
+        "synthetic data",
         "project",
         "work",
         "built",
         "shipped"
       ],
-      "tokens": 48
+      "tokens": 50
     },
     {
       "id": "proj.2",
@@ -298,39 +297,59 @@
     {
       "id": "proj.4",
       "category": "project",
-      "text": "Project: AI-Enhanced Social Healthcare Management System Category: AI + Healthcare Impact: Real-time safety monitoring with NLP-driven virtual assistant AI-driven platform: client management, NLP virtual assistant, predictive analytics, and real-time safety monitoring for social healthcare delivery. Tech: NLP, Predictive Analytics, Healthcare",
+      "text": "Project: Aurora Care Management: AI-Enhanced Category: AI + Healthcare Impact: NEWS2 alerts, explainable risk and a plain-English assistant, with 93 tests Django care-management app with live NEWS2 vitals monitoring, an explainable admission-risk model, a question-answering assistant, care-team messaging and analytics. All data synthetic. Tech: Django, scikit-learn, Explainable AI, Healthcare",
       "keywords": [
-        "ai-enhanced social healthcare management system",
+        "aurora care management: ai-enhanced",
         "ai + healthcare",
-        "nlp",
-        "predictive analytics",
+        "django",
+        "scikit-learn",
+        "explainable ai",
         "healthcare",
         "project",
         "work",
         "built",
         "shipped"
       ],
-      "tokens": 40
+      "tokens": 49
     },
     {
       "id": "proj.5",
       "category": "project",
-      "text": "Project: AI Assistant Category: AI Engineering Impact: Natural-language task automation across daily workflows An LLM-powered productivity assistant — fine-tuned models, multiple interface integrations, and real-world automation. Tech: LLMs, Fine-tuning, Automation",
+      "text": "Project: AI Assistant (fine-tuned GPT-2) Category: AI Engineering Impact: GPT-2 fine-tuned on conversational data, served three ways GPT-2 fine-tuned with Hugging Face Transformers on public and custom dialogue, served through a Flask API with web, desktop and Streamlit interfaces. Tech: Transformers, Fine-tuning, PyTorch, Flask",
       "keywords": [
-        "ai assistant",
+        "ai assistant (fine-tuned gpt-2)",
         "ai engineering",
-        "llms",
+        "transformers",
         "fine-tuning",
-        "automation",
+        "pytorch",
+        "flask",
         "project",
         "work",
         "built",
         "shipped"
       ],
-      "tokens": 30
+      "tokens": 44
     },
     {
       "id": "proj.6",
+      "category": "project",
+      "text": "Project: McNeillium_AI: A Checked Video Pipeline Category: AI Engineering Impact: Six fact-checked explainers of my own work, built end to end Claude-scripted, ElevenLabs-narrated explainer videos assembled with Playwright and FFmpeg, with automated audio, transcript and fact checks. Tech: Python, Claude API, ElevenLabs, FFmpeg GitHub: https://github.com/mcneillium/McNeillium_AI",
+      "keywords": [
+        "mcneillium_ai: a checked video pipeline",
+        "ai engineering",
+        "python",
+        "claude api",
+        "elevenlabs",
+        "ffmpeg",
+        "project",
+        "work",
+        "built",
+        "shipped"
+      ],
+      "tokens": 45
+    },
+    {
+      "id": "proj.7",
       "category": "project",
       "text": "Project: Custom CRM Web Application Category: Web Engineering Impact: Custom CRM consolidating sales, comms, and analytics Custom CRM tailored to streamline business operations — sales management, customer communication, and analytics in a single PWA. Tech: TypeScript, Node.js, PostgreSQL",
       "keywords": [
@@ -347,7 +366,7 @@
       "tokens": 38
     },
     {
-      "id": "proj.7",
+      "id": "proj.8",
       "category": "project",
       "text": "Project: Cloud-Based Data Management System Category: Cloud Computing Impact: Hybrid SQL/NoSQL design with cloud-native storage Cloud-native database management system using SQL + NoSQL, designed for resilience and elastic scale. Tech: SQL, NoSQL, Cloud GitHub: https://github.com/mcneillium/CloudBasedDataManagementSystem Demo: https://www.youtube.com/embed/bgKY8KhDIZE",
       "keywords": [
@@ -364,7 +383,7 @@
       "tokens": 37
     },
     {
-      "id": "proj.8",
+      "id": "proj.9",
       "category": "project",
       "text": "Project: Java Ticket Machine Category: Software Engineering Impact: OOP demonstration with full UI, video walkthrough, and source Java OOP showcase — inheritance, polymorphism, encapsulation — with a responsive UI and embedded demo video. Tech: Java, OOP GitHub: https://github.com/mcneillium/Ticket-Machine-System Demo: https://www.youtube.com/embed/APM7f09MWmM",
       "keywords": [
@@ -600,9 +619,9 @@
     {
       "id": "blog.10.intro",
       "category": "blog",
-      "text": "Blog post — Building Production RAG Pipelines: Lessons from Real Deployments: Notes from shipping retrieval-augmented generation in production — chunking that doesn't shred meaning, retrieval that keeps citations, and evaluation harnesses that catch regressions before users do. A weekend RAG demo is one thing. A *production* RAG pipeline is a different animal entirely — and the cost is mostly in the parts you can't see in a notebook. This post collects the patterns I've found genuinely matter, in roughly the order they bite you. The default tutorial chunker — fixed-size sliding window with some overlap — gets you to a demo. It also routinely shreds meaning. Sentences get split mid-clause. Tables turn into nonsense. The bullet point that gives a paragraph its meaning lands in a different chunk to the paragraph itself.",
+      "text": "Blog post — Building Production RAG Pipelines: What Breaks After the Demo: Notes on taking retrieval-augmented generation past the demo: chunking that doesn't shred meaning, retrieval that keeps citations, and evaluation harnesses that catch regressions before users do. A weekend RAG demo is one thing. A *production* RAG pipeline is a different animal entirely — and the cost is mostly in the parts you can't see in a notebook. This post collects the patterns I've found genuinely matter, in roughly the order they bite you. The default tutorial chunker — fixed-size sliding window with some overlap — gets you to a demo. It also routinely shreds meaning. Sentences get split mid-clause. Tables turn into nonsense. The bullet point that gives a paragraph its meaning lands in a different chunk to the paragraph itself.",
       "keywords": [
-        "building production rag pipelines: lessons from real deployments",
+        "building production rag pipelines: what breaks after the demo",
         "rag",
         "llms",
         "retrieval",
@@ -612,14 +631,14 @@
         "writing",
         "post"
       ],
-      "tokens": 132
+      "tokens": 133
     },
     {
       "id": "blog.10.body",
       "category": "blog",
-      "text": "Building Production RAG Pipelines: Lessons from Real Deployments — continued: Three rules that survived contact with real corpora: 1. **Respect document structure.** Use the document's own boundaries — headings, list items, table rows — as candidate split points, not arbitrary character counts. For PDFs, this means a real layout-aware parser (`unstructured`, PyMuPDF with logical-block extraction, or AWS Textract for tables) rather than naive text dumps. 2. **Vary chunk size to fit the question.** Small chunks (~200 tokens) maximise retrieval precision but lose context. Large chunks (~1k tokens) preserve context but make embedding less discriminative. I've ended up with a two-stage retrieval pattern: small chunks for finding *where*, then expand to the parent section before passing to the model. 3. **Store the spelling, the slug, and the source.** Every chunk needs a stable identifier and a path back to the original document, with page or anchor offsets. Without this, you can't render citations and you can't debug a hallucination. \"It looks like the right chunks come back for these five test queries\" is not an evaluation. It's a vibe. The first time you change embedding models, prompt versions, or chunk strategy, you'll discover three things that silently regressed and one user already complained about. The cheapest reliable harness: - **A labelled query set.** 50–100 queries each tagged with the chunks (or source URLs) that should be retrieved. You build this by mining real user queries and annotating by hand. Yes,",
+      "text": "Building Production RAG Pipelines: What Breaks After the Demo — continued: Three rules that survived contact with real corpora: 1. **Respect document structure.** Use the document's own boundaries — headings, list items, table rows — as candidate split points, not arbitrary character counts. For PDFs, this means a real layout-aware parser (`unstructured`, PyMuPDF with logical-block extraction, or AWS Textract for tables) rather than naive text dumps. 2. **Vary chunk size to fit the question.** Small chunks (~200 tokens) maximise retrieval precision but lose context. Large chunks (~1k tokens) preserve context but make embedding less discriminative. I've ended up with a two-stage retrieval pattern: small chunks for finding *where*, then expand to the parent section before passing to the model. 3. **Store the spelling, the slug, and the source.** Every chunk needs a stable identifier and a path back to the original document, with page or anchor offsets. Without this, you can't render citations and you can't debug a hallucination. \"It looks like the right chunks come back for these five test queries\" is not an evaluation. It's a vibe. The first time you change embedding models, prompt versions, or chunk strategy, you'll discover three things that silently regressed and one user already complained about. The cheapest reliable harness: - **A labelled query set.** 50–100 queries each tagged with the chunks (or source URLs) that should be retrieved. You build this by mining real user queries and annotating by hand. Yes,",
       "keywords": [
-        "building production rag pipelines: lessons from real deployments",
+        "building production rag pipelines: what breaks after the demo",
         "rag",
         "llms",
         "retrieval",
@@ -628,7 +647,7 @@
         "blog",
         "writing"
       ],
-      "tokens": 239
+      "tokens": 240
     }
   ]
 }

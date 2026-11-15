@@ -1,11 +1,11 @@
 ---
 layout: post
 type: blog
-title: "Building Production RAG Pipelines: Lessons from Real Deployments"
+title: "Building Production RAG Pipelines: What Breaks After the Demo"
 subtitle: "What actually breaks once you leave the demo notebook."
 date: 2026-04-01
 project-date: 2026-04-01
-description: "Notes from shipping retrieval-augmented generation in production — chunking that doesn't shred meaning, retrieval that keeps citations, and evaluation harnesses that catch regressions before users do."
+description: "Notes on taking retrieval-augmented generation past the demo: chunking that doesn't shred meaning, retrieval that keeps citations, and evaluation harnesses that catch regressions before users do."
 category: writing
 tags: [RAG, LLMs, Retrieval, Evaluation, Production ML]
 permalink: /writing/production-rag-pipelines/
