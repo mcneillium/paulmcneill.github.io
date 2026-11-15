@@ -69,6 +69,8 @@ _includes/
   voice-agent.html      live ElevenLabs voice assistant, loaded on click (/lab/)
   listen.html           recorded narration player + transcript
                         (_data/narration.yml)
+  explainers.html       self-hosted explainer videos + transcripts
+                        (_data/explainers.yml; home, AAC, research, Lab)
   architecture/         per-project SVG diagrams (currently aurora.html)
   icons/ui/             Lucide + brand SVGs
   icons/tech/           Devicon + Simple Icons
@@ -88,6 +90,9 @@ assets/
   js/voice-engine.js    GENERATED from the Voice app repo by
                         scripts/build-voice-engine.mjs; do not hand-edit
   audio/                ElevenLabs narration + Voice board phrases (mp3)
+  video/explainers/     720p explainer videos + title-card posters, built
+                        in McNeillium_AI/explainers (set youtube: in
+                        _data/explainers.yml once a video is public)
   third-party/          pinned, self-hosted third-party code (MIT widget).
                         Never name a folder vendor/: .gitignore and GitHub
                         Pages both drop it.
