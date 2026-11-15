@@ -15,7 +15,7 @@ profile: >-
   models that forecast leakage across more than 1,250 district metered areas,
   using flow, weather and operational data that are noisy, irregular and
   incomplete, and producing results that must be explainable to a regulator.
-  I hold a First-Class BSc (Hons) in Computing and am seeking a PhD in machine
+  I hold a First-Class BSc (Hons) in Computer Science and am seeking a PhD in machine
   learning for imperfect, multisource real-world data.
 
 interests: >-
@@ -31,7 +31,7 @@ education:
     points:
       - "Modules: Foundations of AI; Machine Learning; Knowledge Engineering; Computer Vision; Natural Language Processing; Artificial Intelligence for Health."
       - "Themed Research Project."
-  - title: "BSc (Hons) Computing, First Class"
+  - title: "BSc (Hons) Computer Science, First Class"
     org: "The Open University"
     when: "2025"
     points:

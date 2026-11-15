@@ -26,7 +26,7 @@ be stated as fact.
 ## Education
 - MSc Artificial Intelligence, Queen's University Belfast: in progress, due to
   finish in September 2027. He has not yet graduated from it.
-- BSc (Hons) Computing, First-Class Honours, The Open University, 2025. Focus:
+- BSc (Hons) Computer Science, First-Class Honours, The Open University, 2025. Focus:
   artificial intelligence, data analytics, cloud computing, software engineering.
 - M816 Data Management, a postgraduate Open University module (completed):
   data governance, modelling and database optimisation.
