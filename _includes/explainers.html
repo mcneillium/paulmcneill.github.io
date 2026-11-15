@@ -1,0 +1,79 @@
+{%- comment -%}
+  Explainer videos of Paul's own work, hosted on this site. Data: _data/explainers.yml.
+    {% include explainers.html %}                          home section, all six
+    {% include explainers.html slugs="02-river,03-drug" inline=true heading="Watch" level="h2" card_level="h3" %}
+  inline=true drops the section wrapper so it sits inside a post or page body.
+  Native <video> with preload="none": nothing downloads until played, keyboard
+  and screen-reader accessible with no script. Captions are burnt in, and each
+  card has a transcript.
+{%- endcomment -%}
+{%- assign wanted = include.slugs | default: "" | split: "," -%}
+{%- assign hl = include.level | default: "h3" -%}
+{%- assign cl = include.card_level | default: "h3" -%}
+{%- capture cards -%}
+<ul class="explainers__grid{% if include.inline %} explainers__grid--inline{% endif %}">
+  {%- for v in site.data.explainers -%}
+  {%- if wanted.size == 0 or wanted contains v.slug %}
+  <li class="explainer-card reveal" style="--delay: {{ forloop.index0 | times: 70 }}ms">
+    <div class="explainer-card__media">
+      <video controls preload="none" playsinline width="1280" height="720"
+             poster="{{ v.poster | relative_url }}" aria-label="Video: {{ v.title | escape }}">
+        <source src="{{ v.file | relative_url }}" type="video/mp4">
+        <a href="{{ v.file | relative_url }}">Download the video ({{ v.duration }})</a>
+      </video>
+    </div>
+    <{{ cl }} class="explainer-card__title">{{ v.title }}</{{ cl }}>
+    <p class="explainer-card__meta">{{ v.summary }} <span>{{ v.duration }}</span></p>
+    <details class="explainer-card__transcript">
+      <summary>Transcript</summary>
+      {%- for line in v.transcript %}
+      <p>{{ line }}</p>
+      {%- endfor %}
+    </details>
+    <p class="explainer-card__links">
+      {%- unless include.inline %}
+      <a href="{{ v.link | relative_url }}">{{ v.link_label }}
+        {% include icon.html name="arrow-up-right" class="icon icon--xs" %}</a>
+      {%- endunless %}
+      {%- if v.youtube and v.youtube != "" %}
+      <a href="{{ v.youtube }}" rel="noopener">Watch on YouTube
+        {% include icon.html name="arrow-up-right" class="icon icon--xs" %}</a>
+      {%- endif %}
+    </p>
+  </li>
+  {%- endif -%}
+  {%- endfor %}
+</ul>
+<p class="explainers__note">Narrated with an AI voice made with ElevenLabs. It is not Paul&rsquo;s voice. Captions are part of each video, and every one has a transcript.</p>
+{%- endcapture -%}
+
+{%- if include.inline %}
+<div class="explainers explainers--inline">
+  {%- if include.heading %}<{{ hl }} class="explainers__inline-title">{{ include.heading }}</{{ hl }}>{% endif %}
+  {{ cards }}
+</div>
+{%- else %}
+<section class="section explainers" id="explainers">
+  <div class="container">
+    <div class="aiml__head reveal">
+      <div>
+        <span class="eyebrow">Video</span>
+        <h2 class="section-title" style="margin-top: 0.6rem;">Short explainers of <em>my own work</em></h2>
+      </div>
+      <p class="section-lead">
+        One to two minutes each, filmed from this site: the Voice app, both studies, the method behind them, and the demos. Every fact in them can be checked on the page each one links to.
+      </p>
+    </div>
+    {{ cards }}
+    <div class="explainers__actions reveal">
+      <a href="{{ site.data.profile.contact.youtube }}" class="btn btn-outline" rel="noopener">
+        The McNeillium AI channel
+        {% include icon.html name="arrow-up-right" class="icon icon--sm" %}
+      </a>
+      <a href="{{ '/projects/mcneillium-ai-video-pipeline/' | relative_url }}" class="btn btn-outline">
+        How these are made
+      </a>
+    </div>
+  </div>
+</section>
+{%- endif %}

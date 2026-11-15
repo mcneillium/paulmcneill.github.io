@@ -100,6 +100,8 @@ It combines **on-device word prediction**, **accessible UI**, and a **caregiver 
 
 {% include listen.html key="voice_app" %}
 
+{% include explainers.html slugs="01-voice" inline=true heading="Watch it explained" level="h4" card_level="h5" %}
+
 ---
 
 ### Problem

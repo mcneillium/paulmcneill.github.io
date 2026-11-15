@@ -1,0 +1,152 @@
+# Explainer videos of Paul's own work, hosted on this site (assets/video/explainers).
+# Built by McNeillium_AI/explainers; transcripts are the narration scripts.
+# youtube: set to the https://youtu.be/<id> link once a video is PUBLIC on the channel.
+- slug: 01-voice
+  title: 'Voice: an AAC app that explains its predictions'
+  summary: How a communication app suggests the next word, offline, and says why
+  duration: '1:37'
+  file: /assets/video/explainers/01-voice.mp4
+  poster: /assets/video/explainers/01-voice.webp
+  link: /projects/ai-aac-app/
+  link_label: Read the case study
+  youtube: ''
+  transcript:
+  - 'This is Voice, an AAC app built by Paul McNeill. AAC stands for augmentative and alternative communication:
+    a way to talk for people who cannot rely on speech.'
+  - The user builds a message by tapping words on a board of colour-coded tiles. Every word keeps the
+    same place, in Child and Adult modes alike, so the board can be learned by position instead of searched.
+  - As the message grows, Voice suggests the next word. Each suggestion says why it was offered, for example
+    a common next word, or a word you often say next.
+  - The prediction runs entirely on the device, with no network calls. It is a trigram model built from
+    666 sentences written for Voice, with an optional personal layer and a small ranker on top. Each set
+    of suggestions takes well under a millisecond on a desktop computer.
+  - Learning is off by default. When it is switched on, Voice learns only from messages that are actually
+    spoken, never from taps that are deleted. Here, after I want Grandma has been spoken three times,
+    Grandma appears as a suggestion, marked as a word you often say next. Everything learned can be seen,
+    and forgotten, one word at a time.
+  - A caregiver dashboard sits alongside the app. You can try the board, the full app and the dashboard,
+    all with made-up data, on Paul's portfolio at paulmartinmcneill.com.
+- slug: 02-river
+  title: Flood warnings without the weather forecast
+  summary: A test across 671 British catchments, and where the skill really comes from
+  duration: '1:52'
+  file: /assets/video/explainers/02-river.mp4
+  poster: /assets/video/explainers/02-river.webp
+  link: /research/#river-early-warning
+  link_label: Read the river study
+  youtube: ''
+  transcript:
+  - Can river floods be forecast without knowing tomorrow's weather? Paul McNeill tested that across 671
+    British catchments, using CAMELS-GB, a public dataset of daily river flow and weather from 1970 to
+    2022.
+  - 'The task: on any given day, forecast river flow one, three and seven days ahead, using only what
+    is known that day. The models were trained on 1970 to 2004, tuned on 2004 to 2012, and tested on 2012
+    to 2022.'
+  - Skill is measured with a score where 1 is a perfect forecast and 0 is no better than the long-term
+    average. Most of the skill beyond a day depends on knowing the weather. At seven days, the median
+    score is 0.24 without future weather, and 0.72 when the model is given the weather that actually happened.
+    That second number is an upper bound, not a forecast.
+  - 'Forecasting a whole region the model never saw costs little: a median loss of 0.019 at one day. A
+    different climate costs much more. Trained on wet catchments and tested on dry ones, the score falls
+    from 0.85 to 0.75.'
+  - A neural network, an LSTM reading a year of daily data, did no better than gradient boosting. That
+    points to the missing weather forecast as the limit, not the choice of model.
+  - Warnings are harder still. At seven days, most high-flow warnings are false alarms. The study has
+    not been peer reviewed, and every decision, including the mistakes, is logged in public.
+- slug: 03-drug
+  title: Why most cancer drug response stays unexplained
+  summary: 924 cell lines, one known marker, and a common mistake measured
+  duration: '1:39'
+  file: /assets/video/explainers/03-drug.mp4
+  poster: /assets/video/explainers/03-drug.webp
+  link: /research/#drug-response
+  link_label: Read the drug study
+  youtube: ''
+  transcript:
+  - One gene, PTEN, is a known but incomplete guide to how cancer cells respond to drugs that block a
+    protein called AKT. This study asks how much more wider molecular data can explain, using 924 cancer
+    cell lines from the public GDSC screen.
+  - PTEN alone explains about 5 per cent of the variation in response. Adding cancer type and sequencing
+    centre takes that to 11 per cent. Adding two thousand genes reaches 14 per cent with an elastic net,
+    and 19 per cent with gradient boosting.
+  - 'So more than four fifths of the response stays unexplained. And that gap is not mainly measurement
+    noise. A related drug was measured twice: about 80 per cent of its variation repeats, yet the best
+    model for it explains only 18 per cent.'
+  - The study also measures a common mistake. Choosing genes by their link to the response before cross-validating
+    produces a score of 0.14 even on shuffled data, where there is nothing to find. Choosing inside each
+    fold removes the leak.
+  - The explanations were not stable either. The top twenty genes of refitted models overlap by only 0.2,
+    and no stable subgroups were found beyond tissue of origin.
+  - 'Cell lines are a stand-in: nothing here is about patients or treatment. The study has not been peer
+    reviewed. The code, protocol and decision log are public.'
+- slug: 04-method
+  title: Six rules for research you can check
+  summary: How two reproducible studies were run, and the mistakes they caught
+  duration: '1:32'
+  file: /assets/video/explainers/04-method.mp4
+  poster: /assets/video/explainers/04-method.webp
+  link: /research/#research-method
+  link_label: See the method
+  youtube: ''
+  transcript:
+  - Two studies, one set of rules. This is how Paul McNeill runs machine learning research that someone
+    else can check.
+  - 'Protocol first: the design is written and dated before any model is fitted, and any later change
+    is a dated amendment.'
+  - 'Baselines first: every model is compared with the simplest thing that could work, on exactly the
+    same held-out data. The data splits are saved once with a fingerprint, and the code refuses to overwrite
+    them.'
+  - 'Nothing is learned from held-out data: feature choice, scaling, gap filling and tuning all happen
+    inside the training data. What counts as this did not work is set in advance, and negative results
+    are reported.'
+  - And every decision is logged, including the mistakes. In the river study, the first diagnosis of a
+    weak baseline was wrong; a controlled comparison showed the cause was the target scale. In the drug
+    study, gains were first computed on averaged predictions, which flattered the less stable model. Both
+    were corrected in public.
+  - Both studies were built making use of AI tools, under research rules Paul set, and each study's log
+    records how. Re-run on a second machine, the main results matched almost exactly; one river experiment
+    is still to be repeated. Neither study has been peer reviewed.
+- slug: 05-voice-site
+  title: A portfolio you can listen to and talk to
+  summary: Narration, a voice assistant and a voice picker on paulmartinmcneill.com
+  duration: '1:16'
+  file: /assets/video/explainers/05-voice-site.mp4
+  poster: /assets/video/explainers/05-voice-site.webp
+  link: /lab/#voice-agent
+  link_label: Try the voice assistant
+  youtube: ''
+  transcript:
+  - Paul McNeill's portfolio is built to be heard as well as read. The main pages have a short recorded
+    narration, with the full transcript one tap away.
+  - The narration uses an AI voice made with ElevenLabs, and every player says so. It is not Paul's voice.
+  - The site's text assistant can be used by voice too. Press the microphone and speak; the question appears
+    as you talk, and the reply can be read aloud.
+  - Visitors can choose that voice, the same way they choose the colour and the font. The picker lists
+    the voices on their own device, with a speed control and a preview, and the choice is remembered in
+    their browser.
+  - On the Lab page there is also a live voice assistant. It answers questions about Paul's work from
+    a fact sheet taken from the site, and says it is not Paul. Nothing from ElevenLabs loads until the
+    visitor presses the button.
+  - All of it is plain HTML, CSS and JavaScript on a static site. Speech recognition and the voice picker
+    use speech features built into the visitor's browser, and the site still works with no sound at all.
+- slug: 06-lab
+  title: Four AI demos in one web page
+  summary: A sentiment model, a word predictor, a voice assistant and an agent animation
+  duration: '1:08'
+  file: /assets/video/explainers/06-lab.mp4
+  poster: /assets/video/explainers/06-lab.webp
+  link: /lab/
+  link_label: Open the Lab
+  youtube: ''
+  transcript:
+  - The Lab on Paul McNeill's portfolio holds four working demos. Three of them run entirely on the visitor's
+    device.
+  - First, a sentiment model. It is a small public example model from TensorFlow.js, trained on movie
+    reviews. Type a sentence and it scores how positive it is, inside the visitor's browser, with nothing
+    they type sent to a server.
+  - Second, the word board from Voice, Paul's AAC app. It runs the app's real prediction engine, so the
+    suggestions and their reasons match the app.
+  - 'Third, a live voice assistant built with ElevenLabs. This is the one demo that uses a server: what
+    the visitor says is sent to ElevenLabs, and the page explains that before anything loads.'
+  - 'Fourth, an animation of how a research agent works through a task: input, planning, tool use, memory,
+    synthesis and output. It is an illustration of the pattern, not a live agent.'

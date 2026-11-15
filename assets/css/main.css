@@ -3105,6 +3105,57 @@ input::placeholder { color: var(--text-faint); opacity: 1; }
 .evidence-card__link:hover { text-decoration-color: var(--accent); }
 
 /* ==========================================================================
+   Explainer videos (home, case studies, research, Lab): _includes/explainers.html
+   ========================================================================== */
+.explainers__grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+}
+.explainers__grid--inline { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+@media (max-width: 900px) { .explainers__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .explainers__grid { grid-template-columns: 1fr; } }
+.explainer-card {
+  display: flex; flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 0.75rem 0.75rem 1.25rem;
+}
+.explainer-card__media {
+  aspect-ratio: 16 / 9; border-radius: calc(var(--radius-lg) - 0.35rem);
+  overflow: hidden; background: #101b2c; margin-bottom: 1rem;
+}
+.explainer-card__media video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.explainer-card__title {
+  font-family: var(--font-display); font-size: 1.1rem; line-height: 1.3;
+  color: var(--text); margin: 0 0.5rem 0.4rem;
+}
+.post-content .explainer-card__title { margin-top: 0; }
+.explainer-card__meta { color: var(--text-dim); font-size: 0.92rem; margin: 0 0.5rem 0.8rem; }
+.explainer-card__meta span {
+  font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent);
+  margin-left: 0.35rem; white-space: nowrap;
+}
+.explainer-card__transcript { margin: 0 0.5rem 0.8rem; font-size: 0.9rem; color: var(--text-dim); }
+.explainer-card__transcript summary { cursor: pointer; color: var(--text); font-weight: 600; }
+.explainer-card__transcript p { margin: 0.6rem 0 0; }
+.explainer-card__links {
+  margin: auto 0.5rem 0; display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem;
+}
+.explainer-card__links:empty { display: none; }
+.explainer-card__links a {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font-size: 0.9rem; color: var(--text);
+  text-decoration: underline; text-decoration-color: var(--accent-dim); text-underline-offset: 4px;
+}
+.explainer-card__links a:hover { text-decoration-color: var(--accent); }
+.explainers__note { margin: 1rem 0 0; font-size: 0.85rem; color: var(--text-dim); }
+.explainers__actions { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.explainers--inline { margin: 2rem 0; }
+.explainers__inline-title { margin: 0 0 1rem; }
+@media print { .explainers { display: none; } }
+
+/* ==========================================================================
    Live app demo in a phone frame (AAC case study)
    ========================================================================== */
 .demo-phone {

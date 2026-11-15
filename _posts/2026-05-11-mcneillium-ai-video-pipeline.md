@@ -40,7 +40,9 @@ Six videos of 1 to 2 minutes each: Voice, the river study, the drug-response stu
 
 Checking caught two errors before recording: a figure from the drug study quoted for the wrong drug, and a river experiment described as re-run when it had not been yet.
 
-The videos are built but not yet published.
+All six are below, hosted on this site.
+
+{% include explainers.html inline=true card_level="h4" %}
 
 ---
 
