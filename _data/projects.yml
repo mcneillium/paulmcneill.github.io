@@ -84,7 +84,7 @@
 
 - title: "Custom CRM Web Application"
   category: "Web Engineering"
-  impact: "In-development CRM consolidating sales, comms, and analytics"
+  impact: "Custom CRM consolidating sales, comms, and analytics"
   description: "Custom CRM tailored to streamline business operations — sales management, customer communication, and analytics in a single PWA."
   image: "/img/portfolio/indevelopment.png"
   tags: ["TypeScript", "Node.js", "PostgreSQL"]

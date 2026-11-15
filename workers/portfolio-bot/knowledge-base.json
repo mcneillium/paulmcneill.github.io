@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-11-15T20:11:19.303Z",
+  "built_at": "2026-11-15T20:41:51.100Z",
   "embedding_model": null,
   "chunks": [
     {
@@ -332,7 +332,7 @@
     {
       "id": "proj.6",
       "category": "project",
-      "text": "Project: Custom CRM Web Application Category: Web Engineering Impact: In-development CRM consolidating sales, comms, and analytics Custom CRM tailored to streamline business operations — sales management, customer communication, and analytics in a single PWA. Tech: TypeScript, Node.js, PostgreSQL",
+      "text": "Project: Custom CRM Web Application Category: Web Engineering Impact: Custom CRM consolidating sales, comms, and analytics Custom CRM tailored to streamline business operations — sales management, customer communication, and analytics in a single PWA. Tech: TypeScript, Node.js, PostgreSQL",
       "keywords": [
         "custom crm web application",
         "web engineering",
