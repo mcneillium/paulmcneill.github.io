@@ -14,7 +14,7 @@ permalink: /projects/ai-assistant/
 redirect_from:
   - /ai/2023/04/05/ai-project-1/
 description: "GPT-2 fine-tuned with Hugging Face Transformers on the ConvAI2 dialogue dataset plus custom domain dialogues, served through a Flask API with web, desktop (Tkinter) and Streamlit front ends."
-github-url:
+github-url: https://github.com/mcneillium/AI_Assistant
 youtube-url: https://www.youtube.com/embed/_2doud4q8gI
 
 ---

@@ -95,7 +95,7 @@
   image: "/img/portfolio/ai-assistant/training-run.png"
   tags: ["Transformers", "Fine-tuning", "Evaluation", "Flask"]
   url: "/projects/ai-assistant/"
-  github: null
+  github: "https://github.com/mcneillium/AI_Assistant"
   demo: null
   featured: false
   size: "md"
@@ -107,7 +107,7 @@
   image: "/img/portfolio/custom-crm.png"
   tags: ["TypeScript", "Node.js", "PostgreSQL", "React"]
   url: "/projects/custom-crm/"
-  github: null # TODO: REPLACE with https://github.com/mcneillium/custom-crm once the repository is created
+  github: "https://github.com/mcneillium/custom-crm"
   demo: "/demos/custom-crm/"
   featured: false
   size: "md"

@@ -16,7 +16,7 @@ redirect_from:
 description: "A CRM for small sales teams, built from scratch in TypeScript: companies, contacts, a deal pipeline, an activity log, tasks, email templates and a dashboard, on Node.js and PostgreSQL, with a live demo that runs PostgreSQL inside the browser."
 impact: "Full CRM with a live demo that needs no server"
 demo-url: /demos/custom-crm/
-github-url: # TODO: REPLACE with https://github.com/mcneillium/custom-crm once the repository is created
+github-url: https://github.com/mcneillium/custom-crm
 youtube-url:
 ---
 
