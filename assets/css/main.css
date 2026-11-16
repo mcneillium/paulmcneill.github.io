@@ -3430,3 +3430,16 @@ input::placeholder { color: var(--text-faint); opacity: 1; }
 }
 .found-card__links a:hover { text-decoration-color: var(--accent); }
 @media (prefers-reduced-motion: reduce) { .found-card { transition: none; } }
+
+/* ==========================================================================
+   Page-to-page transitions (cross-document view transitions)
+   A short cross-fade between pages of this site, with the nav held steady.
+   Browsers without support, and visitors who prefer reduced motion, get the
+   normal instant page change.
+   ========================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation-duration: 0.2s; }
+  .nav { view-transition-name: site-nav; }
+}

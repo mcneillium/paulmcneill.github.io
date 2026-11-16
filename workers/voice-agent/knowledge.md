@@ -100,6 +100,9 @@ be stated as fact.
   Python (a search crash and lost hash entries; the tree is now drawn), SQL and
   MongoDB side by side (both now refuse duplicate emails), and an expense
   tracker (its chart added dollars to pounds; Delete All deleted nothing).
+  They now run on current tools: Java 25 for the ticket machine, and typed
+  Python on versions 3.13 to 3.15 with uv, Ruff and mypy for the other three.
+  The expense tracker holds money as exact decimals.
 
 ## Research (two reproducible studies on public data; neither peer reviewed)
 - River early warning across 671 British catchments (CAMELS-GB): how far ahead

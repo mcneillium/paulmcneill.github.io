@@ -1,0 +1,45 @@
+---
+layout: null
+permalink: /llms.txt
+---
+{%- comment -%}
+  /llms.txt: a plain-Markdown map of this site for AI assistants and agents
+  (the llmstxt.org convention). Every line is generated from the same data
+  files the pages use, so it cannot drift from them. No facts are written here.
+{%- endcomment -%}
+# Paul Martin McNeill
+
+> {{ site.data.profile.bio_short | strip }}
+
+This file is a plain-text map of {{ site.url }} for AI assistants. Every description below comes from the site's own pages.
+
+## Projects
+
+{% for p in site.data.projects -%}
+- [{{ p.title }}]({{ p.url | absolute_url }}): {{ p.description | strip }}{% if p.github %} Source: {{ p.github }}{% endif %}
+{% endfor %}
+## Early projects (2023), revisited and brought up to date in 2026
+
+{% for f in site.data.foundations -%}
+- [{{ f.title }}]({{ f.url | absolute_url }}): {{ f.shows | strip }} Found in 2026: {{ f.found | strip }} {{ f.tests }}. Source: {{ f.github }}
+{% endfor %}
+## Research
+
+{% for r in site.data.cv.research -%}
+- [{{ r.title }}]({{ r.url | absolute_url }}) ({{ r.when }}): {{ r.text | strip }} Code: {{ r.code }}
+{% endfor %}
+{{ site.data.cv.research_note | strip }}
+
+## More
+
+- [Research write-ups]({{ '/research/' | absolute_url }})
+- [Lab: live demos]({{ '/lab/' | absolute_url }})
+- [CV]({{ '/cv/' | absolute_url }})
+- [Contact]({{ '/#contact' | absolute_url }})
+{% for s in site.social -%}
+{%- if s.title == "github" -%}
+- [GitHub]({{ s.url }})
+{% elsif s.title == "linkedin" -%}
+- [LinkedIn]({{ s.url }})
+{% endif -%}
+{%- endfor %}

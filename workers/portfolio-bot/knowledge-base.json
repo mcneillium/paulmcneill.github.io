@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-11-16T11:06:51.780Z",
+  "built_at": "2026-11-16T14:27:50.460Z",
   "embedding_model": null,
   "chunks": [
     {
@@ -333,7 +333,7 @@
     {
       "id": "proj.6",
       "category": "project",
-      "text": "Project: AI Assistant (fine-tuned GPT-2) Category: AI Engineering Impact: Held-out perplexity 23.3 → 7.8 against untuned GPT-2 (revisited 2026) GPT-2 fine-tuned on ConvAI2 dialogue with Hugging Face Transformers, served through one Flask API to web, desktop, Streamlit and React clients. Revisited in 2026: a sampling bug fixed and a proper held-out evaluation. Tech: Transformers, Fine-tuning, Evaluation, Flask",
+      "text": "Project: AI Assistant (fine-tuned GPT-2) Category: AI Engineering Impact: Held-out perplexity 23.3 → 7.8 against untuned GPT-2 (revisited 2026) GPT-2 fine-tuned on ConvAI2 dialogue with Hugging Face Transformers, served through one Flask API to web, desktop, Streamlit and React clients. Revisited in 2026: a sampling bug fixed and a proper held-out evaluation. Tech: Transformers, Fine-tuning, Evaluation, Flask GitHub: https://github.com/mcneillium/AI_Assistant",
       "keywords": [
         "ai assistant (fine-tuned gpt-2)",
         "ai engineering",
@@ -346,12 +346,12 @@
         "built",
         "shipped"
       ],
-      "tokens": 57
+      "tokens": 59
     },
     {
       "id": "proj.7",
       "category": "project",
-      "text": "Project: Custom CRM Category: Web Engineering Impact: Full CRM with a live demo that needs no server Companies, contacts, a deal pipeline, an activity log, tasks and a dashboard. TypeScript on Node.js and PostgreSQL; the demo runs PostgreSQL in your browser. Tech: TypeScript, Node.js, PostgreSQL, React Demo: /demos/custom-crm/",
+      "text": "Project: Custom CRM Category: Web Engineering Impact: Full CRM with a live demo that needs no server Companies, contacts, a deal pipeline, an activity log, tasks and a dashboard. TypeScript on Node.js and PostgreSQL; the demo runs PostgreSQL in your browser. Tech: TypeScript, Node.js, PostgreSQL, React GitHub: https://github.com/mcneillium/custom-crm Demo: /demos/custom-crm/",
       "keywords": [
         "custom crm",
         "web engineering",
@@ -364,34 +364,34 @@
         "built",
         "shipped"
       ],
-      "tokens": 48
+      "tokens": 50
     },
     {
       "id": "found.0",
       "category": "project",
-      "text": "Early project (2023, revisited and fixed in November 2026): Java Ticket Machine What it shows: Inheritance, polymorphism and encapsulation in Java and JavaFX. Found and fixed in 2026: Charged £10 for three tickets, and crashed on an empty quantity. Tests: 11 JUnit tests Tech: Java, JavaFX, JUnit Case study: https://paulmartinmcneill.com/projects/java-ticket-machine/ GitHub: https://github.com/mcneillium/Ticket-Machine-System",
+      "text": "Early project (2023, revisited and fixed in November 2026): Java Ticket Machine What it shows: Inheritance, polymorphism and encapsulation in Java and JavaFX. Found and fixed in 2026: Charged £10 for three tickets, and crashed on an empty quantity. Tests: 13 JUnit tests Tech: Java 25, JavaFX, JUnit 6 Case study: https://paulmartinmcneill.com/projects/java-ticket-machine/ GitHub: https://github.com/mcneillium/Ticket-Machine-System",
       "keywords": [
         "java ticket machine",
-        "java",
+        "java 25",
         "javafx",
-        "junit",
+        "junit 6",
         "project",
         "early",
         "revisited",
         "tests",
         "bugs"
       ],
-      "tokens": 52
+      "tokens": 54
     },
     {
       "id": "found.1",
       "category": "project",
-      "text": "Early project (2023, revisited and fixed in November 2026): Data Structures in Python What it shows: A binary search tree, a graph with breadth-first search and a hash table, from scratch. Found and fixed in 2026: BFS crashed, colliding keys were lost, and the tree was never drawn. Tests: 9 pytest tests Tech: Python, Tkinter, pytest Case study: https://paulmartinmcneill.com/projects/data-structures-python/ GitHub: https://github.com/mcneillium/DataStructuresAlgorithms",
+      "text": "Early project (2023, revisited and fixed in November 2026): Data Structures in Python What it shows: A binary search tree, a graph with breadth-first search and a hash table, from scratch. Found and fixed in 2026: BFS crashed, colliding keys were lost, and the tree was never drawn. Tests: 9 tests, typed Tech: Python, mypy, uv Case study: https://paulmartinmcneill.com/projects/data-structures-python/ GitHub: https://github.com/mcneillium/DataStructuresAlgorithms",
       "keywords": [
         "data structures in python",
         "python",
-        "tkinter",
-        "pytest",
+        "mypy",
+        "uv",
         "project",
         "early",
         "revisited",
@@ -420,12 +420,12 @@
     {
       "id": "found.3",
       "category": "project",
-      "text": "Early project (2023, revisited and fixed in November 2026): Expense Tracker What it shows: Spending in four currencies, stored in CSV and charted in pounds. Found and fixed in 2026: The chart added dollars to pounds, and Delete All deleted nothing. Tests: 6 pytest tests Tech: Python, pandas, Matplotlib Case study: https://paulmartinmcneill.com/projects/expense-tracker/ GitHub: https://github.com/mcneillium/expense-tracker",
+      "text": "Early project (2023, revisited and fixed in November 2026): Expense Tracker What it shows: Spending in four currencies, stored in CSV and charted in pounds. Found and fixed in 2026: The chart added dollars to pounds, and Delete All deleted nothing. Tests: 14 pytest tests Tech: Python, pandas, Decimal Case study: https://paulmartinmcneill.com/projects/expense-tracker/ GitHub: https://github.com/mcneillium/expense-tracker",
       "keywords": [
         "expense tracker",
         "python",
         "pandas",
-        "matplotlib",
+        "decimal",
         "project",
         "early",
         "revisited",

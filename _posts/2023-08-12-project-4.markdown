@@ -13,7 +13,7 @@ permalink: /projects/expense-tracker/
 redirect_from:
   - "/web development/2023/05/10/project-4/"
 description: "A Tkinter app that logs expenses to a CSV file, converts pounds, dollars, euros and yen to a total in pounds, and charts spending by category. Revisited in 2026: the chart added currencies together unconverted, and both delete buttons removed the wrong rows. All fixed and tested."
-impact: "Three data bugs found and fixed: mixed currencies, Delete All, duplicate rows"
+impact: "Three data bugs fixed, and money now held exactly as Decimal"
 github-url: https://github.com/mcneillium/expense-tracker
 youtube-url: https://www.youtube.com/embed/nNre2nSW9aM
 ---
@@ -39,7 +39,13 @@ It looked finished. Checking the numbers showed otherwise:
 - Every amount is converted to pounds before it is added, in the chart and the total alike, through one tested function.
 - Deleting goes by row number, so exactly the selected expense is removed, and "Delete All" really empties the file. File handling lives in its own module with its own tests.
 - The window sizes itself to its contents.
-- 6 tests, run on every push; a clean repository with accurate requirements.
+- Tests for every fix, run on every push, in a clean repository.
+
+### Brought up to date
+- **Money is held as `Decimal`, not floating point**, so totals are exact to the penny. In floating point, 0.10 + 0.20 comes to 0.30000000000000004.
+- The amount box now refuses `nan`, `inf`, zero and negative numbers. Before, typing `nan` saved an expense of "£nan".
+- **uv** installs everything from one project file and a lock file, **Ruff** lints and formats, and mypy checks the money and file-handling code in strict mode.
+- 14 tests, run on **Python 3.13, 3.14 and 3.15** on every push.
 
 I made the 2026 review and fixes with Claude, an AI assistant, as a pair programmer. Each logic fix comes with a test.
 
@@ -48,14 +54,16 @@ The demo video on this page shows the 2023 version, before these fixes.
 ---
 
 ### Run it
+Needs [uv](https://docs.astral.sh/uv/), which fetches Python 3.13 or later (with Tkinter) and every dependency.
+
 ```bash
 git clone https://github.com/mcneillium/expense-tracker.git
 cd expense-tracker
-pip install -r requirements.txt
-python main_gui.py
+uv run main_gui.py   # opens the app
+uv run pytest        # runs the tests
 ```
 
 ---
 
 ### Tech stack
-Python, Tkinter, tkcalendar, pandas, Matplotlib, pytest, GitHub Actions.
+Python 3.13 to 3.15, Tkinter, tkcalendar, pandas 3, Matplotlib, pytest, mypy, Ruff, uv, GitHub Actions.

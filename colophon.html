@@ -139,6 +139,27 @@ description: "How this portfolio is built — the stack, the design choices, the
     the body renders. The default uses Space Grotesk and DM Sans.
   </p>
 
+  <h3>Fast between pages, with no framework</h3>
+  <p>
+    Two newer browser features do the work a single-page framework would
+    otherwise do. With the Speculation Rules API, resting the pointer on a
+    link to another page of this site lets the browser prepare that page in
+    the background, so the click feels instant. With cross-document view
+    transitions, pages cross-fade and the navigation bar stays put. Browsers
+    without either feature, and visitors who prefer reduced motion or use
+    Save-Data, get ordinary page loads. Heavy things wait to be asked for:
+    demo videos, the Lab's 10 MB model and the built demo apps load only
+    when pressed.
+  </p>
+
+  <h3>Readable by AI assistants</h3>
+  <p>
+    <a href="{{ '/llms.txt' | relative_url }}"><code>/llms.txt</code></a> is a
+    plain-text map of the site for AI assistants and agents. It is generated
+    from the same data files as the pages, so it cannot say anything the
+    pages do not.
+  </p>
+
   <h2>The AI features</h2>
 
   <h3>Talk to Paul (chatbot)</h3>

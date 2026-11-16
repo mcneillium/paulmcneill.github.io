@@ -45,6 +45,11 @@ The interesting part is not the app. It is the question it lets you ask: where d
 - The table is created automatically when needed.
 - 4 tests, including one that checks MongoDB refuses a duplicate the way SQLite does.
 
+### Brought up to date
+- Both database managers are **typed** and checked by mypy in strict mode.
+- **uv** installs everything from one project file and a lock file, and **Ruff** lints and formats the code.
+- The tests, type check and lint run on **Python 3.13, 3.14 and 3.15** on every push.
+
 I made the 2026 review and fixes with Claude, an AI assistant, as a pair programmer. Each logic fix comes with a test.
 
 The demo video on this page shows the 2023 version, before these fixes.
@@ -52,15 +57,17 @@ The demo video on this page shows the 2023 version, before these fixes.
 ---
 
 ### Run it
+Needs [uv](https://docs.astral.sh/uv/), which fetches Python 3.13 or later (with Tkinter) and every dependency.
+
 ```bash
 git clone https://github.com/mcneillium/CloudBasedDataManagementSystem.git
 cd CloudBasedDataManagementSystem
-pip install -r requirements.txt
 cp .env.example .env    # add your own MongoDB connection string
-python main_gui.py
+uv run main_gui.py      # opens the app
+uv run pytest           # runs the tests, no database server needed
 ```
 
 ---
 
 ### Tech stack
-Python, SQLite, MongoDB (PyMongo), Tkinter, pytest, mongomock, GitHub Actions.
+Python 3.13 to 3.15, SQLite, MongoDB (PyMongo), Tkinter, pytest, mongomock, mypy, Ruff, uv, GitHub Actions.

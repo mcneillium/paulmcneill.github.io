@@ -247,4 +247,30 @@
       iframe.focus();
     });
   });
+
+  /* -------- Instant navigation (Speculation Rules API) --------------- */
+  // Where the browser supports it (Chromium today), start loading a page on
+  // this site when the visitor rests the pointer on its link, so the click
+  // feels instant. Other browsers ignore this. The built demo apps, files
+  // and downloads are left out, and nothing is preloaded on Save-Data.
+  const saveData = navigator.connection && navigator.connection.saveData;
+  if (!saveData && HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules')) {
+    const rules = document.createElement('script');
+    rules.type = 'speculationrules';
+    rules.textContent = JSON.stringify({
+      prerender: [{
+        where: {
+          and: [
+            { href_matches: '/*' },
+            { not: { href_matches: '/demos/*' } },
+            { not: { href_matches: '/assets/*' } },
+            { not: { href_matches: '/*.*' } },
+            { not: { selector_matches: '[download], [target=_blank], [data-no-prerender]' } }
+          ]
+        },
+        eagerness: 'moderate'
+      }]
+    });
+    document.head.appendChild(rules);
+  }
 })();

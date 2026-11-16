@@ -107,6 +107,8 @@ img/
 cv.html                 /cv/ public CV, data in _data/cv.yml (employer and
                         client unnamed; email and links only; print to PDF)
 404.html
+llms.txt                /llms.txt, a Markdown map of the site for AI assistants,
+                        generated from _data (projects, foundations, cv, profile)
 scripts/
   optimize-images.js    generate .webp + thumb.webp siblings via sharp
   generate-assets.js    noise, dot-grid, OG images, favicon set
@@ -209,6 +211,13 @@ runs with UTF-8 by default — no env needed there.
 - Below-fold media uses `loading="lazy"` and `decoding="async"`.
 - Above-fold media uses `loading="eager"` and `fetchpriority="high"`
   (currently only the post hero).
+- Same-site links are prerendered on hover through the Speculation Rules API
+  (injected at the end of `main.js`; the CSP allows it with
+  `'inline-speculation-rules'`). Give a link `data-no-prerender` if its page
+  must not load early; `/demos/`, `/assets/` and file links are already left out.
+- Page changes cross-fade with `@view-transition` (end of `main.css`), off
+  under reduced motion. The nav has `view-transition-name: site-nav`; keep
+  that name unique on every page.
 - Don't add a service worker — silent stale-cache bugs aren't worth it
   on a content-light site.
 

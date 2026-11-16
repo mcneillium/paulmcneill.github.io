@@ -1,4 +1,4 @@
-# Early projects (2023), revisited November 2026. Rendered by _includes/foundations.html
+# Early projects (2023), revisited and brought up to date November 2026. Rendered by _includes/foundations.html
 # under the main project grid. Every figure here matches the case study and the repo.
 - title: "Java Ticket Machine"
   url: "/projects/java-ticket-machine/"
@@ -6,8 +6,8 @@
   image: "/img/portfolio/ticket-machine/01-purchase.png"
   shows: "Inheritance, polymorphism and encapsulation in Java and JavaFX."
   found: "Charged £10 for three tickets, and crashed on an empty quantity."
-  tests: "11 JUnit tests"
-  tech: ["Java", "JavaFX", "JUnit"]
+  tests: "13 JUnit tests"
+  tech: ["Java 25", "JavaFX", "JUnit 6"]
 
 - title: "Data Structures in Python"
   url: "/projects/data-structures-python/"
@@ -15,8 +15,8 @@
   image: "/img/portfolio/data-structures/01-tree.png"
   shows: "A binary search tree, a graph with breadth-first search and a hash table, from scratch."
   found: "BFS crashed, colliding keys were lost, and the tree was never drawn."
-  tests: "9 pytest tests"
-  tech: ["Python", "Tkinter", "pytest"]
+  tests: "9 tests, typed"
+  tech: ["Python", "mypy", "uv"]
 
 - title: "SQL and NoSQL, Side by Side"
   url: "/projects/cloud-data-management/"
@@ -33,5 +33,5 @@
   image: "/img/portfolio/expense-tracker/01-expenses.png"
   shows: "Spending in four currencies, stored in CSV and charted in pounds."
   found: "The chart added dollars to pounds, and Delete All deleted nothing."
-  tests: "6 pytest tests"
-  tech: ["Python", "pandas", "Matplotlib"]
+  tests: "14 pytest tests"
+  tech: ["Python", "pandas", "Decimal"]

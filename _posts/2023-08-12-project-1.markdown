@@ -1,6 +1,6 @@
 ---
 title: Java Ticket Machine
-subtitle: "Object-oriented Java and JavaFX, revisited in 2026: the machine now charges for the quantity bought"
+subtitle: "Object-oriented Java and JavaFX, revisited in 2026: fixed, tested and moved to Java 25"
 layout: post
 modal-id: 1
 date: 2024-08-24
@@ -13,7 +13,7 @@ permalink: /projects/java-ticket-machine/
 redirect_from:
   - "/software development/2024/08/24/project-1/"
 description: "A small Java and JavaFX ticket machine written to show inheritance, polymorphism and encapsulation. Revisited in November 2026: it charged £10 for three tickets and crashed on an empty quantity. Both are fixed, with 11 JUnit tests running on every push."
-impact: "Two pricing and input bugs found and fixed; tests up from 0 to 11"
+impact: "Two pricing and input bugs found and fixed; tests up from 0 to 13"
 github-url: https://github.com/mcneillium/Ticket-Machine-System
 youtube-url: https://www.youtube.com/embed/APM7f09MWmM
 ---
@@ -45,7 +45,12 @@ It is a small program. It is on this site because of what happened when I came b
 - `TicketMachine.parseQuantity` turns what was typed into a number from 1 to 20 or a plain message ("Enter the quantity as a whole number, for example 2."). An empty box means one ticket, matching its hint.
 - The machine keeps a running total of takings, shown under the button.
 - The jar's entry point now opens the window.
-- 11 JUnit 5 tests cover the prices, totals, input checks and takings, and run on GitHub Actions on every push.
+- JUnit tests cover the prices, totals, input checks and takings, and run on GitHub Actions on every push.
+
+### Brought up to date
+- It now runs on **Java 25**, the current long-term-support release, with **JavaFX 25** and **JUnit 6**.
+- The window used to pick a ticket class by comparing the drop-down's text with "Student". The machine now keeps the list of ticket types and builds the right one, so the window never names a subclass and a new type is one class and one line.
+- 13 tests in all. Dependabot proposes dependency updates once a month.
 
 I made the 2026 review and fixes with Claude, an AI assistant, as a pair programmer. Each logic fix comes with a test.
 
@@ -54,7 +59,7 @@ The demo video on this page shows the 2023 version, before these fixes.
 ---
 
 ### Run it
-Needs JDK 21 and Maven; Maven downloads JavaFX.
+Needs JDK 25 and Maven; Maven downloads JavaFX.
 
 ```bash
 git clone https://github.com/mcneillium/Ticket-Machine-System.git
@@ -66,4 +71,4 @@ mvn test         # runs the tests
 ---
 
 ### Tech stack
-Java 21, JavaFX 21, Maven, JUnit 5, GitHub Actions.
+Java 25, JavaFX 25, Maven, JUnit 6, GitHub Actions, Dependabot.

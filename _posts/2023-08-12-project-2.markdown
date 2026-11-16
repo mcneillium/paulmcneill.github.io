@@ -46,6 +46,11 @@ Reading the code again in November 2026, with tests this time, turned up five pr
 - The graph tab shows the adjacency list and the search order separately, with the search controls on their own row.
 - 9 pytest tests, run on GitHub Actions on every push.
 
+### Brought up to date
+- The three structures are **fully typed** with Python's newer generic syntax, for example `class HashTable[K, V]`, and mypy checks them in strict mode.
+- **uv** fetches Python and the tools from one project file and a lock file, and **Ruff** lints and formats the code.
+- The tests, type check and lint run on **Python 3.13, 3.14 and 3.15** on every push.
+
 I made the 2026 review and fixes with Claude, an AI assistant, as a pair programmer. Each logic fix comes with a test.
 
 The demo video on this page shows the 2023 version, before these fixes.
@@ -53,16 +58,17 @@ The demo video on this page shows the 2023 version, before these fixes.
 ---
 
 ### Run it
-Python 3.10 or later, standard library only (Tkinter ships with most installs).
+Needs [uv](https://docs.astral.sh/uv/), which fetches Python 3.13 or later with Tkinter included. The code itself uses only the standard library.
 
 ```bash
 git clone https://github.com/mcneillium/DataStructuresAlgorithms.git
 cd DataStructuresAlgorithms
-python main_gui.py
-pip install pytest && python -m pytest -q
+uv run main_gui.py   # opens the app
+uv run pytest        # runs the tests
+uv run mypy          # checks the types
 ```
 
 ---
 
 ### Tech stack
-Python, Tkinter, pytest, GitHub Actions.
+Python 3.13 to 3.15, Tkinter, pytest, mypy, Ruff, uv, GitHub Actions.
