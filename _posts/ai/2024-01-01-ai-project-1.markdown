@@ -25,8 +25,8 @@ My first hands-on language-model project, from 2023 to 2024: take GPT-2, fine-tu
 ---
 
 ### What I built
-- **Fine-tuning:** GPT-2 (124M parameters) trained with Hugging Face Transformers and the `Trainer` API on the public ConvAI2 dialogue dataset combined with custom domain dialogues (support-style questions and answers). Causal language modelling, sequences of 128 tokens, 3 epochs, batch size 4, on a local NVIDIA GPU. The run (above, August 2024) took 2,622 steps; training loss fell from 2.96 to 2.42 over the first 1.7 epochs.
-- **Serving:** a Flask API (`/api/generate`) that loads the fine-tuned model and generates replies with nucleus sampling (top-p 0.9, top-k 50, temperature 0.7) and a block on repeated phrases.
+- **Fine-tuning:** GPT-2 (124M parameters) trained with Hugging Face Transformers and the `Trainer` API on the public ConvAI2 dialogue dataset. Custom support-style dialogues were planned too, but that file is empty in the repository, so only ConvAI2 can be confirmed. Causal language modelling, sequences of 128 tokens, 3 epochs, batch size 4. The run (above, August 2024) took 2,622 steps and 3.6 hours; training loss fell from 2.96 to 2.42 over the first 1.7 epochs and reached 2.21 by step 2,500 (the log is kept in the repository).
+- **Serving:** a Flask API (`/api/generate`) that loads the fine-tuned model and generates replies. The settings asked for nucleus sampling (top-p 0.9, top-k 50, temperature 0.7), but see below: in 2024 they were never switched on.
 - **Three interfaces on the same model:** a web page, a Tkinter desktop app and a Streamlit app, plus an early React front end.
 - **Optional storage** of the model in AWS S3.
 
@@ -38,10 +38,29 @@ My first hands-on language-model project, from 2023 to 2024: take GPT-2, fine-tu
 
 ---
 
-### What I would do differently now
-I judged the replies by reading them. Today I would hold out a set of dialogues and report perplexity on it, compare against the untuned GPT-2, and keep the training data with the code so the run can be repeated. Those habits are what my later work is built on: see the [research studies](/research/), which fix the protocol before any model is fitted.
+### Revisited, November 2026
+I went back to the code in November 2026, with Claude as a pair programmer, and did what I had said I would do differently. Running it again turned up real bugs:
+
+| Found | Changed |
+| --- | --- |
+| The sampling settings were passed without `do_sample=True`, so the library ignored them and every reply was greedy: flat and repetitive. | Sampling is on, with a test that fails if it is dropped. |
+| Training joined each conversation into one line with no speakers, so replies ran on into the next turn. | Turns are labelled `User:` and `Assistant:`, and each reply is cut at the next speaker. |
+| The React front end's backend only reversed the input text; it never reached the model. | All four interfaces use one API, and the web page keeps the conversation history. |
+| The requirements file was saved as UTF-16, which pip cannot read, and listed 130 packages the project never used. | Seven direct dependencies, 11 tests and GitHub Actions CI. |
+| Replies were judged by reading them. | Whole conversations are held out and perplexity is compared with untuned GPT-2. |
+
+Retrained for one epoch on 2,426 ConvAI2 conversations (36 minutes on a 2-core CPU), with 269 conversations held out:
+
+| Model | Held-out perplexity (lower is better) |
+| --- | --- |
+| GPT-2, untuned | 23.33 |
+| GPT-2 fine-tuned on ConvAI2 | 7.80 |
+
+Most of that gain is the model learning the format and style of this chit-chat; it does not make the replies helpful or true, and the page says so. That is the honest scope of a 124M-parameter model, and the same habit of measuring against a baseline on held-out data runs through my [research studies](/research/).
+
+{% include picture.html src="/img/portfolio/ai-assistant/chat-2026.png" alt="The 2026 chat page: three short exchanges with the fine-tuned model, which answers in turn but changes its story from student to librarian" %}
 
 ---
 
 ### Tech stack
-Python, PyTorch, Hugging Face Transformers and Datasets, Flask, Tkinter, Streamlit, React, AWS S3 (optional).
+Python, PyTorch, Hugging Face Transformers, Flask, Tkinter, Streamlit, React, pytest, GitHub Actions. AWS S3 storage was optional in the 2024 version.

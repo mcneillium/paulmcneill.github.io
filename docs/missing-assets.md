@@ -32,7 +32,7 @@ Listed for sign-off — **do not delete without confirmation**.
 | `img/portfolio/rathlin360-thumbnail.png`          | 530 KB| Old volunteer site (referenced in CV)  |
 | `img/portfolio/roundicons{,-thumbnail}.png`       | 196 KB| Stock                                  |
 | `img/portfolio/zingdp-thumbnail.png`              | 917 KB| Old client                             |
-| `img/portfolio/industrial-temps-thumbnail.png`    | 1.2 MB| Duplicate (`industrial-temps-crm.png` is active) |
+| `img/portfolio/industrial-temps-thumbnail.png`    | 1.2 MB| Unused (the CRM card now uses `crm-reporting-diagram.png`) |
 
 To remove (after sign-off):
 

@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-11-15T22:59:23.806Z",
+  "built_at": "2026-11-16T01:03:21.373Z",
   "embedding_model": null,
   "chunks": [
     {
@@ -315,38 +315,38 @@
     {
       "id": "proj.5",
       "category": "project",
-      "text": "Project: CRM Reporting — Industrial Temps Category: Data Analytics Impact: Consolidated 6+ disconnected sources into a single live dashboard Data quality framework, ETL via Access + Power Query, and Power BI dashboards for placements, client performance, and consultant scorecards. Tech: Power BI, Power Query, ETL, Recruitment",
+      "text": "Project: CRM Reporting — Industrial Temps Category: Data Analytics Impact: Consolidated 6+ disconnected sources into a single live dashboard Recruitment agency, 2018 to 2019: CRM data from more than six sources brought into one live dashboard, with validation rules, audit queries and staff training. Tech: Data quality, Power Query, Access, Recruitment",
       "keywords": [
         "crm reporting — industrial temps",
         "data analytics",
-        "power bi",
+        "data quality",
         "power query",
-        "etl",
+        "access",
         "recruitment",
         "project",
         "work",
         "built",
         "shipped"
       ],
-      "tokens": 46
+      "tokens": 51
     },
     {
       "id": "proj.6",
       "category": "project",
-      "text": "Project: AI Assistant (fine-tuned GPT-2) Category: AI Engineering Impact: GPT-2 fine-tuned on conversational data, served three ways GPT-2 fine-tuned with Hugging Face Transformers on public and custom dialogue, served through a Flask API with web, desktop and Streamlit interfaces. Tech: Transformers, Fine-tuning, PyTorch, Flask",
+      "text": "Project: AI Assistant (fine-tuned GPT-2) Category: AI Engineering Impact: Held-out perplexity 23.3 → 7.8 against untuned GPT-2 (revisited 2026) GPT-2 fine-tuned on ConvAI2 dialogue with Hugging Face Transformers, served through one Flask API to web, desktop, Streamlit and React clients. Revisited in 2026: a sampling bug fixed and a proper held-out evaluation. Tech: Transformers, Fine-tuning, Evaluation, Flask",
       "keywords": [
         "ai assistant (fine-tuned gpt-2)",
         "ai engineering",
         "transformers",
         "fine-tuning",
-        "pytorch",
+        "evaluation",
         "flask",
         "project",
         "work",
         "built",
         "shipped"
       ],
-      "tokens": 44
+      "tokens": 57
     },
     {
       "id": "proj.7",

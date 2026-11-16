@@ -1,62 +1,55 @@
 ---
 layout: post
 title: "CRM Reporting – Industrial Temps"
-subtitle: "Data quality, KPI dashboards, and recruitment funnel analytics"
+subtitle: "Bringing a recruitment agency's CRM data and reporting into one reliable place"
 modal-id: project-industrial-temps
-thumbnail: industrial-temps-crm.png
-img: industrial-temps-crm.png
-alt: "Industrial Temps CRM reporting dashboard"
-project-date: 2024-09-06
+thumbnail: crm-reporting-diagram.png
+alt: "Diagram: more than six data sources, cleaned and checked, combined into reporting tables and one live dashboard"
+architecture: crm-reporting
+project-date: "November 2018 – March 2019"
+client: "Industrial Temps, Belfast (employer)"
 category: projects
 permalink: /projects/crm-reporting-industrial-temps/
 redirect_from:
   - /projects/2024/09/06/crm-reporting-industrial-temps/
-description: "Access & Excel queries, data audits, and monthly KPI dashboards for recruitment performance."
+description: "As CRM Systems Coordinator at a Belfast recruitment agency, I brought CRM data from more than six sources into one live dashboard and trained staff to keep it clean, improving data accuracy by over 25%."
 impact: "Consolidated 6+ disconnected sources into a single live dashboard" # Confirmed by Paul, 2026-11-04
 github-url:
 youtube-url:
 ---
 
 ### Overview
-A full refresh of CRM analytics for a recruitment agency: **cleaner data, better KPIs, and faster monthly reporting**.
+From November 2018 to March 2019 I was CRM Systems Coordinator at Industrial Temps, a recruitment agency in Belfast. The job was to make the agency's numbers trustworthy: bring its CRM data and reporting together from more than six separate sources into one live dashboard, and train staff so the data stayed clean. Data accuracy improved by over 25%.
+
+No screenshots are shown, because the reports held candidates' and clients' personal data. The diagram above shows how the pieces fitted together.
 
 ---
 
-### Challenges
-- Inconsistent CRM fields → poor KPI accuracy (placements, fill rate, time-to-hire).
-- Slow manual exports → reporting lag and errors.
-- Limited visibility into drop-offs by stage (sourcing → placement).
+### The problem
+- CRM fields were filled in inconsistently, so measures such as placements, fill rate and time to hire could not be trusted.
+- Monthly figures came from manual exports, which were slow and easy to get wrong.
+- There was little sight of where candidates dropped out between sourcing and placement.
 
-### What I Delivered
-- **Data quality framework**: mandatory fields, validation rules, audit queries.
-- **ETL/ELT pipeline** (Access + Power Query) → standardized reporting tables.
-- **Power BI dashboards**: placements, client performance, consultant scorecards.
-- **Scheduled refresh** from SharePoint & SQL; versioned datasets.
+### What I did
+- **Data quality:** required fields, validation rules and audit queries to catch gaps and inconsistent entries.
+- **Reporting tables:** queries in Access and Excel (Power Query) that turned the separate sources into standard tables.
+- **One dashboard:** placements, client performance and consultant activity in one place, plus a monthly pack for leadership.
+- **Training:** showed staff how to record candidates and placements consistently.
 
----
-
-### KPIs & Metrics
-- **Placement rate**, **time-to-hire**, **fill rate**, **candidate source ROI**.
-- **Funnel drop-off** by stage + reasons (disqualifications, no-shows).
-- **Consultant activity** vs outcomes (calls, interviews, starts).
-
-### Outcomes
-- **3× faster** month-end reporting (hours → minutes).
-- **+22% data completeness** (quarter-over-quarter).
-- Stakeholders self-serve common queries; fewer ad-hoc report requests.
-
-### Implementation Details
-- **Source**: CRM export + SQL mirror (where available)
-- **Transform**: Access/Excel (Power Query), data audits, normalization
-- **Serve**: Power BI reports with role-level security
-- **Governance**: Dataset owners, refresh alerts, change log
+### What the reports tracked
+- Placement rate, time to hire, fill rate and where candidates came from.
+- Drop-off at each stage from sourcing to placement, with the reasons recorded.
+- Consultant activity (calls, interviews, starts) against outcomes.
 
 ---
 
-### My Role
-- Requirement capture, data modeling, DAX measures, stakeholder training.
-- Built “single-click” monthly pack export for leadership.
+### Results
+- More than six disconnected sources consolidated into a single live dashboard.
+- Data accuracy up by over 25%.
 
-### Tooling
-Dynamics 365 (or CRM export), Access, Excel/Power Pivot, Power Query, Power BI, SharePoint
+<!-- TODO: REPLACE. Earlier versions of this page also claimed "3× faster month-end reporting" and
+     "+22% data completeness". Neither was confirmed, and +22% conflicts with the CV's "over 25%",
+     so both were removed on 16 Nov 2026. Restore them only with Paul's confirmation. -->
 
+### Tools
+Access, Excel, Power Query, dashboards and a monthly reporting pack. <!-- TODO: REPLACE: confirm with Paul whether the dashboard was Power BI in 2018-19, and which CRM the agency used. -->

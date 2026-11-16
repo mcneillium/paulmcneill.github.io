@@ -75,13 +75,13 @@
 
 - title: "CRM Reporting — Industrial Temps"
   problem: "Inconsistent CRM data and manual exports make recruitment reporting harder."
-  contribution: "Built validation queries, reporting tables and Power BI dashboards for placements and consultant performance."
-  evidence: "Case study covering the reporting workflow, data quality checks and my role."
+  contribution: "As CRM Systems Coordinator, built validation rules, audit queries and reporting tables, and trained staff to keep the data clean."
+  evidence: "Case study with a diagram of the reporting flow; data accuracy up by over 25%."
   category: "Data Analytics"
   impact: "Consolidated 6+ disconnected sources into a single live dashboard" # Confirmed by Paul, 2026-11-04
-  description: "Data quality framework, ETL via Access + Power Query, and Power BI dashboards for placements, client performance, and consultant scorecards."
-  image: "/img/portfolio/industrial-temps-crm.png"
-  tags: ["Power BI", "Power Query", "ETL", "Recruitment"]
+  description: "Recruitment agency, 2018 to 2019: CRM data from more than six sources brought into one live dashboard, with validation rules, audit queries and staff training."
+  image: "/img/portfolio/crm-reporting-diagram.png"
+  tags: ["Data quality", "Power Query", "Access", "Recruitment"]
   url: "/projects/crm-reporting-industrial-temps/"
   github: null
   demo: null
@@ -90,10 +90,10 @@
 
 - title: "AI Assistant (fine-tuned GPT-2)"
   category: "AI Engineering"
-  impact: "GPT-2 fine-tuned on conversational data, served three ways"
-  description: "GPT-2 fine-tuned with Hugging Face Transformers on public and custom dialogue, served through a Flask API with web, desktop and Streamlit interfaces."
+  impact: "Held-out perplexity 23.3 → 7.8 against untuned GPT-2 (revisited 2026)"
+  description: "GPT-2 fine-tuned on ConvAI2 dialogue with Hugging Face Transformers, served through one Flask API to web, desktop, Streamlit and React clients. Revisited in 2026: a sampling bug fixed and a proper held-out evaluation."
   image: "/img/portfolio/ai-assistant/training-run.png"
-  tags: ["Transformers", "Fine-tuning", "PyTorch", "Flask"]
+  tags: ["Transformers", "Fine-tuning", "Evaluation", "Flask"]
   url: "/projects/ai-assistant/"
   github: null
   demo: null
