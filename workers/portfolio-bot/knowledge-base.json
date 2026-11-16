@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-11-16T01:03:21.373Z",
+  "built_at": "2026-11-16T11:06:51.780Z",
   "embedding_model": null,
   "chunks": [
     {
@@ -351,19 +351,20 @@
     {
       "id": "proj.7",
       "category": "project",
-      "text": "Project: Custom CRM Web Application Category: Web Engineering Impact: Custom CRM consolidating sales, comms, and analytics Custom CRM tailored to streamline business operations — sales management, customer communication, and analytics in a single PWA. Tech: TypeScript, Node.js, PostgreSQL",
+      "text": "Project: Custom CRM Category: Web Engineering Impact: Full CRM with a live demo that needs no server Companies, contacts, a deal pipeline, an activity log, tasks and a dashboard. TypeScript on Node.js and PostgreSQL; the demo runs PostgreSQL in your browser. Tech: TypeScript, Node.js, PostgreSQL, React Demo: /demos/custom-crm/",
       "keywords": [
-        "custom crm web application",
+        "custom crm",
         "web engineering",
         "typescript",
         "node.js",
         "postgresql",
+        "react",
         "project",
         "work",
         "built",
         "shipped"
       ],
-      "tokens": 38
+      "tokens": 48
     },
     {
       "id": "found.0",
@@ -619,7 +620,7 @@
       "tokens": 44
     },
     {
-      "id": "blog.9.intro",
+      "id": "blog.8.intro",
       "category": "blog",
       "text": "Blog post — From Notebooks to Pipelines: Why I Stopped Shipping Jupyter: A pragmatic argument for treating notebooks as the experiment, not the deliverable — and what to reach for instead. There's a moment in every ML project where someone says \"we'll just productionise the notebook.\" It's the same moment, every time, that the project quietly stops making progress. This post is about why notebooks fail in production, and what to reach for instead. I'm not against notebooks — I write them every day for exploration. The argument is narrower: **notebooks should not be the deliverable**.",
       "keywords": [
@@ -636,7 +637,7 @@
       "tokens": 96
     },
     {
-      "id": "blog.9.body",
+      "id": "blog.8.body",
       "category": "blog",
       "text": "From Notebooks to Pipelines: Why I Stopped Shipping Jupyter — continued: The strengths are real: - Inline plots, side-by-side with code, with the data from the last run still in scope. Iteration speed is genuinely high. - Markdown cells let you narrate as you build. Excellent for analysis reports. - The kernel-based execution model means you can poke at intermediate state without rerunning everything. For exploration, model debugging, one-off analyses, and teaching, this is the right tool. I'd lose nothing by saying so. The failures all come from the same root cause: **a notebook's runtime behaviour is decoupled from its source**. Cell execution order isn't tracked by the file. Out-of-band state lives in the kernel between runs. Hidden imports survive across cells. Variables get reused with new meanings halfway down. The file you commit isn't the program that ran. This makes them fragile in ways that don't matter for exploration but become intolerable for production: 1. **Reproducibility evaporates silently.** \"Re-run all cells\" produces a different result than the run you remember, and you can't always tell why. 2. **Diffs are useless.** A cell-output change rewrites half the JSON. Code review becomes pattern-matching against noise. 3. **Testing is awkward.** You can shoehorn `pytest` against notebook functions with `nbval` or extract them into modules and import — but at that point you've already started the migration. 4. **Dependencies are vague.** `pip install` lines in cells, often without versions. The notebook works on th",
       "keywords": [
@@ -652,7 +653,7 @@
       "tokens": 241
     },
     {
-      "id": "blog.10.intro",
+      "id": "blog.9.intro",
       "category": "blog",
       "text": "Blog post — Building Production RAG Pipelines: What Breaks After the Demo: Notes on taking retrieval-augmented generation past the demo: chunking that doesn't shred meaning, retrieval that keeps citations, and evaluation harnesses that catch regressions before users do. A weekend RAG demo is one thing. A *production* RAG pipeline is a different animal entirely — and the cost is mostly in the parts you can't see in a notebook. This post collects the patterns I've found genuinely matter, in roughly the order they bite you. The default tutorial chunker — fixed-size sliding window with some overlap — gets you to a demo. It also routinely shreds meaning. Sentences get split mid-clause. Tables turn into nonsense. The bullet point that gives a paragraph its meaning lands in a different chunk to the paragraph itself.",
       "keywords": [
@@ -669,7 +670,7 @@
       "tokens": 133
     },
     {
-      "id": "blog.10.body",
+      "id": "blog.9.body",
       "category": "blog",
       "text": "Building Production RAG Pipelines: What Breaks After the Demo — continued: Three rules that survived contact with real corpora: 1. **Respect document structure.** Use the document's own boundaries — headings, list items, table rows — as candidate split points, not arbitrary character counts. For PDFs, this means a real layout-aware parser (`unstructured`, PyMuPDF with logical-block extraction, or AWS Textract for tables) rather than naive text dumps. 2. **Vary chunk size to fit the question.** Small chunks (~200 tokens) maximise retrieval precision but lose context. Large chunks (~1k tokens) preserve context but make embedding less discriminative. I've ended up with a two-stage retrieval pattern: small chunks for finding *where*, then expand to the parent section before passing to the model. 3. **Store the spelling, the slug, and the source.** Every chunk needs a stable identifier and a path back to the original document, with page or anchor offsets. Without this, you can't render citations and you can't debug a hallucination. \"It looks like the right chunks come back for these five test queries\" is not an evaluation. It's a vibe. The first time you change embedding models, prompt versions, or chunk strategy, you'll discover three things that silently regressed and one user already complained about. The cheapest reliable harness: - **A labelled query set.** 50–100 queries each tagged with the chunks (or source URLs) that should be retrieved. You build this by mining real user queries and annotating by hand. Yes,",
       "keywords": [

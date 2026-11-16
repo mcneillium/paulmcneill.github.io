@@ -19,7 +19,7 @@ youtube-url:
 ---
 
 ### Overview
-From November 2018 to March 2019 I was CRM Systems Coordinator at Industrial Temps, a recruitment agency in Belfast. The job was to make the agency's numbers trustworthy: bring its CRM data and reporting together from more than six separate sources into one live dashboard, and train staff so the data stayed clean. Data accuracy improved by over 25%.
+From November 2018 to March 2019 I was CRM Systems Coordinator at Industrial Temps, a recruitment agency in Belfast. The agency ran a bespoke CRM. The job was to make its numbers trustworthy: bring the CRM's data and reporting, spread across more than six separate sources, into one live dashboard, and train staff so the data stayed clean. Data accuracy improved by over 25%.
 
 No screenshots are shown, because the reports held candidates' and clients' personal data. The diagram above shows how the pieces fitted together.
 
@@ -52,4 +52,4 @@ No screenshots are shown, because the reports held candidates' and clients' pers
      so both were removed on 16 Nov 2026. Restore them only with Paul's confirmation. -->
 
 ### Tools
-Access, Excel, Power Query, dashboards and a monthly reporting pack. <!-- TODO: REPLACE: confirm with Paul whether the dashboard was Power BI in 2018-19, and which CRM the agency used. -->
+Access, Excel, Power Query, dashboards and a monthly reporting pack. <!-- TODO: REPLACE: confirm with Paul whether the dashboard was Power BI in 2018-19. The CRM was bespoke (Paul, 16 Nov 2026). -->

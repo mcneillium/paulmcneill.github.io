@@ -100,14 +100,14 @@
   featured: false
   size: "md"
 
-- title: "Custom CRM Web Application"
+- title: "Custom CRM"
   category: "Web Engineering"
-  impact: "Custom CRM consolidating sales, comms, and analytics"
-  description: "Custom CRM tailored to streamline business operations — sales management, customer communication, and analytics in a single PWA."
-  image: "/img/portfolio/indevelopment.png"
-  tags: ["TypeScript", "Node.js", "PostgreSQL"]
+  impact: "Full CRM with a live demo that needs no server"
+  description: "Companies, contacts, a deal pipeline, an activity log, tasks and a dashboard. TypeScript on Node.js and PostgreSQL; the demo runs PostgreSQL in your browser."
+  image: "/img/portfolio/custom-crm.png"
+  tags: ["TypeScript", "Node.js", "PostgreSQL", "React"]
   url: "/projects/custom-crm/"
-  github: null
-  demo: null
+  github: null # TODO: REPLACE with https://github.com/mcneillium/custom-crm once the repository is created
+  demo: "/demos/custom-crm/"
   featured: false
   size: "md"

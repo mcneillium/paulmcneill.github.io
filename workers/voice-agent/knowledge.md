@@ -80,7 +80,7 @@ be stated as fact.
   device. The code is private; access on request.
 - Aurora Domiciliary Care: Power BI analytics for the same fictional provider,
   on a synthetic 16-table dataset. Not commissioned by the NHS or any provider.
-- CRM reporting for Industrial Temps: a data quality framework, ETL with Access
+- CRM reporting for Industrial Temps (the agency's CRM was bespoke): a data quality framework, ETL with Access
   and Power Query, and Power BI dashboards.
 - AI Assistant: GPT-2 fine-tuned on dialogue data with Hugging Face
   Transformers, served through a Flask API with web, desktop and Streamlit
@@ -89,7 +89,11 @@ be stated as fact.
   videos (Claude scripts, ElevenLabs narration, FFmpeg assembly) with
   speech-to-text and source checks; six explainers of Paul's work are built but
   not yet published.
-- A custom CRM web application.
+- Custom CRM, built from scratch in November 2026: companies, contacts, a deal
+  pipeline, an activity log, tasks, email templates and a dashboard, in
+  TypeScript with Fastify and PostgreSQL and a React web app that installs as a
+  PWA. The live demo on the site runs PostgreSQL inside the browser on invented
+  sample data. 31 automated tests.
 - Four small 2023 apps, revisited in November 2026 with tests (found and fixed
   bugs in every one, working with Claude as a pair programmer): a Java ticket
   machine (it charged for one ticket whatever the quantity), data structures in
