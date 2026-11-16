@@ -5,7 +5,9 @@
  * viewport, so the home page stays fast for visitors who never scroll
  * to it.
  *
- * Total payload (cold cache): ~600 KB tfjs core + ~1.2 MB model = ~1.8 MB.
+ * Total payload (cold cache): tfjs core plus about 10 MB of model weights,
+ * so nothing downloads until the visitor shows intent: focusing the box,
+ * submitting, or picking a sample. Scrolling past costs nothing.
  * Cached after first load.
  */
 (() => {
@@ -78,20 +80,14 @@
         onProgress: () => {}
       });
 
-      // After the model loads, ask the browser cache for an approximate size.
-      // We can't perfectly count bytes when tf does the fetching internally,
-      // so we report "≈" and use a conservative estimate based on topology.
+      // Report the real weight size: every weight is a 4-byte float.
       try {
-        const summary = model.toJSON(null, false);
-        bytesDownloaded = JSON.stringify(summary).length;
-        // weights typically 100x bigger than topology JSON for this model
-        bytesDownloaded *= 100;
+        bytesDownloaded = model.weights.reduce((n, w) => n + w.val.size * 4, 0);
       } catch {}
 
-      sizeEl.textContent = '≈ ' + fmtBytes(bytesDownloaded);
+      sizeEl.textContent = fmtBytes(bytesDownloaded) + ' of weights';
       setStatus('Analyse');
       button.disabled = false;
-      input.focus();
     })();
     return loadingPromise;
   }
@@ -174,6 +170,15 @@
     const text = (input.value || '').trim();
     if (!text) return;
     button.disabled = true;
+    try {
+      if (!model) { setStatus('Loading model…'); await loadEverything(); }
+    } catch (e) {
+      loadingPromise = null; // allow another try
+      setStatus('Analyse');
+      button.disabled = false;
+      renderError(diagnoseLoadError(e));
+      return;
+    }
     setStatus('Working…');
     try {
       const out = await predict(text);
@@ -189,14 +194,13 @@
 
   form.addEventListener('submit', (e) => { e.preventDefault(); run(); });
   samples.forEach(chip => {
-    chip.addEventListener('click', async () => {
+    chip.addEventListener('click', () => {
       input.value = chip.dataset.sample || '';
-      if (!model) await loadEverything();
       run();
     });
   });
 
-  /* ------------- lazy load on viewport ------------- */
+  /* ------------- load errors ------------- */
   function diagnoseLoadError(err) {
     console.error('[ml-demo] load failed:', err);
     const msg = String(err && err.message || err);
@@ -213,21 +217,10 @@
            "the model CDN (storage.googleapis.com) may be blocked at the network level.";
   }
 
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          io.disconnect();
-          loadEverything().catch((e) => {
-            setStatus('Model failed to load');
-            renderError(diagnoseLoadError(e));
-          });
-        }
-      });
-    }, { rootMargin: '300px 0px' });
-    io.observe(root);
-  } else {
-    // Fallback: load on first focus / sample click
-    input.addEventListener('focus', () => loadEverything().catch(console.error), { once: true });
-  }
+  // Start downloading as soon as the visitor shows intent, so the model is
+  // usually ready by the time they finish typing. Errors surface on submit.
+  input.addEventListener('focus', () => {
+    setStatus('Loading model…');
+    loadEverything().catch(() => { loadingPromise = null; setStatus('Analyse'); });
+  }, { once: true });
 })();

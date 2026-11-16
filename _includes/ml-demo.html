@@ -6,7 +6,7 @@
       <p class="section-lead">
         A small CNN trained on movie reviews, running entirely on your device —
         no server, no upload. Type a sentence and the model classifies its
-        sentiment in milliseconds. Lazy-loads when this section enters view.
+        sentiment in milliseconds. The model (about 10 MB) downloads only when you start typing or pick a sample.
       </p>
     </div>
 
@@ -22,8 +22,8 @@
             maxlength="200"
             autocomplete="off"
           >
-          <button type="submit" class="btn btn-primary ml-card__btn" id="mlRun" disabled>
-            <span class="ml-card__btn-text">Loading model…</span>
+          <button type="submit" class="btn btn-primary ml-card__btn" id="mlRun">
+            <span class="ml-card__btn-text">Analyse</span>
           </button>
         </div>
         <div class="ml-card__samples" aria-label="Try a sample">
@@ -41,7 +41,7 @@
 
       <dl class="ml-card__meta">
         <div><dt>Model</dt><dd>sentiment-CNN v1</dd></div>
-        <div><dt>Size</dt><dd id="mlSize">—</dd></div>
+        <div><dt>Size</dt><dd id="mlSize">about 10 MB, loads on first use</dd></div>
         <div><dt>Inference</dt><dd id="mlTime">—</dd></div>
         <div><dt>Runtime</dt><dd>TensorFlow.js · WebGL</dd></div>
       </dl>

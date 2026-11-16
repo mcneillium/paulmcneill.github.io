@@ -1,0 +1,12 @@
+{%- comment -%}
+  Click-to-play YouTube embed for case studies. Shows the video's thumbnail and
+  loads the player (about 3 MB) only when pressed; main.js swaps in the iframe.
+  Params: url (an embed URL), label (accessible name).
+{%- endcomment -%}
+{%- assign yt_id = include.url | split: "/" | last | split: "?" | first -%}
+<div class="post__video">
+  <button type="button" class="lite-yt__btn" data-yt="{{ yt_id }}" aria-label="{{ include.label | escape }}">
+    <img src="https://i.ytimg.com/vi/{{ yt_id }}/hqdefault.jpg" alt="" loading="lazy" decoding="async">
+    <span class="lite-yt__play" aria-hidden="true">{% include icon.html name="play" class="icon" %}</span>
+  </button>
+</div>

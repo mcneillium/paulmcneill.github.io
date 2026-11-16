@@ -92,6 +92,8 @@ youtube-url:
 
 /* Hide any old carousel-specific blocks if still present */
 .portfolio-carousel { display:none !important; }
+
+.gal-pic { display: contents; }
 </style>
 
 ### Overview
@@ -219,43 +221,43 @@ React Native (Expo), React, Material UI, Chart.js, Firebase (Auth, Realtime Data
     <h4 class="text-center">Web App Dashboard &amp; Admin</h4>
     <div class="tile-gallery" data-album="{{ page.modal-id }}-aac-web">
       <div class="tile">
-        <a href="/img/portfolio/aac-ai/admin_dashboard.png" data-caption="Admin Dashboard" data-index="0">
-          <img src="/img/portfolio/aac-ai/admin_dashboard.png" alt="Admin Dashboard" loading="lazy"><div class="cap">Admin Dashboard</div>
+        <a href="/img/portfolio/aac-ai/admin_dashboard.webp" data-caption="Admin Dashboard" data-index="0">
+          <picture class="gal-pic"><source srcset="/img/portfolio/aac-ai/admin_dashboard-thumb.webp" type="image/webp"><img src="/img/portfolio/aac-ai/admin_dashboard.png" alt="Admin Dashboard" loading="lazy"></picture><div class="cap">Admin Dashboard</div>
         </a>
       </div>
       <div class="tile">
-        <a href="/img/portfolio/aac-ai/CaregiverDashboard.png" data-caption="Caregiver Dashboard" data-index="1">
-          <img src="/img/portfolio/aac-ai/CaregiverDashboard.png" alt="Caregiver Dashboard" loading="lazy"><div class="cap">Caregiver Dashboard</div>
+        <a href="/img/portfolio/aac-ai/CaregiverDashboard.webp" data-caption="Caregiver Dashboard" data-index="1">
+          <picture class="gal-pic"><source srcset="/img/portfolio/aac-ai/CaregiverDashboard-thumb.webp" type="image/webp"><img src="/img/portfolio/aac-ai/CaregiverDashboard.png" alt="Caregiver Dashboard" loading="lazy"></picture><div class="cap">Caregiver Dashboard</div>
         </a>
       </div>
       <div class="tile">
-        <a href="/img/portfolio/aac-ai/manage_caregivers.png" data-caption="Manage Caregivers" data-index="2">
-          <img src="/img/portfolio/aac-ai/manage_caregivers.png" alt="Manage Caregivers" loading="lazy"><div class="cap">Manage Caregivers</div>
+        <a href="/img/portfolio/aac-ai/manage_caregivers.webp" data-caption="Manage Caregivers" data-index="2">
+          <picture class="gal-pic"><source srcset="/img/portfolio/aac-ai/manage_caregivers-thumb.webp" type="image/webp"><img src="/img/portfolio/aac-ai/manage_caregivers.png" alt="Manage Caregivers" loading="lazy"></picture><div class="cap">Manage Caregivers</div>
         </a>
       </div>
       <div class="tile">
-        <a href="/img/portfolio/aac-ai/user_management.png" data-caption="User Management" data-index="3">
-          <img src="/img/portfolio/aac-ai/user_management.png" alt="User Management" loading="lazy"><div class="cap">User Management</div>
+        <a href="/img/portfolio/aac-ai/user_management.webp" data-caption="User Management" data-index="3">
+          <picture class="gal-pic"><source srcset="/img/portfolio/aac-ai/user_management-thumb.webp" type="image/webp"><img src="/img/portfolio/aac-ai/user_management.png" alt="User Management" loading="lazy"></picture><div class="cap">User Management</div>
         </a>
       </div>
       <div class="tile">
-        <a href="/img/portfolio/aac-ai/voice_dashboard_login.png" data-caption="Dashboard Login" data-index="4">
-          <img src="/img/portfolio/aac-ai/voice_dashboard_login.png" alt="Dashboard Login" loading="lazy"><div class="cap">Dashboard Login</div>
+        <a href="/img/portfolio/aac-ai/voice_dashboard_login.webp" data-caption="Dashboard Login" data-index="4">
+          <picture class="gal-pic"><source srcset="/img/portfolio/aac-ai/voice_dashboard_login-thumb.webp" type="image/webp"><img src="/img/portfolio/aac-ai/voice_dashboard_login.png" alt="Dashboard Login" loading="lazy"></picture><div class="cap">Dashboard Login</div>
         </a>
       </div>
       <div class="tile">
-        <a href="/img/portfolio/aac-ai/Webapp_Signup.png" data-caption="Web App Signup" data-index="5">
-          <img src="/img/portfolio/aac-ai/Webapp_Signup.png" alt="Web App Signup" loading="lazy"><div class="cap">Web App Signup</div>
+        <a href="/img/portfolio/aac-ai/Webapp_Signup.webp" data-caption="Web App Signup" data-index="5">
+          <picture class="gal-pic"><source srcset="/img/portfolio/aac-ai/Webapp_Signup-thumb.webp" type="image/webp"><img src="/img/portfolio/aac-ai/Webapp_Signup.png" alt="Web App Signup" loading="lazy"></picture><div class="cap">Web App Signup</div>
         </a>
       </div>
       <div class="tile">
-        <a href="/img/portfolio/aac-ai/CLI_webapp.png" data-caption="CLI Build Output" data-index="6">
-          <img src="/img/portfolio/aac-ai/CLI_webapp.png" alt="CLI Build Output" loading="lazy"><div class="cap">CLI Build Output</div>
+        <a href="/img/portfolio/aac-ai/CLI_webapp.webp" data-caption="CLI Build Output" data-index="6">
+          <picture class="gal-pic"><source srcset="/img/portfolio/aac-ai/CLI_webapp-thumb.webp" type="image/webp"><img src="/img/portfolio/aac-ai/CLI_webapp.png" alt="CLI Build Output" loading="lazy"></picture><div class="cap">CLI Build Output</div>
         </a>
       </div>
       <div class="tile">
-        <a href="/img/portfolio/aac-ai/ExpoGo_CLI.png" data-caption="Expo CLI" data-index="7">
-          <img src="/img/portfolio/aac-ai/ExpoGo_CLI.png" alt="Expo CLI" loading="lazy"><div class="cap">Expo CLI</div>
+        <a href="/img/portfolio/aac-ai/ExpoGo_CLI.webp" data-caption="Expo CLI" data-index="7">
+          <picture class="gal-pic"><source srcset="/img/portfolio/aac-ai/ExpoGo_CLI-thumb.webp" type="image/webp"><img src="/img/portfolio/aac-ai/ExpoGo_CLI.png" alt="Expo CLI" loading="lazy"></picture><div class="cap">Expo CLI</div>
         </a>
       </div>
     </div>
@@ -265,32 +267,32 @@ React Native (Expo), React, Material UI, Chart.js, Firebase (Auth, Realtime Data
   <div role="tabpanel" class="tab-pane fade" id="{{ page.modal-id }}-aac-mobile">
     <h4 class="text-center">Mobile App Screens</h4>
     <div class="tile-gallery" data-album="{{ page.modal-id }}-aac-mobile">
-      <div class="tile"><a href="/img/portfolio/aac-ai/login_mobile.jpg" data-caption="Login" data-index="0">
-        <img src="/img/portfolio/aac-ai/login_mobile.jpg" alt="Login (Mobile)" loading="lazy"><div class="cap">Login</div>
+      <div class="tile"><a href="/img/portfolio/aac-ai/login_mobile.webp" data-caption="Login" data-index="0">
+        <picture class="gal-pic"><source srcset="/img/portfolio/aac-ai/login_mobile-thumb.webp" type="image/webp"><img src="/img/portfolio/aac-ai/login_mobile.jpg" alt="Login (Mobile)" loading="lazy"></picture><div class="cap">Login</div>
       </a></div>
-      <div class="tile"><a href="/img/portfolio/aac-ai/signup_mobile.jpg" data-caption="Signup" data-index="1">
-        <img src="/img/portfolio/aac-ai/signup_mobile.jpg" alt="Signup (Mobile)" loading="lazy"><div class="cap">Signup</div>
+      <div class="tile"><a href="/img/portfolio/aac-ai/signup_mobile.webp" data-caption="Signup" data-index="1">
+        <picture class="gal-pic"><source srcset="/img/portfolio/aac-ai/signup_mobile-thumb.webp" type="image/webp"><img src="/img/portfolio/aac-ai/signup_mobile.jpg" alt="Signup (Mobile)" loading="lazy"></picture><div class="cap">Signup</div>
       </a></div>
-      <div class="tile"><a href="/img/portfolio/aac-ai/sentencebuilderscreen_mobile.jpg" data-caption="Sentence Builder" data-index="2">
-        <img src="/img/portfolio/aac-ai/sentencebuilderscreen_mobile.jpg" alt="Sentence Builder (Mobile)" loading="lazy"><div class="cap">Sentence Builder</div>
+      <div class="tile"><a href="/img/portfolio/aac-ai/sentencebuilderscreen_mobile.webp" data-caption="Sentence Builder" data-index="2">
+        <picture class="gal-pic"><source srcset="/img/portfolio/aac-ai/sentencebuilderscreen_mobile-thumb.webp" type="image/webp"><img src="/img/portfolio/aac-ai/sentencebuilderscreen_mobile.jpg" alt="Sentence Builder (Mobile)" loading="lazy"></picture><div class="cap">Sentence Builder</div>
       </a></div>
-      <div class="tile"><a href="/img/portfolio/aac-ai/EmotionScreen_mobile.jpg" data-caption="Emotion Screen" data-index="3">
-        <img src="/img/portfolio/aac-ai/EmotionScreen_mobile.jpg" alt="Emotion Screen" loading="lazy"><div class="cap">Emotion Screen</div>
+      <div class="tile"><a href="/img/portfolio/aac-ai/EmotionScreen_mobile.webp" data-caption="Emotion Screen" data-index="3">
+        <picture class="gal-pic"><source srcset="/img/portfolio/aac-ai/EmotionScreen_mobile-thumb.webp" type="image/webp"><img src="/img/portfolio/aac-ai/EmotionScreen_mobile.jpg" alt="Emotion Screen" loading="lazy"></picture><div class="cap">Emotion Screen</div>
       </a></div>
-      <div class="tile"><a href="/img/portfolio/aac-ai/pictograms_moblie.jpg" data-caption="Pictogram Grid" data-index="4">
-        <img src="/img/portfolio/aac-ai/pictograms_moblie.jpg" alt="Pictogram Grid" loading="lazy"><div class="cap">Pictogram Grid</div>
+      <div class="tile"><a href="/img/portfolio/aac-ai/pictograms_moblie.webp" data-caption="Pictogram Grid" data-index="4">
+        <picture class="gal-pic"><source srcset="/img/portfolio/aac-ai/pictograms_moblie-thumb.webp" type="image/webp"><img src="/img/portfolio/aac-ai/pictograms_moblie.jpg" alt="Pictogram Grid" loading="lazy"></picture><div class="cap">Pictogram Grid</div>
       </a></div>
-      <div class="tile"><a href="/img/portfolio/aac-ai/CameraScreen_mobile.jpg" data-caption="Camera Captioning" data-index="5">
-        <img src="/img/portfolio/aac-ai/CameraScreen_mobile.jpg" alt="Camera Captioning" loading="lazy"><div class="cap">Camera Captioning</div>
+      <div class="tile"><a href="/img/portfolio/aac-ai/CameraScreen_mobile.webp" data-caption="Camera Captioning" data-index="5">
+        <picture class="gal-pic"><source srcset="/img/portfolio/aac-ai/CameraScreen_mobile-thumb.webp" type="image/webp"><img src="/img/portfolio/aac-ai/CameraScreen_mobile.jpg" alt="Camera Captioning" loading="lazy"></picture><div class="cap">Camera Captioning</div>
       </a></div>
-      <div class="tile"><a href="/img/portfolio/aac-ai/LiveSceneModeScreen_mobile.jpg" data-caption="Live Scene Mode" data-index="6">
-        <img src="/img/portfolio/aac-ai/LiveSceneModeScreen_mobile.jpg" alt="Live Scene Mode" loading="lazy"><div class="cap">Live Scene Mode</div>
+      <div class="tile"><a href="/img/portfolio/aac-ai/LiveSceneModeScreen_mobile.webp" data-caption="Live Scene Mode" data-index="6">
+        <picture class="gal-pic"><source srcset="/img/portfolio/aac-ai/LiveSceneModeScreen_mobile-thumb.webp" type="image/webp"><img src="/img/portfolio/aac-ai/LiveSceneModeScreen_mobile.jpg" alt="Live Scene Mode" loading="lazy"></picture><div class="cap">Live Scene Mode</div>
       </a></div>
-      <div class="tile"><a href="/img/portfolio/aac-ai/profilescreen.jpg" data-caption="Profile &amp; Settings" data-index="7">
-        <img src="/img/portfolio/aac-ai/profilescreen.jpg" alt="Profile & Settings" loading="lazy"><div class="cap">Profile &amp; Settings</div>
+      <div class="tile"><a href="/img/portfolio/aac-ai/profilescreen.webp" data-caption="Profile &amp; Settings" data-index="7">
+        <picture class="gal-pic"><source srcset="/img/portfolio/aac-ai/profilescreen-thumb.webp" type="image/webp"><img src="/img/portfolio/aac-ai/profilescreen.jpg" alt="Profile & Settings" loading="lazy"></picture><div class="cap">Profile &amp; Settings</div>
       </a></div>
-      <div class="tile"><a href="/img/portfolio/aac-ai/loading_screen_mobile.jpg" data-caption="Loading Screen" data-index="8">
-        <img src="/img/portfolio/aac-ai/loading_screen_mobile.jpg" alt="Loading Screen" loading="lazy"><div class="cap">Loading Screen</div>
+      <div class="tile"><a href="/img/portfolio/aac-ai/loading_screen_mobile.webp" data-caption="Loading Screen" data-index="8">
+        <picture class="gal-pic"><source srcset="/img/portfolio/aac-ai/loading_screen_mobile-thumb.webp" type="image/webp"><img src="/img/portfolio/aac-ai/loading_screen_mobile.jpg" alt="Loading Screen" loading="lazy"></picture><div class="cap">Loading Screen</div>
       </a></div>
     </div>
   </div>
@@ -299,23 +301,23 @@ React Native (Expo), React, Material UI, Chart.js, Firebase (Auth, Realtime Data
   <div role="tabpanel" class="tab-pane fade" id="{{ page.modal-id }}-aac-firebase">
     <h4 class="text-center">Firebase Backend &amp; Data</h4>
     <div class="tile-gallery" data-album="{{ page.modal-id }}-aac-firebase">
-      <div class="tile"><a href="/img/portfolio/aac-ai/firebase_auth.png" data-caption="Firebase Authentication" data-index="0">
-        <img src="/img/portfolio/aac-ai/firebase_auth.png" alt="Firebase Authentication" loading="lazy"><div class="cap">Firebase Authentication</div>
+      <div class="tile"><a href="/img/portfolio/aac-ai/firebase_auth.webp" data-caption="Firebase Authentication" data-index="0">
+        <picture class="gal-pic"><source srcset="/img/portfolio/aac-ai/firebase_auth-thumb.webp" type="image/webp"><img src="/img/portfolio/aac-ai/firebase_auth.png" alt="Firebase Authentication" loading="lazy"></picture><div class="cap">Firebase Authentication</div>
       </a></div>
-      <div class="tile"><a href="/img/portfolio/aac-ai/firebase_database.png" data-caption="Realtime Database" data-index="1">
-        <img src="/img/portfolio/aac-ai/firebase_database.png" alt="Firebase Realtime Database" loading="lazy"><div class="cap">Realtime Database</div>
+      <div class="tile"><a href="/img/portfolio/aac-ai/firebase_database.webp" data-caption="Realtime Database" data-index="1">
+        <picture class="gal-pic"><source srcset="/img/portfolio/aac-ai/firebase_database-thumb.webp" type="image/webp"><img src="/img/portfolio/aac-ai/firebase_database.png" alt="Firebase Realtime Database" loading="lazy"></picture><div class="cap">Realtime Database</div>
       </a></div>
-      <div class="tile"><a href="/img/portfolio/aac-ai/realtimedatabase_rules.png" data-caption="Realtime DB Rules" data-index="2">
-        <img src="/img/portfolio/aac-ai/realtimedatabase_rules.png" alt="Realtime Database Rules" loading="lazy"><div class="cap">Realtime DB Rules</div>
+      <div class="tile"><a href="/img/portfolio/aac-ai/realtimedatabase_rules.webp" data-caption="Realtime DB Rules" data-index="2">
+        <picture class="gal-pic"><source srcset="/img/portfolio/aac-ai/realtimedatabase_rules-thumb.webp" type="image/webp"><img src="/img/portfolio/aac-ai/realtimedatabase_rules.png" alt="Realtime Database Rules" loading="lazy"></picture><div class="cap">Realtime DB Rules</div>
       </a></div>
-      <div class="tile"><a href="/img/portfolio/aac-ai/userlogs_firebase.png" data-caption="User Logs" data-index="3">
-        <img src="/img/portfolio/aac-ai/userlogs_firebase.png" alt="User Logs Node" loading="lazy"><div class="cap">User Logs</div>
+      <div class="tile"><a href="/img/portfolio/aac-ai/userlogs_firebase.webp" data-caption="User Logs" data-index="3">
+        <picture class="gal-pic"><source srcset="/img/portfolio/aac-ai/userlogs_firebase-thumb.webp" type="image/webp"><img src="/img/portfolio/aac-ai/userlogs_firebase.png" alt="User Logs Node" loading="lazy"></picture><div class="cap">User Logs</div>
       </a></div>
-      <div class="tile"><a href="/img/portfolio/aac-ai/users_firebase.png" data-caption="Users" data-index="4">
-        <img src="/img/portfolio/aac-ai/users_firebase.png" alt="Users Node" loading="lazy"><div class="cap">Users</div>
+      <div class="tile"><a href="/img/portfolio/aac-ai/users_firebase.webp" data-caption="Users" data-index="4">
+        <picture class="gal-pic"><source srcset="/img/portfolio/aac-ai/users_firebase-thumb.webp" type="image/webp"><img src="/img/portfolio/aac-ai/users_firebase.png" alt="Users Node" loading="lazy"></picture><div class="cap">Users</div>
       </a></div>
-      <div class="tile"><a href="/img/portfolio/aac-ai/caregivers_firebase.png" data-caption="Caregivers" data-index="5">
-        <img src="/img/portfolio/aac-ai/caregivers_firebase.png" alt="Caregivers Node" loading="lazy"><div class="cap">Caregivers</div>
+      <div class="tile"><a href="/img/portfolio/aac-ai/caregivers_firebase.webp" data-caption="Caregivers" data-index="5">
+        <picture class="gal-pic"><source srcset="/img/portfolio/aac-ai/caregivers_firebase-thumb.webp" type="image/webp"><img src="/img/portfolio/aac-ai/caregivers_firebase.png" alt="Caregivers Node" loading="lazy"></picture><div class="cap">Caregivers</div>
       </a></div>
     </div>
   </div>

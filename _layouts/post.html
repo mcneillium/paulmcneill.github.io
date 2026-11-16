@@ -103,12 +103,15 @@
       {% if page.youtube-url %}
         <div class="container" id="video">
           <div class="post__videos">
-            <div class="post__video"><iframe src="{{ page.youtube-url }}" title="Demo video" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe></div>
+            {% capture yt_label %}Play the demo video for {{ page.title }}{% endcapture %}
+            {% include yt-lite.html url=page.youtube-url label=yt_label %}
             {% if page.youtube-url-2 %}
-              <div class="post__video"><iframe src="{{ page.youtube-url-2 }}" title="Additional demo" loading="lazy" allowfullscreen></iframe></div>
+              {% capture yt_label %}Play the second demo video for {{ page.title }}{% endcapture %}
+              {% include yt-lite.html url=page.youtube-url-2 label=yt_label %}
             {% endif %}
             {% if page.youtube-url-3 %}
-              <div class="post__video"><iframe src="{{ page.youtube-url-3 }}" title="Additional demo" loading="lazy" allowfullscreen></iframe></div>
+              {% capture yt_label %}Play the third demo video for {{ page.title }}{% endcapture %}
+              {% include yt-lite.html url=page.youtube-url-3 label=yt_label %}
             {% endif %}
           </div>
         </div>

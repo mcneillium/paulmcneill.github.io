@@ -1143,6 +1143,8 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   overflow: hidden; border: 1px solid var(--border);
 }
 .post__video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.post__video .lite-yt__btn { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; padding: 0; border: 0; border-radius: 0; cursor: pointer; }
+.post__video .lite-yt__btn:hover { transform: none; }
 
 .post__body { max-width: 880px; }
 .post-content {
