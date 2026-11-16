@@ -2217,6 +2217,9 @@ body.has-spotlight::before {
 .learning__item--in-progress  .learning__status { color: var(--accent);  border-color: var(--accent-dim); }
 .learning__item--experimenting .learning__status { color: #9ec9ff; border-color: rgba(108,180,255,0.3); }
 .learning__item--learning      .learning__status { color: #a78bfa; border-color: rgba(167,139,250,0.3); }
+/* Light theme: the dark-theme tints fall to 1.5:1 and 2.4:1 on the light background. */
+[data-theme="light"] .learning__item--experimenting .learning__status { color: #1d4ed8; border-color: rgba(29,78,216,0.3); }
+[data-theme="light"] .learning__item--learning      .learning__status { color: #6d28d9; border-color: rgba(109,40,217,0.3); }
 
 /* ==========================================================================
    Career timeline — era-grouped card grid, compact density
@@ -2290,6 +2293,13 @@ body.has-spotlight::before {
 .tl-card[data-type="education"] .tl-card__type { color: #9ec9ff; }
 .tl-card[data-type="cert"]      .tl-card__type { color: #c4b5fd; }
 .tl-card[data-type="volunteer"] .tl-card__type { color: #6ee7b7; }
+/* Light theme: the pastel labels and icons are near-invisible on white (1.5:1). */
+[data-theme="light"] .tl-card[data-type="education"] .tl-card__type,
+[data-theme="light"] .tl-card[data-type="education"] .tl-card__logo { color: #1d4ed8; }
+[data-theme="light"] .tl-card[data-type="cert"] .tl-card__type,
+[data-theme="light"] .tl-card[data-type="cert"] .tl-card__logo { color: #6d28d9; }
+[data-theme="light"] .tl-card[data-type="volunteer"] .tl-card__type,
+[data-theme="light"] .tl-card[data-type="volunteer"] .tl-card__logo { color: #047857; }
 
 .tl-card__title {
   font-family: var(--font-body);
@@ -2571,7 +2581,8 @@ body.has-spotlight::before {
   padding: 1.1rem 1.1rem 1.25rem;
   display: flex; flex-direction: column; gap: 0.65rem;
   transition: border-color 0.4s var(--ease-out), background 0.4s var(--ease-out), transform 0.4s var(--ease-out), opacity 0.4s ease;
-  opacity: 0.45;
+  /* Waiting steps are dimmed but must stay readable (0.45 gave 2.2:1 text contrast). */
+  opacity: 0.9;
 }
 .agent-stage.is-active {
   border-color: var(--accent-dim);
@@ -2580,7 +2591,7 @@ body.has-spotlight::before {
   transform: translateY(-2px);
   box-shadow: 0 12px 32px -16px var(--accent-glow);
 }
-.agent-stage.is-complete { opacity: 0.7; }
+.agent-stage.is-complete { opacity: 0.95; }
 .agent-stage.is-complete .agent-stage__label::after {
   content: " ✓";
   color: var(--accent);
@@ -2835,6 +2846,7 @@ input::placeholder { color: var(--text-faint); opacity: 1; }
 .is-tracing .workbench__stages::after { opacity: 1; animation: tracePacket 3.6s linear forwards; }
 @keyframes tracePacket { from { left: 16%; } to { left: 83%; } }
 [data-theme="light"] .workbench__switch [aria-pressed="true"],
+[data-theme="light"] .agent-viz__speed-btn.is-active,
 [data-theme="light"] .system-node.is-selected .system-node__icon,
 [data-theme="light"] .btn-primary { color: #fff; }
 @media (prefers-reduced-motion: reduce) { .is-tracing .workbench__stages::after { display: none; } }
