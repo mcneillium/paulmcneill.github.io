@@ -83,8 +83,13 @@ be stated as fact.
 - CRM reporting for Industrial Temps (the agency's CRM was bespoke): a data quality framework, ETL with Access
   and Power Query, and Power BI dashboards.
 - AI Assistant: GPT-2 fine-tuned on dialogue data with Hugging Face
-  Transformers, served through a Flask API with web, desktop and Streamlit
-  interfaces.
+  Transformers, served through a Flask API with web, desktop, Streamlit and
+  React interfaces. First trained on a CPU in 2024. Revisited in November 2026:
+  a sampling bug fixed, then retrained on three public dialogue datasets
+  (ConvAI2, DailyDialog, Blended Skill Talk). Held-out perplexity is 48 to 66
+  per cent below untuned GPT-2 across the three. It still only makes small
+  talk and forgets what it said. The code is public; the weights are not,
+  because DailyDialog is non-commercial.
 - McNeillium_AI: a Python pipeline that makes narrated, captioned explainer
   videos (Claude scripts, ElevenLabs narration, FFmpeg assembly) with
   speech-to-text and source checks; six explainers of Paul's work are built but

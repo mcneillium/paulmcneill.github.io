@@ -90,8 +90,8 @@
 
 - title: "AI Assistant (fine-tuned GPT-2)"
   category: "AI Engineering"
-  impact: "Held-out perplexity 23.3 → 7.8 against untuned GPT-2 (revisited 2026)"
-  description: "GPT-2 fine-tuned on ConvAI2 dialogue with Hugging Face Transformers, served through one Flask API to web, desktop, Streamlit and React clients. Revisited in 2026: a sampling bug fixed and a proper held-out evaluation."
+  impact: "Held-out perplexity 48–66% below untuned GPT-2 on 3 dialogue datasets (2026)"
+  description: "GPT-2 fine-tuned for conversation with Hugging Face Transformers, served through one Flask API to web, desktop, Streamlit and React clients. Revisited in 2026: a sampling bug fixed, held-out evaluation, and retraining on three dialogue datasets."
   image: "/img/portfolio/ai-assistant/training-run.png"
   tags: ["Transformers", "Fine-tuning", "Evaluation", "Flask"]
   url: "/projects/ai-assistant/"

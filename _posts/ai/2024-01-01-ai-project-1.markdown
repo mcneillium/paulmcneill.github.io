@@ -13,7 +13,7 @@ category: AI
 permalink: /projects/ai-assistant/
 redirect_from:
   - /ai/2023/04/05/ai-project-1/
-description: "GPT-2 fine-tuned with Hugging Face Transformers on the ConvAI2 dialogue dataset plus custom domain dialogues, served through a Flask API with web, desktop (Tkinter) and Streamlit front ends."
+description: "GPT-2 fine-tuned with Hugging Face Transformers on conversation data and served through a Flask API with web, desktop (Tkinter), Streamlit and React front ends. Retrained in 2026 on three dialogue datasets and measured against held-out conversations."
 github-url: https://github.com/mcneillium/AI_Assistant
 youtube-url: https://www.youtube.com/embed/_2doud4q8gI
 
@@ -25,7 +25,7 @@ My first hands-on language-model project, from 2023 to 2024: take GPT-2, fine-tu
 ---
 
 ### What I built
-- **Fine-tuning:** GPT-2 (124M parameters) trained with Hugging Face Transformers and the `Trainer` API on the public ConvAI2 dialogue dataset. Custom support-style dialogues were planned too, but that file is empty in the repository, so only ConvAI2 can be confirmed. Causal language modelling, sequences of 128 tokens, 3 epochs, batch size 4. The run (above, August 2024) took 2,622 steps and 3.6 hours; training loss fell from 2.96 to 2.42 over the first 1.7 epochs and reached 2.21 by step 2,500 (the log is kept in the repository).
+- **Fine-tuning:** GPT-2 (124M parameters) trained with Hugging Face Transformers and the `Trainer` API on the public ConvAI2 dialogue dataset plus custom dialogues I wrote. That custom file has since been lost (the copy in the repository is empty). Causal language modelling, sequences of 128 tokens, 3 epochs, batch size 4, on a CPU. The run (above, August 2024) took 2,622 steps and 3.6 hours; training loss fell from 2.96 to 2.42 over the first 1.7 epochs and reached 2.21 by step 2,500 (the log is kept in the repository).
 - **Serving:** a Flask API (`/api/generate`) that loads the fine-tuned model and generates replies. The settings asked for nucleus sampling (top-p 0.9, top-k 50, temperature 0.7), but see below: in 2024 they were never switched on.
 - **Three interfaces on the same model:** a web page, a Tkinter desktop app and a Streamlit app, plus an early React front end.
 - **Optional storage** of the model in AWS S3.
@@ -49,16 +49,21 @@ I went back to the code in November 2026, with Claude as a pair programmer, and 
 | The requirements file was saved as UTF-16, which pip cannot read, and listed 130 packages the project never used. | Seven direct dependencies, 11 tests and GitHub Actions CI. |
 | Replies were judged by reading them. | Whole conversations are held out and perplexity is compared with untuned GPT-2. |
 
-Retrained for one epoch on 2,426 ConvAI2 conversations (36 minutes on a 2-core CPU), with 269 conversations held out:
+Then I retrained it on more conversation. One epoch over three public dialogue datasets, ConvAI2, DailyDialog and Blended Skill Talk (18,363 conversations, 3.2 million tokens), took about 2.5 hours on a 2-core CPU. Every model is scored on conversations it never trained on:
 
-| Model | Held-out perplexity (lower is better) |
-| --- | --- |
-| GPT-2, untuned | 23.33 |
-| GPT-2 fine-tuned on ConvAI2 | 7.80 |
+| Model | ConvAI2 | DailyDialog | Blended Skill Talk |
+| --- | --- | --- | --- |
+| GPT-2, untuned | 23.33 | 25.10 | 34.07 |
+| Fine-tuned on ConvAI2 only | **7.80** | 21.67 | 25.44 |
+| Fine-tuned on all three | 7.95 | **11.43** | **17.81** |
 
-Most of that gain is the model learning the format and style of this chit-chat; it does not make the replies helpful or true, and the page says so. That is the honest scope of a 124M-parameter model, and the same habit of measuring against a baseline on held-out data runs through my [research studies](/research/).
+{% include picture.html src="/img/portfolio/ai-assistant/perplexity-by-source.png" alt="Bar chart of held-out perplexity: the model trained on all three datasets nearly matches the ConvAI2-only model on ConvAI2 and is 47% lower on DailyDialog and 30% lower on Blended Skill Talk" %}
 
-{% include picture.html src="/img/portfolio/ai-assistant/chat-2026.png" alt="The 2026 chat page: three short exchanges with the fine-tuned model, which answers in turn but changes its story from student to librarian" %}
+The specialist stays slightly better on its own dataset (7.80 against 7.95), but the broader model is 47% lower on DailyDialog and 30% lower on Blended Skill Talk: it now fits ordinary written conversation, not one dataset's style. Lower perplexity is not the same as helpful or true answers, and the chat shows it: the model takes turns and can be kind, but it forgets what it has just said.
+
+{% include picture.html src="/img/portfolio/ai-assistant/chat-2026.png" alt="The 2026 chat page: the model says it has a dog named Mike, then answers a question about its pets' names with 'that's cool, i love cats'" %}
+
+DailyDialog is licensed for non-commercial use only, so the code is public and the trained weights are not. The same habit of measuring against a baseline on held-out data runs through my [research studies](/research/).
 
 ---
 
