@@ -1,11 +1,11 @@
 {
-  "built_at": "2026-11-22T00:15:09.469Z",
+  "built_at": "2026-11-22T01:58:37.130Z",
   "embedding_model": null,
   "chunks": [
     {
       "id": "profile.bio",
       "category": "profile",
-      "text": "Paul Martin McNeill — AI engineer, web developer and data analyst based on the island of Ireland, with over 15 years across IT, data and engineering. Builds machine learning forecasting tools, web platforms and analytics for water infrastructure, healthcare, accessibility and day-to-day operations. Studying for an MSc in Artificial Intelligence at Queen’s University Belfast (due 2027); holds a First-Class BSc (Hons) in Computer Science from The Open University and has completed M816 Data Management, a postgraduate Open University module. AI engineer, web developer and data analyst with over 15 years across IT, database systems and applied data work. On a consultancy contract with a UK water utility, builds the platform and machine learning models used to forecast leakage across more than 1,250 district metered areas. Other work includes care analytics and an AI-enhanced care app on synthetic data, AI accessibility tools such as a predictive AAC app for non-verbal users, and two reproducible research studies on public data. Studying for an MSc in Artificial Intelligence at Queen’s University Belfast (due 2027); holds a First-Class BSc (Hons) in Computer Science from The Open University (2025) and has completed the Open University’s postgraduate M816 Data Management module. Works with Python, deep learning and data engineering, including TensorFlow, PyTorch and scikit-learn, and cloud platforms including GCP, AWS and Azure.",
+      "text": "Paul Martin McNeill: AI engineer, web developer and data analyst based on the island of Ireland, with over 15 years across IT, data and engineering. Builds machine learning forecasting tools, web platforms and analytics for water infrastructure, healthcare, accessibility and day-to-day operations. Studying for an MSc in Artificial Intelligence at Queen’s University Belfast (due 2027); holds a First-Class BSc (Hons) in Computer Science from The Open University and has completed M816 Data Management, a postgraduate Open University module. AI engineer, web developer and data analyst with over 15 years across IT, database systems and applied data work. On a consultancy contract with a UK water utility, builds the platform and machine learning models used to forecast leakage across more than 1,250 district metered areas. Other work includes care analytics and an AI-enhanced care app on synthetic data, AI accessibility tools such as a predictive AAC app for non-verbal users, and two reproducible research studies on public data. Studying for an MSc in Artificial Intelligence at Queen’s University Belfast (due 2027); holds a First-Class BSc (Hons) in Computer Science from The Open University (2025) and has completed the Open University’s postgraduate M816 Data Management module. Works with Python, deep learning and data engineering, including TensorFlow, PyTorch and scikit-learn, and cloud platforms including GCP, AWS and Azure.",
       "keywords": [
         "paul",
         "about",
@@ -14,7 +14,7 @@
         "background",
         "northern ireland"
       ],
-      "tokens": 216
+      "tokens": 215
     },
     {
       "id": "profile.current",
@@ -32,7 +32,7 @@
     {
       "id": "profile.availability",
       "category": "hiring",
-      "text": "Availability: Currently open to AI engineering, ML, and full-stack web opportunities — full-time, contract, or freelance.",
+      "text": "Availability: Currently open to AI engineering, ML, and full-stack web opportunities: full-time, contract or freelance.",
       "keywords": [
         "hire",
         "available",
@@ -43,7 +43,7 @@
         "contract",
         "looking for work"
       ],
-      "tokens": 16
+      "tokens": 15
     },
     {
       "id": "profile.contact",
@@ -123,7 +123,7 @@
     {
       "id": "exp.4",
       "category": "experience",
-      "text": "Role: Earlier roles at Various - IT support, web design, and e-commerce — providing a strong technical foundation for later leadership work.",
+      "text": "Role: Earlier roles at Various - IT support, web design and e-commerce.",
       "keywords": [
         "earlier roles",
         "various",
@@ -133,7 +133,7 @@
         "history",
         "career"
       ],
-      "tokens": 22
+      "tokens": 12
     },
     {
       "id": "vol.0",
@@ -151,7 +151,7 @@
     {
       "id": "edu.0",
       "category": "education",
-      "text": "MSc Artificial Intelligence — Queen’s University Belfast (Expected 2027). In progress, due to finish September 2027.",
+      "text": "MSc Artificial Intelligence, Queen’s University Belfast (Expected 2027). In progress, due to finish September 2027.",
       "keywords": [
         "education",
         "study",
@@ -168,12 +168,12 @@
         "queens",
         "qub"
       ],
-      "tokens": 16
+      "tokens": 15
     },
     {
       "id": "edu.1",
       "category": "education",
-      "text": "BSc (Hons) Computer Science — First-Class Honours — The Open University (2025). Focus: Artificial Intelligence, Data Analytics, Cloud Computing, Software Engineering.",
+      "text": "BSc (Hons) Computer Science, First-Class Honours, The Open University (2025). Focus: Artificial Intelligence, Data Analytics, Cloud Computing, Software Engineering.",
       "keywords": [
         "education",
         "study",
@@ -182,15 +182,15 @@
         "open",
         "bsc",
         "m816",
-        "bsc (hons) computer science — first-class honours",
+        "bsc (hons) computer science, first-class honours",
         "the open university"
       ],
-      "tokens": 21
+      "tokens": 19
     },
     {
       "id": "edu.2",
       "category": "education",
-      "text": "M816 Data Management — The Open University (2026). Postgraduate module covering data governance, modelling, and database optimisation.",
+      "text": "M816 Data Management, The Open University (2026). Postgraduate module covering data governance, modelling, and database optimisation.",
       "keywords": [
         "education",
         "study",
@@ -202,12 +202,12 @@
         "m816 data management",
         "the open university"
       ],
-      "tokens": 17
+      "tokens": 16
     },
     {
       "id": "edu.3",
       "category": "education",
-      "text": "EDI Level 3 Diploma in Business & Administration — (2014).",
+      "text": "EDI Level 3 Diploma in Business & Administration (2014).",
       "keywords": [
         "education",
         "study",
@@ -218,7 +218,7 @@
         "m816",
         "edi level 3 diploma in business & administration"
       ],
-      "tokens": 10
+      "tokens": 9
     },
     {
       "id": "proj.0",
@@ -315,9 +315,9 @@
     {
       "id": "proj.5",
       "category": "project",
-      "text": "Project: CRM Reporting — Industrial Temps Category: Data Analytics Impact: Consolidated 6+ disconnected sources into a single live dashboard Recruitment agency, 2018 to 2019: CRM data from more than six sources brought into one live dashboard, with validation rules, audit queries and staff training. Tech: Data quality, Power Query, Access, Recruitment",
+      "text": "Project: CRM Reporting: Industrial Temps Category: Data Analytics Impact: Consolidated 6+ disconnected sources into a single live dashboard Recruitment agency, 2018 to 2019: CRM data from more than six sources brought into one live dashboard, with validation rules, audit queries and staff training. Tech: Data quality, Power Query, Access, Recruitment",
       "keywords": [
-        "crm reporting — industrial temps",
+        "crm reporting: industrial temps",
         "data analytics",
         "data quality",
         "power query",
@@ -328,7 +328,7 @@
         "built",
         "shipped"
       ],
-      "tokens": 51
+      "tokens": 50
     },
     {
       "id": "proj.6",
@@ -437,7 +437,7 @@
     {
       "id": "skill.0",
       "category": "skills",
-      "text": "Skill tier — Daily driver (Tools I reach for first.): Python, TypeScript, React, Node.js, Power BI, Pandas, Git, OpenAI API, Claude API",
+      "text": "Skill tier: Daily driver (Tools I reach for first.): Python, TypeScript, React, Node.js, Power BI, Pandas, Git, OpenAI API, Claude API",
       "keywords": [
         "skill",
         "stack",
@@ -445,12 +445,12 @@
         "tools",
         "daily driver"
       ],
-      "tokens": 22
+      "tokens": 21
     },
     {
       "id": "skill.1",
       "category": "skills",
-      "text": "Skill tier — Strong working knowledge (Comfortable shipping in production.): TensorFlow, Scikit-learn, LangChain, Next.js, PostgreSQL, Firebase, Docker, Azure, AWS, DAX / Power Query, PyTorch, Hugging Face, MLflow, Kubernetes, GCP / Vertex AI, Jupyter, Java",
+      "text": "Skill tier: Strong working knowledge (Comfortable shipping in production.): TensorFlow, Scikit-learn, LangChain, Next.js, PostgreSQL, Firebase, Docker, Azure, AWS, DAX / Power Query, PyTorch, Hugging Face, MLflow, Kubernetes, GCP / Vertex AI, Jupyter, Java",
       "keywords": [
         "skill",
         "stack",
@@ -458,12 +458,12 @@
         "tools",
         "strong working knowledge"
       ],
-      "tokens": 34
+      "tokens": 33
     },
     {
       "id": "skill.2",
       "category": "skills",
-      "text": "Skill tier — Familiar (Used in projects, not my first pick.): C++",
+      "text": "Skill tier: Familiar (Used in projects, not my first pick.): C++",
       "keywords": [
         "skill",
         "stack",
@@ -471,12 +471,12 @@
         "tools",
         "familiar"
       ],
-      "tokens": 12
+      "tokens": 11
     },
     {
       "id": "certs",
       "category": "credentials",
-      "text": "Certifications and memberships: - Google Cloud Professional ML Engineer (Google Cloud, 2024; recertifying Dec 2026) - AWS Certified Machine Learning — Specialty (Amazon Web Services, 2025) - TensorFlow Developer (DeepLearning.AI / Coursera, 2024) - PCPP1 and PCPP2 — Certified Professional in Python (Python Institute, 2024) - MBCS — Member of the BCS (British Computer Society) - IET Member (Institution of Engineering & Technology)",
+      "text": "Certifications and memberships: - Google Cloud Professional ML Engineer (Google Cloud, 2024; recertifying Dec 2026) - AWS Certified Machine Learning, Specialty (Amazon Web Services, 2025) - TensorFlow Developer (DeepLearning.AI / Coursera, 2024) - PCPP1 and PCPP2: Certified Professional in Python (Python Institute, 2024) - MBCS, Member of the BCS (British Computer Society) - IET Member (Institution of Engineering & Technology)",
       "keywords": [
         "cert",
         "certification",
@@ -488,12 +488,12 @@
         "aws",
         "tensorflow"
       ],
-      "tokens": 63
+      "tokens": 60
     },
     {
       "id": "principle.0",
       "category": "principles",
-      "text": "Principle 01 — Ship, then iterate: Production-ready first, refine after. Notebooks are for experiments — they aren't a deliverable.",
+      "text": "Principle 01, Ship, then iterate: Production-ready first, refine after. Notebooks are for experiments. They aren't a deliverable.",
       "keywords": [
         "principle",
         "how i work",
@@ -501,12 +501,12 @@
         "methodology",
         "ship, then iterate"
       ],
-      "tokens": 19
+      "tokens": 17
     },
     {
       "id": "principle.1",
       "category": "principles",
-      "text": "Principle 02 — Measure everything: Monitoring, logging, and drift detection are part of the build. If you can't measure it, you can't improve it.",
+      "text": "Principle 02, Measure everything: Monitoring, logging, and drift detection are part of the build. If you can't measure it, you can't improve it.",
       "keywords": [
         "principle",
         "how i work",
@@ -514,12 +514,12 @@
         "methodology",
         "measure everything"
       ],
-      "tokens": 24
+      "tokens": 23
     },
     {
       "id": "principle.2",
       "category": "principles",
-      "text": "Principle 03 — Ethics by default: Fairness checks, explainability, and responsible-AI practices are built in from day one — not bolted on under deadline.",
+      "text": "Principle 03, Ethics by default: Fairness checks, explainability, and responsible-AI practices are built in from day one.",
       "keywords": [
         "principle",
         "how i work",
@@ -527,12 +527,12 @@
         "methodology",
         "ethics by default"
       ],
-      "tokens": 24
+      "tokens": 17
     },
     {
       "id": "principle.3",
       "category": "principles",
-      "text": "Principle 04 — Human-centred: I test with real users, prioritise accessibility, and design for the person at the other end — not the algorithm.",
+      "text": "Principle 04, Human-centred: I test with real users, prioritise accessibility, and design for the person at the other end.",
       "keywords": [
         "principle",
         "how i work",
@@ -540,7 +540,7 @@
         "methodology",
         "human-centred"
       ],
-      "tokens": 24
+      "tokens": 19
     },
     {
       "id": "research.river",
@@ -640,72 +640,6 @@
         "try"
       ],
       "tokens": 44
-    },
-    {
-      "id": "blog.8.intro",
-      "category": "blog",
-      "text": "Blog post — From Notebooks to Pipelines: Why I Stopped Shipping Jupyter: A pragmatic argument for treating notebooks as the experiment, not the deliverable — and what to reach for instead. There's a moment in every ML project where someone says \"we'll just productionise the notebook.\" It's the same moment, every time, that the project quietly stops making progress. This post is about why notebooks fail in production, and what to reach for instead. I'm not against notebooks — I write them every day for exploration. The argument is narrower: **notebooks should not be the deliverable**.",
-      "keywords": [
-        "from notebooks to pipelines: why i stopped shipping jupyter",
-        "mlops",
-        "notebooks",
-        "ml pipelines",
-        "mlflow",
-        "python",
-        "blog",
-        "writing",
-        "post"
-      ],
-      "tokens": 96
-    },
-    {
-      "id": "blog.8.body",
-      "category": "blog",
-      "text": "From Notebooks to Pipelines: Why I Stopped Shipping Jupyter — continued: The strengths are real: - Inline plots, side-by-side with code, with the data from the last run still in scope. Iteration speed is genuinely high. - Markdown cells let you narrate as you build. Excellent for analysis reports. - The kernel-based execution model means you can poke at intermediate state without rerunning everything. For exploration, model debugging, one-off analyses, and teaching, this is the right tool. I'd lose nothing by saying so. The failures all come from the same root cause: **a notebook's runtime behaviour is decoupled from its source**. Cell execution order isn't tracked by the file. Out-of-band state lives in the kernel between runs. Hidden imports survive across cells. Variables get reused with new meanings halfway down. The file you commit isn't the program that ran. This makes them fragile in ways that don't matter for exploration but become intolerable for production: 1. **Reproducibility evaporates silently.** \"Re-run all cells\" produces a different result than the run you remember, and you can't always tell why. 2. **Diffs are useless.** A cell-output change rewrites half the JSON. Code review becomes pattern-matching against noise. 3. **Testing is awkward.** You can shoehorn `pytest` against notebook functions with `nbval` or extract them into modules and import — but at that point you've already started the migration. 4. **Dependencies are vague.** `pip install` lines in cells, often without versions. The notebook works on th",
-      "keywords": [
-        "from notebooks to pipelines: why i stopped shipping jupyter",
-        "mlops",
-        "notebooks",
-        "ml pipelines",
-        "mlflow",
-        "python",
-        "blog",
-        "writing"
-      ],
-      "tokens": 241
-    },
-    {
-      "id": "blog.9.intro",
-      "category": "blog",
-      "text": "Blog post — Building Production RAG Pipelines: What Breaks After the Demo: Notes on taking retrieval-augmented generation past the demo: chunking that doesn't shred meaning, retrieval that keeps citations, and evaluation harnesses that catch regressions before users do. A weekend RAG demo is one thing. A *production* RAG pipeline is a different animal entirely — and the cost is mostly in the parts you can't see in a notebook. This post collects the patterns I've found genuinely matter, in roughly the order they bite you. The default tutorial chunker — fixed-size sliding window with some overlap — gets you to a demo. It also routinely shreds meaning. Sentences get split mid-clause. Tables turn into nonsense. The bullet point that gives a paragraph its meaning lands in a different chunk to the paragraph itself.",
-      "keywords": [
-        "building production rag pipelines: what breaks after the demo",
-        "rag",
-        "llms",
-        "retrieval",
-        "evaluation",
-        "production ml",
-        "blog",
-        "writing",
-        "post"
-      ],
-      "tokens": 133
-    },
-    {
-      "id": "blog.9.body",
-      "category": "blog",
-      "text": "Building Production RAG Pipelines: What Breaks After the Demo — continued: Three rules that survived contact with real corpora: 1. **Respect document structure.** Use the document's own boundaries — headings, list items, table rows — as candidate split points, not arbitrary character counts. For PDFs, this means a real layout-aware parser (`unstructured`, PyMuPDF with logical-block extraction, or AWS Textract for tables) rather than naive text dumps. 2. **Vary chunk size to fit the question.** Small chunks (~200 tokens) maximise retrieval precision but lose context. Large chunks (~1k tokens) preserve context but make embedding less discriminative. I've ended up with a two-stage retrieval pattern: small chunks for finding *where*, then expand to the parent section before passing to the model. 3. **Store the spelling, the slug, and the source.** Every chunk needs a stable identifier and a path back to the original document, with page or anchor offsets. Without this, you can't render citations and you can't debug a hallucination. \"It looks like the right chunks come back for these five test queries\" is not an evaluation. It's a vibe. The first time you change embedding models, prompt versions, or chunk strategy, you'll discover three things that silently regressed and one user already complained about. The cheapest reliable harness: - **A labelled query set.** 50–100 queries each tagged with the chunks (or source URLs) that should be retrieved. You build this by mining real user queries and annotating by hand. Yes,",
-      "keywords": [
-        "building production rag pipelines: what breaks after the demo",
-        "rag",
-        "llms",
-        "retrieval",
-        "evaluation",
-        "production ml",
-        "blog",
-        "writing"
-      ],
-      "tokens": 240
     }
   ]
 }

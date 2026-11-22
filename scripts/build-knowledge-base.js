@@ -76,7 +76,7 @@ const push = (id, category, text, keywords = []) => {
 
 /* ------- profile -------- */
 push('profile.bio', 'profile',
-  `Paul Martin McNeill — ${data.profile.bio_short}\n\n${data.profile.bio_long}`,
+  `Paul Martin McNeill: ${data.profile.bio_short}\n\n${data.profile.bio_long}`,
   ['paul', 'about', 'bio', 'who', 'background', 'northern ireland']
 );
 push('profile.current', 'current',
@@ -116,7 +116,7 @@ push('profile.contact', 'contact',
 /* ------- education ------- */
 (data.education || []).forEach((e, i) => {
   push(`edu.${i}`, 'education',
-    `${e.qualification} — ${e.institution || ''}${e.year ? ' (' + e.year + ')' : ''}.${e.detail ? ' ' + e.detail : ''}`,
+    `${e.qualification}${e.institution ? ', ' + e.institution : ''}${e.year ? ' (' + e.year + ')' : ''}.${e.detail ? ' ' + e.detail : ''}`,
     ['education', 'study', 'degree', 'university', 'open', 'bsc', 'm816',
      e.qualification, e.institution, ...(e.keywords || [])]);
 });
@@ -146,7 +146,7 @@ push('profile.contact', 'contact',
 /* ------- skills tiers ------- */
 (data.skills.tiers || []).forEach((t, i) => {
   push(`skill.${i}`, 'skills',
-    `Skill tier — ${t.label} (${t.description}): ${(t.items || []).map(x => x.name).join(', ')}`,
+    `Skill tier: ${t.label} (${t.description}): ${(t.items || []).map(x => x.name).join(', ')}`,
     ['skill', 'stack', 'tech', 'tools', t.label]);
 });
 
@@ -161,7 +161,7 @@ push('certs', 'credentials',
 /* ------- principles ------- */
 (data.principles || []).forEach((p, i) => {
   push(`principle.${i}`, 'principles',
-    `Principle ${p.num} — ${p.title}: ${p.body}`,
+    `Principle ${p.num}, ${p.title}: ${p.body}`,
     ['principle', 'how i work', 'approach', 'methodology', p.title]);
 });
 
@@ -225,10 +225,10 @@ fs.readdirSync(postsDir).filter(f => f.match(/\.(md|markdown)$/)).forEach((f, i)
   const intro = paras.slice(0, 2).join(' ');
   const rest  = paras.slice(2).join(' ');
   push(`blog.${i}.intro`, 'blog',
-    `Blog post — ${fm.title}: ${fm.description || ''} ${intro}`.slice(0, 1500),
+    `Blog post, ${fm.title}: ${fm.description || ''} ${intro}`.slice(0, 1500),
     [fm.title, ...(fm.tags || []), 'blog', 'writing', 'post']);
   if (rest) push(`blog.${i}.body`, 'blog',
-    `${fm.title} — continued: ${rest.slice(0, 1500)}`,
+    `${fm.title}, continued: ${rest.slice(0, 1500)}`,
     [fm.title, ...(fm.tags || []), 'blog', 'writing']);
 });
 
