@@ -62,6 +62,10 @@ availability: >-
 # What I'm learning right now. Surfaces in the About section.
 # `status` accepts: in progress, experimenting, learning, finished
 learning:
+  - title: "MSc Artificial Intelligence"
+    provider: "Queen’s University Belfast"
+    type: "degree"
+    status: "in progress"
   - title: "Multi-Agent Systems with CrewAI"
     type: "exploration"
     status: "experimenting"
