@@ -253,8 +253,10 @@ runs with UTF-8 by default — no env needed there.
 
 ## Deployment
 
-GitHub Pages auto-builds from `main` on push. There's no Action, no
-preview environments, no staging. If the build breaks, the site
+GitHub Pages auto-builds from `main` on push. There are no preview
+environments and no staging. One Action (`.github/workflows/site-check.yml`)
+builds the site and runs the link check on every pull request and on pushes
+to `main`; it checks only and deploys nothing. If the build breaks, the site
 silently keeps serving the last successful build — check the
 "Pages" tab in the repo for build errors.
 

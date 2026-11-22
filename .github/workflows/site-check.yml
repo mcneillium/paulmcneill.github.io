@@ -1,0 +1,31 @@
+# Builds the site the way GitHub Pages does and checks every internal link
+# and image, on each pull request and on each push to main. It publishes
+# nothing: GitHub Pages still deploys main on its own.
+name: Site check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-check-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - name: Build the site
+        run: bundle exec jekyll build
+        env:
+          LANG: C.utf8
+
+      - name: Check internal links and images
+        run: node scripts/link-check.js
