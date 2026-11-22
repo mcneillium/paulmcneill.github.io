@@ -2959,6 +2959,10 @@ input::placeholder { color: var(--text-faint); opacity: 1; }
 .research__grid strong { display: block; margin-bottom: 0.25rem; }
 .research__grid span { font-size: 0.92rem; line-height: 1.55; }
 
+/* Jump list of the studies at the top of the page. */
+.research__toc { margin-bottom: 2.5rem; }
+.research__toc .research__grid { margin: 0; }
+
 .research__links { font-size: 0.95rem; color: var(--text-faint); }
 
 /* Reading controls: plain or technical wording, and print. */
