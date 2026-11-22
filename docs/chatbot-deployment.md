@@ -44,7 +44,7 @@ node scripts/build-knowledge-base.js
 cd workers/portfolio-bot
 .\node_modules\.bin\wrangler.cmd login
 .\node_modules\.bin\wrangler.cmd deploy --dry-run --outdir .wrangler/dry-run
-node --test test/usage.test.mjs
+node --test test/usage.test.mjs test/retrieval.test.mjs
 .\node_modules\.bin\wrangler.cmd deploy
 ```
 

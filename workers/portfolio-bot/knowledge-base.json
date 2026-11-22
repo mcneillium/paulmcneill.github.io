@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-11-22T01:58:37.130Z",
+  "built_at": "2026-11-22T13:03:27.355Z",
   "embedding_model": null,
   "chunks": [
     {
@@ -155,10 +155,15 @@
       "keywords": [
         "education",
         "study",
+        "studied",
+        "studying",
         "degree",
+        "qualification",
         "university",
         "open",
         "bsc",
+        "msc",
+        "masters",
         "m816",
         "msc artificial intelligence",
         "queen’s university belfast",
@@ -177,10 +182,15 @@
       "keywords": [
         "education",
         "study",
+        "studied",
+        "studying",
         "degree",
+        "qualification",
         "university",
         "open",
         "bsc",
+        "msc",
+        "masters",
         "m816",
         "bsc (hons) computer science, first-class honours",
         "the open university"
@@ -194,10 +204,15 @@
       "keywords": [
         "education",
         "study",
+        "studied",
+        "studying",
         "degree",
+        "qualification",
         "university",
         "open",
         "bsc",
+        "msc",
+        "masters",
         "m816",
         "m816 data management",
         "the open university"
@@ -211,10 +226,15 @@
       "keywords": [
         "education",
         "study",
+        "studied",
+        "studying",
         "degree",
+        "qualification",
         "university",
         "open",
         "bsc",
+        "msc",
+        "masters",
         "m816",
         "edi level 3 diploma in business & administration"
       ],
@@ -543,6 +563,35 @@
       "tokens": 19
     },
     {
+      "id": "research.overview",
+      "category": "research",
+      "text": "The Research page has three studies. In the order they were started: river early warning across 671 British catchments; drug response beyond a single marker; and flood mapping from labels that are partly wrong. The flood mapping study is the newest. It started on 17 November 2026 and is still in progress, so its results are from development data only and are not final. The river and drug studies are complete and their code is public. None of the three has been peer reviewed. All three are at /research/.",
+      "keywords": [
+        "research",
+        "study",
+        "studies",
+        "overview",
+        "newest",
+        "latest",
+        "recent",
+        "new",
+        "current",
+        "many",
+        "three",
+        "third",
+        "list",
+        "finished",
+        "status",
+        "published",
+        "paper",
+        "publication",
+        "peer",
+        "reviewed",
+        "phd"
+      ],
+      "tokens": 89
+    },
+    {
       "id": "research.river",
       "category": "research",
       "text": "Research study: River early warning across 671 British catchments. The question: how far ahead can river flow, and flood or low-flow warnings, be forecast without knowing future weather, and does that skill carry over to places the model was not trained on? The models learned from daily data starting in 1970 and were tested on 2012 to 2022. Four findings. Most of the skill beyond a day depends on knowing the weather: at seven days, a model without future weather scores 0.24 on the standard measure, against 0.72 with it. A whole unseen region costs little, but a different climate costs much more. A neural network did no better than gradient boosting. And at seven days, most high-flow warnings are false alarms. The study has not been peer reviewed, so treat these results as provisional. Full write-up: /research/#river-early-warning. Code: github.com/mcneillium/river-early-warning.",
@@ -579,24 +628,36 @@
     {
       "id": "research.flood",
       "category": "research",
-      "text": "Research study, in progress: Flood mapping from labels that are partly wrong (Sen1Floods11, Sentinel-1 radar). The question: when flood-mapping models are trained on automatic threshold (Otsu) labels, does a pretrained encoder with a small decoder repeat fewer of the labels' errors than a UNet trained from scratch, and does updating the encoder change that? Results so far are on development data only (252 hand-labelled chips, three seeds per model): the UNet repeated 75.2% of the labels' false water and 92.8% of their missed water; the pretrained model (TerraMind) repeated more, 88.9% and 94.5% with its encoder frozen and 95.8% and 97.2% with its encoder updated. Paul predicted the opposite for the frozen encoder and reports that the prediction was wrong. The held-out evaluation has not been run, so nothing is final. Full write-up: /research/#flood-label-errors. The repository is not public yet.",
+      "text": "Research study, in progress, and the newest of the three (started 17 November 2026): Flood mapping from labels that are partly wrong (Sen1Floods11, Sentinel-1 satellite radar). Its results so far are from development data only and are not final: the held-out evaluation has not been run. The question: when flood-mapping models are trained on automatic threshold (Otsu) labels, does a pretrained encoder with a small decoder repeat fewer of the labels' errors than a UNet trained from scratch, and does updating the encoder change that? Findings so far, on 252 hand-labelled chips with three seeds per model: the UNet repeated 75.2% of the labels' false water and 92.8% of their missed water; the pretrained model (TerraMind) repeated more, 88.9% and 94.5% with its encoder frozen and 95.8% and 97.2% with its encoder updated. Paul predicted the opposite for the frozen encoder and reports that the prediction was wrong. Full write-up: /research/#flood-label-errors. The repository is not public yet.",
       "keywords": [
         "research",
         "study",
         "flood",
+        "floods",
+        "flooding",
+        "mapping",
         "satellite",
         "sentinel",
         "radar",
         "labels",
-        "label noise",
+        "noise",
+        "noisy",
+        "imperfect",
         "segmentation",
         "unet",
         "terramind",
         "pretrained",
         "computer vision",
+        "newest",
+        "latest",
+        "progress",
+        "ongoing",
+        "finished",
+        "status",
+        "findings",
         "phd"
       ],
-      "tokens": 140
+      "tokens": 157
     },
     {
       "id": "research.method",
@@ -605,10 +666,14 @@
       "keywords": [
         "research",
         "method",
+        "methodology",
         "reproducible",
         "protocol",
+        "produced",
+        "made",
+        "built",
         "ai tools",
-        "how produced"
+        "peer reviewed"
       ],
       "tokens": 125
     },
