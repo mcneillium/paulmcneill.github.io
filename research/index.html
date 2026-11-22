@@ -4,7 +4,7 @@ title: "Research"
 permalink: /research/
 scripts:
   - /assets/js/research.js
-description: "Two reproducible machine learning studies on public data: river early warning across 671 British catchments, and drug response beyond a single marker."
+description: "Three reproducible machine learning studies on public data: river early warning across 671 British catchments, drug response beyond a single marker, and flood mapping from satellite labels that are partly wrong."
 ---
 
 <header class="post__hero">
@@ -17,13 +17,13 @@ description: "Two reproducible machine learning studies on public data: river ea
     <span class="eyebrow">Research</span>
     <h1 class="post__title">Reproducible studies on <em>public data</em></h1>
     <p class="post__subtitle">
-      Two studies. Each has a protocol fixed before any model was fitted,
-      baselines before anything complex, fixed and fingerprinted splits,
-      tests, and a log of every decision, including the ones that turned
-      out wrong.
+      Three studies, one of them still running. Each has a protocol fixed
+      before any model was fitted, baselines before anything complex, fixed
+      and fingerprinted splits, tests, and a log of every decision, including
+      the ones that turned out wrong.
     </p>
     <p class="post__subtitle">
-      Both ask the same thing from different sides: what can a model be
+      All three ask the same thing from different sides: what can a model be
       trusted to say when its data is incomplete, its labels are noisy, or
       the place it is used differs from the place it was trained?
     </p>
@@ -31,15 +31,19 @@ description: "Two reproducible machine learning studies on public data: river ea
          words, as what you want to research and why. Do not name
          supervisors, referees or application plans. {% endcomment %}
     <p class="research__status">
-      <strong>Status, 15 November 2026.</strong> On 14 November 2026 I re-ran
-      both studies on a second machine. Every drug response table matched to
+      <strong>Status, 22 November 2026.</strong> On 14 November 2026 I re-ran
+      the river and drug response studies on a second machine. Every drug response table matched to
       within 0.000002. For the river study the per-catchment results matched
       exactly and the regional medians to within 0.006. On 15 November the
       river study's uncertainty experiment was repeated with three seeds, and
       two follow-ups were added: the neural model in the drier-climate test, and
-      a forecasting model used without any training. Every decision is logged,
-      and those still awaiting my review are marked. Neither study has been peer
-      reviewed, so treat the results as provisional.
+      a forecasting model used without any training. A third study, on
+      <a href="#flood-label-errors">flood mapping from labels that are partly wrong</a>,
+      started on 17 November and is reported part-way: its results so far are
+      on development data, and its held-out evaluation has not been run. Every
+      decision is logged, and those still awaiting my review are marked. None
+      of the studies has been peer reviewed, so treat the results as
+      provisional.
     </p>
   </div>
 </header>
@@ -300,6 +304,147 @@ description: "Two reproducible machine learning studies on public data: river ea
         <p class="research__links">Code, protocol and decision log: <a href="https://github.com/mcneillium/drug-response-beyond-marker" rel="noopener">github.com/mcneillium/drug-response-beyond-marker</a></p>
       </article>
 
+      <article class="research__study" id="flood-label-errors">
+        <h2>Flood mapping from labels that are partly wrong</h2>
+        <ul class="research__chips" aria-label="Topics">
+          <li>Sen1Floods11</li>
+          <li>Sentinel-1 radar</li>
+          <li>Label noise</li>
+          <li>Pretrained encoder</li>
+          <li>Segmentation</li>
+          <li>In progress</li>
+        </ul>
+        {% comment %} TODO: REPLACE (Paul): this section was drafted on 22 November
+             from the study's result tables and protocol records. The question
+             is your wording of 18 November. Put the findings in your own
+             words (the study's README has the same TODO), and add the
+             repository link at the foot once the repository is public. {% endcomment %}
+        {%- assign flood = site.data.research_flood -%}
+        {%- assign fnames = site.data.research.flood_models -%}
+
+        <p><strong>In progress, reported part-way.</strong> Started on 17 November 2026. Every figure below comes from development data: 252 hand-labelled chips from floods the models also saw in training. The held-out evaluation, on 90 test chips and on 15 chips from a flood never used in training, has its protocol and my prediction on record and has not been run. Nothing here is a final result.</p>
+
+        <h3>Setup</h3>
+        <ul>
+          <li>The question: when flood-mapping models are trained on Sentinel-1 Otsu labels, does a pretrained encoder with a small decoder repeat fewer of the label rule's errors than a UNet trained from scratch? Does updating the encoder change that?</li>
+          <li>Sen1Floods11: satellite radar images (Sentinel-1) of flood events, cut into square tiles called chips. 4,384 chips carry automatic labels and 446 were labelled by hand.</li>
+          <li>The automatic labels come from Otsu's method, a rule that calls a pixel water when its radar echo is weaker than a threshold taken from the image itself. They are cheap to make, and they are wrong in places.</li>
+          <li>Three models, all trained on the automatic labels only: 3,740 chips, with a further 420 held back to decide when to stop. No hand label touches training. Three random seeds each, radar only.</li>
+          <li>A UNet trained from scratch (7.8 million weights), and TerraMind v1 base, a model pretrained on Earth-observation data, with a small decoder: once with its encoder frozen, so that 1.7 million of its 87.1 million weights are trained, and once with the encoder updated at a low learning rate.</li>
+          <li>The measure: with the hand label as the reference, how much of the labels' false water ({{ flood.pixels.text.otsu_false_water }} million pixels) and missed water ({{ flood.pixels.text.otsu_missed_water }} million) does each model repeat? A lower rate is not an improvement on its own: a map that calls everything dry repeats none of the false water. So it is read beside how often the model stays right where the labels are right, and beside water IoU.</li>
+          <li>Before each run I recorded a prediction and the rule for any claim, and committed both before the result existed. "Repeats fewer" needs a fall of at least 5 points for false water, or 2 points for missed water, on the three-seed mean, with at least two of the three seed pairs agreeing.</li>
+        </ul>
+
+        <figure class="research__figure">
+          {% include picture.html src="/img/research/flood-sentinel1-esa.jpg" alt="Satellite radar image of the Rhine, Meuse and Ruhr rivers in July 2021. Land is grey, open water is black, and newly flooded land along the rivers is marked in red." width="1200" height="900" %}
+          <figcaption>For context, and not from the study's data: what Sentinel-1 radar sees in a flood. The Rhine, Meuse and Ruhr on 15 July 2021, compared with 3 July, with flooded land in red. It is a different flood from the ones in the study. Image: contains modified Copernicus Sentinel data (2021), processed by ESA, <a href="https://creativecommons.org/licenses/by-sa/3.0/igo/" rel="noopener license">CC BY-SA 3.0 IGO</a>; resized from <a href="https://www.esa.int/ESA_Multimedia/Images/2021/07/Satellites_map_floods_in_western_Europe" rel="noopener">the original</a>.</figcaption>
+        </figure>
+        <figure class="research__figure">
+          {% include picture.html src="/img/research/flood-measure.png" alt="Four small grids of a made-up scene with a river. The hand label shows the whole river. The automatic label misses a stretch of river and marks a dry field as water. The model's map repeats most of both mistakes. The last grid colours the label's mistakes by whether the model repeated them or put them right." width="1400" height="490" %}
+          <figcaption>The measure, on a made-up scene. This is an illustration, not data.</figcaption>
+        </figure>
+
+        <h3>Results so far</h3>
+        <p>Development chips, mean of three seeds. The first two columns are the share of the automatic labels' mistakes that each map repeats. Water IoU is the overlap between a map's water and the hand-labelled water, divided by the area covered by either: 1 is a perfect map.</p>
+        <div class="research__table">
+          <table>
+            <thead>
+              <tr><th scope="col">Map</th><th scope="col" class="num">False water<br>repeated</th><th scope="col" class="num">Missed water<br>repeated</th><th scope="col" class="num">Water<br>IoU</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">The automatic labels themselves</th><td class="num">100%</td><td class="num">100%</td><td class="num">{{ flood.otsu.iou }}</td></tr>
+              {%- for m in flood.models %}
+              <tr><th scope="row">{{ fnames[m.id] }}</th><td class="num">{{ m.false_water.text.mean }}%</td><td class="num">{{ m.missed_water.text.mean }}%</td><td class="num">{{ m.iou.text.mean }}</td></tr>
+              {%- endfor %}
+            </tbody>
+          </table>
+        </div>
+        {%- assign fax = site.data.research.flood_axis -%}
+        {%- assign fspan = fax.max | minus: fax.min -%}
+        <div class="spread" style="--zero: 100%">
+          <h4 class="spread__title">How much of the labels' mistakes each model repeats</h4>
+          <p class="spread__lede">Each bar runs from the lowest to the highest of three seeds, and the line is their mean. The right-hand edge is an exact copy of the automatic labels.</p>
+          {%- assign fkinds = "false_water,missed_water" | split: "," -%}
+          {%- for kind in fkinds %}
+          <div class="spread__panel">
+            <h5 class="spread__lead">{% if kind == "false_water" %}False water: dry ground the labels call water{% else %}Missed water: water the labels call dry{% endif %}</h5>
+            <ul class="spread__rows">
+              {%- for m in flood.models -%}
+                {%- assign v = m[kind] -%}
+                {%- assign lo = v.min | minus: fax.min | divided_by: fspan | times: 100 -%}
+                {%- assign hi = v.max | minus: fax.min | divided_by: fspan | times: 100 -%}
+                {%- assign md = v.mean | minus: fax.min | divided_by: fspan | times: 100 %}
+              <li class="spread__row">
+                <span class="spread__label">{{ fnames[m.id] }}</span>
+                <span class="spread__track" aria-hidden="true">
+                  <span class="spread__whisker" style="left: {{ lo | round: 2 }}%; width: {{ hi | minus: lo | round: 2 }}%"></span>
+                  <span class="spread__median" style="left: {{ md | round: 2 }}%"></span>
+                </span>
+                <span class="spread__value">mean {{ v.text.mean }}%, seeds {{ v.text.seeds }}</span>
+              </li>
+              {%- endfor %}
+            </ul>
+          </div>
+          {%- endfor %}
+          <div class="spread__axis" aria-hidden="true"><span>{{ fax.min | round }}% repeated</span><span>{{ fax.max | round }}% = the labels themselves</span></div>
+        </div>
+
+        <ul>
+          <li>
+            <span data-plain><strong>The automatic labels are wrong in two different ways, depending on the flood.</strong> They find 69% of the hand-labelled water, and 57% of what they call water is water. Three floods hold about 80% of the false water. In six of the ten floods, missed water is the bigger error.</span>
+            <span data-technical>On the 252 development chips the Otsu labels score recall 68.6%, precision 56.9% and IoU 0.451 against the hand labels, and false water is 1.65 times missed water. Pakistan, Paraguay and Somalia hold about 80% of the false water. I had predicted the reverse: recall near 50%, precision near 65% and more missed water than false water. This count drops fewer pixels than the model comparisons, which also leave out pixels with no radar data, so precision reads 56.9% here and 57.0% there.</span>
+          </li>
+          <li>
+            <span data-plain><strong>A model trained from scratch copies most of those mistakes, and still edges past the labels.</strong> The UNet repeats 75% of the labels' false water and 93% of their missed water. Its water IoU is 0.474, against 0.452 for the labels it learned from.</span>
+            <span data-technical>UNet, three seeds: 75.2% of Otsu's false water repeated (65.6, 78.0 and 82.0 by seed) and 92.8% of its missed water (92.5, 92.2, 93.9), while staying right on 99.18% of the pixels Otsu labels correctly. Between 86 and 90% of the UNet's own false water, and 91 to 93% of its missed water, lies on pixels where Otsu made the same mistake. Pooled water IoU is 0.4739 against 0.4516, a gain of 0.022 where the rule set in advance asked for 0.010. I predicted 75% and 80% for the two rates and an IoU of 0.47. I also predicted higher precision, which held (60.7% against 57.0%), and a clear drop in recall, which did not (68.4% against 68.6%).</span>
+          </li>
+          <li>
+            <span data-plain><strong>The pretrained model did not repeat fewer of the mistakes. It repeated more.</strong> With its encoder frozen it repeats 88.9% of the false water and 94.5% of the missed water, more than the UNet in all three seed pairs. I had predicted the opposite for false water: 63%.</span>
+            <span data-technical>TerraMind v1 base with the encoder frozen, its weights fingerprinted before and after every seed: 88.9% of Otsu's false water repeated (88.7, 87.0, 90.8) against the UNet's 75.2%, a mean gap of 13.7 points and 8.9 to 23.2 points by seed pair. Missed water repeated is 94.5% against 92.8%, higher in all three pairs. By the rule: no "repeats fewer" claim. Two of my six predicted directions were met. The model adds fewer mistakes of its own (186 thousand new false-water pixels against 303 thousand) but corrects far fewer of Otsu's (314 thousand against 700 thousand), so its water IoU, 0.463, sits between the labels' and the UNet's.</span>
+          </li>
+          <li>
+            <span data-plain><strong>Letting the encoder learn made it a closer copy still.</strong> Updated during training, the same model repeats 95.8% of the false water and 97.2% of the missed water, more than its frozen counterpart in every seed pair. This time I predicted the direction of every change correctly, and still underestimated the size.</span>
+            <span data-technical>Encoder learning rate 0.00002, decoder 0.001. Every seed starts from the published encoder and from the frozen run's starting decoder weights for that seed. Against the frozen model, paired by seed, false water repeated rises by 3.9 to 8.8 points (mean 7.0; I predicted 2.6) and missed water repeated by 1.7 to 3.3 points. By the rule: no "repeats fewer" claim. All twelve predicted directions held: six measures, against the frozen model and against the UNet. Its total false water, 2.81 million pixels, is almost the labels' own 2.82 million, and its water IoU is 0.454 against the labels' 0.452.</span>
+          </li>
+          <li>
+            <span data-plain><strong>A pattern to test, not yet a finding:</strong> the closer a model matches the labels it learned from, the more of their mistakes it keeps and the fewer new ones it adds. New false water falls from 303 to 186 to 111 thousand pixels across the three models. False water put right falls faster, from 700 to 314 to 118 thousand.</span>
+            <span data-technical>Agreement with the Otsu labels on the held-back stop chips (IoU) is 0.87 to 0.91 for the UNet, 0.94 for the frozen model and 0.97 for the updated one, the same order as the share of Otsu's errors repeated. The ordering was noticed after the results. It holds across the three kinds of model, which differ in several ways at once, and among the UNet's seeds, but not among the pretrained model's own seeds. It is a hypothesis for the next experiment.</span>
+          </li>
+        </ul>
+
+        <figure class="research__figure">
+          {% include picture.html src="/img/research/flood-fixed-and-added.png" alt="Four small bar charts for the three models. Of the labels' false water, the UNet puts right 700 thousand pixels, the frozen pretrained model 314 thousand and the updated one 118 thousand. New false water added: 303, 186 and 111 thousand. Missed water recovered: 123, 95 and 48 thousand. New missed water: 129, 61 and 28 thousand." width="1400" height="740" %}
+          <figcaption>What each model does with its labels' mistakes: how many it puts right, and how many new ones it adds.</figcaption>
+        </figure>
+        <figure class="research__figure">
+          {% include picture.html src="/img/research/flood-by-event.png" alt="Dot chart of the share of the labels' false water each model repeats in each of ten floods. In Pakistan the UNet repeats 67.6% and the updated pretrained model 97.1%; in Paraguay 68.6% and 96.3%. In the USA, Spain, Ghana and Cambodia the UNet repeats the most." width="1400" height="820" %}
+          <figcaption>By flood. Pakistan and Paraguay, where the labels have the most false water, carry most of the gap. In four floods (the USA, Spain, Ghana and Cambodia) the UNet repeats the most.</figcaption>
+        </figure>
+        <figure class="research__figure">
+          {% include picture.html src="/img/research/flood-predictions.png" alt="Chart of predicted against found shares of the labels' errors repeated. False water: UNet predicted 75%, found 75.2%; frozen pretrained model predicted 63%, found 88.9%; updated model predicted 91.5%, found 95.8%. Missed water: predicted 80%, 94% and 95.5%; found 92.8%, 94.5% and 97.2%." width="1400" height="590" %}
+          <figcaption>What I predicted before each run, and what the run found.</figcaption>
+        </figure>
+
+        <h3>What went wrong, and what changed</h3>
+        <ul>
+          <li>My main prediction was wrong. I expected the frozen pretrained encoder to repeat less of the labels' false water than the UNet (63% against 75.2%). It repeated 88.9%. The prediction and the result are both in the record.</li>
+          <li>My first prediction about the labels was wrong as well: I expected missed water to be the larger error, and false water is.</li>
+          <li>An early count saved totals, not the masks behind them. Equal totals can come from different pixels, so every comparison since 19 November first proves, chip by chip, that the models are scored on identical pixels. The reference for that check had to be rebuilt and tied to the earlier count by its recorded numbers.</li>
+          <li>One UNet seed kept an earlier checkpoint (epoch 31 of 40) and copied the least false water. That widens the gap for its seed pair to 23.2 points, against 9.0 and 8.9 for the other two. All three are reported.</li>
+        </ul>
+
+        <h3>Limits</h3>
+        <ul>
+          <li>Development chips only, from floods that are also in the training data. The 90 test chips and the 15 Bolivia chips have not been opened, and Bolivia is a single flood.</li>
+          <li>The UNet and the pretrained model differ in architecture, size and pretraining at once, so the gap between them cannot be put down to pretraining alone. The two pretrained runs are the closer comparison.</li>
+          <li>The pretrained model is scored as four tiles joined together and the UNet on whole chips, and each uses its own input scaling.</li>
+          <li>Three seeds, one pretrained model at one size, radar only, and one untuned training recipe.</li>
+          <li>The hand labels are treated as the truth.</li>
+          <li>It is not known whether the pretrained model's training images overlap these floods.</li>
+        </ul>
+        <p class="research__links">Protocols, predictions and the decision log are kept with the code. The repository is not public yet.</p>
+      </article>
+
       <section class="research__study" aria-labelledby="research-method">
         <h2 id="research-method">How the studies are run</h2>
         <ul class="research__grid">
@@ -314,7 +459,10 @@ description: "Two reproducible machine learning studies on public data: river ea
 
       <section class="research__study" id="how-produced" aria-labelledby="research-how-produced">
         <h2 id="research-how-produced">How this work was produced</h2>
-        <p>Both studies were built making use of AI tools, under research rules I set; each study’s log records how. I re-ran both on my own hardware, reviewed every logged decision, and take responsibility for the work and its conclusions.</p>
+        <p>All three studies were built making use of AI tools, under research rules I set; each study’s log records how. I re-ran the river and drug response studies on my own hardware and reviewed every logged decision. In the flood study I set the design, record a prediction before each result and run the training on my own GPU; some of its logged choices still await my review. I take responsibility for the work and its conclusions.</p>
+        {% comment %} TODO: REPLACE (Paul): the sentence about the flood study is
+             new (22 November). Check it says what you want, and change it once
+             you have confirmed the remaining logged choices. {% endcomment %}
       </section>
 
       <section class="research__study" id="corrections" aria-labelledby="research-corrections">
@@ -334,7 +482,7 @@ description: "Two reproducible machine learning studies on public data: river ea
         <h2 id="research-next">Next</h2>
         <ul>
           <li>The river study's behaviour with gaps in the inputs.</li>
-          <li>A third study, planned for December 2026 to January 2027: satellite flood mapping (Sen1Floods11), asking whether pretrained models repeat the errors of automatic threshold labels less than a model trained from scratch.</li>
+          <li>The flood study's one-time evaluation on its held-out data: 90 test chips, and 15 chips from Bolivia, a flood never used in training.</li>
         </ul>
         {% comment %} TODO: REPLACE (Paul): reading notes. Three to five papers you have
              read in full, with two lines each on what you took from them and

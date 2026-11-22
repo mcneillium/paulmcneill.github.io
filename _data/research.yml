@@ -11,6 +11,18 @@ axis:
   min: -0.6
   max: 1.0
 
+# Flood study. The numbers are generated: see _data/research_flood.json and
+# scripts/research-flood-numbers.js.
+flood_models:
+  unet: "UNet, trained from scratch"
+  frozen: "Pretrained encoder, frozen"
+  updated: "Pretrained encoder, updated in training"
+
+# Left and right ends of the flood chart's axis (% of the labels' errors repeated).
+flood_axis:
+  min: 50.0
+  max: 100.0
+
 # Every change to a published number or claim, newest first.
 corrections:
   - date: 2026-11-14

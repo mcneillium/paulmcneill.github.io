@@ -1,0 +1,174 @@
+{
+  "source": "results/{unet_baseline,terramind_frozen,terramind_updated}/*_development.json",
+  "metric": "Development chips (252 hand-labelled chips), three seeds per model",
+  "split_fingerprint": "3f5a12e83240",
+  "pixels": {
+    "valid": 57277370,
+    "otsu_false_water": 2821024,
+    "otsu_missed_water": 1712742,
+    "text": {
+      "otsu_false_water": "2.82",
+      "otsu_missed_water": "1.71"
+    }
+  },
+  "otsu": {
+    "iou": "0.452",
+    "recall": "68.6",
+    "precision": "57.0"
+  },
+  "models": [
+    {
+      "id": "unet",
+      "false_water": {
+        "mean": 75.19,
+        "min": 65.59,
+        "max": 81.98,
+        "text": {
+          "mean": "75.2",
+          "seeds": "65.6, 78.0, 82.0"
+        }
+      },
+      "missed_water": {
+        "mean": 92.83,
+        "min": 92.18,
+        "max": 93.86,
+        "text": {
+          "mean": "92.8",
+          "seeds": "92.5, 92.2, 93.9"
+        }
+      },
+      "correct": {
+        "mean": 99.18,
+        "min": 99.13,
+        "max": 99.26,
+        "text": {
+          "mean": "99.18",
+          "seeds": "99.15, 99.13, 99.26"
+        }
+      },
+      "iou": {
+        "mean": 0.4739,
+        "text": {
+          "mean": "0.474",
+          "seeds": "0.489, 0.470, 0.463"
+        }
+      },
+      "recall": "68.4",
+      "precision": "60.7",
+      "corrected_false_water_k": 700,
+      "new_false_water_k": 303,
+      "new_missed_water_k": 129,
+      "stop_iou": {
+        "min": "0.87",
+        "max": "0.91"
+      },
+      "kept_epochs": [
+        31,
+        40,
+        40
+      ]
+    },
+    {
+      "id": "frozen",
+      "false_water": {
+        "mean": 88.86,
+        "min": 87,
+        "max": 90.83,
+        "text": {
+          "mean": "88.9",
+          "seeds": "88.7, 87.0, 90.8"
+        }
+      },
+      "missed_water": {
+        "mean": 94.46,
+        "min": 93.31,
+        "max": 95.55,
+        "text": {
+          "mean": "94.5",
+          "seeds": "93.3, 95.5, 94.5"
+        }
+      },
+      "correct": {
+        "mean": 99.53,
+        "min": 99.47,
+        "max": 99.6,
+        "text": {
+          "mean": "99.53",
+          "seeds": "99.53, 99.60, 99.47"
+        }
+      },
+      "iou": {
+        "mean": 0.4629,
+        "text": {
+          "mean": "0.463",
+          "seeds": "0.466, 0.465, 0.458"
+        }
+      },
+      "recall": "69.2",
+      "precision": "58.3",
+      "corrected_false_water_k": 314,
+      "new_false_water_k": 186,
+      "new_missed_water_k": 61,
+      "stop_iou": {
+        "min": "0.94",
+        "max": "0.94"
+      },
+      "kept_epochs": [
+        40,
+        38,
+        40
+      ]
+    },
+    {
+      "id": "updated",
+      "false_water": {
+        "mean": 95.83,
+        "min": 94.76,
+        "max": 97.54,
+        "text": {
+          "mean": "95.8",
+          "seeds": "97.5, 95.2, 94.8"
+        }
+      },
+      "missed_water": {
+        "mean": 97.19,
+        "min": 96.44,
+        "max": 97.83,
+        "text": {
+          "mean": "97.2",
+          "seeds": "96.4, 97.3, 97.8"
+        }
+      },
+      "correct": {
+        "mean": 99.74,
+        "min": 99.67,
+        "max": 99.79,
+        "text": {
+          "mean": "99.74",
+          "seeds": "99.67, 99.75, 99.79"
+        }
+      },
+      "iou": {
+        "mean": 0.4544,
+        "text": {
+          "mean": "0.454",
+          "seeds": "0.452, 0.455, 0.456"
+        }
+      },
+      "recall": "68.9",
+      "precision": "57.2",
+      "corrected_false_water_k": 118,
+      "new_false_water_k": 111,
+      "new_missed_water_k": 28,
+      "stop_iou": {
+        "min": "0.97",
+        "max": "0.97"
+      },
+      "kept_epochs": [
+        38,
+        37,
+        38
+      ]
+    }
+  ]
+}
