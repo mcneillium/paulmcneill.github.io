@@ -4,6 +4,7 @@
  * No paid-provider fallback. No embeddings calls or automatic retries.
  */
 import KB from '../knowledge-base.json';
+import { retrieveChunks } from './retrieval.js';
 export { UsageBudget } from './usage-budget.js';
 
 const ALLOW_ORIGINS = [
@@ -107,42 +108,6 @@ function classifyIntent(msg) {
     return 'meta';
   }
   return 'general';
-}
-
-/* ---------------- retrieval ---------------- */
-function tokenise(s) {
-  return (s.toLowerCase().match(/[a-z0-9+#-]{2,}/g) || []);
-}
-
-function retrieveChunks(message) {
-  const chunks = KB.chunks || [];
-  if (!chunks.length) return [];
-
-  // Keyword fallback — BM25-lite: count overlap between query tokens and
-  // each chunk's text + keywords, with idf weighting.
-  const qTokens = new Set(tokenise(message));
-  if (qTokens.size === 0) return chunks.slice(0, TOP_K).map(c => ({ ...c, score: 0 }));
-
-  const docCount = chunks.length;
-  const df = new Map();
-  for (const c of chunks) {
-    const seen = new Set([...tokenise(c.text), ...(c.keywords || [])]);
-    for (const t of seen) df.set(t, (df.get(t) || 0) + 1);
-  }
-  const scored = chunks.map(c => {
-    const txt = new Set([...tokenise(c.text), ...(c.keywords || [])]);
-    let score = 0;
-    for (const t of qTokens) {
-      if (txt.has(t)) {
-        const idf = Math.log(1 + (docCount - (df.get(t) || 0) + 0.5) / ((df.get(t) || 0) + 0.5));
-        score += idf;
-      }
-    }
-    // small bonus for keyword (vs body) hits
-    if ((c.keywords || []).some(k => qTokens.has(k))) score *= 1.15;
-    return { ...c, score };
-  });
-  return scored.sort((a, b) => b.score - a.score).slice(0, TOP_K).filter(c => c.score > 0);
 }
 
 /* ---------------- system prompt ---------------- */
@@ -267,7 +232,7 @@ export default {
     // Retrieve relevant chunks
     let retrieved = [];
     try {
-      retrieved = retrieveChunks(message);
+      retrieved = retrieveChunks(KB.chunks || [], message, TOP_K);
     } catch (e) {
       console.error('retrieval failed:', e.message);
     }
