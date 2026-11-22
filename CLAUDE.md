@@ -81,7 +81,7 @@ _layouts/
   blank.html            CV + 404
 lab/index.html          /lab/ — live demos page (TF.js, Voice board, voice
                         assistant, agent visualiser)
-research/index.html     /research/ — two reproducible studies
+research/index.html     /research/ — three studies (the flood study is in progress)
 demos/                  built Voice app (Expo web) and caregiver dashboard
 assets/
   css/main.css          single stylesheet

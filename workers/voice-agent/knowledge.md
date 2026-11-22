@@ -109,7 +109,7 @@ be stated as fact.
   Python on versions 3.13 to 3.15 with uv, Ruff and mypy for the other three.
   The expense tracker holds money as exact decimals.
 
-## Research (two reproducible studies on public data; neither peer reviewed)
+## Research (three studies on public data, one still in progress; none peer reviewed)
 - River early warning across 671 British catchments (CAMELS-GB): how far ahead
   river flow and flood or low-flow warnings can be forecast without future
   weather. Findings: most skill beyond a day depends on knowing the weather (at
@@ -126,14 +126,27 @@ be stated as fact.
   of response explained from about 11% to 14 to 19%, so most stays unexplained.
   The study measures how choosing genes before cross-validation produces a
   believable score from noise. Cell lines only; nothing about patients.
-- Both studies: protocol written before any model was fitted, baselines first,
+- Flood mapping from labels that are partly wrong (Sen1Floods11, Sentinel-1
+  radar), in progress since 17 November 2026: when flood-mapping models are
+  trained on automatic threshold (Otsu) labels, how many of the labels' errors
+  do they repeat? Results so far are on development data only (252
+  hand-labelled chips, three seeds per model). A UNet trained from scratch
+  repeated 75.2% of the labels' false water and 92.8% of their missed water. A
+  pretrained model (TerraMind) with a small decoder repeated more: 88.9% and
+  94.5% with its encoder frozen, 95.8% and 97.2% with its encoder updated. Paul
+  had predicted the opposite for the frozen encoder and reports that he was
+  wrong. The held-out evaluation has not been run, so nothing is final, and
+  the repository is not public yet.
+- The river and drug studies: protocol written before any model was fitted, baselines first,
   fixed splits, negative results reported, and a log of every decision. Both
   were re-run on a second machine on 14 November 2026, and the river study's
   uncertainty experiment was repeated with three seeds on 15 November.
-- How they were produced: both studies were built making use of AI tools, under
-  research rules Paul set, and each study's log records how. Paul re-ran both
-  on his own hardware and takes responsibility for the work and its
-  conclusions; decisions still awaiting his review are marked in the logs.
+- How they were produced: all three studies were built making use of AI tools,
+  under research rules Paul set, and each study's log records how. Paul re-ran
+  the river and drug studies on his own hardware; in the flood study he set
+  the design, records a prediction before each result and runs the training on
+  his own GPU. He takes responsibility for the work and its conclusions;
+  decisions still awaiting his review are marked in the logs.
 
 ## Pages
 - Projects and case studies: the homepage.

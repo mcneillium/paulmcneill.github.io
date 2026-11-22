@@ -178,14 +178,29 @@ if (narration.drug) push('research.drug', 'research',
   `Research study: ${narration.drug.text} Full write-up: /research/#drug-response. ` +
   'Code: github.com/mcneillium/drug-response-beyond-marker.',
   ['research', 'study', 'drug', 'cancer', 'pten', 'gdsc', 'cell line', 'genes', 'phd']);
+push('research.flood', 'research',
+  'Research study, in progress: Flood mapping from labels that are partly wrong (Sen1Floods11, ' +
+  'Sentinel-1 radar). The question: when flood-mapping models are trained on automatic ' +
+  'threshold (Otsu) labels, does a pretrained encoder with a small decoder repeat fewer of the ' +
+  "labels' errors than a UNet trained from scratch, and does updating the encoder change that? " +
+  'Results so far are on development data only (252 hand-labelled chips, three seeds per model): ' +
+  "the UNet repeated 75.2% of the labels' false water and 92.8% of their missed water; the " +
+  'pretrained model (TerraMind) repeated more, 88.9% and 94.5% with its encoder frozen and 95.8% ' +
+  'and 97.2% with its encoder updated. Paul predicted the opposite for the frozen encoder and ' +
+  'reports that the prediction was wrong. The held-out evaluation has not been run, so nothing ' +
+  'is final. Full write-up: /research/#flood-label-errors. The repository is not public yet.',
+  ['research', 'study', 'flood', 'satellite', 'sentinel', 'radar', 'labels', 'label noise',
+    'segmentation', 'unet', 'terramind', 'pretrained', 'computer vision', 'phd']);
 push('research.method', 'research',
   'How the research is done: a protocol is written and dated before any model is fitted; ' +
   'baselines come first; splits are fixed and fingerprinted; nothing is learned from held-out ' +
   'data; negative results are reported; every decision is logged, including mistakes. ' +
-  'Both studies were built making use of AI tools, under research rules Paul set; each ' +
-  "study's log records how. Paul re-ran both on his own hardware, reviewed every logged " +
-  'decision, and takes responsibility for the work and its conclusions. Neither study has been ' +
-  'peer reviewed.',
+  'All three studies were built making use of AI tools, under research rules Paul set; each ' +
+  "study's log records how. Paul re-ran the river and drug response studies on his own " +
+  'hardware and reviewed every logged decision. In the flood study he set the design, records ' +
+  'a prediction before each result and runs the training on his own GPU; some of its logged ' +
+  'choices still await his review. He takes responsibility for the work and its conclusions. ' +
+  'None of the studies has been peer reviewed.',
   ['research', 'method', 'reproducible', 'protocol', 'ai tools', 'how produced']);
 if (narration.voice_app) push('demo.voice', 'project',
   `${narration.voice_app.text} On the case study and the Lab page, visitors can try the ` +

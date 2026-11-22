@@ -60,7 +60,7 @@ scripts:
     {% for r in cv.research %}
     <div class="cv__entry">
       <p class="cv__entry-head"><strong><a href="{{ r.url | relative_url }}">{{ r.title }}</a></strong> <span class="cv__when">{{ r.when }}</span></p>
-      <p>{{ r.text }} <a href="{{ r.code }}" rel="noopener">Code</a>.</p>
+      <p>{{ r.text }}{% if r.code %} <a href="{{ r.code }}" rel="noopener">Code</a>.{% endif %}</p>
     </div>
     {% endfor %}
     <p class="cv__muted">{{ cv.research_note }}</p>

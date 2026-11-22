@@ -32,7 +32,29 @@ node scripts/research-numbers.js ../river-early-warning           # check
 node scripts/research-numbers.js ../river-early-warning --write   # regenerate
 ```
 
-The check exits non-zero if the page and the results disagree. The other
+The flood study's table and chart read `_data/research_flood.json`, generated
+the same way from that study's development result files:
+
+```bash
+node scripts/research-flood-numbers.js ../research/flood-label-errors           # check
+node scripts/research-flood-numbers.js ../research/flood-label-errors --write   # regenerate
+```
+
+The flood study's four figures in `img/research/` are drawn from the same
+result files (needs Python with matplotlib, Pillow and the Inter font). Redraw
+them whenever the results change, then make the WebP copies:
+
+```bash
+python scripts/research-flood-figures.py ../research/flood-label-errors
+node scripts/optimize-images.js
+```
+
+`flood-measure.png` is a made-up scene that explains the measure and says so
+on its face. `flood-sentinel1-esa.jpg` is not Paul's image: it is an ESA
+Copernicus Sentinel-1 image under CC BY-SA 3.0 IGO, and its caption must keep
+the credit, the licence link and the note that it was resized.
+
+Each check exits non-zero if the page and the results disagree. The other
 numbers on the page are typed by hand, so compare them with the result
 tables whenever they change, and add an entry to `corrections:` in
 `_data/research.yml` for any published figure that is altered.
