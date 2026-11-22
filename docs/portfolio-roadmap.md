@@ -41,8 +41,9 @@ Prioritised, with concrete tasks rather than vague aspirations.
 
 ### Engineering
 
-- [ ] **Wire `node scripts/link-check.js` into a GitHub Action** that
-      runs on every PR. ~30 lines of YAML.
+- [x] **Wire `node scripts/link-check.js` into a GitHub Action** that
+      runs on every PR: `.github/workflows/site-check.yml` (November 2026)
+      builds the site and runs the link check.
 - [ ] **Add a Playwright + axe-core a11y test** for `/`, `/cv/`, and
       one case study page. See `docs/accessibility-review.md`.
 - [ ] **Run real Lighthouse against the live URL** and capture the
