@@ -11,7 +11,7 @@ category: projects
 permalink: /projects/aurora-nhs-transformation/
 redirect_from:
   - /projects/2023/05/10/aurora-digital-transformation-domiciliary-care-nhsct/
-description: "A demonstration analytics model for a fictional home-care provider in the Northern Health and Social Care Trust area: 16 synthetic tables, Power Query, DAX measures, six Power BI pages with row-level security, and an Excel mirror."
+description: "A demonstration Power BI model for a fictional home-care provider: 16 synthetic tables, DAX measures and six report pages with row-level security."
 impact: "Models visits, workforce and finance using synthetic care data"
 architecture: aurora
 github-url: https://github.com/mcneillium/Aurora-Domiciliary-Care

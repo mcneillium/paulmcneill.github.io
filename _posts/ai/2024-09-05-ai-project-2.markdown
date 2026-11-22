@@ -14,7 +14,7 @@ category: AI
 permalink: /projects/ai-social-healthcare-platform/
 redirect_from:
   - /ai/2024/09/01/ai-project-2/
-description: "A Django care-management application for a home-care provider, with live NEWS2 monitoring, an explainable 30-day admission-risk model, a question-answering assistant, care-team messaging and analytics. All data synthetic."
+description: "A Django care-management app with live NEWS2 monitoring, an explainable 30-day admission-risk model and a question-answering assistant. All data synthetic."
 impact: "NEWS2 alerts, explainable risk and a plain-English assistant, with 93 tests"
 github-url:
 youtube-url:

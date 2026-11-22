@@ -13,7 +13,7 @@ category: AI
 permalink: /projects/ai-assistant/
 redirect_from:
   - /ai/2023/04/05/ai-project-1/
-description: "GPT-2 fine-tuned with Hugging Face Transformers on conversation data and served through a Flask API with web, desktop (Tkinter), Streamlit and React front ends. Retrained in 2026 on three dialogue datasets and measured against held-out conversations."
+description: "GPT-2 fine-tuned with Hugging Face Transformers, served through a Flask API. Retrained in 2026 on three dialogue datasets and tested on held-out conversations."
 github-url: https://github.com/mcneillium/AI_Assistant
 youtube-url: https://www.youtube.com/embed/_2doud4q8gI
 

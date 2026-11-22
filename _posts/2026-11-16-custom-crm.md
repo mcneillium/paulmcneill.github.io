@@ -13,7 +13,7 @@ category: CRM Software Development
 permalink: /projects/custom-crm/
 redirect_from:
   - "/crm software development/2024/09/06/project-5/"
-description: "A CRM for small sales teams, built from scratch in TypeScript: companies, contacts, a deal pipeline, an activity log, tasks, email templates and a dashboard, on Node.js and PostgreSQL, with a live demo that runs PostgreSQL inside the browser."
+description: "A CRM for small sales teams, built from scratch in TypeScript on Node.js and PostgreSQL, with a live demo that runs PostgreSQL inside the browser."
 impact: "Full CRM with a live demo that needs no server"
 demo-url: /demos/custom-crm/
 github-url: https://github.com/mcneillium/custom-crm

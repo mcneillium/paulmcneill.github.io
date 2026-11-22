@@ -12,7 +12,7 @@ category: Software Development
 permalink: /projects/java-ticket-machine/
 redirect_from:
   - "/software development/2024/08/24/project-1/"
-description: "A small Java and JavaFX ticket machine written to show inheritance, polymorphism and encapsulation. Revisited in November 2026: it charged £10 for three tickets and crashed on an empty quantity. Both are fixed, with 11 JUnit tests running on every push."
+description: "A Java and JavaFX ticket machine written to show object-oriented design. Revisited in 2026: a pricing bug and a crash fixed, with 11 JUnit tests."
 impact: "Two pricing and input bugs found and fixed; tests up from 0 to 13"
 github-url: https://github.com/mcneillium/Ticket-Machine-System
 youtube-url: https://www.youtube.com/embed/APM7f09MWmM

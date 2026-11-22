@@ -12,7 +12,7 @@ category: Databases
 permalink: /projects/cloud-data-management/
 redirect_from:
   - "/cloud computing/2023/06/20/project-3/"
-description: "A Python desktop app that manages the same users in SQLite and in MongoDB (local or Atlas). Revisited in 2026: it reported refused records as saved, and MongoDB accepted duplicates. Both stores now enforce one account per email, with tests that need no database server."
+description: "A Python desktop app that manages the same users in SQLite and MongoDB. Revisited in 2026: both stores now enforce one account per email, with tests."
 impact: "Both databases now enforce the same rule; tests run without a server"
 github-url: https://github.com/mcneillium/CloudBasedDataManagementSystem
 youtube-url: https://www.youtube.com/embed/bgKY8KhDIZE

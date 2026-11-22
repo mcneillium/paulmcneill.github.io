@@ -9,7 +9,7 @@ project-date: 2026-05-11
 category: projects
 client: Personal project
 permalink: /projects/mcneillium-ai-video-pipeline/
-description: "A Python pipeline that turns a topic into a narrated, captioned video: Claude scripts, ElevenLabs narration, automated audio and speech-to-text checks, synced visuals and captions, and packaging for a private upload. Used to make six explainers of my own work."
+description: "A Python pipeline that turns a topic into a narrated, captioned video, with automated audio and speech-to-text checks. Used to make six explainers."
 impact: "Six fact-checked explainers of my own work, built end to end"
 github-url: https://github.com/mcneillium/McNeillium_AI
 youtube-url:

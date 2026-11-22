@@ -12,7 +12,7 @@ category: projects
 permalink: /projects/crm-reporting-industrial-temps/
 redirect_from:
   - /projects/2024/09/06/crm-reporting-industrial-temps/
-description: "As CRM Systems Coordinator at a Belfast recruitment agency, I brought CRM data from more than six sources into one live dashboard and trained staff to keep it clean, improving data accuracy by over 25%."
+description: "At a Belfast recruitment agency I brought CRM data from more than six sources into one live dashboard, improving data accuracy by over 25%."
 impact: "Consolidated 6+ disconnected sources into a single live dashboard" # Confirmed by Paul, 2026-11-04
 github-url:
 youtube-url:
