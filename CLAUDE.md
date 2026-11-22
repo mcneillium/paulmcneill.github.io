@@ -182,7 +182,7 @@ runs with UTF-8 by default — no env needed there.
 
 - `_includes/head.html` already emits canonical, OG, Twitter Card, and
   JSON-LD (Person on home, Article on case studies). Don't duplicate.
-- Page title is `{page.title} — Paul McNeill` for sub-pages, full slogan
+- Page title is `{page.title} | Paul McNeill` for sub-pages, full slogan
   on home.
 - OG image defaults: `/assets/img/og-image.png` for non-posts,
   `/assets/img/og-image-project.png` for posts. Override per-page with

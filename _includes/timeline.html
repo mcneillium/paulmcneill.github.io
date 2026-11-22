@@ -20,10 +20,10 @@
       {%- if sy == "" or sy == nil -%}{%- assign sy = "0" -%}{%- endif -%}
       {%- assign syn = sy | plus: 0 -%}
       {%- if r.end == "Present" or r.end == "present" or r.current -%}
-        {%- assign date = r.start | append: " — Present" -%}
+        {%- assign date = r.start | append: " to present" -%}
         {%- assign syn = 9999 -%}
       {%- elsif r.start and r.start != "" -%}
-        {%- assign date = r.start | append: " — " | append: r.end -%}
+        {%- assign date = r.start | append: " to " | append: r.end -%}
       {%- else -%}
         {%- assign date = "Up to " | append: r.end -%}
       {%- endif -%}
@@ -35,10 +35,10 @@
       {%- assign sy = v.start | default: "0" -%}
       {%- assign syn = sy | plus: 0 -%}
       {%- if v.end == "Present" or v.current -%}
-        {%- assign date = v.start | append: " — Present" -%}
+        {%- assign date = v.start | append: " to present" -%}
         {%- assign syn = 9999 -%}
       {%- else -%}
-        {%- assign date = v.start | append: " — " | append: v.end -%}
+        {%- assign date = v.start | append: " to " | append: v.end -%}
       {%- endif -%}
       {%- capture row -%}{{ syn }}|1|volunteer|{{ v.role }}|{{ v.org }}|{{ date }}|{{ v.logo }}|{{ forloop.index0 }}{%- endcapture -%}
       {%- assign rows = rows | push: row -%}
@@ -90,9 +90,9 @@
 
     {%- assign era_keys = "a,b,c,d" | split: "," -%}
     {%- for era in era_keys -%}
-      {%- if era == "a" -%}{%- assign rows_in = era_a -%}{%- assign label = "2024 — Present" -%}{%- endif -%}
-      {%- if era == "b" -%}{%- assign rows_in = era_b -%}{%- assign label = "2019 — 2023" -%}{%- endif -%}
-      {%- if era == "c" -%}{%- assign rows_in = era_c -%}{%- assign label = "2016 — 2018" -%}{%- endif -%}
+      {%- if era == "a" -%}{%- assign rows_in = era_a -%}{%- assign label = "2024 to present" -%}{%- endif -%}
+      {%- if era == "b" -%}{%- assign rows_in = era_b -%}{%- assign label = "2019 to 2023" -%}{%- endif -%}
+      {%- if era == "c" -%}{%- assign rows_in = era_c -%}{%- assign label = "2016 to 2018" -%}{%- endif -%}
       {%- if era == "d" -%}{%- assign rows_in = era_d -%}{%- assign label = "Earlier" -%}{%- endif -%}
 
       {%- if rows_in.size > 0 -%}
@@ -143,7 +143,7 @@
       <h3 class="tl-era__label">Professional memberships &amp; certifications</h3>
       <div class="tl-badges">
         {%- for c in cert_undated -%}
-          <div class="tl-badge" title="{{ c.name | escape }} — {{ c.issuer | escape }}">
+          <div class="tl-badge" title="{{ c.name | escape }}, {{ c.issuer | escape }}">
             <div class="tl-badge__logo">
               {%- if c.img -%}
                 <img src="{{ c.img | relative_url }}" alt="{{ c.issuer | escape }}" loading="lazy">

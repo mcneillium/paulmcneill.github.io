@@ -136,7 +136,7 @@ The same fictional provider runs my [Aurora care management app](/projects/ai-so
 
 ### <span id="governance">🔐 Governance & Security</span>
 - **UK GDPR / DPA 2018:** fully synthetic dataset; names and addresses checked against public NI registers so none belongs to a real person.  
-- **Access Control:** Power BI RLS roles — `Manager_By_Locality`, `Staff_Self`.  
+- **Access Control:** Power BI RLS roles: `Manager_By_Locality`, `Staff_Self`.  
 - **Data Quality:** Verified %, On-Time SLA %, Missed Visit %, Training Compliance %.  
 - **Audit trail:** incidents, complaints, audits and RQIA outcomes are kept as dated records, so every figure on a page traces back to rows.
 

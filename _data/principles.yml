@@ -1,6 +1,6 @@
 - num: "01"
   title: "Ship, then iterate"
-  body: "Production-ready first, refine after. Notebooks are for experiments — they aren't a deliverable."
+  body: "Production-ready first, refine after. Notebooks are for experiments. They aren't a deliverable."
 
 - num: "02"
   title: "Measure everything"
@@ -8,8 +8,8 @@
 
 - num: "03"
   title: "Ethics by default"
-  body: "Fairness checks, explainability, and responsible-AI practices are built in from day one — not bolted on under deadline."
+  body: "Fairness checks, explainability, and responsible-AI practices are built in from day one."
 
 - num: "04"
   title: "Human-centred"
-  body: "I test with real users, prioritise accessibility, and design for the person at the other end — not the algorithm."
+  body: "I test with real users, prioritise accessibility, and design for the person at the other end."

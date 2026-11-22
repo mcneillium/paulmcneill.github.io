@@ -81,7 +81,7 @@
     print('<span class="heading">Skills</span>');
     (data.skills.tiers || []).forEach((tier) => {
       blank();
-      print(`<span class="label">${esc(tier.label)}</span> <span class="dim">— ${esc(tier.description)}</span>`);
+      print(`<span class="label">${esc(tier.label)}</span> <span class="dim">${esc(tier.description)}</span>`);
       const items = (tier.items || []).map(i => i.name).join(', ');
       print('  ' + esc(items));
     });
@@ -147,7 +147,7 @@
   commands.certs = () => {
     print('<span class="heading">Certifications &amp; memberships</span>');
     (data.credentials || []).forEach(c => {
-      print(`  <span class="ok">${esc(c.name)}</span> <span class="dim">— ${esc(c.issuer)}${c.year ? ' · ' + esc(c.year) : ''}</span>`);
+      print(`  <span class="ok">${esc(c.name)}</span> <span class="dim">${esc(c.issuer)}${c.year ? ' · ' + esc(c.year) : ''}</span>`);
     });
   };
 
@@ -181,7 +181,7 @@
       blank();
       print(esc(data.profile.availability));
     } else {
-      print('<span class="warn">Not currently taking new work — but always open to a chat.</span>');
+      print('<span class="warn">Not currently taking new work, but always open to a chat.</span>');
     }
     blank();
     print(`Drop a line: <a href="mailto:${esc(data.profile.contact.email)}">${esc(data.profile.contact.email)}</a>`);

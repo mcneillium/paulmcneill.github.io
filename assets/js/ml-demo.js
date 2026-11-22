@@ -185,7 +185,7 @@
       if (out) render({ text, ...out });
     } catch (e) {
       console.error(e);
-      renderError("Couldn't run the model — try again, or check your connection.");
+      renderError("Couldn't run the model. Try again, or check your connection.");
     } finally {
       setStatus('Analyse');
       button.disabled = false;
@@ -205,15 +205,15 @@
     console.error('[ml-demo] load failed:', err);
     const msg = String(err && err.message || err);
     if (/network|fetch|cors|content security|csp|blocked|aborted/i.test(msg)) {
-      return "The sentiment model couldn't load — looks like your browser blocked the download. " +
+      return "The sentiment model couldn't load. It looks like your browser blocked the download. " +
              "Common cause: an ad-blocker or strict privacy extension blocking storage.googleapis.com. " +
              "Try refreshing with the blocker disabled for this site.";
     }
     if (/webgl|backend/i.test(msg)) {
-      return "TensorFlow.js couldn't initialise a backend — your browser may have WebGL disabled. " +
+      return "TensorFlow.js couldn't initialise a backend. Your browser may have WebGL disabled. " +
              "Try a different browser or check that hardware acceleration is on.";
     }
-    return "The sentiment model couldn't load. Refresh to try again — if it keeps failing, " +
+    return "The sentiment model couldn't load. Refresh to try again. If it keeps failing, " +
            "the model CDN (storage.googleapis.com) may be blocked at the network level.";
   }
 

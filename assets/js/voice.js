@@ -88,7 +88,7 @@
   wrap.hidden = false;
 
   function label(v) {
-    return v.name.replace(/\s*\(.*?\)\s*$/, '') + ' — ' + v.lang + (v.localService ? '' : ', online');
+    return v.name.replace(/\s*\(.*?\)\s*$/, '') + ', ' + v.lang + (v.localService ? '' : ', online');
   }
 
   function fill() {

@@ -34,7 +34,7 @@
             {% for l in site.data.profile.learning %}
               <li class="learning__item learning__item--{{ l.status | replace: ' ', '-' }}">
                 <span class="learning__title">{{ l.title }}</span>
-                {% if l.provider %}<span class="learning__provider">— {{ l.provider }}</span>{% endif %}
+                {% if l.provider %}<span class="learning__provider">({{ l.provider }})</span>{% endif %}
                 <span class="learning__status">{{ l.status }}</span>
               </li>
             {% endfor %}
