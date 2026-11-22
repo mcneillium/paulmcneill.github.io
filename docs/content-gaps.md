@@ -22,14 +22,16 @@ confirmation. Treat these as confirmed owner-supplied content in future reviews.
 
 ### 3. Blog posts
 
-Two blog post stubs with `type: blog`:
+Two blog posts with `type: blog` are unpublished (`published: false`,
+22 November 2026):
 
 - `_posts/2026-04-01-production-rag-pipelines.md`
 - `_posts/2026-02-14-from-notebooks-to-pipelines.md`
 
-Bodies contain `<!-- TODO: REPLACE -->` and outline-only prose. Either
-write them or remove them. The Writing strip auto-hides if no posts
-have `type: blog`, so removal is safe.
+They were written as placeholders and make first-person claims about
+production work. Rewrite each from real project work, then remove the
+`published: false` line. The Writing strip hides itself while no blog post
+is published, and the old dated URLs stop redirecting until then.
 
 ### 4. CV page facts
 

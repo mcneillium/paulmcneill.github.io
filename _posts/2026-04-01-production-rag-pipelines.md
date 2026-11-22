@@ -1,6 +1,8 @@
 ---
 layout: post
 type: blog
+# Unpublished 22 November 2026 until it is rewritten from real project work.
+published: false
 title: "Building Production RAG Pipelines: What Breaks After the Demo"
 subtitle: "What actually breaks once you leave the demo notebook."
 date: 2026-04-01

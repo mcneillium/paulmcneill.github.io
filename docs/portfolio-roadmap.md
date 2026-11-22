@@ -12,8 +12,8 @@ Prioritised, with concrete tasks rather than vague aspirations.
       quotes (set `verified: true`) or remove the section entirely.
       See `docs/content-gaps.md §2`. Do not promote the site with
       "Placeholder" pills visible.
-- [ ] **Decide on blog posts**: write the two stubs or delete them.
-      Strip auto-hides if no `type: blog` posts exist. See `§3`.
+- [x] **Decide on blog posts**: unpublished on 22 November 2026 until
+      they are rewritten from real project work. See `§3`.
 - [ ] **Confirm CV facts** — dates, certs, contact email
       consistency. See `§4`.
 
