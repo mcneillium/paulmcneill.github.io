@@ -1,7 +1,7 @@
 # Paul Martin McNeill: facts for the portfolio voice assistant
 
 Source: paulmartinmcneill.com (profile, education, experience, projects,
-research, CV and the Voice case study), 15 November 2026. Only what is here may
+research, CV and the Voice case study), 22 November 2026. Only what is here may
 be stated as fact.
 
 ## Who Paul is
