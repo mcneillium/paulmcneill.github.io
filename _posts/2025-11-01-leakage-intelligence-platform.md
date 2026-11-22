@@ -9,7 +9,7 @@ project-date: 2025-11-01
 category: projects
 client: "UK water utility (consultancy contract)"
 permalink: /projects/leakage-intelligence-platform/
-description: "The platform and machine learning models a UK water utility uses to plan leakage work across more than 1,250 district metered areas, and the audit that tested how far its results can be trusted."
+description: "The platform and models a UK water utility uses to plan leakage work across more than 1,250 areas, and the audit of how far its results can be trusted."
 impact: "Weekly forecasting and planning across 1,250+ metered areas"
 github-url:
 youtube-url:

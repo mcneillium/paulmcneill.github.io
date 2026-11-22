@@ -12,7 +12,7 @@ category: Software Development
 permalink: /projects/data-structures-python/
 redirect_from:
   - "/software development/2023/07/15/project-2/"
-description: "Three core data structures written in plain Python, with a Tkinter app for trying them out. Revisited in 2026: fixed a breadth-first search crash and silent hash collisions, made the app draw the tree, and added 9 tests that run on every push."
+description: "Three core data structures in plain Python with a Tkinter app. Revisited in 2026: a search crash and silent hash collisions fixed, with 9 tests."
 impact: "BFS crash and lost hash entries fixed; the tree is now drawn, not just listed"
 github-url: https://github.com/mcneillium/DataStructuresAlgorithms
 youtube-url: https://www.youtube.com/embed/Zv50csbx73Q

@@ -12,7 +12,7 @@ category: Software Development
 permalink: /projects/expense-tracker/
 redirect_from:
   - "/web development/2023/05/10/project-4/"
-description: "A Tkinter app that logs expenses to a CSV file, converts pounds, dollars, euros and yen to a total in pounds, and charts spending by category. Revisited in 2026: the chart added currencies together unconverted, and both delete buttons removed the wrong rows. All fixed and tested."
+description: "A Tkinter app that logs expenses, converts four currencies to pounds and charts spending. Revisited in 2026: conversion and delete bugs fixed and tested."
 impact: "Three data bugs fixed, and money now held exactly as Decimal"
 github-url: https://github.com/mcneillium/expense-tracker
 youtube-url: https://www.youtube.com/embed/nNre2nSW9aM
