@@ -59,6 +59,14 @@ description: "Three reproducible machine learning studies on public data: river 
     </div>
     <div class="post-content research__content">
 
+      <nav class="research__toc" aria-label="Studies on this page">
+        <ul class="research__grid">
+          <li><strong><a href="#river-early-warning">River early warning</a></strong><span>How far ahead can river flow and flood warnings be forecast without knowing future weather, and does the skill carry over to new places?</span></li>
+          <li><strong><a href="#drug-response">Drug response beyond a single marker</a></strong><span>How much more of cancer drug response does wider molecular data explain, and can the patterns be trusted?</span></li>
+          <li><strong><a href="#flood-label-errors">Flood mapping from labels that are partly wrong</a></strong><span>Does a pretrained satellite model repeat fewer of its labels' mistakes than a model trained from scratch? In progress.</span></li>
+        </ul>
+      </nav>
+
       {% include explainers.html slugs="02-river,03-drug,04-method" inline=true heading="The short versions" level="h2" card_level="h3" %}
 
       <article class="research__study" id="river-early-warning">
