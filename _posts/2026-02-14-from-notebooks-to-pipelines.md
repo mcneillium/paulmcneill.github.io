@@ -1,6 +1,8 @@
 ---
 layout: post
 type: blog
+# Unpublished 22 November 2026 until it is rewritten from real project work.
+published: false
 title: "From Notebooks to Pipelines: Why I Stopped Shipping Jupyter"
 subtitle: "Notebooks are great. They're also a trap."
 date: 2026-02-14

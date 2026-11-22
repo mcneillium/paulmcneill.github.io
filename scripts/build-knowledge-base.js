@@ -204,6 +204,7 @@ const postsDir = path.join(ROOT, '_posts');
 fs.readdirSync(postsDir).filter(f => f.match(/\.(md|markdown)$/)).forEach((f, i) => {
   const { fm, body } = loadFrontMatterAndBody(path.join(postsDir, f));
   if (fm.type !== 'blog') return;
+  if (fm.published === false) return;   // unpublished posts are not on the site
   // Split blog body into ~2 chunks: intro (first 2 paragraphs) + rest
   const paras = body.replace(/<!--[\s\S]*?-->/g, '').split(/\n\n+/).filter(s => s.trim() && !s.startsWith('#'));
   const intro = paras.slice(0, 2).join(' ');

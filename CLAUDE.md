@@ -284,8 +284,9 @@ Highlights:
   `npx wrangler deploy` from `workers/portfolio-bot` (Paul's Cloudflare login).
 - **Three placeholder testimonials** are visible — flagged with the
   "Placeholder" pill until `verified: true`.
-- **Two placeholder blog posts** with `type: blog` and `TODO: REPLACE`
-  body markers.
+- **Two blog posts are unpublished** (`published: false`, November 2026)
+  until they are rewritten from real project work. The Writing strip on
+  the homepage hides itself while no `type: blog` post is published.
 - **Impact metrics on three projects** (Aurora, AAC, CRM-Industrial)
   are illustrative — flagged in frontmatter with `# TODO: REPLACE`.
 
