@@ -93,7 +93,7 @@
     if (body.dataset.booted) return;
     body.dataset.booted = '1';
     const greeting =
-      "Hello — I’m Paul’s AI portfolio assistant. Ask about his projects, healthcare work, " +
+      "Hello, I’m Paul’s AI portfolio assistant. Ask about his projects, healthcare work, " +
       "tech stack, or how to get in touch.";
     appendMsg(greeting, 'bot');
     showSuggestions(true);
@@ -114,7 +114,7 @@
     } catch {}
 
     if (!data) {
-      return "Hmm — can't read the page data on this device. Best to email me directly: paulmcneill1989@hotmail.co.uk.";
+      return "Hmm, I can't read the page data on this device. Best to email me directly: paulmcneill1989@hotmail.co.uk.";
     }
 
     if (/(stack|tech|skill|tools|languages)/.test(q)) {
@@ -124,17 +124,17 @@
     }
     if (/(nhs|aurora|aac|crm|healthcare|industrial|domiciliary)/.test(q)) {
       const list = (data.projects || []).slice(0, 5).map(p =>
-        `• ${p.title} — ${p.impact || p.description}`).join('\n');
+        `• ${p.title}: ${p.impact || p.description}`).join('\n');
       return `Recent stuff I've shipped:\n\n${list}\n\nWant the full write-up on any of them? Click through from the projects section, or open the terminal and try 'paul --project aurora'.`;
     }
     if (/(project|work|build|portfolio)/.test(q)) {
       const list = (data.projects || []).slice(0, 5).map(p =>
-        `• ${p.title} — ${p.impact || p.description}`).join('\n');
+        `• ${p.title}: ${p.impact || p.description}`).join('\n');
       return `These are the ones I'd point a recruiter at first:\n\n${list}`;
     }
     if (/(hire|available|job|role|opportun|freelance|contract)/.test(q)) {
       return (data.profile?.availability ||
-        "Aye, I'm open to AI engineering, ML, and full-stack roles — full-time, contract, or freelance.") +
+        "Aye, I'm open to AI engineering, ML, and full-stack roles: full-time, contract or freelance.") +
         ` Best route is email: ${data.profile?.contact?.email || 'paulmcneill1989@hotmail.co.uk'}.`;
     }
     if (/(contact|email|reach|message|connect)/.test(q)) {
@@ -147,12 +147,12 @@
     }
     if (/(education|study|degree|university|open|m816|masters?|queens?|qub)/.test(q)) {
       const ed = (data.education || []).map(e =>
-        `• ${e.qualification} — ${e.institution} ${e.year ? '(' + e.year + ')' : ''}`).join('\n');
+        `• ${e.qualification}, ${e.institution} ${e.year ? '(' + e.year + ')' : ''}`).join('\n');
       return `Education-wise:\n\n${ed}`;
     }
     if (/(cert|membership|qualif|gcp|aws|tensorflow)/.test(q)) {
       const certs = (data.credentials || []).map(c =>
-        `• ${c.name} — ${c.issuer}${c.year ? ' (' + c.year + ')' : ''}`).join('\n');
+        `• ${c.name}, ${c.issuer}${c.year ? ' (' + c.year + ')' : ''}`).join('\n');
       return `Certs and memberships:\n\n${certs}`;
     }
     if (/(current|now|right now|this week|this month|today)/.test(q)) {
@@ -163,7 +163,7 @@
       return data.profile?.bio_short ||
         "AI engineer, web developer, and data analyst from Northern Ireland with 15+ years across IT, data, and engineering.";
     }
-    return "Honestly, not sure I've got that on the site. Best to email me directly: paulmcneill1989@hotmail.co.uk — happy to chat properly.";
+    return "I'm not sure I've got that on the site. Best to email me directly: paulmcneill1989@hotmail.co.uk.";
   }
 
   /* ------------- live mode ------------- */
@@ -189,7 +189,7 @@
     }
     const data = await res.json();
     return {
-      reply: data.reply || "Hmm, blank reply on my end — try again?",
+      reply: data.reply || "Hmm, blank reply on my end. Try again?",
       sources: Array.isArray(data.sources) ? data.sources : [],
     };
   }
@@ -304,7 +304,7 @@
   async function ask(question) {
     if (isSending || !question || !question.trim()) return;
     if (userMsgCount >= MAX_USER_MSGS_PER_SESSION) {
-      appendMsg("Right, that's plenty for one sitting — if you've got more, fire me an email at paulmcneill1989@hotmail.co.uk and I'll reply properly.", 'bot');
+      appendMsg("Right, that's plenty for one sitting. If you've got more, fire me an email at paulmcneill1989@hotmail.co.uk and I'll reply properly.", 'bot');
       return;
     }
     isSending = true;
@@ -327,7 +327,7 @@
     } catch (e) {
       typing.remove();
       appendMsg(
-        "Couldn't reach my brain just now — give it another go, or email me directly: paulmcneill1989@hotmail.co.uk.",
+        "Couldn't reach my brain just now. Give it another go, or email me directly: paulmcneill1989@hotmail.co.uk.",
         'bot',
         { error: true }
       );

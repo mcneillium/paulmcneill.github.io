@@ -2,7 +2,7 @@
 layout: blank
 title: "Colophon"
 permalink: /colophon/
-description: "How this portfolio is built — the stack, the design choices, the AI features that run inside it."
+description: "How this portfolio is built: the stack, the design choices and the AI features that run inside it."
 ---
 
 <style>
@@ -89,7 +89,7 @@ description: "How this portfolio is built — the stack, the design choices, the
 
   <p>
     A short tour of the stack, the design decisions, and the AI bits
-    behind the scenes. The whole thing is open-source — fork, copy,
+    behind the scenes. The whole thing is open-source: fork, copy,
     learn from it, ship your own.
   </p>
 
@@ -109,7 +109,7 @@ description: "How this portfolio is built — the stack, the design choices, the
   <p>
     The site ships dark. The light theme exists for users who prefer it but
     the design is built for the dark palette first. <code>prefers-color-scheme</code>
-    is intentionally ignored on first load — only an explicit click switches.
+    is intentionally ignored on first load. Only an explicit click switches.
   </p>
 
   <h3>Tokens all the way down</h3>
@@ -117,7 +117,7 @@ description: "How this portfolio is built — the stack, the design choices, the
     Every colour, font, and easing curve is a CSS custom property in
     <code>:root</code>. The accent picker swaps eight tokens; the font picker
     swaps three. Light theme is a single <code>[data-theme="light"]</code>
-    override on the same tokens — no rule duplication.
+    override on the same tokens, with no rule duplication.
   </p>
 
   <h3>One stylesheet and focused scripts</h3>
@@ -128,7 +128,7 @@ description: "How this portfolio is built — the stack, the design choices, the
     <code>fonts.js</code>, <code>chatbot.js</code>, <code>terminal.js</code>,
     <code>spotlight.js</code>, <code>card-tilt.js</code>,
     <code>agent-visualiser.js</code>, <code>ml-demo.js</code>,
-    <code>project-filter.js</code>) — all loaded with <code>defer</code>,
+    <code>project-filter.js</code>), all loaded with <code>defer</code>,
     none required for first paint.
   </p>
 
@@ -183,8 +183,8 @@ description: "How this portfolio is built — the stack, the design choices, the
 
   <h3>Agent visualiser</h3>
   <p>
-    A hand-rolled SVG flow showing how a research agent decomposes a task
-    — Input → Planning → Tool Selection → Execution → Memory → Synthesis →
+    A hand-rolled SVG flow showing how a research agent decomposes a task:
+    Input → Planning → Tool Selection → Execution → Memory → Synthesis →
     Output. Auto-plays on viewport entry, pauses when scrolled out, supports
     play/pause/step/reset and 1×/2× speed.
   </p>
@@ -192,7 +192,7 @@ description: "How this portfolio is built — the stack, the design choices, the
   <h3>Terminal</h3>
   <p>
     A CLI-style portfolio explorer. Type <code>paul --help</code> to start.
-    Pure frontend — all data comes from <code>_data/*.yml</code> serialised
+    Pure frontend: all data comes from <code>_data/*.yml</code> serialised
     into a JSON blob at build time. Up/Down history, Tab completion,
     Ctrl-L to clear, and a <code>matrix</code> easter egg.
   </p>
