@@ -42,8 +42,7 @@ description: "Four studies on public data: river early warning, cancer drug resp
       started on 17 November and is reported part-way: its results so far are
       on development data, and its held-out evaluation has not been run. A fourth,
       on <a href="#leak-repair-labels">leak repairs inferred from a drop in flow</a>,
-      was run on 23 November as a first look, and I have not yet re-run it
-      myself. Every
+      was run on 23 November as a first look. Every
       decision is logged, and those still awaiting my review are marked. None
       of the studies has been peer reviewed, so treat the results as
       provisional.
@@ -473,7 +472,7 @@ description: "Four studies on public data: river early warning, cancer drug resp
              the foot once the repository is public. {% endcomment %}
         {%- assign leak = site.data.research_leak -%}
 
-        <p><strong>A first look, run on 23 November 2026.</strong> One simulated town, two versions of one rule, and seven repairs in the test year. The rule and my predictions were committed before the test year was opened. The code was written and the runs were made with AI tools, to my rule and predictions, and I have not yet re-run them on my own machine.</p>
+        <p><strong>A first look, run on 23 November 2026.</strong> One simulated town, two versions of one rule, and seven repairs in the test year. The rule and my predictions were committed before the test year was opened. The code was written with AI tools, to my rule and predictions. I have since re-run it on my own machine, and the numbers matched.</p>
 
         <h3>Setup</h3>
         <ul>
@@ -549,7 +548,7 @@ description: "Four studies on public data: river early warning, cancer drug resp
           <li>The town is simulated. No flag was false here, and that should not be expected of a real network, where changes in demand, valve operations and meter faults also produce drops.</li>
           <li>Seven test repairs, one town, two versions of one rule, and one way of choosing the threshold.</li>
           <li>The rule stands in for the idea of inferring a repair from a drop in flow. It is not any water company's rule.</li>
-          <li>The runs were made with AI tools and recounted with separate code. I have not yet re-run them myself.</li>
+          <li>The first runs were made with AI tools and recounted with separate code. I then re-ran the study on my own machine, and the numbers matched.</li>
           <li>No model has been trained on these labels yet, so this measures the labels' errors and not what a model does with them.</li>
         </ul>
         <p class="research__links">Protocol, predictions and the decision log are kept with the code. The repository is not public yet. Data: Vrachimis and others (2020), Dataset of BattLeDIM, Zenodo, <a href="https://doi.org/10.5281/zenodo.4017659" rel="noopener">doi.org/10.5281/zenodo.4017659</a>.</p>
@@ -569,7 +568,7 @@ description: "Four studies on public data: river early warning, cancer drug resp
 
       <section class="research__study" id="how-produced" aria-labelledby="research-how-produced">
         <h2 id="research-how-produced">How this work was produced</h2>
-        <p>All four studies were built making use of AI tools, under research rules I set; each study’s log records how. I re-ran the river and drug response studies on my own hardware and reviewed every logged decision. In the flood study I set the design, record a prediction before each result and run the training on my own GPU; some of its logged choices still await my review. In the leak repair study I chose the rule and recorded a prediction before each run; the code was written and the runs were made with AI tools, and I have not yet re-run them or reviewed their logged choices. I take responsibility for the work and its conclusions.</p>
+        <p>All four studies were built making use of AI tools, under research rules I set; each study’s log records how. I re-ran the river and drug response studies on my own hardware and reviewed every logged decision. In the flood study I set the design, record a prediction before each result and run the training on my own GPU; some of its logged choices still await my review. In the leak repair study I chose the rule and recorded a prediction before each run; the code was written with AI tools, I re-ran the study on my own machine, and I have not yet reviewed its logged choices. I take responsibility for the work and its conclusions.</p>
         {% comment %} TODO: REPLACE (Paul): the sentence about the flood study is
              new (22 November). Check it says what you want, and change it once
              you have confirmed the remaining logged choices. {% endcomment %}
@@ -593,7 +592,7 @@ description: "Four studies on public data: river early warning, cancer drug resp
         <ul>
           <li>The river study's behaviour with gaps in the inputs.</li>
           <li>The flood study's one-time evaluation on its held-out data: 90 test chips, and 15 chips from Bolivia, a flood never used in training.</li>
-          <li>Re-running the leak repair study on my own machine and reviewing its logged choices.</li>
+          <li>Rewriting the leak repair study's code myself and reviewing its logged choices.</li>
         </ul>
         {% comment %} TODO: REPLACE (Paul): reading notes. Three to five papers you have
              read in full, with two lines each on what you took from them and
