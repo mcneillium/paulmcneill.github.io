@@ -1,0 +1,106 @@
+{
+  "generated_from": "results/threshold_2018.json and results/test_2019.json",
+  "dev_night_flow": "98",
+  "test_night_flow": "149",
+  "weekday_low": "89",
+  "weekday_quiet_high": "94",
+  "weekday_busy_low": "111",
+  "weekday_busy_high": "121",
+  "rules": [
+    {
+      "id": "3-day",
+      "label": "3 nights before against 3 after",
+      "threshold": "34.5",
+      "dev_found": 7,
+      "dev_repairs": 10,
+      "dev_flags": 7,
+      "test_found": 3,
+      "test_repairs": 7,
+      "test_flags": 3,
+      "test_flags_real": 3,
+      "predicted_found": "2 or 3",
+      "predicted_flags_real": "50 to 80%",
+      "found_met": true
+    },
+    {
+      "id": "7-day",
+      "label": "7 nights before against 7 after",
+      "threshold": "10.0",
+      "dev_found": 8,
+      "dev_repairs": 10,
+      "dev_flags": 8,
+      "test_found": 6,
+      "test_repairs": 7,
+      "test_flags": 6,
+      "test_flags_real": 6,
+      "predicted_found": "4 or 5",
+      "predicted_flags_real": "over 80%",
+      "found_met": false
+    }
+  ],
+  "repairs": [
+    {
+      "pipe": "p523",
+      "day": "1 February",
+      "leak": "28.2",
+      "drop_3": "25.2",
+      "found_3": false,
+      "drop_7": "31.7",
+      "found_7": true
+    },
+    {
+      "pipe": "p827",
+      "day": "7 February",
+      "leak": "26.2",
+      "drop_3": "20.8",
+      "found_3": false,
+      "drop_7": "30.2",
+      "found_7": false
+    },
+    {
+      "pipe": "p653",
+      "day": "5 May",
+      "leak": "17.9",
+      "drop_3": "35.8",
+      "found_3": true,
+      "drop_7": "18.5",
+      "found_7": true
+    },
+    {
+      "pipe": "p514",
+      "day": "23 May",
+      "leak": "15.4",
+      "drop_3": "11.7",
+      "found_3": false,
+      "drop_7": "14.3",
+      "found_7": true
+    },
+    {
+      "pipe": "p142",
+      "day": "17 July",
+      "leak": "26.5",
+      "drop_3": "33.4",
+      "found_3": false,
+      "drop_7": "24.7",
+      "found_7": true
+    },
+    {
+      "pipe": "p586",
+      "day": "16 September",
+      "leak": "20.4",
+      "drop_3": "35.3",
+      "found_3": true,
+      "drop_7": "16.7",
+      "found_7": true
+    },
+    {
+      "pipe": "p800",
+      "day": "1 October",
+      "leak": "21.6",
+      "drop_3": "38.3",
+      "found_3": true,
+      "drop_7": "21.4",
+      "found_7": true
+    }
+  ]
+}
