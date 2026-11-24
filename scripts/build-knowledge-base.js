@@ -176,14 +176,15 @@ const narration = loadYaml(path.join(ROOT, '_data/narration.yml')) || {};
 // the model, so a count buried in a long study entry can be cut off. It sits
 // before the studies so that it wins a tie with them.
 push('research.overview', 'research',
-  'The Research page has three studies. In the order they were started: river early warning ' +
-  'across 671 British catchments; drug response beyond a single marker; and flood mapping from ' +
-  'labels that are partly wrong. The flood mapping study is the newest. It started on ' +
-  '17 November 2026 and is still in progress, so its results are from development data only ' +
-  'and are not final. The river and drug studies are complete and their code is public. ' +
-  'None of the three has been peer reviewed. All three are at /research/.',
+  'The Research page has four studies. In the order they were started: river early warning ' +
+  'across 671 British catchments; drug response beyond a single marker; flood mapping from ' +
+  'labels that are partly wrong; and leak repairs inferred from a drop in flow. The leak ' +
+  'repair study is the newest: a first look, run on 23 November 2026. The flood mapping ' +
+  'study started on 17 November 2026 and its one-time held-out evaluation was run on ' +
+  '23 November 2026. The code of the river and drug studies is public. None of the four has ' +
+  'been peer reviewed. All four are at /research/.',
   ['research', 'study', 'studies', 'overview', 'newest', 'latest', 'recent', 'new', 'current',
-    'many', 'three', 'third', 'list', 'finished', 'status', 'published', 'paper',
+    'many', 'four', 'fourth', 'third', 'list', 'finished', 'status', 'published', 'paper',
     'publication', 'peer', 'reviewed', 'phd']);
 if (narration.river) push('research.river', 'research',
   `Research study: ${narration.river.text} Full write-up: /research/#river-early-warning. ` +
@@ -194,31 +195,49 @@ if (narration.drug) push('research.drug', 'research',
   'Code: github.com/mcneillium/drug-response-beyond-marker.',
   ['research', 'study', 'drug', 'cancer', 'pten', 'gdsc', 'cell line', 'genes', 'phd']);
 push('research.flood', 'research',
-  'Research study, in progress, and the newest of the three (started 17 November 2026): Flood ' +
-  'mapping from labels that are partly wrong (Sen1Floods11, Sentinel-1 satellite radar). Its ' +
-  'results so far are from development data only and are not final: the held-out evaluation ' +
-  'has not been run. The question: when flood-mapping models are trained on automatic ' +
-  'threshold (Otsu) labels, does a pretrained encoder with a small decoder repeat fewer of the ' +
-  "labels' errors than a UNet trained from scratch, and does updating the encoder change that? " +
-  'Findings so far, on 252 hand-labelled chips with three seeds per model: the UNet ' +
-  "repeated 75.2% of the labels' false water and 92.8% of their missed water; the pretrained " +
-  'model (TerraMind) repeated more, 88.9% and 94.5% with its encoder frozen and 95.8% and ' +
-  '97.2% with its encoder updated. Paul predicted the opposite for the frozen encoder and ' +
-  'reports that the prediction was wrong. Full write-up: /research/#flood-label-errors. The ' +
-  'repository is not public yet.',
+  'Research study, started 17 November 2026: Flood mapping from labels that are partly wrong ' +
+  '(Sen1Floods11, Sentinel-1 satellite radar). Its one-time held-out evaluation was run on ' +
+  '23 November 2026, with a prediction recorded first. The question: when flood-mapping ' +
+  'models are trained on automatic threshold (Otsu) labels, does a pretrained encoder with a ' +
+  "small decoder repeat fewer of the labels' errors than a UNet trained from scratch, and " +
+  'does updating the encoder change that? Findings on 90 new hand-labelled chips from the ' +
+  "ten training floods, three seeds per model: the UNet repeated 75.0% of the labels' false " +
+  'water and 87.6% of their missed water; the pretrained model (TerraMind) repeated more, ' +
+  '90.0% and 90.9% with its encoder frozen and 96.2% and 95.9% with its encoder updated. All ' +
+  "18 of Paul's predicted directions held there. On Bolivia, a flood no model had seen, the " +
+  'order for false water did not carry over (UNet 69.7%, frozen 80.0%, updated 71.6%); 15 ' +
+  'hand-labelled chips are limited evidence. Earlier, on development data, Paul predicted the ' +
+  'frozen encoder would repeat less false water than the UNet and reports that the prediction ' +
+  'was wrong. Full write-up: /research/#flood-label-errors. The repository is not public yet.',
   ['research', 'study', 'flood', 'floods', 'flooding', 'mapping', 'satellite', 'sentinel',
     'radar', 'labels', 'noise', 'noisy', 'imperfect', 'segmentation', 'unet', 'terramind',
-    'pretrained', 'computer vision', 'newest', 'latest', 'progress', 'ongoing', 'finished',
+    'pretrained', 'computer vision', 'held-out', 'evaluation', 'bolivia', 'finished',
+    'status', 'findings', 'phd']);
+push('research.leak', 'research',
+  'Research study, a first look and the newest of the four (run on 23 November 2026): Leak ' +
+  'repairs inferred from a drop in flow, on L-Town, a public simulated benchmark. No water ' +
+  "company's data is used. The question: when a rule infers leak repairs from a drop in night " +
+  'flow, how many of the real repairs does it find, and how many of its flags are real? With ' +
+  'thresholds chosen on 2018, a 3-night rule found 3 of the 7 repairs in 2019 and a 7-night ' +
+  'rule found 6 of 7. No flag was false in either year. Paul chose the rule and recorded ' +
+  'predictions before the test year was opened; the code was written with AI tools and he ' +
+  're-ran it on his own machine. Full write-up: /research/#leak-repair-labels. The repository ' +
+  'is not public yet.',
+  ['research', 'study', 'leak', 'leaks', 'leakage', 'repair', 'repairs', 'water', 'night',
+    'flow', 'l-town', 'battledim', 'labels', 'rule', 'newest', 'latest', 'first look',
     'status', 'findings', 'phd']);
 push('research.method', 'research',
   'How the research is done: a protocol is written and dated before any model is fitted; ' +
   'baselines come first; splits are fixed and fingerprinted; nothing is learned from held-out ' +
   'data; negative results are reported; every decision is logged, including mistakes. ' +
-  'All three studies were built making use of AI tools, under research rules Paul set; each ' +
+  'All four studies were built making use of AI tools, under research rules Paul set; each ' +
   "study's log records how. Paul re-ran the river and drug response studies on his own " +
-  'hardware and reviewed every logged decision. In the flood study he set the design, records ' +
-  'a prediction before each result and runs the training on his own GPU; some of its logged ' +
-  'choices still await his review. He takes responsibility for the work and its conclusions. ' +
+  'hardware and reviewed every logged decision. In the flood study he set the design, recorded ' +
+  'a prediction before each result, and ran the training and the held-out evaluation on his ' +
+  'own GPU; some of its logged choices still await his review. In the leak repair study he ' +
+  'chose the rule and the predictions; the code was written with AI tools, he re-ran it on his ' +
+  'own machine, and he has not yet reviewed its logged choices. He takes responsibility for ' +
+  'the work and its conclusions. ' +
   'None of the studies has been peer reviewed.',
   ['research', 'method', 'methodology', 'reproducible', 'protocol', 'produced', 'made',
     'built', 'ai tools', 'peer reviewed']);

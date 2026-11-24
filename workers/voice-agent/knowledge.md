@@ -1,7 +1,7 @@
 # Paul Martin McNeill: facts for the portfolio voice assistant
 
 Source: paulmartinmcneill.com (profile, education, experience, projects,
-research, CV and the Voice case study), 22 November 2026. Only what is here may
+research, CV and the Voice case study), 24 November 2026. Only what is here may
 be stated as fact.
 
 ## Who Paul is
@@ -109,7 +109,7 @@ be stated as fact.
   Python on versions 3.13 to 3.15 with uv, Ruff and mypy for the other three.
   The expense tracker holds money as exact decimals.
 
-## Research (three studies on public data, one still in progress; none peer reviewed)
+## Research (four studies on public data, one of them a first look; none peer reviewed)
 - River early warning across 671 British catchments (CAMELS-GB): how far ahead
   river flow and flood or low-flow warnings can be forecast without future
   weather. Findings: most skill beyond a day depends on knowing the weather (at
@@ -127,26 +127,40 @@ be stated as fact.
   The study measures how choosing genes before cross-validation produces a
   believable score from noise. Cell lines only; nothing about patients.
 - Flood mapping from labels that are partly wrong (Sen1Floods11, Sentinel-1
-  radar), in progress since 17 November 2026: when flood-mapping models are
-  trained on automatic threshold (Otsu) labels, how many of the labels' errors
-  do they repeat? Results so far are on development data only (252
-  hand-labelled chips, three seeds per model). A UNet trained from scratch
-  repeated 75.2% of the labels' false water and 92.8% of their missed water. A
-  pretrained model (TerraMind) with a small decoder repeated more: 88.9% and
-  94.5% with its encoder frozen, 95.8% and 97.2% with its encoder updated. Paul
-  had predicted the opposite for the frozen encoder and reports that he was
-  wrong. The held-out evaluation has not been run, so nothing is final, and
-  the repository is not public yet.
+  radar), started 17 November 2026: when flood-mapping models are trained on
+  automatic threshold (Otsu) labels, how many of the labels' errors do they
+  repeat? Three models, three seeds each: a UNet trained from scratch, and a
+  pretrained model (TerraMind) with a small decoder, once with its encoder
+  frozen and once with it updated in training. The one-time held-out
+  evaluation was run on 23 November 2026, with Paul's prediction recorded
+  first. On 90 new chips from the ten training floods the UNet repeated 75.0%
+  of the labels' false water and 87.6% of their missed water; the frozen
+  pretrained model 90.0% and 90.9%; the updated one 96.2% and 95.9%. All 18
+  of Paul's predicted directions held there. On Bolivia, a flood no model had
+  seen, the order for false water did not carry over (UNet 69.7%, frozen
+  80.0%, updated 71.6%), and 12 of 18 predicted directions held; 15
+  hand-labelled chips are limited evidence. Earlier, on development data, Paul
+  had predicted the frozen encoder would repeat less false water than the
+  UNet and reports that he was wrong. The repository is not public yet.
+- Leak repairs inferred from a drop in flow (L-Town, a public simulated
+  benchmark; no water company's data): a first look, run on 23 November 2026.
+  When a rule infers leak repairs from a drop in night flow, how many real
+  repairs does it find? With thresholds chosen on 2018, a 3-night rule found
+  3 of the 7 repairs in 2019 and a 7-night rule found 6 of 7, with no false
+  flag in either year. Paul chose the rule and recorded predictions before
+  the test year was opened. The repository is not public yet.
 - The river and drug studies: protocol written before any model was fitted, baselines first,
   fixed splits, negative results reported, and a log of every decision. Both
   were re-run on a second machine on 14 November 2026, and the river study's
   uncertainty experiment was repeated with three seeds on 15 November.
-- How they were produced: all three studies were built making use of AI tools,
+- How they were produced: all four studies were built making use of AI tools,
   under research rules Paul set, and each study's log records how. Paul re-ran
   the river and drug studies on his own hardware; in the flood study he set
-  the design, records a prediction before each result and runs the training on
-  his own GPU. He takes responsibility for the work and its conclusions;
-  decisions still awaiting his review are marked in the logs.
+  the design, recorded a prediction before each result, and ran the training
+  and the held-out evaluation on his own GPU; in the leak repair study he
+  chose the rule and the predictions, the code was written with AI tools, and
+  he re-ran it on his own machine. He takes responsibility for the work and
+  its conclusions; decisions still awaiting his review are marked in the logs.
 
 ## Pages
 - Projects and case studies: the homepage.

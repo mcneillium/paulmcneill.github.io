@@ -15,9 +15,10 @@ const context = q => top(q).map(c => c.text).join('\n\n').slice(0, CONTEXT_CHARS
 // Each question must put an entry of the expected kind first.
 const expected = [
   ['How many research studies are on the Research page, and what is the newest one about?', /^research\.overview$/],
-  ['What is his newest study?', /^research\.(overview|flood)$/],
-  ['What is his latest research?', /^research\.(overview|flood)$/],
+  ['What is his newest study?', /^research\.(overview|leak)$/],
+  ['What is his latest research?', /^research\.(overview|leak)$/],
   ['Tell me about the satellite radar work', /^research\.flood$/],
+  ['What did the leak repair study find?', /^research\.leak$/],
   ['How was the research produced?', /^research\.method$/],
   ['Has he published any papers?', /^research\.(overview|method)$/],
   ['What qualifications does Paul have?', /^edu\./],
@@ -38,13 +39,13 @@ for (const [question, want] of expected) {
   });
 }
 
-test('flood study questions give the model the figures and the "not final" caveat', () => {
+test('flood study questions give the model the held-out figures and the Bolivia caveat', () => {
   for (const q of ['What did the flood mapping study find?', 'Is the flood study finished?']) {
     const given = context(q);
-    assert.match(given, /not final/, q);
-    assert.match(given, /88\.9%/, q);
+    assert.match(given, /limited evidence/, q);
+    assert.match(given, /96\.2%/, q);
   }
-  assert.match(context('What is his newest study?'), /not final/);
+  assert.match(context('What is his newest study?'), /first look/);
 });
 
 test('a question about one study gives the model that study\'s whole entry', () => {
@@ -52,6 +53,7 @@ test('a question about one study gives the model that study\'s whole entry', () 
     ['What did the river study find?', 'research.river'],
     ['What did the drug study find?', 'research.drug'],
     ['What did the flood mapping study find?', 'research.flood'],
+    ['What did the leak repair study find?', 'research.leak'],
   ]) {
     const entry = KB.chunks.find(c => c.id === id);
     assert.ok(context(q).includes(entry.text), `${q}: ${top(q).map(c => c.id).join(', ')}`);
