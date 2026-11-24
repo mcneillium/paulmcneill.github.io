@@ -90,9 +90,13 @@ research:
     code: "https://github.com/mcneillium/drug-response-beyond-marker"
     text: "Reproducible study on GDSC (924 cancer cell lines): how much wider gene data adds to PTEN status, a measured feature-selection leak, and the stability of clusters and explanations."
   - title: "Flood mapping from labels that are partly wrong"
-    when: "2026, in progress"
+    when: "2026"
     url: "/research/#flood-label-errors"
-    text: "Study in progress on Sen1Floods11 (Sentinel-1 radar): when flood-mapping models are trained on automatic threshold labels, how many of the labels' errors do they repeat? On development data, a pretrained Earth-observation encoder (TerraMind) with a small decoder repeated more of the labels' errors than a UNet trained from scratch, and more again when its encoder was updated. A prediction is recorded before each run; the held-out evaluation has not been run."
+    text: "Study on Sen1Floods11 (Sentinel-1 radar): when flood-mapping models are trained on automatic threshold labels, how many of the labels' errors do they repeat? Evaluated once on held-out data, with a prediction recorded first. On 90 new chips from the training floods, a pretrained Earth-observation encoder (TerraMind) with a small decoder repeated more of the labels' errors than a UNet trained from scratch, and more again when its encoder was updated. On 15 chips from an unseen flood the order for false water did not carry over."
+  - title: "Leak repairs inferred from a drop in flow"
+    when: "2026, a first look"
+    url: "/research/#leak-repair-labels"
+    text: "First look on the public L-Town benchmark (simulated town, 2018 and 2019): when a rule infers leak repairs from a drop in night flow, how many real repairs does it find? With thresholds set on 2018, a 3-night rule found 3 of 7 repairs in 2019 and a 7-night rule 6 of 7, with no false flag. Predictions were recorded before the test year was opened."
 research_note: "Protocol fixed before any model was fitted, baselines first, fingerprinted splits, a log of every decision and correction. Built making use of AI tools under research rules I set; re-run on my own hardware. Not yet peer reviewed."
 
 reports:
