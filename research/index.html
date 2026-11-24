@@ -239,9 +239,9 @@ description: "Four studies on public data: river early warning, cancer drug resp
 
         <h3>Setup</h3>
         <ul>
-          <li>924 cancer cell lines. One gene, PTEN, is a known but incomplete guide to how they respond to drugs that block the AKT protein.</li>
+          <li>The primary drug was ipatasertib, an AKT inhibitor. The 924 cell lines came from 28 tissues, including six prostate cell lines. I tested how much gene expression added to PTEN status, tissue and sequencing centre.</li>
           <li>The question behind the design: how much more of the response does wider molecular data explain, and can the patterns be trusted?</li>
-          <li>5-fold cross-validation repeated 5 times on saved folds. Every step that learns from data happens inside the training folds.</li>
+          <li>Five-fold cross-validation repeated five times on saved folds. The predictive comparisons kept each outer test fold separate. The leakage demonstration deliberately broke this rule to measure the effect.</li>
           <li>Cell lines are a stand-in. Nothing here is about patients or treatment.</li>
         </ul>
 
@@ -257,8 +257,8 @@ description: "Four studies on public data: river early warning, cancer drug resp
               <tr><th scope="row">PTEN + cancer type + sequencing centre (R²)</th><td class="num">0.11</td></tr>
               <tr><th scope="row">Adding 2,000 genes: elastic net, then gradient boosting (R²)</th><td class="num">0.14, 0.19</td></tr>
               <tr><th scope="row">Choosing genes before cross-validating, on shuffled data with nothing to find (R²)</th><td class="num">0.14, all false</td></tr>
-              <tr><th scope="row">Adding protein data on top of gene expression</th><td class="num">no gain</td></tr>
-              <tr><th scope="row">Overlap between the top-20 gene lists of refitted models</th><td class="num">0.20</td></tr>
+              <tr><th scope="row">Adding protein data on top of gene expression</th><td class="num">no consistent gain</td></tr>
+              <tr><th scope="row">Mean Jaccard overlap of the top-20 inputs across refits</th><td class="num">0.20</td></tr>
               <tr><th scope="row">Agreement between two measurements of a related drug</th><td class="num">0.81</td></tr>
             </tbody>
           </table>
@@ -269,7 +269,7 @@ description: "Four studies on public data: river early warning, cancer drug resp
             <span data-technical>Held-out R² rises from 0.112 (PTEN, cancer type and sequencing centre) to 0.144 with an elastic net on 2,000 genes and 0.187 with gradient boosting. The gains are +0.033 (95% interval +0.005 to +0.060) and +0.076 (+0.014 to +0.130). The difference between the two models, +0.043 (-0.003 to +0.086), is not clear of zero.</span>
           </li>
           <li>
-            <span data-plain><strong>That gap is not mainly measurement noise.</strong> Where a related drug was measured twice, about 80% of the variation repeats, and the best model explains 18%.</span>
+            <span data-plain><strong>How repeatable was the drug response?</strong> Ipatasertib was measured once, so its repeatability is unknown. For uprosertib, a related drug, repeat measurements correlated at 0.81 and the best model explained 18% of the variation.</span>
             <span data-technical>Exploratory. A related drug, Uprosertib, was measured twice at the same doses and the two measurements agree at 0.81 (0.76 to 0.85). The best model for that drug reaches R² 0.18. The ceiling is from the related drug, not from Ipatasertib.</span>
           </li>
           <li>
@@ -310,7 +310,8 @@ description: "Four studies on public data: river early warning, cancer drug resp
         <h3>Limits</h3>
         <ul>
           <li>One drug screen from one laboratory. No independent dataset.</li>
-          <li>Missing protein data was simulated at random. Models were not tuned.</li>
+          <li>About 97% of the cell lines had protein measurements. I simulated lower coverage by hiding measurements at random. In real experiments, which measurements are missing can depend on the model or treatment.</li>
+          <li>The elastic net penalty and the weight used to combine predictions were tuned within the outer training data. Some preprocessing was shared across the inner tuning splits.</li>
           <li>No biological interpretation has been checked by a biologist.</li>
         </ul>
         <p class="research__links">Code, protocol and decision log: <a href="https://github.com/mcneillium/drug-response-beyond-marker" rel="noopener">github.com/mcneillium/drug-response-beyond-marker</a></p>

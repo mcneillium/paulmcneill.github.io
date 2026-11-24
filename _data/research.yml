@@ -25,6 +25,10 @@ flood_axis:
 
 # Every change to a published number or claim, newest first.
 corrections:
+  - date: 2026-11-24
+    study: Drug response
+    was: "The plain summary carried a repeatability finding across drugs, and the limits said the models were untuned."
+    now: "The repeat measurements were for uprosertib. Ipatasertib was measured once. The limits now identify the settings tuned within the outer training data and the preprocessing shared across inner splits."
   - date: 2026-11-14
     study: Drug response
     was: "The page said the only stable subgroups were tissue of origin."

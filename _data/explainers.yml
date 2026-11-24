@@ -55,7 +55,7 @@
     not been peer reviewed, and every decision, including the mistakes, is logged in public.
 - slug: 03-drug
   title: Why most cancer drug response stays unexplained
-  summary: 924 cell lines, one known marker, and a common mistake measured
+  summary: '924 cell lines, one known marker, and a common mistake measured. Clarification to the video: the repeat measurements were for uprosertib. Ipatasertib was measured once, so its repeatability is unknown.'
   duration: '1:39'
   file: /assets/video/explainers/03-drug.mp4
   poster: /assets/video/explainers/03-drug.webp
