@@ -1,0 +1,47 @@
+<section class="study-feature" id="drug-response" aria-labelledby="drug-feature-title">
+  <div class="study-feature__copy">
+    <p class="study-kicker">Cancer drug response</p>
+    <h2 id="drug-feature-title">What did the three clusters pick up?</h2>
+    <p>In a study of 924 cell lines, I looked more closely at the 128 with an altered PTEN gene. Three groups kept reappearing when I repeated the analysis.</p>
+    <p><strong>All 20 lines in the third group came from blood or lymphoid tissue.</strong> After accounting for tissue and sequencing centre, I found no convincing subgroup with this method. Stable clusters alone gave me little reason to interpret them as drug-response groups.</p>
+    <a class="study-feature__cta" href="#drug-response-results">Explore the drug-response study <span aria-hidden="true">↓</span></a>
+  </div>
+  {% include drug-cluster-figure.html %}
+</section>
+<nav class="study-atlas" aria-label="Explore the other research studies">
+  <h2>Three more studies on public data</h2>
+  <div class="study-atlas__grid">
+    <a href="#river-early-warning" class="study-mini study-mini--river">
+      <h3>River early warning <span aria-hidden="true">↘</span></h3>
+      <p>How much does knowing next week’s weather help a seven-day forecast?</p>
+      <div class="mini-chart" aria-label="Median NSE at seven days">
+        {% assign week = site.data.research_skill.skill | where: "lead_days", 7 | first %}
+        {% for model in week.models %}{% unless model.id == "persistence" %}
+          <div class="mini-row"><span>{% if model.id == "gbm" %}Past data only{% else %}With observed future weather{% endif %}</span><b>{{ model.text.p50 }}</b><i style="--fraction:{{ model.p50 | times: 100 }}%"></i></div>
+        {% endunless %}{% endfor %}
+      </div>
+      <small>Median NSE · observed future weather gives an upper bound</small>
+    </a>
+    <a href="#flood-label-errors" class="study-mini study-mini--flood">
+      <h3>Flood mapping <span aria-hidden="true">↘</span></h3>
+      <p>How often did the models repeat the labels’ false-water errors?</p>
+      <div class="mini-chart" aria-label="False-water errors repeated on the test chips">
+        {% assign test = site.data.research_flood.held_out.test %}
+        {% for model in test.models %}{% unless model.id == "frozen" %}
+          <div class="mini-row"><span>{% if model.id == "unet" %}UNet{% else %}Updated TerraMind{% endif %}</span><b>{{ model.false_water.text.mean }}%</b><i style="--fraction:{{ model.false_water.mean }}%"></i></div>
+        {% endunless %}{% endfor %}
+      </div>
+      <small>{{ test.chips }} test chips · new locations within the training floods</small>
+    </a>
+    <a href="#leak-repair-labels" class="study-mini study-mini--leak">
+      <h3>Leak repair labels <span aria-hidden="true">↘</span></h3>
+      <p>How many recorded repairs did a drop in night flow pick up?</p>
+      <div class="mini-chart" aria-label="Repairs found in the test year">
+        {% for rule in site.data.research_leak.rules %}
+          <div class="mini-row"><span>{% if rule.id == "3-day" %}Three-night window{% else %}Seven-night window{% endif %}</span><b>{{ rule.test_found }} of {{ rule.test_repairs }}</b><i style="--fraction:{{ rule.test_found | times: 100.0 | divided_by: rule.test_repairs }}%"></i></div>
+        {% endfor %}
+      </div>
+      <small>2019 test year · one simulated network</small>
+    </a>
+  </div>
+</nav>

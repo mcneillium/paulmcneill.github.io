@@ -7,7 +7,7 @@ scripts:
 description: "Four studies on public data: river early warning, cancer drug response, flood mapping from partly wrong labels, and leak repairs inferred from flow drops."
 ---
 
-<header class="post__hero">
+<header class="post__hero research-intro">
   <div class="container">
     <p class="research__print-head">Paul McNeill · {{ site.url }}{{ page.url }}</p>
     <a href="{{ '/#aiml' | relative_url }}" class="post__back" aria-label="Back to AI &amp; ML">
@@ -16,20 +16,10 @@ description: "Four studies on public data: river early warning, cancer drug resp
     </a>
     <span class="eyebrow">Research</span>
     <h1 class="post__title">Reproducible studies on <em>public data</em></h1>
-    <p class="post__subtitle">
-      Four studies, one of them a first look. Each has a protocol fixed
-      before any model was fitted, baselines before anything complex, fixed
-      and fingerprinted splits, tests, and a log of every decision, including
-      the ones that turned out wrong.
-    </p>
-    <p class="post__subtitle">
-      All four ask the same thing from different sides: what can a model be
-      trusted to say when its data is incomplete, its labels are noisy, or
-      the place it is used differs from the place it was trained?
-    </p>
-    {% comment %} TODO: REPLACE (Paul): rewrite the paragraph above in your own
-         words, as what you want to research and why. Do not name
-         supervisors, referees or application plans. {% endcomment %}
+    <p class="post__subtitle">Four studies asking where machine learning results hold up when measurements are missing, labels are noisy or conditions change.</p>
+    {% include research-overview.html %}
+    <details class="study-updates">
+      <summary>Study status and reproduction checks · 24 November 2026</summary>
     <p class="research__status">
       <strong>Status, 24 November 2026.</strong> On 14 November 2026 I re-ran
       the river and drug response studies on a second machine. Every drug response table matched to
@@ -48,6 +38,7 @@ description: "Four studies on public data: river early warning, cancer drug resp
       of the studies has been peer reviewed, so treat the results as
       provisional.
     </p>
+    </details>
   </div>
 </header>
 
@@ -62,14 +53,7 @@ description: "Four studies on public data: river early warning, cancer drug resp
     </div>
     <div class="post-content research__content">
 
-      <nav class="research__toc" aria-label="Studies on this page">
-        <ul class="research__grid">
-          <li><strong><a href="#river-early-warning">River early warning</a></strong><span>How far ahead can river flow and flood warnings be forecast without knowing future weather, and does the skill carry over to new places?</span></li>
-          <li><strong><a href="#drug-response">Drug response beyond a single marker</a></strong><span>How much more of cancer drug response does wider molecular data explain, and can the patterns be trusted?</span></li>
-          <li><strong><a href="#flood-label-errors">Flood mapping from labels that are partly wrong</a></strong><span>Does a pretrained satellite model repeat fewer of its labels' mistakes than a model trained from scratch? Evaluated once on held-out data.</span></li>
-          <li><strong><a href="#leak-repair-labels">Leak repairs inferred from a drop in flow</a></strong><span>When a rule infers leak repairs from a drop in night flow, how many real repairs does it find, and how many of its flags are real? A first look.</span></li>
-        </ul>
-      </nav>
+
 
       {% include explainers.html slugs="02-river,03-drug,04-method" inline=true heading="The short versions" level="h2" card_level="h3" %}
 
@@ -222,7 +206,7 @@ description: "Four studies on public data: river early warning, cancer drug resp
         <p class="research__links">Code, protocols and decision log: <a href="https://github.com/mcneillium/river-early-warning" rel="noopener">github.com/mcneillium/river-early-warning</a></p>
       </article>
 
-      <article class="research__study" id="drug-response">
+      <article class="research__study" id="drug-response-results">
         <h2>Drug response beyond a single marker</h2>
         {% include listen.html key="drug" %}
         <ul class="research__chips" aria-label="Topics">

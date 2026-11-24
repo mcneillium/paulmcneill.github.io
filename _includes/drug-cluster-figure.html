@@ -1,0 +1,37 @@
+{% comment %}Counts aggregated from the study table linked below. One mark represents one cell line.{% endcomment %}
+<figure class="cohort-figure" aria-labelledby="cohort-caption">
+  <figcaption id="cohort-caption">
+    <span class="cohort-figure__label">Tissue of origin</span>
+    <strong>128 PTEN-altered cell lines</strong>
+    <span>Each dot is one cell line. Colour shows its tissue.</span>
+  </figcaption>
+  <div class="cohort-plot" aria-hidden="true">
+    {% assign cluster_keys = "g1,g2,g3" | split: "," %}
+    {% for key in cluster_keys %}
+      {% assign total = 0 %}
+      {% for row in site.data.drug_cluster_counts %}
+        {% assign total = total | plus: row[key] %}
+      {% endfor %}
+      <div class="cohort-group">
+        <div class="cohort-group__label">Group {{ forloop.index }}<b>{{ total }}</b></div>
+        <div class="cohort-dots">
+          {% for row in site.data.drug_cluster_counts %}
+            {% assign count = row[key] | plus: 0 %}
+            {% if count > 0 %}{% for dot in (1..count) %}<i class="cohort-dot tissue-{{ row.key }}"></i>{% endfor %}{% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <ul class="cohort-key" aria-label="Tissue colours">
+    {% for row in site.data.drug_cluster_counts %}<li><i aria-hidden="true" class="cohort-dot tissue-{{ row.key }}"></i>{{ row.tissue }}</li>{% endfor %}
+  </ul>
+  <details class="cohort-counts">
+    <summary>View the tissue counts</summary>
+    <table><caption>Cell lines in each cluster</caption>
+      <thead><tr><th scope="col">Tissue</th><th scope="col">Group 1</th><th scope="col">Group 2</th><th scope="col">Group 3</th></tr></thead>
+      <tbody>{% for row in site.data.drug_cluster_counts %}<tr><th scope="row">{{ row.tissue }}</th><td>{{ row.g1 }}</td><td>{{ row.g2 }}</td><td>{{ row.g3 }}</td></tr>{% endfor %}</tbody>
+    </table>
+    <a href="https://github.com/mcneillium/drug-response-beyond-marker/blob/main/results/table_cluster_groups_by_tissue.csv">Full counts for all 22 tissues</a>
+  </details>
+</figure>
