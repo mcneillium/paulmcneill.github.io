@@ -179,11 +179,11 @@ description: "Four studies on public data: river early warning, cancer drug resp
         </ul>
 
         <figure class="research__figure">
-          {% include picture.html src="/img/research/river-warnings.png" alt="Line chart of warning skill at 1, 3 and 7 days for four models, for high-flow and low-flow warnings. All fall with lead time; the single-number model falls furthest." width="1400" height="708" %}
+          <a class="research__zoom" href="{{ '/img/research/river-warnings.png' | relative_url }}" aria-label="Open this figure full size">{% include picture.html src="/img/research/river-warnings.png" alt="Line chart of warning skill at 1, 3 and 7 days for four models, for high-flow and low-flow warnings. All fall with lead time; the single-number model falls furthest." width="1400" height="708" %}</a>
           <figcaption>Warning skill by lead time. The quantile model edges past the simple persistence band at 7 days.</figcaption>
         </figure>
         <figure class="research__figure">
-          {% include picture.html src="/img/research/river-coverage.png" alt="Chart of how often the 90 percent forecast range contains the observed flow, by catchment, for seen and unseen regions. Calibrated ranges on seen catchments sit at the 90 percent target; unseen regions spread much lower." width="1400" height="786" %}
+          <a class="research__zoom" href="{{ '/img/research/river-coverage.png' | relative_url }}" aria-label="Open this figure full size">{% include picture.html src="/img/research/river-coverage.png" alt="Chart of how often the 90 percent forecast range contains the observed flow, by catchment, for seen and unseen regions. Calibrated ranges on seen catchments sit at the 90 percent target; unseen regions spread much lower." width="1400" height="786" %}</a>
           <figcaption>How honest the 90% range is, on catchments the model saw in training and on regions it did not.</figcaption>
         </figure>
 
@@ -271,15 +271,15 @@ description: "Four studies on public data: river early warning, cancer drug resp
         </ul>
 
         <figure class="research__figure">
-          {% include picture.html src="/img/research/drug-ladder.png" alt="Bar chart of the share of drug response explained as each kind of information is added: 0.05 for PTEN alone, rising to 0.19 with gene expression and gradient boosting." width="1400" height="839" %}
+          <a class="research__zoom" href="{{ '/img/research/drug-ladder.png' | relative_url }}" aria-label="Open this figure full size">{% include picture.html src="/img/research/drug-ladder.png" alt="Bar chart of the share of drug response explained as each kind of information is added: 0.05 for PTEN alone, rising to 0.19 with gene expression and gradient boosting." width="1400" height="839" %}</a>
           <figcaption>What each kind of information adds.</figcaption>
         </figure>
         <figure class="research__figure">
-          {% include picture.html src="/img/research/drug-leak.png" alt="Bar chart comparing feature selection done wrongly and correctly. On shuffled response the wrong method scores 0.14 and the right method scores below zero." width="1318" height="852" %}
+          <a class="research__zoom" href="{{ '/img/research/drug-leak.png' | relative_url }}" aria-label="Open this figure full size">{% include picture.html src="/img/research/drug-leak.png" alt="Bar chart comparing feature selection done wrongly and correctly. On shuffled response the wrong method scores 0.14 and the right method scores below zero." width="1318" height="852" %}</a>
           <figcaption>The leak, measured. On shuffled data there is nothing to find, and the wrong method still scores 0.14.</figcaption>
         </figure>
         <figure class="research__figure">
-          {% include picture.html src="/img/research/drug-clusters.png" alt="Line charts of cluster stability against a no-groups reference. As published, three groups are far above the reference. After removing tissue and sequencing centre, no clustering is clearly above it." width="1400" height="689" %}
+          <a class="research__zoom" href="{{ '/img/research/drug-clusters.png' | relative_url }}" aria-label="Open this figure full size">{% include picture.html src="/img/research/drug-clusters.png" alt="Line charts of cluster stability against a no-groups reference. As published, three groups are far above the reference. After removing tissue and sequencing centre, no clustering is clearly above it." width="1400" height="689" %}</a>
           <figcaption>Cluster stability against a reference with no groups. Left: as published. Right: after removing tissue and sequencing centre.</figcaption>
         </figure>
 
@@ -336,11 +336,11 @@ description: "Four studies on public data: river early warning, cancer drug resp
         </ul>
 
         <figure class="research__figure">
-          {% include picture.html src="/img/research/flood-sentinel1-esa.jpg" alt="Satellite radar image of the Rhine, Meuse and Ruhr rivers in July 2021. Land is grey, open water is black, and newly flooded land along the rivers is marked in red." width="1200" height="900" %}
+          <a class="research__zoom" href="{{ '/img/research/flood-sentinel1-esa.jpg' | relative_url }}" aria-label="Open this figure full size">{% include picture.html src="/img/research/flood-sentinel1-esa.jpg" alt="Satellite radar image of the Rhine, Meuse and Ruhr rivers in July 2021. Land is grey, open water is black, and newly flooded land along the rivers is marked in red." width="1200" height="900" %}</a>
           <figcaption>For context, and not from the study's data: what Sentinel-1 radar sees in a flood. The Rhine, Meuse and Ruhr on 15 July 2021, compared with 3 July, with flooded land in red. It is a different flood from the ones in the study. Image: contains modified Copernicus Sentinel data (2021), processed by ESA, <a href="https://creativecommons.org/licenses/by-sa/3.0/igo/" rel="noopener license">CC BY-SA 3.0 IGO</a>; resized from <a href="https://www.esa.int/ESA_Multimedia/Images/2021/07/Satellites_map_floods_in_western_Europe" rel="noopener">the original</a>.</figcaption>
         </figure>
         <figure class="research__figure">
-          {% include picture.html src="/img/research/flood-measure.png" alt="Four small grids of a made-up scene with a river. The hand label shows the whole river. The automatic label misses a stretch of river and marks a dry field as water. The model's map repeats most of both mistakes. The last grid colours the label's mistakes by whether the model repeated them or put them right." width="1400" height="490" %}
+          <a class="research__zoom" href="{{ '/img/research/flood-measure.png' | relative_url }}" aria-label="Open this figure full size">{% include picture.html src="/img/research/flood-measure.png" alt="Four small grids of a made-up scene with a river. The hand label shows the whole river. The automatic label misses a stretch of river and marks a dry field as water. The model's map repeats most of both mistakes. The last grid colours the label's mistakes by whether the model repeated them or put them right." width="1400" height="490" %}</a>
           <figcaption>The measure, on a made-up scene. This is an illustration, not data.</figcaption>
         </figure>
 
@@ -453,15 +453,15 @@ description: "Four studies on public data: river early warning, cancer drug resp
         </ul>
 
         <figure class="research__figure">
-          {% include picture.html src="/img/research/flood-fixed-and-added.png" alt="Four small bar charts for the three models. Of the labels' false water, the UNet puts right 700 thousand pixels, the frozen pretrained model 314 thousand and the updated one 118 thousand. New false water added: 303, 186 and 111 thousand. Missed water recovered: 123, 95 and 48 thousand. New missed water: 129, 61 and 28 thousand." width="1400" height="740" %}
+          <a class="research__zoom" href="{{ '/img/research/flood-fixed-and-added.png' | relative_url }}" aria-label="Open this figure full size">{% include picture.html src="/img/research/flood-fixed-and-added.png" alt="Four small bar charts for the three models. Of the labels' false water, the UNet puts right 700 thousand pixels, the frozen pretrained model 314 thousand and the updated one 118 thousand. New false water added: 303, 186 and 111 thousand. Missed water recovered: 123, 95 and 48 thousand. New missed water: 129, 61 and 28 thousand." width="1400" height="740" %}</a>
           <figcaption>What each model does with its labels' mistakes: how many it puts right, and how many new ones it adds.</figcaption>
         </figure>
         <figure class="research__figure">
-          {% include picture.html src="/img/research/flood-by-event.png" alt="Dot chart of the share of the labels' false water each model repeats in each of ten floods. In Pakistan the UNet repeats 67.6% and the updated pretrained model 97.1%; in Paraguay 68.6% and 96.3%. In the USA, Spain, Ghana and Cambodia the UNet repeats the most." width="1400" height="820" %}
+          <a class="research__zoom" href="{{ '/img/research/flood-by-event.png' | relative_url }}" aria-label="Open this figure full size">{% include picture.html src="/img/research/flood-by-event.png" alt="Dot chart of the share of the labels' false water each model repeats in each of ten floods. In Pakistan the UNet repeats 67.6% and the updated pretrained model 97.1%; in Paraguay 68.6% and 96.3%. In the USA, Spain, Ghana and Cambodia the UNet repeats the most." width="1400" height="820" %}</a>
           <figcaption>By flood. Pakistan and Paraguay, where the labels have the most false water, carry most of the gap. In four floods (the USA, Spain, Ghana and Cambodia) the UNet repeats the most.</figcaption>
         </figure>
         <figure class="research__figure">
-          {% include picture.html src="/img/research/flood-predictions.png" alt="Chart of predicted against found shares of the labels' errors repeated. False water: UNet predicted 75%, found 75.2%; frozen pretrained model predicted 63%, found 88.9%; updated model predicted 91.5%, found 95.8%. Missed water: predicted 80%, 94% and 95.5%; found 92.8%, 94.5% and 97.2%." width="1400" height="590" %}
+          <a class="research__zoom" href="{{ '/img/research/flood-predictions.png' | relative_url }}" aria-label="Open this figure full size">{% include picture.html src="/img/research/flood-predictions.png" alt="Chart of predicted against found shares of the labels' errors repeated. False water: UNet predicted 75%, found 75.2%; frozen pretrained model predicted 63%, found 88.9%; updated model predicted 91.5%, found 95.8%. Missed water: predicted 80%, 94% and 95.5%; found 92.8%, 94.5% and 97.2%." width="1400" height="590" %}</a>
           <figcaption>What I predicted before each run, and what the run found.</figcaption>
         </figure>
 
@@ -516,6 +516,11 @@ description: "Four studies on public data: river early warning, cancer drug resp
           <li>Two versions. I chose 3 nights each side first, and predicted for it. On 2018 the night flow turned out to have a weekly rhythm, so I added 7 nights each side as a second version, with its own prediction, before 2019 was opened.</li>
         </ul>
 
+        <figure class="research__figure">
+          <a class="research__zoom" href="{{ '/img/research/leak-rule.png' | relative_url }}" aria-label="Open this figure full size">{% include picture.html src="/img/research/leak-rule.png" alt="Illustration on made-up numbers. Top: night flow holds near 100 cubic metres an hour for 14 nights, then steps down to about 75 after a repair. The mean of the 3 nights before the step and of the 3 nights after it are marked, 25.2 apart. Bottom: that difference, the drop, for each night. It rises above a threshold of 15 on three nights and peaks on night 14, the only night flagged." width="1400" height="840" %}</a>
+          <figcaption>How the rule works, on made-up numbers. Several nights around a repair clear the threshold; only the largest drop within one window either side is flagged.</figcaption>
+        </figure>
+
         <h3>Results</h3>
         <div class="research__table">
           <table>
@@ -531,7 +536,7 @@ description: "Four studies on public data: river early warning, cancer drug resp
         </div>
 
         <figure class="research__figure">
-          {% include picture.html src="/img/research/leak-night-flow.png" alt="Line chart of night flow in the simulated town through 2019, rising from about 90 to about 200 cubic metres an hour, with a sharp fall at each of seven repairs. Above the chart, dots show which repairs each rule found. The 7-night rule found six of the seven and missed the second of two repairs a week apart in early February. The 3-night rule found three: those in early May, mid September and at the start of October." width="1400" height="780" %}
+          <a class="research__zoom" href="{{ '/img/research/leak-night-flow.png' | relative_url }}" aria-label="Open this figure full size">{% include picture.html src="/img/research/leak-night-flow.png" alt="Line chart of night flow in the simulated town through 2019, rising from about 90 to about 200 cubic metres an hour, with a sharp fall at each of seven repairs. Above the chart, dots show which repairs each rule found. The 7-night rule found six of the seven and missed the second of two repairs a week apart in early February. The 3-night rule found three: those in early May, mid September and at the start of October." width="1400" height="780" %}</a>
           <figcaption>Night flow in 2019, the test year. The grey line is each night and the black line is the mean of the last 7 nights. Data: Vrachimis and others (2020), BattLeDIM, <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener license">CC BY 4.0</a>.</figcaption>
         </figure>
 
@@ -625,7 +630,7 @@ description: "Four studies on public data: river early warning, cancer drug resp
         <ul>
           <li>The river study's behaviour with gaps in the inputs.</li>
           <li>Putting the flood study's findings in my own words and reviewing its remaining logged choices.</li>
-          <li>Deciding whether there are enough missed repairs to test whether a model trained on the rule's labels repeats its misses.</li>
+          <li>The leak repair study's second stage: simulating more years of the same town, so there are enough missed repairs to test whether a model trained on the rule's labels repeats its misses. A draft protocol is written; the question and predictions are still to be chosen.</li>
         </ul>
         {% comment %} TODO: REPLACE (Paul): reading notes. Three to five papers you have
              read in full, with two lines each on what you took from them and
@@ -635,3 +640,8 @@ description: "Four studies on public data: river early warning, cancer drug resp
     </div>
   </div>
 </section>
+
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Figure, full size">
+  <button class="lightbox__close" aria-label="Close the figure">×</button>
+  <img class="lightbox__img" alt="">
+</div>

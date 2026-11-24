@@ -41,6 +41,11 @@
     const printButton = controls.querySelector('[data-print]');
     if (printButton) printButton.addEventListener('click', () => window.print());
 
+    /* A printed copy shows the folded status record in full. */
+    window.addEventListener('beforeprint', () => {
+      document.querySelectorAll('details.study-updates').forEach(d => { d.open = true; });
+    });
+
     controls.hidden = false;
   }
 

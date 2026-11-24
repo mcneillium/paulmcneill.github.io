@@ -2936,6 +2936,7 @@ input::placeholder { color: var(--text-faint); opacity: 1; }
 .research__table { overflow-x: auto; }
 .research__table table { min-width: 460px; }
 .research__table tbody th { font-weight: 400; color: var(--text-dim); }
+@media (max-width: 600px) { .research__table tbody th { min-width: 8.5rem; } }
 .research__table caption { caption-side: top; text-align: left; padding-bottom: 0.4rem; font-weight: 600; color: var(--text); }
 .research__table .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
@@ -2963,6 +2964,20 @@ input::placeholder { color: var(--text-faint); opacity: 1; }
 /* Jump list of the studies at the top of the page. */
 .research__toc { margin-bottom: 2.5rem; }
 .research__toc .research__grid { margin: 0; }
+
+/* Figures open full size in the lightbox. */
+.research__zoom { display: block; cursor: zoom-in; }
+.research__zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* Wide tables scroll sideways on small screens. Shadows at the edges show
+   there is more to see; they fade as the reader reaches each end. */
+.research__table {
+  background:
+    linear-gradient(to right, var(--bg) 30%, transparent) left center / 2.5rem 100% no-repeat local,
+    linear-gradient(to left, var(--bg) 30%, transparent) right center / 2.5rem 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(0, 0, 0, 0.45), transparent) left center / 0.9rem 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.45), transparent) right center / 0.9rem 100% no-repeat scroll;
+}
 
 .research__links { font-size: 0.95rem; color: var(--text-faint); }
 

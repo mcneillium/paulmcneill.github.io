@@ -36,3 +36,22 @@
     20 most important inputs changes. On average two refits share about a third of their lists (an
     overlap score of 0.20). Only two inputs stayed near the top.
   anchor: "drug-response"
+
+- question: "Does pretraining protect against bad labels?"
+  figure: "90.0%"
+  unit: "of false water copied"
+  finding: >-
+    Trained on automatic flood labels, a pretrained satellite model repeated
+    90.0% of the labels' false water on new chips, and 96.2% once its encoder
+    was updated in training. A model trained from scratch repeated the
+    fewest, 75.0%.
+  anchor: "flood-label-errors"
+
+- question: "Can a rule stand in for a label?"
+  figure: "3 of 7"
+  unit: "repairs found"
+  finding: >-
+    A rule that infers leak repairs from a drop in night flow found 3 of the
+    7 repairs in its test year. Every flag it raised matched a recorded
+    repair, so its errors were all misses. A seven-night version found 6.
+  anchor: "leak-repair-labels"

@@ -193,7 +193,7 @@
 
   /* -------- Lightbox for project galleries -------------------------- */
   const lightbox = document.getElementById('lightbox');
-  const galleryItems = document.querySelectorAll('.gallery-item, .aurora-item a');
+  const galleryItems = document.querySelectorAll('.gallery-item, .aurora-item a, .research__zoom');
   if (lightbox && galleryItems.length) {
     const lbImg = lightbox.querySelector('.lightbox__img');
     const closeBtn = lightbox.querySelector('.lightbox__close');
