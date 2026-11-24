@@ -3,8 +3,9 @@
 
    The page reads _data/research_flood.json. This script derives that file
    from the study's own result files, so the published figures cannot drift
-   from the repository they describe. Development chips only: the study's
-   test and Bolivia results are not read here.
+   from the repository they describe. The development figures come from each
+   model's own result files. The held-out figures (90 test chips and 15
+   Bolivia chips, opened once) come from results/evaluation/evaluation.json.
 
      node scripts/research-flood-numbers.js <flood-repo>           check, exit 1 on mismatch
      node scripts/research-flood-numbers.js <flood-repo> --write   regenerate the data file
@@ -91,6 +92,94 @@ const models = MODELS.map(({ id, folder }) => {
   };
 });
 
+// The one-time evaluation: every model scored once on the test chips and on
+// Bolivia. Seeds are keyed '0' to '2' as in the development files.
+const evaluation = load('evaluation', 'evaluation.json');
+const opened = load('evaluation', 'opened.json');
+if (evaluation.split_fingerprint !== fingerprint) {
+  throw new Error('evaluation: a different split fingerprint');
+}
+
+const heldOutSet = name => {
+  const set = evaluation[name];
+  const counts = set.otsu.counts;
+  const setModels = MODELS.map(({ id }) => {
+    const m = set.models[id];
+    const seedRates = SEEDS.map(s => m.rates[s]);
+    const seedScores = SEEDS.map(s => m.scores[s]);
+    const rates = key => seedRates.map(r => r[key]);
+    const ious = seedScores.map(s => s.iou);
+    const repeatedFalse = mean(SEEDS.map(s => m.counts[s].repeated_false_water));
+    return {
+      id,
+      false_water: share(rates('reproduction_false_water'), 1),
+      missed_water: share(rates('reproduction_missed_water'), 1),
+      correct: share(rates('agreement_where_otsu_correct'), 2),
+      iou: {
+        mean: round(mean(ious), 4),
+        text: { mean: mean(ious).toFixed(3), seeds: ious.map(v => v.toFixed(3)).join(', ') },
+      },
+      recall: pct(mean(seedScores.map(s => s.recall))).toFixed(1),
+      precision: pct(mean(seedScores.map(s => s.precision))).toFixed(1),
+      corrected_false_water_k: Math.round((counts.fp - repeatedFalse) / 1000),
+      new_false_water_k: Math.round(mean(rates('new_false_water_pixels')) / 1000),
+      new_missed_water_k: Math.round(mean(rates('new_missed_water_pixels')) / 1000),
+    };
+  });
+  const orderings = evaluation.prediction.orderings[name];
+  const directions = orderings.flatMap(o => o.directions);
+  return {
+    chips: set.otsu.chips,
+    pixels: {
+      valid: counts.tp + counts.fp + counts.fn + counts.tn,
+      otsu_false_water: counts.fp,
+      otsu_missed_water: counts.fn,
+      text: {
+        valid: ((counts.tp + counts.fp + counts.fn + counts.tn) / 1e6).toFixed(1),
+        otsu_false_water_k: Math.round(counts.fp / 1000),
+        otsu_missed_water_k: Math.round(counts.fn / 1000),
+      },
+    },
+    otsu: {
+      iou: set.otsu.iou.toFixed(3),
+      recall: pct(set.otsu.recall).toFixed(1),
+      precision: pct(set.otsu.precision).toFixed(1),
+    },
+    models: setModels,
+    prediction: {
+      directions: directions.length,
+      directions_held: directions.filter(d => d.held).length,
+      orderings: orderings.length,
+      orderings_held: orderings.filter(o => o.held).length,
+    },
+  };
+};
+
+// The rule fixed in advance, applied to the test chips only. A fall is the
+// first model's rate minus the second's, in percentage points: negative
+// means the second model repeated more.
+const rule = name => {
+  const r = evaluation.rules_on_test[name];
+  return {
+    false_water_fall: pct(r.false_water.fall).toFixed(1),
+    missed_water_fall: pct(r.missed_water.fall).toFixed(1),
+    false_water_seeds_in_favour: r.false_water.seeds_in_favour,
+    missed_water_seeds_in_favour: r.missed_water.seeds_in_favour,
+    claim: r.overall,
+  };
+};
+
+const heldOut = {
+  source: 'results/evaluation/evaluation.json',
+  opened: opened.opened_at.slice(0, 10),
+  test: heldOutSet('test'),
+  bolivia: heldOutSet('bolivia'),
+  rules_on_test: {
+    frozen_against_unet: rule('frozen_against_unet'),
+    updated_against_frozen: rule('updated_against_frozen'),
+  },
+};
+
 const c = otsu.counts;
 const fresh = {
   source: 'results/{unet_baseline,terramind_frozen,terramind_updated}/*_development.json',
@@ -111,6 +200,7 @@ const fresh = {
     precision: pct(otsu.precision).toFixed(1),
   },
   models,
+  held_out: heldOut,
 };
 
 if (flag === '--write') {
