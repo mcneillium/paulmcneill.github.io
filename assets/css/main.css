@@ -2936,6 +2936,7 @@ input::placeholder { color: var(--text-faint); opacity: 1; }
 .research__table { overflow-x: auto; }
 .research__table table { min-width: 460px; }
 .research__table tbody th { font-weight: 400; color: var(--text-dim); }
+.research__table caption { caption-side: top; text-align: left; padding-bottom: 0.4rem; font-weight: 600; color: var(--text); }
 .research__table .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
 .research__figure { margin: 1.75rem 0; }

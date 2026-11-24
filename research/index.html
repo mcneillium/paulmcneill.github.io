@@ -17,7 +17,7 @@ description: "Four studies on public data: river early warning, cancer drug resp
     <span class="eyebrow">Research</span>
     <h1 class="post__title">Reproducible studies on <em>public data</em></h1>
     <p class="post__subtitle">
-      Four studies. One is still running and one is a first look. Each has a protocol fixed
+      Four studies, one of them a first look. Each has a protocol fixed
       before any model was fitted, baselines before anything complex, fixed
       and fingerprinted splits, tests, and a log of every decision, including
       the ones that turned out wrong.
@@ -31,7 +31,7 @@ description: "Four studies on public data: river early warning, cancer drug resp
          words, as what you want to research and why. Do not name
          supervisors, referees or application plans. {% endcomment %}
     <p class="research__status">
-      <strong>Status, 23 November 2026.</strong> On 14 November 2026 I re-ran
+      <strong>Status, 24 November 2026.</strong> On 14 November 2026 I re-ran
       the river and drug response studies on a second machine. Every drug response table matched to
       within 0.000002. For the river study the per-catchment results matched
       exactly and the regional medians to within 0.006. On 15 November the
@@ -39,8 +39,9 @@ description: "Four studies on public data: river early warning, cancer drug resp
       two follow-ups were added: the neural model in the drier-climate test, and
       a forecasting model used without any training. A third study, on
       <a href="#flood-label-errors">flood mapping from labels that are partly wrong</a>,
-      started on 17 November and is reported part-way: its results so far are
-      on development data, and its held-out evaluation has not been run. A fourth,
+      started on 17 November. Its one-time evaluation on held-out data, 90 test
+      chips and 15 chips from a flood never used in training, was run on
+      23 November and is reported below. A fourth,
       on <a href="#leak-repair-labels">leak repairs inferred from a drop in flow</a>,
       was run on 23 November as a first look. Every
       decision is logged, and those still awaiting my review are marked. None
@@ -65,7 +66,7 @@ description: "Four studies on public data: river early warning, cancer drug resp
         <ul class="research__grid">
           <li><strong><a href="#river-early-warning">River early warning</a></strong><span>How far ahead can river flow and flood warnings be forecast without knowing future weather, and does the skill carry over to new places?</span></li>
           <li><strong><a href="#drug-response">Drug response beyond a single marker</a></strong><span>How much more of cancer drug response does wider molecular data explain, and can the patterns be trusted?</span></li>
-          <li><strong><a href="#flood-label-errors">Flood mapping from labels that are partly wrong</a></strong><span>Does a pretrained satellite model repeat fewer of its labels' mistakes than a model trained from scratch? In progress.</span></li>
+          <li><strong><a href="#flood-label-errors">Flood mapping from labels that are partly wrong</a></strong><span>Does a pretrained satellite model repeat fewer of its labels' mistakes than a model trained from scratch? Evaluated once on held-out data.</span></li>
           <li><strong><a href="#leak-repair-labels">Leak repairs inferred from a drop in flow</a></strong><span>When a rule infers leak repairs from a drop in night flow, how many real repairs does it find, and how many of its flags are real? A first look.</span></li>
         </ul>
       </nav>
@@ -323,17 +324,20 @@ description: "Four studies on public data: river early warning, cancer drug resp
           <li>Label noise</li>
           <li>Pretrained encoder</li>
           <li>Segmentation</li>
-          <li>In progress</li>
+          <li>Held-out evaluation run</li>
         </ul>
         {% comment %} TODO: REPLACE (Paul): this section was drafted on 22 November
-             from the study's result tables and protocol records. The question
-             is your wording of 18 November. Put the findings in your own
-             words (the study's README has the same TODO), and add the
+             from the study's result tables and protocol records, and its
+             held-out results on 24 November from results/evaluation. The
+             question is your wording of 18 November and the first held-out
+             finding follows your wording of 23 November. Put the findings in
+             your own words (the study's README has the same TODO), and add the
              repository link at the foot once the repository is public. {% endcomment %}
         {%- assign flood = site.data.research_flood -%}
         {%- assign fnames = site.data.research.flood_models -%}
 
-        <p><strong>In progress, reported part-way.</strong> Started on 17 November 2026. Every figure below comes from development data: 252 hand-labelled chips from floods the models also saw in training. The held-out evaluation, on 90 test chips and on 15 chips from a flood never used in training, has its protocol and my prediction on record and has not been run. Nothing here is a final result.</p>
+        {%- assign held = flood.held_out -%}
+        <p><strong>The first study in the design is complete.</strong> Started on 17 November 2026. On 23 November I ran the one-time evaluation on data held out until then: {{ held.test.chips }} hand-labelled test chips, and {{ held.bolivia.chips }} chips from Bolivia, a flood never used in training or in choosing a model. My prediction and the rule for any claim were committed on 20 November, before any held-out label was read. The development results that came first are kept below the held-out ones.</p>
 
         <h3>Setup</h3>
         <ul>
@@ -355,8 +359,48 @@ description: "Four studies on public data: river early warning, cancer drug resp
           <figcaption>The measure, on a made-up scene. This is an illustration, not data.</figcaption>
         </figure>
 
-        <h3>Results so far</h3>
-        <p>Development chips, mean of three seeds. The first two columns are the share of the automatic labels' mistakes that each map repeats. Water IoU is the overlap between a map's water and the hand-labelled water, divided by the area covered by either: 1 is a perfect map.</p>
+        <h3>Held-out results</h3>
+        <p>Scored once, mean of three seeds. The test chips are new chips from the ten floods the models trained on. Bolivia is a separate flood, and 15 hand-labelled chips are limited evidence. The first two columns are the share of the automatic labels' mistakes that each map repeats. Water IoU is the overlap between a map's water and the hand-labelled water, divided by the area covered by either: 1 is a perfect map.</p>
+        {%- assign hsets = "test,bolivia" | split: "," -%}
+        {%- for hid in hsets %}
+        {%- assign hs = held[hid] %}
+        <div class="research__table">
+          <table>
+            <caption>{% if hid == "test" %}Test chips: {{ hs.chips }} new chips from the ten training floods{% else %}Bolivia: {{ hs.chips }} chips from a flood no model saw{% endif %}</caption>
+            <thead>
+              <tr><th scope="col">Map</th><th scope="col" class="num">False water<br>repeated</th><th scope="col" class="num">Missed water<br>repeated</th><th scope="col" class="num">Right where the<br>labels are right</th><th scope="col" class="num">Water<br>IoU</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">The automatic labels themselves</th><td class="num">100%</td><td class="num">100%</td><td class="num">100%</td><td class="num">{{ hs.otsu.iou }}</td></tr>
+              {%- for m in hs.models %}
+              <tr><th scope="row">{{ fnames[m.id] }}</th><td class="num">{{ m.false_water.text.mean }}%</td><td class="num">{{ m.missed_water.text.mean }}%</td><td class="num">{{ m.correct.text.mean }}%</td><td class="num">{{ m.iou.text.mean }}</td></tr>
+              {%- endfor %}
+            </tbody>
+          </table>
+        </div>
+        {%- endfor %}
+
+        <ul>
+          <li>
+            <span data-plain><strong>On new chips from the training floods, updating the pretrained encoder made it repeat more of both kinds of mistake.</strong> Both pretrained models started from the same published weights. With the encoder frozen the model repeats 90.0% of the labels' false water and 90.9% of their missed water. With the encoder updated in training it repeats 96.2% and 95.9%, more in every seed pair.</span>
+            <span data-technical>Test chips: {{ held.test.pixels.text.valid }} million valid pixels, with {{ held.test.pixels.text.otsu_false_water_k }} thousand of Otsu false water and {{ held.test.pixels.text.otsu_missed_water_k }} thousand of missed water. Updated against frozen, paired by seed: false water repeated is higher by 3.4 to 7.8 points (mean 6.2) and missed water repeated by 4.0 to 6.0 points (mean 5.0). By the rule fixed in advance: no "repeats fewer" claim. The updated model stays right on 99.78% of the pixels the labels have right, against 99.50%, and adds fewer mistakes of its own (30 thousand new false-water pixels against 66 thousand).</span>
+          </li>
+          <li>
+            <span data-plain><strong>The model trained from scratch repeated the fewest and scored highest.</strong> The UNet repeats 75.0% of the false water and 87.6% of the missed water. Its water IoU is 0.583, against 0.567 and 0.559 for the two pretrained models and 0.554 for the labels. It differs from the pretrained model in architecture, size and pretraining at once, so this gap cannot be put down to pretraining.</span>
+            <span data-technical>Frozen against the UNet, paired by seed: false water repeated is higher by 9.6 to 24.5 points (mean 15.0) and missed water repeated by 2.0 to 5.1 points (mean 3.4). No "repeats fewer" claim. Pakistan and Paraguay hold 68% of the test chips' false water. There the UNet repeats 65.8% and 75.0%, the frozen model 90.7% and 89.0%, and the updated model 96.8% and 96.7%. All three models score above the labels on water IoU.</span>
+          </li>
+          <li>
+            <span data-plain><strong>My prediction held on the test chips.</strong> I had predicted the order of the three models on six measures, and that neither comparison would earn a "repeats fewer" claim. All {{ held.test.prediction.directions }} predicted directions held.</span>
+            <span data-technical>Recorded on 20 November. Water IoU and precision: UNet highest, then frozen, then updated. Recall: frozen, then updated, then the UNet. Both error rates and the share right where the labels are right: updated, then frozen, then the UNet. Each ordering is judged as three directions on unrounded means, and a tie counts as a miss. {{ held.test.prediction.directions_held }} of {{ held.test.prediction.directions }} directions and {{ held.test.prediction.orderings_held }} of {{ held.test.prediction.orderings }} orderings held, and both predicted rule verdicts were met.</span>
+          </li>
+          <li>
+            <span data-plain><strong>On Bolivia, the false-water order did not carry over.</strong> There the frozen model repeats the most false water, 80.0%. The updated model repeats 71.6%, close to the UNet's 69.7%. Every model repeats nearly all of the missed water, 98.6% to 99.9%. 15 hand-labelled chips are limited evidence, and they give a reason to ask whether the test-chip result holds on a new flood.</span>
+            <span data-technical>Bolivia: {{ held.bolivia.pixels.text.valid }} million valid pixels, with {{ held.bolivia.pixels.text.otsu_false_water_k }} thousand of Otsu false water and {{ held.bolivia.pixels.text.otsu_missed_water_k }} thousand of missed water. The updated model repeats less false water than the frozen one in all three seed pairs, by 6.9 to 9.7 points, and more than the UNet in two of three. No rule verdict is given for Bolivia, as decided in advance. {{ held.bolivia.prediction.directions_held }} of my {{ held.bolivia.prediction.directions }} predicted directions held there, and {{ held.bolivia.prediction.orderings_held }} of {{ held.bolivia.prediction.orderings }} orderings (water IoU). On the three-seed means all three models score slightly below the labels on water IoU: 0.716, 0.714 and 0.712 against 0.718.</span>
+          </li>
+        </ul>
+
+        <h3>Development results, before the evaluation</h3>
+        <p>Development chips, mean of three seeds: 252 hand-labelled chips from floods the models also saw in training. These came first and shaped the prediction above. The columns are as in the tables above.</p>
         <div class="research__table">
           <table>
             <thead>
@@ -442,11 +486,14 @@ description: "Four studies on public data: river early warning, cancer drug resp
           <li>My first prediction about the labels was wrong as well: I expected missed water to be the larger error, and false water is.</li>
           <li>An early count saved totals, not the masks behind them. Equal totals can come from different pixels, so every comparison since 19 November first proves, chip by chip, that the models are scored on identical pixels. The reference for that check had to be rebuilt and tied to the earlier count by its recorded numbers.</li>
           <li>One UNet seed kept an earlier checkpoint (epoch 31 of 40) and copied the least false water. That widens the gap for its seed pair to 23.2 points, against 9.0 and 8.9 for the other two. All three are reported.</li>
+          <li>The first attempt at the held-out evaluation stopped before anything held out was opened. The three UNet checkpoints had remade their development maps with 15, 69 and 66 pixels different from the saved ones. The difference appeared only when the pretrained model was built in the same process first. A dated amendment gave each step a process of its own, and the run then proved all nine checkpoints against their saved maps, pixel for pixel, before any held-out chip was read. What building the pretrained model changes is not known.</li>
+          <li>On Bolivia, 6 of my 18 predicted directions were wrong, the false-water order among them.</li>
         </ul>
 
         <h3>Limits</h3>
         <ul>
-          <li>Development chips only, from floods that are also in the training data. The 90 test chips and the 15 Bolivia chips have not been opened, and Bolivia is a single flood.</li>
+          <li>The test chips are new chips from the ten training floods, so they are new ground in familiar floods. Bolivia is the only flood no model saw, and it has 15 hand-labelled chips.</li>
+          <li>The held-out chips have now been scored once. Any later experiment on them is no longer a first look.</li>
           <li>The UNet and the pretrained model differ in architecture, size and pretraining at once, so the gap between them cannot be put down to pretraining alone. The two pretrained runs are the closer comparison.</li>
           <li>The pretrained model is scored as four tiles joined together and the UNet on whole chips, and each uses its own input scaling.</li>
           <li>Three seeds, one pretrained model at one size, radar only, and one untuned training recipe.</li>
@@ -568,10 +615,11 @@ description: "Four studies on public data: river early warning, cancer drug resp
 
       <section class="research__study" id="how-produced" aria-labelledby="research-how-produced">
         <h2 id="research-how-produced">How this work was produced</h2>
-        <p>All four studies were built making use of AI tools, under research rules I set; each study’s log records how. I re-ran the river and drug response studies on my own hardware and reviewed every logged decision. In the flood study I set the design, record a prediction before each result and run the training on my own GPU; some of its logged choices still await my review. In the leak repair study I chose the rule and recorded a prediction before each run; the code was written with AI tools, I re-ran the study on my own machine, and I have not yet reviewed its logged choices. I take responsibility for the work and its conclusions.</p>
-        {% comment %} TODO: REPLACE (Paul): the sentence about the flood study is
-             new (22 November). Check it says what you want, and change it once
-             you have confirmed the remaining logged choices. {% endcomment %}
+        <p>All four studies were built making use of AI tools, under research rules I set; each study’s log records how. I re-ran the river and drug response studies on my own hardware and reviewed every logged decision. In the flood study I set the design, recorded a prediction before each result, and ran the training and the held-out evaluation on my own GPU; some of its logged choices still await my review. In the leak repair study I chose the rule and recorded a prediction before each run; the code was written with AI tools, I re-ran the study on my own machine, and I have not yet reviewed its logged choices. I take responsibility for the work and its conclusions.</p>
+        {% comment %} TODO: REPLACE (Paul): the sentence about the flood study was
+             updated on 24 November to cover the held-out evaluation. Check it
+             says what you want, and change it once you have confirmed the
+             remaining logged choices. {% endcomment %}
       </section>
 
       <section class="research__study" id="corrections" aria-labelledby="research-corrections">
@@ -591,7 +639,7 @@ description: "Four studies on public data: river early warning, cancer drug resp
         <h2 id="research-next">Next</h2>
         <ul>
           <li>The river study's behaviour with gaps in the inputs.</li>
-          <li>The flood study's one-time evaluation on its held-out data: 90 test chips, and 15 chips from Bolivia, a flood never used in training.</li>
+          <li>Putting the flood study's findings in my own words and reviewing its remaining logged choices.</li>
           <li>Rewriting the leak repair study's code myself and reviewing its logged choices.</li>
         </ul>
         {% comment %} TODO: REPLACE (Paul): reading notes. Three to five papers you have
