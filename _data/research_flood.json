@@ -170,5 +170,329 @@
         38
       ]
     }
-  ]
+  ],
+  "held_out": {
+    "source": "results/evaluation/evaluation.json",
+    "opened": "2026-11-23",
+    "test": {
+      "chips": 90,
+      "pixels": {
+        "valid": 20443959,
+        "otsu_false_water": 876827,
+        "otsu_missed_water": 634364,
+        "text": {
+          "valid": "20.4",
+          "otsu_false_water_k": 877,
+          "otsu_missed_water_k": 634
+        }
+      },
+      "otsu": {
+        "iou": "0.554",
+        "recall": "74.8",
+        "precision": "68.2"
+      },
+      "models": [
+        {
+          "id": "unet",
+          "false_water": {
+            "mean": 75.03,
+            "min": 65.31,
+            "max": 82.6,
+            "text": {
+              "mean": "75.0",
+              "seeds": "65.3, 77.2, 82.6"
+            }
+          },
+          "missed_water": {
+            "mean": 87.58,
+            "min": 87.4,
+            "max": 87.92,
+            "text": {
+              "mean": "87.6",
+              "seeds": "87.4, 87.4, 87.9"
+            }
+          },
+          "correct": {
+            "mean": 99.26,
+            "min": 99.13,
+            "max": 99.4,
+            "text": {
+              "mean": "99.26",
+              "seeds": "99.13, 99.25, 99.40"
+            }
+          },
+          "iou": {
+            "mean": 0.583,
+            "text": {
+              "mean": "0.583",
+              "seeds": "0.592, 0.580, 0.577"
+            }
+          },
+          "recall": "75.2",
+          "precision": "72.2",
+          "corrected_false_water_k": 219,
+          "new_false_water_k": 73,
+          "new_missed_water_k": 67
+        },
+        {
+          "id": "frozen",
+          "false_water": {
+            "mean": 90.04,
+            "min": 88.15,
+            "max": 92.15,
+            "text": {
+              "mean": "90.0",
+              "seeds": "89.8, 88.2, 92.2"
+            }
+          },
+          "missed_water": {
+            "mean": 90.93,
+            "min": 89.46,
+            "max": 92.5,
+            "text": {
+              "mean": "90.9",
+              "seeds": "89.5, 92.5, 90.8"
+            }
+          },
+          "correct": {
+            "mean": 99.5,
+            "min": 99.46,
+            "max": 99.56,
+            "text": {
+              "mean": "99.50",
+              "seeds": "99.49, 99.56, 99.46"
+            }
+          },
+          "iou": {
+            "mean": 0.5668,
+            "text": {
+              "mean": "0.567",
+              "seeds": "0.570, 0.568, 0.563"
+            }
+          },
+          "recall": "76.0",
+          "precision": "69.1",
+          "corrected_false_water_k": 87,
+          "new_false_water_k": 66,
+          "new_missed_water_k": 28
+        },
+        {
+          "id": "updated",
+          "false_water": {
+            "mean": 96.22,
+            "min": 95.42,
+            "max": 97.65,
+            "text": {
+              "mean": "96.2",
+              "seeds": "97.6, 95.4, 95.6"
+            }
+          },
+          "missed_water": {
+            "mean": 95.94,
+            "min": 94.56,
+            "max": 96.8,
+            "text": {
+              "mean": "95.9",
+              "seeds": "94.6, 96.5, 96.8"
+            }
+          },
+          "correct": {
+            "mean": 99.78,
+            "min": 99.73,
+            "max": 99.8,
+            "text": {
+              "mean": "99.78",
+              "seeds": "99.73, 99.79, 99.80"
+            }
+          },
+          "iou": {
+            "mean": 0.5588,
+            "text": {
+              "mean": "0.559",
+              "seeds": "0.559, 0.559, 0.559"
+            }
+          },
+          "recall": "75.3",
+          "precision": "68.4",
+          "corrected_false_water_k": 33,
+          "new_false_water_k": 30,
+          "new_missed_water_k": 13
+        }
+      ],
+      "prediction": {
+        "directions": 18,
+        "directions_held": 18,
+        "orderings": 6,
+        "orderings_held": 6
+      }
+    },
+    "bolivia": {
+      "chips": 15,
+      "pixels": {
+        "valid": 2824370,
+        "otsu_false_water": 96211,
+        "otsu_missed_water": 58497,
+        "text": {
+          "valid": "2.8",
+          "otsu_false_water_k": 96,
+          "otsu_missed_water_k": 58
+        }
+      },
+      "otsu": {
+        "iou": "0.718",
+        "recall": "87.1",
+        "precision": "80.3"
+      },
+      "models": [
+        {
+          "id": "unet",
+          "false_water": {
+            "mean": 69.71,
+            "min": 65.37,
+            "max": 76.17,
+            "text": {
+              "mean": "69.7",
+              "seeds": "65.4, 76.2, 67.6"
+            }
+          },
+          "missed_water": {
+            "mean": 99.75,
+            "min": 99.39,
+            "max": 99.98,
+            "text": {
+              "mean": "99.7",
+              "seeds": "100.0, 99.4, 99.9"
+            }
+          },
+          "correct": {
+            "mean": 99.18,
+            "min": 98.99,
+            "max": 99.38,
+            "text": {
+              "mean": "99.18",
+              "seeds": "98.99, 99.38, 99.17"
+            }
+          },
+          "iou": {
+            "mean": 0.7162,
+            "text": {
+              "mean": "0.716",
+              "seeds": "0.712, 0.719, 0.718"
+            }
+          },
+          "recall": "82.3",
+          "precision": "84.7",
+          "corrected_false_water_k": 29,
+          "new_false_water_k": 0,
+          "new_missed_water_k": 22
+        },
+        {
+          "id": "frozen",
+          "false_water": {
+            "mean": 79.97,
+            "min": 76.45,
+            "max": 81.85,
+            "text": {
+              "mean": "80.0",
+              "seeds": "81.8, 76.5, 81.6"
+            }
+          },
+          "missed_water": {
+            "mean": 98.65,
+            "min": 98.11,
+            "max": 99.38,
+            "text": {
+              "mean": "98.6",
+              "seeds": "98.5, 99.4, 98.1"
+            }
+          },
+          "correct": {
+            "mean": 99.36,
+            "min": 99.26,
+            "max": 99.48,
+            "text": {
+              "mean": "99.36",
+              "seeds": "99.48, 99.26, 99.34"
+            }
+          },
+          "iou": {
+            "mean": 0.7137,
+            "text": {
+              "mean": "0.714",
+              "seeds": "0.717, 0.712, 0.711"
+            }
+          },
+          "recall": "83.7",
+          "precision": "82.9",
+          "corrected_false_water_k": 19,
+          "new_false_water_k": 1,
+          "new_missed_water_k": 16
+        },
+        {
+          "id": "updated",
+          "false_water": {
+            "mean": 71.56,
+            "min": 69.54,
+            "max": 73.24,
+            "text": {
+              "mean": "71.6",
+              "seeds": "73.2, 69.5, 71.9"
+            }
+          },
+          "missed_water": {
+            "mean": 99.95,
+            "min": 99.93,
+            "max": 99.98,
+            "text": {
+              "mean": "99.9",
+              "seeds": "99.9, 100.0, 99.9"
+            }
+          },
+          "correct": {
+            "mean": 99.16,
+            "min": 99.12,
+            "max": 99.21,
+            "text": {
+              "mean": "99.16",
+              "seeds": "99.21, 99.12, 99.14"
+            }
+          },
+          "iou": {
+            "mean": 0.7124,
+            "text": {
+              "mean": "0.712",
+              "seeds": "0.713, 0.713, 0.711"
+            }
+          },
+          "recall": "82.1",
+          "precision": "84.3",
+          "corrected_false_water_k": 27,
+          "new_false_water_k": 0,
+          "new_missed_water_k": 22
+        }
+      ],
+      "prediction": {
+        "directions": 18,
+        "directions_held": 12,
+        "orderings": 6,
+        "orderings_held": 1
+      }
+    },
+    "rules_on_test": {
+      "frozen_against_unet": {
+        "false_water_fall": "-15.0",
+        "missed_water_fall": "-3.4",
+        "false_water_seeds_in_favour": 0,
+        "missed_water_seeds_in_favour": 0,
+        "claim": false
+      },
+      "updated_against_frozen": {
+        "false_water_fall": "-6.2",
+        "missed_water_fall": "-5.0",
+        "false_water_seeds_in_favour": 0,
+        "missed_water_seeds_in_favour": 0,
+        "claim": false
+      }
+    }
+  }
 }
