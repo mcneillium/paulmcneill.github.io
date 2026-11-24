@@ -3105,6 +3105,8 @@ input::placeholder { color: var(--text-faint); opacity: 1; }
   list-style: none; margin: 0; padding: 0;
   display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem;
 }
+/* An odd last card spans both columns rather than sitting alone. */
+.evidence-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
 @media (max-width: 768px) { .evidence__grid { grid-template-columns: 1fr; } }
 .evidence-card {
   display: flex; flex-direction: column;

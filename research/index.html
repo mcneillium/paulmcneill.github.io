@@ -17,6 +17,7 @@ description: "Four studies on public data: river early warning, cancer drug resp
     <span class="eyebrow">Research</span>
     <h1 class="post__title">Reproducible studies on <em>public data</em></h1>
     <p class="post__subtitle">Four studies asking where machine learning results hold up when measurements are missing, labels are noisy or conditions change.</p>
+    <p class="post__subtitle">My work in water leakage got me interested in a question that runs through these studies. When a model gives me a result, what would convince me I could rely on it somewhere else? I’ve tested that by moving river forecasts to catchments the model hasn’t seen, checking what drug-response models learn beyond one gene, and measuring what happens when the labels used for training contain mistakes.</p>
     {% include research-overview.html %}
     <details class="study-updates">
       <summary>Study status and reproduction checks · 24 November 2026</summary>
@@ -67,12 +68,11 @@ description: "Four studies on public data: river early warning, cancer drug resp
           <li>Uncertainty</li>
           <li>In progress</li>
         </ul>
-        {% comment %} TODO: REPLACE (Paul): the research question in one sentence, and
-             what you expected to find, dated. {% endcomment %}
+        {% comment %} TODO: REPLACE (Paul): what you expected to find, dated. {% endcomment %}
 
         <h3>Setup</h3>
         <ul>
-          <li>The question behind the design: how far ahead can river flow and flood or low-flow warnings be forecast without knowing future weather, and does that skill carry over to places the model was not trained on?</li>
+          <li>The question: using only the river flow and weather available today, how well can I forecast flow and warn of high or low water one, three and seven days ahead, and how much of that skill holds up in a catchment the model hasn’t seen?</li>
           <li>Daily river flow and weather for 671 catchments, 1970 to 2022. 659 had enough data to use.</li>
           <li>Task: on day t, forecast flow 1, 3 and 7 days ahead, using only what is known on day t. No future rainfall.</li>
           <li>Train on 1970 to 2004, choose settings on 2004 to 2012, test on 2012 to 2022.</li>
@@ -217,14 +217,13 @@ description: "Four studies on public data: river early warning, cancer drug resp
           <li>Explanation stability</li>
           <li>Label noise</li>
         </ul>
-        {% comment %} TODO: REPLACE (Paul): the research question in one sentence. Then
-             what you would have predicted, saying plainly that the results
-             already existed when you wrote it. {% endcomment %}
+        {% comment %} TODO: REPLACE (Paul): what you would have predicted, saying
+             plainly that the results already existed when you wrote it. {% endcomment %}
 
         <h3>Setup</h3>
         <ul>
           <li>The primary drug was ipatasertib, an AKT inhibitor. The 924 cell lines came from 28 tissues, including six prostate cell lines. I tested how much gene expression added to PTEN status, tissue and sequencing centre.</li>
-          <li>The question behind the design: how much more of the response does wider molecular data explain, and can the patterns be trusted?</li>
+          <li>The question: across cancer cell lines, how much better can I predict response to ipatasertib when I add molecular data beyond PTEN, and do the same genes still look important when I refit the model?</li>
           <li>Five-fold cross-validation repeated five times on saved folds. The predictive comparisons kept each outer test fold separate. The leakage demonstration deliberately broke this rule to measure the effect.</li>
           <li>Cell lines are a stand-in. Nothing here is about patients or treatment.</li>
         </ul>
@@ -311,17 +310,13 @@ description: "Four studies on public data: river early warning, cancer drug resp
           <li>Segmentation</li>
           <li>Held-out evaluation run</li>
         </ul>
-        {% comment %} TODO: REPLACE (Paul): this section was drafted on 22 November
-             from the study's result tables and protocol records, and its
-             held-out results on 24 November from results/evaluation. The
-             question is your wording of 18 November and the first held-out
-             finding follows your wording of 23 November. Put the findings in
-             your own words (the study's README has the same TODO), and add the
-             repository link at the foot once the repository is public. {% endcomment %}
+        {% comment %} TODO (Paul): add the repository link at the foot once the
+             repository is public. {% endcomment %}
         {%- assign flood = site.data.research_flood -%}
         {%- assign fnames = site.data.research.flood_models -%}
 
         {%- assign held = flood.held_out -%}
+        <p>I trained three models on water maps labelled automatically from radar images, then used hand-labelled images to see which mistakes the models picked up. On the 90 held-out test chips, the UNet trained from scratch repeated 75.0% of the pixels that Otsu wrongly called water. Frozen TerraMind repeated 90.0%, rising to 96.2% when I allowed its encoder to update. Bolivia was a useful check on that finding. The UNet still copied the fewest false-water pixels, but the order of the two TerraMind models reversed. That comparison covers 15 chips from one event.</p>
         <p><strong>The first study in the design is complete.</strong> Started on 17 November 2026. On 23 November I ran the one-time evaluation on data held out until then: {{ held.test.chips }} hand-labelled test chips, and {{ held.bolivia.chips }} chips from Bolivia, a flood never used in training or in choosing a model. My prediction and the rule for any claim were committed on 20 November, before any held-out label was read. The development results that came first are kept below the held-out ones.</p>
 
         <h3>Setup</h3>
@@ -497,14 +492,9 @@ description: "Four studies on public data: river early warning, cancer drug resp
           <li>Rule-made labels</li>
           <li>First look</li>
         </ul>
-        {% comment %} TODO: REPLACE (Paul): this section was drafted on 23 November
-             from the study's result files, protocol and log. The rule and the
-             predictions are yours. Put the findings in your own words (the
-             study's README has the same TODO), and add the repository link at
-             the foot once the repository is public. {% endcomment %}
         {%- assign leak = site.data.research_leak -%}
 
-        <p>I tested whether a drop in night flow could identify recorded leak repairs. Using thresholds chosen on 2018, the three-night rule found 3 of the 7 repairs in 2019 and the seven-night rule found 6. Every flag matched a recorded repair within two days. The seven-night rule picked up three extra repairs, although it still missed the second of two repairs six days apart in February.</p>
+        <p>I wanted to know whether a drop in night flow was enough to pick out a repair. I set the thresholds using 2018, then checked them against the seven recorded repairs in 2019. The three-night rule found three and the seven-night rule found six. Every flag matched a recorded repair within two days. What stood out to me was that the three-night rule could raise a genuine flag every time and still miss more than half the repairs.</p>
 
         <h3>Setup</h3>
         <ul>
@@ -605,11 +595,7 @@ description: "Four studies on public data: river early warning, cancer drug resp
 
       <section class="research__study" id="how-produced" aria-labelledby="research-how-produced">
         <h2 id="research-how-produced">How this work was produced</h2>
-        <p>All four studies were built making use of AI tools, under research rules I set; each study’s log records how. I re-ran the river and drug response studies on my own hardware and reviewed every logged decision. In the flood study I set the design, recorded a prediction before each result, and ran the training and the held-out evaluation on my own GPU; some of its logged choices still await my review. In the leak repair study I chose the rule and recorded a prediction before each run. An AI assistant wrote and ran a first implementation, and Codex wrote a second from a brief containing the rules and check values; both gave the same thresholds, flag dates and repair results. I kept the second, re-ran the study on my own machine, and recorded my decision on each logged choice on 24 November. I take responsibility for the work and its conclusions.</p>
-        {% comment %} TODO: REPLACE (Paul): the sentence about the flood study was
-             updated on 24 November to cover the held-out evaluation. Check it
-             says what you want, and change it once you have confirmed the
-             remaining logged choices. {% endcomment %}
+        <p>All four studies were built making use of AI tools, under research rules I set; each study’s log records how. I re-ran the river and drug response studies on my own hardware and reviewed every logged decision. In the flood study I chose the research question, recorded my predictions and ran the final held-out evaluation on my workstation. AI tools helped write the code and check the results, including a separate recount from the saved maps that matched all 224 pixel counts checked. In the leak repair study I chose the rule and recorded a prediction before each run. An AI assistant wrote and ran a first implementation, and Codex wrote a second from a brief containing the rules and check values; both gave the same thresholds, flag dates and repair results. I kept the second, re-ran the study on my own machine, and recorded my decision on each logged choice on 24 November. I take responsibility for the work and its conclusions.</p>
       </section>
 
       <section class="research__study" id="corrections" aria-labelledby="research-corrections">
