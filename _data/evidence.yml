@@ -10,6 +10,14 @@
     right order, the same recipe scored below zero.
   anchor: "drug-response"
 
+- question: "How much does gene expression add?"
+  figure: "5% to 19%"
+  unit: "of the response explained"
+  finding: >-
+    PTEN alone explained about 5% of the variation in how cell lines
+    responded to ipatasertib. The best model explained about 19%.
+  anchor: "drug-response"
+
 - question: "Can anyone act on it?"
   figure: "75 to 80%"
   unit: "false alarms"
@@ -19,13 +27,12 @@
     close: 0.155 against 0.175 on the same score at seven days.
   anchor: "river-early-warning"
 
-- question: "Will it work somewhere new?"
+- question: "How well does a river forecast travel?"
   figure: "0.850 to 0.752"
   unit: "skill, wet to dry"
   finding: >-
-    A forecasting model trained on wet catchments and tested on dry ones lost
-    about 0.10 of its skill, against 0.03 for a control trained on a random
-    half. A whole region held out of training cost 0.019.
+    Holding out a whole region cost little at one day. The bigger loss came
+    on drier catchments when the model had only trained on wetter ones.
   anchor: "river-early-warning"
 
 - question: "Does the explanation hold?"
@@ -37,21 +44,20 @@
     overlap score of 0.20). Only two inputs stayed near the top.
   anchor: "drug-response"
 
-- question: "Does pretraining protect against bad labels?"
+- question: "Which model copied the most labelling mistakes?"
   figure: "90.0%"
-  unit: "of false water copied"
+  unit: "of the pixels wrongly labelled as water"
   finding: >-
-    Trained on automatic flood labels, a pretrained satellite model repeated
-    90.0% of the labels' false water on new chips, and 96.2% once its encoder
-    was updated in training. A model trained from scratch repeated the
-    fewest, 75.0%.
+    On 90 held-out image chips, frozen TerraMind repeated 90.0% of the pixels
+    wrongly labelled as water. That rose to 96.2% when its encoder was
+    updated. The UNet trained from scratch repeated 75.0%.
   anchor: "flood-label-errors"
 
-- question: "Can a rule stand in for a label?"
+- question: "Can a drop in night flow tell us when a leak was repaired?"
   figure: "3 of 7"
-  unit: "repairs found"
+  unit: "recorded repairs found"
   finding: >-
-    A rule that infers leak repairs from a drop in night flow found 3 of the
-    7 repairs in its test year. Every flag it raised matched a recorded
-    repair, so its errors were all misses. A seven-night version found 6.
+    The three-night rule found 3 of 7 recorded repairs in 2019. The
+    seven-night rule found 6 of 7. Every flag from either rule matched a
+    repair.
   anchor: "leak-repair-labels"
