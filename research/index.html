@@ -519,7 +519,7 @@ description: "Four studies on public data: river early warning, cancer drug resp
              the foot once the repository is public. {% endcomment %}
         {%- assign leak = site.data.research_leak -%}
 
-        <p><strong>A first look, run on 23 November 2026.</strong> One simulated town, two versions of one rule, and seven repairs in the test year. The rule and my predictions were committed before the test year was opened. The code was written with AI tools, to my rule and predictions. I have since re-run it on my own machine, and the numbers matched.</p>
+        <p>I tested whether a drop in night flow could identify recorded leak repairs. Using thresholds chosen on 2018, the three-night rule found 3 of the 7 repairs in 2019 and the seven-night rule found 6. Every flag matched a recorded repair within two days. The seven-night rule picked up three extra repairs, although it still missed the second of two repairs six days apart in February.</p>
 
         <h3>Setup</h3>
         <ul>
@@ -535,7 +535,7 @@ description: "Four studies on public data: river early warning, cancer drug resp
         <div class="research__table">
           <table>
             <thead>
-              <tr><th scope="col">Rule</th><th scope="col" class="num">Threshold<br>(m³/h)</th><th scope="col" class="num">2018: repairs<br>found</th><th scope="col" class="num">2019: repairs<br>found</th><th scope="col" class="num">2019: flags that<br>were real</th><th scope="col">I predicted for 2019</th></tr>
+              <tr><th scope="col">Rule</th><th scope="col" class="num">Threshold<br>(m³/h)</th><th scope="col" class="num">2018: repairs<br>found</th><th scope="col" class="num">2019: repairs<br>found</th><th scope="col" class="num">2019: flags that<br>matched a repair</th><th scope="col">I predicted for 2019</th></tr>
             </thead>
             <tbody>
               {%- for r in leak.rules %}
@@ -567,15 +567,15 @@ description: "Four studies on public data: river early warning, cancer drug resp
         <ul>
           <li>
             <span data-plain><strong>The rule I chose first found 3 of the 7 repairs.</strong> That is what I predicted (2 or 3). The 7-night version found 6, more than the 4 or 5 I predicted.</span>
-            <span data-technical>Thresholds set on 2018 by highest F1: 34.5 m³/h for 3 nights each side and 10.0 m³/h for 7. On 2018 they found 7 and 8 of the 10 repairs. On 2019, run once: 3 of 7 and 6 of 7. Seven repairs is a small test: one repair more or less is 14 points.</span>
+            <span data-technical>Thresholds set on 2018 by highest F1: 34.5 m³/h for 3 nights each side and 10.0 m³/h for 7. Each is the highest of a run of thresholds with the same F1 (29.5 to 34.5, and 4.0 to 10.0), chosen by a rule fixed in advance: on a tie, take the higher cutoff, which gives the same number of flags or fewer. On 2018 they found 7 and 8 of the 10 repairs. On 2019, run once: 3 of 7 and 6 of 7. Seven repairs is a small test: one repair more or less is 14 points.</span>
           </li>
           <li>
             <span data-plain><strong>Which repairs the 3-night rule found did not follow the size of the leak.</strong> It found leaks of 17.9, 20.4 and 21.6 m³/h and missed three larger ones, of 26.2, 26.5 and 28.2 m³/h.</span>
             <span data-technical>In 2018 the night flow averaged {{ leak.weekday_low }} to {{ leak.weekday_quiet_high }} m³/h on five nights of the week and {{ leak.weekday_busy_low }} and {{ leak.weekday_busy_high }} m³/h on the other two. A 3-night window measures that rhythm together with any repair: at thresholds up to 3 m³/h the rule raised 52 flags in 2018, one a week. At the three repairs it found in 2019 the drop it measured (35.3 to 38.3 m³/h) was larger than the leak that was repaired. My reading, not yet tested: whether this rule finds a repair depends partly on where the repair falls in the week.</span>
           </li>
           <li>
-            <span data-plain><strong>No flag was false.</strong> Every repair either rule flagged, in either year, was a real one, so in this town the rule's mistakes are all misses. I had predicted that only 50 to 80% of the 3-night rule's flags would be real.</span>
-            <span data-technical>3 of 3 flags real for the 3-night rule in 2019 and 6 of 6 for the 7-night rule; 7 of 7 and 8 of 8 in 2018. In this simulated town, at the thresholds chosen on 2018, no drop without a repair was flagged.</span>
+            <span data-plain><strong>Every flag matched a recorded repair.</strong> In both years, every flag either rule raised was within two days of a recorded repair, so in this town the rule's mistakes are all misses. I had predicted that only 50 to 80% of the 3-night rule's flags would be real.</span>
+            <span data-technical>3 of 3 flags matched for the 3-night rule in 2019 and 6 of 6 for the 7-night rule; 7 of 7 and 8 of 8 in 2018. In this simulated town, at the thresholds chosen on 2018, no drop without a repair was flagged.</span>
           </li>
           <li>
             <span data-plain><strong>The 7-night rule's one miss came six days after another repair.</strong> Two repairs, on 1 and 7 February, got one flag between them.</span>
@@ -587,15 +587,15 @@ description: "Four studies on public data: river early warning, cancer drug resp
         <ul>
           <li>The rule I chose first reacts to a weekly rhythm in night flow that I had not allowed for. The 2018 run showed it, and the 7-night version was added by a dated amendment before 2019 was opened.</li>
           <li>My prediction that 50 to 80% of the 3-night rule's flags would be real was wrong: all of them were. My prediction for the 7-night rule, 4 or 5 repairs found, was one too low.</li>
-          <li>One of the code's tests had a wrong expected value. The code was right, and the test was corrected before the first commit.</li>
+          <li>In the first implementation, one of the tests had a wrong expected value. The code was right, and the test was corrected before the first commit.</li>
         </ul>
 
         <h3>Limits</h3>
         <ul>
-          <li>The town is simulated. No flag was false here, and that should not be expected of a real network, where changes in demand, valve operations and meter faults also produce drops.</li>
-          <li>Seven test repairs, one town, two versions of one rule, and one way of choosing the threshold.</li>
+          <li>The test covered seven repairs on one benchmark network, with two versions of one rule and one way of choosing the threshold.</li>
+          <li>The town is simulated. Every flag matched a repair here, and that should not be expected of a real network, where changes in demand, valve operations and meter faults also produce drops.</li>
+          <li>The rule uses nights after the candidate repair date, so it is a retrospective check, not a live alarm.</li>
           <li>The rule stands in for the idea of inferring a repair from a drop in flow. It is not any water company's rule.</li>
-          <li>The first runs were made with AI tools and recounted with separate code. I then re-ran the study on my own machine, and the numbers matched.</li>
           <li>No model has been trained on these labels yet, so this measures the labels' errors and not what a model does with them.</li>
         </ul>
         <p class="research__links">Protocol, predictions and the decision log are kept with the code. The repository is not public yet. Data: Vrachimis and others (2020), Dataset of BattLeDIM, Zenodo, <a href="https://doi.org/10.5281/zenodo.4017659" rel="noopener">doi.org/10.5281/zenodo.4017659</a>.</p>
@@ -615,7 +615,7 @@ description: "Four studies on public data: river early warning, cancer drug resp
 
       <section class="research__study" id="how-produced" aria-labelledby="research-how-produced">
         <h2 id="research-how-produced">How this work was produced</h2>
-        <p>All four studies were built making use of AI tools, under research rules I set; each study’s log records how. I re-ran the river and drug response studies on my own hardware and reviewed every logged decision. In the flood study I set the design, recorded a prediction before each result, and ran the training and the held-out evaluation on my own GPU; some of its logged choices still await my review. In the leak repair study I chose the rule and recorded a prediction before each run; the code was written with AI tools, I re-ran the study on my own machine, and I have not yet reviewed its logged choices. I take responsibility for the work and its conclusions.</p>
+        <p>All four studies were built making use of AI tools, under research rules I set; each study’s log records how. I re-ran the river and drug response studies on my own hardware and reviewed every logged decision. In the flood study I set the design, recorded a prediction before each result, and ran the training and the held-out evaluation on my own GPU; some of its logged choices still await my review. In the leak repair study I chose the rule and recorded a prediction before each run. An AI assistant wrote and ran a first implementation, and Codex wrote a second from a brief containing the rules and check values; both gave the same thresholds, flag dates and repair results. I kept the second, re-ran the study on my own machine, and recorded my decision on each logged choice on 24 November. I take responsibility for the work and its conclusions.</p>
         {% comment %} TODO: REPLACE (Paul): the sentence about the flood study was
              updated on 24 November to cover the held-out evaluation. Check it
              says what you want, and change it once you have confirmed the
@@ -640,7 +640,7 @@ description: "Four studies on public data: river early warning, cancer drug resp
         <ul>
           <li>The river study's behaviour with gaps in the inputs.</li>
           <li>Putting the flood study's findings in my own words and reviewing its remaining logged choices.</li>
-          <li>Rewriting the leak repair study's code myself and reviewing its logged choices.</li>
+          <li>Deciding whether there are enough missed repairs to test whether a model trained on the rule's labels repeats its misses.</li>
         </ul>
         {% comment %} TODO: REPLACE (Paul): reading notes. Three to five papers you have
              read in full, with two lines each on what you took from them and

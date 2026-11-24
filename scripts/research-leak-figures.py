@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Draw the leak study figure shown on /research/.
 
-Every plotted number is read from the study's own result files.
+Repair dates and which rule found each come from the study's results/study.json.
+Night flow is recomputed with the study's own leak_rule.py from the L-Town files.
 
-    python scripts/research-leak-figures.py <leak-repair-labels repo> [<output-folder>]
+    python scripts/research-leak-figures.py <leak-repair-labels repo> <data folder> [<output-folder>]
 
 The output folder defaults to img/research/. Needs matplotlib and the Inter
 font. Afterwards run `node scripts/optimize-images.js` for the WebP copies.
@@ -14,16 +15,18 @@ from datetime import datetime
 from pathlib import Path
 
 import matplotlib
+import pandas as pd
 
 matplotlib.use("Agg")
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 from matplotlib import font_manager
 
-if len(sys.argv) < 2:
-    sys.exit("usage: python scripts/research-leak-figures.py <leak-repair-labels repo> [<output-folder>]")
-REPO = Path(sys.argv[1])
-OUT = Path(sys.argv[2]) if len(sys.argv) > 2 else Path(__file__).resolve().parent.parent / "img" / "research"
+if len(sys.argv) < 3:
+    sys.exit("usage: python scripts/research-leak-figures.py <leak-repair-labels repo> <data folder> [<output-folder>]")
+REPO = Path(sys.argv[1]).resolve()
+DATA = Path(sys.argv[2]).resolve()
+OUT = Path(sys.argv[3]) if len(sys.argv) > 3 else Path(__file__).resolve().parent.parent / "img" / "research"
 OUT.mkdir(parents=True, exist_ok=True)
 
 # The same surface, ink and colours as the other research figures.
@@ -54,15 +57,19 @@ plt.rcParams.update({
 })
 
 
-def load(name):
-    return json.loads((REPO / "results" / name).read_text(encoding="utf-8"))
+sys.path.insert(0, str(REPO))
+import leak_rule  # noqa: E402
 
+study = json.loads((REPO / "results" / "study.json").read_text(encoding="utf-8"))
+test = study["test"]
+WINDOW = {"3-day": "3", "7-day": "7"}
 
-night = load("night_flow_2018_2019.json")
-test = load("test_2019.json")
-
-days = [datetime.strptime(row["day"], "%Y-%m-%d") for row in night]
-flow = [row["night_flow_m3h"] for row in night]
+flows = pd.concat([leak_rule.read_year(DATA, year, "SCADA_Flows") for year in (2018, 2019)])
+levels = pd.concat([leak_rule.read_year(DATA, year, "SCADA_Levels")[leak_rule.TANK] for year in (2018, 2019)])
+nights = leak_rule.night_flow(flows[leak_rule.METERS].sum(axis=1), levels)
+days = [day.to_pydatetime() for day in nights.index]
+# Rounded to 2 places, as the figure was first drawn from values stored that way.
+flow = [round(float(value), 2) for value in nights]
 weekly = []
 for i in range(len(flow)):
     if i < WEEK - 1:
@@ -85,19 +92,19 @@ row_y = {"7-day": top + 0.20 * span, "3-day": top + 0.09 * span}
 row_name = {"7-day": "7-night rule", "3-day": "3-night rule"}
 row_colour = {"7-day": BLUE, "3-day": ORANGE}
 
-repairs = test["rules"]["3-day"]["repair_table"]
-for repair in repairs:
-    when = datetime.strptime(repair["repaired"][:10], "%Y-%m-%d")
+for repair in test["repairs"]:
+    when = datetime.strptime(repair["end"][:10], "%Y-%m-%d")
     ax.axvline(when, color=AXIS, linewidth=0.9, linestyle=(0, (3, 2)), zorder=0)
 for name in ["7-day", "3-day"]:
-    for repair in test["rules"][name]["repair_table"]:
-        when = datetime.strptime(repair["repaired"][:10], "%Y-%m-%d")
-        if repair["found"]:
+    window = WINDOW[name]
+    for repair in test["repairs"]:
+        when = datetime.strptime(repair["end"][:10], "%Y-%m-%d")
+        if repair[f"flag_{window}"] is not None:
             ax.plot([when], [row_y[name]], marker="o", markersize=7, color=row_colour[name], clip_on=False)
         else:
             ax.plot([when], [row_y[name]], marker="o", markersize=7, markerfacecolor=SURFACE, markeredgecolor=row_colour[name], markeredgewidth=1.4, clip_on=False)
-    found = test["rules"][name]["found"]
-    total = test["rules"][name]["repairs"]
+    found = test["windows"][window]["found"]
+    total = test["windows"][window]["repairs"]
     label = f"  {row_name[name]}: {found} of {total}"
     ax.text(x[-1], row_y[name], label, ha="left", va="center", fontsize=9.5, color=row_colour[name], clip_on=False)
 

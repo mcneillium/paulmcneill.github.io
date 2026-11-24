@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Write _data/research_leak.json for /research/ from the leak study's result files.
+"""Write _data/research_leak.json for /research/ from the leak study's results.
 
-    python scripts/research-leak-numbers.py <leak-repair-labels repo>
+    python scripts/research-leak-numbers.py <leak-repair-labels repo> <data folder>
 
-Every number on the page's leak section comes from this file. The predictions
-are the ones recorded in the study's protocol before each run.
+Counts, thresholds and the repair table come from the study's
+results/study.json. The night-flow means are recomputed with the study's own
+leak_rule.py from the L-Town files, because study.json does not store them.
+The predictions are the ones recorded in the study's protocol before each run.
 """
 import json
 import sys
@@ -12,24 +14,26 @@ from datetime import datetime
 from decimal import ROUND_HALF_UP, Decimal
 from pathlib import Path
 
-if len(sys.argv) < 2:
-    sys.exit("usage: python scripts/research-leak-numbers.py <leak-repair-labels repo>")
-REPO = Path(sys.argv[1])
+import pandas as pd
+
+if len(sys.argv) < 3:
+    sys.exit("usage: python scripts/research-leak-numbers.py <leak-repair-labels repo> <data folder>")
+REPO = Path(sys.argv[1]).resolve()
+DATA = Path(sys.argv[2]).resolve()
 OUT = Path(__file__).resolve().parent.parent / "_data" / "research_leak.json"
+sys.path.insert(0, str(REPO))
+import leak_rule  # noqa: E402
 
 PREDICTED = {
-    "3-day": {"found": "2 or 3", "found_low": 2, "found_high": 3, "flags_real": "50 to 80%"},
-    "7-day": {"found": "4 or 5", "found_low": 4, "found_high": 5, "flags_real": "over 80%"},
+    "3": {"found": "2 or 3", "found_low": 2, "found_high": 3, "flags_real": "50 to 80%"},
+    "7": {"found": "4 or 5", "found_low": 4, "found_high": 5, "flags_real": "over 80%"},
 }
-LABELS = {"3-day": "3 nights before against 3 after", "7-day": "7 nights before against 7 after"}
-
-
-def load(name):
-    return json.loads((REPO / "results" / name).read_text(encoding="utf-8"))
+LABELS = {"3": "3 nights before against 3 after", "7": "7 nights before against 7 after"}
+IDS = {"3": "3-day", "7": "7-day"}
 
 
 def one_place(value):
-    """One decimal place, halves rounded up (the result files hold two places)."""
+    """One decimal place, halves rounded up (the results hold two places)."""
     return str(Decimal(str(value)).quantize(Decimal("0.1"), rounding=ROUND_HALF_UP))
 
 
@@ -38,18 +42,19 @@ def nice_day(text):
     return f"{day.day} {day.strftime('%B')}"
 
 
-dev = load("threshold_2018.json")
-test = load("test_2019.json")
+study = json.loads((REPO / "results" / "study.json").read_text(encoding="utf-8"))
+dev = study["development"]
+test = study["test"]
 
 rules = []
-for name in ["3-day", "7-day"]:
-    d = dev["rules"][name]
-    t = test["rules"][name]
-    predicted = PREDICTED[name]
+for window in ["3", "7"]:
+    d = dev["windows"][window]
+    t = test["windows"][window]
+    predicted = PREDICTED[window]
     row = {
-        "id": name,
-        "label": LABELS[name],
-        "threshold": one_place(d["threshold_m3h"]),
+        "id": IDS[window],
+        "label": LABELS[window],
+        "threshold": one_place(study["thresholds"][window]),
         "dev_found": d["found"],
         "dev_repairs": d["repairs"],
         "dev_flags": d["flags"],
@@ -64,30 +69,33 @@ for name in ["3-day", "7-day"]:
     rules.append(row)
 
 repairs = []
-for three, seven in zip(test["rules"]["3-day"]["repair_table"], test["rules"]["7-day"]["repair_table"]):
-    if three["pipe"] != seven["pipe"]:
-        sys.exit("The two rules' repair tables are in different orders.")
+for repair in test["repairs"]:
     row = {
-        "pipe": three["pipe"],
-        "day": nice_day(three["repaired"]),
-        "leak": one_place(three["leak_m3h_at_repair"]),
-        "drop_3": one_place(three["largest_drop_within_2_days_m3h"]),
-        "found_3": three["found"],
-        "drop_7": one_place(seven["largest_drop_within_2_days_m3h"]),
-        "found_7": seven["found"],
+        "pipe": repair["pipe"],
+        "day": nice_day(repair["end"]),
+        "leak": one_place(repair["size"]),
+        "drop_3": one_place(repair["drop_3"]),
+        "found_3": repair["flag_3"] is not None,
+        "drop_7": one_place(repair["drop_7"]),
+        "found_7": repair["flag_7"] is not None,
     }
     repairs.append(row)
 
-weekday = dev["night_flow_mean_by_weekday_m3h"]
-ordered = sorted(float(value) for value in weekday.values())
+flows = pd.concat([leak_rule.read_year(DATA, year, "SCADA_Flows") for year in (2018, 2019)])
+levels = pd.concat([leak_rule.read_year(DATA, year, "SCADA_Levels")[leak_rule.TANK] for year in (2018, 2019)])
+nights = leak_rule.night_flow(flows[leak_rule.METERS].sum(axis=1), levels)
+nights_2018 = nights.loc["2018"]
+nights_2019 = nights.loc["2019"]
+weekday = sorted(nights_2018.groupby(nights_2018.index.weekday).mean())
+
 out = {
-    "generated_from": "results/threshold_2018.json and results/test_2019.json",
-    "dev_night_flow": f"{dev['night_flow_mean_m3h']:.0f}",
-    "test_night_flow": f"{test['night_flow_mean_m3h']:.0f}",
-    "weekday_low": f"{ordered[0]:.0f}",
-    "weekday_quiet_high": f"{ordered[4]:.0f}",
-    "weekday_busy_low": f"{ordered[5]:.0f}",
-    "weekday_busy_high": f"{ordered[6]:.0f}",
+    "generated_from": "results/study.json, with night-flow means recomputed by leak_rule.py",
+    "dev_night_flow": f"{nights_2018.mean():.0f}",
+    "test_night_flow": f"{nights_2019.mean():.0f}",
+    "weekday_low": f"{weekday[0]:.0f}",
+    "weekday_quiet_high": f"{weekday[4]:.0f}",
+    "weekday_busy_low": f"{weekday[5]:.0f}",
+    "weekday_busy_high": f"{weekday[6]:.0f}",
     "rules": rules,
     "repairs": repairs,
 }
