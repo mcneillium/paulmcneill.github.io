@@ -148,7 +148,8 @@ be stated as fact.
   repairs does it find? With thresholds chosen on 2018, a 3-night rule found
   3 of the 7 repairs in 2019 and a 7-night rule found 6 of 7, with no false
   flag in either year. Paul chose the rule and recorded predictions before
-  the test year was opened. The repository is not public yet.
+  the test year was opened. The code is public on GitHub as
+  leak-repair-labels.
 - The river and drug studies: protocol written before any model was fitted, baselines first,
   fixed splits, negative results reported, and a log of every decision. Both
   were re-run on a second machine on 14 November 2026, and the river study's

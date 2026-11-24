@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-11-24T01:08:19.614Z",
+  "built_at": "2026-11-24T03:05:33.865Z",
   "embedding_model": null,
   "chunks": [
     {
@@ -662,7 +662,7 @@
     {
       "id": "research.leak",
       "category": "research",
-      "text": "Research study, a first look and the newest of the four (run on 23 November 2026): Leak repairs inferred from a drop in flow, on L-Town, a public simulated benchmark. No water company's data is used. The question: when a rule infers leak repairs from a drop in night flow, how many of the real repairs does it find, and how many of its flags are real? With thresholds chosen on 2018, a 3-night rule found 3 of the 7 repairs in 2019 and a 7-night rule found 6 of 7. No flag was false in either year. Paul chose the rule and recorded predictions before the test year was opened; the code was written with AI tools and he re-ran it on his own machine. Full write-up: /research/#leak-repair-labels. The repository is not public yet.",
+      "text": "Research study, a first look and the newest of the four (run on 23 November 2026): Leak repairs inferred from a drop in flow, on L-Town, a public simulated benchmark. No water company's data is used. The question: when a rule infers leak repairs from a drop in night flow, how many of the real repairs does it find, and how many of its flags are real? With thresholds chosen on 2018, a 3-night rule found 3 of the 7 repairs in 2019 and a 7-night rule found 6 of 7. No flag was false in either year. Paul chose the rule and recorded predictions before the test year was opened; the code was written with AI tools and he re-ran it on his own machine. Full write-up: /research/#leak-repair-labels. Code, protocols and decision log: github.com/mcneillium/leak-repair-labels.",
       "keywords": [
         "research",
         "study",

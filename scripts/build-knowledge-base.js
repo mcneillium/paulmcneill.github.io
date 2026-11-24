@@ -221,8 +221,8 @@ push('research.leak', 'research',
   'thresholds chosen on 2018, a 3-night rule found 3 of the 7 repairs in 2019 and a 7-night ' +
   'rule found 6 of 7. No flag was false in either year. Paul chose the rule and recorded ' +
   'predictions before the test year was opened; the code was written with AI tools and he ' +
-  're-ran it on his own machine. Full write-up: /research/#leak-repair-labels. The repository ' +
-  'is not public yet.',
+  're-ran it on his own machine. Full write-up: /research/#leak-repair-labels. Code, protocols ' +
+  'and decision log: github.com/mcneillium/leak-repair-labels.',
   ['research', 'study', 'leak', 'leaks', 'leakage', 'repair', 'repairs', 'water', 'night',
     'flow', 'l-town', 'battledim', 'labels', 'rule', 'newest', 'latest', 'first look',
     'status', 'findings', 'phd']);
