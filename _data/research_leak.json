@@ -1,5 +1,5 @@
 {
-  "generated_from": "results/threshold_2018.json and results/test_2019.json",
+  "generated_from": "results/study.json, with night-flow means recomputed by leak_rule.py",
   "dev_night_flow": "98",
   "test_night_flow": "149",
   "weekday_low": "89",
